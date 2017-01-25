@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C9814ECCD872807551A2541472430EE71F770FBE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4757831F02478A62980AF1FC7BF276D72C283E68" : 9223372036854775807,
+    "C9814ECCD872807551A2541472430EE71F770FBE" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "88A88F9A-C0D9-4F9B-94A2-C58C998CECB0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4757831F02478A62980AF1FC7BF276D72C283E68" : "..\/Library\/Mobile%20Documents\/com~apple~CloudDocs\/Desktop\/Pace",
+    "C9814ECCD872807551A2541472430EE71F770FBE" : "Pace\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Pace",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Pace.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/mhlangagc\/pace-2",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4757831F02478A62980AF1FC7BF276D72C283E68"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/projectburn\/pace-launch.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C9814ECCD872807551A2541472430EE71F770FBE"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+PODS:
+  - AsyncDisplayKit (2.0-rc.1):
+    - AsyncDisplayKit/PINRemoteImage (= 2.0-rc.1)
+  - AsyncDisplayKit/Core (2.0-rc.1)
+  - AsyncDisplayKit/PINRemoteImage (2.0-rc.1):
+    - AsyncDisplayKit/Core
+    - PINRemoteImage/iOS (= 3.0.0-beta.6)
+    - PINRemoteImage/PINCache
+  - Crashlytics (3.8.3):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.11)
+  - PINCache (3.0.1-beta.2):
+    - PINCache/Arc-exception-safe (= 3.0.1-beta.2)
+    - PINCache/Core (= 3.0.1-beta.2)
+  - PINCache/Arc-exception-safe (3.0.1-beta.2):
+    - PINCache/Core
+  - PINCache/Core (3.0.1-beta.2)
+  - PINRemoteImage/Core (3.0.0-beta.6)
+  - PINRemoteImage/iOS (3.0.0-beta.6):
+    - PINRemoteImage/Core
+  - PINRemoteImage/PINCache (3.0.0-beta.6):
+    - PINCache (= 3.0.1-beta.2)
+    - PINRemoteImage/Core
+  - pop (1.0.9)
+  - QuickRippleButton (0.0.1)
+  - Stripe (9.2.0)
+
+DEPENDENCIES:
+  - AsyncDisplayKit (>= 2.0-rc.1)
+  - Crashlytics
+  - Fabric
+  - pop (from `https://github.com/facebook/pop.git`)
+  - QuickRippleButton
+  - Stripe
+
+EXTERNAL SOURCES:
+  pop:
+    :git: https://github.com/facebook/pop.git
+
+CHECKOUT OPTIONS:
+  pop:
+    :commit: 92b2c5b7bcad64f7507da34f921492c71ff1d330
+    :git: https://github.com/facebook/pop.git
+
+SPEC CHECKSUMS:
+  AsyncDisplayKit: bd1d54ec70644ab235bcca899644d2129d5d06df
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  PINCache: 6d273a6e0754bd26e3f12a38a90dde73cc6a42b2
+  PINRemoteImage: 60156f185c9360ca4e93832cd490d6f6c7afbd9a
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  QuickRippleButton: bb0de9a85ce0987a57300b2cafa87a4b42eac8b9
+  Stripe: a47770e82db059d0e7e160f9aabc2997055ee911
+
+PODFILE CHECKSUM: 100064aab034a90b87d0add5138909164bddf849
+
+COCOAPODS: 1.1.1
