@@ -45,14 +45,22 @@ class CustomTabBarController: ASTabBarController {
 			
             var imageName = ""
             switch (i) {
-                case 0:
-                    imageName = "home"
-                case 1:
-                    imageName = "discovery"
+				
+				case 0:
+					
+					imageName = "home"
+				
+				case 1:
+					
+					imageName = "discovery"
+				
 				case 2:
+				
 					imageName = "me"
-            default: break
-            }
+				
+				default: break
+				
+			}
             tabBarItem.image = UIImage(named:imageName)!.withRenderingMode(.alwaysOriginal)
             tabBarItem.selectedImage = UIImage(named:imageName + "_Active")!.withRenderingMode(.alwaysOriginal)
         }
