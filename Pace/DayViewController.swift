@@ -91,10 +91,9 @@ class DayViewController : UIViewController, UITableViewDataSource, UITableViewDe
 	
 	func setupHeaderView() {
 		
-		headerView  = DayDetailsHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 330.0))
+		headerView  = DayDetailsHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 350.0))
 		headerView.workoutsImageView?.image = routineWorkoutModel?.backgroundImage
-		headerView.workoutName?.text = routineWorkoutModel?.workoutName?.uppercased()
-		headerView.profileNameButton?.setTitle("Created by \((routineWorkoutModel?.creatingTrainer)!)", for: UIControlState.normal)
+		headerView.workoutName?.text = routineWorkoutModel?.workoutName
 		headerView.profileImageView?.image = routineWorkoutModel?.creatingTrainerImage
 		headerView.dayDetailVC = self
 		workoutDetailsTableView?.tableHeaderView = headerView

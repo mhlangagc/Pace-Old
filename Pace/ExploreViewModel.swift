@@ -202,7 +202,7 @@ class ExploreViewModel : NSObject {
 		new_4.workoutCatergory = WorkoutCatergory.sevenmin
 		
 		let new_5 = ExploreModel()
-		new_5.workoutName = "Wednesday Abs & Obliques"
+		new_5.workoutName = "Sunday Abs & Obliques"
 		new_5.workoutImage = UIImage(named: "new5")
 		new_5.trainerName = "Maria Sharapova"
 		new_5.trainerImage = UIImage(named: "maria")

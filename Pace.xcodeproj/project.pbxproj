@@ -122,6 +122,7 @@
 		45F7F5D81DFD66EC00DD1E33 /* NewsDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7F5D71DFD66EC00DD1E33 /* NewsDetailsCell.swift */; };
 		45F7F5DA1DFD8AD200DD1E33 /* WeekTableNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7F5D91DFD8AD200DD1E33 /* WeekTableNodeCell.swift */; };
 		BD372C2BE13A69DDA8ABFAA5 /* Pods_Pace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC48F02A471D422621621F63 /* Pods_Pace.framework */; };
+		C690C7771E39CE55005B359E /* LeaderBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C690C7761E39CE55005B359E /* LeaderBoardCell.swift */; };
 		C6B118281E21670C002BB4E8 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118271E21670C002BB4E8 /* PasswordViewController.swift */; };
 		C6B1182A1E21729F002BB4E8 /* NameEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118291E21729F002BB4E8 /* NameEntryViewController.swift */; };
 		C6B1182C1E217BCA002BB4E8 /* PickGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1182B1E217BCA002BB4E8 /* PickGenderViewController.swift */; };
@@ -275,6 +276,7 @@
 		59335CBDC2D2803DE42031D5 /* Pods_PaceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A08244F9BF7AE8D216914864 /* Pods-Pace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pace/Pods-Pace.debug.xcconfig"; sourceTree = "<group>"; };
 		A99BA1B4E6F660258B376E7C /* Pods_PaceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C690C7761E39CE55005B359E /* LeaderBoardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderBoardCell.swift; sourceTree = "<group>"; };
 		C6B118271E21670C002BB4E8 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		C6B118291E21729F002BB4E8 /* NameEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameEntryViewController.swift; sourceTree = "<group>"; };
 		C6B1182B1E217BCA002BB4E8 /* PickGenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickGenderViewController.swift; sourceTree = "<group>"; };
@@ -395,7 +397,6 @@
 			children = (
 				451D078C1DFE44BF00940301 /* ProfileHeaderView.swift */,
 				45275E0B1DFF0B9000DF6F38 /* WorkoutDetailsHeaderView.swift */,
-				45ACEABA1DFFB82200C94B7D /* DayDetailsHeaderView.swift */,
 				45C214E51E05AF4200C5BCCF /* HeaderLabelCell.swift */,
 				45C214E91E05B84400C5BCCF /* RatingsNodeView.swift */,
 				45BE498F1DFF42E3006C671B /* RatingsView.swift */,
@@ -533,6 +534,7 @@
 		45ACEAB71DFFB64D00C94B7D /* DayDetailsView */ = {
 			isa = PBXGroup;
 			children = (
+				C690C7751E39CD07005B359E /* HeaderView */,
 				458842731E11D69D003B02C8 /* DayViewController.swift */,
 				45F3AA291E15E7B300D70C84 /* PreferencesPopUpLauncher.swift */,
 				458842751E11D89F003B02C8 /* DayViewController+Extension.swift */,
@@ -848,6 +850,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C690C7751E39CD07005B359E /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				45ACEABA1DFFB82200C94B7D /* DayDetailsHeaderView.swift */,
+				C690C7761E39CE55005B359E /* LeaderBoardCell.swift */,
+			);
+			name = HeaderView;
+			sourceTree = "<group>";
+		};
 		C6B1182F1E218037002BB4E8 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
@@ -1143,6 +1154,7 @@
 				45C214F41E05DC7C00C5BCCF /* SettingsViewController+Extension.swift in Sources */,
 				45BE49901DFF42E3006C671B /* RatingsView.swift in Sources */,
 				4529021A1DFC2AA600CE0C81 /* BaseCell.swift in Sources */,
+				C690C7771E39CE55005B359E /* LeaderBoardCell.swift in Sources */,
 				456B83361DFF50340012A1A2 /* StoreImageGradient.swift in Sources */,
 				45F3AA221E159AA200D70C84 /* ActivityViewModel.swift in Sources */,
 				45B5AD9B1DFC01DE00115E2C /* MBProgressHUD.m in Sources */,

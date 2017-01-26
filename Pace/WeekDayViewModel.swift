@@ -14,7 +14,7 @@ class WeekDayViewModel : NSObject {
 		
 		let sunday = WeekRoutineModel()
 		sunday.dayName = "Sunday"
-		sunday.workoutName = "Cardio"
+		sunday.workoutName = "Sunday Abs & Obliques"
 		sunday.color = UIColor.sunday()
 		sunday.isOccupied = false
 		sunday.isCompleted = false

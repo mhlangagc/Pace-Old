@@ -68,32 +68,32 @@ class CustomTabBarController: ASTabBarController {
 	
     func setUpViewControllers() {
      
-        //  Week
+        //  My Routine
         let weekViewController = WeekViewController()
         let weekNavController = ASNavigationController(rootViewController: weekViewController)
-        weekNavController.tabBarItem.title = "My Routine"
+        //weekNavController.tabBarItem.title = "My Routine"
         weekViewController.navigationController?.navigationBar.barStyle = .black
         weekViewController.extendedLayoutIncludesOpaqueBars = true
 		
         //	Discovery
         let exploreViewController = ExploreViewController()
         let exploreNavController = ASNavigationController(rootViewController: exploreViewController)
-		exploreNavController.tabBarItem.title = "Explore"
+		//exploreNavController.tabBarItem.title = "Explore"
 		exploreViewController.navigationController?.navigationBar.barStyle = .black
         exploreViewController.extendedLayoutIncludesOpaqueBars = true
         
 		//  Activity View Controller
-		let activityViewController = ActivityViewController()
-		let activityNavController = ASNavigationController(rootViewController: activityViewController)
-		activityNavController.tabBarItem.title = "Activity"
-		activityViewController.navigationController?.navigationBar.barStyle = .black
-		activityViewController.extendedLayoutIncludesOpaqueBars = true
+//		let activityViewController = ActivityViewController()
+//		let activityNavController = ASNavigationController(rootViewController: activityViewController)
+//		activityNavController.tabBarItem.title = "Activity"
+//		activityViewController.navigationController?.navigationBar.barStyle = .black
+//		activityViewController.extendedLayoutIncludesOpaqueBars = true
 		
 		
         //  Profile
         let profileViewController = ProfileViewController()
         let profileNavController = ASNavigationController(rootViewController: profileViewController)
-		profileNavController.tabBarItem.title = "Profile"
+		//profileNavController.tabBarItem.title = "Profile"
         profileViewController.navigationController?.navigationBar.barStyle = .black
         profileViewController.extendedLayoutIncludesOpaqueBars = true
 		
