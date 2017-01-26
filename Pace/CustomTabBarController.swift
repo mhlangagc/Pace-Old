@@ -56,7 +56,7 @@ class CustomTabBarController: ASTabBarController {
 				
 				case 2:
 				
-					imageName = "me"
+					imageName = "profile-male"
 				
 				default: break
 				

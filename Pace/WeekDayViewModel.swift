@@ -26,7 +26,7 @@ class WeekDayViewModel : NSObject {
 		
 		let monday = WeekRoutineModel()
 		monday.dayName = "Monday"
-		monday.workoutName = "Leg Day"
+		monday.workoutName = "-"
 		monday.color = UIColor.monday()
 		monday.isOccupied = false
 		monday.isCompleted = false
@@ -38,7 +38,7 @@ class WeekDayViewModel : NSObject {
 		
 		let tuesday = WeekRoutineModel()
 		tuesday.dayName = "Tuesday"
-		tuesday.workoutName = "Recovery Day"
+		tuesday.workoutName = "-"
 		tuesday.color = UIColor.tuesday()
 		tuesday.isOccupied = false
 		tuesday.isCompleted = false
@@ -50,7 +50,7 @@ class WeekDayViewModel : NSObject {
 		
 		let wednesday = WeekRoutineModel()
 		wednesday.dayName = "Wednesday"
-		wednesday.workoutName = "Cardio"
+		wednesday.workoutName = "Cardio (Example)"
 		wednesday.color = UIColor.wednesday()
 		wednesday.isOccupied = false
 		wednesday.isCompleted = false
@@ -62,7 +62,7 @@ class WeekDayViewModel : NSObject {
 		
 		let thursday = WeekRoutineModel()
 		thursday.dayName = "Thursday"
-		thursday.workoutName = "Recovery Day"
+		thursday.workoutName = "Belly Fat Blaster"
 		thursday.color = UIColor.thursday()
 		thursday.isOccupied = false
 		thursday.isCompleted = false
@@ -74,7 +74,7 @@ class WeekDayViewModel : NSObject {
 		
 		let friday = WeekRoutineModel()
 		friday.dayName = "Friday"
-		friday.workoutName = "Core & Back"
+		friday.workoutName = "-"
 		friday.color = UIColor.friday()
 		friday.isOccupied = false
 		friday.isCompleted = false
@@ -86,7 +86,7 @@ class WeekDayViewModel : NSObject {
 		
 		let saturday = WeekRoutineModel()
 		saturday.dayName = "Saturday"
-		saturday.workoutName = "Recovery Day"
+		saturday.workoutName = "-"
 		saturday.color = UIColor.saturday()
 		saturday.isOccupied = false
 		saturday.isCompleted = false
