@@ -1343,7 +1343,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fitness.pace.Pace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/gugulethu/Dropbox/Clients/Personal/Pace/Dev/Pace/Pace/Pace-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pace/Pace-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1359,7 +1359,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fitness.pace.Pace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/gugulethu/Dropbox/Clients/Personal/Pace/Dev/Pace/Pace/Pace-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pace/Pace-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
