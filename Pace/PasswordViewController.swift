@@ -42,7 +42,7 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
 		textField.backgroundColor = .black
 		textField.textColor = UIColor.greyWhite()
 		textField.tintColor = UIColor.paceBrandColor()
-		textField.attributedPlaceholder = NSAttributedString(string:"atleast 6 characters (no spaces)",
+		textField.attributedPlaceholder = NSAttributedString(string:"6+ characters (no spaces)",
 		                                                     attributes:[NSForegroundColorAttributeName: UIColor.greyBlackColor()])
 		textField.returnKeyType = .done
 		textField.sizeToFit()
@@ -226,12 +226,12 @@ extension PasswordViewController {
 		if (passwordTextField.text?.characters.count)! > 6 {
 			
 			nextButton.isEnabled = true
-			nextButton.backgroundColor = UIColor(fromHexString: "00EA89")
+			nextButton.backgroundColor = UIColor.paceBrandColor()
 			
 		} else {
 			
 			nextButton.isEnabled = false
-			nextButton.backgroundColor = UIColor(fromHexString: "1C2026")
+			nextButton.backgroundColor = UIColor.paceBrandColor()
 			
 			
 		}

@@ -192,12 +192,12 @@ extension NameEntryViewController {
 		if (nameEntryTextField.text?.characters.count)! > 0 {
 			
 			nextButton.isEnabled = true
-			nextButton.backgroundColor = UIColor(fromHexString: "00EA89")
+			nextButton.backgroundColor = UIColor.paceBrandColor()
 			
 		} else {
 			
 			nextButton.isEnabled = false
-			nextButton.backgroundColor = UIColor(fromHexString: "1C2026")
+			nextButton.backgroundColor = UIColor.paceBrandColor()
 			
 			
 		}
