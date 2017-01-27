@@ -56,7 +56,7 @@ class EmailViewController : UIViewController, UITextFieldDelegate {
         let button = UIButton()
         button.setTitle("next", for: UIControlState.normal)
         button.setTitleColor(UIColor.black, for: UIControlState.normal)
-        button.backgroundColor = UIColor(fromHexString: "212833")
+        button.backgroundColor = UIColor.darkerBlack()
         button.layer.cornerRadius = 6.0
         button.layer.masksToBounds = true
         button.isEnabled = false
@@ -191,7 +191,7 @@ extension EmailViewController {
         } else {
             
             nextButton.isEnabled = false
-            nextButton.backgroundColor = UIColor(fromHexString: "212833")
+            nextButton.backgroundColor = UIColor.darkerBlack()
             
             
         }
@@ -207,7 +207,7 @@ extension EmailViewController {
         } else {
             
             nextButton.isEnabled = false
-            nextButton.backgroundColor = UIColor.paceBrandColor()
+            nextButton.backgroundColor = UIColor.darkerBlack()
             
             
         }

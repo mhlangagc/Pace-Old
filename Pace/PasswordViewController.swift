@@ -58,7 +58,7 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
 		let button = UIButton()
 		button.setTitle("next", for: UIControlState.normal)
 		button.setTitleColor(UIColor.black, for: UIControlState.normal)
-		button.backgroundColor = UIColor(fromHexString: "212833")
+		button.backgroundColor = UIColor.darkerBlack()
 		button.layer.cornerRadius = 6.0
 		button.layer.masksToBounds = true
 		button.isEnabled = false
@@ -231,7 +231,7 @@ extension PasswordViewController {
 		} else {
 			
 			nextButton.isEnabled = false
-			nextButton.backgroundColor = UIColor.paceBrandColor()
+			nextButton.backgroundColor = UIColor.darkerBlack()
 			
 			
 		}

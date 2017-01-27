@@ -54,7 +54,7 @@ class DiscoverProfileViewController: UIViewController, UITableViewDataSource, UI
 	
 	func setupHeaderView() {
 		
-		headerView  = ProfileHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 365.0))
+		headerView  = ProfileHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 300.0)) //365.0
 		headerView.discoverProfileVC = self
 		
 		headerView.nameLabel?.text = (DiscoverProfileViewController.userProfileModel?.name)!

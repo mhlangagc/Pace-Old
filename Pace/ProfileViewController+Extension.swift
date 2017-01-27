@@ -14,11 +14,11 @@ extension ProfileViewController {
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		
-		let sectionHeaderView : UIView = UIView.init(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 42))
+		let sectionHeaderView : UIView = UIView.init(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 55))
 		sectionHeaderView.backgroundColor = UIColor.black
 		
 		
-		let sectionHeaderLabel: UILabel = UILabel.init(frame: CGRect(x: 20.0, y: 14.0, width: tableView.frame.width - 20, height: 22))
+		let sectionHeaderLabel: UILabel = UILabel.init(frame: CGRect(x: 20.0, y: 15.0, width: tableView.frame.width - 20, height: 25))
 		sectionHeaderLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
 		sectionHeaderLabel.textColor = UIColor.greyBlackColor()
 		sectionHeaderLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
@@ -31,7 +31,7 @@ extension ProfileViewController {
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		
-		return 50.0
+		return 55.0
 		
 	}
 	

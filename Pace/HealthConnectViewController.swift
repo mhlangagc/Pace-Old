@@ -100,8 +100,14 @@ class HealthConnectViewController : UIViewController{
 	
 	func handleConnect() {
 		
-		//	TO DO
-		self.navigationController?.pushViewController(GoalsInterestsViewController(), animated: true)
+		let myRoutineVC = WeekViewController()
+		myRoutineVC.modalTransitionStyle = .coverVertical
+		self.present(UINavigationController(rootViewController: myRoutineVC), animated: true) { 
+			
+			// Completed
+			
+		}
+		//self.navigationController?.pushViewController(GoalsInterestsViewController(), animated: true)
 		
 	}
 	

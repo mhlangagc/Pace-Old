@@ -79,7 +79,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 
 	func setupHeaderView() {
 		
-		headerView  = ProfileHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 375.0))
+		headerView  = ProfileHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 300.0)) //375.0
 		headerView.nameLabel?.text = localUser?.name
 		headerView.locationLabel?.text = localUser?.location
 		headerView.detailsLabel?.text = localUser?.trainerDescription

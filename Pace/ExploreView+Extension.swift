@@ -17,7 +17,7 @@ extension ExploreViewController {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
 		
-		return 10
+		return 7
 		
 	}
 	
@@ -60,30 +60,30 @@ extension ExploreViewController {
 			justAddedLabelNode.discoveryVC = self
 			return justAddedLabelNode
 			
-		case 6:
+		default:
 			
 			let justAddedVC  = JustAddedCollection()
 			justAddedVC.discoveryVC = self
 			return justAddedVC
 			
-		case 7:
-			
-			let trainersAndFriendsLabel = TrainersAndFriendsLabelCell()
-			trainersAndFriendsLabel.discoveryVC = self
-			return trainersAndFriendsLabel
-			
-		case 8:
-			
-			let followCollectionNode = TrainersAndFriendsCollectionNode()
-			followCollectionNode.exploreVC = self
-			return followCollectionNode
-			
-		default:
-			
-			
-			let footerCell = FooterCell()
-			footerCell.discoveryVC = self
-			return footerCell
+//		case 7:
+//			
+//			let trainersAndFriendsLabel = TrainersAndFriendsLabelCell()
+//			trainersAndFriendsLabel.discoveryVC = self
+//			return trainersAndFriendsLabel
+//			
+//		case 8:
+//			
+//			let followCollectionNode = TrainersAndFriendsCollectionNode()
+//			followCollectionNode.exploreVC = self
+//			return followCollectionNode
+//			
+//		default:
+//			
+//			
+//			let footerCell = FooterCell()
+//			footerCell.discoveryVC = self
+//			return footerCell
 			
 			
 		}

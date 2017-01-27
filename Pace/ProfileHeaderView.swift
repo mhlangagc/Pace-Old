@@ -74,7 +74,7 @@ class ProfileHeaderView : BaseView {
 		followersNumberButton?.setTitleColor(UIColor.greyWhite(), for: UIControlState.normal)
 		followersNumberButton?.addTarget(self, action: #selector(handleShowFollowers), for: UIControlEvents.touchUpInside)
 		followersNumberButton?.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)
-		addSubview(followersNumberButton!)
+		//addSubview(followersNumberButton!)
 		
 		followersButton = UIButton.init(frame: CGRect(x: 20.0, y: frame.height - 50.0, width: 80.0, height: 16.0))
 		followersButton?.setTitle("Followers", for: UIControlState.normal)
@@ -82,7 +82,7 @@ class ProfileHeaderView : BaseView {
 		followersButton?.setTitleColor(UIColor.greyBlackColor(), for: UIControlState.normal)
 		followersButton?.addTarget(self, action: #selector(handleShowFollowers), for: UIControlEvents.touchUpInside)
 		followersButton?.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightMedium)
-		addSubview(followersButton!)
+		//addSubview(followersButton!)
 		
 		
 		
@@ -93,7 +93,7 @@ class ProfileHeaderView : BaseView {
 		followingNumberButton?.setTitleColor(UIColor.greyWhite(), for: UIControlState.normal)
 		followingNumberButton?.addTarget(self, action: #selector(handleShowFollowing), for: UIControlEvents.touchUpInside)
 		followingNumberButton?.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)
-		addSubview(followingNumberButton!)
+		//addSubview(followingNumberButton!)
 		
 		followingButton = UIButton.init(frame: CGRect(x: 130.0, y: frame.height - 50.0, width: 80.0, height: 16.0))
 		followingButton?.setTitle("Following", for: UIControlState.normal)
@@ -101,7 +101,7 @@ class ProfileHeaderView : BaseView {
 		followingButton?.setTitleColor(UIColor.greyBlackColor(), for: UIControlState.normal)
 		followingButton?.addTarget(self, action: #selector(handleShowFollowing), for: UIControlEvents.touchUpInside)
 		followingButton?.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightMedium)
-		addSubview(followingButton!)
+		//addSubview(followingButton!)
 		
 		
 		followButton = UIButton.init(frame: CGRect(x: frame.width - 155.0, y: frame.height - 80.0, width: 135, height: 40.0))
@@ -111,7 +111,7 @@ class ProfileHeaderView : BaseView {
 		followButton?.layer.cornerRadius = 8
 		followButton?.addTarget(self, action: #selector(handleFollow_Unfollow), for: UIControlEvents.touchUpInside)
 		followButton?.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightSemibold)
-		addSubview(followButton!)
+		//addSubview(followButton!)
 		
 	}
 	
