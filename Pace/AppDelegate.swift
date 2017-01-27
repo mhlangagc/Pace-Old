@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		window = UIWindow(frame: UIScreen.main.bounds)
 		if window != nil {
-			self.window?.rootViewController = CustomTabBarController()
-//			self.window?.rootViewController = UINavigationController(rootViewController: EmailViewController())
+//			self.window?.rootViewController = CustomTabBarController()
+			self.window?.rootViewController = UINavigationController(rootViewController: EmailViewController())
 			self.window?.makeKeyAndVisible()
 			self.window?.tintColor = UIColor.black
 			

@@ -16,6 +16,8 @@ class PickGenderViewController : UIViewController {
 		
 	}
 	
+	var genderSelected = false
+	
 	let pickHeaderLabel : UILabel = {
 		
 		let label = UILabel()
@@ -41,13 +43,38 @@ class PickGenderViewController : UIViewController {
 		
 	}()
 	
+	lazy var femaleButton : UIButton = {
+		
+		let button = UIButton()
+		button.setTitle("Female", for: UIControlState.normal)
+		button.setTitleColor(UIColor.greyBlackColor(), for: UIControlState.normal)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 25, weight: UIFontWeightHeavy)
+		button.addTarget(self, action: #selector(handleFemaleSelected), for: UIControlEvents.touchUpInside)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		return button
+		
+	}()
+	
+	
+	lazy var maleButton : UIButton = {
+		
+		let button = UIButton()
+		button.setTitle("Male", for: UIControlState.normal)
+		button.setTitleColor(UIColor.greyBlackColor(), for: UIControlState.normal)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 25, weight: UIFontWeightHeavy)
+		button.addTarget(self, action: #selector(handleMaleSelected), for: UIControlEvents.touchUpInside)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		return button
+		
+	}()
+	
 	
 	lazy var nextButton : UIButton = {
 		
 		let button = UIButton()
 		button.setTitle("next", for: UIControlState.normal)
 		button.setTitleColor(UIColor.black, for: UIControlState.normal)
-		button.backgroundColor = UIColor(fromHexString: "212833")
+		button.backgroundColor = UIColor.darkerBlack()
 		button.layer.cornerRadius = 6.0
 		button.layer.masksToBounds = true
 		button.isEnabled = true
@@ -76,6 +103,8 @@ class PickGenderViewController : UIViewController {
 		
 		view.addSubview(pickHeaderLabel)
 		view.addSubview(descriptionLabel)
+		view.addSubview(femaleButton)
+		view.addSubview(maleButton)
 		view.addSubview(nextButton)
 		
 		pickHeaderLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
@@ -89,6 +118,16 @@ class PickGenderViewController : UIViewController {
 		descriptionLabel.topAnchor.constraint(equalTo: pickHeaderLabel.bottomAnchor, constant: 30).isActive = true
 		descriptionLabel.heightAnchor.constraint(equalToConstant: 80).isActive = true
 		
+		femaleButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 115.0).isActive = true
+		femaleButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+		femaleButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 80).isActive = true
+		femaleButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+		
+		
+		maleButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 115.0).isActive = true
+		maleButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+		maleButton.topAnchor.constraint(equalTo: femaleButton.bottomAnchor, constant: 100).isActive = true
+		maleButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
 		
 		nextButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
 		nextButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
@@ -98,10 +137,41 @@ class PickGenderViewController : UIViewController {
 		
 	}
 	
+	func handleFemaleSelected() {
+		
+		
+		femaleButton.setTitleColor(UIColor.paceBrandColor(), for: UIControlState.normal)
+		genderSelected = true
+		nextButton.isEnabled = true
+		nextButton.backgroundColor = UIColor.paceBrandColor()
+		
+		
+		self.maleButton.setTitleColor(UIColor.greyBlackColor(), for: UIControlState.normal)
+		
+		
+		
+	}
+	
+	
+	func handleMaleSelected() {
+		
+		
+	}
+	
 	
 	func handleNext() {
 		
-		self.navigationController?.pushViewController(HealthConnectViewController(), animated: true)
+		if genderSelected == false {
+			
+			//	DO NOTHING
+		} else {
+			
+			self.navigationController?.pushViewController(HealthConnectViewController(), animated: true)
+			self.genderSelected = false
+			
+			
+		}
+		
 		
 		
 	}

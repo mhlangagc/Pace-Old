@@ -64,7 +64,7 @@ class HealthConnectViewController : UIViewController{
 		self.navigationNoLineBar()
 		onboardingCounter(counterString : "5 of 5")
 		self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(handleNothing))
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Skip", style: UIBarButtonItemStyle.plain, target: self, action: #selector(handleSkip))
 		view.backgroundColor = UIColor.black
 		
 		self.setupViews()
@@ -100,21 +100,25 @@ class HealthConnectViewController : UIViewController{
 	
 	func handleConnect() {
 		
+		self.navigateToWeek()
+		
+	}
+	
+	func handleSkip() {
+		
+		self.navigateToWeek()
+		
+	}
+	
+	func navigateToWeek() {
+		
 		let myRoutineVC = WeekViewController()
-		myRoutineVC.modalTransitionStyle = .coverVertical
-		self.present(UINavigationController(rootViewController: myRoutineVC), animated: true) { 
+//		myRoutineVC.modalTransitionStyle = .coverVertical
+		self.present(UINavigationController(rootViewController: myRoutineVC), animated: true) {
 			
 			// Completed
 			
 		}
-		//self.navigationController?.pushViewController(GoalsInterestsViewController(), animated: true)
-		
-	}
-	
-	func handleNothing() {
-		
-		//	DO NOTHING
-		
 	}
 	
 }

@@ -95,7 +95,7 @@ class DayViewController : UIViewController, UITableViewDataSource, UITableViewDe
 		headerView.workoutsImageView?.image = routineWorkoutModel?.backgroundImage
 		headerView.workoutName?.text = routineWorkoutModel?.workoutName
 		headerView.profileImageView?.image = routineWorkoutModel?.creatingTrainerImage
-		headerView.profileNameButton?.setTitle(routineWorkoutModel?.creatingTrainer, for: UIControlState.normal)
+		headerView.profileNameButton?.setTitle("by \(routineWorkoutModel?.creatingTrainer)", for: UIControlState.normal)
 		headerView.dayDetailVC = self
 		workoutDetailsTableView?.tableHeaderView = headerView
 		
