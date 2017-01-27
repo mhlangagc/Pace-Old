@@ -123,6 +123,7 @@
 		45F7F5DA1DFD8AD200DD1E33 /* WeekTableNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7F5D91DFD8AD200DD1E33 /* WeekTableNodeCell.swift */; };
 		BD372C2BE13A69DDA8ABFAA5 /* Pods_Pace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC48F02A471D422621621F63 /* Pods_Pace.framework */; };
 		C690C7771E39CE55005B359E /* LeaderBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C690C7761E39CE55005B359E /* LeaderBoardCell.swift */; };
+		C69E48D11E3BA002007AF3BF /* DayHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69E48D01E3BA002007AF3BF /* DayHeaderViewController.swift */; };
 		C6B118281E21670C002BB4E8 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118271E21670C002BB4E8 /* PasswordViewController.swift */; };
 		C6B1182A1E21729F002BB4E8 /* NameEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118291E21729F002BB4E8 /* NameEntryViewController.swift */; };
 		C6B1182C1E217BCA002BB4E8 /* PickGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1182B1E217BCA002BB4E8 /* PickGenderViewController.swift */; };
@@ -277,6 +278,7 @@
 		A08244F9BF7AE8D216914864 /* Pods-Pace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pace/Pods-Pace.debug.xcconfig"; sourceTree = "<group>"; };
 		A99BA1B4E6F660258B376E7C /* Pods_PaceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C690C7761E39CE55005B359E /* LeaderBoardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderBoardCell.swift; sourceTree = "<group>"; };
+		C69E48D01E3BA002007AF3BF /* DayHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayHeaderViewController.swift; sourceTree = "<group>"; };
 		C6B118271E21670C002BB4E8 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		C6B118291E21729F002BB4E8 /* NameEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameEntryViewController.swift; sourceTree = "<group>"; };
 		C6B1182B1E217BCA002BB4E8 /* PickGenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickGenderViewController.swift; sourceTree = "<group>"; };
@@ -534,7 +536,8 @@
 		45ACEAB71DFFB64D00C94B7D /* DayDetailsView */ = {
 			isa = PBXGroup;
 			children = (
-				C690C7751E39CD07005B359E /* HeaderView */,
+				C69E48D21E3BA00B007AF3BF /* DayHeaderView */,
+				C690C7751E39CD07005B359E /* DiscoveryHeaderView */,
 				458842731E11D69D003B02C8 /* DayViewController.swift */,
 				45F3AA291E15E7B300D70C84 /* PreferencesPopUpLauncher.swift */,
 				458842751E11D89F003B02C8 /* DayViewController+Extension.swift */,
@@ -850,13 +853,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C690C7751E39CD07005B359E /* HeaderView */ = {
+		C690C7751E39CD07005B359E /* DiscoveryHeaderView */ = {
 			isa = PBXGroup;
 			children = (
 				45ACEABA1DFFB82200C94B7D /* DayDetailsHeaderView.swift */,
 				C690C7761E39CE55005B359E /* LeaderBoardCell.swift */,
 			);
-			name = HeaderView;
+			name = DiscoveryHeaderView;
+			sourceTree = "<group>";
+		};
+		C69E48D21E3BA00B007AF3BF /* DayHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				C69E48D01E3BA002007AF3BF /* DayHeaderViewController.swift */,
+			);
+			name = DayHeaderView;
 			sourceTree = "<group>";
 		};
 		C6B1182F1E218037002BB4E8 /* Registration */ = {
@@ -1145,6 +1156,7 @@
 				458478EE1E18441D00EB2AB3 /* ShareLinkActivity.swift in Sources */,
 				452A00B81E05E34E00CACA18 /* WorkoutCellView.swift in Sources */,
 				4545358D1E18F2A500653252 /* RateButtonView.swift in Sources */,
+				C69E48D11E3BA002007AF3BF /* DayHeaderViewController.swift in Sources */,
 				45ECF68D1E152F590032F6CC /* NewToPace.swift in Sources */,
 				45B5AD901DFBFC1D00115E2C /* MathematicalHelpers.swift in Sources */,
 				45F3AA2A1E15E7B300D70C84 /* PreferencesPopUpLauncher.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 
 class DayViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
 	
-	var headerView =  DayDetailsHeaderView()
+	var headerView =  DayHeaderViewController()
 	var workoutDetailsTableView : UITableView?
 	var startButtonView : StartButtonView?
 	let exerciseCellID = "ExerciseCellViewID"
@@ -91,10 +91,11 @@ class DayViewController : UIViewController, UITableViewDataSource, UITableViewDe
 	
 	func setupHeaderView() {
 		
-		headerView  = DayDetailsHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 350.0))
+		headerView  = DayHeaderViewController.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 330.0))
 		headerView.workoutsImageView?.image = routineWorkoutModel?.backgroundImage
 		headerView.workoutName?.text = routineWorkoutModel?.workoutName
 		headerView.profileImageView?.image = routineWorkoutModel?.creatingTrainerImage
+		headerView.profileNameButton?.setTitle(routineWorkoutModel?.creatingTrainer, for: UIControlState.normal)
 		headerView.dayDetailVC = self
 		workoutDetailsTableView?.tableHeaderView = headerView
 		
