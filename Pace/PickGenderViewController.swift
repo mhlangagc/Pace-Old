@@ -46,6 +46,7 @@ class PickGenderViewController : UIViewController {
 	lazy var femaleButton : UIButton = {
 		
 		let button = UIButton()
+		button.contentHorizontalAlignment = .left
 		button.setTitle("Female", for: UIControlState.normal)
 		button.setTitleColor(UIColor.greyBlackColor(), for: UIControlState.normal)
 		button.titleLabel?.font = UIFont.systemFont(ofSize: 25, weight: UIFontWeightHeavy)
@@ -55,13 +56,35 @@ class PickGenderViewController : UIViewController {
 		
 	}()
 	
+	lazy var femaleImageButton : UIButton = {
+		
+		let button = UIButton()
+		button.setImage(UIImage(named: "female_select")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal)
+		button.tintColor = UIColor.greyBlackColor()
+		button.addTarget(self, action: #selector(handleFemaleSelected), for: UIControlEvents.touchUpInside)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		return button
+		
+	}()
 	
 	lazy var maleButton : UIButton = {
 		
 		let button = UIButton()
+		button.contentHorizontalAlignment = .left
 		button.setTitle("Male", for: UIControlState.normal)
 		button.setTitleColor(UIColor.greyBlackColor(), for: UIControlState.normal)
 		button.titleLabel?.font = UIFont.systemFont(ofSize: 25, weight: UIFontWeightHeavy)
+		button.addTarget(self, action: #selector(handleMaleSelected), for: UIControlEvents.touchUpInside)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		return button
+		
+	}()
+	
+	lazy var maleImageButton : UIButton = {
+		
+		let button = UIButton()
+		button.setImage(UIImage(named: "male_select")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal)
+		button.tintColor = UIColor.greyBlackColor()
 		button.addTarget(self, action: #selector(handleMaleSelected), for: UIControlEvents.touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
@@ -104,7 +127,9 @@ class PickGenderViewController : UIViewController {
 		view.addSubview(pickHeaderLabel)
 		view.addSubview(descriptionLabel)
 		view.addSubview(femaleButton)
+		view.addSubview(femaleImageButton)
 		view.addSubview(maleButton)
+		view.addSubview(maleImageButton)
 		view.addSubview(nextButton)
 		
 		pickHeaderLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
@@ -118,15 +143,27 @@ class PickGenderViewController : UIViewController {
 		descriptionLabel.topAnchor.constraint(equalTo: pickHeaderLabel.bottomAnchor, constant: 30).isActive = true
 		descriptionLabel.heightAnchor.constraint(equalToConstant: 80).isActive = true
 		
+		
+		femaleImageButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30.0).isActive = true
+		femaleImageButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 60).isActive = true
+		femaleImageButton.heightAnchor.constraint(equalToConstant: 68.0).isActive = true
+		femaleImageButton.widthAnchor.constraint(equalToConstant: 32.0).isActive = true
+		
+		
 		femaleButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 115.0).isActive = true
 		femaleButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-		femaleButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 80).isActive = true
+		femaleButton.centerYAnchor.constraint(equalTo: femaleImageButton.centerYAnchor).isActive = true
 		femaleButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+		
+		maleImageButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30.0).isActive = true
+		maleImageButton.topAnchor.constraint(equalTo: femaleImageButton.bottomAnchor, constant: 45).isActive = true
+		maleImageButton.heightAnchor.constraint(equalToConstant: 68.0).isActive = true
+		maleImageButton.widthAnchor.constraint(equalToConstant: 32.0).isActive = true
 		
 		
 		maleButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 115.0).isActive = true
 		maleButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-		maleButton.topAnchor.constraint(equalTo: femaleButton.bottomAnchor, constant: 100).isActive = true
+		maleButton.centerYAnchor.constraint(equalTo: maleImageButton.centerYAnchor).isActive = true
 		maleButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
 		
 		nextButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
@@ -139,21 +176,33 @@ class PickGenderViewController : UIViewController {
 	
 	func handleFemaleSelected() {
 		
-		
-		femaleButton.setTitleColor(UIColor.paceBrandColor(), for: UIControlState.normal)
 		genderSelected = true
 		nextButton.isEnabled = true
 		nextButton.backgroundColor = UIColor.paceBrandColor()
 		
 		
-		self.maleButton.setTitleColor(UIColor.greyBlackColor(), for: UIControlState.normal)
+		femaleImageButton.tintColor = UIColor.paceBrandColor()
+		femaleButton.setTitleColor(UIColor.paceBrandColor(), for: UIControlState.normal)
 		
+		self.maleButton.setTitleColor(UIColor.greyBlackColor(), for: UIControlState.normal)
+		self.maleImageButton.tintColor = UIColor.greyBlackColor()
 		
 		
 	}
 	
 	
 	func handleMaleSelected() {
+		
+		genderSelected = true
+		nextButton.isEnabled = true
+		nextButton.backgroundColor = UIColor.paceBrandColor()
+		
+		
+		self.maleImageButton.tintColor = UIColor.paceBrandColor()
+		self.maleButton.setTitleColor(UIColor.paceBrandColor(), for: UIControlState.normal)
+		
+		self.femaleButton.setTitleColor(UIColor.greyBlackColor(), for: UIControlState.normal)
+		self.femaleImageButton.tintColor = UIColor.greyBlackColor()
 		
 		
 	}

@@ -112,9 +112,11 @@ class HealthConnectViewController : UIViewController{
 	
 	func navigateToWeek() {
 		
-		let myRoutineVC = WeekViewController()
-//		myRoutineVC.modalTransitionStyle = .coverVertical
-		self.present(UINavigationController(rootViewController: myRoutineVC), animated: true) {
+		let myRoutineVC = CustomTabBarController()
+		myRoutineVC.modalTransitionStyle = .coverVertical
+		let navC = UINavigationController(rootViewController: myRoutineVC)
+		navC.isNavigationBarHidden = true
+		self.present(navC, animated: true) {
 			
 			// Completed
 			
