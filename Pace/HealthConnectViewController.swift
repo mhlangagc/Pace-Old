@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HealthKit
 
 class HealthConnectViewController : UIViewController{
 
@@ -16,11 +17,13 @@ class HealthConnectViewController : UIViewController{
 		
 	}
 	
+	var healthKitManagerAccess = HealthkitAccessAndManager()
+	
 	let connectHeader : UILabel = {
 		
 		let label = UILabel()
 		label.textColor = .white
-		label.text = "Connect to Healthkit"
+		label.text = "Allow Access to Health App"
 		label.font = UIFont(name: "BebasNeueBold", size: 21)
 		textSpacing(label, spacing: 4.1)
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -34,7 +37,7 @@ class HealthConnectViewController : UIViewController{
 		let label = UILabel()
 		label.textColor = UIColor.greyBlackColor()
 		label.numberOfLines = 3
-		label.text = "Pace will use this to show your steps, sleep and other workout related info. Sorta like below.."
+		label.text = "Pace will use read your steps, sleep and other workout to calculate your activity and transfer your workouts into your Health App."
 		label.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightBold)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
@@ -45,7 +48,7 @@ class HealthConnectViewController : UIViewController{
 	lazy var connectButton : UIButton = {
 		
 		let button = UIButton()
-		button.setTitle("Connect", for: UIControlState.normal)
+		button.setTitle("Grant Access", for: UIControlState.normal)
 		button.setTitleColor(UIColor.black, for: UIControlState.normal)
 		button.backgroundColor = UIColor.white
 		button.layer.cornerRadius = 6.0
@@ -99,6 +102,40 @@ class HealthConnectViewController : UIViewController{
 	
 	
 	func handleConnect() {
+		
+		healthKitManagerAccess.authorizeHealthKitAcess { (authorised, error) in
+			
+			if authorised {
+				
+				print("HealthKit authorized.")
+				
+			} else {
+				
+				print("HealthKit authorization denied!")
+				if error != nil {
+					print("\(error)")
+				}
+
+				
+			}
+			
+		}
+		
+		perform(#selector(changeButton), with: self, afterDelay: 1.5)
+		
+	}
+	
+	func changeButton() {
+		
+		//  Chage the Done button to setup the Week instead
+		connectButton.addTarget(self, action: #selector(setupWeek), for: UIControlEvents.touchUpInside)
+		connectButton.backgroundColor = UIColor.paceBrandColor()
+		connectButton.setTitleColor(UIColor.black, for: UIControlState())
+		connectButton.setTitle("Next", for: UIControlState())
+		
+	}
+	
+	func setupWeek() {
 		
 		self.navigateToWeek()
 		
