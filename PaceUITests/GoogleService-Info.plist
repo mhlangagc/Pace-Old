@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>786392907074-cdsk20af4i94mij5deb5cakt2rpm450e.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.786392907074-cdsk20af4i94mij5deb5cakt2rpm450e</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD_eL6iLRxxk_iylAhbdQQ6jQ9h7u2Rz3M</string>
+	<key>GCM_SENDER_ID</key>
+	<string>786392907074</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>fitness.pace.Pace</string>
+	<key>PROJECT_ID</key>
+	<string>pace-c9c8e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>pace-c9c8e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:786392907074:ios:760f44d0ac92fd99</string>
+	<key>DATABASE_URL</key>
+	<string>https://pace-c9c8e.firebaseio.com</string>
+</dict>
+</plist>

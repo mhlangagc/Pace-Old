@@ -41,7 +41,7 @@ class CustomTabBarController: ASTabBarController {
             let tabBarItem = (tabBar.items?[i])! as UITabBarItem
             
             // Adjust tab images
-            tabBarItem.imageInsets = UIEdgeInsetsMake(0, 0, 0, 0) // ***** UIEdgeInsetsMake(0, 0, 0, 0) ********** .
+            tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0) // ***** UIEdgeInsetsMake(0, 0, 0, 0) ********** .
 			
             var imageName = ""
             switch (i) {

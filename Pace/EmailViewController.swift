@@ -8,6 +8,8 @@
 
 import UIKit
 
+var emailCaptured = String()
+
 class EmailViewController : UIViewController, UITextFieldDelegate {
 	
 	override var prefersStatusBarHidden: Bool {

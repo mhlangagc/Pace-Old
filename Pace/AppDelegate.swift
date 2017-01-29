@@ -12,12 +12,12 @@ import Fabric
 import Stripe
 import Crashlytics
 import CoreData
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
-
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func runTimeDependencies() {
 		
+		FIRApp.configure()
 		Fabric.with([Crashlytics.self, STPAPIClient.self])
 		
 	}

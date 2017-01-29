@@ -26,7 +26,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor(fromHexString: "08090A")
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
 		navigationNoLineBar()
 		self.navigationBarItems()
 		self.setupWorkoutDetailsTableView()

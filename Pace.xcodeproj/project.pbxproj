@@ -122,6 +122,10 @@
 		45F7F5D81DFD66EC00DD1E33 /* NewsDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7F5D71DFD66EC00DD1E33 /* NewsDetailsCell.swift */; };
 		45F7F5DA1DFD8AD200DD1E33 /* WeekTableNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7F5D91DFD8AD200DD1E33 /* WeekTableNodeCell.swift */; };
 		BD372C2BE13A69DDA8ABFAA5 /* Pods_Pace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC48F02A471D422621621F63 /* Pods_Pace.framework */; };
+		C6057EEB1E3E269A00AC62EA /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6057EEA1E3E269A00AC62EA /* WelcomeViewController.swift */; };
+		C6057EEE1E3E288400AC62EA /* PaceErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6057EED1E3E288400AC62EA /* PaceErrorHandling.swift */; };
+		C6057EF01E3E28D900AC62EA /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6057EEF1E3E28D900AC62EA /* AuthenticationService.swift */; };
+		C6057EF21E3E4B7900AC62EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6057EF11E3E4B7900AC62EA /* GoogleService-Info.plist */; };
 		C690C7771E39CE55005B359E /* LeaderBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C690C7761E39CE55005B359E /* LeaderBoardCell.swift */; };
 		C69E48D11E3BA002007AF3BF /* DayHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69E48D01E3BA002007AF3BF /* DayHeaderViewController.swift */; };
 		C6B118281E21670C002BB4E8 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118271E21670C002BB4E8 /* PasswordViewController.swift */; };
@@ -277,6 +281,10 @@
 		59335CBDC2D2803DE42031D5 /* Pods_PaceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A08244F9BF7AE8D216914864 /* Pods-Pace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pace/Pods-Pace.debug.xcconfig"; sourceTree = "<group>"; };
 		A99BA1B4E6F660258B376E7C /* Pods_PaceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6057EEA1E3E269A00AC62EA /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		C6057EED1E3E288400AC62EA /* PaceErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceErrorHandling.swift; sourceTree = "<group>"; };
+		C6057EEF1E3E28D900AC62EA /* AuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		C6057EF11E3E4B7900AC62EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C690C7761E39CE55005B359E /* LeaderBoardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderBoardCell.swift; sourceTree = "<group>"; };
 		C69E48D01E3BA002007AF3BF /* DayHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayHeaderViewController.swift; sourceTree = "<group>"; };
 		C6B118271E21670C002BB4E8 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
@@ -589,6 +597,7 @@
 			isa = PBXGroup;
 			children = (
 				45B5AD641DFBF71100115E2C /* PaceUITests.swift */,
+				C6057EF11E3E4B7900AC62EA /* GoogleService-Info.plist */,
 				45B5AD661DFBF71100115E2C /* Info.plist */,
 			);
 			path = PaceUITests;
@@ -620,6 +629,7 @@
 		45B5AD741DFBF90E00115E2C /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				C6057EEC1E3E287700AC62EA /* Errors */,
 				45B5AD871DFBFB3500115E2C /* Dependencies */,
 				45B5AD781DFBF94F00115E2C /* Certificates */,
 				45B5AD761DFBF92700115E2C /* Services */,
@@ -647,6 +657,7 @@
 		45B5AD761DFBF92700115E2C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C6057EEF1E3E28D900AC62EA /* AuthenticationService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -853,6 +864,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C6057EEC1E3E287700AC62EA /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				C6057EED1E3E288400AC62EA /* PaceErrorHandling.swift */,
+			);
+			name = Errors;
+			sourceTree = "<group>";
+		};
 		C690C7751E39CD07005B359E /* DiscoveryHeaderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -873,6 +892,7 @@
 		C6B1182F1E218037002BB4E8 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				C6057EEA1E3E269A00AC62EA /* WelcomeViewController.swift */,
 				4527D4041E1F7C0600F1A643 /* EmailViewController.swift */,
 				C6B118271E21670C002BB4E8 /* PasswordViewController.swift */,
 				C6B118291E21729F002BB4E8 /* NameEntryViewController.swift */,
@@ -1013,6 +1033,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45B5AD981DFBFC4500115E2C /* BebasNeue-Bold.otf in Resources */,
+				C6057EF21E3E4B7900AC62EA /* GoogleService-Info.plist in Resources */,
 				45B5AD4F1DFBF71100115E2C /* LaunchScreen.storyboard in Resources */,
 				45B5AD4C1DFBF71100115E2C /* Assets.xcassets in Resources */,
 			);
@@ -1111,6 +1132,7 @@
 				45B2A4C71DFC993B00C099C7 /* FollowProfileCell.swift in Sources */,
 				4545358F1E18F2FC00653252 /* RatingPopUpLauncher.swift in Sources */,
 				45B5AD9F1DFC022A00115E2C /* StringExtensions.swift in Sources */,
+				C6057EEB1E3E269A00AC62EA /* WelcomeViewController.swift in Sources */,
 				45F7F5CE1DFD4E6100DD1E33 /* CollectionViewBaseCell.swift in Sources */,
 				45C214EA1E05B84400C5BCCF /* RatingsNodeView.swift in Sources */,
 				45C214F21E05DBC400C5BCCF /* SettingsViewController.swift in Sources */,
@@ -1138,6 +1160,7 @@
 				45D9DC591E04183D001580B3 /* ActivityMenuBar+Extension.swift in Sources */,
 				45A37F351DFC454600049493 /* ExploreView+Extension.swift in Sources */,
 				458478EA1E17E33D00EB2AB3 /* SettingsModel.swift in Sources */,
+				C6057EF01E3E28D900AC62EA /* AuthenticationService.swift in Sources */,
 				451276141DFC835A008B57DE /* DiscoveryWorkoutCell.swift in Sources */,
 				C6B118351E218259002BB4E8 /* RoutineViewController.swift in Sources */,
 				4581FC251E18ABCC00B6E32D /* WorkoutProcessCellView.swift in Sources */,
@@ -1149,6 +1172,7 @@
 				45AC38FE1E188FE0003DC46B /* WorkoutProcessMenuBar.swift in Sources */,
 				45AC38FA1E188DF9003DC46B /* WorkoutProcessViewController+Extension.swift in Sources */,
 				45AC39001E18912B003DC46B /* MusicPlayerView.swift in Sources */,
+				C6057EEE1E3E288400AC62EA /* PaceErrorHandling.swift in Sources */,
 				45C214E11E05AE0400C5BCCF /* AllWorkoutsViewController.swift in Sources */,
 				45F3AA201E15990900D70C84 /* ActivitiesModel.swift in Sources */,
 				4588426D1E11A213003B02C8 /* WorkoutViewController.swift in Sources */,
