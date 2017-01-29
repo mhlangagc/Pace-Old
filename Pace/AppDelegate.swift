@@ -14,6 +14,8 @@ import Crashlytics
 import CoreData
 import Firebase
 
+let appStoreLinkToDownload: NSURL = NSURL(string: "https://itunes.apple.com/us/app/pace-ultimate-fitness-organising/id1107980760?ls=1&mt=8")!
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -23,13 +25,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		self.runTimeDependencies()
 		
-		window = UIWindow(frame: UIScreen.main.bounds)
-		if window != nil {
-//			self.window?.rootViewController = CustomTabBarController()
+		if FIRAuth.auth()?.currentUser?.uid == nil {
+			
+			self.window = UIWindow(frame: UIScreen.main.bounds)
 			self.window?.rootViewController = UINavigationController(rootViewController: EmailViewController())
 			self.window?.makeKeyAndVisible()
 			self.window?.tintColor = UIColor.black
 			
+		} else {
+			
+			self.window = UIWindow(frame: UIScreen.main.bounds)
+			self.window?.rootViewController = CustomTabBarController()
+			self.window?.makeKeyAndVisible()
+			self.window?.tintColor = UIColor.black
+		
 		}
 		
 		return true

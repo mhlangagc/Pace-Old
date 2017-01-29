@@ -36,7 +36,7 @@ class HealthConnectViewController : UIViewController{
 		
 		let label = UILabel()
 		label.textColor = UIColor.greyBlackColor()
-		label.numberOfLines = 3
+		label.numberOfLines = 0
 		label.text = "Pace will use read your steps, sleep and other workout to calculate your activity and transfer your workouts into your Health App."
 		label.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightBold)
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -89,7 +89,7 @@ class HealthConnectViewController : UIViewController{
 		descriptionLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
 		descriptionLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
 		descriptionLabel.topAnchor.constraint(equalTo: connectHeader.bottomAnchor, constant: 30).isActive = true
-		descriptionLabel.heightAnchor.constraint(equalToConstant: 80).isActive = true
+		descriptionLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true
 		
 		
 		connectButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
@@ -127,7 +127,11 @@ class HealthConnectViewController : UIViewController{
 	
 	func changeButton() {
 		
-		//  Chage the Done button to setup the Week instead
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(handleNothing))
+		connectHeader.text = "Awesome"
+		descriptionLabel.text = "You're Connected"
+		
+		
 		connectButton.addTarget(self, action: #selector(setupWeek), for: UIControlEvents.touchUpInside)
 		connectButton.backgroundColor = UIColor.paceBrandColor()
 		connectButton.setTitleColor(UIColor.black, for: UIControlState())
@@ -144,6 +148,11 @@ class HealthConnectViewController : UIViewController{
 	func handleSkip() {
 		
 		self.navigateToWeek()
+		
+	}
+	
+	func handleNothing() {
+		
 		
 	}
 	
