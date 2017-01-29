@@ -11,7 +11,7 @@ target 'Pace' do
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Storage'
 	
-	pod 'Branch'
+	#Extra Pods
 	pod 'Stripe'
 	pod 'Fabric'
 	pod 'Crashlytics'
