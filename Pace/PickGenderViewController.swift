@@ -7,6 +7,12 @@
 //
 
 import UIKit
+import Crashlytics
+import Fabric
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
+
 
 class PickGenderViewController : UIViewController {
 	
@@ -15,8 +21,9 @@ class PickGenderViewController : UIViewController {
 		return true
 		
 	}
-	
+	var authentication = AuthenticationService()
 	var genderSelected = false
+	var femaleSelected = Bool()
 	
 	let pickHeaderLabel : UILabel = {
 		
@@ -108,6 +115,24 @@ class PickGenderViewController : UIViewController {
 		
 	}()
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		
+		authentication.updateFireBasewithName(nameCaptured: firstName) { (error) in
+			
+			if error != nil {
+				
+				self.failurePopup(mainMessage: "Something's being a doozy", detailedString: (error?.localizedDescription)!)
+				
+			} else {
+				
+				//	Sucess 
+				print("Name Updated")
+				
+			}
+		}
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -177,6 +202,7 @@ class PickGenderViewController : UIViewController {
 	func handleFemaleSelected() {
 		
 		genderSelected = true
+		femaleSelected = true
 		nextButton.isEnabled = true
 		nextButton.backgroundColor = UIColor.paceBrandColor()
 		
@@ -194,6 +220,7 @@ class PickGenderViewController : UIViewController {
 	func handleMaleSelected() {
 		
 		genderSelected = true
+		femaleSelected = false
 		nextButton.isEnabled = true
 		nextButton.backgroundColor = UIColor.paceBrandColor()
 		
@@ -212,12 +239,36 @@ class PickGenderViewController : UIViewController {
 		
 		if genderSelected == false {
 			
-			//	DO NOTHING
+			return
+			
 		} else {
 			
-			self.navigationController?.pushViewController(HealthConnectViewController(), animated: true)
-			self.genderSelected = false
-			
+			if femaleSelected == true {
+				
+				// Female
+				UserDefaults.standard.setValue("Female", forKey: "userGenderSetting")
+				Answers.logCustomEvent(withName: "Gender",
+				                       customAttributes: [
+										"User": "Female"
+					])
+				
+				self.navigationController?.pushViewController(HealthConnectViewController(), animated: true)
+				self.genderSelected = false
+				
+			} else if femaleSelected == false {
+				
+				// Male
+				UserDefaults.standard.setValue("Male", forKey: "userGenderSetting")
+				Answers.logCustomEvent(withName: "Gender",
+				                       customAttributes: [
+										"User": "Male"
+					])
+				
+				self.navigationController?.pushViewController(HealthConnectViewController(), animated: true)
+				self.genderSelected = false
+				
+			}
+
 			
 		}
 		

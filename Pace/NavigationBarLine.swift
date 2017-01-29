@@ -10,6 +10,17 @@ import UIKit
 
 extension UIViewController {
 	
+	public func failurePopup(mainMessage: String, detailedString: String) {
+		
+		let alertview = UIAlertController(title: mainMessage, message: detailedString, preferredStyle: .alert)
+		alertview.addAction(UIAlertAction(title: "Ok", style: .default, handler:
+			{ (alertAction) -> Void in
+				
+		}))
+		
+		present(alertview, animated: true, completion: nil)
+	}
+	
 	public func navigationNoLineBar() {
 		
 		self.navigationController?.navigationBar.isHidden = false

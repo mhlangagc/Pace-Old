@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class PasswordViewController: UIViewController, UITextFieldDelegate {
 	
@@ -16,6 +19,7 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
 		
 	}
 	
+	var authentication = AuthenticationService()
 	var buttonBottomAnchorConstraint: NSLayoutConstraint?
 	var isShowingPaswword = false
 	
@@ -164,10 +168,31 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
 		passwordTextField.resignFirstResponder()
 		self.view.endEditing(true)
 		
-		//  TO DO - Login 
+		if let passwordCaptured = passwordTextField.text {
+			
+			authentication.createNewUser(emailCaptured: emailCaptured, passwordCaptured: passwordCaptured, completion: { (error) in
+				
+				if error != nil {
+					
+					self.failurePopup(mainMessage: "Something's being a doozy", detailedString: (error?.localizedDescription)!)
+					//self.stopProcessingSignUp()
+					
+				} else {
+					
+					print("Successfully Logged in")
+					self.navigationController?.pushViewController(NameEntryViewController(), animated: true)
+					
+				}
+				
+			})
+			
+		}
 		
-		self.navigationController?.pushViewController(NameEntryViewController(), animated: true)
+		
+		
 	}
+
+	
 	
 }
 

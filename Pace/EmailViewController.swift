@@ -122,11 +122,19 @@ class EmailViewController : UIViewController, UITextFieldDelegate {
         
         emailTextField.resignFirstResponder()
         self.view.endEditing(true)
-        
-        //  Pass email details for checking 
 		
-		//	TO DO
-		self.navigationController?.pushViewController(PasswordViewController(), animated: true)
+		if let emailAdded = emailTextField.text {
+			
+			emailCaptured = emailAdded
+			self.navigationController?.pushViewController(PasswordViewController(), animated: true)
+		
+		} else {
+			
+			return
+			
+		}
+		
+		
 		
 	}
 	

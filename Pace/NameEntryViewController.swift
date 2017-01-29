@@ -8,6 +8,8 @@
 
 import UIKit
 
+var firstName  = String()
+
 class NameEntryViewController : UIViewController, UITextFieldDelegate {
 	
 	override var prefersStatusBarHidden: Bool {
@@ -124,7 +126,12 @@ class NameEntryViewController : UIViewController, UITextFieldDelegate {
 		nameEntryTextField.resignFirstResponder()
 		self.view.endEditing(true)
 		
-		self.navigationController?.pushViewController(PickGenderViewController(), animated: true)
+		if let usersFirstName = nameEntryTextField.text {
+			
+			firstName = usersFirstName
+			self.navigationController?.pushViewController(PickGenderViewController(), animated: true)
+		
+		}
 		
 		
 	}
