@@ -71,7 +71,7 @@ PODS:
     - PINRemoteImage/Core
   - pop (1.0.9)
   - QuickRippleButton (0.0.1)
-  - Stripe (9.2.0)
+  - Stripe (9.3.0)
 
 DEPENDENCIES:
   - AsyncDisplayKit (>= 2.0-rc.1)
@@ -114,7 +114,7 @@ SPEC CHECKSUMS:
   PINRemoteImage: 60156f185c9360ca4e93832cd490d6f6c7afbd9a
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   QuickRippleButton: bb0de9a85ce0987a57300b2cafa87a4b42eac8b9
-  Stripe: a47770e82db059d0e7e160f9aabc2997055ee911
+  Stripe: 0f41a33a6fa3ac76ee668d7df3e2680c28b8ab1a
 
 PODFILE CHECKSUM: c33b12c3a47caf5192c42d7c63efc496b33e6de8
 
