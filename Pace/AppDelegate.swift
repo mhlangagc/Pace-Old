@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		} else {
 			
 			self.window = UIWindow(frame: UIScreen.main.bounds)
-			self.window?.rootViewController = CustomTabBarController()
+			self.window?.rootViewController = UINavigationController(rootViewController: LoginViewController())				//CustomTabBarController()
 			self.window?.makeKeyAndVisible()
 			self.window?.tintColor = UIColor.black
 		

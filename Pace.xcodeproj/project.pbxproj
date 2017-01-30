@@ -137,6 +137,7 @@
 		C6B1182E1E217E47002BB4E8 /* HealthConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1182D1E217E47002BB4E8 /* HealthConnectViewController.swift */; };
 		C6B118331E218245002BB4E8 /* GoalsInterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118321E218245002BB4E8 /* GoalsInterestsViewController.swift */; };
 		C6B118351E218259002BB4E8 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118341E218259002BB4E8 /* RoutineViewController.swift */; };
+		C6BB148F1E3FA1E700BF6F66 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB148E1E3FA1E700BF6F66 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -300,6 +301,7 @@
 		C6B1182D1E217E47002BB4E8 /* HealthConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthConnectViewController.swift; sourceTree = "<group>"; };
 		C6B118321E218245002BB4E8 /* GoalsInterestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsInterestsViewController.swift; sourceTree = "<group>"; };
 		C6B118341E218259002BB4E8 /* RoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
+		C6BB148E1E3FA1E700BF6F66 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DC48F02A471D422621621F63 /* Pods_Pace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -917,6 +919,7 @@
 		C6B118301E218066002BB4E8 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				C6BB148E1E3FA1E700BF6F66 /* LoginViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1166,6 +1169,7 @@
 				45ECF68A1E152D450032F6CC /* NewToPaceCollection.swift in Sources */,
 				45275E0C1DFF0B9000DF6F38 /* WorkoutDetailsHeaderView.swift in Sources */,
 				45E3C0781DFD9493002FD4F8 /* ActitivityDetailView.swift in Sources */,
+				C6BB148F1E3FA1E700BF6F66 /* LoginViewController.swift in Sources */,
 				45F7F5D61DFD565A00DD1E33 /* ActivityCell.swift in Sources */,
 				45F7F5D21DFD4F1700DD1E33 /* NewsCollectionCell.swift in Sources */,
 				45275E0E1DFF0DE300DF6F38 /* ExerciseCellNode.swift in Sources */,
