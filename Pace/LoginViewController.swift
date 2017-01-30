@@ -132,7 +132,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
 		view.addSubview(passwordTextField)
 		view.addSubview(nextButton)
 		
-		textFieldTopAnchorConstraint = headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 40)
+		textFieldTopAnchorConstraint = headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100)
 		textFieldTopAnchorConstraint?.isActive = true
 		headerLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
 		headerLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
@@ -212,10 +212,12 @@ extension LoginViewController {
 			
 			if isKeyboardShowing == true {
 				
+				self.textFieldTopAnchorConstraint?.constant = 40
 				self.buttonBottomAnchorConstraint?.constant = -275
 				
 			} else {
 				
+				self.textFieldTopAnchorConstraint?.constant = 100
 				self.buttonBottomAnchorConstraint?.constant = -15
 				
 			}
