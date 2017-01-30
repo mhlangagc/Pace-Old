@@ -36,12 +36,12 @@ class OnboardingBackgroundImageGradient: UIImageView {
 		let colors2 : [CGColor] = [
 			UIColor(red: 0, green: 0, blue: 0, alpha: 0.0).cgColor,
 			UIColor(red: 0, green: 0, blue: 0, alpha: 0.45).cgColor,
-			UIColor(red: 0, green: 0, blue: 0, alpha: 0.95).cgColor,
+			UIColor(red: 0, green: 0, blue: 0, alpha: 0.65).cgColor,
 			UIColor(red: 0, green: 0, blue: 0, alpha: 1.0).cgColor
 		]
 		
-		let location2 = [0.0, 0.35, 0.45, 1.0]
-		
+		let location2 = [0.0, 0.2, 0.35, 1.0]
+	
 		myGradientLayer.colors = colors2
 		myGradientLayer.isOpaque = false
 		myGradientLayer.locations = location2 as [NSNumber]?

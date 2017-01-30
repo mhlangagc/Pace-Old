@@ -20,6 +20,9 @@ class WelcomeViewController: UIViewController {
 	}
 	
 	var backgroundImage : OnboardingBackgroundImageGradient?
+	var timer = Timer()
+	let arrayImages = [UIImage(named: "butt"), UIImage(named: "featuredWorkout"), UIImage(named: "20"), UIImage(named: "21"), UIImage(named: "22"), UIImage(named: "23")]
+	
 	
 	let logoImageView : UIImageView = {
 		
@@ -104,21 +107,29 @@ class WelcomeViewController: UIViewController {
 		
 	}()
 	
-	let arrayImages = [""]
- 
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		view.backgroundColor = .black
 		self.addViews()
 		navigationClearBar()
+		
+		timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(loopThroughImages), userInfo: nil, repeats: true)
 	}
 	
 	func loopThroughImages() {
 		
+		let randomIndex = Int(arc4random_uniform(UInt32(arrayImages.count)))
+		UIView.transition(with: self.view, duration: 3, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+				
+				self.backgroundImage?.image = self.arrayImages[randomIndex]
+				
+		}, completion: { (finished: Bool) -> () in
+			
+		})
 		
 	}
-	
 	
 	func addViews() {
 		
@@ -126,7 +137,7 @@ class WelcomeViewController: UIViewController {
 		backgroundImage?.contentMode = .scaleAspectFill
 		backgroundImage?.isUserInteractionEnabled = true
 		backgroundImage?.layer.masksToBounds = true
-		backgroundImage?.image = UIImage(named: "butt")
+		self.backgroundImage?.image = self.arrayImages[0]
 		backgroundImage?.translatesAutoresizingMaskIntoConstraints = false
 		
 		view.addSubview(backgroundImage!)
@@ -167,7 +178,7 @@ class WelcomeViewController: UIViewController {
 		
 		loginButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
 		loginButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-		loginButton.topAnchor.constraint(equalTo: signUpWithEmailButton.bottomAnchor, constant: 25).isActive = true
+		loginButton.topAnchor.constraint(equalTo: signUpWithEmailButton.bottomAnchor, constant: 15).isActive = true
 		loginButton.heightAnchor.constraint(equalToConstant: 45.0).isActive = true
 		
 		termsButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true

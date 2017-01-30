@@ -257,7 +257,7 @@ extension LoginViewController {
 			
 			if isKeyboardShowing == true {
 				
-				self.textFieldTopAnchorConstraint?.constant = 40
+				self.textFieldTopAnchorConstraint?.constant = 60
 				self.buttonBottomAnchorConstraint?.constant = -275
 				
 			} else {
