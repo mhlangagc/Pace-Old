@@ -108,7 +108,7 @@ class PickGenderViewController : UIViewController {
 		button.layer.cornerRadius = 6.0
 		button.layer.masksToBounds = true
 		button.isEnabled = true
-		button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightBold)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)
 		button.addTarget(self, action: #selector(handleNext), for: UIControlEvents.touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button

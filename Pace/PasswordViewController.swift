@@ -50,7 +50,7 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
 		                                                     attributes:[NSForegroundColorAttributeName: UIColor.greyBlackColor()])
 		textField.returnKeyType = .done
 		textField.sizeToFit()
-		textField.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightBold)
+		textField.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)
 		textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
@@ -66,7 +66,7 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
 		button.layer.cornerRadius = 6.0
 		button.layer.masksToBounds = true
 		button.isEnabled = false
-		button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightBold)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)
 		button.addTarget(self, action: #selector(handleNext), for: UIControlEvents.touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
@@ -90,6 +90,7 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
 		super.viewDidLoad()
 		
 		self.navigationNoLineBar()
+		self.navigationController?.navigationBar.tintColor = UIColor.white
 		onboardingCounter(counterString: "2 of 5")
 		self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 		view.backgroundColor = UIColor.black

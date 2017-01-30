@@ -10,17 +10,17 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import SafariServices
-/*
+
 class WelcomeViewController: UIViewController {
 	
-	//  Optional Variable
+	override var prefersStatusBarHidden: Bool {
+		
+		return true
+		
+	}
+	
 	var backgroundImage : OnboardingBackgroundImageGradient?
-	var signUpWithFBButton: UIButton?
-	var signUpWithEmailButton: UIButton?
-	var loginButton: UIButton?
 	
-	
-	//  Logo Image
 	let logoImageView : UIImageView = {
 		
 		let imageView = UIImageView()
@@ -37,21 +37,10 @@ class WelcomeViewController: UIViewController {
 		
 		let label = UILabel()
 		label.textColor = UIColor.white
-		textSpacing(label, spacing: 0)
 		label.text = "Pace"
 		label.textAlignment = .center
-		
-		if (iPhoneVersion == 5)  {
-			
-			label.font = UIFont.systemFont(ofSize: 35, weight: UIFontWeightHeavy)
-			textSpacing(label, spacing: 0.5)
-			
-		} else {
-			
-			label.font = UIFont.systemFont(ofSize: 40, weight: UIFontWeightHeavy)
-			textSpacing(label, spacing: 0)
-			
-		}
+		label.font = UIFont.systemFont(ofSize: 35, weight: UIFontWeightHeavy)
+		textSpacing(label, spacing: 0.5)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 		
@@ -60,25 +49,45 @@ class WelcomeViewController: UIViewController {
 	let detailsLabel: UILabel = {
 		
 		let label = UILabel()
-		label.textColor = UIColor(fromHexString: "F7F8F9")
+		label.textColor = UIColor.white
 		label.text = "Come to organise your workouts." + "\n" + "Stay for what you discover."
 		textSpacing(label, spacing: 0)
 		label.numberOfLines = 2
 		label.textAlignment = .center
-		
-		if (iPhoneVersion == 5)  {
-			
-			label.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightMedium)
-			textSpacing(label, spacing: 0.5)
-			
-		} else {
-			
-			label.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightSemibold)
-			textSpacing(label, spacing: 0.0)
-		}
-		
+		label.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightSemibold)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
+		
+	}()
+	
+	lazy var signUpWithEmailButton : UIButton = {
+		
+		let button = UIButton()
+		button.setTitle("Sign up", for: UIControlState.normal)
+		button.setTitleColor(UIColor.black, for: UIControlState.normal)
+		button.backgroundColor = UIColor.paceBrandColor()
+		button.layer.cornerRadius = 6.0
+		button.layer.masksToBounds = true
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)
+		button.addTarget(self, action: #selector(handleSignUp), for: UIControlEvents.touchUpInside)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		return button
+		
+	}()
+	
+	
+	lazy var loginButton : UIButton = {
+		
+		let button = UIButton()
+		button.setTitle("Login", for: UIControlState.normal)
+		button.setTitleColor(UIColor.white, for: UIControlState.normal)
+		button.backgroundColor = UIColor.darkBlack()
+		button.layer.cornerRadius = 6.0
+		button.layer.masksToBounds = true
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)
+		button.addTarget(self, action: #selector(handleLogin), for: UIControlEvents.touchUpInside)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		return button
 		
 	}()
 	
@@ -86,80 +95,46 @@ class WelcomeViewController: UIViewController {
 	lazy var termsButton : UIButton = {
 		
 		let button = UIButton()
-		button.setTitleColor(UIColor(fromHexString: "58606C"), for: UIControlState())
+		button.setTitleColor(UIColor.white, for: UIControlState())
 		button.setTitle("Our Terms of Use", for: UIControlState())
 		button.addTarget(self, action: #selector(handleShowTerms), for: UIControlEvents.touchUpInside)
-		
-		if (iPhoneVersion == 5)  {
-			
-			button.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightMedium)
-			textSpacing(button.titleLabel!, spacing: 0.8)
-			
-		} else {
-			
-			button.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: UIFontWeightMedium)
-			textSpacing(button.titleLabel!, spacing: 1.0)
-		}
-		
-		
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightMedium)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
 		
 	}()
 	
+	let arrayImages = [""]
  
-	//  MARK: View Loading
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		view.backgroundColor = .black
-		
-		self.navigationBarSetup()
 		self.addViews()
+		navigationClearBar()
 	}
 	
-	//  MARK: Nav Bar Setup
-	func navigationBarSetup() {
+	func loopThroughImages() {
 		
-		//Transparent Nav Bar
-		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-		self.navigationController?.navigationBar.shadowImage = UIImage()
-		self.navigationController?.navigationBar.isTranslucent = true
-		self.navigationController?.navigationBar.backgroundColor = .clear
 		
 	}
 	
-	//  AddViews
+	
 	func addViews() {
 		
 		backgroundImage = OnboardingBackgroundImageGradient.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
 		backgroundImage?.contentMode = .scaleAspectFill
 		backgroundImage?.isUserInteractionEnabled = true
 		backgroundImage?.layer.masksToBounds = true
-		backgroundImage?.image = UIImage(named: "running")
+		backgroundImage?.image = UIImage(named: "butt")
 		backgroundImage?.translatesAutoresizingMaskIntoConstraints = false
 		
 		view.addSubview(backgroundImage!)
 		backgroundImage?.addSubview(logoImageView)
 		backgroundImage?.addSubview(paceLabel)
 		backgroundImage?.addSubview(detailsLabel)
-		
-		//  Facebook Buttton
-		signUpWithFBButton = paceButtons(buttonText: "Sign Up with Facebook", buttonTextColor: UIColor.white, buttonBackgroundColor: UIColor(fromHexString: "3B5998"))
-		signUpWithFBButton?.addTarget(self, action: #selector(facebookSignup), for: UIControlEvents.touchUpInside)
-		signUpWithFBButton?.translatesAutoresizingMaskIntoConstraints = false
-		backgroundImage?.addSubview(signUpWithFBButton!)
-		
-		signUpWithEmailButton = paceButtons(buttonText: "Sign Up with Email", buttonTextColor: UIColor.black, buttonBackgroundColor: UIColor(fromHexString: "00EA89"))
-		signUpWithEmailButton?.addTarget(self, action: #selector(emailSignup), for: UIControlEvents.touchUpInside)
-		signUpWithEmailButton?.translatesAutoresizingMaskIntoConstraints = false
-		backgroundImage?.addSubview(signUpWithEmailButton!)
-		
-		loginButton = paceButtons(buttonText: "Login", buttonTextColor: UIColor.white, buttonBackgroundColor: UIColor(fromHexString: "1C2026"))
-		loginButton?.addTarget(self, action: #selector(handleLogin), for: UIControlEvents.touchUpInside)
-		loginButton?.translatesAutoresizingMaskIntoConstraints = false
-		backgroundImage?.addSubview(loginButton!)
-		
+		backgroundImage?.addSubview(signUpWithEmailButton)
+		backgroundImage?.addSubview(loginButton)
 		backgroundImage?.addSubview(termsButton)
 		
 		
@@ -177,7 +152,7 @@ class WelcomeViewController: UIViewController {
 		
 		paceLabel.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
 		paceLabel.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-		paceLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 40).isActive = true
+		paceLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 60).isActive = true
 		paceLabel.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
 		
 		detailsLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 25).isActive = true
@@ -185,22 +160,15 @@ class WelcomeViewController: UIViewController {
 		detailsLabel.topAnchor.constraint(equalTo: paceLabel.bottomAnchor, constant: 12).isActive = true
 		detailsLabel.heightAnchor.constraint(equalToConstant: 55.0).isActive = true
 		
+		signUpWithEmailButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+		signUpWithEmailButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+		signUpWithEmailButton.topAnchor.constraint(equalTo: detailsLabel.bottomAnchor, constant: 45).isActive = true
+		signUpWithEmailButton.heightAnchor.constraint(equalToConstant: 45.0).isActive = true
 		
-		signUpWithFBButton?.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-		signUpWithFBButton?.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-		signUpWithFBButton?.topAnchor.constraint(equalTo: detailsLabel.bottomAnchor, constant: 45).isActive = true
-		signUpWithFBButton?.heightAnchor.constraint(equalToConstant: 45.0).isActive = true
-		
-		
-		signUpWithEmailButton?.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-		signUpWithEmailButton?.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-		signUpWithEmailButton?.topAnchor.constraint(equalTo: (signUpWithFBButton?.bottomAnchor)!, constant: 10).isActive = true
-		signUpWithEmailButton?.heightAnchor.constraint(equalToConstant: 45.0).isActive = true
-		
-		loginButton?.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-		loginButton?.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-		loginButton?.topAnchor.constraint(equalTo: (signUpWithEmailButton?.bottomAnchor)!, constant: 25).isActive = true
-		loginButton?.heightAnchor.constraint(equalToConstant: 45.0).isActive = true
+		loginButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+		loginButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+		loginButton.topAnchor.constraint(equalTo: signUpWithEmailButton.bottomAnchor, constant: 25).isActive = true
+		loginButton.heightAnchor.constraint(equalToConstant: 45.0).isActive = true
 		
 		termsButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
 		termsButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
@@ -209,57 +177,16 @@ class WelcomeViewController: UIViewController {
 		
 		
 	}
+
 	
-	
-	//  MARK: Actions
-	func facebookSignup() {
-		
-		buttonBounceAnimation(buttonPressed: signUpWithFBButton!)
-		if Reachability.isConnectedToNetwork() {
-			
-			perform(#selector(handleFb), with: self, afterDelay: 0.15)
-			
-			
-		} else {
-			
-			//  Popup
-			let alertview = UIAlertController(title: "No Internet Connection", message: "Looks like you are not online. Check you internet connection and try again", preferredStyle: .alert)
-			alertview.addAction(UIAlertAction(title: "Ok", style: .default, handler:
-				{ (alertAction) -> Void in
-					
-			}))
-			
-			present(alertview, animated: true, completion: nil)
-			
-			
-		}
-		
-		
-	}
-	
-	func emailSignup() {
-		
-		buttonBounceAnimation(buttonPressed: signUpWithEmailButton!)
-		perform(#selector(handleEmail), with: self, afterDelay: 0.2)
-		
-	}
-	
-	func handleLogin() {
-		
-		buttonBounceAnimation(buttonPressed: loginButton!)
-		perform(#selector(handleLoginToPace), with: self, afterDelay: 0.2)
-		
-	}
-	
-	
-	func handleEmail() {
+	func handleSignUp() {
 		
 		self.navigationController?.pushViewController(EmailViewController(), animated: true)
 		
 	}
 	
 	
-	func handleLoginToPace() {
+	func handleLogin() {
 		
 		self.navigationController?.pushViewController(LoginViewController(), animated: true)
 		
@@ -275,4 +202,3 @@ class WelcomeViewController: UIViewController {
 	
 	
 }
-*/

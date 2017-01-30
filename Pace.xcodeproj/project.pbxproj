@@ -138,6 +138,7 @@
 		C6B118331E218245002BB4E8 /* GoalsInterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118321E218245002BB4E8 /* GoalsInterestsViewController.swift */; };
 		C6B118351E218259002BB4E8 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118341E218259002BB4E8 /* RoutineViewController.swift */; };
 		C6BB148F1E3FA1E700BF6F66 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB148E1E3FA1E700BF6F66 /* LoginViewController.swift */; };
+		C6BB14911E3FB08A00BF6F66 /* OnboardingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB14901E3FB08A00BF6F66 /* OnboardingImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -302,6 +303,7 @@
 		C6B118321E218245002BB4E8 /* GoalsInterestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsInterestsViewController.swift; sourceTree = "<group>"; };
 		C6B118341E218259002BB4E8 /* RoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
 		C6BB148E1E3FA1E700BF6F66 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C6BB14901E3FB08A00BF6F66 /* OnboardingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingImageView.swift; sourceTree = "<group>"; };
 		DC48F02A471D422621621F63 /* Pods_Pace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -428,6 +430,7 @@
 				45B2A4C61DFC993B00C099C7 /* FollowProfileCell.swift */,
 				45ACEABC1DFFBA7700C94B7D /* StartButtonView.swift */,
 				45ACEAB21DFFB1EB00C94B7D /* GetButtonView.swift */,
+				C6BB14901E3FB08A00BF6F66 /* OnboardingImageView.swift */,
 			);
 			name = GenericViewCells;
 			sourceTree = "<group>";
@@ -736,8 +739,8 @@
 		45B5AD7D1DFBFA6F00115E2C /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				C6B1182F1E218037002BB4E8 /* Registration */,
-				C6B118311E218075002BB4E8 /* Interests & Routine */,
+				C6057EEA1E3E269A00AC62EA /* WelcomeViewController.swift */,
+				C6B1182F1E218037002BB4E8 /* SignUp */,
 				C6B118301E218066002BB4E8 /* Login */,
 			);
 			name = Onboarding;
@@ -903,17 +906,17 @@
 			name = DayHeaderView;
 			sourceTree = "<group>";
 		};
-		C6B1182F1E218037002BB4E8 /* Registration */ = {
+		C6B1182F1E218037002BB4E8 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				C6057EEA1E3E269A00AC62EA /* WelcomeViewController.swift */,
 				4527D4041E1F7C0600F1A643 /* EmailViewController.swift */,
 				C6B118271E21670C002BB4E8 /* PasswordViewController.swift */,
 				C6B118291E21729F002BB4E8 /* NameEntryViewController.swift */,
 				C6B1182B1E217BCA002BB4E8 /* PickGenderViewController.swift */,
 				C6B1182D1E217E47002BB4E8 /* HealthConnectViewController.swift */,
+				C6B118311E218075002BB4E8 /* Interests & Routine */,
 			);
-			name = Registration;
+			name = SignUp;
 			sourceTree = "<group>";
 		};
 		C6B118301E218066002BB4E8 /* Login */ = {
@@ -1160,6 +1163,7 @@
 				45F7F5CE1DFD4E6100DD1E33 /* CollectionViewBaseCell.swift in Sources */,
 				45C214EA1E05B84400C5BCCF /* RatingsNodeView.swift in Sources */,
 				45C214F21E05DBC400C5BCCF /* SettingsViewController.swift in Sources */,
+				C6BB14911E3FB08A00BF6F66 /* OnboardingImageView.swift in Sources */,
 				451D078A1DFE43DC00940301 /* ProfileViewController+Extension.swift in Sources */,
 				45B5ADA51DFC05A900115E2C /* CustomTabBarController.swift in Sources */,
 				45B5ADA91DFC097300115E2C /* ActivityViewController.swift in Sources */,

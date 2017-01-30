@@ -44,7 +44,7 @@ class EmailViewController : UIViewController, UITextFieldDelegate {
                                                              attributes:[NSForegroundColorAttributeName: UIColor.greyBlackColor()])
         textField.returnKeyType = .done
         textField.sizeToFit()
-        textField.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightBold)
+        textField.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)
         textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -62,7 +62,7 @@ class EmailViewController : UIViewController, UITextFieldDelegate {
         button.layer.cornerRadius = 6.0
         button.layer.masksToBounds = true
         button.isEnabled = false
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightBold)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)
         button.addTarget(self, action: #selector(handleNext), for: UIControlEvents.touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -74,7 +74,8 @@ class EmailViewController : UIViewController, UITextFieldDelegate {
 		super.viewDidLoad()
 		
 		view.backgroundColor = UIColor.black
-		self.navigationNoLineBar()
+		self.navigationClearBar()
+		self.navigationController?.navigationBar.tintColor = UIColor.white
 		onboardingCounter(counterString : "1 of 5")
 		self.setupViews()
         self.setupKeyboardObservers()

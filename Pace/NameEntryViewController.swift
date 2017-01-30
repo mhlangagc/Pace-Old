@@ -46,7 +46,7 @@ class NameEntryViewController : UIViewController, UITextFieldDelegate {
 		                                                     attributes:[NSForegroundColorAttributeName: UIColor.greyBlackColor()])
 		textField.returnKeyType = .done
 		textField.sizeToFit()
-		textField.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightBold)
+		textField.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)
 		textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
@@ -63,7 +63,7 @@ class NameEntryViewController : UIViewController, UITextFieldDelegate {
 		button.layer.cornerRadius = 6.0
 		button.layer.masksToBounds = true
 		button.isEnabled = false
-		button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightBold)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)
 		button.addTarget(self, action: #selector(handleNext), for: UIControlEvents.touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
@@ -74,6 +74,7 @@ class NameEntryViewController : UIViewController, UITextFieldDelegate {
 		super.viewDidLoad()
 		
 		self.navigationNoLineBar()
+		self.navigationController?.navigationBar.tintColor = UIColor.white
 		onboardingCounter(counterString : "3 of 5")
 		self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(handleNothing))

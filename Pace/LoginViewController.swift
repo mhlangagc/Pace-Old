@@ -42,7 +42,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
 		                                                     attributes:[NSForegroundColorAttributeName: UIColor.greyBlackColor()])
 		textField.returnKeyType = .done
 		textField.sizeToFit()
-		textField.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightBold)
+		textField.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)
 		textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
@@ -77,7 +77,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
 		                                                     attributes:[NSForegroundColorAttributeName: UIColor.greyBlackColor()])
 		textField.returnKeyType = .done
 		textField.sizeToFit()
-		textField.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightBold)
+		textField.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)
 		textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
@@ -97,7 +97,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
 		button.layer.cornerRadius = 6.0
 		button.layer.masksToBounds = true
 		button.isEnabled = false
-		button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightBold)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)
 		button.addTarget(self, action: #selector(handleNext), for: UIControlEvents.touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
@@ -123,7 +123,9 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
 		super.viewDidLoad()
 		
 		view.backgroundColor = UIColor.black
-		self.navigationNoLineBar()
+		self.navigationItem.title = "Login"
+		self.navigationClearBar()
+		self.navigationController?.navigationBar.tintColor = UIColor.white
 		self.setupViews()
 		self.setupKeyboardObservers()
 		
@@ -147,7 +149,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
 		view.addSubview(passwordTextField)
 		view.addSubview(nextButton)
 		
-		textFieldTopAnchorConstraint = headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100)
+		textFieldTopAnchorConstraint = headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150)
 		textFieldTopAnchorConstraint?.isActive = true
 		headerLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
 		headerLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
@@ -260,7 +262,7 @@ extension LoginViewController {
 				
 			} else {
 				
-				self.textFieldTopAnchorConstraint?.constant = 100
+				self.textFieldTopAnchorConstraint?.constant = 150
 				self.buttonBottomAnchorConstraint?.constant = -15
 				
 			}

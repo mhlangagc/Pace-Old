@@ -15,6 +15,7 @@ import CoreData
 import Firebase
 
 let appStoreLinkToDownload: NSURL = NSURL(string: "https://itunes.apple.com/us/app/pace-ultimate-fitness-organising/id1107980760?ls=1&mt=8")!
+let termsLink : String = "http://mhlangagc.wixsite.com/pace/terms-of-use"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,14 +29,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if FIRAuth.auth()?.currentUser?.uid == nil {
 			
 			self.window = UIWindow(frame: UIScreen.main.bounds)
-			self.window?.rootViewController = UINavigationController(rootViewController: EmailViewController())
+			self.window?.rootViewController = UINavigationController(rootViewController: WelcomeViewController())
 			self.window?.makeKeyAndVisible()
 			self.window?.tintColor = UIColor.black
 			
 		} else {
 			
 			self.window = UIWindow(frame: UIScreen.main.bounds)
-			self.window?.rootViewController = UINavigationController(rootViewController: LoginViewController())				//CustomTabBarController()
+			self.window?.rootViewController = UINavigationController(rootViewController: WelcomeViewController())				//CustomTabBarController()
 			self.window?.makeKeyAndVisible()
 			self.window?.tintColor = UIColor.black
 		
