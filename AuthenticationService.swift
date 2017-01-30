@@ -80,6 +80,23 @@ class AuthenticationService: NSObject {
 		
 		
 	}
+	
+	func signIn(userEmail: String, userPassword: String, completion: @escaping (_ error: Error?) -> Void) {
+		
+		FIRAuth.auth()?.signIn(withEmail: userEmail, password: userPassword) { (user, error) in
+			
+			if error != nil {
+				
+				completion(error)
+				return
+			}
+			
+			//  Successfully Signed in
+			completion(nil)
+			
+		}
+		
+	}
 
 }
 

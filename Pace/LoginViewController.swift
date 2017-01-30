@@ -86,8 +86,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
 	
 	var buttonBottomAnchorConstraint: NSLayoutConstraint?
 	var textFieldTopAnchorConstraint: NSLayoutConstraint?
-	var emailTextFieldEntered = Bool()
-	var passwordTextFieldEntered = Bool()
+	var authService = AuthenticationService()
 	
 	lazy var nextButton : UIButton = {
 		
@@ -104,6 +103,20 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
 		return button
 		
 	}()
+	
+	lazy var forgotPasswordButton : UIButton = {
+		
+		let button = UIButton()
+		button.setTitleColor(UIColor(fromHexString: "58606C"), for: UIControlState())
+		button.setTitle("Forgot you Password 😑", for: UIControlState())
+		button.addTarget(self, action: #selector(handleForgotPassword), for: UIControlEvents.touchUpInside)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightMedium)
+		textSpacing(button.titleLabel!, spacing: 0.8)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		return button
+		
+	}()
+
 	
 	
 	override func viewDidLoad() {
@@ -172,23 +185,51 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
 	func handleNext() {
 		
 		emailTextField.resignFirstResponder()
+		passwordTextField.resignFirstResponder()
 		self.view.endEditing(true)
 		
-		if let emailAdded = emailTextField.text {
+		if let emailCaptured = emailTextField.text, let passwordCaptured = passwordTextField.text {
 			
-			emailCaptured = emailAdded
-			self.navigationController?.pushViewController(PasswordViewController(), animated: true)
-			
-		} else {
-			
-			return
-			
+			authService.signIn(userEmail: emailCaptured, userPassword: passwordCaptured, completion: { (error) in
+				
+				if error != nil {
+					
+					self.failurePopup(mainMessage: "Something's being a doozy", detailedString: (error?.localizedDescription)!)
+					//self.stopProcessingSignUp()
+					
+				} else {
+					
+					print("Successfully Logged in")
+					self.navigateToWeek()
+					
+				}
+				
+			})
+
 		}
-		
-		
 		
 	}
 	
+	
+	func handleForgotPassword() {
+		
+		//	TO DO
+	}
+	
+	
+	func navigateToWeek() {
+		
+		let myRoutineVC = CustomTabBarController()
+		myRoutineVC.modalTransitionStyle = .coverVertical
+		let navC = UINavigationController(rootViewController: myRoutineVC)
+		navC.isNavigationBarHidden = true
+		self.present(navC, animated: true) {
+			
+			// Completed
+			
+		}
+	}
+
 	
 }
 
