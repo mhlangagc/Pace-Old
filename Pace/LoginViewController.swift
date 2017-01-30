@@ -86,6 +86,8 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
 	
 	var buttonBottomAnchorConstraint: NSLayoutConstraint?
 	var textFieldTopAnchorConstraint: NSLayoutConstraint?
+	var emailTextFieldEntered = Bool()
+	var passwordTextFieldEntered = Bool()
 	
 	lazy var nextButton : UIButton = {
 		
@@ -230,6 +232,7 @@ extension LoginViewController {
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 		
 		emailTextField.resignFirstResponder()
+		passwordTextField.resignFirstResponder()
 		
 	}
 	
@@ -244,7 +247,7 @@ extension LoginViewController {
 	
 	func textFieldDidEndEditing(_ textField: UITextField) {
 		
-		if emailTextField.text!.isValidEmailAddress == true {
+		if emailTextField.text! != "" && passwordTextField.text != "" {
 			
 			nextButton.isEnabled = true
 			nextButton.backgroundColor = UIColor.paceBrandColor()
@@ -260,7 +263,7 @@ extension LoginViewController {
 	
 	func textFieldDidChange(textField: UITextField) {
 		
-		if emailTextField.text!.isValidEmailAddress == true {
+		if emailTextField.text! != "" && passwordTextField.text != "" {
 			
 			nextButton.isEnabled = true
 			nextButton.backgroundColor = UIColor.paceBrandColor()
