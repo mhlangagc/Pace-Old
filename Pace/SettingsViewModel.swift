@@ -21,7 +21,7 @@ class SettingsViewModel : NSObject {
 		units.settingDetail = "km/kg"
 		
 		let healthkit = SettingsModel()
-		healthkit.setting = "Heathkit"
+		healthkit.setting = "Healthkit"
 		healthkit.settingDetail = "connected"
 		
 		return [editProfile, units, healthkit]
@@ -30,7 +30,7 @@ class SettingsViewModel : NSObject {
 	func createJoinTheTrainers() -> [SettingsModel] {
 		
 		let joinTrainers = SettingsModel()
-		joinTrainers.setting = "Login as a Trainer"
+		joinTrainers.setting = "Upload your Workout"
 		joinTrainers.settingDetail = nil
 		
 		return [joinTrainers]
@@ -50,7 +50,7 @@ class SettingsViewModel : NSObject {
 		inviteAFriend.setting = "Invite a Friend"
 		inviteAFriend.settingDetail = nil
 		
-		return [sendUsFeedback, ratePace, inviteAFriend]
+		return [sendUsFeedback]
 	}
 	
 	
@@ -61,14 +61,10 @@ class SettingsViewModel : NSObject {
 		aboutPace.settingDetail = nil
 		
 		let termsAndConditions = SettingsModel()
-		termsAndConditions.setting = "Terms & Conditions"
+		termsAndConditions.setting = "Our Terms"
 		termsAndConditions.settingDetail = nil
 		
-		let privacyPolicy = SettingsModel()
-		privacyPolicy.setting = "Privacy Policy"
-		privacyPolicy.settingDetail = nil
-		
-		return [aboutPace, termsAndConditions, privacyPolicy]
+		return [aboutPace, termsAndConditions]
 	}
 	
 	func createLogout() -> [SettingsModel] {

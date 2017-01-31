@@ -8,6 +8,8 @@
 
 import UIKit
 import AsyncDisplayKit
+import Firebase
+import FirebaseAuth
 
 
 extension SettingsViewController {
@@ -73,7 +75,7 @@ extension SettingsViewController {
 		default:
 			
 			settingsCell.settingsModel = logoutArray?[indexPath.item]
-			settingsCell.settingsTitle.layer.opacity = 0.5
+			settingsCell.settingsTitle.layer.opacity = 0.3
 			return settingsCell
 		}
 		
@@ -83,8 +85,98 @@ extension SettingsViewController {
 	
 	func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
 		
+		switch indexPath.section {
+			
+		case 0:
+			
+			if indexPath.item == 0 {
+				
+				print("Edit Profile")
+				
+			} else if indexPath.item == 1 {
+				
+				print("Change Units")
+			
+			} else {
+				
+				print("Health Kit")
+			
+			}
+
+			
+		case 1:
+			
+			if indexPath.item == 0 {
+				
+				print("Become a Trainer")
+				
+			}
+			
+		case 2:
+			
+			if indexPath.item == 0 {
+				
+				print("Send Feedback")
+				
+			}
+			
+		case 3:
+			
+			if indexPath.item == 0 {
+				
+				print("About Pace")
+				
+			} else {
+				
+				print("Our Terms")
+				
+			}
+			
+		default:
+			
+			if indexPath.item == 0 {
+				
+				let alertview = UIAlertController(title: "Logout", message: "Are you sure you want to Logout?", preferredStyle: .alert)
+				alertview.addAction(UIAlertAction(title: "Yes", style: .default, handler:
+					{ (alertAction) -> Void in
+						
+						self.handleLogout()
+						
+				}))
+				
+				alertview.addAction(UIAlertAction(title: "No", style: .destructive, handler:
+					{ (alertAction) -> Void in
+						
+				}))
+				
+				present(alertview, animated: true, completion: nil)
+				
+			}
+		}
+
+		
 		tableNode.deselectRow(at: indexPath, animated: true)
 		
+	}
+	
+	func handleLogout() {
+		
+		do {
+			try FIRAuth.auth()?.signOut()
+			
+		} catch let logoutError {
+			
+			print(logoutError)
+			
+		}
+	
+		let welcomeVC = WelcomeViewController()
+		welcomeVC.modalTransitionStyle = .flipHorizontal
+		self.present(UINavigationController(rootViewController: welcomeVC), animated: true) {
+			
+			//	TO DO
+			
+		}
 	}
 	
 }

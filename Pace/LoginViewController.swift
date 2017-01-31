@@ -222,7 +222,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
 	func navigateToWeek() {
 		
 		let myRoutineVC = CustomTabBarController()
-		myRoutineVC.modalTransitionStyle = .coverVertical
+		myRoutineVC.modalTransitionStyle = .flipHorizontal
 		let navC = UINavigationController(rootViewController: myRoutineVC)
 		navC.isNavigationBarHidden = true
 		self.present(navC, animated: true) {

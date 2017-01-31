@@ -112,7 +112,7 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 		navigationItem.titleView = titleLabel
 		
 		
-		self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "search"), style: UIBarButtonItemStyle.done, target: self, action: #selector(handleSearch))
+		//self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "search"), style: UIBarButtonItemStyle.done, target: self, action: #selector(handleSearch))
 	}
 	
 	
