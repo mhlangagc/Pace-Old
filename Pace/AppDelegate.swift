@@ -21,10 +21,13 @@ let termsLink : String = "http://mhlangagc.wixsite.com/pace/terms-of-use"
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
+	
+	var profileViewController : ProfileViewController?
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
 		self.runTimeDependencies()
+		self.loadDataForViews()
 		
 		if FIRAuth.auth()?.currentUser?.uid == nil {
 			
@@ -43,6 +46,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 		
 		return true
+	}
+	
+	func loadDataForViews() {
+		
+		//	Profile View Controller
+		profileViewController = ProfileViewController()
+		profileViewController?.retrieveUser()
+		
 	}
 	
 	func runTimeDependencies() {
