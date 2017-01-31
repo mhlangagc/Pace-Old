@@ -54,14 +54,14 @@ class FooterCell: BaseCell {
 		
 		
 		becomeATrainerButton.backgroundColor = UIColor.darkBlack()
-		becomeATrainerButton.setTitle("Become a trainer", with: UIFont.systemFont(ofSize: 15.0, weight: UIFontWeightBold), with: UIColor.greyBlackColor(), for: ASControlState())
+		becomeATrainerButton.setTitle("Become a trainer", with: UIFont.systemFont(ofSize: 15.0, weight: UIFontWeightBold), with: UIColor.paceBrandColor(), for: ASControlState())
 		becomeATrainerButton.addTarget(self, action: #selector(handleBecomeATrainer), forControlEvents: ASControlNodeEvent.touchUpInside)
 		becomeATrainerButton.layer.cornerRadius = 7.5
 		addSubnode(becomeATrainerButton)
 		
 		
 		sendFeedback.backgroundColor = UIColor.darkBlack()
-		sendFeedback.setTitle("Send Feedback", with: UIFont.systemFont(ofSize: 15.0, weight: UIFontWeightBold), with: UIColor.greyBlackColor(), for: ASControlState())
+		sendFeedback.setTitle("Send Feedback", with: UIFont.systemFont(ofSize: 15.0, weight: UIFontWeightBold), with: UIColor.paceBrandColor(), for: ASControlState())
 		sendFeedback.addTarget(self, action: #selector(handleSendFeedback), forControlEvents: ASControlNodeEvent.touchUpInside)
 		sendFeedback.layer.cornerRadius = 7.5
 		addSubnode(sendFeedback)

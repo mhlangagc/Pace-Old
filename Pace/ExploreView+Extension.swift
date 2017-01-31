@@ -17,7 +17,7 @@ extension ExploreViewController {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
 		
-		return 7
+		return 8
 		
 	}
 	
@@ -60,11 +60,17 @@ extension ExploreViewController {
 			justAddedLabelNode.discoveryVC = self
 			return justAddedLabelNode
 			
-		default:
+		case 6:
 			
 			let justAddedVC  = JustAddedCollection()
 			justAddedVC.discoveryVC = self
 			return justAddedVC
+			
+		default:
+			
+			let footerCell = FooterCell()
+			footerCell.discoveryVC = self
+			return footerCell
 			
 //		case 7:
 //			

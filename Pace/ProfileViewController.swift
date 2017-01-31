@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
@@ -14,21 +17,42 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	var profileTableView : UITableView?
 	let workoutCellID = "WorkoutCellViewID"
 	
-	var localUser : UserModel?
-	
-	lazy var UserSetup: LocalUserViewModel = {
+	func retrieveUser() {
 		
-		let setupUser = LocalUserViewModel()
-		return setupUser
+		if let userID = FIRAuth.auth()?.currentUser?.uid {
+			
+			FIRDatabase.database().reference().child("Users").child(userID).observe(FIRDataEventType.value, with: { (snapShot) in
+				
+				if let dictionary = snapShot.value as? [String: AnyObject] {
+					
+					let user = User()
+					user.name = dictionary["name"] as? String
+					user.profileImageUrl = dictionary["profileImageUrl"] as? String
+					user.location = dictionary["location"] as? String
+					user.about = dictionary["about"] as? String
+					
+					if let name = user.name, let location = user.location, let about = user.about {
+						
+						self.setupHeaderView(userName: name, location: location, about: about)
+						
+					}
+					
+					
+				}
+				
+			})
+			
+		}
 		
-	}()
+	}
+
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
 		navigationNoLineBar()
-		self.navigationBarItems()
+		self.setupNavBar()
 		self.setupWorkoutDetailsTableView()
 		view.backgroundColor = UIColor.black
 		
@@ -38,11 +62,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
-		
-		localUser = UserSetup.createLocalUser()
-		
-		self.setupHeaderView()
-		self.navigationBarItems()
+		self.setupHeaderView(userName: "", location: "", about: "")
+		self.retrieveUser()
+		self.setupNavBar()
 		self.profileTableView?.reloadData()
 	}
 	
@@ -61,29 +83,32 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		
 	}
 	
-	
-	func navigationBarItems() {
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(true)
 		
-		let titleLabel = UILabel(frame: CGRect(x: ((view.frame.width - 100) * 0.5), y: 5, width: 100, height: view.frame.height))
-		titleLabel.text = "Profile"
-		titleLabel.textAlignment = .center
-		titleLabel.textColor = UIColor.offWhite()
-		titleLabel.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightMedium)
-		textSpacing(titleLabel, spacing: 0.5)
-		navigationItem.titleView = titleLabel
-		navigationItem.title = "Profile"
+		self.navigationController?.navigationBar.tintColor = UIColor.white
+		self.navigationController?.navigationBar.barTintColor = UIColor.black
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
+		
+	}
+	
+	
+	func setupNavBar() {
 		
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "settings"), style: UIBarButtonItemStyle.done, target: self, action: #selector(handleOpenSettings))
 		self.navigationController?.navigationBar.tintColor = UIColor.paceBrandColor()
+		self.navigationController?.navigationBar.barTintColor = UIColor.darkerBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.darkerBlack()
+		
 	}
 
-	func setupHeaderView() {
+	func setupHeaderView(userName: String, location: String, about: String) {
 		
 		headerView  = ProfileHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 300.0)) //375.0
-		headerView.nameLabel?.text = localUser?.name
-		headerView.locationLabel?.text = localUser?.location
-		headerView.detailsLabel?.text = localUser?.trainerDescription
-		headerView.profileImageView?.image = localUser?.profileImage
+		headerView.nameLabel?.text = userName
+		headerView.locationLabel?.text = location
+		headerView.detailsLabel?.text = about
+//		headerView.profileImageView?.image = localUser?.profileImage
 		headerView.profileVC = self
 		headerView.followButton?.isHidden = true
 		profileTableView!.tableHeaderView = headerView

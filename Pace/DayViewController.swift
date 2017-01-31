@@ -61,6 +61,15 @@ class DayViewController : UIViewController, UITableViewDataSource, UITableViewDe
 		self.workoutDetailsTableView?.reloadData()
 	}
 	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(true)
+		
+		self.navigationController?.navigationBar.tintColor = UIColor.white
+		self.navigationController?.navigationBar.barTintColor = UIColor.black
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
+		
+	}
+	
 	func setupNavigationBar() {
 		
 		navigationNoLineBar()

@@ -45,7 +45,7 @@ class ProfileHeaderView : BaseView {
 		profileImageView = UIImageView.init(frame: CGRect(x: 20.0, y: 137.0, width: 80.0, height: 80.0))
 		profileImageView?.contentMode = .scaleAspectFill
 		profileImageView?.backgroundColor = UIColor.darkBlack()
-		profileImageView?.layer.cornerRadius = 45.0
+		profileImageView?.layer.cornerRadius = 40.0
 		profileImageView?.layer.masksToBounds = true
 		addSubview(profileImageView!)
 		
@@ -67,7 +67,7 @@ class ProfileHeaderView : BaseView {
 		
 		
 		
-		
+		/*
 		followersNumberButton = UIButton.init(frame: CGRect(x: 20.0, y: frame.height - 70.0, width: 80.0, height: 18.0))
 		followersNumberButton?.setTitle("34", for: UIControlState.normal)
 		followersNumberButton?.contentHorizontalAlignment = .left
@@ -112,6 +112,8 @@ class ProfileHeaderView : BaseView {
 		followButton?.addTarget(self, action: #selector(handleFollow_Unfollow), for: UIControlEvents.touchUpInside)
 		followButton?.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightSemibold)
 		//addSubview(followButton!)
+		
+		*/
 		
 	}
 	

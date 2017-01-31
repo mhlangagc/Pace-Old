@@ -139,6 +139,7 @@
 		C6B118351E218259002BB4E8 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118341E218259002BB4E8 /* RoutineViewController.swift */; };
 		C6BB148F1E3FA1E700BF6F66 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB148E1E3FA1E700BF6F66 /* LoginViewController.swift */; };
 		C6BB14911E3FB08A00BF6F66 /* OnboardingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB14901E3FB08A00BF6F66 /* OnboardingImageView.swift */; };
+		C6BE5C131E402ADA00770A42 /* PaceAppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE5C121E402ADA00770A42 /* PaceAppServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -304,6 +305,7 @@
 		C6B118341E218259002BB4E8 /* RoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
 		C6BB148E1E3FA1E700BF6F66 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C6BB14901E3FB08A00BF6F66 /* OnboardingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingImageView.swift; sourceTree = "<group>"; };
+		C6BE5C121E402ADA00770A42 /* PaceAppServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceAppServices.swift; sourceTree = "<group>"; };
 		DC48F02A471D422621621F63 /* Pods_Pace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -671,6 +673,7 @@
 			isa = PBXGroup;
 			children = (
 				C6057EEF1E3E28D900AC62EA /* AuthenticationService.swift */,
+				C6BE5C121E402ADA00770A42 /* PaceAppServices.swift */,
 				C65CAAD61E3E78A90047B78A /* HealthKitManager.swift */,
 			);
 			name = Services;
@@ -1214,6 +1217,7 @@
 				45ECF68D1E152F590032F6CC /* NewToPace.swift in Sources */,
 				45B5AD901DFBFC1D00115E2C /* MathematicalHelpers.swift in Sources */,
 				45F3AA2A1E15E7B300D70C84 /* PreferencesPopUpLauncher.swift in Sources */,
+				C6BE5C131E402ADA00770A42 /* PaceAppServices.swift in Sources */,
 				454535871E18EAAC00653252 /* WorkoutCompleteVIewController.swift in Sources */,
 				45ACEABD1DFFBA7700C94B7D /* StartButtonView.swift in Sources */,
 				45B5ADAB1DFC09A000115E2C /* ProfileViewController.swift in Sources */,

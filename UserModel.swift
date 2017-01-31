@@ -14,8 +14,29 @@ class UserModel: NSObject {
 	var profileImage : UIImage?
 	var location : String?
 	var trainerDescription: String?
-	var workouts: NSSet?
-	var followers: NSSet?
-	var following: NSSet?
+	
+}
+
+
+class User : NSObject {
+	
+	var name : String?
+	var profileImageUrl : String?
+	var location : String?
+	var about: String?
+	
+	//	var workouts: NSSet?
+	//	var followers: NSSet?
+	//	var following: NSSet?
+	
+	//	init(dictionary: [String: AnyObject]) {
+	//		super.init()
+	//
+	//		name = dictionary["name"] as? String
+	//		profileImageUrl = dictionary["profileImageUrl"] as? String
+	//		location = dictionary["location"] as? String
+	//		about = dictionary["about"] as? String
+	//		
+	//	}
 	
 }

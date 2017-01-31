@@ -94,8 +94,9 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 		navigationItem.title = "Explore"
 		
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.headerBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.black
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
+		
 		
 	}
 	
