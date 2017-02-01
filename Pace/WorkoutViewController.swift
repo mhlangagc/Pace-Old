@@ -24,7 +24,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 	}()
 	
-	static var exploreWorkout : ExploreModel?
+	static var exploreWorkout : ExploreWorkoutModel?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -93,13 +93,10 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		headerView.workoutDetailVC = self
 		
 		headerView.workoutName?.text = (WorkoutViewController.exploreWorkout?.workoutName)!
-		headerView.workoutsImageView?.image = WorkoutViewController.exploreWorkout?.workoutImage
-		headerView.workoutTimeLabel?.text = "\((WorkoutViewController.exploreWorkout?.workoutTime)!) min workout".uppercased()
-		
+		headerView.workoutsImageView?.loadImageFromUrlString(urlString: (WorkoutViewController.exploreWorkout?.workoutImageUrl)!)
+		headerView.workoutTimeLabel?.text = "\((WorkoutViewController.exploreWorkout?.workoutMins)!) min workout".uppercased()
 		headerView.profileNameButton?.setTitle("Created by \((WorkoutViewController.exploreWorkout?.trainerName)!)", for: UIControlState.normal)
-		headerView.profileImageView?.image = WorkoutViewController.exploreWorkout?.trainerImage
-		
-		
+		headerView.profileImageView?.loadImageFromUrlString(urlString: (WorkoutViewController.exploreWorkout?.trainerImageUrl)!)
 		headerView.descriptionText?.text = (WorkoutViewController.exploreWorkout?.workoutDescription)!
 		headerView.reviewLabel?.text = "\((WorkoutViewController.exploreWorkout?.numberOfReviews)!) Reviews"
 		headerView.ratingView?.ratingValue = (WorkoutViewController.exploreWorkout?.rating)!

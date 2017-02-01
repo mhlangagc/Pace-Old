@@ -12,7 +12,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate  {
+class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource  {
 
 	var collectionNode : ASCollectionNode?
 	var searchController : UISearchController?
@@ -75,33 +75,9 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 		
 		navigationNoLineBar()
 		self.setupCollectionView()
-		self.setUpSearchCntroller()
 		
 	}
 	
-	func setUpSearchCntroller() {
-		
-		self.searchController = UISearchController(searchResultsController:  nil)
-		self.searchController?.searchResultsUpdater = self
-		self.searchController?.delegate = self
-		self.searchController?.searchBar.delegate = self
-		self.searchController?.dimsBackgroundDuringPresentation = false
-		self.searchController?.searchBar.placeholder = "Find a workout or trainer"
-		self.searchController?.hidesNavigationBarDuringPresentation = false
-		self.navigationItem.titleView = searchController?.searchBar
-		self.definesPresentationContext = true
-		self.searchController?.searchBar.barStyle = .black
-		self.searchController?.searchBar.barTintColor = UIColor.paceBrandColor()
-		self.searchController?.searchBar.setBackgroundImage(UIImage(), for: .topAttached, barMetrics: UIBarMetrics.default)
-		self.searchController?.searchBar.backgroundColor = UIColor.black
-		
-	}
-	
-	func updateSearchResults(for searchController: UISearchController) {
-		
-		//filterContentForSearchText(searchText: searchController.searchBar.text!)
-		
-	}
 	
 	func setupCollectionView() {
 		
@@ -124,7 +100,6 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 		
 		self.navigationBarItems()
 		navigationNoLineBar()
-		//self.setUpSearchCntroller()
 		
 	}
 	

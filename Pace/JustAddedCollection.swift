@@ -96,9 +96,9 @@ extension JustAddedCollection {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
-		let worktoutSelected = justAddedWorkoutsArray?[indexPath.item]
-		WorkoutViewController.exploreWorkout = worktoutSelected
-		discoveryVC?.handleShowWorkoutView()
+//		let worktoutSelected = justAddedWorkoutsArray?[indexPath.item]
+//		WorkoutViewController.exploreWorkout = worktoutSelected
+//		discoveryVC?.handleShowWorkoutView()
 		
 	}
 	

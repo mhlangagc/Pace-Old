@@ -94,9 +94,9 @@ extension NewToPaceCollection {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
-		let worktoutSelected = popularWorkoutsArray?[indexPath.item]
-		WorkoutViewController.exploreWorkout = worktoutSelected
-		discoveryVC?.handleShowWorkoutView()
+//		let worktoutSelected = popularWorkoutsArray?[indexPath.item]
+//		WorkoutViewController.exploreWorkout = worktoutSelected
+//		discoveryVC?.handleShowWorkoutView()
 		
 	}
 	

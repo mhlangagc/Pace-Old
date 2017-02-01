@@ -41,7 +41,6 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 		
 		featuredCollectionNode?.delegate   = self
 		featuredCollectionNode?.dataSource = self
-		featuredCollectionNode?.view.leadingScreensForBatching = 1.0
 		featuredCollectionNode?.view.alwaysBounceHorizontal = true
 		featuredCollectionNode?.view.allowsSelection = true
 		featuredCollectionNode?.view.backgroundColor = UIColor.black
@@ -87,20 +86,9 @@ extension FeaturedCollectionCell {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
-		//	TODO
-//		let worktoutSelected = featuredWorkoutsArray[indexPath.item]
-//		WorkoutViewController.exploreWorkout = worktoutSelected
-//		discoveryVC?.handleShowWorkoutView()
-		
-//		StoreDetailCollectionViewController.nameOfWorkout = featuredWorkoutArray[indexPath.item].workoutName!
-//		StoreDetailCollectionViewController.descriptionOfWorkout = featuredWorkoutArray[indexPath.item].workoutDescription!
-//		StoreDetailCollectionViewController.equipment = featuredWorkoutArray[indexPath.item].equipment!
-//		StoreDetailCollectionViewController.imageURL = featuredWorkoutArray[indexPath.item].workoutImageURL!
-//		StoreDetailCollectionViewController.workoutLevel = featuredWorkoutArray[indexPath.item].workoutLevel!
-//		StoreDetailCollectionViewController.workoutAuthor = featuredWorkoutArray[indexPath.item].author!
-//		StoreDetailCollectionViewController.storeExerciseIDKey = featuredWorkoutArray[indexPath.item].storeID!
-//		
-//		storeCollectionViewController?.showDetailForWorkout()
+		let worktoutSelected = featuredWorkoutsArray[indexPath.item]
+		WorkoutViewController.exploreWorkout = worktoutSelected
+		discoveryVC?.handleShowWorkoutView()
 		
 	}
 }

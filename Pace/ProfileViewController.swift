@@ -47,7 +47,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	
 	var numberOfWorkoutsDownloaded = 0
 
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -112,7 +111,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		headerView.detailsLabel?.text = about
 		headerView.profileVC = self
 		headerView.followButton?.isHidden = true
-		headerView.profileImageView?.loadImageFromUrlString(urlString: profileImageUrl)
+		headerView.profileImageView?.loadImageFromCacheWithUrlString(urlString: profileImageUrl)
 		profileTableView!.tableHeaderView = headerView
 		
 	}
