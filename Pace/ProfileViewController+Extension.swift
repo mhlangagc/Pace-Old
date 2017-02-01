@@ -31,7 +31,16 @@ extension ProfileViewController {
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		
-		return 55.0
+		if numberOfWorkoutsDownloaded == 0 {
+			
+			return 0.0
+			
+		} else {
+			
+			return 55.0
+			
+		}
+		
 		
 	}
 	
@@ -55,8 +64,8 @@ extension ProfileViewController {
 	
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		
-		return 4
+	
+		return numberOfWorkoutsDownloaded
 		
 	}
 
@@ -68,7 +77,6 @@ extension ProfileViewController {
 			tableView.register(WorkoutCellView.self, forCellReuseIdentifier: workoutCellID)
 			workoutCell = tableView.dequeueReusableCell(withIdentifier: workoutCellID) as? WorkoutCellView
 		}
-		
 		
 		if (workoutCell!.selectedBackgroundView != nil) {
 			

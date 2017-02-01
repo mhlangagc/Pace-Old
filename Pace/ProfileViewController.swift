@@ -37,7 +37,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 						
 					}
 					
-					
 				}
 				
 			})
@@ -45,6 +44,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		}
 		
 	}
+	
+	var numberOfWorkoutsDownloaded = 0
 
 	
 	override func viewDidLoad() {
