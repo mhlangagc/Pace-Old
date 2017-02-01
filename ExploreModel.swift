@@ -45,3 +45,23 @@ class ExploreModel: NSObject {
 }
 
 
+class ExploreWorkoutModel: NSObject {
+	
+	var workoutName : String?
+	var workoutMins: Int?
+	var workoutImageUrl : String?
+	
+	var trainerName: String?
+	var trainerImageUrl: String?
+	
+	var workoutDescription: String?
+	var rating: Int?
+	var numberOfReviews: Int?
+	var workoutPrice : PriceEnum?
+	var workoutCatergory : WorkoutCatergory?
+	var exercises: NSSet?
+	
+	var exploreID : String?
+}
+
+

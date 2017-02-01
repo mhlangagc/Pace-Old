@@ -23,17 +23,33 @@ class FeaturedCell: BaseCell {
 	let workoutNameAttributes = [NSFontAttributeName : UIFont.systemFont(ofSize: 24, weight: UIFontWeightHeavy), NSForegroundColorAttributeName: UIColor.white] as [String : Any]
 	var workoutNameMutableString = NSMutableAttributedString()
 	
-	var  exploreModel : ExploreModel? {
+	var  exploreWorkoutModel : ExploreWorkoutModel? {
 		
 		didSet {
 			
-			if let workoutFeaturedImage  = exploreModel?.workoutImage {
-				
-				workoutImageNode.image = workoutFeaturedImage
-				
-			}
+//			if let imageDownloadedUrl = exploreWorkoutModel?.workoutImageUrl {
+//				
+//				let url = NSURL(string: imageDownloadedUrl)
+//				URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
+//					
+//					if error != nil {
+//						return
+//					}
+//					
+//					DispatchQueue.main.async {
+//						
+//						if let downloadedImage = UIImage(data: data!) {
+//							
+//							self.workoutImageNode.image = downloadedImage
+//						}
+//					}
+//					
+//					
+//				}).resume()
+//				
+//			}
 			
-			if let workoutName = exploreModel?.workoutName {
+			if let workoutName = exploreWorkoutModel?.workoutName {
 				
 				workoutNameMutableString = NSMutableAttributedString(string: workoutName, attributes: workoutNameAttributes)
 				workoutTitleNode.attributedText = workoutNameMutableString
@@ -55,7 +71,7 @@ class FeaturedCell: BaseCell {
 	
 	func setupImageAndText() {
 		
-		workoutImageNode.backgroundColor = UIColor.darkBlack()
+		workoutImageNode.backgroundColor = UIColor.darkerBlack()
 		workoutImageNode.contentMode = .scaleAspectFill
 		workoutImageNode.layer.cornerRadius = 10.0
 		workoutImageNode.shouldRasterizeDescendants = true

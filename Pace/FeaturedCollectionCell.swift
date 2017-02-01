@@ -14,15 +14,8 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 	var featuredCollectionNode : ASCollectionNode?
 	var discoveryVC : ExploreViewController?
 	
-	var featuredWorkoutsArray : [ExploreModel]?
-	
-	lazy var ExploreWorkoutSetup: ExploreViewModel = {
-		
-		let exploreWorkoutsSetup = ExploreViewModel()
-		return exploreWorkoutsSetup
-		
-	}()
-	
+	var featuredWorkoutsArray = [ExploreWorkoutModel]()
+
 	override init() {
 		super.init()
 		
@@ -35,8 +28,6 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 		addSubnode(featuredCollectionNode!)
 		
 		self.setupCollectionNodes()
-		
-		featuredWorkoutsArray = ExploreWorkoutSetup.setupFeaturedWorkout()
 		
 	}
 	
@@ -54,7 +45,6 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 		featuredCollectionNode?.view.alwaysBounceHorizontal = true
 		featuredCollectionNode?.view.allowsSelection = true
 		featuredCollectionNode?.view.backgroundColor = UIColor.black
-
 		
 	}
 	
@@ -80,7 +70,7 @@ extension FeaturedCollectionCell {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
 		
-		return (featuredWorkoutsArray?.count)!
+		return featuredWorkoutsArray.count
 		
 	}
 	
@@ -89,7 +79,8 @@ extension FeaturedCollectionCell {
 		
 		let featuredCellNode = FeaturedCell()
 		featuredCellNode.featureCollection = self
-		featuredCellNode.exploreModel = featuredWorkoutsArray?[indexPath.item]
+		print(featuredWorkoutsArray[indexPath.item].workoutName!)
+		featuredCellNode.exploreWorkoutModel = featuredWorkoutsArray[indexPath.item]
 		return featuredCellNode
 	
 	}
@@ -97,9 +88,19 @@ extension FeaturedCollectionCell {
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
 		//	TODO
-		let worktoutSelected = featuredWorkoutsArray?[indexPath.item]
-		WorkoutViewController.exploreWorkout = worktoutSelected
-		discoveryVC?.handleShowWorkoutView()
+//		let worktoutSelected = featuredWorkoutsArray[indexPath.item]
+//		WorkoutViewController.exploreWorkout = worktoutSelected
+//		discoveryVC?.handleShowWorkoutView()
+		
+//		StoreDetailCollectionViewController.nameOfWorkout = featuredWorkoutArray[indexPath.item].workoutName!
+//		StoreDetailCollectionViewController.descriptionOfWorkout = featuredWorkoutArray[indexPath.item].workoutDescription!
+//		StoreDetailCollectionViewController.equipment = featuredWorkoutArray[indexPath.item].equipment!
+//		StoreDetailCollectionViewController.imageURL = featuredWorkoutArray[indexPath.item].workoutImageURL!
+//		StoreDetailCollectionViewController.workoutLevel = featuredWorkoutArray[indexPath.item].workoutLevel!
+//		StoreDetailCollectionViewController.workoutAuthor = featuredWorkoutArray[indexPath.item].author!
+//		StoreDetailCollectionViewController.storeExerciseIDKey = featuredWorkoutArray[indexPath.item].storeID!
+//		
+//		storeCollectionViewController?.showDetailForWorkout()
 		
 	}
 }
