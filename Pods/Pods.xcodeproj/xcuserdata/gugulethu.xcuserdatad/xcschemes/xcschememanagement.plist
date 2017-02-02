@@ -49,6 +49,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>lottie-ios.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>pop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,32 +62,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0B1DE18305FDE338EFBADD52B2C96E2C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3FF0672918687761ABFB113496575B26</key>
+		<key>390C0D28981814EDB22D328F70E94421</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>46B883422B2BA1493E801D168269E9B1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>559C06FA313FFF7CC17CB145C1B27505</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>57E137DFC748EC1BCBB83D723AC24D89</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>5D775DF2C531DC053792F654D7FF847F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>61725A4B69DDEEC56C40C93E2BD93C39</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6D0A00FA4156B39832CD6D7DAC048E23</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,37 +102,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C168E863844F1442293F3C5B062136DF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>C4B6296593E188B756906E1231B69B15</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D3CA2409FBF2D34575370D1F08FB88E3</key>
+		<key>EB1B576ACC4E43CD290B0F44827A1CA7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DA47225293864CAE75CDFA686038C7F4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DABC8A448FB3422B5BA0AABFCEB81F7E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F0B1333E182C41F24B58847AACC75BE5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FADB9533F4BFF6E6A9E6F4A1EC5EE16C</key>
+		<key>F24D09375086DF5DD0E847721E59AC3C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

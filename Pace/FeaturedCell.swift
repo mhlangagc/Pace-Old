@@ -12,7 +12,7 @@ import AsyncDisplayKit
 class FeaturedCell: BaseCell {
 	
 	var featureCollection: FeaturedCollectionCell?
-	let workoutImageNode = ASImageNode()
+	let workoutImageNode = ASNetworkImageNode()
 	let featuredTageNode = ASImageNode()
 	let workoutTitleNode = ASTextNode()
 	
@@ -29,23 +29,7 @@ class FeaturedCell: BaseCell {
 			
 			if let imageDownloadedUrl = exploreWorkoutModel?.workoutImageUrl {
 				
-				let url = NSURL(string: imageDownloadedUrl)
-				URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
-					
-					if error != nil {
-						return
-					}
-					
-					DispatchQueue.main.async {
-						
-						if let downloadedImage = UIImage(data: data!) {
-							
-							self.workoutImageNode.image = downloadedImage
-						}
-					}
-					
-					
-				}).resume()
+				workoutImageNode.url = NSURL(string: imageDownloadedUrl) as URL?
 				
 			}
 			

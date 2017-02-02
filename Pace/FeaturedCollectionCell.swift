@@ -19,7 +19,7 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 	override init() {
 		super.init()
 		
-		let flowLayout     = UICollectionViewFlowLayout()
+		let flowLayout = UICollectionViewFlowLayout()
 		flowLayout.minimumInteritemSpacing  = 15
 		flowLayout.minimumLineSpacing       = 15
 		flowLayout.scrollDirection = .horizontal
@@ -41,6 +41,7 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 		
 		featuredCollectionNode?.delegate   = self
 		featuredCollectionNode?.dataSource = self
+		featuredCollectionNode?.view.leadingScreensForBatching = 5.0
 		featuredCollectionNode?.view.alwaysBounceHorizontal = true
 		featuredCollectionNode?.view.allowsSelection = true
 		featuredCollectionNode?.view.backgroundColor = UIColor.black

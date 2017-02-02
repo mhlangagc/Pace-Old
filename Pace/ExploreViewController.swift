@@ -11,8 +11,9 @@ import AsyncDisplayKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import MessageUI
 
-class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource  {
+class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource, MFMailComposeViewControllerDelegate  {
 
 	var collectionNode : ASCollectionNode?
 	var searchController : UISearchController?
@@ -133,11 +134,35 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 	}
 	
 	
-	func handleSearch() {
+	func showSendMailErrorAlert() {
 		
-		//	TO DO
+		let alertController = UIAlertController(title: "Could not open mail!", message: "Please check your e-mail settings and try again.", preferredStyle: .alert)
 		
+		let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+			// ...
+		}
+		alertController.addAction(OKAction)
+		
+		self.present(alertController, animated: true) {
+			// ...
+		}
 	}
+	
+	
+	func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+		controller.dismiss(animated: true, completion: nil)
+	}
+	
+	func configuredMailComposeViewController() -> MFMailComposeViewController {
+		let mailComposerVC = MFMailComposeViewController()
+		mailComposerVC.mailComposeDelegate = self
+		mailComposerVC.setToRecipients(["gugulethu@paceapp.fitness"])
+		mailComposerVC.setSubject("Feedback on version )")
+		mailComposerVC.setMessageBody("My thoughts are...", isHTML: false)
+		
+		return mailComposerVC
+	}
+
 	
 	func handleSeeAllTrainers() {
 		
