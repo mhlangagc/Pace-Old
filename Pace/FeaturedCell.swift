@@ -29,10 +29,11 @@ class FeaturedCell: BaseCell {
 			
 			if let imageDownloadedUrl = exploreWorkoutModel?.workoutImageUrl {
 				
-				print(imageDownloadedUrl)
 				workoutImageNode.url = NSURL(string: imageDownloadedUrl) as URL?
 				
 			}
+			
+			
 			
 			if let workoutName = exploreWorkoutModel?.workoutName {
 				

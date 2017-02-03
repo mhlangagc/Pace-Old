@@ -33,8 +33,8 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 				let featuredWorkout = ExploreWorkoutModel()
 				
 				featuredWorkout.workoutName = dictionary["workoutName"] as? String
-				featuredWorkout.workoutMins = dictionary["workoutMins"] as? Int
-				featuredWorkout.workoutImageUrl = dictionary["workoutImageUrl"] as? String
+				featuredWorkout.workoutMins = dictionary["workoutTime"] as? Int
+				featuredWorkout.workoutImageUrl = dictionary["workImageURL"] as? String
 				
 				featuredWorkout.trainerName = dictionary["trainerName"] as? String
 				featuredWorkout.trainerImageUrl = dictionary["trainerImageUrl"] as? String
@@ -129,7 +129,6 @@ extension FeaturedCollectionCell {
 		
 		let featuredCellNode = FeaturedCell()
 		featuredCellNode.featureCollection = self
-		print(featuredWorkoutsArray[indexPath.item].workoutName!)
 		featuredCellNode.exploreWorkoutModel = featuredWorkoutsArray[indexPath.item]
 		return featuredCellNode
 	
