@@ -23,7 +23,7 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 		
 		var workoutsArray = [ExploreWorkoutModel]()
 		
-		FIRDatabase.database().reference().child("ExploreWorkouts").child("FeaturedWorkouts").observe(FIRDataEventType.childAdded, with: { (snapShot) in
+		FIRDatabase.database().reference().child("ExploreWorkouts").child("Male").child("FeaturedWorkouts").observe(FIRDataEventType.childAdded, with: { (snapShot) in
 			
 			
 			let exploreID = snapShot.key
@@ -34,7 +34,7 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 				
 				featuredWorkout.workoutName = dictionary["workoutName"] as? String
 				featuredWorkout.workoutMins = dictionary["workoutTime"] as? Int
-				featuredWorkout.workoutImageUrl = dictionary["workImageURL"] as? String
+				featuredWorkout.workoutImageUrl = dictionary["workoutImageURL"] as? String
 				
 				featuredWorkout.trainerName = dictionary["trainerName"] as? String
 				featuredWorkout.trainerImageUrl = dictionary["trainerImageUrl"] as? String
@@ -130,7 +130,7 @@ extension FeaturedCollectionCell {
 		
 		let featuredCellNode = FeaturedCell()
 		featuredCellNode.featureCollection = self
-		featuredCellNode.workoutImageNode.url = NSURL(string: "https://firebasestorage.googleapis.com/v0/b/pace-c9c8e.appspot.com/o/FeaturedWorkoutImages%2FIMG_3872.png?alt=media&token=a5eaec7a-0a44-4d73-892d-0790876ccebe")! as URL
+		//featuredCellNode.workoutImageNode.url = NSURL(string: featuredWorkoutsArray[indexPath.item].workoutImageUrl!)! as URL
 		featuredCellNode.exploreWorkoutModel = featuredWorkoutsArray[indexPath.item]
 		return featuredCellNode
 	

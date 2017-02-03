@@ -8,6 +8,9 @@
 
 import UIKit
 import AsyncDisplayKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class PopularLabel: BaseCell {
 	

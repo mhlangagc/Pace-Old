@@ -81,7 +81,7 @@ extension JustAddedCollection {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
 		
-		return (justAddedWorkoutsArray?.count)!
+		return 0
 		
 	}
 	
@@ -89,7 +89,7 @@ extension JustAddedCollection {
 		
 		
 		let cellNode = DiscoveryWorkoutCell()
-		cellNode.exploreWorkout = justAddedWorkoutsArray?[indexPath.item]
+		//cellNode.exploreWorkout = justAddedWorkoutsArray?[indexPath.item]
 		return cellNode
 		
 	}

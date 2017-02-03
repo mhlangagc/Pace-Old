@@ -27,31 +27,7 @@ class FeaturedCell: BaseCell {
 		
 		didSet {
 			
-			/*
-			if let imageDownloadedUrl = exploreWorkoutModel?.workoutImageUrl {
-				
-				URLSession.shared.dataTask(with: NSURL(string: imageDownloadedUrl)! as URL, completionHandler: { (data, response, error) in
-					
-					if error != nil {
-						return
-					}
-					
-					DispatchQueue.main.async {
-						
-						if let imageDownloaded = UIImage(data: data!) {
-							
-							self.workoutImageNode.image = imageDownloaded
-						
-						}
-					}
-					
-					
-				}).resume()
-				
-				
-				
-			}
-			*/
+			workoutImageNode.url = NSURL(string: (exploreWorkoutModel?.workoutImageUrl!)!)! as URL
 			
 			if let workoutName = exploreWorkoutModel?.workoutName {
 				

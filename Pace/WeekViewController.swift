@@ -8,6 +8,9 @@
 
 import UIKit
 import AsyncDisplayKit
+import Firebase
+import FirebaseStorage
+import FirebaseDatabase
 
 var selectedDayColour = UIColor.paceBrandColor()
 
@@ -30,8 +33,58 @@ class WeekViewController: ASViewController<ASDisplayNode>, ASTableDelegate, ASTa
 		
 		self.setupWeekTableNode()
 		self.setupWorkoutsDays()
+//		self.uploadToFirebaseStorageUsingImage()
 		
 	}
+	
+	
+//	private func uploadToFirebaseStorageUsingImage() {
+//		
+//		let imageName = NSUUID().uuidString
+//		let ref = FIRStorage.storage().reference().child("FreeWorkoutImages").child(imageName)
+//		
+//		if let uploadData = UIImageJPEGRepresentation(UIImage(named: "new5")!, 0.5) {
+//			ref.put(uploadData, metadata: nil, completion: { (metadata, error) in
+//				
+//				if error != nil {
+//					print("Failed to upload image:", (error?.localizedDescription)!)
+//					return
+//				}
+//				
+//				if let imageUrl = metadata?.downloadURL()?.absoluteString {
+//					self.createWorkoutWithImageUrl(imageUrl: imageUrl)
+//				}
+//				
+//			})
+//		}
+//	}
+//	
+//	
+//	private func createWorkoutWithImageUrl(imageUrl: String) {
+//		
+//		let ref = FIRDatabase.database().reference().child("ExploreWorkouts").child("Male").child("FreeWorkouts")
+//		let childRef = ref.childByAutoId()
+//		
+//		let values = ["numberOfReviews": 90,
+//		              "rating": 5,
+//		              "trainerImageUrl": "",
+//		              "trainerName": "Thembisa Khumalo",
+//		              "workoutImageURL": imageUrl,
+//		              "workoutCatergory": WorkoutCatergory.sevenmin.rawValue,
+//		              "workoutDescription": "If you are looking to get toned and enjoy fast paced interval training to shed far this workout is for you.",
+//		              "workoutName" : "Upper and Lower Back",
+//		              "workoutPrice" : PriceEnum.tenDollars.rawValue,
+//		              "workoutTime" : 7] as [String : Any]
+//	
+//		childRef.updateChildValues(values) { (error, ref) in
+//			if error != nil {
+//				print((error?.localizedDescription)!)
+//				return
+//			}
+//			
+//		}
+//	}
+
 	
 	func setupWorkoutsDays() {
 		

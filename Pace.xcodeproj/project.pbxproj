@@ -842,8 +842,8 @@
 		45C247441DFC600100B16AEE /* Free workouts */ = {
 			isa = PBXGroup;
 			children = (
-				45ECF68C1E152F590032F6CC /* NewToPace.swift */,
 				45ECF6891E152D450032F6CC /* NewToPaceCollection.swift */,
+				45ECF68C1E152F590032F6CC /* NewToPace.swift */,
 			);
 			name = "Free workouts";
 			sourceTree = "<group>";
@@ -861,8 +861,8 @@
 		45ECF68B1E152F0C0032F6CC /* Popular on Pace */ = {
 			isa = PBXGroup;
 			children = (
-				45C247421DFC5FF700B16AEE /* JustAdded Label.swift */,
 				451276111DFC747C008B57DE /* JustAddedCollection.swift */,
+				45C247421DFC5FF700B16AEE /* JustAdded Label.swift */,
 			);
 			name = "Popular on Pace";
 			sourceTree = "<group>";

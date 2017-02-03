@@ -11,7 +11,7 @@ import AsyncDisplayKit
 
 class DiscoveryWorkoutCell: BaseCell {
 	
-	let workoutImageNode = ASImageNode()
+	let workoutImageNode = ASNetworkImageNode()
 	let workoutTitleNode = ASTextNode()
 	let catergoryTitleNode = ASTextNode()
 	let ratings = RatingsNodeView()
@@ -31,13 +31,13 @@ class DiscoveryWorkoutCell: BaseCell {
 	
 	
 	
-	var exploreWorkout : ExploreModel? {
+	var  exploreWorkout : ExploreWorkoutModel? {
 		
 		didSet {
 			
-			if let workoutFeaturedImage  = exploreWorkout?.workoutImage, let workoutName = exploreWorkout?.workoutName, let workoutCatergory = exploreWorkout?.workoutCatergory {
-				
-				workoutImageNode.image = workoutFeaturedImage
+			workoutImageNode.url = NSURL(string: (exploreWorkout?.workoutImageUrl!)!)! as URL
+			
+			if let workoutName = exploreWorkout?.workoutName, let workoutCatergory = exploreWorkout?.workoutCatergory {
 				
 				workoutNameMutableString = NSMutableAttributedString(string: workoutName, attributes: workoutNameAttributes)
 				workoutTitleNode.attributedText = workoutNameMutableString
@@ -47,8 +47,12 @@ class DiscoveryWorkoutCell: BaseCell {
 				
 			}
 			
+			
 		}
 	}
+
+	
+	
 	
 	
 	
