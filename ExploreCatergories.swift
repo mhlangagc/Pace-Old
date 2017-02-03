@@ -16,7 +16,8 @@ enum WorkoutCatergory: String {
 	case cardio = "Cardio & Weight Loss"
 	case recovery = "For Workout Recovery"
 	case mobility = "For Stretching & Relaxing"
-	case sevenmin = "Short & Sweet"
+	case sevenmin = "7 min workout"
+	case chest = "For your Chest"
 	
 }
 

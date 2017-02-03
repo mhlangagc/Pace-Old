@@ -43,7 +43,7 @@ class WeekViewController: ASViewController<ASDisplayNode>, ASTableDelegate, ASTa
 //		let imageName = NSUUID().uuidString
 //		let ref = FIRStorage.storage().reference().child("FreeWorkoutImages").child(imageName)
 //		
-//		if let uploadData = UIImageJPEGRepresentation(UIImage(named: "new5")!, 0.5) {
+//		if let uploadData = UIImageJPEGRepresentation(UIImage(named: "shot")!, 0.5) {
 //			ref.put(uploadData, metadata: nil, completion: { (metadata, error) in
 //				
 //				if error != nil {
@@ -62,19 +62,19 @@ class WeekViewController: ASViewController<ASDisplayNode>, ASTableDelegate, ASTa
 //	
 //	private func createWorkoutWithImageUrl(imageUrl: String) {
 //		
-//		let ref = FIRDatabase.database().reference().child("ExploreWorkouts").child("Male").child("FreeWorkouts")
+//		let ref = FIRDatabase.database().reference().child("ExploreWorkouts").child("Male").child("PopularWorkouts")
 //		let childRef = ref.childByAutoId()
 //		
-//		let values = ["numberOfReviews": 90,
-//		              "rating": 5,
+//		let values = ["numberOfReviews": 35,
+//		              "rating": 3,
 //		              "trainerImageUrl": "",
-//		              "trainerName": "Thembisa Khumalo",
+//		              "trainerName": "Li Shing",
 //		              "workoutImageURL": imageUrl,
-//		              "workoutCatergory": WorkoutCatergory.sevenmin.rawValue,
+//		              "workoutCatergory": WorkoutCatergory.cardio.rawValue,
 //		              "workoutDescription": "If you are looking to get toned and enjoy fast paced interval training to shed far this workout is for you.",
-//		              "workoutName" : "Upper and Lower Back",
-//		              "workoutPrice" : PriceEnum.tenDollars.rawValue,
-//		              "workoutTime" : 7] as [String : Any]
+//		              "workoutName" : "Wednesday Abs Gym Workout",
+//		              "workoutPrice" : PriceEnum.free.rawValue,
+//		              "workoutTime" : 15] as [String : Any]
 //	
 //		childRef.updateChildValues(values) { (error, ref) in
 //			if error != nil {
