@@ -27,13 +27,31 @@ class FeaturedCell: BaseCell {
 		
 		didSet {
 			
+			/*
 			if let imageDownloadedUrl = exploreWorkoutModel?.workoutImageUrl {
 				
-				workoutImageNode.url = NSURL(string: imageDownloadedUrl) as URL?
+				URLSession.shared.dataTask(with: NSURL(string: imageDownloadedUrl)! as URL, completionHandler: { (data, response, error) in
+					
+					if error != nil {
+						return
+					}
+					
+					DispatchQueue.main.async {
+						
+						if let imageDownloaded = UIImage(data: data!) {
+							
+							self.workoutImageNode.image = imageDownloaded
+						
+						}
+					}
+					
+					
+				}).resume()
+				
+				
 				
 			}
-			
-			
+			*/
 			
 			if let workoutName = exploreWorkoutModel?.workoutName {
 				
@@ -86,7 +104,7 @@ class FeaturedCell: BaseCell {
                                           alignItems: .start,
                                           children: [featuredTageNode, workoutTitleNode])
 		
-		let insets = UIEdgeInsets(top: CGFloat.infinity, left: 20.0, bottom: 15.0, right: 10.0) // Infinity is used to make the inset unbounded
+		let insets = UIEdgeInsets(top: CGFloat.infinity, left: 20.0, bottom: 25.0, right: 10.0) // Infinity is used to make the inset unbounded
 		let textInsetSpec = ASInsetLayoutSpec(insets: insets, child: textNodeSpec)
 		
 		return ASOverlayLayoutSpec(child: workoutImageNode, overlay: textInsetSpec)

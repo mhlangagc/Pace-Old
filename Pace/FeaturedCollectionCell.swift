@@ -68,6 +68,7 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 		flowLayout.scrollDirection = .horizontal
 		flowLayout.sectionInset = UIEdgeInsets(top: 22.5, left: 20.0, bottom: 22.5, right: 20.0)
 		self.featuredCollectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
+		self.featuredCollectionNode?.backgroundColor = .black
 		self.addSubnode(self.featuredCollectionNode!)
 		
 		self.retrieveFeaturedWorkouts { (featuredWorkoutsArray) in
@@ -87,7 +88,7 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 	
 	func setupCollectionNodes() {
 		
-		backgroundColor = UIColor.paceBrandColor()
+		backgroundColor = UIColor.black
 		
 		featuredCollectionNode?.delegate   = self
 		featuredCollectionNode?.dataSource = self
@@ -129,6 +130,7 @@ extension FeaturedCollectionCell {
 		
 		let featuredCellNode = FeaturedCell()
 		featuredCellNode.featureCollection = self
+		featuredCellNode.workoutImageNode.url = NSURL(string: "https://firebasestorage.googleapis.com/v0/b/pace-c9c8e.appspot.com/o/FeaturedWorkoutImages%2FIMG_3872.png?alt=media&token=a5eaec7a-0a44-4d73-892d-0790876ccebe")! as URL
 		featuredCellNode.exploreWorkoutModel = featuredWorkoutsArray[indexPath.item]
 		return featuredCellNode
 	
