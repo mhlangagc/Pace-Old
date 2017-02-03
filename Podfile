@@ -10,6 +10,7 @@ target 'Pace' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Storage'
+	#pod 'PINCache', '~> 2.3'
 	
 	# Services
 	pod 'Stripe'
@@ -19,7 +20,6 @@ target 'Pace' do
 	# Animations
 	pod 'lottie-ios', '~> 1.0'
 	pod 'AsyncDisplayKit', '>= 2.0-rc.1'
-	#pod 'AsyncDisplayKit', :git => 'https://github.com/facebook/AsyncDisplayKit.git', :branch => '2.1'
 	pod 'pop', :git => 'https://github.com/facebook/pop.git'
 	pod 'QuickRippleButton'
 

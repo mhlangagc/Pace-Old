@@ -8,6 +8,9 @@
 
 import UIKit
 import AsyncDisplayKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionDataSource {
 	
@@ -15,6 +18,46 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 	var discoveryVC : ExploreViewController?
 	
 	var featuredWorkoutsArray = [ExploreWorkoutModel]()
+	
+	func retrieveFeaturedWorkouts(completion: @escaping (_ result: [ExploreWorkoutModel]) -> Void) {
+		
+		var workoutsArray = [ExploreWorkoutModel]()
+		
+		FIRDatabase.database().reference().child("ExploreWorkouts").child("FeaturedWorkouts").observe(FIRDataEventType.childAdded, with: { (snapShot) in
+			
+			
+			let exploreID = snapShot.key
+			
+			if let dictionary = snapShot.value as? [String: AnyObject] {
+				
+				let featuredWorkout = ExploreWorkoutModel()
+				
+				featuredWorkout.workoutName = dictionary["workoutName"] as? String
+				featuredWorkout.workoutMins = dictionary["workoutMins"] as? Int
+				featuredWorkout.workoutImageUrl = dictionary["workoutImageUrl"] as? String
+				
+				featuredWorkout.trainerName = dictionary["trainerName"] as? String
+				featuredWorkout.trainerImageUrl = dictionary["trainerImageUrl"] as? String
+				
+				featuredWorkout.workoutDescription = dictionary["workoutDescription"] as? String
+				featuredWorkout.rating = dictionary["rating"] as? Int
+				featuredWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
+				featuredWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
+				featuredWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
+				
+				featuredWorkout.exploreID = exploreID
+				
+				workoutsArray.append(featuredWorkout)
+				
+				completion(workoutsArray)
+				
+				
+			}
+			
+		}, withCancel: nil)
+		
+		
+	}
 
 	override init() {
 		super.init()
@@ -24,10 +67,17 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 		flowLayout.minimumLineSpacing       = 15
 		flowLayout.scrollDirection = .horizontal
 		flowLayout.sectionInset = UIEdgeInsets(top: 22.5, left: 20.0, bottom: 22.5, right: 20.0)
-		featuredCollectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
-		addSubnode(featuredCollectionNode!)
+		self.featuredCollectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
+		self.addSubnode(self.featuredCollectionNode!)
 		
-		self.setupCollectionNodes()
+		self.retrieveFeaturedWorkouts { (featuredWorkoutsArray) in
+			
+			self.featuredWorkoutsArray = featuredWorkoutsArray
+			self.featuredCollectionNode?.reloadData()
+			
+			self.setupCollectionNodes()
+		}
+		
 		
 	}
 	

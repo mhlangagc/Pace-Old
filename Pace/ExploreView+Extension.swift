@@ -28,7 +28,7 @@ extension ExploreViewController {
 			
 			let featuredNode = FeaturedCollectionCell()
 			featuredNode.discoveryVC = self
-			featuredNode.featuredWorkoutsArray = retrieveFeaturedWorkouts()
+			//featuredNode.featuredWorkoutsArray = retrieveFeaturedWorkouts()
 			return featuredNode
 			
 		case 1:
