@@ -95,36 +95,6 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 	}
 	
 	
-	func showSendMailErrorAlert() {
-		
-		let alertController = UIAlertController(title: "Could not open mail!", message: "Please check your e-mail settings and try again.", preferredStyle: .alert)
-		
-		let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-			// ...
-		}
-		alertController.addAction(OKAction)
-		
-		self.present(alertController, animated: true) {
-			// ...
-		}
-	}
-	
-	
-	func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-		controller.dismiss(animated: true, completion: nil)
-	}
-	
-	func configuredMailComposeViewController() -> MFMailComposeViewController {
-		let mailComposerVC = MFMailComposeViewController()
-		mailComposerVC.mailComposeDelegate = self
-		mailComposerVC.setToRecipients(["gugulethu@paceapp.fitness"])
-		mailComposerVC.setSubject("Feedback on version )")
-		mailComposerVC.setMessageBody("My thoughts are...", isHTML: false)
-		
-		return mailComposerVC
-	}
-
-	
 	func handleSeeAllTrainers() {
 		
 		let seeAllPeopleVC = AllPeopleViewController()
@@ -176,19 +146,79 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 	
 	func becomeATrainer() {
 		
-		//	TO DO
-		print("Become a Trainer")
+		let mailComposeViewController = configuredMailComposeViewController()
+		if MFMailComposeViewController.canSendMail() {
+			
+			self.present(mailComposeViewController, animated: true, completion: nil)
+			
+		} else {
+			
+			self.showSendMailErrorAlert()
+			
+		}
+		
+	}
+	
+	func sendFeedback() {
+		
+		
+		let mailComposeViewController = configuredFeedbackMailComposeViewController()
+		if MFMailComposeViewController.canSendMail() {
+			
+			self.present(mailComposeViewController, animated: true, completion: nil)
+			
+		} else {
+			
+			self.showSendMailErrorAlert()
+			
+		}
+		
 		
 	}
 	
 	
-	func sendFeedback() {
+	func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+		controller.dismiss(animated: true, completion: nil)
+	}
+	
+	func configuredMailComposeViewController() -> MFMailComposeViewController {
+		let mailComposerVC = MFMailComposeViewController()
+		mailComposerVC.mailComposeDelegate = self
+		mailComposerVC.setToRecipients(["gugulethu@paceapp.fitness"])
+		mailComposerVC.setSubject("Joining Pace as a Trainer")
+		mailComposerVC.setMessageBody("Hi There, \n \n Because we are still new we are accepting trainers, to join via email. \n \n Compose your email here and we will be in touch in 30mins. ;) 🏋🏽🏊🏽‍♀️", isHTML: false)
 		
-		//	TO DO
-		print("Send Feedback")
+		return mailComposerVC
+	
+	}
+	
+	func configuredFeedbackMailComposeViewController() -> MFMailComposeViewController {
+		let mailComposerVC = MFMailComposeViewController()
+		mailComposerVC.mailComposeDelegate = self
+		mailComposerVC.setToRecipients(["gugulethu@paceapp.fitness"])
+		mailComposerVC.setSubject("Some thoughts Pace...")
+		mailComposerVC.setMessageBody("Hi There, \n \n We are new and would love to know all your thoughts, criticisms, ideas on improvement or just your workout story. \n \n Send us your feedback here and we will be in touch within 10mins tops ;). 🏊🏽‍♀️🏋🏽 \n \n", isHTML: false)
 		
+		return mailComposerVC
+		
+	}
+	
+	
+	func showSendMailErrorAlert() {
+		
+		let alertController = UIAlertController(title: "Could not open mail!", message: "Please check your e-mail settings and try again.", preferredStyle: .alert)
+		
+		let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+			// ...
+		}
+		alertController.addAction(OKAction)
+		
+		self.present(alertController, animated: true) {
+			// ...
+		}
 	}
 	
 	
 }
+
 

@@ -32,6 +32,7 @@ class TrainersAndFriendsCollectionNode: ASCellNode, ASCollectionDelegate, ASColl
 		flowLayout.scrollDirection = .horizontal
 		flowLayout.sectionInset = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 18.0, right: 15.0)
 		catergoryCollection = ASCollectionNode(collectionViewLayout: flowLayout)
+		catergoryCollection?.backgroundColor = .black
 		addSubnode(catergoryCollection!)
 		
 		self.setupCollectionNodes()
