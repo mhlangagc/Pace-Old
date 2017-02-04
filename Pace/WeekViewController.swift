@@ -41,9 +41,9 @@ class WeekViewController: ASViewController<ASDisplayNode>, ASTableDelegate, ASTa
 //	private func uploadToFirebaseStorageUsingImage() {
 //		
 //		let imageName = NSUUID().uuidString
-//		let ref = FIRStorage.storage().reference().child("FreeWorkoutImages").child(imageName)
+//		let ref = FIRStorage.storage().reference().child("PopularWorkoutImages").child(imageName)
 //		
-//		if let uploadData = UIImageJPEGRepresentation(UIImage(named: "shot")!, 0.5) {
+//		if let uploadData = UIImageJPEGRepresentation(UIImage(named: "1")!, 0.5) {
 //			ref.put(uploadData, metadata: nil, completion: { (metadata, error) in
 //				
 //				if error != nil {
@@ -65,16 +65,16 @@ class WeekViewController: ASViewController<ASDisplayNode>, ASTableDelegate, ASTa
 //		let ref = FIRDatabase.database().reference().child("ExploreWorkouts").child("Male").child("PopularWorkouts")
 //		let childRef = ref.childByAutoId()
 //		
-//		let values = ["numberOfReviews": 35,
-//		              "rating": 3,
+//		let values = ["numberOfReviews": 334,
+//		              "rating": 4,
 //		              "trainerImageUrl": "",
-//		              "trainerName": "Li Shing",
+//		              "trainerName": "Theodore Tyson Jr",
 //		              "workoutImageURL": imageUrl,
-//		              "workoutCatergory": WorkoutCatergory.cardio.rawValue,
+//		              "workoutCatergory": WorkoutCatergory.home.rawValue,
 //		              "workoutDescription": "If you are looking to get toned and enjoy fast paced interval training to shed far this workout is for you.",
-//		              "workoutName" : "Wednesday Abs Gym Workout",
-//		              "workoutPrice" : PriceEnum.free.rawValue,
-//		              "workoutTime" : 15] as [String : Any]
+//		              "workoutName" : "Weekend Cardio for Two",
+//		              "workoutPrice" : PriceEnum.threeDollars.rawValue,
+//		              "workoutTime" : 25] as [String : Any]
 //	
 //		childRef.updateChildValues(values) { (error, ref) in
 //			if error != nil {

@@ -11,6 +11,7 @@ import UIKit
 enum WorkoutCatergory: String {
 	
 	case legs = "Great for Legs"
+	case core = "for your core"
 	case butt = "For your Butt"
 	case armsAndShoulders = "For Arms & Shoulders"
 	case cardio = "Cardio & Weight Loss"
@@ -18,6 +19,7 @@ enum WorkoutCatergory: String {
 	case mobility = "For Stretching & Relaxing"
 	case sevenmin = "7 min workout"
 	case chest = "For your Chest"
+	case home = "Home Workout"
 	
 }
 
