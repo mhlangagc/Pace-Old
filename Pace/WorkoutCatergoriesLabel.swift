@@ -21,7 +21,6 @@ class WorkoutCatergoriesLabel: BaseCell {
 		
 		backgroundColor = UIColor.black
 		
-		
 	}
 	
 	
@@ -30,7 +29,7 @@ class WorkoutCatergoriesLabel: BaseCell {
 		let alignmentStyle = NSMutableParagraphStyle()
 		alignmentStyle.alignment = NSTextAlignment.left
 		categoryLabel.attributedText = NSAttributedString(
-			string: "Catergories",
+			string: "Sports Events in Cape Town",
 			attributes: [
 				NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightHeavy),
 				NSForegroundColorAttributeName: UIColor.greyBlackColor(),

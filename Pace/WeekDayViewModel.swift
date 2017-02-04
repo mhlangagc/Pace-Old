@@ -19,7 +19,7 @@ class WeekDayViewModel : NSObject {
 		sunday.isOccupied = false
 		sunday.isCompleted = false
 		sunday.isRecovery = false
-		sunday.backgroundImage = UIImage(named: "featuredWorkout")
+		sunday.backgroundImage = UIImage(named: "1")
 		sunday.creatingTrainer = "Ell Marshall"
 		sunday.creatingTrainerImage = UIImage(named: "trainer")
 		
@@ -31,7 +31,7 @@ class WeekDayViewModel : NSObject {
 		monday.isOccupied = false
 		monday.isCompleted = false
 		monday.isRecovery = false
-		monday.backgroundImage = UIImage(named: "legs")
+		monday.backgroundImage = UIImage(named: "2")
 		monday.creatingTrainer = "Maria Sharapova"
 		monday.creatingTrainerImage = UIImage(named: "maria")
 		
@@ -43,7 +43,7 @@ class WeekDayViewModel : NSObject {
 		tuesday.isOccupied = false
 		tuesday.isCompleted = false
 		tuesday.isRecovery = true
-		tuesday.backgroundImage = UIImage(named: "butt")
+		tuesday.backgroundImage = UIImage(named: "3")
 		tuesday.creatingTrainer = "Ell Marshall"
 		tuesday.creatingTrainerImage = UIImage(named: "trainer")
 		
@@ -55,7 +55,7 @@ class WeekDayViewModel : NSObject {
 		wednesday.isOccupied = false
 		wednesday.isCompleted = false
 		wednesday.isRecovery = false
-		wednesday.backgroundImage = UIImage(named: "20")
+		wednesday.backgroundImage = UIImage(named: "4")
 		wednesday.creatingTrainer = "Mila George"
 		wednesday.creatingTrainerImage = UIImage(named: "cynthia")
 		
@@ -67,7 +67,7 @@ class WeekDayViewModel : NSObject {
 		thursday.isOccupied = false
 		thursday.isCompleted = false
 		thursday.isRecovery = true
-		thursday.backgroundImage = UIImage(named: "21")
+		thursday.backgroundImage = UIImage(named: "5")
 		thursday.creatingTrainer = "Justin Margolis"
 		thursday.creatingTrainerImage = UIImage(named: "justin")
 		
@@ -79,7 +79,7 @@ class WeekDayViewModel : NSObject {
 		friday.isOccupied = false
 		friday.isCompleted = false
 		friday.isRecovery = false
-		friday.backgroundImage = UIImage(named: "22")
+		friday.backgroundImage = UIImage(named: "6")
 		friday.creatingTrainer = "Maria Sharapova"
 		friday.creatingTrainerImage = UIImage(named: "maria")
 		
@@ -91,7 +91,7 @@ class WeekDayViewModel : NSObject {
 		saturday.isOccupied = false
 		saturday.isCompleted = false
 		saturday.isRecovery = true
-		saturday.backgroundImage = UIImage(named: "23")
+		saturday.backgroundImage = UIImage(named: "7")
 		saturday.creatingTrainer = "Simon Nicholson"
 		saturday.creatingTrainerImage = UIImage(named: "simon")
 		
