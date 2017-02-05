@@ -137,6 +137,7 @@
 		C6B1182E1E217E47002BB4E8 /* HealthConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1182D1E217E47002BB4E8 /* HealthConnectViewController.swift */; };
 		C6B118331E218245002BB4E8 /* GoalsInterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118321E218245002BB4E8 /* GoalsInterestsViewController.swift */; };
 		C6B118351E218259002BB4E8 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118341E218259002BB4E8 /* RoutineViewController.swift */; };
+		C6B2253E1E47C5BA00A4B9B3 /* WorkoutProcessPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2253D1E47C5BA00A4B9B3 /* WorkoutProcessPopup.swift */; };
 		C6BB148F1E3FA1E700BF6F66 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB148E1E3FA1E700BF6F66 /* LoginViewController.swift */; };
 		C6BB14911E3FB08A00BF6F66 /* OnboardingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB14901E3FB08A00BF6F66 /* OnboardingImageView.swift */; };
 		C6BE5C131E402ADA00770A42 /* PaceAppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE5C121E402ADA00770A42 /* PaceAppServices.swift */; };
@@ -312,6 +313,7 @@
 		C6B1182D1E217E47002BB4E8 /* HealthConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthConnectViewController.swift; sourceTree = "<group>"; };
 		C6B118321E218245002BB4E8 /* GoalsInterestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsInterestsViewController.swift; sourceTree = "<group>"; };
 		C6B118341E218259002BB4E8 /* RoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
+		C6B2253D1E47C5BA00A4B9B3 /* WorkoutProcessPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutProcessPopup.swift; sourceTree = "<group>"; };
 		C6BB148E1E3FA1E700BF6F66 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C6BB14901E3FB08A00BF6F66 /* OnboardingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingImageView.swift; sourceTree = "<group>"; };
 		C6BE5C121E402ADA00770A42 /* PaceAppServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceAppServices.swift; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 		454535841E18B13300653252 /* Workout View */ = {
 			isa = PBXGroup;
 			children = (
+				C6B2253D1E47C5BA00A4B9B3 /* WorkoutProcessPopup.swift */,
 				45AC38FD1E188FE0003DC46B /* WorkoutProcessMenuBar.swift */,
 				45AC38FB1E188EE1003DC46B /* TouchBarHeaderView.swift */,
 				45AC38F71E188B95003DC46B /* WorkoutProcessViewController.swift */,
@@ -1298,6 +1301,7 @@
 				45F3AA241E15B37300D70C84 /* ExploreModel.swift in Sources */,
 				C6B1182E1E217E47002BB4E8 /* HealthConnectViewController.swift in Sources */,
 				450D916D1E03F778009D9144 /* FollowersViewController+Extension.swift in Sources */,
+				C6B2253E1E47C5BA00A4B9B3 /* WorkoutProcessPopup.swift in Sources */,
 				450D91681E03E815009D9144 /* RatingsNode.swift in Sources */,
 				451D07901DFE586900940301 /* DiscoverProfileViewController.swift in Sources */,
 				45B5ADA31DFC025E00115E2C /* ExtensionConstants.swift in Sources */,

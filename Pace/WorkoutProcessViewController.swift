@@ -10,12 +10,18 @@ import UIKit
 
 class WorkoutProcessViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
 	
+	var menuBar : WorkoutProcessMenuBar?
 	var touchBarView =  TouchBarHeaderView()
 	var workoutTableView : UITableView?
 	var musicPlayerView : MusicPlayerView?
 	let workoutCellViewID = "workoutCellViewID"
 	
 	var exercisesArray : [ExerciseModel]?
+	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		
+		return UIStatusBarStyle.lightContent
+	}
 	
 	lazy var goButton : UIButton = {
 		
@@ -46,7 +52,7 @@ class WorkoutProcessViewController : UIViewController, UITableViewDataSource, UI
 		super.viewDidLoad()
 		
 		exercisesArray = ExerciseSetup.setupExercises()
-		
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
 		self.navigationController?.navigationBar.isHidden = true
 		self.setupMenuBar()
 		self.setUpWorkoutTableView()
@@ -60,9 +66,9 @@ class WorkoutProcessViewController : UIViewController, UITableViewDataSource, UI
 	
 	func setupMenuBar() {
 		
-		let menuBar = WorkoutProcessMenuBar.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 75.0))
-		menuBar.workoutProcessVC = self
-		view.addSubview(menuBar)
+		menuBar = WorkoutProcessMenuBar.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 75.0))
+		menuBar?.workoutProcessVC = self
+		view.addSubview(menuBar!)
 		
 	}
 	
@@ -130,14 +136,6 @@ class WorkoutProcessViewController : UIViewController, UITableViewDataSource, UI
 		
 	}
 	
-	func handleDismiss() {
-		
-		self.dismiss(animated: true) { 
-			//	DO DO
-		}
-		
-	}
-	
 	func handleGo() {
 		
 		UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 10, initialSpringVelocity: 15, options: UIViewAnimationOptions.curveEaseInOut, animations: { 
@@ -149,13 +147,43 @@ class WorkoutProcessViewController : UIViewController, UITableViewDataSource, UI
 			
 			self.goButton.isEnabled = false
 			self.workoutTableView?.layer.opacity = 1.0
-			
+			self.menuBar?.timerLabel.layer.opacity = 1.0
+			self.menuBar?.endButton.setImage(UIImage(named: "more"), for: UIControlState.normal)
+			self.menuBar?.endButton.addTarget(self, action: #selector(self.handleEndWorkout), for: UIControlEvents.touchUpInside)
 		}
 		
 	}
 	
 	
 	func handleEndWorkout() {
+		
+		if let window = UIApplication.shared.keyWindow {
+			
+			popUpLauncher.showEndWorkoutPopUp(currentView: window)
+			
+		}
+		
+	}
+	
+	lazy var popUpLauncher: EndWorkoutPopupLauncher = {
+		
+		let launcher = EndWorkoutPopupLauncher()
+		launcher.workoutProcessVC = self
+		return launcher
+		
+	}()
+	
+	func handleCancelWorkout() {
+		
+		self.dismiss(animated: true) { 
+			
+			//	 TO DO
+			
+		}
+		
+	}
+	
+	func endWorkout() {
 		
 		let vc = WorkoutCompleteVIewController()
 		self.navigationController?.pushViewController(vc, animated: true)

@@ -92,7 +92,7 @@ class WelcomeLaunchViewController: UIViewController {
 		
 		animationView?.play(completion: { (finished) in
 			
-			UIView.animate(withDuration: 3.0, delay: 0.0, usingSpringWithDamping: 25, initialSpringVelocity: 5, options: UIViewAnimationOptions.curveEaseIn, animations: {
+			UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 10.0, initialSpringVelocity: 1.0, options: UIViewAnimationOptions.curveLinear, animations: {
 				
 				self.lottieTopConstraint?.constant = -150
 				
