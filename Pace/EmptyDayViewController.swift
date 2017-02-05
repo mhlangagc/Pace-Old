@@ -12,6 +12,7 @@ import Lottie
 class EmptyDayViewController: UIViewController {
 	
 	var routineWorkoutModel : WeekRoutineModel?
+	var lottieAnimationView : LAAnimationView?
 	
 	let detailLabel: UILabel = {
 		
@@ -49,7 +50,6 @@ class EmptyDayViewController: UIViewController {
 		self.setupNavigationBar()
 		self.addViews()
 		self.lottieAnimationView?.play()
-//		self.lottieAnimationView?.loopAnimation = true
 		
     }
 	
@@ -59,12 +59,10 @@ class EmptyDayViewController: UIViewController {
 		navigationNoLineBar()
 		self.navigationItem.title = routineWorkoutModel?.dayName
 		self.navigationController?.navigationBar.tintColor = UIColor.white
-		self.navigationController?.navigationBar.barTintColor = UIColor.darkerBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.darkerBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.black
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
 		
 	}
-	
-	var lottieAnimationView : LAAnimationView?
 	
 	func handlePlayAnimation() {
 		
@@ -85,6 +83,7 @@ class EmptyDayViewController: UIViewController {
 		lottieAnimationView = LAAnimationView.animationNamed("\((routineWorkoutModel?.dayName)![0...0])")
 		lottieAnimationView?.backgroundColor = UIColor.darkerBlack()
 		lottieAnimationView?.isUserInteractionEnabled = true
+		lottieAnimationView?.tintColor = selectedDayColour
 		lottieAnimationView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handlePlayAnimation)))
 		lottieAnimationView?.layer.cornerRadius = 70.0
 		lottieAnimationView?.layer.masksToBounds = true
