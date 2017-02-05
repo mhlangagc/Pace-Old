@@ -65,7 +65,7 @@ class WeekHeaderView : BaseView {
 	
 	func handleFindWorkouts() {
 		
-		myRoutineVC.handleOpenDiscovery()
+		myRoutineVC?.handleOpenDiscovery()
 		
 	}
 	
