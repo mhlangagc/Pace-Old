@@ -143,6 +143,12 @@
 		C6F770D81E4718C200349C5B /* LottieLogo2.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F770D71E4718C200349C5B /* LottieLogo2.json */; };
 		C6F770DA1E4718F800349C5B /* WelcomeLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F770D91E4718F800349C5B /* WelcomeLaunchViewController.swift */; };
 		C6F770DC1E472BA300349C5B /* WeekHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F770DB1E472BA300349C5B /* WeekHeaderView.swift */; };
+		C6F770E21E4757A200349C5B /* EmptyDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F770E01E4757A200349C5B /* EmptyDayViewController.swift */; };
+		C6F770EE1E476B0500349C5B /* S.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F770ED1E476B0500349C5B /* S.json */; };
+		C6F770F01E476B0E00349C5B /* M.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F770EF1E476B0E00349C5B /* M.json */; };
+		C6F770F21E476B1800349C5B /* T.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F770F11E476B1800349C5B /* T.json */; };
+		C6F770F41E476B2B00349C5B /* W.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F770F31E476B2B00349C5B /* W.json */; };
+		C6F770F61E476B3400349C5B /* F.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F770F51E476B3400349C5B /* F.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -312,6 +318,12 @@
 		C6F770D71E4718C200349C5B /* LottieLogo2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LottieLogo2.json; sourceTree = "<group>"; };
 		C6F770D91E4718F800349C5B /* WelcomeLaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeLaunchViewController.swift; sourceTree = "<group>"; };
 		C6F770DB1E472BA300349C5B /* WeekHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekHeaderView.swift; sourceTree = "<group>"; };
+		C6F770E01E4757A200349C5B /* EmptyDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyDayViewController.swift; sourceTree = "<group>"; };
+		C6F770ED1E476B0500349C5B /* S.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = S.json; sourceTree = "<group>"; };
+		C6F770EF1E476B0E00349C5B /* M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = M.json; sourceTree = "<group>"; };
+		C6F770F11E476B1800349C5B /* T.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = T.json; sourceTree = "<group>"; };
+		C6F770F31E476B2B00349C5B /* W.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = W.json; sourceTree = "<group>"; };
+		C6F770F51E476B3400349C5B /* F.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = F.json; sourceTree = "<group>"; };
 		DC48F02A471D422621621F63 /* Pods_Pace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -642,7 +654,7 @@
 		45B5AD731DFBF8E900115E2C /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				C6F770D71E4718C200349C5B /* LottieLogo2.json */,
+				C6F770EC1E476A6200349C5B /* Lottie JSON */,
 				450D91701E040BF7009D9144 /* Fonts */,
 				45B5AD4D1DFBF71100115E2C /* LaunchScreen.storyboard */,
 				45B5AD4B1DFBF71100115E2C /* Assets.xcassets */,
@@ -763,6 +775,7 @@
 			children = (
 				45ACEAB41DFFB60700C94B7D /* WeekView */,
 				45ACEAB71DFFB64D00C94B7D /* DayDetailsView */,
+				C6F770DD1E47577900349C5B /* Empty View */,
 			);
 			name = "Week Tab";
 			sourceTree = "<group>";
@@ -948,6 +961,27 @@
 			name = "Interests & Routine";
 			sourceTree = "<group>";
 		};
+		C6F770DD1E47577900349C5B /* Empty View */ = {
+			isa = PBXGroup;
+			children = (
+				C6F770E01E4757A200349C5B /* EmptyDayViewController.swift */,
+			);
+			name = "Empty View";
+			sourceTree = "<group>";
+		};
+		C6F770EC1E476A6200349C5B /* Lottie JSON */ = {
+			isa = PBXGroup;
+			children = (
+				C6F770ED1E476B0500349C5B /* S.json */,
+				C6F770EF1E476B0E00349C5B /* M.json */,
+				C6F770F11E476B1800349C5B /* T.json */,
+				C6F770F31E476B2B00349C5B /* W.json */,
+				C6F770F51E476B3400349C5B /* F.json */,
+				C6F770D71E4718C200349C5B /* LottieLogo2.json */,
+			);
+			name = "Lottie JSON";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1073,9 +1107,14 @@
 				45B5AD981DFBFC4500115E2C /* BebasNeue-Bold.otf in Resources */,
 				C6057EF21E3E4B7900AC62EA /* GoogleService-Info.plist in Resources */,
 				C65CAADE1E3E7C900047B78A /* GoogleService-Info.plist in Resources */,
+				C6F770F21E476B1800349C5B /* T.json in Resources */,
+				C6F770F01E476B0E00349C5B /* M.json in Resources */,
+				C6F770F61E476B3400349C5B /* F.json in Resources */,
+				C6F770F41E476B2B00349C5B /* W.json in Resources */,
 				45B5AD4F1DFBF71100115E2C /* LaunchScreen.storyboard in Resources */,
 				C6F770D81E4718C200349C5B /* LottieLogo2.json in Resources */,
 				45B5AD4C1DFBF71100115E2C /* Assets.xcassets in Resources */,
+				C6F770EE1E476B0500349C5B /* S.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1189,6 +1228,7 @@
 				45F7F5D61DFD565A00DD1E33 /* ActivityCell.swift in Sources */,
 				45F7F5D21DFD4F1700DD1E33 /* NewsCollectionCell.swift in Sources */,
 				45275E0E1DFF0DE300DF6F38 /* ExerciseCellNode.swift in Sources */,
+				C6F770E21E4757A200349C5B /* EmptyDayViewController.swift in Sources */,
 				450082001DFC9051006AA959 /* CatergoryWorkoutCollection.swift in Sources */,
 				C6B1182A1E21729F002BB4E8 /* NameEntryViewController.swift in Sources */,
 				45C247431DFC5FF700B16AEE /* JustAdded Label.swift in Sources */,
