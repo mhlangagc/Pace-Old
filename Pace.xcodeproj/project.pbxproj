@@ -122,7 +122,6 @@
 		45F7F5D81DFD66EC00DD1E33 /* NewsDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7F5D71DFD66EC00DD1E33 /* NewsDetailsCell.swift */; };
 		45F7F5DA1DFD8AD200DD1E33 /* WeekTableNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7F5D91DFD8AD200DD1E33 /* WeekTableNodeCell.swift */; };
 		BD372C2BE13A69DDA8ABFAA5 /* Pods_Pace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC48F02A471D422621621F63 /* Pods_Pace.framework */; };
-		C6057EEB1E3E269A00AC62EA /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6057EEA1E3E269A00AC62EA /* WelcomeViewController.swift */; };
 		C6057EEE1E3E288400AC62EA /* PaceErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6057EED1E3E288400AC62EA /* PaceErrorHandling.swift */; };
 		C6057EF01E3E28D900AC62EA /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6057EEF1E3E28D900AC62EA /* AuthenticationService.swift */; };
 		C6057EF21E3E4B7900AC62EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6057EF11E3E4B7900AC62EA /* GoogleService-Info.plist */; };
@@ -141,6 +140,8 @@
 		C6BB148F1E3FA1E700BF6F66 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB148E1E3FA1E700BF6F66 /* LoginViewController.swift */; };
 		C6BB14911E3FB08A00BF6F66 /* OnboardingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB14901E3FB08A00BF6F66 /* OnboardingImageView.swift */; };
 		C6BE5C131E402ADA00770A42 /* PaceAppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE5C121E402ADA00770A42 /* PaceAppServices.swift */; };
+		C6F770D81E4718C200349C5B /* LottieLogo2.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F770D71E4718C200349C5B /* LottieLogo2.json */; };
+		C6F770DA1E4718F800349C5B /* WelcomeLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F770D91E4718F800349C5B /* WelcomeLaunchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -288,7 +289,6 @@
 		59335CBDC2D2803DE42031D5 /* Pods_PaceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A08244F9BF7AE8D216914864 /* Pods-Pace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pace/Pods-Pace.debug.xcconfig"; sourceTree = "<group>"; };
 		A99BA1B4E6F660258B376E7C /* Pods_PaceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6057EEA1E3E269A00AC62EA /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C6057EED1E3E288400AC62EA /* PaceErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceErrorHandling.swift; sourceTree = "<group>"; };
 		C6057EEF1E3E28D900AC62EA /* AuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		C6057EF11E3E4B7900AC62EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -308,6 +308,8 @@
 		C6BB148E1E3FA1E700BF6F66 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C6BB14901E3FB08A00BF6F66 /* OnboardingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingImageView.swift; sourceTree = "<group>"; };
 		C6BE5C121E402ADA00770A42 /* PaceAppServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceAppServices.swift; sourceTree = "<group>"; };
+		C6F770D71E4718C200349C5B /* LottieLogo2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LottieLogo2.json; sourceTree = "<group>"; };
+		C6F770D91E4718F800349C5B /* WelcomeLaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeLaunchViewController.swift; sourceTree = "<group>"; };
 		DC48F02A471D422621621F63 /* Pods_Pace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -637,6 +639,7 @@
 		45B5AD731DFBF8E900115E2C /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				C6F770D71E4718C200349C5B /* LottieLogo2.json */,
 				450D91701E040BF7009D9144 /* Fonts */,
 				45B5AD4D1DFBF71100115E2C /* LaunchScreen.storyboard */,
 				45B5AD4B1DFBF71100115E2C /* Assets.xcassets */,
@@ -745,7 +748,7 @@
 		45B5AD7D1DFBFA6F00115E2C /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				C6057EEA1E3E269A00AC62EA /* WelcomeViewController.swift */,
+				C6F770D91E4718F800349C5B /* WelcomeLaunchViewController.swift */,
 				C6B1182F1E218037002BB4E8 /* SignUp */,
 				C6B118301E218066002BB4E8 /* Login */,
 			);
@@ -1068,6 +1071,7 @@
 				C6057EF21E3E4B7900AC62EA /* GoogleService-Info.plist in Resources */,
 				C65CAADE1E3E7C900047B78A /* GoogleService-Info.plist in Resources */,
 				45B5AD4F1DFBF71100115E2C /* LaunchScreen.storyboard in Resources */,
+				C6F770D81E4718C200349C5B /* LottieLogo2.json in Resources */,
 				45B5AD4C1DFBF71100115E2C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1165,7 +1169,6 @@
 				45B2A4C71DFC993B00C099C7 /* FollowProfileCell.swift in Sources */,
 				4545358F1E18F2FC00653252 /* RatingPopUpLauncher.swift in Sources */,
 				45B5AD9F1DFC022A00115E2C /* StringExtensions.swift in Sources */,
-				C6057EEB1E3E269A00AC62EA /* WelcomeViewController.swift in Sources */,
 				45F7F5CE1DFD4E6100DD1E33 /* CollectionViewBaseCell.swift in Sources */,
 				45C214EA1E05B84400C5BCCF /* RatingsNodeView.swift in Sources */,
 				45C214F21E05DBC400C5BCCF /* SettingsViewController.swift in Sources */,
@@ -1278,6 +1281,7 @@
 				45D9DC5B1E041899001580B3 /* MenuBarCell.swift in Sources */,
 				45B5AD921DFBFC2100115E2C /* TextSpacing.swift in Sources */,
 				45B5AD4A1DFBF71100115E2C /* Pace.xcdatamodeld in Sources */,
+				C6F770DA1E4718F800349C5B /* WelcomeLaunchViewController.swift in Sources */,
 				456DFFEA1E0D10B60057338D /* NavigationBarLine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

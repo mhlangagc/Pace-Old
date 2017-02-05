@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if FIRAuth.auth()?.currentUser?.uid == nil {
 			
 			self.window = UIWindow(frame: UIScreen.main.bounds)
-			self.window?.rootViewController = UINavigationController(rootViewController: WelcomeViewController())
+			self.window?.rootViewController = UINavigationController(rootViewController: WelcomeLaunchViewController())
 			self.window?.makeKeyAndVisible()
 			self.window?.tintColor = UIColor.black
 			

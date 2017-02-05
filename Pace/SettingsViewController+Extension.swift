@@ -170,7 +170,7 @@ extension SettingsViewController {
 			
 		}
 	
-		let welcomeVC = WelcomeViewController()
+		let welcomeVC = WelcomeLaunchViewController()
 		welcomeVC.modalTransitionStyle = .flipHorizontal
 		self.present(UINavigationController(rootViewController: welcomeVC), animated: true) {
 			
