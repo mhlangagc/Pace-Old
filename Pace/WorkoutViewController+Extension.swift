@@ -55,7 +55,7 @@ extension WorkoutViewController {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		return (exercisesArray?.count)!
+		return  3 //(exercisesArray?.count)!
 		
 	}
 	
