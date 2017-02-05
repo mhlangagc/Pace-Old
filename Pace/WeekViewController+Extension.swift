@@ -25,11 +25,30 @@ extension WeekViewController {
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		var routineCell = tableView.dequeueReusableCell(withIdentifier: weekCellID) as? WeekTableCell
+		let todayFromArray = weeklyWorkoutsArray?[indexPath.item]
 		
 		if (routineCell == nil) {
 			tableView.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
 			routineCell = tableView.dequeueReusableCell(withIdentifier: weekCellID) as? WeekTableCell
 		}
+		
+		let date = Date()
+		let formatter  = DateFormatter()
+		formatter.dateFormat = "EEEE"
+		let todayWorkoutName = formatter.string(from: date)
+		
+		if todayWorkoutName.uppercased() == todayFromArray?.dayName?.uppercased() {
+			
+			routineCell?.todayIndicatorView.isHidden = false
+			routineCell?.weekNameText.textColor = UIColor.white
+			routineCell?.todayIndicatorView.backgroundColor = todayFromArray?.color
+			
+		} else {
+			
+			routineCell?.todayIndicatorView.isHidden = true
+			
+		}
+
 		
 		
 		if (routineCell!.selectedBackgroundView != nil) {
@@ -39,7 +58,7 @@ extension WeekViewController {
 			routineCell!.selectedBackgroundView = backgroundView
 		}
 		
-		routineCell?.routineModel = weeklyWorkoutsArray?[indexPath.item]
+		routineCell?.routineModel = todayFromArray
 		routineCell?.backgroundColor = UIColor.black
 		
 		return routineCell!

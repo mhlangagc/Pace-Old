@@ -103,7 +103,7 @@ class WeekTableCell: TableBaseCell {
 		todayIndicatorView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
 		todayIndicatorView.topAnchor.constraint(equalTo: topAnchor).isActive = true
 		todayIndicatorView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-		todayIndicatorView.widthAnchor.constraint(equalToConstant: 5.0).isActive = true
+		todayIndicatorView.widthAnchor.constraint(equalToConstant: 3.0).isActive = true
 		
 		
 		activityIndicator.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
@@ -112,13 +112,13 @@ class WeekTableCell: TableBaseCell {
 		activityIndicator.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
 		
 		
-		weekNameText.leftAnchor.constraint(equalTo: todayIndicatorView.rightAnchor, constant: 15.0).isActive = true
+		weekNameText.leftAnchor.constraint(equalTo: todayIndicatorView.rightAnchor, constant: 17.0).isActive = true
 		weekNameText.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
 		weekNameText.rightAnchor.constraint(equalTo: activityIndicator.leftAnchor, constant: -10).isActive = true
 		weekNameText.heightAnchor.constraint(equalToConstant: 25.0).isActive = true
 		
 		
-		workoutNameText.leftAnchor.constraint(equalTo: todayIndicatorView.rightAnchor, constant: 15.0).isActive = true
+		workoutNameText.leftAnchor.constraint(equalTo: todayIndicatorView.rightAnchor, constant: 17.0).isActive = true
 		workoutNameText.topAnchor.constraint(equalTo: weekNameText.bottomAnchor, constant: 10.0).isActive = true
 		workoutNameText.rightAnchor.constraint(equalTo: activityIndicator.leftAnchor, constant: -10).isActive = true
 		workoutNameText.heightAnchor.constraint(equalToConstant: 25.0).isActive = true
