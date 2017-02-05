@@ -10,6 +10,8 @@ import UIKit
 import AsyncDisplayKit
 import Firebase
 import FirebaseAuth
+import MessageUI
+import SafariServices
 
 
 extension SettingsViewController {
@@ -91,11 +93,15 @@ extension SettingsViewController {
 			
 			if indexPath.item == 0 {
 				
+				
 				print("Edit Profile")
+				
 				
 			} else if indexPath.item == 1 {
 				
+				
 				print("Change Units")
+				
 			
 			} else {
 				
@@ -108,7 +114,16 @@ extension SettingsViewController {
 			
 			if indexPath.item == 0 {
 				
-				print("Become a Trainer")
+				let mailComposeViewController = configuredMailComposeViewController()
+				if MFMailComposeViewController.canSendMail() {
+					
+					self.present(mailComposeViewController, animated: true, completion: nil)
+					
+				} else {
+					
+					self.showSendMailErrorAlert()
+					
+				}
 				
 			}
 			
@@ -116,7 +131,16 @@ extension SettingsViewController {
 			
 			if indexPath.item == 0 {
 				
-				print("Send Feedback")
+				let mailComposeViewController = configuredFeedbackMailComposeViewController()
+				if MFMailComposeViewController.canSendMail() {
+					
+					self.present(mailComposeViewController, animated: true, completion: nil)
+					
+				} else {
+					
+					self.showSendMailErrorAlert()
+					
+				}
 				
 			}
 			
@@ -128,7 +152,8 @@ extension SettingsViewController {
 				
 			} else {
 				
-				print("Our Terms")
+				let svc = SFSafariViewController(url: NSURL(string: termsLink)! as URL)
+				self.present(svc, animated: true, completion: nil)
 				
 			}
 			

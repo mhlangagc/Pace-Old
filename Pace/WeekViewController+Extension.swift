@@ -7,34 +7,54 @@
 //
 
 import UIKit
-import AsyncDisplayKit
 
 extension WeekViewController {
 	
-	func numberOfSections(in tableNode: ASTableNode) -> Int {
+	func numberOfSections(in tableView: UITableView) -> Int {
 		
 		return 1
 		
 	}
 	
-	func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		return (weeklyWorkouts?.count)!
-		
-	}
-	
-	func tableNode(_ tableNode: ASTableNode, nodeForRowAt indexPath: IndexPath) -> ASCellNode {
-		
-		let weekTableCell = WeekTableNodeCell()
-		weekTableCell.routineModel = weeklyWorkouts?[indexPath.item]
-		return weekTableCell
+		return (weeklyWorkoutsArray?.count)!
 		
 	}
 	
-	
-	func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let daySelected = weeklyWorkouts?[indexPath.item]
+		var routineCell = tableView.dequeueReusableCell(withIdentifier: weekCellID) as? WeekTableCell
+		
+		if (routineCell == nil) {
+			tableView.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
+			routineCell = tableView.dequeueReusableCell(withIdentifier: weekCellID) as? WeekTableCell
+		}
+		
+		
+		if (routineCell!.selectedBackgroundView != nil) {
+			
+			let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: routineCell!.frame.size.width, height: routineCell!.frame.size.height))
+			backgroundView.backgroundColor = UIColor.darkBlack()
+			routineCell!.selectedBackgroundView = backgroundView
+		}
+		
+		routineCell?.routineModel = weeklyWorkoutsArray?[indexPath.item]
+		routineCell?.backgroundColor = UIColor.black
+		
+		return routineCell!
+		
+	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		
+		return 85.0
+		
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		let daySelected = weeklyWorkoutsArray?[indexPath.item]
 		selectedDayColour = (daySelected?.color)!
 		
 		let dayDetailsVC = DayViewController()
@@ -42,7 +62,9 @@ extension WeekViewController {
 		dayDetailsVC.hidesBottomBarWhenPushed = true
 		self.navigationController?.pushViewController(dayDetailsVC, animated: true)
 		
-		tableNode.deselectRow(at: indexPath, animated: true)
+		weekTableView?.deselectRow(at: indexPath, animated: true)
+		
 		
 	}
+	
 }

@@ -142,6 +142,7 @@
 		C6BE5C131E402ADA00770A42 /* PaceAppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE5C121E402ADA00770A42 /* PaceAppServices.swift */; };
 		C6F770D81E4718C200349C5B /* LottieLogo2.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F770D71E4718C200349C5B /* LottieLogo2.json */; };
 		C6F770DA1E4718F800349C5B /* WelcomeLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F770D91E4718F800349C5B /* WelcomeLaunchViewController.swift */; };
+		C6F770DC1E472BA300349C5B /* WeekHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F770DB1E472BA300349C5B /* WeekHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -310,6 +311,7 @@
 		C6BE5C121E402ADA00770A42 /* PaceAppServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceAppServices.swift; sourceTree = "<group>"; };
 		C6F770D71E4718C200349C5B /* LottieLogo2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LottieLogo2.json; sourceTree = "<group>"; };
 		C6F770D91E4718F800349C5B /* WelcomeLaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeLaunchViewController.swift; sourceTree = "<group>"; };
+		C6F770DB1E472BA300349C5B /* WeekHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekHeaderView.swift; sourceTree = "<group>"; };
 		DC48F02A471D422621621F63 /* Pods_Pace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -554,6 +556,7 @@
 		45ACEAB41DFFB60700C94B7D /* WeekView */ = {
 			isa = PBXGroup;
 			children = (
+				C6F770DB1E472BA300349C5B /* WeekHeaderView.swift */,
 				45B5ADA61DFC095000115E2C /* WeekViewController.swift */,
 				45E3C0751DFD8F33002FD4F8 /* WeekViewController+Extension.swift */,
 				45F7F5D91DFD8AD200DD1E33 /* WeekTableNodeCell.swift */,
@@ -564,8 +567,8 @@
 		45ACEAB71DFFB64D00C94B7D /* DayDetailsView */ = {
 			isa = PBXGroup;
 			children = (
-				C69E48D21E3BA00B007AF3BF /* DayHeaderView */,
 				C690C7751E39CD07005B359E /* DiscoveryHeaderView */,
+				C69E48D21E3BA00B007AF3BF /* DayHeaderView */,
 				458842731E11D69D003B02C8 /* DayViewController.swift */,
 				45F3AA291E15E7B300D70C84 /* PreferencesPopUpLauncher.swift */,
 				458842751E11D89F003B02C8 /* DayViewController+Extension.swift */,
@@ -1235,6 +1238,7 @@
 				456B83361DFF50340012A1A2 /* StoreImageGradient.swift in Sources */,
 				45F3AA221E159AA200D70C84 /* ActivityViewModel.swift in Sources */,
 				45B5AD9B1DFC01DE00115E2C /* MBProgressHUD.m in Sources */,
+				C6F770DC1E472BA300349C5B /* WeekHeaderView.swift in Sources */,
 				45F7F5D01DFD4EE000DD1E33 /* ActivityCollectionCell.swift in Sources */,
 				45B5AD8E1DFBFC1700115E2C /* Reachability.swift in Sources */,
 				45F3AA261E15BB4000D70C84 /* ExploreViewModel.swift in Sources */,

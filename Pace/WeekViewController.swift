@@ -7,17 +7,18 @@
 //
 
 import UIKit
-import AsyncDisplayKit
 import Firebase
 import FirebaseStorage
 import FirebaseDatabase
 
 var selectedDayColour = UIColor.paceBrandColor()
 
-class WeekViewController: ASViewController<ASDisplayNode>, ASTableDelegate, ASTableDataSource {
-
-	var weekTableNode : ASTableNode?
-	var weeklyWorkouts : [WeekRoutineModel]?
+class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+	
+	var headerView =  WeekHeaderView()
+	var weekTableView : UITableView?
+	let weekCellID = "RoutineCellViewID"
+	var weeklyWorkoutsArray : [WeekRoutineModel]?
 	
 	lazy var WeeklyWorkoutsSetup: WeekDayViewModel = {
 		
@@ -26,84 +27,32 @@ class WeekViewController: ASViewController<ASDisplayNode>, ASTableDelegate, ASTa
 		
 	}()
 	
-	init() {
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		
-		weekTableNode = ASTableNode(style:.plain)
-		super.init(node: weekTableNode!)
+		weeklyWorkoutsArray = WeeklyWorkoutsSetup.setupWeekRoutine()
 		
-		self.setupWeekTableNode()
-		self.setupWorkoutsDays()
-//		self.uploadToFirebaseStorageUsingImage()
-		
-	}
-	
-	
-//	private func uploadToFirebaseStorageUsingImage() {
-//		
-//		let imageName = NSUUID().uuidString
-//		let ref = FIRStorage.storage().reference().child("PopularWorkoutImages").child(imageName)
-//		
-//		if let uploadData = UIImageJPEGRepresentation(UIImage(named: "1")!, 0.5) {
-//			ref.put(uploadData, metadata: nil, completion: { (metadata, error) in
-//				
-//				if error != nil {
-//					print("Failed to upload image:", (error?.localizedDescription)!)
-//					return
-//				}
-//				
-//				if let imageUrl = metadata?.downloadURL()?.absoluteString {
-//					self.createWorkoutWithImageUrl(imageUrl: imageUrl)
-//				}
-//				
-//			})
-//		}
-//	}
-//	
-//	
-//	private func createWorkoutWithImageUrl(imageUrl: String) {
-//		
-//		let ref = FIRDatabase.database().reference().child("ExploreWorkouts").child("Male").child("PopularWorkouts")
-//		let childRef = ref.childByAutoId()
-//		
-//		let values = ["numberOfReviews": 334,
-//		              "rating": 4,
-//		              "trainerImageUrl": "",
-//		              "trainerName": "Theodore Tyson Jr",
-//		              "workoutImageURL": imageUrl,
-//		              "workoutCatergory": WorkoutCatergory.home.rawValue,
-//		              "workoutDescription": "If you are looking to get toned and enjoy fast paced interval training to shed far this workout is for you.",
-//		              "workoutName" : "Weekend Cardio for Two",
-//		              "workoutPrice" : PriceEnum.threeDollars.rawValue,
-//		              "workoutTime" : 25] as [String : Any]
-//	
-//		childRef.updateChildValues(values) { (error, ref) in
-//			if error != nil {
-//				print((error?.localizedDescription)!)
-//				return
-//			}
-//			
-//		}
-//	}
-
-	
-	func setupWorkoutsDays() {
-		
-		weeklyWorkouts = WeeklyWorkoutsSetup.setupWeekRoutine()
-	}
-	
-	required init?(coder aDecoder: NSCoder) {
-		fatalError("Storyboards are incompatible with truth and beauty")
-	}
-	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+		self.setupWeekTableView()
 		navigationItem.title = "My Routine"
 		self.navigationController?.navigationBar.isHidden = true
-        view.backgroundColor = .black
+		view.backgroundColor = UIColor.black
+		weekTableView?.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
+		
+	}
+	
+	func setupWeekTableView() {
+		
+		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height)
+		weekTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.plain)
+		weekTableView?.backgroundColor = .black
+		weekTableView?.delegate = self
+		weekTableView?.dataSource = self
+		weekTableView?.separatorStyle = .none
+		weekTableView?.showsVerticalScrollIndicator = false
+		view.addSubview(weekTableView!)
 		
 		
-    }
+	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
@@ -111,15 +60,43 @@ class WeekViewController: ASViewController<ASDisplayNode>, ASTableDelegate, ASTa
 		UIApplication.shared.statusBarView?.backgroundColor = .black
 		navigationItem.title = "My Routine"
 		self.navigationController?.navigationBar.isHidden = true
+		self.setupHeaderView()
 	}
 	
-	func setupWeekTableNode() {
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		sizeHeaderToFit()
+	}
+	
+	func sizeHeaderToFit() {
 		
-		self.weekTableNode?.delegate = self
-		self.weekTableNode?.dataSource = self
-		self.weekTableNode?.backgroundColor = UIColor.black
-		self.weekTableNode?.view.separatorStyle = .none
-		self.weekTableNode?.view.showsVerticalScrollIndicator = false
+		headerView.setNeedsLayout()
+		headerView.layoutIfNeeded()
+		
+		let height = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+		var frame = headerView.frame
+		frame.size.height = height
+		headerView.frame = frame
+	}
+	
+	func setupHeaderView() {
+		
+		headerView  = WeekHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 335.0))
+		headerView.myRoutineVC = self
+		weekTableView?.tableHeaderView = headerView
+		
+	}
+	
+	func closeHeaderView() {
+		
+		headerView  = WeekHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0.0))
+		
+	}
+	
+	
+	func handleOpenDiscovery() {
+		
 		
 	}
 	

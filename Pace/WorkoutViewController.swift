@@ -36,6 +36,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		self.setupGetButton()
 		view.backgroundColor = UIColor.black
 		workoutDetailsTableView?.register(ExerciseCellView.self, forCellReuseIdentifier: exerciseCellID)
+		self.workoutDetailsTableView?.reloadData()
 		
 	}
 	
@@ -58,7 +59,6 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 		self.setupHeaderView()
 		self.setupNavigationBar()
-		self.workoutDetailsTableView?.reloadData()
 	}
 	
 	func setupNavigationBar() {
