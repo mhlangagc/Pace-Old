@@ -60,7 +60,7 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		UIApplication.shared.statusBarView?.backgroundColor = .black
 		navigationItem.title = "My Routine"
 		self.navigationController?.navigationBar.isHidden = true
-		self.setupHeaderView()
+		//self.setupHeaderView()
 	}
 	
 	
@@ -90,12 +90,16 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	
 	func closeHeaderView() {
 		
-		headerView  = WeekHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0.0))
+//		headerView.setNeedsLayout()
+//		headerView.layoutIfNeeded()
+//		headerView.isHidden = true
+//		headerView.frame.offsetBy(dx: 0.0, dy: -335.0)
 		
 	}
 	
 	
 	func handleOpenDiscovery() {
+		
 		
 		
 	}
