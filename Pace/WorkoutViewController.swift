@@ -110,7 +110,21 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 		getButtonView = GetButtonView.init(frame: CGRect(x: 0, y: view.frame.height - 144.0, width: view.frame.width, height: 80.0))
 		getButtonView?.workoutDetailsVC = self
-		getButtonView?.getButton?.setTitle("R\((WorkoutViewController.exploreWorkout?.workoutPrice?.rawValue)!)", for: UIControlState.normal)
+		
+		let price = WorkoutViewController.exploreWorkout?.workoutPrice?.rawValue
+		if price == 0.0 {
+			
+			getButtonView?.getButton?.setTitle("FREE", for: UIControlState.normal)
+			
+		} else {
+			
+			getButtonView?.getButton?.setTitle("R\(price!)", for: UIControlState.normal)
+		}
+		
+		
+			
+		
+		
 		view.addSubview(getButtonView!)
 	}
 
