@@ -13,26 +13,30 @@ class GetPopupLauncher : NSObject {
 	let backgroundView : UIView = {
 		
 		let view = UIView()
-		view.backgroundColor = UIColor.black
 		return view
 		
 	}()
 	
 	let blackView = UIView()
 	var cancelButton : UIButton?
-	var saveToMyProfileButton : UIButton?
-	var pickADayButton : UIButton?
+	var sundayButton : UIButton?
+	var mondayButton : UIButton?
+	var tuesdayButton : UIButton?
+	var wednesdayButton : UIButton?
+	var thursdayButton : UIButton?
+	var fridayButton : UIButton?
+	var saturdayButton : UIButton?
 	
 	override init() {
 		super.init()
 		
 	}
 	
-	let saveWorkoutLabel : UILabel = {
+	let addTo : UILabel = {
 		
 		let label = UILabel()
 		label.textColor = UIColor.greyBlackColor()
-		label.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightSemibold)
+		label.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightMedium)
 		return label
 		
 	}()
@@ -62,47 +66,10 @@ class GetPopupLauncher : NSObject {
 			window.addSubview(blackView)
 			
 			//	Background View
-			backgroundView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: 255.0)
+			backgroundView.backgroundColor = UIColor(white: 0.0, alpha: 0.25)
+			backgroundView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: 550)
 			
-			//	Save Workout
-			saveWorkoutLabel.frame = CGRect(x: 0.0, y: 12.0, width: backgroundView.frame.width, height: 25.0)
-			saveWorkoutLabel.text = "Save Workout"
-			saveWorkoutLabel.textAlignment = .center
-			backgroundView.addSubview(saveWorkoutLabel)
-			
-			
-			// Save to my profile view
-			saveToMyProfileButton = createButton(buttonLabel: "Save to my profile", buttonLabelColor: UIColor.black, buttonBackgroundColor: UIColor.paceBrandColor())
-			saveToMyProfileButton?.addTarget(self, action: #selector(handleCancel), for: UIControlEvents.touchUpInside)
-			saveToMyProfileButton?.frame = CGRect(x: 10.0, y: backgroundView.frame.height - 195.0, width: backgroundView.frame.width - 20.0, height: 57.0)
-//			saveToMyProfileButton?.roundedButton(corners: [.topLeft, .topRight], radius: 10)
-			let maskPAth1 = UIBezierPath(roundedRect: (saveToMyProfileButton?.bounds)!,
-			                             byRoundingCorners: [.topLeft, .topRight],
-			                             cornerRadii:CGSize(width: 10.0, height: 10.0))
-			let maskLayer1 = CAShapeLayer()
-			maskLayer1.frame = (saveToMyProfileButton?.bounds)!
-			maskLayer1.path = maskPAth1.cgPath
-			saveToMyProfileButton?.layer.mask = maskLayer1
-			backgroundView.addSubview(saveToMyProfileButton!)
-			
-			
-			// Pick a Day
-			pickADayButton = createButton(buttonLabel: "Pick a day", buttonLabelColor: UIColor.black, buttonBackgroundColor: UIColor.paceBrandColor())
-			pickADayButton?.addTarget(self, action: #selector(handleCancel), for: UIControlEvents.touchUpInside)
-			pickADayButton?.frame = CGRect(x: 10.0, y: backgroundView.frame.height - 136.0, width: backgroundView.frame.width - 20.0, height: 57.0)
-			pickADayButton?.roundedButton(corners: [.bottomLeft, .bottomRight], radius: 10)
-			backgroundView.addSubview(pickADayButton!)
-			
-			
-			//	Cancel Button
-			cancelButton = createButton(buttonLabel: "Cancel", buttonLabelColor: UIColor.paceBrandColor(), buttonBackgroundColor: UIColor.darkBlack())
-			cancelButton?.addTarget(self, action: #selector(handleCancel), for: UIControlEvents.touchUpInside)
-			cancelButton?.frame = CGRect(x: 10.0, y: backgroundView.frame.height - 67.0, width: backgroundView.frame.width - 20.0, height: 55.0)
-			cancelButton?.layer.cornerRadius = 7.0
-			cancelButton?.layer.masksToBounds = true
-			cancelButton?.layer.masksToBounds = true
-			backgroundView.addSubview(cancelButton!)
-			
+			self.savingButtons()
 			
 			window.addSubview(backgroundView)
 			
@@ -110,7 +77,7 @@ class GetPopupLauncher : NSObject {
 				
 				self.blackView.alpha = 1
 				
-				self.backgroundView.frame = CGRect(x: 0, y: window.frame.height - 255.0, width: window.frame.width, height: 255.0)
+				self.backgroundView.frame = CGRect(x: 0, y: window.frame.height - 550.0, width: window.frame.width, height: 550.0)
 				
 			}, completion: { (completed) in
 				
@@ -119,6 +86,74 @@ class GetPopupLauncher : NSObject {
 			})
 	
 		}
+	}
+	
+	func savingButtons() {
+		
+		//	Add To
+		addTo.frame = CGRect(x: 0.0, y: 10.0, width: backgroundView.frame.width, height: 25.0)
+		addTo.text = "Add workout to"
+		addTo.textAlignment = .center
+		backgroundView.addSubview(addTo)
+		
+		
+		// Sunday
+		sundayButton = createButton(buttonLabel: "Sunday", buttonLabelColor: UIColor(fromHexString: "174339"), buttonBackgroundColor: UIColor.paceBrandColor())
+		sundayButton?.addTarget(self, action: #selector(handleCancel), for: UIControlEvents.touchUpInside)
+		sundayButton?.frame = CGRect(x: 10.0, y: 58.0, width: backgroundView.frame.width - 20.0, height: 57.0)
+		sundayButton?.roundedButton(corners: [.topLeft, .topRight], radius: 10)
+		backgroundView.addSubview(sundayButton!)
+		
+		//	Monday
+		mondayButton = createButton(buttonLabel: "Monday", buttonLabelColor: UIColor(fromHexString: "174339"), buttonBackgroundColor: UIColor.paceBrandColor())
+		mondayButton?.addTarget(self, action: #selector(handleCancel), for: UIControlEvents.touchUpInside)
+		mondayButton?.frame = CGRect(x: 10.0, y: 58.0 + 57.75, width: backgroundView.frame.width - 20.0, height: 57.0)
+		backgroundView.addSubview(mondayButton!)
+		
+		//	Tuesday
+		tuesdayButton = createButton(buttonLabel: "Tuesday", buttonLabelColor: UIColor(fromHexString: "174339"), buttonBackgroundColor: UIColor.paceBrandColor())
+		tuesdayButton?.addTarget(self, action: #selector(handleCancel), for: UIControlEvents.touchUpInside)
+		tuesdayButton?.frame = CGRect(x: 10.0, y: 58.0 + (57.75 * 2) , width: backgroundView.frame.width - 20.0, height: 57.0)
+		backgroundView.addSubview(tuesdayButton!)
+		
+		
+		//	Wednesday
+		wednesdayButton = createButton(buttonLabel: "Wednesday", buttonLabelColor: UIColor(fromHexString: "174339"), buttonBackgroundColor: UIColor.paceBrandColor())
+		wednesdayButton?.addTarget(self, action: #selector(handleCancel), for: UIControlEvents.touchUpInside)
+		wednesdayButton?.frame = CGRect(x: 10.0, y: 58.0 + (57.75 * 3), width: backgroundView.frame.width - 20.0, height: 57.0)
+		backgroundView.addSubview(wednesdayButton!)
+		
+		
+		//	Thursday
+		thursdayButton = createButton(buttonLabel: "Thursday", buttonLabelColor: UIColor(fromHexString: "174339"), buttonBackgroundColor: UIColor.paceBrandColor())
+		thursdayButton?.addTarget(self, action: #selector(handleCancel), for: UIControlEvents.touchUpInside)
+		thursdayButton?.frame = CGRect(x: 10.0, y: 58.0 + (57.75 * 4), width: backgroundView.frame.width - 20.0, height: 57.0)
+		backgroundView.addSubview(thursdayButton!)
+		
+		//	Friday
+		fridayButton = createButton(buttonLabel: "Friday", buttonLabelColor: UIColor(fromHexString: "174339"), buttonBackgroundColor: UIColor.paceBrandColor())
+		fridayButton?.addTarget(self, action: #selector(handleCancel), for: UIControlEvents.touchUpInside)
+		fridayButton?.frame = CGRect(x: 10.0, y: 58.0 + (57.75 * 5), width: backgroundView.frame.width - 20.0, height: 57.0)
+		backgroundView.addSubview(fridayButton!)
+		
+		
+		// Saturday
+		saturdayButton = createButton(buttonLabel: "Saturday", buttonLabelColor: UIColor(fromHexString: "174339"), buttonBackgroundColor: UIColor.paceBrandColor())
+		saturdayButton?.addTarget(self, action: #selector(handleCancel), for: UIControlEvents.touchUpInside)
+		saturdayButton?.frame = CGRect(x: 10.0, y: 58.0 + (57.75 * 6), width: backgroundView.frame.width - 20.0, height: 57.0)
+		saturdayButton?.roundedButton(corners: [.bottomLeft, .bottomRight], radius: 10)
+		backgroundView.addSubview(saturdayButton!)
+		
+		
+		//	Cancel Button
+		cancelButton = createButton(buttonLabel: "Cancel", buttonLabelColor: UIColor.paceBrandColor(), buttonBackgroundColor: UIColor.darkBlack())
+		cancelButton?.addTarget(self, action: #selector(handleCancel), for: UIControlEvents.touchUpInside)
+		cancelButton?.frame = CGRect(x: 10.0, y: backgroundView.frame.height - 67.0, width: backgroundView.frame.width - 20.0, height: 55.0)
+		cancelButton?.layer.cornerRadius = 7.0
+		cancelButton?.layer.masksToBounds = true
+		cancelButton?.layer.masksToBounds = true
+		backgroundView.addSubview(cancelButton!)
+
 	}
 	
 	func handleCancel() {

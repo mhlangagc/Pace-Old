@@ -42,7 +42,7 @@ class WorkoutProcessViewController : UIViewController, UITableViewDataSource, UI
 		
 	}()
 	
-	override func viewDidLoad() {
+	override func viewDidLoad() {              
 		super.viewDidLoad()
 		
 		exercisesArray = ExerciseSetup.setupExercises()

@@ -137,23 +137,21 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	
 	func launchGetPopUp() {
 		
-		//	TO DO
-		
-//		if let window = UIApplication.shared.keyWindow {
-//			
-//			popUpLauncher.showGetPopUp(currentView: window)
-//		}
+		if let window = UIApplication.shared.keyWindow {
+			
+			popUpLauncher.showGetPopUp(currentView: window)
+		}
 		
 	}
 	
 	func handleTryWorkout() {
 		
-		let workoutProcessViewController = WorkoutProcessViewController()
-		self.navigationController?.present(UINavigationController(rootViewController: workoutProcessViewController), animated: true, completion: {
-			
-			//	TO DO
-			
-		})
+//		let workoutProcessViewController = WorkoutProcessViewController()
+//		self.navigationController?.present(UINavigationController(rootViewController: workoutProcessViewController), animated: true, completion: {
+//			
+//			//	TO DO
+//			
+//		})
 	}
 	
 	func handleOpenProfile() {
