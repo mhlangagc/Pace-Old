@@ -19,7 +19,7 @@ target 'Pace' do
 	
 	# Animations
 	pod 'lottie-ios', '~> 1.0'
-	pod 'AsyncDisplayKit', '>= 2.0-rc.1'
+	pod 'AsyncDisplayKit'
 	pod 'pop', :git => 'https://github.com/facebook/pop.git'
 	pod 'QuickRippleButton'
 

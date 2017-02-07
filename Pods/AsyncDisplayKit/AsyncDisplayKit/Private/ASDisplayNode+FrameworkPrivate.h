@@ -15,6 +15,7 @@
 
 #import "ASDisplayNode.h"
 #import "ASThread.h"
+#import "ASObjectDescriptionHelpers.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -95,7 +96,7 @@ __unused static NSString * _Nonnull NSStringFromASHierarchyState(ASHierarchyStat
 	return [NSString stringWithFormat:@"{ %@ }", [states componentsJoinedByString:@" | "]];
 }
 
-@interface ASDisplayNode ()
+@interface ASDisplayNode () <ASDescriptionProvider, ASDebugDescriptionProvider>
 {
 @protected
   ASInterfaceState _interfaceState;
@@ -104,6 +105,9 @@ __unused static NSString * _Nonnull NSStringFromASHierarchyState(ASHierarchyStat
 
 // The view class to use when creating a new display node instance. Defaults to _ASDisplayView.
 + (Class)viewClass;
+
+// Thread safe way to access the bounds of the node
+@property (nonatomic, assign) CGRect threadSafeBounds;
 
 // These methods are recursive, and either union or remove the provided interfaceState to all sub-elements.
 - (void)enterInterfaceState:(ASInterfaceState)interfaceState;
@@ -115,7 +119,7 @@ __unused static NSString * _Nonnull NSStringFromASHierarchyState(ASHierarchyStat
 - (void)exitHierarchyState:(ASHierarchyState)hierarchyState;
 
 // Changed before calling willEnterHierarchy / didExitHierarchy.
-@property (nonatomic, readwrite, assign, getter = isInHierarchy) BOOL inHierarchy;
+@property (readonly, assign, getter = isInHierarchy) BOOL inHierarchy;
 // Call willEnterHierarchy if necessary and set inHierarchy = YES if visibility notifications are enabled on all of its parents
 - (void)__enterHierarchy;
 // Call didExitHierarchy if necessary and set inHierarchy = NO if visibility notifications are enabled on all of its parents

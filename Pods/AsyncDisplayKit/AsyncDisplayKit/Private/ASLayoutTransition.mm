@@ -12,13 +12,16 @@
 
 #import "ASLayoutTransition.h"
 
-#import "ASDisplayNodeInternal.h"
+#import "ASDisplayNode+Beta.h"
+#import "NSArray+Diffing.h"
+
 #import "ASLayout.h"
+#import "ASDisplayNodeInternal.h" // Required for _insertSubnode... / _removeFromSupernode.
 
 #import <queue>
 #import <memory>
 
-#import "NSArray+Diffing.h"
+#import "ASThread.h"
 #import "ASEqualityHelpers.h"
 
 /**
