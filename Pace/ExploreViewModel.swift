@@ -10,37 +10,16 @@ import UIKit
 
 class ExploreViewModel : NSObject {
 	
-	func setupWorkoutCatergory() -> [CatergoryModel] {
+	func setupEvents() -> [EventModel] {
 		
-		let legsCatergory = CatergoryModel()
-		legsCatergory.catergoryName = WorkoutCatergory(rawValue: WorkoutCatergory.legs.rawValue)
-		legsCatergory.catergoryImage = UIImage(named: "1")
+		let capeArgus = EventModel()
+		capeArgus.eventName = "Cape Town Cycle Tour"
+		capeArgus.eventDate = "Sunday, 12 March 2017"
+		capeArgus.daysAway = "33 DAYS AWAY".uppercased()
+		capeArgus.eventImage = UIImage(named: "4")
 		
-		let buttCatergory = CatergoryModel()
-		buttCatergory.catergoryName = WorkoutCatergory(rawValue: WorkoutCatergory.butt.rawValue)
-		buttCatergory.catergoryImage = UIImage(named: "2")
 		
-		let sevenMin = CatergoryModel()
-		sevenMin.catergoryName = WorkoutCatergory(rawValue: WorkoutCatergory.sevenmin.rawValue)
-		sevenMin.catergoryImage = UIImage(named: "6")
-		
-		let cardioCatergory = CatergoryModel()
-		cardioCatergory.catergoryName = WorkoutCatergory(rawValue: WorkoutCatergory.cardio.rawValue)
-		cardioCatergory.catergoryImage = UIImage(named: "4")
-		
-		let armsAndShoulderCatergory = CatergoryModel()
-		armsAndShoulderCatergory.catergoryName = WorkoutCatergory(rawValue: WorkoutCatergory.armsAndShoulders.rawValue)
-		armsAndShoulderCatergory.catergoryImage = UIImage(named: "3")
-		
-		let mobilityCatergory = CatergoryModel()
-		mobilityCatergory.catergoryName = WorkoutCatergory(rawValue: WorkoutCatergory.mobility.rawValue)
-		mobilityCatergory.catergoryImage = UIImage(named: "5")
-		
-		let recoveryCatergory = CatergoryModel()
-		recoveryCatergory.catergoryName = WorkoutCatergory(rawValue: WorkoutCatergory.recovery.rawValue)
-		recoveryCatergory.catergoryImage = UIImage(named: "7")
-		
-		return [legsCatergory, buttCatergory, sevenMin, cardioCatergory, armsAndShoulderCatergory, mobilityCatergory, recoveryCatergory]
+		return [capeArgus]
 		
 	}
 	

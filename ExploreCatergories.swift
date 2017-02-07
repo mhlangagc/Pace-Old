@@ -23,9 +23,11 @@ enum WorkoutCatergory: String {
 	
 }
 
-class CatergoryModel: NSObject {
+class EventModel: NSObject {
 	
-	var catergoryName : WorkoutCatergory?
-	var catergoryImage : UIImage?
+	var eventName : String?
+	var eventDate : String?
+	var daysAway : String?
+	var eventImage : UIImage?
 	
 }

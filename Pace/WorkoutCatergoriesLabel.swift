@@ -9,7 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 
-class WorkoutCatergoriesLabel: BaseCell {
+class EventCollectionLabel: BaseCell {
 	
 	var discoveryVC : ExploreViewController?
 	let categoryLabel = ASTextNode()
@@ -17,19 +17,19 @@ class WorkoutCatergoriesLabel: BaseCell {
 	override func setupNodes() {
 		super.setupNodes()
 		
-		self.catergoryLabelSetup()
+		self.eventLabelSetup()
 		
 		backgroundColor = UIColor.black
 		
 	}
 	
 	
-	func catergoryLabelSetup() {
+	func eventLabelSetup() {
 		
 		let alignmentStyle = NSMutableParagraphStyle()
 		alignmentStyle.alignment = NSTextAlignment.left
 		categoryLabel.attributedText = NSAttributedString(
-			string: "Sports Events in Cape Town",
+			string: "Sports Events",
 			attributes: [
 				NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightHeavy),
 				NSForegroundColorAttributeName: UIColor.greyBlackColor(),

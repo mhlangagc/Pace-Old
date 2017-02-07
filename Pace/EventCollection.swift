@@ -9,17 +9,17 @@
 import UIKit
 import AsyncDisplayKit
 
-class CatergoryWorkoutCollection: ASCellNode, ASCollectionDelegate, ASCollectionDataSource {
+class EventCollection: ASCellNode, ASCollectionDelegate, ASCollectionDataSource {
 	
 	var catergoryCollection : ASCollectionNode?
 	var discoveryVC : ExploreViewController?
 	
-	var catergoryArray : [CatergoryModel]?
+	var eventsArray : [EventModel]?
 	
-	lazy var ExploreCatergorySetup: ExploreViewModel = {
+	lazy var ExploreEventSetup: ExploreViewModel = {
 		
-		let exploreWorkoutsSetup = ExploreViewModel()
-		return exploreWorkoutsSetup
+		let exploreEventSetup = ExploreViewModel()
+		return exploreEventSetup
 		
 	}()
 	
@@ -30,13 +30,13 @@ class CatergoryWorkoutCollection: ASCellNode, ASCollectionDelegate, ASCollection
 		flowLayout.minimumInteritemSpacing  = 15
 		flowLayout.minimumLineSpacing       = 15
 		flowLayout.scrollDirection = .horizontal
-		flowLayout.sectionInset = UIEdgeInsets(top: 30.0, left: 20.0, bottom: 10.0, right: 20.0)
+		flowLayout.sectionInset = UIEdgeInsets(top: 30.0, left: 20.0, bottom: 20.0, right: 20.0)
 		catergoryCollection = ASCollectionNode(collectionViewLayout: flowLayout)
 		addSubnode(catergoryCollection!)
 		
 		self.setupCollectionNodes()
 		
-		catergoryArray = ExploreCatergorySetup.setupWorkoutCatergory()
+		eventsArray = ExploreEventSetup.setupEvents()
 		
 	}
 	
@@ -60,7 +60,7 @@ class CatergoryWorkoutCollection: ASCellNode, ASCollectionDelegate, ASCollection
 	
 	override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
 		
-		catergoryCollection?.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 175)
+		catergoryCollection?.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 400)
 		return ASStackLayoutSpec(direction: .horizontal,
 		                         spacing: 0,
 		                         justifyContent: .start,
@@ -72,7 +72,7 @@ class CatergoryWorkoutCollection: ASCellNode, ASCollectionDelegate, ASCollection
 	
 }
 
-extension CatergoryWorkoutCollection {
+extension EventCollection {
 	
 	func numberOfSections(in collectionNode: ASCollectionNode) -> Int {
 		return 1
@@ -80,24 +80,24 @@ extension CatergoryWorkoutCollection {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
 		
-		return (catergoryArray?.count)!
+		return (eventsArray?.count)!
 		
 	}
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
 		
 		
-		let catergoryCellNode = CatergoryCollectionCell()
-		catergoryCellNode.catergory = catergoryArray?[indexPath.item]
-		catergoryCellNode.catergoryCollection = self
-		return catergoryCellNode
+		let eventCellNode = EventCollectionCell()
+		eventCellNode.event = eventsArray?[indexPath.item]
+		eventCellNode.eventCollection = self
+		return eventCellNode
 		
 	}
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
 		//	TO DO
-		discoveryVC?.showWorkoutCatergoryView()
+		//discoveryVC?.showWorkoutCatergoryView()
 		
 	}
 }

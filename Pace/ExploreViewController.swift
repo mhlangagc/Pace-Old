@@ -29,7 +29,7 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 		
 		let flowLayout     = UICollectionViewFlowLayout()
 		flowLayout.minimumInteritemSpacing  = 0
-		flowLayout.minimumLineSpacing       = 0
+		flowLayout.minimumLineSpacing       = 15
 		flowLayout.scrollDirection = .vertical
 		collectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
 		
