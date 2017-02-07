@@ -55,7 +55,7 @@ class WeekDayViewModel : NSObject {
 		wednesday.isOccupied = false
 		wednesday.isCompleted = false
 		wednesday.isRecovery = false
-		wednesday.backgroundImage = UIImage(named: "4")
+		wednesday.backgroundImage = UIImage(named: "3")
 		wednesday.creatingTrainer = "Mila George"
 		wednesday.creatingTrainerImage = UIImage(named: "cynthia")
 		
