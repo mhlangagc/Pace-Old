@@ -39,6 +39,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SLPagingView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Stripe-Stripe.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -72,12 +77,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>390C0D28981814EDB22D328F70E94421</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>46B883422B2BA1493E801D168269E9B1</key>
+		<key>489D04B5913CFF6F1422B72DBC4119D4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,7 +87,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>57E137DFC748EC1BCBB83D723AC24D89</key>
+		<key>884C766E4D4EBE15BEA4C272EA48089E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>90A5C27C74D26EAE97B136087289EACE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,17 +107,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EB1B576ACC4E43CD290B0F44827A1CA7</key>
+		<key>E6B511F8068B11FA67DB52C1EF523A45</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F24D09375086DF5DD0E847721E59AC3C</key>
+		<key>EA613877A93FA352547055A124401293</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>F3CF16D569D976C5B7682BDECC1B73C5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F9113CC52612A9C9DB8A08D58E0471E3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

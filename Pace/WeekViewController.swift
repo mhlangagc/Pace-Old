@@ -20,6 +20,8 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	let weekCellID = "RoutineCellViewID"
 	var weeklyWorkoutsArray : [WeekRoutineModel]?
 	
+	
+	
 	lazy var WeeklyWorkoutsSetup: WeekDayViewModel = {
 		
 		let weeklyWorkoutsSetup = WeekDayViewModel()

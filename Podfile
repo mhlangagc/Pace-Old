@@ -17,7 +17,8 @@ target 'Pace' do
 	pod 'Fabric'
 	pod 'Crashlytics'
 	
-	# Animations
+	# core
+	pod 'SLPagingView'
 	pod 'lottie-ios', '~> 1.0'
 	pod 'AsyncDisplayKit'
 	pod 'pop', :git => 'https://github.com/facebook/pop.git'

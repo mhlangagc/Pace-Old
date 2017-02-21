@@ -717,6 +717,7 @@
 			isa = PBXGroup;
 			children = (
 				45B5AD411DFBF71100115E2C /* AppDelegate.swift */,
+				45B5ADA41DFC05A900115E2C /* CustomTabBarController.swift */,
 				451D07911DFE58E100940301 /* GenericViewCells */,
 				45B5AD7B1DFBFA4100115E2C /* Main */,
 				45B5AD721DFBF8C900115E2C /* Scenes */,
@@ -742,7 +743,6 @@
 		45B5AD7B1DFBFA4100115E2C /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				45B5ADA41DFC05A900115E2C /* CustomTabBarController.swift */,
 				45B5AD841DFBFAF500115E2C /* Colors.swift */,
 				452902191DFC2AA600CE0C81 /* BaseCell.swift */,
 				45E3C07A1DFD9A4B002FD4F8 /* BaseView.swift */,

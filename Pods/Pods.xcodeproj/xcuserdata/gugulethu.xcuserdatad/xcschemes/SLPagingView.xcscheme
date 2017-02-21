@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '884C766E4D4EBE15BEA4C272EA48089E'
-               BlueprintName = 'QuickRippleButton'
+               BlueprintIdentifier = 'F9113CC52612A9C9DB8A08D58E0471E3'
+               BlueprintName = 'SLPagingView'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'QuickRippleButton.framework'>
+               BuildableName = 'SLPagingView.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

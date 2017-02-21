@@ -72,6 +72,7 @@ PODS:
     - PINRemoteImage/Core
   - pop (1.0.9)
   - QuickRippleButton (0.0.1)
+  - SLPagingView (0.0.5)
   - Stripe (9.3.0)
 
 DEPENDENCIES:
@@ -86,6 +87,7 @@ DEPENDENCIES:
   - lottie-ios (~> 1.0)
   - pop (from `https://github.com/facebook/pop.git`)
   - QuickRippleButton
+  - SLPagingView
   - Stripe
 
 EXTERNAL SOURCES:
@@ -117,8 +119,9 @@ SPEC CHECKSUMS:
   PINRemoteImage: ff63baf185088530db6cfa41cb665e2b5126b5c3
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   QuickRippleButton: bb0de9a85ce0987a57300b2cafa87a4b42eac8b9
+  SLPagingView: ba9bb6102cb318ce56f23d0a7e49a46ddcdad7e3
   Stripe: 0f41a33a6fa3ac76ee668d7df3e2680c28b8ab1a
 
-PODFILE CHECKSUM: 55c8639721ff84245bbb31dcec55934be889d459
+PODFILE CHECKSUM: 51f814a6d6ba6fe4f09f3f211b152eece90b8141
 
 COCOAPODS: 1.1.1
