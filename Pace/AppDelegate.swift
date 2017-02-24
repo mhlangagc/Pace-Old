@@ -39,10 +39,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			
 		} else {
 			
-			let items = [UIImageView(image: UIImage(named: "home")?.withRenderingMode(.alwaysTemplate)),
-			             UIImageView(image: UIImage(named: "chat")?.withRenderingMode(.alwaysTemplate)), UIImageView(image: UIImage(named: "discovery")?.withRenderingMode(.alwaysTemplate))]
+			let items = [
+				UIImageView(image: UIImage(named: "home")?.withRenderingMode(.alwaysTemplate)),
+				UIImageView(image: UIImage(named: "chat")?.withRenderingMode(.alwaysTemplate)),
+				UIImageView(image: UIImage(named: "discovery")?.withRenderingMode(.alwaysTemplate))]
 			
-			let pageViewController = SLPagingViewController.init(navBarItems: items, navBarBackground: UIColor.black, controllers: [WeekViewController(), ProfileViewController(), ExploreViewController()], showPageControl: false)
+			let pageViewController = SLPagingViewController.init(navBarItems: items, navBarBackground: UIColor.black, controllers: [
+				WorkoutsViewController(),
+				ChatViewController(),
+				DiscoverViewController()], showPageControl: false)
 			
 			UIApplication.shared.statusBarView?.backgroundColor = .black
 			pageViewController?.setCurrentIndex(1, animated: true)
