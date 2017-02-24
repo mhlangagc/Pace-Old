@@ -57,7 +57,7 @@ class JustAddedLabel: BaseCell {
 		
 		seeAllButton.setImage(UIImage(named: "seeAllButton"), for: ASControlState())
 		seeAllButton.style.preferredSize = CGSize(width: 20.0, height: 20.0)
-		seeAllButton.addTarget(self, action: #selector(handleViewAll), forControlEvents: ASControlNodeEvent.touchUpInside)
+		//seeAllButton.addTarget(self, action: #selector(handleViewAll), forControlEvents: ASControlNodeEvent.touchUpInside)
 		//addSubnode(seeAllButton)
 		
 		
@@ -82,9 +82,9 @@ class JustAddedLabel: BaseCell {
 	
 	func handleViewAll() {
 		
-		discoveryVC?.exploreWorkoutsToPass = ExploreWorkoutSetup.setupNewWorkouts()
-		discoveryVC?.allWorkoutsTitle = categoryTitle
-		discoveryVC?.handleSeeAllWorkouts()
+//		discoveryVC?.exploreWorkoutsToPass = ExploreWorkoutSetup.setupNewWorkouts()
+//		discoveryVC?.allWorkoutsTitle = categoryTitle
+//		discoveryVC?.handleSeeAllWorkouts()
 		
 	}
 	

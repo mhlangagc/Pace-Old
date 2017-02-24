@@ -31,12 +31,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 					user.location = dictionary["location"] as? String
 					user.about = dictionary["about"] as? String
 					
-					if let name = user.name, let location = user.location, let about = user.about {
+					if let name = user.name, let location = user.location, let about = user.about, let imageUrl = user.profileImageUrl {
 						
-						self.setupHeaderView(userName: name, location: location, about: about)
+						self.setupHeaderView(userName: name, location: location, about: about, profileImageUrl: imageUrl)
 						
 					}
-					
 					
 				}
 				
@@ -45,8 +44,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		}
 		
 	}
-
 	
+	var numberOfWorkoutsDownloaded = 0
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -62,7 +62,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
-		self.setupHeaderView(userName: "", location: "", about: "")
+		self.setupHeaderView(userName: "", location: "", about: "", profileImageUrl: "")
 		self.retrieveUser()
 		self.setupNavBar()
 		self.profileTableView?.reloadData()
@@ -103,15 +103,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	}
 
 	
-	func setupHeaderView(userName: String, location: String, about: String) {
+	func setupHeaderView(userName: String, location: String, about: String, profileImageUrl : String) {
 		
 		headerView  = ProfileHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 300.0)) //375.0
 		headerView.nameLabel?.text = userName
 		headerView.locationLabel?.text = location
 		headerView.detailsLabel?.text = about
-//		headerView.profileImageView?.image = localUser?.profileImage
 		headerView.profileVC = self
 		headerView.followButton?.isHidden = true
+		headerView.profileImageView?.loadImageFromCacheWithUrlString(urlString: profileImageUrl)
 		profileTableView!.tableHeaderView = headerView
 		
 	}

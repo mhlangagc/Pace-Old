@@ -4,18 +4,23 @@
 target 'Pace' do
   use_frameworks!
 
-	#Firebase
+	# Firebase
 	pod 'Firebase/Core'
 	pod 'Firebase/Database'
 	pod 'Firebase/Auth'
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Storage'
+	#pod 'PINCache', '~> 2.3'
 	
-	#Extra Pods
+	# Services
 	pod 'Stripe'
 	pod 'Fabric'
 	pod 'Crashlytics'
-	pod 'AsyncDisplayKit', '>= 2.0-rc.1'
+	
+	# core
+	pod 'SLPagingView'
+	pod 'lottie-ios', '~> 1.0'
+	pod 'AsyncDisplayKit'
 	pod 'pop', :git => 'https://github.com/facebook/pop.git'
 	pod 'QuickRippleButton'
 

@@ -8,20 +8,56 @@
 
 import UIKit
 import AsyncDisplayKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class NewToPaceCollection: ASCellNode, ASCollectionDelegate, ASCollectionDataSource {
 	
 	var newWorkoutsCollectionNode : ASCollectionNode?
 	var discoveryVC : ExploreViewController?
 	
-	var popularWorkoutsArray : [ExploreModel]?
+	var freeWorkoutsArray = [ExploreWorkoutModel]()
 	
-	lazy var ExploreWorkoutSetup: ExploreViewModel = {
+	func retrieveFeaturedWorkouts(completion: @escaping (_ result: [ExploreWorkoutModel]) -> Void) {
 		
-		let exploreWorkoutsSetup = ExploreViewModel()
-		return exploreWorkoutsSetup
+		var workoutsArray = [ExploreWorkoutModel]()
 		
-	}()
+		FIRDatabase.database().reference().child("ExploreWorkouts").child("Male").child("FreeWorkouts").observe(FIRDataEventType.childAdded, with: { (snapShot) in
+			
+			
+			let exploreID = snapShot.key
+			
+			if let dictionary = snapShot.value as? [String: AnyObject] {
+				
+				let freeWorkout = ExploreWorkoutModel()
+				
+				freeWorkout.workoutName = dictionary["workoutName"] as? String
+				freeWorkout.workoutMins = dictionary["workoutTime"] as? Int
+				freeWorkout.workoutImageUrl = dictionary["workoutImageURL"] as? String
+				
+				freeWorkout.trainerName = dictionary["trainerName"] as? String
+				freeWorkout.trainerImageUrl = dictionary["trainerImageUrl"] as? String
+				
+				freeWorkout.workoutDescription = dictionary["workoutDescription"] as? String
+				freeWorkout.rating = dictionary["rating"] as? Int
+				freeWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
+				freeWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
+				freeWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
+				
+				freeWorkout.exploreID = exploreID
+				
+				workoutsArray.append(freeWorkout)
+				
+				completion(workoutsArray)
+				
+				
+			}
+			
+		}, withCancel: nil)
+		
+		
+	}
 	
 	override init() {
 		super.init()
@@ -32,11 +68,18 @@ class NewToPaceCollection: ASCellNode, ASCollectionDelegate, ASCollectionDataSou
 		flowLayout.scrollDirection = .horizontal
 		flowLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 5.0, bottom: 15.0, right: 15.0)
 		newWorkoutsCollectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
+		newWorkoutsCollectionNode?.backgroundColor = .black
 		addSubnode(newWorkoutsCollectionNode!)
 		
-		self.setupCollectionNodes()
 		
-		popularWorkoutsArray = ExploreWorkoutSetup.setupNewToPaceWorkout()
+		self.retrieveFeaturedWorkouts { (freeWorkoutsArray) in
+			
+			self.freeWorkoutsArray = freeWorkoutsArray
+			self.newWorkoutsCollectionNode?.reloadData()
+			
+			self.setupCollectionNodes()
+		}
+
 		
 	}
 	
@@ -80,21 +123,21 @@ extension NewToPaceCollection {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
 		
-		return (popularWorkoutsArray?.count)!
+		return freeWorkoutsArray.count
 		
 	}
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
 		
 		let cellNode = DiscoveryWorkoutCell()
-		cellNode.exploreWorkout = popularWorkoutsArray?[indexPath.item]
+		cellNode.exploreWorkout = freeWorkoutsArray[indexPath.item]
 		return cellNode
 		
 	}
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
-		let worktoutSelected = popularWorkoutsArray?[indexPath.item]
+		let worktoutSelected = freeWorkoutsArray[indexPath.item]
 		WorkoutViewController.exploreWorkout = worktoutSelected
 		discoveryVC?.handleShowWorkoutView()
 		

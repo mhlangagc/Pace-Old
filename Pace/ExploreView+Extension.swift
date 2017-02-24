@@ -28,6 +28,7 @@ extension ExploreViewController {
 			
 			let featuredNode = FeaturedCollectionCell()
 			featuredNode.discoveryVC = self
+			//featuredNode.featuredWorkoutsArray = retrieveFeaturedWorkouts()
 			return featuredNode
 			
 		case 1:
@@ -44,14 +45,14 @@ extension ExploreViewController {
 			
 		case 3:
 			
-			let catergoryLabelCell = WorkoutCatergoriesLabel()
-			return catergoryLabelCell
+			let eventLabelCell = EventCollectionLabel()
+			return eventLabelCell
 			
 		case 4:
 			
-			let catergoryCollection = CatergoryWorkoutCollection()
-			catergoryCollection.discoveryVC = self
-			return catergoryCollection
+			let eventCollection = EventCollection()
+			eventCollection.discoveryVC = self
+			return eventCollection
 			
 			
 		case 5:

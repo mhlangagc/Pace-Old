@@ -7,42 +7,101 @@
 //
 
 import UIKit
-import AsyncDisplayKit
 
 extension WeekViewController {
 	
-	func numberOfSections(in tableNode: ASTableNode) -> Int {
+	func numberOfSections(in tableView: UITableView) -> Int {
 		
 		return 1
 		
 	}
 	
-	func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		return (weeklyWorkouts?.count)!
-		
-	}
-	
-	func tableNode(_ tableNode: ASTableNode, nodeForRowAt indexPath: IndexPath) -> ASCellNode {
-		
-		let weekTableCell = WeekTableNodeCell()
-		weekTableCell.routineModel = weeklyWorkouts?[indexPath.item]
-		return weekTableCell
+		return (weeklyWorkoutsArray?.count)!
 		
 	}
 	
-	
-	func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let daySelected = weeklyWorkouts?[indexPath.item]
-		selectedDayColour = (daySelected?.color)!
+		var routineCell = tableView.dequeueReusableCell(withIdentifier: weekCellID) as? WeekTableCell
+		let todayFromArray = weeklyWorkoutsArray?[indexPath.item]
 		
-		let dayDetailsVC = DayViewController()
-		dayDetailsVC.routineWorkoutModel = daySelected
-		dayDetailsVC.hidesBottomBarWhenPushed = true
-		self.navigationController?.pushViewController(dayDetailsVC, animated: true)
+		if (routineCell == nil) {
+			tableView.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
+			routineCell = tableView.dequeueReusableCell(withIdentifier: weekCellID) as? WeekTableCell
+		}
 		
-		tableNode.deselectRow(at: indexPath, animated: true)
+		let date = Date()
+		let formatter  = DateFormatter()
+		formatter.dateFormat = "EEEE"
+		let todayWorkoutName = formatter.string(from: date)
+		
+		if todayWorkoutName.uppercased() == todayFromArray?.dayName?.uppercased() {
+			
+			routineCell?.todayIndicatorView.isHidden = false
+			routineCell?.weekNameText.textColor = UIColor.white
+			routineCell?.todayIndicatorView.backgroundColor = todayFromArray?.color
+			
+		} else {
+			
+			routineCell?.todayIndicatorView.isHidden = true
+			
+		}
+
+		
+		
+		if (routineCell!.selectedBackgroundView != nil) {
+			
+			let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: routineCell!.frame.size.width, height: routineCell!.frame.size.height))
+			backgroundView.backgroundColor = UIColor.darkBlack()
+			routineCell!.selectedBackgroundView = backgroundView
+		}
+		
+		routineCell?.routineModel = todayFromArray
+		routineCell?.backgroundColor = UIColor.black
+		
+		return routineCell!
 		
 	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		
+		return 85.0
+		
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		if indexPath.item == 1 || indexPath.item == 2 || indexPath.item == 5 || indexPath.item == 6 {
+			
+			let daySelected = weeklyWorkoutsArray?[indexPath.item]
+			selectedDayColour = (daySelected?.color)!
+			
+			let emptyDayVC = EmptyDayViewController()
+			emptyDayVC.routineWorkoutModel = daySelected
+			emptyDayVC.hidesBottomBarWhenPushed = true
+			self.navigationController?.pushViewController(emptyDayVC, animated: true)
+			
+			weekTableView?.deselectRow(at: indexPath, animated: true)
+		
+		} else {
+			
+			let daySelected = weeklyWorkoutsArray?[indexPath.item]
+			selectedDayColour = (daySelected?.color)!
+			
+			let dayDetailsVC = DayViewController()
+			dayDetailsVC.routineWorkoutModel = daySelected
+			dayDetailsVC.hidesBottomBarWhenPushed = true
+			self.navigationController?.pushViewController(dayDetailsVC, animated: true)
+			
+			weekTableView?.deselectRow(at: indexPath, animated: true)
+			
+		}
+		
+		
+		
+		
+	}
+	
 }

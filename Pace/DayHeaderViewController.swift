@@ -17,6 +17,8 @@ class DayHeaderViewController : BaseView {
 	var profileImageView : UIImageView?
 	var profileNameButton : UIButton?
 	
+	var routineWorkoutModel: WeekRoutineModel?
+	
 	var dayDetailVC : DayViewController?
 	
 	override func setupViews() {

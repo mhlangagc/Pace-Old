@@ -12,7 +12,7 @@ import AsyncDisplayKit
 class FeaturedCell: BaseCell {
 	
 	var featureCollection: FeaturedCollectionCell?
-	let workoutImageNode = ASImageNode()
+	let workoutImageNode = ASNetworkImageNode()
 	let featuredTageNode = ASImageNode()
 	let workoutTitleNode = ASTextNode()
 	
@@ -23,17 +23,13 @@ class FeaturedCell: BaseCell {
 	let workoutNameAttributes = [NSFontAttributeName : UIFont.systemFont(ofSize: 24, weight: UIFontWeightHeavy), NSForegroundColorAttributeName: UIColor.white] as [String : Any]
 	var workoutNameMutableString = NSMutableAttributedString()
 	
-	var  exploreModel : ExploreModel? {
+	var  exploreWorkoutModel : ExploreWorkoutModel? {
 		
 		didSet {
 			
-			if let workoutFeaturedImage  = exploreModel?.workoutImage {
-				
-				workoutImageNode.image = workoutFeaturedImage
-				
-			}
+			workoutImageNode.url = NSURL(string: (exploreWorkoutModel?.workoutImageUrl!)!)! as URL
 			
-			if let workoutName = exploreModel?.workoutName {
+			if let workoutName = exploreWorkoutModel?.workoutName {
 				
 				workoutNameMutableString = NSMutableAttributedString(string: workoutName, attributes: workoutNameAttributes)
 				workoutTitleNode.attributedText = workoutNameMutableString
@@ -55,7 +51,7 @@ class FeaturedCell: BaseCell {
 	
 	func setupImageAndText() {
 		
-		workoutImageNode.backgroundColor = UIColor.darkBlack()
+		workoutImageNode.backgroundColor = UIColor.darkerBlack()
 		workoutImageNode.contentMode = .scaleAspectFill
 		workoutImageNode.layer.cornerRadius = 10.0
 		workoutImageNode.shouldRasterizeDescendants = true
@@ -84,7 +80,7 @@ class FeaturedCell: BaseCell {
                                           alignItems: .start,
                                           children: [featuredTageNode, workoutTitleNode])
 		
-		let insets = UIEdgeInsets(top: CGFloat.infinity, left: 20.0, bottom: 15.0, right: 10.0) // Infinity is used to make the inset unbounded
+		let insets = UIEdgeInsets(top: CGFloat.infinity, left: 20.0, bottom: 25.0, right: 10.0) // Infinity is used to make the inset unbounded
 		let textInsetSpec = ASInsetLayoutSpec(insets: insets, child: textNodeSpec)
 		
 		return ASOverlayLayoutSpec(child: workoutImageNode, overlay: textInsetSpec)

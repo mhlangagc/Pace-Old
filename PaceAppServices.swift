@@ -38,4 +38,49 @@ class PaceAppServices : NSObject {
 		
 	}
 	
+	
+	func retrieveFeaturedWorkouts() -> [ExploreWorkoutModel] {
+		
+		var workoutArray = [ExploreWorkoutModel]()
+		
+		FIRDatabase.database().reference().child("ExploreWorkouts").child("FeaturedWorkouts").observe(FIRDataEventType.childAdded, with: { (snapShot) in
+			
+			let exploreID = snapShot.key
+			
+			if let dictionary = snapShot.value as? [String: AnyObject] {
+				
+				let featuredWorkout = ExploreWorkoutModel()
+				
+				featuredWorkout.workoutName = dictionary["workoutName"] as? String
+				featuredWorkout.workoutMins = dictionary["workoutMins"] as? Int
+				featuredWorkout.workoutImageUrl = dictionary["workoutImageUrl"] as? String
+				
+				featuredWorkout.trainerName = dictionary["trainerName"] as? String
+				featuredWorkout.trainerImageUrl = dictionary["trainerImageUrl"] as? String
+				
+				featuredWorkout.workoutDescription = dictionary["workoutDescription"] as? String
+				featuredWorkout.rating = dictionary["rating"] as? Int
+				featuredWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
+				featuredWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
+				featuredWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
+				
+				featuredWorkout.exploreID = exploreID
+				
+				
+				workoutArray.append(featuredWorkout)
+				
+				DispatchQueue.main.async {
+					
+					// Completion Function
+					
+					
+				}
+				
+			}
+			
+		}, withCancel: nil)
+		
+		return workoutArray
+		
+	}
 }

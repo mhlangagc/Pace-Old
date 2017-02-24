@@ -195,7 +195,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @note Called on the display queue and/or main queue (MUST BE THREAD SAFE)
  */
 + (void)drawRect:(CGRect)bounds withParameters:(nullable id <NSObject>)parameters
-                                   isCancelled:(__attribute((noescape)) asdisplaynode_iscancelled_block_t)isCancelledBlock
+                                   isCancelled:(AS_NOESCAPE asdisplaynode_iscancelled_block_t)isCancelledBlock
                                  isRasterizing:(BOOL)isRasterizing;
 
 /**
@@ -212,7 +212,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @note Called on the display queue and/or main queue (MUST BE THREAD SAFE)
  */
 + (nullable UIImage *)displayWithParameters:(nullable id<NSObject>)parameters
-                                isCancelled:(__attribute((noescape)) asdisplaynode_iscancelled_block_t)isCancelledBlock;
+                                isCancelled:(AS_NOESCAPE asdisplaynode_iscancelled_block_t)isCancelledBlock;
 
 /**
  * @abstract Delegate override for drawParameters
@@ -327,7 +327,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Provides an opportunity to clear backing store and other memory-intensive intermediates, such as text layout managers
  * on the current node.
  *
- * @discussion Called by -recursivelyClearContents. Base class implements self.contents = nil, clearing any backing
+ * @discussion Called by -recursivelyClearContents. Always called on main thread. Base class implements self.contents = nil, clearing any backing
  * store, for asynchronous regeneration when needed.
  */
 - (void)clearContents ASDISPLAYNODE_REQUIRES_SUPER;

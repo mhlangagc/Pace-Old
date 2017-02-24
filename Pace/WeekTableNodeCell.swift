@@ -7,19 +7,50 @@
 //
 
 import UIKit
-import AsyncDisplayKit
 
-class WeekTableNodeCell: BaseCell {
+class WeekTableCell: TableBaseCell {
 	
-	var todayIndicator = ASDisplayNode()
-	var weekNameText = ASTextNode()
-	var workoutNameText = ASTextNode()
-	var activityIndicator = ASImageNode()
+	let todayIndicatorView: UIView = {
+		let view = UIView()
+		view.backgroundColor = UIColor.headerBlack()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
 	
+	let weekNameText: UILabel = {
+		
+		let label = UILabel()
+		label.textColor = UIColor.greyBlackColor()
+		label.textAlignment = .left
+		textSpacing(label, spacing: 1.0)
+		label.font = UIFont.systemFont(ofSize: 20.0, weight: UIFontWeightBold)
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+		
+	}()
 	
-	let dayNameAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightBold), NSForegroundColorAttributeName: UIColor.greyBlackColor(), NSKernAttributeName: 1.0 ] as [String : Any]
-	let workoutNameAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 25, weight: UIFontWeightBold), NSKernAttributeName: 0.54] as [String : Any]
-	var workoutNameMutableString = NSMutableAttributedString()
+	let  workoutNameText: UILabel = {
+		
+		let label = UILabel()
+		label.textColor = UIColor.thursday()
+		label.font = UIFont.systemFont(ofSize: 25.0, weight: UIFontWeightBold)
+		label.textAlignment = .left
+		textSpacing(label, spacing: 0.54)
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+		
+	}()
+	
+	let activityIndicator: UIImageView = {
+		
+		let imageView = UIImageView()
+		imageView.image = UIImage(named: "activityCheck")
+		imageView.contentMode = .scaleAspectFit
+		imageView.clipsToBounds = true
+		imageView.translatesAutoresizingMaskIntoConstraints = false
+		return imageView
+		
+	}()
 	
 	var  routineModel : WeekRoutineModel? {
 		
@@ -27,29 +58,20 @@ class WeekTableNodeCell: BaseCell {
 			
 			if let weekDayName  = routineModel?.dayName {
 				
-				weekNameText.attributedText = NSMutableAttributedString(string: weekDayName.uppercased()[0...2], attributes: dayNameAttributes)
+				weekNameText.text = weekDayName.uppercased()[0...2]
 				
 			}
 			
 			
 			if let workoutName  = routineModel?.workoutName, let dayColor = routineModel?.color {
 				
-				workoutNameMutableString = NSMutableAttributedString(string: workoutName, attributes: workoutNameAttributes)
-				let stringLength = NSString(string: workoutName).length
-				workoutNameMutableString.addAttribute(NSForegroundColorAttributeName,
-				                                      value: dayColor,
-				                                      range: NSRange(
-														location: 0,
-														length: stringLength))
-				
-				workoutNameText.attributedText = workoutNameMutableString
+				workoutNameText.text = workoutName
+				workoutNameText.textColor = dayColor
 				
 			}
 			
 		}
 	}
-	
-
 	
 	override var isHighlighted: Bool {
 		didSet {
@@ -63,72 +85,45 @@ class WeekTableNodeCell: BaseCell {
 		}
 	}
 	
-	
-	override func setupNodes() {
+	override func setupViews() {
+		super.setupViews()
 		
-		super.setupNodes()
-		self.setupWorkoutDetails()
-		
-		backgroundColor = .black
-		
-	}
-	
-	func setupWorkoutDetails() {
-		
-		
-		todayIndicator.backgroundColor = UIColor.darkBlack()
-		addSubnode(todayIndicator)
-		
-		
-		addSubnode(weekNameText)
-		
-		
-		workoutNameText.attributedText = NSMutableAttributedString(string: "Chest & Shoulders",
-		                                                           attributes: [NSForegroundColorAttributeName: UIColor.wednesday(),
-		                                                                        NSFontAttributeName: UIFont.systemFont(ofSize: 25, weight: UIFontWeightBold),
-		                                                                        NSKernAttributeName: 0.54
-						])
-		addSubnode(workoutNameText)
-		
-		
-		
-		activityIndicator.image = UIImage(named: "activityCheck")
-		activityIndicator.contentMode = .scaleAspectFit
-		activityIndicator.clipsToBounds = true
-		addSubnode(activityIndicator)
-		
+		backgroundColor = UIColor.black
+		self.setupObjectsView()
 	}
 	
 	
-	override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
+	func setupObjectsView() {
 		
-		todayIndicator.style.preferredSize = CGSize(width: 2.5, height: 85.0)
-		weekNameText.style.preferredSize = CGSize(width: 65.0, height: 20.0)
-		workoutNameText.style.preferredSize = CGSize(width: constrainedSize.max.width - 70.0, height: 30.0)
-		activityIndicator.style.preferredSize = CGSize(width: 30.0, height: 30.0)
+		self.contentView.addSubview(todayIndicatorView)
+		self.contentView.addSubview(weekNameText)
+		self.contentView.addSubview(workoutNameText)
+		self.contentView.addSubview(activityIndicator)
 		
-		let textDetailsSpec = ASStackLayoutSpec(direction: .vertical,
-                                          spacing: 10,
-                                          justifyContent: .start,
-                                          alignItems: .start,
-                                          children: [weekNameText, workoutNameText])
-		
-		let textindicatorSpec = ASStackLayoutSpec(direction: .horizontal,
-                                          spacing: 3.0,
-                                          justifyContent: .center,
-                                          alignItems: .center,
-                                          children: [textDetailsSpec, activityIndicator])
+		todayIndicatorView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+		todayIndicatorView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+		todayIndicatorView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+		todayIndicatorView.widthAnchor.constraint(equalToConstant: 3.0).isActive = true
 		
 		
-		let todayIndicatoranDetailSpec = ASStackLayoutSpec(direction: .horizontal,
-		                                                   spacing: 17.0,
-		                                                   justifyContent: .center,
-		                                                   alignItems: .center,
-		                                                   children: [todayIndicator, textindicatorSpec])
+		activityIndicator.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+		activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+		activityIndicator.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
+		activityIndicator.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
 		
-		return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 15.0), child: todayIndicatoranDetailSpec)
+		
+		weekNameText.leftAnchor.constraint(equalTo: todayIndicatorView.rightAnchor, constant: 17.0).isActive = true
+		weekNameText.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+		weekNameText.rightAnchor.constraint(equalTo: activityIndicator.leftAnchor, constant: -10).isActive = true
+		weekNameText.heightAnchor.constraint(equalToConstant: 25.0).isActive = true
+		
+		
+		workoutNameText.leftAnchor.constraint(equalTo: todayIndicatorView.rightAnchor, constant: 17.0).isActive = true
+		workoutNameText.topAnchor.constraint(equalTo: weekNameText.bottomAnchor, constant: 10.0).isActive = true
+		workoutNameText.rightAnchor.constraint(equalTo: activityIndicator.leftAnchor, constant: -10).isActive = true
+		workoutNameText.heightAnchor.constraint(equalToConstant: 25.0).isActive = true
+		
 		
 	}
-
-	
+		
 }

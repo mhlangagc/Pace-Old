@@ -8,8 +8,10 @@
 
 import UIKit
 import AsyncDisplayKit
+import MessageUI
+import SafariServices
 
-class SettingsViewController: ASViewController<ASDisplayNode>, ASTableDelegate, ASTableDataSource {
+class SettingsViewController: ASViewController<ASDisplayNode>, ASTableDelegate, ASTableDataSource, MFMailComposeViewControllerDelegate {
 	
 	var settingsTableNode : ASTableNode?
 	
@@ -73,5 +75,47 @@ class SettingsViewController: ASViewController<ASDisplayNode>, ASTableDelegate, 
 		self.settingsTableNode?.view.showsVerticalScrollIndicator = false
 		
 	}
+	
+	func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+		controller.dismiss(animated: true, completion: nil)
+	}
+	
+	func configuredMailComposeViewController() -> MFMailComposeViewController {
+		let mailComposerVC = MFMailComposeViewController()
+		mailComposerVC.mailComposeDelegate = self
+		mailComposerVC.setToRecipients(["gugulethu@paceapp.fitness"])
+		mailComposerVC.setSubject("Joining Pace as a Trainer")
+		mailComposerVC.setMessageBody("Hi There, \n \n Because we are still new we are accepting trainers, to join via email. \n \n Compose your email here and we will be in touch in 30mins. ;) 🏋🏽🏊🏽‍♀️", isHTML: false)
+		
+		return mailComposerVC
+		
+	}
+	
+	func configuredFeedbackMailComposeViewController() -> MFMailComposeViewController {
+		let mailComposerVC = MFMailComposeViewController()
+		mailComposerVC.mailComposeDelegate = self
+		mailComposerVC.setToRecipients(["gugulethu@paceapp.fitness"])
+		mailComposerVC.setSubject("Some thoughts Pace...")
+		mailComposerVC.setMessageBody("Hi There, \n \n We are new and would love to know all your thoughts, criticisms, ideas on improvement or just your workout story. \n \n Send us your feedback here and we will be in touch within 10mins tops ;). 🏊🏽‍♀️🏋🏽 \n \n", isHTML: false)
+		
+		return mailComposerVC
+		
+	}
+	
+	
+	func showSendMailErrorAlert() {
+		
+		let alertController = UIAlertController(title: "Could not open mail!", message: "Please check your e-mail settings and try again.", preferredStyle: .alert)
+		
+		let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+			// ...
+		}
+		alertController.addAction(OKAction)
+		
+		self.present(alertController, animated: true) {
+			// ...
+		}
+	}
+
 	
 }

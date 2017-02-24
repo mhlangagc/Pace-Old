@@ -25,19 +25,10 @@ class WorkoutProcessMenuBar: BaseView {
 		
 	}()
 	
-	let cancelButton: UIButton = {
-		
-		let button = UIButton()
-		button.setImage(UIImage(named: "more"), for: UIControlState.normal)
-		button.translatesAutoresizingMaskIntoConstraints = false
-		return button
-	}()
-	
-	
 	let endButton: UIButton = {
 		
 		let button = UIButton()
-		button.setImage(UIImage(named: "more"), for: UIControlState.normal)
+		button.setImage(UIImage(named: "close"), for: UIControlState.normal)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
 		
@@ -62,23 +53,17 @@ class WorkoutProcessMenuBar: BaseView {
 	
 	func addViews() {
 		
-//		addSubview(cancelButton)
 		addSubview(endButton)
+		timerLabel.layer.opacity = 0.0
 		addSubview(timerLabel)
 		addSubview(dividerLineView)
 		
-		cancelButton.addTarget(self, action: #selector(handleCancel), for: UIControlEvents.touchUpInside)
 		endButton.addTarget(self, action: #selector(handleEnd), for: UIControlEvents.touchUpInside)
 		
 		timerLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
 		timerLabel.topAnchor.constraint(equalTo: topAnchor, constant: 25.0).isActive = true
 		timerLabel.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
 		timerLabel.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
-		
-//		cancelButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 15).isActive = true
-//		cancelButton.topAnchor.constraint(equalTo: topAnchor, constant: 32.0).isActive = true
-//		cancelButton.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
-//		cancelButton.widthAnchor.constraint(equalToConstant: 60.0).isActive = true
 		
 		endButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -15).isActive = true
 		endButton.topAnchor.constraint(equalTo: topAnchor, constant: 32.0).isActive = true
@@ -94,13 +79,7 @@ class WorkoutProcessMenuBar: BaseView {
 	
 	func handleEnd() {
 		
-		workoutProcessVC?.handleEndWorkout()
-	}
-	
-	func handleCancel() {
-		
-		workoutProcessVC?.handleDismiss()
-		
+		workoutProcessVC?.handleCancelWorkout()
 	}
 	
 	

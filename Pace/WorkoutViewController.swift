@@ -24,7 +24,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 	}()
 	
-	static var exploreWorkout : ExploreModel?
+	static var exploreWorkout : ExploreWorkoutModel?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -36,6 +36,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		self.setupGetButton()
 		view.backgroundColor = UIColor.black
 		workoutDetailsTableView?.register(ExerciseCellView.self, forCellReuseIdentifier: exerciseCellID)
+		self.workoutDetailsTableView?.reloadData()
 		
 	}
 	
@@ -58,7 +59,6 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 		self.setupHeaderView()
 		self.setupNavigationBar()
-		self.workoutDetailsTableView?.reloadData()
 	}
 	
 	func setupNavigationBar() {
@@ -93,13 +93,10 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		headerView.workoutDetailVC = self
 		
 		headerView.workoutName?.text = (WorkoutViewController.exploreWorkout?.workoutName)!
-		headerView.workoutsImageView?.image = WorkoutViewController.exploreWorkout?.workoutImage
-		headerView.workoutTimeLabel?.text = "\((WorkoutViewController.exploreWorkout?.workoutTime)!) min workout".uppercased()
-		
+		headerView.workoutsImageView?.loadImageFromUrlString(urlString: (WorkoutViewController.exploreWorkout?.workoutImageUrl)!)
+		headerView.workoutTimeLabel?.text = "\((WorkoutViewController.exploreWorkout?.workoutMins)!) min workout".uppercased()
 		headerView.profileNameButton?.setTitle("Created by \((WorkoutViewController.exploreWorkout?.trainerName)!)", for: UIControlState.normal)
-		headerView.profileImageView?.image = WorkoutViewController.exploreWorkout?.trainerImage
-		
-		
+		headerView.profileImageView?.loadImageFromUrlString(urlString: (WorkoutViewController.exploreWorkout?.trainerImageUrl)!)
 		headerView.descriptionText?.text = (WorkoutViewController.exploreWorkout?.workoutDescription)!
 		headerView.reviewLabel?.text = "\((WorkoutViewController.exploreWorkout?.numberOfReviews)!) Reviews"
 		headerView.ratingView?.ratingValue = (WorkoutViewController.exploreWorkout?.rating)!
@@ -113,7 +110,21 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 		getButtonView = GetButtonView.init(frame: CGRect(x: 0, y: view.frame.height - 144.0, width: view.frame.width, height: 80.0))
 		getButtonView?.workoutDetailsVC = self
-		getButtonView?.getButton?.setTitle("R\((WorkoutViewController.exploreWorkout?.workoutPrice?.rawValue)!)", for: UIControlState.normal)
+		
+		let price = WorkoutViewController.exploreWorkout?.workoutPrice?.rawValue
+		if price == 0.0 {
+			
+			getButtonView?.getButton?.setTitle("FREE", for: UIControlState.normal)
+			
+		} else {
+			
+			getButtonView?.getButton?.setTitle("R\(price!)", for: UIControlState.normal)
+		}
+		
+		
+			
+		
+		
 		view.addSubview(getButtonView!)
 	}
 
@@ -126,23 +137,21 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	
 	func launchGetPopUp() {
 		
-		//	TO DO
-		
-//		if let window = UIApplication.shared.keyWindow {
-//			
-//			popUpLauncher.showGetPopUp(currentView: window)
-//		}
+		if let window = UIApplication.shared.keyWindow {
+			
+			popUpLauncher.showGetPopUp(currentView: window)
+		}
 		
 	}
 	
 	func handleTryWorkout() {
 		
-		let workoutProcessViewController = WorkoutProcessViewController()
-		self.navigationController?.present(UINavigationController(rootViewController: workoutProcessViewController), animated: true, completion: {
-			
-			//	TO DO
-			
-		})
+//		let workoutProcessViewController = WorkoutProcessViewController()
+//		self.navigationController?.present(UINavigationController(rootViewController: workoutProcessViewController), animated: true, completion: {
+//			
+//			//	TO DO
+//			
+//		})
 	}
 	
 	func handleOpenProfile() {

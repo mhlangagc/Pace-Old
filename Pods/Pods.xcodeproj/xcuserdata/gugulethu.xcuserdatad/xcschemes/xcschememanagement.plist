@@ -39,12 +39,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SLPagingView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Stripe-Stripe.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Stripe.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>lottie-ios.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -62,22 +72,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5D775DF2C531DC053792F654D7FF847F</key>
+		<key>2C9A498F7EDC03698E72AE45452A5122</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>61725A4B69DDEEC56C40C93E2BD93C39</key>
+		<key>489D04B5913CFF6F1422B72DBC4119D4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D0A00FA4156B39832CD6D7DAC048E23</key>
+		<key>559C06FA313FFF7CC17CB145C1B27505</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8DB2E236C2B00918797F246F07B5A9B0</key>
+		<key>884C766E4D4EBE15BEA4C272EA48089E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>90A5C27C74D26EAE97B136087289EACE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,22 +102,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C168E863844F1442293F3C5B062136DF</key>
+		<key>E43271598C1F9DF6AB5EAC760BAD15DA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C4B6296593E188B756906E1231B69B15</key>
+		<key>E6B511F8068B11FA67DB52C1EF523A45</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F0B1333E182C41F24B58847AACC75BE5</key>
+		<key>EA613877A93FA352547055A124401293</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FADB9533F4BFF6E6A9E6F4A1EC5EE16C</key>
+		<key>F3CF16D569D976C5B7682BDECC1B73C5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F9113CC52612A9C9DB8A08D58E0471E3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
