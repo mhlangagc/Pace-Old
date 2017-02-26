@@ -73,7 +73,7 @@ class ExerciseCellView : TableBaseCell {
 		return view
 	}()
 	
-	
+	/*
 	var exerciseModel : ExerciseModel? {
 		
 		didSet {
@@ -127,6 +127,7 @@ class ExerciseCellView : TableBaseCell {
 			
 		}
 	}
+	*/
 	
 	var videoDelegate : VideoCellDelegate?
 	var cellSelected = false

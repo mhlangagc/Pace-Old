@@ -10,6 +10,7 @@ import UIKit
 
 class ExerciseViewModel : NSObject {
 	
+	/*
 	func setupExercises() -> [ExerciseModel] {
 		
 		let exercise_1 = ExerciseModel()
@@ -61,5 +62,6 @@ class ExerciseViewModel : NSObject {
 		return [exercise_1, exercise_2, exercise_3, exercise_4, exercise_5]
 
 	}
-
+	*/
+	
 }

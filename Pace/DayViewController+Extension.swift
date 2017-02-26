@@ -76,7 +76,7 @@ extension DayViewController {
 			exerciseCell!.selectedBackgroundView = backgroundView
 		}
 		
-		exerciseCell?.exerciseModel = exercisesArray?[indexPath.item]
+		//exerciseCell?.exerciseModel = exercisesArray?[indexPath.item]
 		exerciseCell?.backgroundColor = UIColor.black
 		//exerciseCell?.videoDelegate = self
 		

@@ -16,8 +16,6 @@ private let sleepAnalysis = HKObjectType.categoryType(forIdentifier: HKCategoryT
 private let workoutType = HKObjectType.workoutType()
 
 
-
-
 class HealthkitAccessAndManager: NSObject {
 	
 	let healthKitStore:HKHealthStore = HKHealthStore()

@@ -77,7 +77,7 @@ extension WorkoutViewController {
 		}
 		
 		
-		exerciseCell?.exerciseModel = exercisesArray?[indexPath.item]
+		//exerciseCell?.exerciseModel = exercisesArray?[indexPath.item]
 		
 		exerciseCell?.backgroundColor = UIColor.black
 		

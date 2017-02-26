@@ -68,7 +68,7 @@ class WorkoutProcessCellView : TableBaseCell {
 		return view
 	}()
 	
-	
+	/*
 	var exerciseModel : ExerciseModel? {
 		
 		didSet {
@@ -122,7 +122,7 @@ class WorkoutProcessCellView : TableBaseCell {
 			
 		}
 	}
-	
+	*/
 	
 	override func setupViews() {
 		super.setupViews()

@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 enum PriceEnum : Double {
 	
 	case free  = 0.00
