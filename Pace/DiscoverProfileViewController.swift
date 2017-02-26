@@ -61,8 +61,6 @@ class DiscoverProfileViewController: UIViewController, UITableViewDataSource, UI
 		headerView.detailsLabel?.text = (DiscoverProfileViewController.userProfileModel?.trainerDescription)!
 		headerView.locationLabel?.text = (DiscoverProfileViewController.userProfileModel?.location)!
 		headerView.profileImageView?.image = DiscoverProfileViewController.userProfileModel?.profileImage
-		
-		
 		profileTableView?.tableHeaderView = headerView
 		
 	}
@@ -87,7 +85,7 @@ class DiscoverProfileViewController: UIViewController, UITableViewDataSource, UI
 	func handleOpenSettings() {
 		
 		//	TODO
-		print("OPen Settings")
+		print("Open Settings")
 		
 	}
 	
