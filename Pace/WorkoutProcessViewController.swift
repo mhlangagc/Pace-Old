@@ -16,7 +16,7 @@ class WorkoutProcessViewController : UIViewController, UITableViewDataSource, UI
 	var musicPlayerView : MusicPlayerView?
 	let workoutCellViewID = "workoutCellViewID"
 	
-	var exercisesArray : [ExerciseModel]?
+	var exercisesArray : [ExercisesModel]?
 	
 	override var preferredStatusBarStyle: UIStatusBarStyle {
 		
@@ -51,7 +51,7 @@ class WorkoutProcessViewController : UIViewController, UITableViewDataSource, UI
 	override func viewDidLoad() {              
 		super.viewDidLoad()
 		
-		exercisesArray = ExerciseSetup.setupExercises()
+		//exercisesArray = ExerciseSetup.setupExercises()
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
 		self.navigationController?.navigationBar.isHidden = true
 		self.setupMenuBar()

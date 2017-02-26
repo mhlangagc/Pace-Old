@@ -16,7 +16,7 @@ class DayViewController : UIViewController, UITableViewDataSource, UITableViewDe
 	let exerciseCellID = "ExerciseCellViewID"
 	var routineWorkoutModel : WeekRoutineModel?
 	
-	var exercisesArray : [ExerciseModel]?
+	var exercisesArray : [ExercisesModel]?
 	
 	lazy var ExerciseSetup: ExerciseViewModel = {
 		
@@ -29,7 +29,7 @@ class DayViewController : UIViewController, UITableViewDataSource, UITableViewDe
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		exercisesArray = ExerciseSetup.setupExercises()
+		//exercisesArray = ExerciseSetup.setupExercises()
 		
 		self.setupWorkoutDetailsTableView()
 		self.setupNavigationBar()

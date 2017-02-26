@@ -68,7 +68,7 @@ extension WorkoutCompleteVIewController {
 			exerciseCell = tableView.dequeueReusableCell(withIdentifier: workoutCellViewID) as? WorkoutProcessCellView
 		}
 		
-		exerciseCell?.exerciseModel = exercisesArray?[indexPath.item]
+		//exerciseCell?.exerciseModel = exercisesArray?[indexPath.item]
 		exerciseCell?.timerButton.isHidden = true
 		exerciseCell?.backgroundColor = UIColor.black
 		

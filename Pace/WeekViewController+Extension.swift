@@ -63,12 +63,12 @@ extension WeekViewController {
 		
 	}
 
-	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
 		if section == 0 {
 			
-			return (weeklyWorkoutsArray?.count)!
+			let sectionInfo = RoutineSetup.fetchedResultsController.sections![section].numberOfObjects
+			return sectionInfo
 			
 		} else {
 			
@@ -82,8 +82,10 @@ extension WeekViewController {
 		
 		if indexPath.section == 0 {
 			
+			let indexPathFound = IndexPath(item: indexPath.row, section: 0)
+			let thisDay = RoutineSetup.fetchedResultsController.object(at: indexPathFound) as WorkoutsModel
+			
 			var routineCell = tableView.dequeueReusableCell(withIdentifier: weekCellID) as? WeekTableCell
-			let todayFromArray = weeklyWorkoutsArray?[indexPath.item]
 			
 			if (routineCell == nil) {
 				tableView.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
@@ -95,18 +97,17 @@ extension WeekViewController {
 			formatter.dateFormat = "EEEE"
 			let todayWorkoutName = formatter.string(from: date)
 			
-			if todayWorkoutName.uppercased() == todayFromArray?.dayName?.uppercased() {
+			if todayWorkoutName.uppercased() == thisDay.dayName?.uppercased() {
 				
 				routineCell?.todayIndicatorView.isHidden = false
-				routineCell?.weekNameText.textColor = UIColor.white
-				routineCell?.todayIndicatorView.backgroundColor = todayFromArray?.color
+				routineCell?.dayNameLabel.textColor = UIColor.white
+				routineCell?.todayIndicatorView.backgroundColor = UIColor(fromHexString: thisDay.colour)
 				
 			} else {
 				
 				routineCell?.todayIndicatorView.isHidden = true
 				
 			}
-			
 			
 			
 			if (routineCell!.selectedBackgroundView != nil) {
@@ -116,7 +117,7 @@ extension WeekViewController {
 				routineCell!.selectedBackgroundView = backgroundView
 			}
 			
-			routineCell?.routineModel = todayFromArray
+			routineCell?.routineModel = thisDay
 			routineCell?.backgroundColor = UIColor.black
 			
 			return routineCell!
@@ -137,7 +138,9 @@ extension WeekViewController {
 				workoutCell!.selectedBackgroundView = backgroundView
 			}
 			
+			
 			workoutCell?.backgroundColor = UIColor.black
+			
 			
 			return workoutCell!
 			
@@ -163,31 +166,31 @@ extension WeekViewController {
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
-		if indexPath.item == 1 || indexPath.item == 2 || indexPath.item == 5 || indexPath.item == 6 {
-			
-			let daySelected = weeklyWorkoutsArray?[indexPath.item]
-			selectedDayColour = (daySelected?.color)!
-			
-			let emptyDayVC = EmptyDayViewController()
-			emptyDayVC.routineWorkoutModel = daySelected
-			emptyDayVC.hidesBottomBarWhenPushed = true
-			self.navigationController?.pushViewController(emptyDayVC, animated: true)
-			
-			weekTableView?.deselectRow(at: indexPath, animated: true)
-		
-		} else {
-			
-			let daySelected = weeklyWorkoutsArray?[indexPath.item]
-			selectedDayColour = (daySelected?.color)!
-			
-			let dayDetailsVC = DayViewController()
-			dayDetailsVC.routineWorkoutModel = daySelected
-			dayDetailsVC.hidesBottomBarWhenPushed = true
-			self.navigationController?.pushViewController(dayDetailsVC, animated: true)
-			
-			weekTableView?.deselectRow(at: indexPath, animated: true)
-			
-		}
+//		if indexPath.item == 1 || indexPath.item == 2 || indexPath.item == 5 || indexPath.item == 6 {
+//			
+//			let daySelected = weeklyWorkoutsArray?[indexPath.item]
+//			selectedDayColour = (daySelected?.color)!
+//			
+//			let emptyDayVC = EmptyDayViewController()
+//			emptyDayVC.routineWorkoutModel = daySelected
+//			emptyDayVC.hidesBottomBarWhenPushed = true
+//			self.navigationController?.pushViewController(emptyDayVC, animated: true)
+//			
+//			weekTableView?.deselectRow(at: indexPath, animated: true)
+//		
+//		} else {
+//			
+//			let daySelected = weeklyWorkoutsArray?[indexPath.item]
+//			selectedDayColour = (daySelected?.color)!
+//			
+//			let dayDetailsVC = DayViewController()
+//			dayDetailsVC.routineWorkoutModel = daySelected
+//			dayDetailsVC.hidesBottomBarWhenPushed = true
+//			self.navigationController?.pushViewController(dayDetailsVC, animated: true)
+//			
+//			weekTableView?.deselectRow(at: indexPath, animated: true)
+//			
+//		}
 		
 		
 		

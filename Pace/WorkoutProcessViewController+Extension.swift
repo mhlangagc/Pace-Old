@@ -34,8 +34,10 @@ extension WorkoutProcessViewController {
 		var exerciseCell = tableView.dequeueReusableCell(withIdentifier: workoutCellViewID) as? WorkoutProcessCellView
 		
 		if (exerciseCell == nil) {
+			
 			tableView.register(WorkoutProcessCellView.self, forCellReuseIdentifier: workoutCellViewID)
 			exerciseCell = tableView.dequeueReusableCell(withIdentifier: workoutCellViewID) as? WorkoutProcessCellView
+			
 		}
 		
 		
@@ -46,7 +48,7 @@ extension WorkoutProcessViewController {
 			exerciseCell!.selectedBackgroundView = backgroundView
 		}
 		
-		exerciseCell?.exerciseModel = exercisesArray?[indexPath.item]
+		//exerciseCell?.exerciseModel = exercisesArray?[indexPath.item]
 		exerciseCell?.backgroundColor = UIColor.black
 		
 		return exerciseCell!

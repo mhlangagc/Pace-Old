@@ -15,7 +15,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	var getButtonView : GetButtonView?
 	let exerciseCellID = "ExerciseCellViewID"
 	
-	var exercisesArray : [ExerciseModel]?
+	var exercisesArray : [ExercisesModel]?
 	
 	lazy var ExerciseSetup: ExerciseViewModel = {
 		
@@ -29,7 +29,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		exercisesArray = ExerciseSetup.setupExercises()
+		//exercisesArray = ExerciseSetup.setupExercises()
 		
 		self.setupWorkoutDetailsTableView()
 		self.setupNavigationBar()
