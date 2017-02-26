@@ -15,6 +15,7 @@ enum ExerciseType : String {
 	case strength = "Strength"
 }
 
+/*
 class ExercisesModel : NSObject {
 	
 	var exerciseName: String?
@@ -25,7 +26,7 @@ class ExercisesModel : NSObject {
 	var exerciseTime: NSNumber?
 	
 	var weight: NSNumber?
-	//var workout: WorkoutModel?
+	var workout: WorkoutsModel?
 	
 }
-
+*/

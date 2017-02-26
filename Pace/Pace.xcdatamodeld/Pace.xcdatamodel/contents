@@ -1,4 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16B2657" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="ExercisesModel" representedClassName=".ExercisesModel" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="distanceOrReps" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="durationOrSets" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="exerciseImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="exerciseName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseTime" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="exerciseType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseVideoURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WorkoutsModel" inverseName="exercises" inverseEntity="WorkoutsModel" syncable="YES"/>
+    </entity>
+    <entity name="WorkoutsModel" representedClassName=".WorkoutsModel" syncable="YES">
+        <attribute name="colour" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dayName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isCompleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="trainer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trainerImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="workoutImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="workoutName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="exercises" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExercisesModel" inverseName="workout" inverseEntity="ExercisesModel" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="WorkoutsModel" positionX="-360" positionY="72" width="128" height="178"/>
+        <element name="ExercisesModel" positionX="-45" positionY="63" width="128" height="193"/>
+    </elements>
 </model>

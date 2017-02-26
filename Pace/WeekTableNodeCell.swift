@@ -17,7 +17,7 @@ class WeekTableCell: TableBaseCell {
 		return view
 	}()
 	
-	let weekNameText: UILabel = {
+	let dayNameLabel: UILabel = {
 		
 		let label = UILabel()
 		label.textColor = UIColor.greyBlackColor()
@@ -52,18 +52,17 @@ class WeekTableCell: TableBaseCell {
 		
 	}()
 	
-	var  routineModel : WeekRoutineModel? {
+	var  routineModel : WorkoutsModel? {
 		
 		didSet {
 			
 			if let weekDayName  = routineModel?.dayName {
 				
-				weekNameText.text = weekDayName.uppercased()[0...2]
+				dayNameLabel.text = weekDayName.uppercased()[0...2]
 				
 			}
 			
-			
-			if let workoutName  = routineModel?.workoutName, let dayColor = routineModel?.color {
+			if let workoutName  = routineModel?.workoutName, let dayColor = UIColor(fromHexString: routineModel?.colour) {
 				
 				workoutNameText.text = workoutName
 				workoutNameText.textColor = dayColor
@@ -96,7 +95,7 @@ class WeekTableCell: TableBaseCell {
 	func setupObjectsView() {
 		
 		self.contentView.addSubview(todayIndicatorView)
-		self.contentView.addSubview(weekNameText)
+		self.contentView.addSubview(dayNameLabel)
 		self.contentView.addSubview(workoutNameText)
 		self.contentView.addSubview(activityIndicator)
 		
@@ -112,16 +111,16 @@ class WeekTableCell: TableBaseCell {
 		activityIndicator.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
 		
 		
-		weekNameText.leftAnchor.constraint(equalTo: todayIndicatorView.rightAnchor, constant: 17.0).isActive = true
-		weekNameText.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-		weekNameText.rightAnchor.constraint(equalTo: activityIndicator.leftAnchor, constant: -10).isActive = true
-		weekNameText.heightAnchor.constraint(equalToConstant: 25.0).isActive = true
+		dayNameLabel.leftAnchor.constraint(equalTo: todayIndicatorView.rightAnchor, constant: 17.0).isActive = true
+		dayNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+		dayNameLabel.rightAnchor.constraint(equalTo: activityIndicator.leftAnchor, constant: -10).isActive = true
+		dayNameLabel.heightAnchor.constraint(equalToConstant: 25.0).isActive = true
 		
 		
 		workoutNameText.leftAnchor.constraint(equalTo: todayIndicatorView.rightAnchor, constant: 17.0).isActive = true
-		workoutNameText.topAnchor.constraint(equalTo: weekNameText.bottomAnchor, constant: 10.0).isActive = true
+		workoutNameText.topAnchor.constraint(equalTo: dayNameLabel.bottomAnchor, constant: 10.0).isActive = true
 		workoutNameText.rightAnchor.constraint(equalTo: activityIndicator.leftAnchor, constant: -10).isActive = true
-		workoutNameText.heightAnchor.constraint(equalToConstant: 25.0).isActive = true
+		workoutNameText.heightAnchor.constraint(equalToConstant: 27.0).isActive = true
 		
 		
 	}

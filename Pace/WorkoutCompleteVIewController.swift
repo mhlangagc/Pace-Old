@@ -15,7 +15,7 @@ class WorkoutCompleteVIewController : UIViewController,  UITableViewDataSource, 
 	var rateWorkoutView : RateButtonView?
 	let workoutCellViewID = "workoutCellViewID"
 	
-	var exercisesArray : [ExerciseModel]?
+	var exercisesArray : [ExercisesModel]?
 	
 	lazy var ExerciseSetup: ExerciseViewModel = {
 		
@@ -28,7 +28,7 @@ class WorkoutCompleteVIewController : UIViewController,  UITableViewDataSource, 
 		super.viewDidLoad()
 		
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.darkerBlack()
-		exercisesArray = ExerciseSetup.setupExercises()
+		//exercisesArray = ExerciseSetup.setupExercises()
 		
 		
 		self.navigationController?.navigationBar.isHidden = true

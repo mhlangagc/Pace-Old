@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 import Firebase
 import FirebaseStorage
 import FirebaseDatabase
@@ -18,28 +19,59 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	var weekTableView : UITableView?
 	let weekCellID = "RoutineCellViewID"
 	let workoutCellID = "workoutCellID"
-	var weeklyWorkoutsArray : [WeekRoutineModel]?
 	
-	
-	
-	lazy var WeeklyWorkoutsSetup: WeekDayViewModel = {
+	lazy var RoutineSetup: RoutinesViewModel = {
 		
-		let weeklyWorkoutsSetup = WeekDayViewModel()
-		return weeklyWorkoutsSetup
+		let routineWorkoutsSetup = RoutinesViewModel()
+		return routineWorkoutsSetup
 		
 	}()
+	
+	func setupRoutineData() {
+		
+		let weekCreationLaunch = UserDefaults.standard.bool(forKey: "routineCreationLaunch")
+		if weekCreationLaunch  {
+			
+			//  Not First Launch
+			
+			
+		} else {
+			
+			RoutineSetup.routinesCreation(completion: { 
+				
+				RoutineSetup.loadRoutineWorkouts()
+				
+			})
+			
+			UserDefaults.standard.set(true, forKey: "routineCreationLaunch")
+			
+			// **  Save Date for Renewing
+			//self.firstLaunchDate()
+			
+		}
+		
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		weeklyWorkoutsArray = WeeklyWorkoutsSetup.setupWeekRoutine()
+		
+		RoutineSetup.loadRoutineWorkouts()
 		
 		self.setupWeekTableView()
 		navigationItem.title = "My Routine"
 		self.navigationController?.navigationBar.isHidden = true
 		view.backgroundColor = UIColor.black
 		weekTableView?.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
+		weekTableView?.reloadData()
 		
+		self.setupRoutineData()
+	}
+	
+	func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+		
+		weekTableView?.reloadData()
+	
 	}
 	
 	func setupWeekTableView() {
