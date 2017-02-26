@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	var nav : UINavigationController?
-	var profileViewController : ProfileViewController?
+	var profileViewController : ChatViewController?
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
@@ -39,48 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			
 		} else {
 			
-			let items = [
-				UIImageView(image: UIImage(named: "home")?.withRenderingMode(.alwaysTemplate)),
-				UIImageView(image: UIImage(named: "chat")?.withRenderingMode(.alwaysTemplate)),
-				UIImageView(image: UIImage(named: "discovery")?.withRenderingMode(.alwaysTemplate))]
 			
-			let pageViewController = SLPagingViewController.init(navBarItems: items, navBarBackground: UIColor.black, controllers: [
-				WorkoutsViewController(),
-				ChatViewController(),
-				DiscoverViewController()], showPageControl: false)
-			
-			UIApplication.shared.statusBarView?.backgroundColor = .black
-			pageViewController?.setCurrentIndex(1, animated: true)
-			pageViewController?.navigationSideItemsStyle = .onBounds
-			
-			pageViewController?.pagingViewMoving = ({ subviews in
-				for v in subviews! {
-					
-					let lbl = v as! UIImageView
-					var c = UIColor.darkBlack
-					
-					if (lbl.frame.origin.x > 45 && lbl.frame.origin.x < 145) {
-						
-						c = UIColor.darkBlack
-						
-					} else if (lbl.frame.origin.x > 145 && lbl.frame.origin.x < 245) {
-						
-						c = UIColor.paceBrandColor
-					}
-					else if(lbl.frame.origin.x == 145) {
-						
-						c = UIColor.paceBrandColor
-					}
-					
-					lbl.tintColor = c()
-				}
-			})
-			
-			self.nav = UINavigationController(rootViewController: pageViewController!)
 			self.window = UIWindow(frame: UIScreen.main.bounds)
-			self.window?.rootViewController = self.nav
-//			self.window = UIWindow(frame: UIScreen.main.bounds)
-//			self.window?.rootViewController = CustomTabBarController()
+			self.window?.rootViewController = CustomTabBarController()
 			self.window?.makeKeyAndVisible()
 			self.window?.tintColor = UIColor.black
 			
@@ -98,8 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func loadDataForViews() {
 		
 		//	Profile View Controller
-		profileViewController = ProfileViewController()
-		profileViewController?.retrieveUser()
+		profileViewController = ChatViewController()
+		//profileViewController?.retrieveUser()
 		
 	}
 	

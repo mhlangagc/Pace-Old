@@ -56,7 +56,7 @@ class CustomTabBarController: ASTabBarController {
 				
 				case 2:
 				
-					imageName = "profile-male"
+					imageName = "chat"
 				
 				default: break
 				
@@ -91,7 +91,7 @@ class CustomTabBarController: ASTabBarController {
 		
 		
         //  Profile
-        let profileViewController = ProfileViewController()
+        let profileViewController = ChatViewController()
         let profileNavController = ASNavigationController(rootViewController: profileViewController)
 		//profileNavController.tabBarItem.title = "Profile"
         profileViewController.navigationController?.navigationBar.barStyle = .black

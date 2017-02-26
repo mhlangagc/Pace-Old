@@ -15,9 +15,9 @@ var selectedDayColour = UIColor.paceBrandColor()
 
 class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	
-	var headerView =  WeekHeaderView()
 	var weekTableView : UITableView?
 	let weekCellID = "RoutineCellViewID"
+	let workoutCellID = "workoutCellID"
 	var weeklyWorkoutsArray : [WeekRoutineModel]?
 	
 	
@@ -62,48 +62,7 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		UIApplication.shared.statusBarView?.backgroundColor = .black
 		navigationItem.title = "My Routine"
 		self.navigationController?.navigationBar.isHidden = true
-		//self.setupHeaderView()
-	}
 	
-	
-	override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
-		sizeHeaderToFit()
-	}
-	
-	func sizeHeaderToFit() {
-		
-		headerView.setNeedsLayout()
-		headerView.layoutIfNeeded()
-		
-		let height = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-		var frame = headerView.frame
-		frame.size.height = height
-		headerView.frame = frame
-	}
-	
-	func setupHeaderView() {
-		
-		headerView  = WeekHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 335.0))
-		headerView.myRoutineVC = self
-		weekTableView?.tableHeaderView = headerView
-		
-	}
-	
-	func closeHeaderView() {
-		
-//		headerView.setNeedsLayout()
-//		headerView.layoutIfNeeded()
-//		headerView.isHidden = true
-//		headerView.frame.offsetBy(dx: 0.0, dy: -335.0)
-		
-	}
-	
-	
-	func handleOpenDiscovery() {
-		
-		
-		
 	}
 	
 }

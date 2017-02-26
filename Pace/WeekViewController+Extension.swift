@@ -12,62 +12,152 @@ extension WeekViewController {
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		
-		return 1
+		return 2
 		
 	}
 	
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		
+		let sectionHeaderView : UIView = UIView.init(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 55))
+		sectionHeaderView.backgroundColor = UIColor.black
+		
+		
+		let sectionHeaderLabel: UILabel = UILabel.init(frame: CGRect(x: 20.0, y: 15.0, width: tableView.frame.width - 20, height: 25))
+		sectionHeaderLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
+		sectionHeaderLabel.textColor = UIColor.greyBlackColor()
+		sectionHeaderLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+		sectionHeaderView.addSubview(sectionHeaderLabel)
+		
+		
+		return sectionHeaderView
+		
+	}
+	
+	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		
+		if section == 0 {
+			
+			return 0.0
+			
+		} else {
+			
+			return 55.0
+			
+		}
+		
+		
+	}
+	
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		
+		if section == 0 {
+			
+			return ""
+			
+		} else {
+			
+			return "ALL WORKOUTS"
+			
+		}
+		
+		
+	}
+
+	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		return (weeklyWorkoutsArray?.count)!
+		if section == 0 {
+			
+			return (weeklyWorkoutsArray?.count)!
+			
+		} else {
+			
+			return 1
+			
+		}
 		
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		var routineCell = tableView.dequeueReusableCell(withIdentifier: weekCellID) as? WeekTableCell
-		let todayFromArray = weeklyWorkoutsArray?[indexPath.item]
-		
-		if (routineCell == nil) {
-			tableView.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
-			routineCell = tableView.dequeueReusableCell(withIdentifier: weekCellID) as? WeekTableCell
-		}
-		
-		let date = Date()
-		let formatter  = DateFormatter()
-		formatter.dateFormat = "EEEE"
-		let todayWorkoutName = formatter.string(from: date)
-		
-		if todayWorkoutName.uppercased() == todayFromArray?.dayName?.uppercased() {
+		if indexPath.section == 0 {
 			
-			routineCell?.todayIndicatorView.isHidden = false
-			routineCell?.weekNameText.textColor = UIColor.white
-			routineCell?.todayIndicatorView.backgroundColor = todayFromArray?.color
+			var routineCell = tableView.dequeueReusableCell(withIdentifier: weekCellID) as? WeekTableCell
+			let todayFromArray = weeklyWorkoutsArray?[indexPath.item]
 			
+			if (routineCell == nil) {
+				tableView.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
+				routineCell = tableView.dequeueReusableCell(withIdentifier: weekCellID) as? WeekTableCell
+			}
+			
+			let date = Date()
+			let formatter  = DateFormatter()
+			formatter.dateFormat = "EEEE"
+			let todayWorkoutName = formatter.string(from: date)
+			
+			if todayWorkoutName.uppercased() == todayFromArray?.dayName?.uppercased() {
+				
+				routineCell?.todayIndicatorView.isHidden = false
+				routineCell?.weekNameText.textColor = UIColor.white
+				routineCell?.todayIndicatorView.backgroundColor = todayFromArray?.color
+				
+			} else {
+				
+				routineCell?.todayIndicatorView.isHidden = true
+				
+			}
+			
+			
+			
+			if (routineCell!.selectedBackgroundView != nil) {
+				
+				let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: routineCell!.frame.size.width, height: routineCell!.frame.size.height))
+				backgroundView.backgroundColor = UIColor.darkBlack()
+				routineCell!.selectedBackgroundView = backgroundView
+			}
+			
+			routineCell?.routineModel = todayFromArray
+			routineCell?.backgroundColor = UIColor.black
+			
+			return routineCell!
+		
 		} else {
 			
-			routineCell?.todayIndicatorView.isHidden = true
+			var workoutCell = tableView.dequeueReusableCell(withIdentifier: workoutCellID) as? WorkoutCellView
+			
+			if (workoutCell == nil) {
+				tableView.register(WorkoutCellView.self, forCellReuseIdentifier: workoutCellID)
+				workoutCell = tableView.dequeueReusableCell(withIdentifier: workoutCellID) as? WorkoutCellView
+			}
+			
+			if (workoutCell!.selectedBackgroundView != nil) {
+				
+				let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: workoutCell!.frame.size.width, height: workoutCell!.frame.size.height))
+				backgroundView.backgroundColor = UIColor.darkBlack()
+				workoutCell!.selectedBackgroundView = backgroundView
+			}
+			
+			workoutCell?.backgroundColor = UIColor.black
+			
+			return workoutCell!
 			
 		}
-
 		
-		
-		if (routineCell!.selectedBackgroundView != nil) {
-			
-			let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: routineCell!.frame.size.width, height: routineCell!.frame.size.height))
-			backgroundView.backgroundColor = UIColor.darkBlack()
-			routineCell!.selectedBackgroundView = backgroundView
-		}
-		
-		routineCell?.routineModel = todayFromArray
-		routineCell?.backgroundColor = UIColor.black
-		
-		return routineCell!
 		
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		
-		return 85.0
+		if indexPath.section == 0 {
+			
+			return 85.0
+			
+		} else {
+			
+			return 120.0
+			
+		}
+		
 		
 	}
 	
