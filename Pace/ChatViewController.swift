@@ -83,7 +83,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		titleLabel.text = "Chats"
 		titleLabel.textAlignment = .center
 		titleLabel.textColor = UIColor.white
-		titleLabel.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightHeavy)
+		titleLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightBold)
 		textSpacing(titleLabel, spacing: 0.5)
 		navigationItem.titleView = titleLabel
 		

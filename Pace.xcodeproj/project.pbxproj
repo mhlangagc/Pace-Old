@@ -656,10 +656,10 @@
 			children = (
 				45B5AD7D1DFBFA6F00115E2C /* Onboarding */,
 				45AC38F61E188B70003DC46B /* WorkoutProcess */,
-				45B5AD7F1DFBFA9800115E2C /* Week Tab */,
+				45B5AD7F1DFBFA9800115E2C /* Routines Tab */,
 				45B5AD7C1DFBFA6600115E2C /* Explore Tab */,
-				45B5AD811DFBFAB100115E2C /* Activity Tab */,
 				45B5AD801DFBFAA100115E2C /* Chat Tab */,
+				45B5AD811DFBFAB100115E2C /* Activity Tab */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -785,14 +785,14 @@
 			name = Onboarding;
 			sourceTree = "<group>";
 		};
-		45B5AD7F1DFBFA9800115E2C /* Week Tab */ = {
+		45B5AD7F1DFBFA9800115E2C /* Routines Tab */ = {
 			isa = PBXGroup;
 			children = (
 				45ACEAB41DFFB60700C94B7D /* WeekView */,
 				45ACEAB71DFFB64D00C94B7D /* DayDetailsView */,
 				C6F770DD1E47577900349C5B /* Empty View */,
 			);
-			name = "Week Tab";
+			name = "Routines Tab";
 			sourceTree = "<group>";
 		};
 		45B5AD801DFBFAA100115E2C /* Chat Tab */ = {
