@@ -26,6 +26,21 @@ enum PriceEnum : Double {
 	
 }
 
+enum WorkoutCatergory: String {
+	
+	case legs = "Great for Legs"
+	case core = "for your core"
+	case butt = "For your Butt"
+	case armsAndShoulders = "For Arms & Shoulders"
+	case cardio = "Cardio & Weight Loss"
+	case recovery = "For Workout Recovery"
+	case mobility = "For Stretching & Relaxing"
+	case sevenmin = "7 min workout"
+	case chest = "For your Chest"
+	case home = "Home Workout"
+	
+}
+
 class ExploreModel: NSObject {
 	
 	var workoutName : String?
@@ -60,6 +75,17 @@ class ExploreWorkoutModel: NSObject {
 	var exercises: NSSet?
 	
 	var exploreID : String?
+}
+
+
+
+class EventModel: NSObject {
+	
+	var eventName : String?
+	var eventDate : String?
+	var daysAway : String?
+	var eventImage : UIImage?
+	
 }
 
 

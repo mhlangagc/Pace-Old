@@ -16,7 +16,6 @@ import MessageUI
 class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource, MFMailComposeViewControllerDelegate  {
 
 	var collectionNode : ASCollectionNode?
-	var searchController : UISearchController?
 	
 	lazy var ExploreWorkoutSetup: ExploreViewModel = {
 		

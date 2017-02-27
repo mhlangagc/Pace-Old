@@ -13,9 +13,7 @@ import FirebaseDatabase
 
 class PaceAppServices : NSObject {
 	
-	func retrieveUser() -> User {
-		
-		let user = User()
+	func retrieveUser(completion: @escaping (User) -> ()) {
 		
 		if let userID = FIRAuth.auth()?.currentUser?.uid {
 			
@@ -23,18 +21,25 @@ class PaceAppServices : NSObject {
 				
 				if let dictionary = snapShot.value as? [String: AnyObject] {
 					
+					let user = User()
 					user.name = dictionary["name"] as? String
 					user.profileImageUrl = dictionary["profileImageUrl"] as? String
 					user.location = dictionary["location"] as? String
 					user.about = dictionary["about"] as? String
+					
+					completion(user)
+					
+//					if let name = user.name, let location = user.location, let about = user.about, let imageUrl = user.profileImageUrl {
+//						
+//						self.setupHeaderView(userName: name, location: location, about: about, profileImageUrl: imageUrl)
+//						
+//					}
 					
 				}
 				
 			})
 			
 		}
-		
-		return user
 		
 	}
 	
