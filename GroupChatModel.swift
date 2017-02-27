@@ -13,8 +13,9 @@ class ChatGroupModel: NSObject {
 	
 	var groupImage : UIImage?
 	var groupWorkout: String?
-	var groupUsers : [User]?
+	var groupUsers : [UserModel]?
 	var groupTrainer: String?
+	var groupTrainerImage: UIImage?
 	var messages : [ChatMessageModel]?
 	
 }

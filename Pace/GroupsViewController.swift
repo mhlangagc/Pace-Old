@@ -14,7 +14,16 @@ import FirebaseDatabase
 class GroupsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource {
 
 	var groupCollectionNode : ASCollectionNode?
-
+	var chatGroupsArray : [ChatGroupModel]?
+	
+	
+	lazy var ChatGroupSetup: GroupChatViewModel = {
+		
+		let groupSetup = GroupChatViewModel()
+		return groupSetup
+		
+	}()
+	
 	init() {
 		
 		let flowLayout     = UICollectionViewFlowLayout()
@@ -27,6 +36,8 @@ class GroupsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegat
 		
 		navigationNoLineBar()
 		self.setupCollectionView()
+		
+		chatGroupsArray = ChatGroupSetup.createChatGroups()
 		
 	}
 	

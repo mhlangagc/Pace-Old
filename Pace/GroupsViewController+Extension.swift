@@ -17,14 +17,14 @@ extension GroupsViewController {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
 		
-		return 5
+		return (chatGroupsArray?.count)!
 		
 	}
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
 		
 		let groupsNode = GroupCell()
-		//groupsNode.discoveryVC = self
+		groupsNode.discoveryVC = self
 		//featuredNode.featuredWorkoutsArray = retrieveFeaturedWorkouts()
 		return groupsNode
 		

@@ -28,6 +28,32 @@ class GroupCell: BaseCell {
 	                           NSForegroundColorAttributeName: UIColor.darkBlack()] as [String : Any]
 	var groupMemberMutableString = NSMutableAttributedString()
 	
+	var  chatGroupModel : SettingsModel? {
+		
+		didSet {
+			
+			if let settingsName  = settingsModel?.setting {
+				
+				settingsTitle.attributedText = NSMutableAttributedString(string: settingsName, attributes: settingsAttributes)
+				
+			}
+			
+			
+			if let detailSetting  = settingsModel?.settingDetail {
+				
+				settingDetailString = NSMutableAttributedString(string: detailSetting, attributes: detailAttributes)
+				
+				let alignmentStyleRight = NSMutableParagraphStyle()
+				alignmentStyleRight.alignment = NSTextAlignment.right
+				settingDetailString.addAttributes([NSParagraphStyleAttributeName: alignmentStyleRight] as [String: Any], range: NSRange(location: 0, length: NSString(string: detailSetting).length))
+				
+				settingsRightSubTitle.attributedText = settingDetailString
+				
+			}
+			
+		}
+	}
+	
 	
 	override func setupNodes() {
 		super.setupNodes()
