@@ -137,6 +137,10 @@
 		C69F54AB1E6353C50014366B /* WorkoutsModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69F54A71E6353C50014366B /* WorkoutsModel+CoreDataProperties.swift */; };
 		C69F54AC1E6353C50014366B /* ExercisesModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69F54A81E6353C50014366B /* ExercisesModel+CoreDataClass.swift */; };
 		C69F54AD1E6353C50014366B /* ExercisesModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69F54A91E6353C50014366B /* ExercisesModel+CoreDataProperties.swift */; };
+		C6A8A3DC1E649BC90038C20A /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A8A3DB1E649BC90038C20A /* SpotifyAudioPlayback.framework */; };
+		C6A8A3DE1E649BD10038C20A /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A8A3DD1E649BD10038C20A /* SpotifyAuthentication.framework */; };
+		C6A8A3E01E649E1E0038C20A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A8A3DF1E649E1E0038C20A /* AVFoundation.framework */; };
+		C6A8A3E21E649E290038C20A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A8A3E11E649E290038C20A /* SystemConfiguration.framework */; };
 		C6B118281E21670C002BB4E8 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118271E21670C002BB4E8 /* PasswordViewController.swift */; };
 		C6B1182A1E21729F002BB4E8 /* NameEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118291E21729F002BB4E8 /* NameEntryViewController.swift */; };
 		C6B1182C1E217BCA002BB4E8 /* PickGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1182B1E217BCA002BB4E8 /* PickGenderViewController.swift */; };
@@ -318,6 +322,10 @@
 		C69F54A71E6353C50014366B /* WorkoutsModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutsModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C69F54A81E6353C50014366B /* ExercisesModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExercisesModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C69F54A91E6353C50014366B /* ExercisesModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExercisesModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C6A8A3DB1E649BC90038C20A /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAudioPlayback.framework; sourceTree = "<group>"; };
+		C6A8A3DD1E649BD10038C20A /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
+		C6A8A3DF1E649E1E0038C20A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C6A8A3E11E649E290038C20A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C6B118271E21670C002BB4E8 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		C6B118291E21729F002BB4E8 /* NameEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameEntryViewController.swift; sourceTree = "<group>"; };
 		C6B1182B1E217BCA002BB4E8 /* PickGenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickGenderViewController.swift; sourceTree = "<group>"; };
@@ -344,8 +352,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6A8A3E21E649E290038C20A /* SystemConfiguration.framework in Frameworks */,
+				C6A8A3E01E649E1E0038C20A /* AVFoundation.framework in Frameworks */,
 				BD372C2BE13A69DDA8ABFAA5 /* Pods_Pace.framework in Frameworks */,
+				C6A8A3DE1E649BD10038C20A /* SpotifyAuthentication.framework in Frameworks */,
 				C65CAADC1E3E7BC50047B78A /* HealthKit.framework in Frameworks */,
+				C6A8A3DC1E649BC90038C20A /* SpotifyAudioPlayback.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -914,6 +926,10 @@
 		A5EF86AE2C91C8D5AB86B880 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C6A8A3E11E649E290038C20A /* SystemConfiguration.framework */,
+				C6A8A3DF1E649E1E0038C20A /* AVFoundation.framework */,
+				C6A8A3DD1E649BD10038C20A /* SpotifyAuthentication.framework */,
+				C6A8A3DB1E649BC90038C20A /* SpotifyAudioPlayback.framework */,
 				C65CAADB1E3E7BC50047B78A /* HealthKit.framework */,
 				DC48F02A471D422621621F63 /* Pods_Pace.framework */,
 				59335CBDC2D2803DE42031D5 /* Pods_PaceTests.framework */,
@@ -1522,6 +1538,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pace/Pace.entitlements;
 				DEVELOPMENT_TEAM = TS4EZ25PY5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Pace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fitness.pace.Pace;
@@ -1539,6 +1559,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pace/Pace.entitlements;
 				DEVELOPMENT_TEAM = TS4EZ25PY5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Pace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fitness.pace.Pace;

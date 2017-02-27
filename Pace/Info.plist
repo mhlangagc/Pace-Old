@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>Each time you workout Pace will sync and update Apple Health. </string>
-	<key>NSHealthShareUsageDescription</key>
-	<string>Pace will use read your steps, sleep and other workout to calculate your activity and transfer your workouts into your Health App.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -20,6 +16,21 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLIconFile</key>
+			<string></string>
+			<key>CFBundleURLName</key>
+			<string>fitness.pace.Pace</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>pace-spotify-login</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>Fabric</key>
@@ -53,6 +64,10 @@
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Pace will use read your steps, sleep and other workout to calculate your activity and transfer your workouts into your Health App.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Each time you workout Pace will sync and update Apple Health. </string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>BebasNeue-Bold.otf</string>
