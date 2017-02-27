@@ -21,7 +21,7 @@ class ProfileHeaderView : BaseView {
 	var followingButton: UIButton?
 	var followButton : UIButton?
 	
-	var profileVC : ChatViewController?
+	//var profileVC : ChatViewController?
 	var discoverProfileVC : DiscoverProfileViewController?
 	
 	override func setupViews() {
@@ -119,13 +119,13 @@ class ProfileHeaderView : BaseView {
 	
 	func handleShowFollowers() {
 		
-		profileVC?.handleOpenFollowersView()
+		//profileVC?.handleOpenFollowersView()
 		
 	}
 	
 	func handleShowFollowing() {
 		
-		profileVC?.handleOpenFollowingView()
+		//profileVC?.handleOpenFollowingView()
 		
 	}
 	

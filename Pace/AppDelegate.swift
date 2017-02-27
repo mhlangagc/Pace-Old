@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	var nav : UINavigationController?
-	var profileViewController : ChatViewController?
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
@@ -59,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func loadDataForViews() {
 		
 		//	Profile View Controller
-		profileViewController = ChatViewController()
+		//profileViewController = ChatViewController()
 		//profileViewController?.retrieveUser()
 		
 	}

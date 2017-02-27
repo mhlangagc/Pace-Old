@@ -16,7 +16,6 @@ import MessageUI
 class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource, MFMailComposeViewControllerDelegate  {
 
 	var collectionNode : ASCollectionNode?
-	var searchController : UISearchController?
 	
 	lazy var ExploreWorkoutSetup: ExploreViewModel = {
 		
@@ -86,7 +85,7 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 		titleLabel.text = "Explore"
 		titleLabel.textAlignment = .center
 		titleLabel.textColor = UIColor.white
-		titleLabel.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightHeavy)
+		titleLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightBold)
 		textSpacing(titleLabel, spacing: 0.5)
 		navigationItem.titleView = titleLabel
 		

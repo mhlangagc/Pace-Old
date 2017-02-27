@@ -90,14 +90,13 @@ class CustomTabBarController: ASTabBarController {
 //		activityViewController.extendedLayoutIncludesOpaqueBars = true
 		
 		
-        //  Profile
-        let profileViewController = ChatViewController()
-        let profileNavController = ASNavigationController(rootViewController: profileViewController)
-		//profileNavController.tabBarItem.title = "Profile"
-        profileViewController.navigationController?.navigationBar.barStyle = .black
-        profileViewController.extendedLayoutIncludesOpaqueBars = true
+        //	Groups
+        let groupsViewController = GroupsViewController()
+        let groupsNavController = ASNavigationController(rootViewController: groupsViewController)
+        groupsViewController.navigationController?.navigationBar.barStyle = .black
+        groupsViewController.extendedLayoutIncludesOpaqueBars = true
 		
-        viewControllers = [weekNavController, exploreNavController, profileNavController ]
+        viewControllers = [weekNavController, exploreNavController, groupsNavController ]
         
     }
     

@@ -1,185 +1,228 @@
 //
-//  ProfileViewController.swift
+//  ConversationViewController.swift
 //  Pace
 //
-//  Created by Gugulethu Mhlanga on 2016/12/10.
-//  Copyright © 2016 Pace. All rights reserved.
+//  Created by Gugulethu Mhlanga on 2017/02/26.
+//  Copyright © 2017 Pace. All rights reserved.
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
-import FirebaseDatabase
 
-class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
-
-	var headerView =  ProfileHeaderView()
-	var profileTableView : UITableView?
-	let chatCellID = "chatCellID"
+class ChatViewController: UIViewController, UITextFieldDelegate {
 	
-	/*
-	func retrieveUser() {
+	var chatModel: ChatGroupModel?
+	var containerViewBottomAnchor: NSLayoutConstraint?
+	
+	lazy var inputTextField: UITextField = {
 		
-		if let userID = FIRAuth.auth()?.currentUser?.uid {
+		let textField = TextField()
+		textField.borderStyle = .none
+		textField.keyboardType = .default
+		textField.keyboardAppearance = .dark
+		textField.autocapitalizationType = UITextAutocapitalizationType.none
+		textField.backgroundColor = .black
+		textField.textColor = UIColor.white
+		textField.layer.cornerRadius = 42.0 * 0.5
+		textField.layer.borderWidth = 1.0
+		textField.layer.borderColor = UIColor.darkBlack().cgColor
+		textField.tintColor = UIColor.paceBrandColor()
+		textField.attributedPlaceholder = NSAttributedString(string:"talk to the team...",
+		                                                     attributes:[NSForegroundColorAttributeName: UIColor.greyBlackColor()])
+		textField.returnKeyType = .done
+		textField.sizeToFit()
+		textField.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightMedium)
+		textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
+		textField.translatesAutoresizingMaskIntoConstraints = false
+		return textField
+		
+	}()
+	
+	let chatContainerView : UIView = {
+	
+		let view = UIView()
+		view.backgroundColor = UIColor.black
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	
+	}()
+	
+	lazy var sendButton: UIButton = {
+		
+		let button = UIButton()
+		button.isEnabled = false
+		button.setImage(UIImage(named: "send_inActive"), for: UIControlState.normal)
+		button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		return button
+		
+	}()
+
+	
+	let chatMenuBar: ChatMenuBar = {
+		
+		let menuBar = ChatMenuBar()
+		menuBar.translatesAutoresizingMaskIntoConstraints = false
+		return menuBar
+		
+	}()
+	
+	func setupCollectionView() {
+		
+		
+	}
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		view.backgroundColor = UIColor.black
+		navigationItem.title = chatModel?.groupWorkout
+		navigationNoLineBar()
+		self.setupChatMenuBar()
+		self.setupNavBarItems()
+		self.setupInputComponents()
+		self.setupKeyboardObservers()
+		
+	}
+	
+	private func setupChatMenuBar() {
+		
+		view.addSubview(chatMenuBar)
+		
+		chatMenuBar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+		chatMenuBar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+		chatMenuBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+		chatMenuBar.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+		
+	}
+	
+	func setupNavBarItems() {
+		
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backArrow"), style: UIBarButtonItemStyle.done, target: self, action: #selector(handleClose))
+		
+	}
+	
+	func setupInputComponents() {
+		
+		view.addSubview(chatContainerView)
+		chatContainerView.addSubview(sendButton)
+		chatContainerView.addSubview(inputTextField)
+		inputTextField.delegate = self
+		
+		
+		chatContainerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+		chatContainerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+		chatContainerView.heightAnchor.constraint(equalToConstant: 56).isActive = true
+		containerViewBottomAnchor = chatContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+		containerViewBottomAnchor?.isActive = true
+		
+		
+		sendButton.rightAnchor.constraint(equalTo: chatContainerView.rightAnchor, constant: -20.0).isActive = true
+		sendButton.centerYAnchor.constraint(equalTo: chatContainerView.centerYAnchor).isActive = true
+		sendButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+		sendButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+		
+		inputTextField.leftAnchor.constraint(equalTo: chatContainerView.leftAnchor, constant: 15).isActive = true
+		inputTextField.centerYAnchor.constraint(equalTo: chatContainerView.centerYAnchor).isActive = true
+		inputTextField.rightAnchor.constraint(equalTo: sendButton.leftAnchor, constant: -10.0).isActive = true
+		inputTextField.heightAnchor.constraint(equalToConstant: 42.0).isActive = true
+		
+	}
+	
+	func textFieldDidChange() {
+		
+		if (inputTextField.text?.characters.count)! > 0 {
 			
-			FIRDatabase.database().reference().child("Users").child(userID).observe(FIRDataEventType.value, with: { (snapShot) in
-				
-				if let dictionary = snapShot.value as? [String: AnyObject] {
-					
-					let user = User()
-					user.name = dictionary["name"] as? String
-					user.profileImageUrl = dictionary["profileImageUrl"] as? String
-					user.location = dictionary["location"] as? String
-					user.about = dictionary["about"] as? String
-					
-					if let name = user.name, let location = user.location, let about = user.about, let imageUrl = user.profileImageUrl {
-						
-						self.setupHeaderView(userName: name, location: location, about: about, profileImageUrl: imageUrl)
-						
-					}
-					
-				}
-				
-			})
+			sendButton.isEnabled = true
+			sendButton.setImage(UIImage(named: "send"), for: UIControlState.normal)
+			
+		} else {
+			
+			sendButton.isEnabled = false
+			sendButton.setImage(UIImage(named: "send_inActive"), for: UIControlState.normal)
+			
 			
 		}
 		
 	}
-	*/
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
+	
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
-		navigationNoLineBar()
-		self.setupNavBar()
-		self.setupWorkoutDetailsTableView()
-		view.backgroundColor = UIColor.black
+		//handleSend()
 		
-		
+		return false
 		
 	}
 	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(true)
+	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 		
-		//	self.setupHeaderView(userName: "", location: "", about: "", profileImageUrl: "")
-		//	self.retrieveUser()
-
-		view.backgroundColor = UIColor.black
-		self.profileTableView?.reloadData()
-		navigationItem.title = "Chats"
-		
-		self.setupNavBar()
-		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.black
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
-		
-	}
-	
-	func setupNavBar() {
-		
-		let titleLabel = UILabel(frame: CGRect(x: ((view.frame.width - 100) * 0.5), y: 5, width: 100, height: view.frame.height))
-		titleLabel.text = "Chats"
-		titleLabel.textAlignment = .center
-		titleLabel.textColor = UIColor.white
-		titleLabel.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightHeavy)
-		textSpacing(titleLabel, spacing: 0.5)
-		navigationItem.titleView = titleLabel
-		
-	}
-	
-	func setupWorkoutDetailsTableView() {
-		
-		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height)
-		profileTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.plain)
-		profileTableView?.backgroundColor = .black
-		profileTableView?.delegate = self
-		profileTableView?.dataSource = self
-		profileTableView?.separatorStyle = .none
-		profileTableView?.showsVerticalScrollIndicator = false
-		profileTableView?.register(ChatCell.self, forCellReuseIdentifier: chatCellID)
-		view.addSubview(profileTableView!)
-		
-		
-	}
-	
-	override func viewWillDisappear(_ animated: Bool) {
-		super.viewWillDisappear(true)
-		
-		self.navigationController?.navigationBar.tintColor = UIColor.white
-		self.navigationController?.navigationBar.barTintColor = UIColor.black
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
+		inputTextField.resignFirstResponder()
 		
 	}
 	
 	
-//	func setupNavBar() {
-//		
-//		self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "settings"), style: UIBarButtonItemStyle.done, target: self, action: #selector(handleOpenSettings))
-//		self.navigationController?.navigationBar.tintColor = UIColor.paceBrandColor()
-//		self.navigationController?.navigationBar.barTintColor = UIColor.darkerBlack()
-//		UIApplication.shared.statusBarView?.backgroundColor = UIColor.darkerBlack()
-//		
-//	}
-
-	/*
-	func setupHeaderView(userName: String, location: String, about: String, profileImageUrl : String) {
+	func handleSendingInvitation() {
 		
-		headerView  = ProfileHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 300.0)) //375.0
-		headerView.nameLabel?.text = userName
-		headerView.locationLabel?.text = location
-		headerView.detailsLabel?.text = about
-		headerView.profileVC = self
-		headerView.followButton?.isHidden = true
-		headerView.profileImageView?.loadImageFromCacheWithUrlString(urlString: profileImageUrl)
-		profileTableView!.tableHeaderView = headerView
+		// TO DO
+		print("Sending Invitation to Friend")
+		
 		
 	}
 	
-	override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
-		sizeHeaderToFit()
+	func handleSend() {
+		
+		//	TO DO
+		inputTextField.resignFirstResponder()
+		
+		
 	}
 	
-	func sizeHeaderToFit() {
+	
+	func handleClose() {
 		
-		headerView.setNeedsLayout()
-		headerView.layoutIfNeeded()
+		if let navController = self.navigationController {
+			
+			navController.popViewController(animated: true)
+			
+		}
 		
-		let height = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-		var frame = headerView.frame
-		frame.size.height = height
-		headerView.frame = frame
 	}
-	*/
-	
-	func handleOpenSettings() {
-		
-		let settingsVC = SettingsViewController()
-		settingsVC.hidesBottomBarWhenPushed = true
-		self.navigationController?.pushViewController(settingsVC, animated: true)
-	
-	}
-	
-	func handleOpenFollowersView() {
-		
-		let followersViewController = FollowersViewController()
-		followersViewController.followersTitle = "Followers"
-		followersViewController.hidesBottomBarWhenPushed = true
-		self.navigationController?.pushViewController(followersViewController, animated: true)
-	
-	}
-	
-	func handleOpenFollowingView() {
-		
-		//	TODO
-		let followersViewController = FollowersViewController()
-		followersViewController.hidesBottomBarWhenPushed = true
-		followersViewController.followersTitle = "Following"
-		self.navigationController?.pushViewController(followersViewController, animated: true)
-	}
-
 	
 }
 
+extension ChatViewController {
+	
+	
+	func setupKeyboardObservers() {
+		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+	}
+	
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
+		
+		NotificationCenter.default.removeObserver(self)
+	}
+	
+	func handleKeyboardWillShow(notification: NSNotification) {
+		let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+		let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
+		
+		containerViewBottomAnchor?.constant = -keyboardFrame!.height
+		
+		UIView.animate(withDuration: keyboardDuration!) {
+			self.view.layoutIfNeeded()
+		}
+		
+	}
+	
+	func handleKeyboardWillHide(notification: NSNotification) {
+		
+		let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
+		
+		containerViewBottomAnchor?.constant = 0
+		UIView.animate(withDuration: keyboardDuration!) {
+			self.view.layoutIfNeeded()
+		}
+	}
+}
