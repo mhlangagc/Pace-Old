@@ -11,6 +11,7 @@ import UIKit
 class ChatViewController: UIViewController, UITextFieldDelegate {
 	
 	var chatModel: ChatGroupModel?
+	var containerViewBottomAnchor: NSLayoutConstraint?
 	
 	lazy var inputTextField: UITextField = {
 		
@@ -30,7 +31,7 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
 		textField.returnKeyType = .done
 		textField.sizeToFit()
 		textField.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightMedium)
-		textField.delegate = self
+		textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
 		
@@ -48,7 +49,8 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
 	lazy var sendButton: UIButton = {
 		
 		let button = UIButton()
-		button.setImage(UIImage(named: "send"), for: UIControlState.normal)
+		button.isEnabled = false
+		button.setImage(UIImage(named: "send_inActive"), for: UIControlState.normal)
 		button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
@@ -78,6 +80,7 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
 		self.setupChatMenuBar()
 		self.setupNavBarItems()
 		self.setupInputComponents()
+		self.setupKeyboardObservers()
 		
 	}
 	
@@ -103,11 +106,14 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
 		view.addSubview(chatContainerView)
 		chatContainerView.addSubview(sendButton)
 		chatContainerView.addSubview(inputTextField)
+		inputTextField.delegate = self
+		
 		
 		chatContainerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-		chatContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 		chatContainerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
 		chatContainerView.heightAnchor.constraint(equalToConstant: 56).isActive = true
+		containerViewBottomAnchor = chatContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+		containerViewBottomAnchor?.isActive = true
 		
 		
 		sendButton.rightAnchor.constraint(equalTo: chatContainerView.rightAnchor, constant: -20.0).isActive = true
@@ -122,11 +128,28 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
 		
 	}
 	
+	func textFieldDidChange() {
+		
+		if (inputTextField.text?.characters.count)! > 0 {
+			
+			sendButton.isEnabled = true
+			sendButton.setImage(UIImage(named: "send"), for: UIControlState.normal)
+			
+		} else {
+			
+			sendButton.isEnabled = false
+			sendButton.setImage(UIImage(named: "send_inActive"), for: UIControlState.normal)
+			
+			
+		}
+		
+	}
+	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		
 		//handleSend()
 		
-		return true
+		return false
 		
 	}
 	
@@ -164,4 +187,42 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
 		
 	}
 	
+}
+
+extension ChatViewController {
+	
+	
+	func setupKeyboardObservers() {
+		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+	}
+	
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
+		
+		NotificationCenter.default.removeObserver(self)
+	}
+	
+	func handleKeyboardWillShow(notification: NSNotification) {
+		let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+		let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
+		
+		containerViewBottomAnchor?.constant = -keyboardFrame!.height
+		
+		UIView.animate(withDuration: keyboardDuration!) {
+			self.view.layoutIfNeeded()
+		}
+		
+	}
+	
+	func handleKeyboardWillHide(notification: NSNotification) {
+		
+		let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
+		
+		containerViewBottomAnchor?.constant = 0
+		UIView.animate(withDuration: keyboardDuration!) {
+			self.view.layoutIfNeeded()
+		}
+	}
 }

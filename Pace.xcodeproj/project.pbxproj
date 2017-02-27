@@ -949,7 +949,7 @@
 			isa = PBXGroup;
 			children = (
 				C6A8A3E71E64AE5C0038C20A /* ChatMenuBar */,
-				C60363151E62D77E005F2691 /* ChatViewController.swift */,
+				C6A8A3E81E64C5B10038C20A /* ChatViewController */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -1004,6 +1004,14 @@
 				C6A8A3E51E64A98D0038C20A /* TeamMemberCell.swift */,
 			);
 			name = ChatMenuBar;
+			sourceTree = "<group>";
+		};
+		C6A8A3E81E64C5B10038C20A /* ChatViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C60363151E62D77E005F2691 /* ChatViewController.swift */,
+			);
+			name = ChatViewController;
 			sourceTree = "<group>";
 		};
 		C6B1182F1E218037002BB4E8 /* SignUp */ = {
