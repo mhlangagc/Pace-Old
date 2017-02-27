@@ -142,6 +142,8 @@
 		C6A8A3DE1E649BD10038C20A /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A8A3DD1E649BD10038C20A /* SpotifyAuthentication.framework */; };
 		C6A8A3E01E649E1E0038C20A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A8A3DF1E649E1E0038C20A /* AVFoundation.framework */; };
 		C6A8A3E21E649E290038C20A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A8A3E11E649E290038C20A /* SystemConfiguration.framework */; };
+		C6A8A3E41E64A6F00038C20A /* ChatMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8A3E31E64A6F00038C20A /* ChatMenuBar.swift */; };
+		C6A8A3E61E64A98D0038C20A /* TeamMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8A3E51E64A98D0038C20A /* TeamMemberCell.swift */; };
 		C6B118281E21670C002BB4E8 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118271E21670C002BB4E8 /* PasswordViewController.swift */; };
 		C6B1182A1E21729F002BB4E8 /* NameEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118291E21729F002BB4E8 /* NameEntryViewController.swift */; };
 		C6B1182C1E217BCA002BB4E8 /* PickGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1182B1E217BCA002BB4E8 /* PickGenderViewController.swift */; };
@@ -328,6 +330,8 @@
 		C6A8A3DD1E649BD10038C20A /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
 		C6A8A3DF1E649E1E0038C20A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C6A8A3E11E649E290038C20A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C6A8A3E31E64A6F00038C20A /* ChatMenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMenuBar.swift; sourceTree = "<group>"; };
+		C6A8A3E51E64A98D0038C20A /* TeamMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMemberCell.swift; sourceTree = "<group>"; };
 		C6B118271E21670C002BB4E8 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		C6B118291E21729F002BB4E8 /* NameEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameEntryViewController.swift; sourceTree = "<group>"; };
 		C6B1182B1E217BCA002BB4E8 /* PickGenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickGenderViewController.swift; sourceTree = "<group>"; };
@@ -435,14 +439,14 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
-		451D078B1DFE443800940301 /* Groups */ = {
+		451D078B1DFE443800940301 /* Teams */ = {
 			isa = PBXGroup;
 			children = (
 				45B5ADAA1DFC099F00115E2C /* GroupsViewController.swift */,
 				451D07891DFE43DC00940301 /* GroupsViewController+Extension.swift */,
 				C60363121E62D0F7005F2691 /* GroupCell.swift */,
 			);
-			name = Groups;
+			name = Teams;
 			sourceTree = "<group>";
 		};
 		451D078E1DFE583F00940301 /* Discovery Tab View */ = {
@@ -672,7 +676,7 @@
 				45AC38F61E188B70003DC46B /* WorkoutProcess */,
 				45B5AD7F1DFBFA9800115E2C /* Routines Tab */,
 				45B5AD7C1DFBFA6600115E2C /* Explore Tab */,
-				45B5AD801DFBFAA100115E2C /* Group Tab */,
+				45B5AD801DFBFAA100115E2C /* Team Tab */,
 				45B5AD811DFBFAB100115E2C /* Activity Tab */,
 			);
 			name = Views;
@@ -810,15 +814,15 @@
 			name = "Routines Tab";
 			sourceTree = "<group>";
 		};
-		45B5AD801DFBFAA100115E2C /* Group Tab */ = {
+		45B5AD801DFBFAA100115E2C /* Team Tab */ = {
 			isa = PBXGroup;
 			children = (
-				451D078B1DFE443800940301 /* Groups */,
+				451D078B1DFE443800940301 /* Teams */,
 				C60363141E62D763005F2691 /* Chat */,
 				450D91691E03F636009D9144 /* Followers/Following */,
 				45B5AD831DFBFACD00115E2C /* Settings */,
 			);
-			name = "Group Tab";
+			name = "Team Tab";
 			sourceTree = "<group>";
 		};
 		45B5AD811DFBFAB100115E2C /* Activity Tab */ = {
@@ -944,6 +948,7 @@
 		C60363141E62D763005F2691 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				C6A8A3E71E64AE5C0038C20A /* ChatMenuBar */,
 				C60363151E62D77E005F2691 /* ChatViewController.swift */,
 			);
 			name = Chat;
@@ -990,6 +995,15 @@
 				C69F54A91E6353C50014366B /* ExercisesModel+CoreDataProperties.swift */,
 			);
 			name = "Exercises Model";
+			sourceTree = "<group>";
+		};
+		C6A8A3E71E64AE5C0038C20A /* ChatMenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				C6A8A3E31E64A6F00038C20A /* ChatMenuBar.swift */,
+				C6A8A3E51E64A98D0038C20A /* TeamMemberCell.swift */,
+			);
+			name = ChatMenuBar;
 			sourceTree = "<group>";
 		};
 		C6B1182F1E218037002BB4E8 /* SignUp */ = {
@@ -1386,6 +1400,7 @@
 				45C214E81E05B2C200C5BCCF /* WorkoutsCell.swift in Sources */,
 				450D916F1E03F89D009D9144 /* FollowerFollowingCellNode.swift in Sources */,
 				450082021DFC90F3006AA959 /* EventCollectionCell.swift in Sources */,
+				C6A8A3E41E64A6F00038C20A /* ChatMenuBar.swift in Sources */,
 				45B5AD941DFBFC2800115E2C /* TextField.swift in Sources */,
 				452A00BA1E05E69500CACA18 /* StatusBarBackground.swift in Sources */,
 				454535971E19034500653252 /* ExerciseViewModel.swift in Sources */,
@@ -1394,6 +1409,7 @@
 				45B5AD921DFBFC2100115E2C /* TextSpacing.swift in Sources */,
 				45B5AD4A1DFBF71100115E2C /* Pace.xcdatamodeld in Sources */,
 				C6F770DA1E4718F800349C5B /* WelcomeLaunchViewController.swift in Sources */,
+				C6A8A3E61E64A98D0038C20A /* TeamMemberCell.swift in Sources */,
 				456DFFEA1E0D10B60057338D /* NavigationBarLine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

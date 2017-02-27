@@ -32,6 +32,7 @@ extension GroupsViewController {
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
 		let chatVC = ChatViewController()
+		chatVC.chatModel = chatGroupsArray?[indexPath.item]
 		chatVC.hidesBottomBarWhenPushed = true
 		self.navigationController?.pushViewController(chatVC, animated: true)
 		collectionNode.deselectItem(at: indexPath, animated: true)
