@@ -19,13 +19,16 @@ class GroupChatViewModel : NSObject {
 		group1.groupWorkout = "Bigger Chest Workout"
 		group1.groupImage = UIImage(named: "2")
 		group1.groupTrainer = "Pace"
-		group1.groupTrainerImage = UIImage(named: "2")
-		group1.groupUsers = [(userCreation?.createLocalUser())!]
+		group1.groupTrainerImage = UIImage(named: "logo")
+			
+		let group2 = ChatGroupModel()
+		group2.groupWorkout = "Cardio"
+		group2.groupImage = UIImage(named: "5")
+		group2.groupTrainer = "Letty"
+		group2.groupTrainerImage = UIImage(named: "logo")
 		
 		
-		
-		
-		return [group1]
+		return [group1, group2]
 	
 	}
 }

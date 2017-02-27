@@ -70,9 +70,10 @@ class GroupsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegat
 		super.viewWillAppear(true)
 		
 		self.navigationBarItems()
-		navigationItem.title = "Groups"
+		navigationItem.title = "Workout Groups"
 		navigationNoLineBar()
 		self.navigationController?.navigationBar.barTintColor = UIColor.black
+		self.navigationController?.navigationBar.tintColor = UIColor.paceBrandColor()
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
 		
 		
@@ -82,7 +83,7 @@ class GroupsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegat
 	func navigationBarItems() {
 		
 		let titleLabel = UILabel(frame: CGRect(x: ((view.frame.width - 100) * 0.5), y: 5, width: 100, height: view.frame.height))
-		titleLabel.text = "Groups"
+		titleLabel.text = "Workout Groups"
 		titleLabel.textAlignment = .center
 		titleLabel.textColor = UIColor.white
 		titleLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightBold)

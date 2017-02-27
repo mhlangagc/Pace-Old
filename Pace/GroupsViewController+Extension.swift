@@ -24,8 +24,8 @@ extension GroupsViewController {
 	func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
 		
 		let groupsNode = GroupCell()
-		groupsNode.discoveryVC = self
-		//featuredNode.featuredWorkoutsArray = retrieveFeaturedWorkouts()
+		//groupsNode.discoveryVC = self
+		groupsNode.chatGroupModel = chatGroupsArray?[indexPath.item]
 		return groupsNode
 		
 	}
