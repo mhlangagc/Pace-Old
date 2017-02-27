@@ -9,18 +9,20 @@
 import UIKit
 
 
-class GroupChatModel: NSObject {
+class ChatGroupModel: NSObject {
 	
-	var workoutName : String?
-	var trainerName: String?
-	var workoutImage : UIImage?
-	var trainerImage : UIImage?
-	var rating: Int?
-	var numberOfReviews: Int?
-	var isDownloaded : Bool?
-	var workoutDescription: String?
-	var workoutTime: Int?
-	var workoutPrice : PriceEnum?
-	var workoutCatergory : WorkoutCatergory?
+	var groupImage : UIImage?
+	var groupWorkout: String?
+	var groupUsers : [User]?
+	var groupTrainer: String?
+	var messages : [ChatMessageModel]?
+	
+}
+
+class ChatMessageModel: NSObject {
+	
+	var userSending : User?
+	var message: String?
+	var dateSent: String?
 	
 }

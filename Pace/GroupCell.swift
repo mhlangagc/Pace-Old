@@ -14,6 +14,7 @@ class GroupCell: BaseCell {
 	let groupImageNode = ASNetworkImageNode()
 	let groupTitleNode = ASTextNode()
 	let groupMemberNumberNode = ASTextNode()
+	let messageCountNode = ASDisplayNode()
 	
 	let imageSize : CGFloat = 85
 	
@@ -38,6 +39,12 @@ class GroupCell: BaseCell {
 	
 	func setupGroupCellDetails() {
 		
+		messageCountNode.backgroundColor = UIColor.paceBrandColor()
+		messageCountNode.borderColor = UIColor.black.cgColor
+		messageCountNode.borderWidth = 2.5
+		messageCountNode.cornerRadius = 25.0 * 0.5
+		addSubnode(messageCountNode)
+		
 		groupImageNode.image = UIImage(named: "3")
 		groupImageNode.backgroundColor = UIColor.darkBlack()
 		groupImageNode.cropRect = CGRect(x: 0, y: 0, width: 0.0, height: 0.0)
@@ -59,6 +66,8 @@ class GroupCell: BaseCell {
 	
 	override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
 		
+		messageCountNode.style.preferredSize = CGSize(width: 40, height: 40);
+		messageCountNode.style.layoutPosition = CGPoint(x: 150, y: 0);
 		groupImageNode.style.preferredSize = CGSize(width: imageSize, height: imageSize)
 		groupTitleNode.style.width = ASDimension(unit: ASDimensionUnit.points, value: 115.0)
 		groupMemberNumberNode.style.width = ASDimension(unit: ASDimensionUnit.points, value: 115.0)
