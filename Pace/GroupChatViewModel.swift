@@ -19,12 +19,14 @@ class GroupChatViewModel : NSObject {
 		group1.groupImage = UIImage(named: "2")
 		group1.groupTrainer = "Pace"
 		group1.groupTrainerImage = UIImage(named: "logo")
+		group1.numberOfMembers = "\(450)"
 			
 		let group2 = ChatGroupModel()
 		group2.groupWorkout = "Cardio for Muscle Build"
 		group2.groupImage = UIImage(named: "5")
 		group2.groupTrainer = "Letty"
 		group2.groupTrainerImage = UIImage(named: "logo")
+		group2.numberOfMembers = "\(97)"
 		
 		
 		let group3 = ChatGroupModel()
@@ -32,6 +34,7 @@ class GroupChatViewModel : NSObject {
 		group3.groupImage = UIImage(named: "7")
 		group3.groupTrainer = "Pace"
 		group3.groupTrainerImage = UIImage(named: "logo")
+		group3.numberOfMembers = "\(3.5)k"
 		
 		
 		let group4 = ChatGroupModel()
@@ -39,6 +42,7 @@ class GroupChatViewModel : NSObject {
 		group4.groupImage = UIImage(named: "1")
 		group4.groupTrainer = "Pace"
 		group4.groupTrainerImage = UIImage(named: "logo")
+		group4.numberOfMembers = "\(9.1)k"
 		
 		
 		return [group1, group2, group3, group4]

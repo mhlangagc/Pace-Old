@@ -51,21 +51,18 @@ class GroupCell: BaseCell {
 			}
 			
 			
-//			if let groupUserNumber  = chatGroupModel?.groupUsers?.count {
-//				
-//				print(groupUserNumber)
-//				
-//				
-//				
-//			}
+			if let groupUserNumber  = chatGroupModel?.numberOfMembers {
+				
+				groupMemberMutableString = NSMutableAttributedString(string: "\(groupUserNumber) Members", attributes: groupMemberAttributes)
+				
+				let alignmentStyleCenter = NSMutableParagraphStyle()
+				alignmentStyleCenter.alignment = NSTextAlignment.center
+				groupMemberMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyleCenter] as [String: Any], range: NSRange(location: 0, length: NSString(string: "\(groupUserNumber) Members").length))
+				
+				groupMemberNumberNode.attributedText = groupMemberMutableString
+			}
 			
-			groupMemberMutableString = NSMutableAttributedString(string: "3k Members", attributes: groupMemberAttributes)
 			
-			let alignmentStyleCenter = NSMutableParagraphStyle()
-			alignmentStyleCenter.alignment = NSTextAlignment.center
-			groupMemberMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyleCenter] as [String: Any], range: NSRange(location: 0, length: NSString(string: "3k Members").length))
-			
-			groupMemberNumberNode.attributedText = groupMemberMutableString
 			
 			
 			if let groupImage = chatGroupModel?.groupImage {
