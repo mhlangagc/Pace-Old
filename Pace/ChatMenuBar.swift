@@ -14,10 +14,10 @@ class ChatMenuBar: BaseView, UICollectionViewDataSource, UICollectionViewDelegat
 	 let teamProfileCellID = "teamProfileCellID"
 	
 	lazy var teamMembersCollectionView: UICollectionView = {
+		
 		let layout = UICollectionViewFlowLayout()
-		layout.minimumLineSpacing = 15
-		layout.minimumLineSpacing = 15
-		layout.sectionInset = UIEdgeInsets(top: 10.0, left: 0.0, bottom: 10.0, right: 0.0)
+		layout.minimumLineSpacing = 20
+		layout.sectionInset = UIEdgeInsets(top: 0.0, left: 15.0, bottom: 0.0, right: 15.0)
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 		collectionView.backgroundColor = UIColor.black
 		collectionView.dataSource = self
@@ -43,6 +43,7 @@ class ChatMenuBar: BaseView, UICollectionViewDataSource, UICollectionViewDelegat
 		self.addViews()
 		
 	}
+	
 	
 	func addViews() {
 		
@@ -76,7 +77,7 @@ extension ChatMenuBar {
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		
-		return 7
+		return 8
 	
 	}
 	
@@ -97,7 +98,7 @@ extension ChatMenuBar {
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		
-		if indexPath.item == 6 {
+		if indexPath.item == 7 {
 			
 			chatVC?.handleSendingInvitation()
 			

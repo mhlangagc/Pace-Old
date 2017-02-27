@@ -16,6 +16,8 @@ class TeamMemberCell: CollectionBaseCell {
 		imageView.image = UIImage(named: "simon")
 		imageView.backgroundColor = UIColor.paceBrandColor()
 		imageView.contentMode = .scaleAspectFill
+		imageView.layer.cornerRadius = 30.0 * 0.5
+		imageView.layer.masksToBounds = true
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		return imageView
 		
