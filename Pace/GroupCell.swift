@@ -16,18 +16,20 @@ class GroupCell: BaseCell {
 	var groupMemberNumberNode = ASTextNode()
 	let messageCountNode = ASDisplayNode()
 	
-	let imageSize : CGFloat = 85
+	let imageSize : CGFloat = 100
 	
-	let groupTitleNodeAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 13.5, weight: UIFontWeightSemibold),
-	                             NSForegroundColorAttributeName: UIColor.white,
-	                             NSKernAttributeName: 0.54] as [String : Any]
+	
+	//	Group Title
+	let groupTitleNodeAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 15, weight: UIFontWeightBold),
+	                             NSForegroundColorAttributeName: UIColor.greyWhite(),
+	                             NSKernAttributeName: 0.0] as [String : Any]
 	var groupTitleMutableString = NSMutableAttributedString()
 	
 	
 	
-	
-	var groupMemberAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 12, weight: UIFontWeightSemibold),
-	                           NSForegroundColorAttributeName: UIColor.greyWhite()] as [String : Any]
+	// Member Number
+	var groupMemberAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 14, weight: UIFontWeightBold),
+	                           NSForegroundColorAttributeName: UIColor.greyBlackColor()] as [String : Any]
 	var groupMemberMutableString = NSMutableAttributedString()
 	
 	
@@ -49,19 +51,21 @@ class GroupCell: BaseCell {
 			}
 			
 			
-			if let groupUserNumber  = chatGroupModel?.groupUsers?.count {
-				
-				print(groupUserNumber)
-				
-				groupMemberMutableString = NSMutableAttributedString(string: "3k Members", attributes: groupMemberAttributes)
-				
-				let alignmentStyleCenter = NSMutableParagraphStyle()
-				alignmentStyleCenter.alignment = NSTextAlignment.center
-				groupMemberMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyleCenter] as [String: Any], range: NSRange(location: 0, length: NSString(string: "3k Members").length))
-				
-				groupMemberNumberNode.attributedText = groupMemberMutableString
-				
-			}
+//			if let groupUserNumber  = chatGroupModel?.groupUsers?.count {
+//				
+//				print(groupUserNumber)
+//				
+//				
+//				
+//			}
+			
+			groupMemberMutableString = NSMutableAttributedString(string: "3k Members", attributes: groupMemberAttributes)
+			
+			let alignmentStyleCenter = NSMutableParagraphStyle()
+			alignmentStyleCenter.alignment = NSTextAlignment.center
+			groupMemberMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyleCenter] as [String: Any], range: NSRange(location: 0, length: NSString(string: "3k Members").length))
+			
+			groupMemberNumberNode.attributedText = groupMemberMutableString
 			
 			
 			if let groupImage = chatGroupModel?.groupImage {
@@ -87,13 +91,13 @@ class GroupCell: BaseCell {
 		
 		
 		messageCountNode.backgroundColor = UIColor.paceBrandColor()
-		messageCountNode.cornerRadius = 10.0 * 0.5
+		messageCountNode.cornerRadius = 20.0 * 0.5
 		addSubnode(messageCountNode)
 		
 		
 		groupImageNode.backgroundColor = UIColor.darkBlack()
 		groupImageNode.cropRect = CGRect(x: 0, y: 0, width: 0.0, height: 0.0)
-		groupImageNode.layer.cornerRadius = 85.0 * 0.5
+		groupImageNode.layer.cornerRadius = 100.0 * 0.5
 		groupImageNode.shouldRasterizeDescendants = true
 		groupImageNode.clipsToBounds = true
 		addSubnode(groupImageNode)
@@ -109,32 +113,24 @@ class GroupCell: BaseCell {
 	
 	override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
 		
-		messageCountNode.style.preferredSize = CGSize(width: 10, height: 10)
-		
 		groupImageNode.style.preferredSize = CGSize(width: imageSize, height: imageSize)
 		groupTitleNode.style.width = ASDimension(unit: ASDimensionUnit.points, value: 115.0)
 		groupMemberNumberNode.style.width = ASDimension(unit: ASDimensionUnit.points, value: 115.0)
 		
 		
 		let imageAndTitle = ASStackLayoutSpec(direction: .vertical,
-		                                   spacing: 10,
+		                                   spacing: 15,
 		                                   justifyContent: .center,
 		                                   alignItems: .center,
 		                                   children: [groupImageNode, groupTitleNode])
 		
 		let finalLayoutSpec = ASStackLayoutSpec(direction: .vertical,
-		                                   spacing: 5,
+		                                   spacing: 8,
 		                                   justifyContent: .center,
 		                                   alignItems: .center,
 		                                   children: [imageAndTitle, groupMemberNumberNode])
 		
-		let absoluteLayoutSpec = ASStackLayoutSpec(direction: .vertical,
-		                                        spacing: 5,
-		                                        justifyContent: .center,
-		                                        alignItems: .center,
-		                                        children: [finalLayoutSpec, messageCountNode])
-		
-		return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 12.0, left: 0.0, bottom: 8.0, right: 0.0), child: absoluteLayoutSpec)
+		return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15.0, left: 0.0, bottom: 22.0, right: 0.0), child: finalLayoutSpec)
 		
 		
 	}

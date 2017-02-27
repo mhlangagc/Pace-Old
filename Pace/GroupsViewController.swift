@@ -27,9 +27,10 @@ class GroupsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegat
 	init() {
 		
 		let flowLayout     = UICollectionViewFlowLayout()
-		flowLayout.minimumInteritemSpacing  = 0
-		flowLayout.minimumLineSpacing       = 5
 		flowLayout.scrollDirection = .vertical
+		flowLayout.minimumInteritemSpacing  = 10
+		flowLayout.minimumLineSpacing       = 10
+		flowLayout.sectionInset = UIEdgeInsets(top: 30.0, left: 5.0, bottom: 20.0, right: 5.0)
 		groupCollectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
 		
 		super.init(node: groupCollectionNode!)
@@ -70,7 +71,7 @@ class GroupsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegat
 		super.viewWillAppear(true)
 		
 		self.navigationBarItems()
-		navigationItem.title = "Workout Groups"
+		navigationItem.title = "Workout Teams"
 		navigationNoLineBar()
 		self.navigationController?.navigationBar.barTintColor = UIColor.black
 		self.navigationController?.navigationBar.tintColor = UIColor.paceBrandColor()
@@ -83,7 +84,7 @@ class GroupsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegat
 	func navigationBarItems() {
 		
 		let titleLabel = UILabel(frame: CGRect(x: ((view.frame.width - 100) * 0.5), y: 5, width: 100, height: view.frame.height))
-		titleLabel.text = "Workout Groups"
+		titleLabel.text = "Workout Teams"
 		titleLabel.textAlignment = .center
 		titleLabel.textColor = UIColor.white
 		titleLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightBold)
