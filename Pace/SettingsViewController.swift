@@ -10,6 +10,9 @@ import UIKit
 import AsyncDisplayKit
 import MessageUI
 import SafariServices
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class SettingsViewController: ASViewController<ASDisplayNode>, ASTableDelegate, ASTableDataSource, MFMailComposeViewControllerDelegate {
 	
@@ -20,6 +23,14 @@ class SettingsViewController: ASViewController<ASDisplayNode>, ASTableDelegate, 
 	var middleSectionArray : [SettingsModel]?
 	var bottomSectionArray : [SettingsModel]?
 	var logoutArray : [SettingsModel]?
+	
+	
+	lazy var profileSetup: PaceAppServices = {
+		
+		let profileSetup = PaceAppServices()
+		return profileSetup
+		
+	}()
 	
 	lazy var SettingsSetup: SettingsViewModel = {
 		
@@ -51,7 +62,7 @@ class SettingsViewController: ASViewController<ASDisplayNode>, ASTableDelegate, 
 		
 		self.navigationController?.navigationBar.isHidden = false
 		navigationLineBar()
-		self.title = "Settings"
+		self.navigationItem.title = "Settings"
 		view.backgroundColor = .black
 		
 		
@@ -61,7 +72,7 @@ class SettingsViewController: ASViewController<ASDisplayNode>, ASTableDelegate, 
 		super.viewWillAppear(true)
 		
 		self.navigationController?.navigationBar.isHidden = false
-		self.title = "Settings"
+		self.navigationItem.title = "Settings"
 		navigationNoLineBar()
 		
 	}
@@ -70,7 +81,7 @@ class SettingsViewController: ASViewController<ASDisplayNode>, ASTableDelegate, 
 		
 		self.settingsTableNode?.delegate = self
 		self.settingsTableNode?.dataSource = self
-		self.settingsTableNode?.backgroundColor = UIColor.black
+		self.settingsTableNode?.backgroundColor = UIColor.headerBlack()
 		self.settingsTableNode?.view.separatorStyle = .none
 		self.settingsTableNode?.view.showsVerticalScrollIndicator = false
 		

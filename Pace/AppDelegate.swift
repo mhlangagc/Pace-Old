@@ -23,6 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	var nav : UINavigationController?
+	
+	lazy var profileSetup: PaceAppServices = {
+		
+		let profileSetup = PaceAppServices()
+		return profileSetup
+		
+	}()
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
@@ -60,6 +67,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		//	Profile View Controller
 		//profileViewController = ChatViewController()
 		//profileViewController?.retrieveUser()
+		profileSetup.retrieveUser { (userFound) in
+			//	Do nothing for now
+		}
 		
 	}
 	

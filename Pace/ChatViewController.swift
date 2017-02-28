@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ChatViewController: UIViewController, UITextFieldDelegate {
+class ChatViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
 	
 	var chatModel: ChatGroupModel?
 	var containerViewBottomAnchor: NSLayoutConstraint?
+	let ChatMessageCellID = "ChatMessageCellID"
 	
 	lazy var inputTextField: UITextField = {
 		
@@ -19,8 +20,8 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
 		textField.borderStyle = .none
 		textField.keyboardType = .default
 		textField.keyboardAppearance = .dark
-		textField.autocapitalizationType = UITextAutocapitalizationType.none
 		textField.backgroundColor = .black
+		textField.autocapitalizationType = .sentences
 		textField.textColor = UIColor.white
 		textField.layer.cornerRadius = 42.0 * 0.5
 		textField.layer.borderWidth = 1.0
@@ -28,7 +29,7 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
 		textField.tintColor = UIColor.paceBrandColor()
 		textField.attributedPlaceholder = NSAttributedString(string:"talk to the team...",
 		                                                     attributes:[NSForegroundColorAttributeName: UIColor.greyBlackColor()])
-		textField.returnKeyType = .done
+		textField.returnKeyType = .send
 		textField.sizeToFit()
 		textField.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightMedium)
 		textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
@@ -68,6 +69,11 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
 	
 	func setupCollectionView() {
 		
+		collectionView?.contentInset = UIEdgeInsets(top: 58, left: 0, bottom: 62, right: 0)
+		collectionView?.alwaysBounceVertical = true
+		collectionView?.backgroundColor = UIColor.black
+		collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: ChatMessageCellID)
+		collectionView?.keyboardDismissMode = .interactive
 		
 	}
 	
@@ -76,11 +82,19 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
 		
 		view.backgroundColor = UIColor.black
 		navigationItem.title = chatModel?.groupWorkout
+		self.setupCollectionView()
 		navigationNoLineBar()
 		self.setupChatMenuBar()
-		self.setupNavBarItems()
+		//self.setupNavBarItems()
 		self.setupInputComponents()
 		self.setupKeyboardObservers()
+		
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		
+		self.navigationController?.navigationBar.tintColor = UIColor.white
 		
 	}
 	
@@ -147,16 +161,15 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		
-		//handleSend()
-		
-		return false
+		handleSend()
+		return true
 		
 	}
 	
-	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		
-		inputTextField.resignFirstResponder()
-		
+	override var inputAccessoryView: UIView? {
+		get {
+			return chatContainerView
+		}
 	}
 	
 	
@@ -171,8 +184,9 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
 	func handleSend() {
 		
 		//	TO DO
-		inputTextField.resignFirstResponder()
-		
+		inputTextField.text = nil
+		sendButton.isEnabled = false
+		sendButton.setImage(UIImage(named: "send_inActive"), for: UIControlState.normal)
 		
 	}
 	
@@ -189,40 +203,3 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
 	
 }
 
-extension ChatViewController {
-	
-	
-	func setupKeyboardObservers() {
-		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-		
-		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-	}
-	
-	override func viewDidDisappear(_ animated: Bool) {
-		super.viewDidDisappear(animated)
-		
-		NotificationCenter.default.removeObserver(self)
-	}
-	
-	func handleKeyboardWillShow(notification: NSNotification) {
-		let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
-		let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
-		
-		containerViewBottomAnchor?.constant = -keyboardFrame!.height
-		
-		UIView.animate(withDuration: keyboardDuration!) {
-			self.view.layoutIfNeeded()
-		}
-		
-	}
-	
-	func handleKeyboardWillHide(notification: NSNotification) {
-		
-		let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
-		
-		containerViewBottomAnchor?.constant = 0
-		UIView.animate(withDuration: keyboardDuration!) {
-			self.view.layoutIfNeeded()
-		}
-	}
-}

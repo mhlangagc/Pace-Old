@@ -9,10 +9,12 @@
 import UIKit
 import AsyncDisplayKit
 
-extension GroupsViewController {
+extension TeamsViewController {
 	
 	func numberOfSections(in collectionNode: ASCollectionNode) -> Int {
+		
 		return 1
+	
 	}
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
@@ -23,15 +25,17 @@ extension GroupsViewController {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
 		
-		let groupsNode = GroupCell()
-		groupsNode.chatGroupModel = chatGroupsArray?[indexPath.item]
-		return groupsNode
+		let teamNode = TeamCell()
+		teamNode.chatGroupModel = chatGroupsArray?[indexPath.item]
+		return teamNode
 		
 	}
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
-		let chatVC = ChatViewController()
+		let flowLayout = UICollectionViewFlowLayout()
+		flowLayout.scrollDirection = .vertical
+		let chatVC = ChatViewController(collectionViewLayout: flowLayout)
 		chatVC.chatModel = chatGroupsArray?[indexPath.item]
 		chatVC.hidesBottomBarWhenPushed = true
 		self.navigationController?.pushViewController(chatVC, animated: true)

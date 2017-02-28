@@ -9,7 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 
-class GroupCell: BaseCell {
+class TeamCell: BaseCell {
 	
 	let groupImageNode = ASNetworkImageNode()
 	let groupTitleNode = ASTextNode()

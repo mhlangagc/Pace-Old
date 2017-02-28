@@ -29,12 +29,6 @@ class PaceAppServices : NSObject {
 					
 					completion(user)
 					
-//					if let name = user.name, let location = user.location, let about = user.about, let imageUrl = user.profileImageUrl {
-//						
-//						self.setupHeaderView(userName: name, location: location, about: about, profileImageUrl: imageUrl)
-//						
-//					}
-					
 				}
 				
 			})
