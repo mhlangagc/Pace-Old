@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class GroupsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource {
+class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource {
 
 	var groupCollectionNode : ASCollectionNode?
 	var chatGroupsArray : [ChatGroupModel]?
@@ -71,10 +71,8 @@ class GroupsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegat
 		super.viewWillAppear(true)
 		
 		self.navigationBarItems()
-		navigationItem.title = "Workout Teams"
 		navigationNoLineBar()
 		self.navigationController?.navigationBar.barTintColor = UIColor.black
-		self.navigationController?.navigationBar.tintColor = UIColor.paceBrandColor()
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
 		
 		
@@ -90,17 +88,6 @@ class GroupsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegat
 		titleLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightBold)
 		textSpacing(titleLabel, spacing: 0.5)
 		navigationItem.titleView = titleLabel
-	
-		self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "settings"), style: UIBarButtonItemStyle.done, target: self, action: #selector(handleOpenSettings))
-	}
-
-	
-	func handleOpenSettings() {
-		
-		let settingsVC = SettingsViewController()
-		settingsVC.hidesBottomBarWhenPushed = true
-		self.navigationController?.pushViewController(settingsVC, animated: true)
-	
 	}
 
 	

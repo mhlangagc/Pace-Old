@@ -58,6 +58,10 @@ class CustomTabBarController: ASTabBarController {
 				
 					imageName = "chat"
 				
+				case 3:
+				
+					imageName = "profile-male"
+				
 				default: break
 				
 			}
@@ -71,32 +75,30 @@ class CustomTabBarController: ASTabBarController {
         //  My Routine
         let weekViewController = WeekViewController()
         let weekNavController = ASNavigationController(rootViewController: weekViewController)
-        //weekNavController.tabBarItem.title = "My Routine"
         weekViewController.navigationController?.navigationBar.barStyle = .black
         weekViewController.extendedLayoutIncludesOpaqueBars = true
 		
         //	Discovery
         let exploreViewController = ExploreViewController()
         let exploreNavController = ASNavigationController(rootViewController: exploreViewController)
-		//exploreNavController.tabBarItem.title = "Explore"
 		exploreViewController.navigationController?.navigationBar.barStyle = .black
         exploreViewController.extendedLayoutIncludesOpaqueBars = true
-        
+		
+        //	Teams
+        let teamViewController = TeamsViewController()
+        let groupsNavController = ASNavigationController(rootViewController: teamViewController)
+        teamViewController.navigationController?.navigationBar.barStyle = .black
+        teamViewController.extendedLayoutIncludesOpaqueBars = true
+		
 		//  Activity View Controller
-//		let activityViewController = ActivityViewController()
-//		let activityNavController = ASNavigationController(rootViewController: activityViewController)
-//		activityNavController.tabBarItem.title = "Activity"
-//		activityViewController.navigationController?.navigationBar.barStyle = .black
-//		activityViewController.extendedLayoutIncludesOpaqueBars = true
+		let profileSettingsViewController = SettingsViewController()
+		let profileSettingsNavController = ASNavigationController(rootViewController: profileSettingsViewController)
+		profileSettingsNavController.tabBarItem.title = "Profile"
+		profileSettingsViewController.navigationController?.navigationBar.barStyle = .black
+		profileSettingsViewController.extendedLayoutIncludesOpaqueBars = true
 		
 		
-        //	Groups
-        let groupsViewController = GroupsViewController()
-        let groupsNavController = ASNavigationController(rootViewController: groupsViewController)
-        groupsViewController.navigationController?.navigationBar.barStyle = .black
-        groupsViewController.extendedLayoutIncludesOpaqueBars = true
-		
-        viewControllers = [weekNavController, exploreNavController, groupsNavController ]
+        viewControllers = [weekNavController, exploreNavController, groupsNavController, profileSettingsNavController]
         
     }
     

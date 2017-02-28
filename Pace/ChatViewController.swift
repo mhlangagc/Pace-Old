@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ChatViewController: UIViewController, UITextFieldDelegate {
+class ChatViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
 	
 	var chatModel: ChatGroupModel?
 	var containerViewBottomAnchor: NSLayoutConstraint?
+	let ChatMessageCellID = "ChatMessageCellID"
 	
 	lazy var inputTextField: UITextField = {
 		
@@ -68,6 +69,11 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
 	
 	func setupCollectionView() {
 		
+		collectionView?.contentInset = UIEdgeInsets(top: 58, left: 0, bottom: 62, right: 0)
+		collectionView?.alwaysBounceVertical = true
+		collectionView?.backgroundColor = UIColor.black
+		collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: ChatMessageCellID)
+		collectionView?.keyboardDismissMode = .interactive
 		
 	}
 	
@@ -76,12 +82,19 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
 		
 		view.backgroundColor = UIColor.black
 		navigationItem.title = chatModel?.groupWorkout
-//		self.navigationController?.navigationBar.frame.origin.y = 20
+		self.setupCollectionView()
 		navigationNoLineBar()
 		self.setupChatMenuBar()
 		//self.setupNavBarItems()
 		self.setupInputComponents()
 		self.setupKeyboardObservers()
+		
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		
+		self.navigationController?.navigationBar.tintColor = UIColor.white
 		
 	}
 	
@@ -153,10 +166,10 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
 		
 	}
 	
-	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		
-		inputTextField.resignFirstResponder()
-		
+	override var inputAccessoryView: UIView? {
+		get {
+			return chatContainerView
+		}
 	}
 	
 	
@@ -190,40 +203,3 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
 	
 }
 
-extension ChatViewController {
-	
-	
-	func setupKeyboardObservers() {
-		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-		
-		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-	}
-	
-	override func viewDidDisappear(_ animated: Bool) {
-		super.viewDidDisappear(animated)
-		
-		NotificationCenter.default.removeObserver(self)
-	}
-	
-	func handleKeyboardWillShow(notification: NSNotification) {
-		let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
-		let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
-		
-		containerViewBottomAnchor?.constant = -keyboardFrame!.height
-		
-		UIView.animate(withDuration: keyboardDuration!) {
-			self.view.layoutIfNeeded()
-		}
-		
-	}
-	
-	func handleKeyboardWillHide(notification: NSNotification) {
-		
-		let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
-		
-		containerViewBottomAnchor?.constant = 0
-		UIView.animate(withDuration: keyboardDuration!) {
-			self.view.layoutIfNeeded()
-		}
-	}
-}
