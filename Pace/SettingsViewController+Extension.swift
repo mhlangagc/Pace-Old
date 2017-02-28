@@ -18,7 +18,7 @@ extension SettingsViewController {
 	
 	func numberOfSections(in tableNode: ASTableNode) -> Int {
 		
-		return 5
+		return 6
 		
 	}
 	
@@ -28,17 +28,21 @@ extension SettingsViewController {
 			
 		case 0:
 			
-			return (topSettingsArray?.count)!
+			return 1
 			
 		case 1:
 			
-			return (trainerJoinArray?.count)!
+			return (topSettingsArray?.count)!
 			
 		case 2:
 			
-			return (middleSectionArray?.count)!
+			return (trainerJoinArray?.count)!
 			
 		case 3:
+			
+			return (middleSectionArray?.count)!
+			
+		case 4:
 			
 			return (bottomSectionArray?.count)!
 			
@@ -52,24 +56,37 @@ extension SettingsViewController {
 	func tableNode(_ tableNode: ASTableNode, nodeForRowAt indexPath: IndexPath) -> ASCellNode {
 		
 		let settingsCell = SettingsCell()
+		let profileCell = ProfileSettingsCell()
 		
 		switch indexPath.section {
 			
 		case 0:
 			
-			settingsCell.settingsModel = topSettingsArray?[indexPath.item]
-			return settingsCell
+			profileSetup.retrieveUser(completion: { (userFound) in
+				
+				profileCell.userModel  = userFound
+				
+			})
+			
+			return profileCell
+			
 			
 		case 1:
-			settingsCell.settingsModel = trainerJoinArray?[indexPath.item]
+			
+			settingsCell.settingsModel = topSettingsArray?[indexPath.item]
 			return settingsCell
 			
 		case 2:
 			
-			settingsCell.settingsModel = middleSectionArray?[indexPath.item]
+			settingsCell.settingsModel = trainerJoinArray?[indexPath.item]
 			return settingsCell
 			
 		case 3:
+			
+			settingsCell.settingsModel = middleSectionArray?[indexPath.item]
+			return settingsCell
+			
+		case 4:
 			
 			settingsCell.settingsModel = bottomSectionArray?[indexPath.item]
 			return settingsCell
@@ -93,11 +110,14 @@ extension SettingsViewController {
 			
 			if indexPath.item == 0 {
 				
-				
 				print("Edit Profile")
 				
-				
-			} else if indexPath.item == 1 {
+			}
+			
+			
+		case 1:
+			
+			if indexPath.item == 0 {
 				
 				
 				print("Change Units")
@@ -110,7 +130,7 @@ extension SettingsViewController {
 			}
 
 			
-		case 1:
+		case 2:
 			
 			if indexPath.item == 0 {
 				
@@ -127,7 +147,7 @@ extension SettingsViewController {
 				
 			}
 			
-		case 2:
+		case 3:
 			
 			if indexPath.item == 0 {
 				
@@ -144,7 +164,7 @@ extension SettingsViewController {
 				
 			}
 			
-		case 3:
+		case 4:
 			
 			if indexPath.item == 0 {
 				

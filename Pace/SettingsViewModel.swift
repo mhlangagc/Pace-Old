@@ -12,10 +12,6 @@ class SettingsViewModel : NSObject {
 	
 	func createTopSettings() -> [SettingsModel] {
 		
-		let editProfile = SettingsModel()
-		editProfile.setting = "Edit Profile"
-		editProfile.settingDetail = nil
-		
 		let units = SettingsModel()
 		units.setting = "Units"
 		units.settingDetail = "km/kg"
@@ -24,7 +20,7 @@ class SettingsViewModel : NSObject {
 		healthkit.setting = "Healthkit"
 		healthkit.settingDetail = "connected"
 		
-		return [editProfile, units, healthkit]
+		return [units, healthkit]
 	}
 	
 	func createJoinTheTrainers() -> [SettingsModel] {
