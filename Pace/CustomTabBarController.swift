@@ -93,7 +93,7 @@ class CustomTabBarController: ASTabBarController {
 		//  Activity View Controller
 		let profileSettingsViewController = SettingsViewController()
 		let profileSettingsNavController = ASNavigationController(rootViewController: profileSettingsViewController)
-		profileSettingsNavController.tabBarItem.title = "Profile"
+		//profileSettingsNavController.tabBarItem.title = "Profile"
 		profileSettingsViewController.navigationController?.navigationBar.barStyle = .black
 		profileSettingsViewController.extendedLayoutIncludesOpaqueBars = true
 		

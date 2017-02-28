@@ -85,7 +85,7 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 		titleLabel.text = "Workout Teams"
 		titleLabel.textAlignment = .center
 		titleLabel.textColor = UIColor.white
-		titleLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightBold)
+		titleLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightBold)
 		textSpacing(titleLabel, spacing: 0.5)
 		navigationItem.titleView = titleLabel
 	}

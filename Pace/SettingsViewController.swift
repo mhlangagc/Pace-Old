@@ -51,7 +51,7 @@ class SettingsViewController: ASViewController<ASDisplayNode>, ASTableDelegate, 
 		
 		self.navigationController?.navigationBar.isHidden = false
 		navigationLineBar()
-		self.title = "Settings"
+		self.navigationItem.title = "Settings"
 		view.backgroundColor = .black
 		
 		
@@ -61,7 +61,7 @@ class SettingsViewController: ASViewController<ASDisplayNode>, ASTableDelegate, 
 		super.viewWillAppear(true)
 		
 		self.navigationController?.navigationBar.isHidden = false
-		self.title = "Settings"
+		self.navigationItem.title = "Settings"
 		navigationNoLineBar()
 		
 	}

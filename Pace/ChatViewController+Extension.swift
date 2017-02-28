@@ -87,7 +87,7 @@ extension ChatViewController {
 	
 		let size = CGSize(width: 300, height: 1000)
 		let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-		return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17, weight: UIFontWeightMedium)], context: nil)
+		return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightMedium)], context: nil)
 		
 	}
 	

@@ -12,7 +12,7 @@ class ChatMessageCell: CollectionBaseCell {
 	
 	let textView: UITextView = {
 		let textView = UITextView()
-		textView.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightMedium)
+		textView.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightMedium)
 		textView.backgroundColor = .clear
 		textView.textColor = .greyWhite()
 		textView.translatesAutoresizingMaskIntoConstraints = false

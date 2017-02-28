@@ -682,6 +682,7 @@
 				45B5AD7C1DFBFA6600115E2C /* Explore Tab */,
 				45B5AD801DFBFAA100115E2C /* Team Tab */,
 				45B5AD811DFBFAB100115E2C /* Activity Tab */,
+				45B5AD831DFBFACD00115E2C /* Settings + Profile Tab */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -824,7 +825,6 @@
 				451D078B1DFE443800940301 /* Teams */,
 				C60363141E62D763005F2691 /* Chat */,
 				450D91691E03F636009D9144 /* Followers/Following */,
-				45B5AD831DFBFACD00115E2C /* Settings */,
 			);
 			name = "Team Tab";
 			sourceTree = "<group>";
@@ -841,14 +841,14 @@
 			name = "Activity Tab";
 			sourceTree = "<group>";
 		};
-		45B5AD831DFBFACD00115E2C /* Settings */ = {
+		45B5AD831DFBFACD00115E2C /* Settings + Profile Tab */ = {
 			isa = PBXGroup;
 			children = (
 				45C214F11E05DBC400C5BCCF /* SettingsViewController.swift */,
 				45C214F31E05DC7C00C5BCCF /* SettingsViewController+Extension.swift */,
 				45C214F51E05DD9A00C5BCCF /* SettingsCell.swift */,
 			);
-			name = Settings;
+			name = "Settings + Profile Tab";
 			sourceTree = "<group>";
 		};
 		45B5AD871DFBFB3500115E2C /* Dependencies */ = {
