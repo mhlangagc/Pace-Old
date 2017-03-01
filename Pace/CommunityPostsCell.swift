@@ -23,7 +23,6 @@ class CommunityPostsCell: CollectionBaseCell {
 	let profileNameLabel: UILabel = {
 	
 		let label = UILabel()
-		label.text = "Cynthia"
 		label.textColor = UIColor.greyBlackColor()
 		label.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightMedium)
 		textSpacing(label, spacing: 0.36)
@@ -112,7 +111,7 @@ class CommunityPostsCell: CollectionBaseCell {
 		
 		didSet {
 			
-			if let sender  = messagesModel?.userSending?.name {
+			if let sender  = messagesModel?.userSending {
 				
 				profileNameLabel.text = sender
 				

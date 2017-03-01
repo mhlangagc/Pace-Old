@@ -39,10 +39,9 @@ extension CommunityPostsViewController {
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		
 		var height: CGFloat = 80
-		
-		//get estimated height somehow
-		let text = "Hey gang, we are working on on organising an event for all our members at GreenPoint. show by a like if you would be interesting in adttending the event."
-		height = estimateFrameForText(text: text).height + 180
+		if let text = messagesArray?[indexPath.item].message {
+			height = estimateFrameForText(text: text).height + 190
+		}
 		
 		let width = UIScreen.main.bounds.width
 		return CGSize(width: width, height: height)

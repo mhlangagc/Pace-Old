@@ -23,7 +23,7 @@ class ChatGroupModel: NSObject {
 
 class CommunityMessagesModel: NSObject {
 	
-	var userSending : User?
+	var userSending : String?
 	var message: String?
 	var dateSent: String?
 	var numberOfLikes: Int?
