@@ -14,7 +14,7 @@ extension CommunityPostsViewController {
 	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		
-		return 7
+		return (messagesArray?.count)!
 	
 	}
 	
@@ -22,48 +22,14 @@ extension CommunityPostsViewController {
 		
 		let messageCell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatMessageCellID, for: indexPath) as! CommunityPostsCell
 		
-		let textMessage = "Hey gang, we are working on on organising an event for all our members at GreenPoint. show by a like if you would be interesting in adttending the event."
-
-		messageCell.textView.text = textMessage
-		
-		//setupCell(cell, message: message)
-		
-		//messageCell.bubbleWidthAnchor?.constant = estimateFrameForText(text: textMessage).width + 32 //lets modify the bubbleView's width somehow
+		messageCell.messagesModel = messagesArray?[indexPath.item]
 		
 		return messageCell
 
 		
 		
 	}
-	
-	/*
-	private func setupCell(cell: ChatMessageCell, message: Message) {
-		if let profileImageUrl = self.user?.profileImageUrl {
-			cell.profileImageView.loadImageUsingCacheWithUrlString(profileImageUrl)
-		}
-		
-		if message.fromId == FIRAuth.auth()?.currentUser?.uid {
-			//outgoing blue
-			cell.bubbleView.backgroundColor = ChatMessageCell.blueColor
-			cell.textView.textColor = UIColor.whiteColor()
-			cell.profileImageView.hidden = true
-			
-			cell.bubbleViewRightAnchor?.active = true
-			cell.bubbleViewLeftAnchor?.active = false
-			
-		} else {
-			//incoming gray
-			cell.bubbleView.backgroundColor = UIColor(r: 240, g: 240, b: 240)
-			cell.textView.textColor = UIColor.blackColor()
-			cell.profileImageView.hidden = false
-			
-			cell.bubbleViewRightAnchor?.active = false
-			cell.bubbleViewLeftAnchor?.active = true
-		}
-	}
-	*/
-	
-	
+
 	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 		
 		collectionView?.collectionViewLayout.invalidateLayout()

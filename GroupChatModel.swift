@@ -16,15 +16,16 @@ class ChatGroupModel: NSObject {
 	var groupUsers : [UserModel]?
 	var groupTrainer: String?
 	var groupTrainerImage: UIImage?
-	var messages : [ChatMessageModel]?
+	var messages : [CommunityMessagesModel]?
 	var numberOfMembers: String?
 	
 }
 
-class ChatMessageModel: NSObject {
+class CommunityMessagesModel: NSObject {
 	
 	var userSending : User?
 	var message: String?
 	var dateSent: String?
+	var numberOfLikes: Int?
 	
 }

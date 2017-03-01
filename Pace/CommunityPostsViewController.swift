@@ -14,6 +14,15 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 	var containerViewBottomAnchor: NSLayoutConstraint?
 	let ChatMessageCellID = "ChatMessageCellID"
 	
+	var messagesArray : [CommunityMessagesModel]?
+	
+	lazy var messagesMode : CommunityMessagesViewModel = {
+		
+		let messages = CommunityMessagesViewModel()
+		return messages
+		
+	}()
+	
 	lazy var inputTextField: UITextField = {
 		
 		let textField = TextField()
@@ -71,7 +80,7 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 		
 		collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 62, right: 0) //58 for the top
 		collectionView?.alwaysBounceVertical = true
-		collectionView?.backgroundColor = UIColor(fromHexString: "0C0E10")
+		collectionView?.backgroundColor = UIColor.black //UIColor(fromHexString: "0C0E10")
 		collectionView?.register(CommunityPostsCell.self, forCellWithReuseIdentifier: ChatMessageCellID)
 		collectionView?.keyboardDismissMode = .interactive
 		
@@ -88,6 +97,8 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 		//self.setupNavBarItems()
 		self.setupInputComponents()
 		self.setupKeyboardObservers()
+		
+		messagesArray = messagesMode.createMessages()
 		
 	}
 	
@@ -166,11 +177,11 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 		
 	}
 	
-	override var inputAccessoryView: UIView? {
-		get {
-			return chatContainerView
-		}
-	}
+//	override var inputAccessoryView: UIView? {
+//		get {
+//			return chatContainerView
+//		}
+//	}
 	
 	
 	func handleSendingInvitation() {
