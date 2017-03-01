@@ -123,12 +123,12 @@
 		45F7F5DA1DFD8AD200DD1E33 /* WeekTableNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7F5D91DFD8AD200DD1E33 /* WeekTableNodeCell.swift */; };
 		BD372C2BE13A69DDA8ABFAA5 /* Pods_Pace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC48F02A471D422621621F63 /* Pods_Pace.framework */; };
 		C60363131E62D0F7005F2691 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60363121E62D0F7005F2691 /* TeamCell.swift */; };
-		C60363161E62D77E005F2691 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60363151E62D77E005F2691 /* ChatViewController.swift */; };
+		C60363161E62D77E005F2691 /* CommunityPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60363151E62D77E005F2691 /* CommunityPostsViewController.swift */; };
 		C6057EEE1E3E288400AC62EA /* PaceErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6057EED1E3E288400AC62EA /* PaceErrorHandling.swift */; };
 		C6057EF01E3E28D900AC62EA /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6057EEF1E3E28D900AC62EA /* AuthenticationService.swift */; };
 		C6057EF21E3E4B7900AC62EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6057EF11E3E4B7900AC62EA /* GoogleService-Info.plist */; };
-		C62AD0671E65370200BAD7C3 /* ChatViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62AD0661E65370200BAD7C3 /* ChatViewController+Extension.swift */; };
-		C62AD0691E65377700BAD7C3 /* ChatMessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62AD0681E65377700BAD7C3 /* ChatMessagesCell.swift */; };
+		C62AD0671E65370200BAD7C3 /* CommunityPostsViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62AD0661E65370200BAD7C3 /* CommunityPostsViewController+Extension.swift */; };
+		C62AD0691E65377700BAD7C3 /* CommunityPostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62AD0681E65377700BAD7C3 /* CommunityPostsCell.swift */; };
 		C62AD06B1E6546B000BAD7C3 /* ProfileSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62AD06A1E6546B000BAD7C3 /* ProfileSettingsCell.swift */; };
 		C63439781E4174C000AC9E80 /* LoadImageWithCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63439771E4174C000AC9E80 /* LoadImageWithCache.swift */; };
 		C65CAAD71E3E78A90047B78A /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CAAD61E3E78A90047B78A /* HealthKitManager.swift */; };
@@ -145,7 +145,7 @@
 		C6A8A3DE1E649BD10038C20A /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A8A3DD1E649BD10038C20A /* SpotifyAuthentication.framework */; };
 		C6A8A3E01E649E1E0038C20A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A8A3DF1E649E1E0038C20A /* AVFoundation.framework */; };
 		C6A8A3E21E649E290038C20A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A8A3E11E649E290038C20A /* SystemConfiguration.framework */; };
-		C6A8A3E41E64A6F00038C20A /* ChatMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8A3E31E64A6F00038C20A /* ChatMenuBar.swift */; };
+		C6A8A3E41E64A6F00038C20A /* PostsMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8A3E31E64A6F00038C20A /* PostsMenuBar.swift */; };
 		C6A8A3E61E64A98D0038C20A /* TeamMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8A3E51E64A98D0038C20A /* TeamMemberCell.swift */; };
 		C6B118281E21670C002BB4E8 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118271E21670C002BB4E8 /* PasswordViewController.swift */; };
 		C6B1182A1E21729F002BB4E8 /* NameEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118291E21729F002BB4E8 /* NameEntryViewController.swift */; };
@@ -313,12 +313,12 @@
 		A08244F9BF7AE8D216914864 /* Pods-Pace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pace/Pods-Pace.debug.xcconfig"; sourceTree = "<group>"; };
 		A99BA1B4E6F660258B376E7C /* Pods_PaceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C60363121E62D0F7005F2691 /* TeamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
-		C60363151E62D77E005F2691 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		C60363151E62D77E005F2691 /* CommunityPostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityPostsViewController.swift; sourceTree = "<group>"; };
 		C6057EED1E3E288400AC62EA /* PaceErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceErrorHandling.swift; sourceTree = "<group>"; };
 		C6057EEF1E3E28D900AC62EA /* AuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		C6057EF11E3E4B7900AC62EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C62AD0661E65370200BAD7C3 /* ChatViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatViewController+Extension.swift"; sourceTree = "<group>"; };
-		C62AD0681E65377700BAD7C3 /* ChatMessagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessagesCell.swift; sourceTree = "<group>"; };
+		C62AD0661E65370200BAD7C3 /* CommunityPostsViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CommunityPostsViewController+Extension.swift"; sourceTree = "<group>"; };
+		C62AD0681E65377700BAD7C3 /* CommunityPostsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityPostsCell.swift; sourceTree = "<group>"; };
 		C62AD06A1E6546B000BAD7C3 /* ProfileSettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingsCell.swift; sourceTree = "<group>"; };
 		C63439771E4174C000AC9E80 /* LoadImageWithCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadImageWithCache.swift; sourceTree = "<group>"; };
 		C65CAAD61E3E78A90047B78A /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
@@ -336,7 +336,7 @@
 		C6A8A3DD1E649BD10038C20A /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
 		C6A8A3DF1E649E1E0038C20A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C6A8A3E11E649E290038C20A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		C6A8A3E31E64A6F00038C20A /* ChatMenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMenuBar.swift; sourceTree = "<group>"; };
+		C6A8A3E31E64A6F00038C20A /* PostsMenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsMenuBar.swift; sourceTree = "<group>"; };
 		C6A8A3E51E64A98D0038C20A /* TeamMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMemberCell.swift; sourceTree = "<group>"; };
 		C6B118271E21670C002BB4E8 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		C6B118291E21729F002BB4E8 /* NameEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameEntryViewController.swift; sourceTree = "<group>"; };
@@ -682,7 +682,7 @@
 				45AC38F61E188B70003DC46B /* WorkoutProcess */,
 				45B5AD7F1DFBFA9800115E2C /* Routines Tab */,
 				45B5AD7C1DFBFA6600115E2C /* Explore Tab */,
-				45B5AD801DFBFAA100115E2C /* Team Tab */,
+				45B5AD801DFBFAA100115E2C /* Community Tab */,
 				45B5AD811DFBFAB100115E2C /* Activity Tab */,
 				45B5AD831DFBFACD00115E2C /* Settings + Profile Tab */,
 			);
@@ -821,14 +821,14 @@
 			name = "Routines Tab";
 			sourceTree = "<group>";
 		};
-		45B5AD801DFBFAA100115E2C /* Team Tab */ = {
+		45B5AD801DFBFAA100115E2C /* Community Tab */ = {
 			isa = PBXGroup;
 			children = (
 				451D078B1DFE443800940301 /* Teams */,
-				C60363141E62D763005F2691 /* Chat */,
+				C60363141E62D763005F2691 /* Posts */,
 				450D91691E03F636009D9144 /* Followers/Following */,
 			);
-			name = "Team Tab";
+			name = "Community Tab";
 			sourceTree = "<group>";
 		};
 		45B5AD811DFBFAB100115E2C /* Activity Tab */ = {
@@ -952,13 +952,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C60363141E62D763005F2691 /* Chat */ = {
+		C60363141E62D763005F2691 /* Posts */ = {
 			isa = PBXGroup;
 			children = (
-				C6A8A3E71E64AE5C0038C20A /* ChatMenuBar */,
+				C6A8A3E71E64AE5C0038C20A /* PostMenuBar */,
 				C6A8A3E81E64C5B10038C20A /* ChatViewController */,
 			);
-			name = Chat;
+			name = Posts;
 			sourceTree = "<group>";
 		};
 		C6057EEC1E3E287700AC62EA /* Errors */ = {
@@ -1004,21 +1004,21 @@
 			name = "Exercises Model";
 			sourceTree = "<group>";
 		};
-		C6A8A3E71E64AE5C0038C20A /* ChatMenuBar */ = {
+		C6A8A3E71E64AE5C0038C20A /* PostMenuBar */ = {
 			isa = PBXGroup;
 			children = (
-				C6A8A3E31E64A6F00038C20A /* ChatMenuBar.swift */,
+				C6A8A3E31E64A6F00038C20A /* PostsMenuBar.swift */,
 				C6A8A3E51E64A98D0038C20A /* TeamMemberCell.swift */,
 			);
-			name = ChatMenuBar;
+			name = PostMenuBar;
 			sourceTree = "<group>";
 		};
 		C6A8A3E81E64C5B10038C20A /* ChatViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C60363151E62D77E005F2691 /* ChatViewController.swift */,
-				C62AD0661E65370200BAD7C3 /* ChatViewController+Extension.swift */,
-				C62AD0681E65377700BAD7C3 /* ChatMessagesCell.swift */,
+				C60363151E62D77E005F2691 /* CommunityPostsViewController.swift */,
+				C62AD0661E65370200BAD7C3 /* CommunityPostsViewController+Extension.swift */,
+				C62AD0681E65377700BAD7C3 /* CommunityPostsCell.swift */,
 			);
 			name = ChatViewController;
 			sourceTree = "<group>";
@@ -1382,11 +1382,11 @@
 				45AC38FC1E188EE1003DC46B /* TouchBarHeaderView.swift in Sources */,
 				454535891E18EACB00653252 /* WorkoutCompleteMenuBar.swift in Sources */,
 				45C214E61E05AF4200C5BCCF /* HeaderLabelCell.swift in Sources */,
-				C62AD0671E65370200BAD7C3 /* ChatViewController+Extension.swift in Sources */,
+				C62AD0671E65370200BAD7C3 /* CommunityPostsViewController+Extension.swift in Sources */,
 				458842781E11E51D003B02C8 /* GetPopupLauncher.swift in Sources */,
 				45ECF6881E151F5D0032F6CC /* WeekRoutineModel.swift in Sources */,
 				45F7F5DA1DFD8AD200DD1E33 /* WeekTableNodeCell.swift in Sources */,
-				C60363161E62D77E005F2691 /* ChatViewController.swift in Sources */,
+				C60363161E62D77E005F2691 /* CommunityPostsViewController.swift in Sources */,
 				45E2F3DA1E16BEB9007384CF /* GroupChatModel.swift in Sources */,
 				45E3C0761DFD8F33002FD4F8 /* WeekViewController+Extension.swift in Sources */,
 				45B5AD851DFBFAF500115E2C /* Colors.swift in Sources */,
@@ -1407,7 +1407,7 @@
 				C6B118331E218245002BB4E8 /* GoalsInterestsViewController.swift in Sources */,
 				C6B118281E21670C002BB4E8 /* PasswordViewController.swift in Sources */,
 				458478EC1E17F0B300EB2AB3 /* LocalUserViewModel.swift in Sources */,
-				C62AD0691E65377700BAD7C3 /* ChatMessagesCell.swift in Sources */,
+				C62AD0691E65377700BAD7C3 /* CommunityPostsCell.swift in Sources */,
 				45B2A4C91DFCA7B600C099C7 /* FooterCell.swift in Sources */,
 				458842701E11A89D003B02C8 /* WorkoutViewController+Extension.swift in Sources */,
 				458478E81E17E31900EB2AB3 /* SettingsViewModel.swift in Sources */,
@@ -1419,7 +1419,7 @@
 				45C214E81E05B2C200C5BCCF /* WorkoutsCell.swift in Sources */,
 				450D916F1E03F89D009D9144 /* FollowerFollowingCellNode.swift in Sources */,
 				450082021DFC90F3006AA959 /* EventCollectionCell.swift in Sources */,
-				C6A8A3E41E64A6F00038C20A /* ChatMenuBar.swift in Sources */,
+				C6A8A3E41E64A6F00038C20A /* PostsMenuBar.swift in Sources */,
 				45B5AD941DFBFC2800115E2C /* TextField.swift in Sources */,
 				452A00BA1E05E69500CACA18 /* StatusBarBackground.swift in Sources */,
 				454535971E19034500653252 /* ExerciseViewModel.swift in Sources */,

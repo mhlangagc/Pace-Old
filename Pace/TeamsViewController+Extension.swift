@@ -35,10 +35,10 @@ extension TeamsViewController {
 		
 		let flowLayout = UICollectionViewFlowLayout()
 		flowLayout.scrollDirection = .vertical
-		let chatVC = ChatViewController(collectionViewLayout: flowLayout)
-		chatVC.chatModel = chatGroupsArray?[indexPath.item]
-		chatVC.hidesBottomBarWhenPushed = true
-		self.navigationController?.pushViewController(chatVC, animated: true)
+		let communityPostsVC = CommunityPostsViewController(collectionViewLayout: flowLayout)
+		communityPostsVC.chatModel = chatGroupsArray?[indexPath.item]
+		communityPostsVC.hidesBottomBarWhenPushed = true
+		self.navigationController?.pushViewController(communityPostsVC, animated: true)
 		collectionNode.deselectItem(at: indexPath, animated: true)
 		
 		

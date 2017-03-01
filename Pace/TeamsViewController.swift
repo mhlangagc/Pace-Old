@@ -82,7 +82,7 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 	func navigationBarItems() {
 		
 		let titleLabel = UILabel(frame: CGRect(x: ((view.frame.width - 100) * 0.5), y: 5, width: 100, height: view.frame.height))
-		titleLabel.text = "Workout Teams"
+		titleLabel.text = "Community"
 		titleLabel.textAlignment = .center
 		titleLabel.textColor = UIColor.white
 		titleLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightBold)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
+class CommunityPostsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
 	
 	var chatModel: ChatGroupModel?
 	var containerViewBottomAnchor: NSLayoutConstraint?
@@ -23,11 +23,11 @@ class ChatViewController: UICollectionViewController, UICollectionViewDelegateFl
 		textField.backgroundColor = .black
 		textField.autocapitalizationType = .sentences
 		textField.textColor = UIColor.white
-		textField.layer.cornerRadius = 42.0 * 0.5
-		textField.layer.borderWidth = 1.0
+		textField.layer.cornerRadius = 50.0 * 0.5
+		textField.layer.borderWidth = 1.5
 		textField.layer.borderColor = UIColor.darkBlack().cgColor
 		textField.tintColor = UIColor.paceBrandColor()
-		textField.attributedPlaceholder = NSAttributedString(string:"talk to the team...",
+		textField.attributedPlaceholder = NSAttributedString(string:"Ask the team anything...",
 		                                                     attributes:[NSForegroundColorAttributeName: UIColor.greyBlackColor()])
 		textField.returnKeyType = .send
 		textField.sizeToFit()
@@ -59,20 +59,20 @@ class ChatViewController: UICollectionViewController, UICollectionViewDelegateFl
 	}()
 
 	
-	let chatMenuBar: ChatMenuBar = {
+	let postsMenuBar: PostsMenuBar = {
 		
-		let menuBar = ChatMenuBar()
-		menuBar.translatesAutoresizingMaskIntoConstraints = false
-		return menuBar
+		let postsBar = PostsMenuBar()
+		postsBar.translatesAutoresizingMaskIntoConstraints = false
+		return postsBar
 		
 	}()
 	
 	func setupCollectionView() {
 		
-		collectionView?.contentInset = UIEdgeInsets(top: 58, left: 0, bottom: 62, right: 0)
+		collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 62, right: 0) //58 for the top
 		collectionView?.alwaysBounceVertical = true
-		collectionView?.backgroundColor = UIColor.black
-		collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: ChatMessageCellID)
+		collectionView?.backgroundColor = UIColor(fromHexString: "0C0E10")
+		collectionView?.register(CommunityPostsCell.self, forCellWithReuseIdentifier: ChatMessageCellID)
 		collectionView?.keyboardDismissMode = .interactive
 		
 	}
@@ -84,7 +84,7 @@ class ChatViewController: UICollectionViewController, UICollectionViewDelegateFl
 		navigationItem.title = chatModel?.groupWorkout
 		self.setupCollectionView()
 		navigationNoLineBar()
-		self.setupChatMenuBar()
+		//self.setupChatMenuBar()
 		//self.setupNavBarItems()
 		self.setupInputComponents()
 		self.setupKeyboardObservers()
@@ -100,12 +100,12 @@ class ChatViewController: UICollectionViewController, UICollectionViewDelegateFl
 	
 	private func setupChatMenuBar() {
 		
-		view.addSubview(chatMenuBar)
+		view.addSubview(postsMenuBar)
 		
-		chatMenuBar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-		chatMenuBar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-		chatMenuBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-		chatMenuBar.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+		postsMenuBar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+		postsMenuBar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+		postsMenuBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+		postsMenuBar.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
 		
 	}
 	
@@ -125,20 +125,20 @@ class ChatViewController: UICollectionViewController, UICollectionViewDelegateFl
 		
 		chatContainerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
 		chatContainerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-		chatContainerView.heightAnchor.constraint(equalToConstant: 56).isActive = true
+		chatContainerView.heightAnchor.constraint(equalToConstant: 65).isActive = true
 		containerViewBottomAnchor = chatContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 		containerViewBottomAnchor?.isActive = true
 		
 		
-		sendButton.rightAnchor.constraint(equalTo: chatContainerView.rightAnchor, constant: -20.0).isActive = true
+		sendButton.rightAnchor.constraint(equalTo: chatContainerView.rightAnchor, constant: -10.0).isActive = true
 		sendButton.centerYAnchor.constraint(equalTo: chatContainerView.centerYAnchor).isActive = true
-		sendButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
-		sendButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+		sendButton.widthAnchor.constraint(equalToConstant: 39).isActive = true
+		sendButton.heightAnchor.constraint(equalToConstant: 39).isActive = true
 		
 		inputTextField.leftAnchor.constraint(equalTo: chatContainerView.leftAnchor, constant: 15).isActive = true
 		inputTextField.centerYAnchor.constraint(equalTo: chatContainerView.centerYAnchor).isActive = true
 		inputTextField.rightAnchor.constraint(equalTo: sendButton.leftAnchor, constant: -10.0).isActive = true
-		inputTextField.heightAnchor.constraint(equalToConstant: 42.0).isActive = true
+		inputTextField.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
 		
 	}
 	

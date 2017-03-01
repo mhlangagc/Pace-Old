@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ChatViewController {
+extension CommunityPostsViewController {
 	
 	
 	
@@ -20,7 +20,7 @@ extension ChatViewController {
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
-		let messageCell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatMessageCellID, for: indexPath) as! ChatMessageCell
+		let messageCell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatMessageCellID, for: indexPath) as! CommunityPostsCell
 		
 		let textMessage = "Hey gang, we are working on on organising an event for all our members at GreenPoint. show by a like if you would be interesting in adttending the event."
 
@@ -28,7 +28,7 @@ extension ChatViewController {
 		
 		//setupCell(cell, message: message)
 		
-		messageCell.bubbleWidthAnchor?.constant = estimateFrameForText(text: textMessage).width + 32 //lets modify the bubbleView's width somehow
+		//messageCell.bubbleWidthAnchor?.constant = estimateFrameForText(text: textMessage).width + 32 //lets modify the bubbleView's width somehow
 		
 		return messageCell
 
@@ -76,7 +76,7 @@ extension ChatViewController {
 		
 		//get estimated height somehow
 		let text = "Hey gang, we are working on on organising an event for all our members at GreenPoint. show by a like if you would be interesting in adttending the event."
-		height = estimateFrameForText(text: text).height + 20
+		height = estimateFrameForText(text: text).height + 180
 		
 		let width = UIScreen.main.bounds.width
 		return CGSize(width: width, height: height)
@@ -94,14 +94,14 @@ extension ChatViewController {
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 		
-		return 30.0
+		return 40.0
 
 	}
 
 	
 }
 
-extension ChatViewController {
+extension CommunityPostsViewController {
 	
 	
 	func setupKeyboardObservers() {
