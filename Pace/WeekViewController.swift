@@ -27,6 +27,66 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		
 	}()
 	
+	
+	//  self.uploadToFirebaseStorageUsingImage()
+	
+	private func uploadToFirebaseStorageUsingImage() {
+		
+		let imageName = NSUUID().uuidString
+		let ref = FIRStorage.storage().reference().child("PopularWorkoutImages").child(imageName)
+		
+		if let uploadData = UIImageJPEGRepresentation(UIImage(named: "1")!, 0.5) {
+			ref.put(uploadData, metadata: nil, completion: { (metadata, error) in
+				
+				if error != nil {
+					print("Failed to upload image:", (error?.localizedDescription)!)
+					return
+				}
+				
+				if let imageUrl = metadata?.downloadURL()?.absoluteString {
+					self.createWorkoutWithImageUrl(imageUrl: imageUrl)
+				}
+				
+			})
+		}
+	}
+	
+	
+	private func createWorkoutWithImageUrl(imageUrl: String) {
+		
+		let ref = FIRDatabase.database().reference().child("WorkoutAndTeam").child("Male")
+		let childRef = ref.childByAutoId()
+		
+		let values = ["name" : "Weekend Cardio for Two",
+		              "workoutDescription": "If you are looking to get toned and enjoy fast paced interval training to shed far this workout is for you.",
+						"backgroundImageUrl": imageUrl,
+						"trainerID" : "",
+						"time" : 25,
+						"rating": 4,
+						"numberOfReviews": 334,
+						"workoutPrice" : PriceEnum.threeDollars.rawValue,
+						"workoutCatergory": WorkoutCatergory.home.rawValue
+		              ] as [String : Any]
+		
+		childRef.updateChildValues(values) { (error, ref) in
+			
+			if error != nil {
+				print((error?.localizedDescription)!)
+				return
+			}
+			
+//			let workoutMessagesRef = FIRDatabase.database().reference().child("workout-messages").child(fromId) // Child should be the postID
+//			
+//			let messageId = childRef.key
+//			userMessagesRef.updateChildValues([messageId: 1])
+//			
+//			let recipientUserMessagesRef = FIRDatabase.database().reference().child("user-messages").child(toId)
+//			recipientUserMessagesRef.updateChildValues([messageId: 1])
+			
+		}
+	}
+
+	
 	func setupRoutineData() {
 		
 		let weekCreationLaunch = UserDefaults.standard.bool(forKey: "routineCreationLaunch")
@@ -55,6 +115,7 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		//self.uploadToFirebaseStorageUsingImage()
 		
 		RoutineSetup.loadRoutineWorkouts()
 		

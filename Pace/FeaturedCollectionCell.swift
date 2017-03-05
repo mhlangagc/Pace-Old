@@ -63,58 +63,6 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 	}
 
 	
-	func retrieveFemaleFeaturedWorkouts(completion: @escaping (_ result: [ExploreWorkoutModel]) -> Void) {
-		
-		var workoutsArray = [ExploreWorkoutModel]()
-		
-		FIRDatabase.database().reference().child("ExploreWorkouts").child("Female").child("FeaturedWorkouts").observe(FIRDataEventType.childAdded, with: { (snapShot) in
-			
-			
-			let exploreID = snapShot.key
-			
-			if let dictionary = snapShot.value as? [String: AnyObject] {
-				
-				let featuredWorkout = ExploreWorkoutModel()
-				
-				featuredWorkout.workoutID = exploreID
-				featuredWorkout.name = dictionary["workoutName"] as? String
-				featuredWorkout.workoutDescription = dictionary["workoutDescription"] as? String
-				featuredWorkout.backgroundImageUrl = dictionary["workoutImageURL"] as? String
-				featuredWorkout.time = dictionary["workoutTime"] as? Int
-				featuredWorkout.rating = dictionary["rating"] as? Int
-				featuredWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
-				featuredWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
-				featuredWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
-				
-				
-//				featuredWorkout.workoutName = dictionary["workoutName"] as? String
-//				featuredWorkout.workoutMins = dictionary["workoutTime"] as? Int
-//				featuredWorkout.workoutImageUrl = dictionary["workoutImageURL"] as? String
-//				
-//				featuredWorkout.trainerName = dictionary["trainerName"] as? String
-//				featuredWorkout.trainerImageUrl = dictionary["trainerImageUrl"] as? String
-//				
-//				featuredWorkout.workoutDescription = dictionary["workoutDescription"] as? String
-//				featuredWorkout.rating = dictionary["rating"] as? Int
-//				featuredWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
-//				featuredWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
-//				featuredWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
-//				
-//				featuredWorkout.exploreID = exploreID
-				
-				workoutsArray.append(featuredWorkout)
-				
-				completion(workoutsArray)
-				
-				
-			}
-			
-		}, withCancel: nil)
-		
-		
-	}
-
-	
 	
 	override init() {
 		super.init()

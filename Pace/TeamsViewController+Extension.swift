@@ -19,27 +19,27 @@ extension TeamsViewController {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
 		
-		return (chatGroupsArray?.count)!
+		return (teamWorkoutsArray?.count)!
 		
 	}
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
 		
 		let teamNode = TeamCell()
-		teamNode.chatGroupModel = chatGroupsArray?[indexPath.item]
+		teamNode.teamModel = teamWorkoutsArray?[indexPath.item]
 		return teamNode
 		
 	}
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
-		let flowLayout = UICollectionViewFlowLayout()
-		flowLayout.scrollDirection = .vertical
-		let communityPostsVC = CommunityPostsViewController(collectionViewLayout: flowLayout)
-		communityPostsVC.chatModel = chatGroupsArray?[indexPath.item]
-		communityPostsVC.hidesBottomBarWhenPushed = true
-		self.navigationController?.pushViewController(communityPostsVC, animated: true)
-		collectionNode.deselectItem(at: indexPath, animated: true)
+//		let flowLayout = UICollectionViewFlowLayout()
+//		flowLayout.scrollDirection = .vertical
+//		let communityPteamWorkoutsArrayostsVC = CommunityPostsViewController(collectionViewLayout: flowLayout)
+//		communityPostsVC.chatModel = teamWorkoutsArray?[indexPath.item]
+//		communityPostsVC.hidesBottomBarWhenPushed = true
+//		self.navigationController?.pushViewController(communityPostsVC, animated: true)
+//		collectionNode.deselectItem(at: indexPath, animated: true)
 		
 		
 	}

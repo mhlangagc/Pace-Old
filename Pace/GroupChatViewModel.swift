@@ -8,6 +8,7 @@
 
 import UIKit
 
+/*
 class GroupChatViewModel : NSObject {
 	
 	var userCreation : LocalUserViewModel?
@@ -50,6 +51,8 @@ class GroupChatViewModel : NSObject {
 	}
 	
 }
+
+*/
 
 class CommunityMessagesViewModel : NSObject {
 	

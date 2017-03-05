@@ -81,7 +81,7 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 		super.viewDidLoad()
 		
 		view.backgroundColor = UIColor.black
-		navigationItem.title = chatModel?.groupWorkout
+		//navigationItem.title = chatModel?.groupWorkout
 		self.setupCollectionView()
 		navigationNoLineBar()
 		//self.setupChatMenuBar()

@@ -11,14 +11,13 @@ import UIKit
 
 class TeamsModel: NSObject {
 	
-	var groupImage : UIImage?
-	var groupWorkout: String?
-	var groupUsers : [UserModel]?
-	var groupTrainer: String?
-	var groupTrainerImage: UIImage?
-	var messages : [CommunityMessagesModel]?
-	var numberOfMembers: String?
-	
+	var workoutID : String?
+	var workoutName : String?
+	var backgroundImageUrl : String?
+	var trainerID: String?
+	var teamMessages: NSSet?
+	var teamMembers: NSSet?
+	var workoutExercises: NSSet?
 }
 
 class CommunityMessagesModel: NSObject {
