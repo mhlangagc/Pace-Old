@@ -31,28 +31,28 @@ class FollowProfileCell: BaseCell {
 	                             NSKernAttributeName: 0.36] as [String : Any]
 	var trainerDetailsMutableString = NSMutableAttributedString()
 	
-	var trainerModel : UserModel? {
+	var trainerModel : User? {
 		
 		didSet {
 			
-			if let name  = trainerModel?.name, let image = trainerModel?.profileImage, let details = trainerModel?.trainerDescription {
-				
-				let alignmentStyle = NSMutableParagraphStyle()
-				alignmentStyle.alignment = NSTextAlignment.center
-				
-				profileImageNode.image = image
-				
-				
-				trainerNameMutableString = NSMutableAttributedString(string: name, attributes: trainerNameAttributes)
-				trainerNameMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyle] as [String: Any], range: NSRange(location: 0, length: NSString(string: name).length))
-				nameTextNode.attributedText = trainerNameMutableString
-				
-				
-				trainerDetailsMutableString = NSMutableAttributedString(string: details, attributes: trainerDetailseAttributes)
-				trainerDetailsMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyle] as [String: Any], range: NSRange(location: 0, length: NSString(string: details).length))
-				relationTextNode.attributedText = trainerDetailsMutableString
-				
-			}
+//			if let name  = trainerModel?.name, let image = trainerModel?.profileImage, let details = trainerModel?.trainerDescription {
+//				
+//				let alignmentStyle = NSMutableParagraphStyle()
+//				alignmentStyle.alignment = NSTextAlignment.center
+//				
+//				profileImageNode.image = image
+//				
+//				
+//				trainerNameMutableString = NSMutableAttributedString(string: name, attributes: trainerNameAttributes)
+//				trainerNameMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyle] as [String: Any], range: NSRange(location: 0, length: NSString(string: name).length))
+//				nameTextNode.attributedText = trainerNameMutableString
+//				
+//				
+//				trainerDetailsMutableString = NSMutableAttributedString(string: details, attributes: trainerDetailseAttributes)
+//				trainerDetailsMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyle] as [String: Any], range: NSRange(location: 0, length: NSString(string: details).length))
+//				relationTextNode.attributedText = trainerDetailsMutableString
+//				
+//			}
 			
 		}
 	}

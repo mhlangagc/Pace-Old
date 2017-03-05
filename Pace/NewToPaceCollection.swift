@@ -42,21 +42,6 @@ class NewToPaceCollection: ASCellNode, ASCollectionDelegate, ASCollectionDataSou
 				freeWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
 				freeWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
 				
-//				freeWorkout.workoutName = dictionary["workoutName"] as? String
-//				freeWorkout.workoutMins = dictionary["workoutTime"] as? Int
-//				freeWorkout.workoutImageUrl = dictionary["workoutImageURL"] as? String
-//				
-//				freeWorkout.trainerName = dictionary["trainerName"] as? String
-//				freeWorkout.trainerImageUrl = dictionary["trainerImageUrl"] as? String
-//				
-//				freeWorkout.workoutDescription = dictionary["workoutDescription"] as? String
-//				freeWorkout.rating = dictionary["rating"] as? Int
-//				freeWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
-//				freeWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
-//				freeWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
-//				
-//				freeWorkout.exploreID = exploreID
-				
 				workoutsArray.append(freeWorkout)
 				
 				completion(workoutsArray)

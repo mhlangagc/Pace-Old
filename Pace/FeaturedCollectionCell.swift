@@ -55,7 +55,7 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 				completion(workoutsArray)
 				
 				
-			}
+			} 
 			
 		}, withCancel: nil)
 		

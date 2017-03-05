@@ -7,33 +7,94 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
-extension CommunityPostsViewController {
-	
-	
+extension TeamPostsViewController {
 	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		
-		return (messagesArray?.count)!
+		return messagesArray.count
 	
 	}
 	
+	func observeTeamMessages() {
+		
+		let teamID = teamModel?.workoutID
+		var teamMessagesArray = [TeamMessagesModel]()
+		let fanUserMessagesRef = FIRDatabase.database().reference().child("fan-team-messages").child(teamID!)
+		fanUserMessagesRef.observe(.childAdded, with: { (snapshot) in
+			
+			let messageId = snapshot.key
+			let messagesRef = FIRDatabase.database().reference().child("TeamMessages").child(messageId)
+			messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+				
+				if let dictionary = snapshot.value as? [String: AnyObject] {
+					
+					let workoutTeamMessage = TeamMessagesModel()
+					
+					workoutTeamMessage.userSending = dictionary["userSending"] as? String
+					workoutTeamMessage.message = dictionary["message"] as? String
+					workoutTeamMessage.timeStamp = dictionary["timeStamp"] as? Int
+					teamMessagesArray.append(workoutTeamMessage)
+					
+					
+					
+				}
+				
+				
+			}, withCancel: nil)
+			
+		}, withCancel: nil)
+	}
+
+
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
-		let messageCell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatMessageCellID, for: indexPath) as! CommunityPostsCell
+		let messageCell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatMessageCellID, for: indexPath) as! MessagePostsCell
 		
-		messageCell.messagesModel = messagesArray?[indexPath.item]
+//		let fanUserMessagesRef = FIRDatabase.database().reference().child("fan-user-messages").child(messagesArray[indexPath.item].userSending!)
+//		fanUserMessagesRef.observe(.childAdded, with: { (snapshot) in
+//			
+//			let messageId = snapshot.key
+//			let messagesRef = FIRDatabase.database().reference().child("Users").child(messageId)
+//			messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+//				
+//				if let dictionary = snapshot.value as? [String: AnyObject] {
+//					
+//					let userFound = User()
+//					
+//					userFound.name = dictionary["name"] as? String
+//					userFound.profileImageUrl = dictionary["profileImageUrl"] as? String
+//					
+//					DispatchQueue.main.async {
+//						
+//						messageCell.profileNameLabel.text = userFound.name
+//						//messageCell.profileImageView.image = UIImageView( NSURL(string: (teamModel?.backgroundImageUrl!)!)! as URL
+//						
+//						
+//					}
+//					
+//					
+//				}
+//				
+//				
+//			}, withCancel: nil)
+//			
+//		}, withCancel: nil)
+		
+		
+		messageCell.messagesModel = self.messagesArray[indexPath.item]
 		
 		return messageCell
 
-		
-		
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		
 		var height: CGFloat = 80
-		if let text = messagesArray?[indexPath.item].message {
+		if let text = messagesArray[indexPath.item].message {
 			height = estimateFrameForText(text: text).height + 170 //+ 190
 		}
 		
@@ -53,14 +114,14 @@ extension CommunityPostsViewController {
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 		
-		return 40.0
+		return 25.0
 
 	}
 
 	
 }
 
-extension CommunityPostsViewController {
+extension TeamPostsViewController {
 	
 	
 //	func setupKeyboardObservers() {
@@ -68,12 +129,6 @@ extension CommunityPostsViewController {
 //		
 //		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 //	}
-	
-	override func viewDidDisappear(_ animated: Bool) {
-		super.viewDidDisappear(animated)
-		
-		NotificationCenter.default.removeObserver(self)
-	}
 	
 //	func handleKeyboardWillShow(notification: NSNotification) {
 //		let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue

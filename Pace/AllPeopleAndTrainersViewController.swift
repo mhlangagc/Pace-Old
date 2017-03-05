@@ -14,7 +14,7 @@ class AllPeopleViewController: ASViewController<ASDisplayNode>, ASCollectionDele
 	
 	var collectionNode : ASCollectionNode?
 	
-	var allTrainersArray : [UserModel]?
+	var allTrainersArray : [User]?
 	
 	lazy var ExploreWorkoutSetup: ExploreViewModel = {
 		

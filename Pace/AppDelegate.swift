@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 	var nav : UINavigationController?
 	
-	lazy var profileSetup: PaceAppServices = {
+	lazy var paceAppService: PaceAppServices = {
 		
 		let profileSetup = PaceAppServices()
 		return profileSetup
@@ -64,12 +64,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func loadDataForViews() {
 		
-		//	Profile View Controller
-		//profileViewController = ChatViewController()
-		//profileViewController?.retrieveUser()
-		profileSetup.retrieveUser { (userFound) in
+		paceAppService.retrieveUser { (userFound) in
 			//	Do nothing for now
 		}
+		
+		paceAppService.retrieveTeamsFromWorkouts { (workoutTeamsArray) in
+			
+		}
+
 		
 	}
 	

@@ -17,36 +17,12 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 	var groupCollectionNode : ASCollectionNode?
 	var teamWorkoutsArray : [TeamsModel]?
 	
-	func retrieveTeamsFromWorkouts(completion: @escaping (_ result: [TeamsModel]) -> Void) {
+	lazy var teamsSetup: PaceAppServices = {
 		
-		var teamsArray = [TeamsModel]()
+		let teamSetup = PaceAppServices()
+		return teamSetup
 		
-		FIRDatabase.database().reference().child("WorkoutAndTeam").child("Male").observe(FIRDataEventType.childAdded, with: { (snapShot) in
-			
-			let workoutID = snapShot.key
-			
-			if let dictionary = snapShot.value as? [String: AnyObject] {
-	
-				let workoutTeam = TeamsModel()
-				
-				workoutTeam.workoutID = workoutID
-				workoutTeam.workoutName = dictionary["name"] as? String
-				workoutTeam.backgroundImageUrl = dictionary["backgroundImageUrl"] as? String
-				workoutTeam.trainerID = dictionary["trainerID"] as? String
-				
-				teamsArray.append(workoutTeam)
-				
-				print(workoutTeam)
-				
-				completion(teamsArray)
-				
-				
-			}
-			
-		}, withCancel: nil)
-		
-		
-	}
+	}()
 	
 	init() {
 		let flowLayout     = UICollectionViewFlowLayout()
@@ -57,7 +33,7 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 		groupCollectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
 		super.init(node: groupCollectionNode!)
 		
-		self.retrieveTeamsFromWorkouts { (workoutTeamsArray) in
+		teamsSetup.retrieveTeamsFromWorkouts { (workoutTeamsArray) in
 			
 			self.teamWorkoutsArray = workoutTeamsArray
 			

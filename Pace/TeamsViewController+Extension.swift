@@ -36,7 +36,7 @@ extension TeamsViewController {
 		
 		let flowLayout = UICollectionViewFlowLayout()
 		flowLayout.scrollDirection = .vertical
-		let teamMessagesVC = CommunityPostsViewController(collectionViewLayout: flowLayout)
+		let teamMessagesVC = TeamPostsViewController(collectionViewLayout: flowLayout)
 		teamMessagesVC.teamModel = teamWorkoutsArray?[indexPath.item]
 		teamMessagesVC.hidesBottomBarWhenPushed = true
 		self.navigationController?.pushViewController(teamMessagesVC, animated: true)

@@ -12,18 +12,18 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class CommunityPostsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
+class TeamPostsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
 	
 	var teamModel: TeamsModel?
 	var containerViewBottomAnchor: NSLayoutConstraint?
 	let ChatMessageCellID = "ChatMessageCellID"
 	
-	var messagesArray : [CommunityMessagesModel]?
-	
-	lazy var messagesMode : CommunityMessagesViewModel = {
+	var messagesArray = [TeamMessagesModel]()
+
+	lazy var appService: PaceAppServices = {
 		
-		let messages = CommunityMessagesViewModel()
-		return messages
+		let appService = PaceAppServices()
+		return appService
 		
 	}()
 	
@@ -73,10 +73,10 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 	
 	func setupCollectionView() {
 		
-		collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 62, right: 0) //58 for the top
+		collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 70, right: 0) //58 for the top
 		collectionView?.alwaysBounceVertical = true
 		collectionView?.backgroundColor = UIColor(fromHexString: "0C0E10")
-		collectionView?.register(CommunityPostsCell.self, forCellWithReuseIdentifier: ChatMessageCellID)
+		collectionView?.register(MessagePostsCell.self, forCellWithReuseIdentifier: ChatMessageCellID)
 		collectionView?.keyboardDismissMode = .interactive
 		
 	}
@@ -86,11 +86,8 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 		
 		view.backgroundColor = UIColor.black
 		navigationItem.title = teamModel?.workoutName
-		self.setupCollectionView()
 		navigationNoLineBar()
 		self.setupRightNavItem()
-		messagesArray = messagesMode.createMessages()
-		self.view.layoutIfNeeded()
 		
 	}
 	
@@ -106,11 +103,62 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 		
 	}
 	
+	func observeTeamMessages(completion: @escaping (_ result: [TeamMessagesModel]) -> Void) {
+		
+		let teamID = teamModel?.workoutID
+		var teamMessagesArray = [TeamMessagesModel]()
+		
+		print(teamID!)
+		
+		let fanTeamMessagesRef = FIRDatabase.database().reference().child("fan-team-messages").child(teamID!)
+		fanTeamMessagesRef.observe(.childAdded, with: { (snapshot) in
+			
+			let messageId = snapshot.key
+			let messagesRef = FIRDatabase.database().reference().child("TeamMessages").child(messageId)
+			messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+				
+				if let dictionary = snapshot.value as? [String: AnyObject] {
+					
+					let workoutTeamMessage = TeamMessagesModel()
+					
+					workoutTeamMessage.userSending = dictionary["userSending"] as? String
+					workoutTeamMessage.message = dictionary["message"] as? String
+					workoutTeamMessage.timeStamp = dictionary["timeStamp"] as? Int
+					teamMessagesArray.append(workoutTeamMessage)
+					
+					completion(teamMessagesArray)
+					
+				}
+				
+				
+			}, withCancel: nil)
+			
+		}, withCancel: nil)
+	}
+
+	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		
 		self.navigationController?.navigationBar.tintColor = UIColor.white
 		
+		
+		self.observeTeamMessages { (teamMessagesRecieved) in
+			
+			self.messagesArray = teamMessagesRecieved
+			print(self.messagesArray)
+			self.setupCollectionView()
+			self.collectionView?.reloadData()
+			self.view.layoutIfNeeded()
+			
+		}
+		
+	}
+	
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
+		
+		NotificationCenter.default.removeObserver(self)
 	}
 	
 	lazy var chatContainerView : UIView = {
@@ -192,14 +240,13 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 	
 	func handleSend() {
 		
-		
-		let ref = FIRDatabase.database().reference().child("TeamMessagesModel")
-		let childRef = ref.childByAutoId()
-		let userID = FIRAuth.auth()!.currentUser!.uid
-		
 		guard let teamID = teamModel?.workoutID else {
 			return
 		}
+		
+		let ref = FIRDatabase.database().reference().child("TeamMessages")
+		let childRef = ref.childByAutoId()
+		let userID = FIRAuth.auth()!.currentUser!.uid
 		
 		let values = ["message" : inputTextField.text!,
 		              "userSending": userID,
@@ -213,15 +260,17 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 				return
 			}
 			
-			let userPostsRef = FIRDatabase.database().reference().child("user-messages").child(userID)
+			let userPostsRef = FIRDatabase.database().reference().child("fan-user-messages").child(userID)
 			let messageId = childRef.key
 			userPostsRef.updateChildValues([messageId: 1])
 			
-			let workoutTeamMessagesRef = FIRDatabase.database().reference().child("workoutTeam-messages").child(teamID)
+			let workoutTeamMessagesRef = FIRDatabase.database().reference().child("fan-team-messages").child(teamID)
 			workoutTeamMessagesRef.updateChildValues([messageId: 1])
 			
+			
 		}
-		
+
+
 		inputTextField.text = nil
 		sendButton.isEnabled = false
 		sendButton.setImage(UIImage(named: "send_inActive"), for: UIControlState.normal)

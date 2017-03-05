@@ -8,9 +8,10 @@
 
 import UIKit
 
-class CommunityPostsCell: CollectionBaseCell {
+class MessagePostsCell: CollectionBaseCell {
 	
 	let profileImageView: UIImageView = {
+		
 		let imageView = UIImageView()
 		imageView.image = UIImage(named: "cynthia")
 		imageView.layer.cornerRadius = 15
@@ -18,6 +19,7 @@ class CommunityPostsCell: CollectionBaseCell {
 		imageView.contentMode = .scaleAspectFill
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		return imageView
+		
 	}()
 	
 	let profileNameLabel: UILabel = {
@@ -94,26 +96,19 @@ class CommunityPostsCell: CollectionBaseCell {
 	}()
 	
 	
-	var  messagesModel : CommunityMessagesModel? {
+	var  messagesModel : TeamMessagesModel? {
 		
 		didSet {
 			
-			if let sender  = messagesModel?.userSending {
+			if let sender = messagesModel?.userSending {
 				
 				profileNameLabel.text = sender
 				
 			}
 			
-			
 			if let messageSent  = messagesModel?.message {
 				
 				textView.text = messageSent
-				
-			}
-			
-			if let numberOfLikes = messagesModel?.numberOfLikes {
-				
-				numberOfLikesLabel.text = "\(numberOfLikes)"
 				
 			}
 			

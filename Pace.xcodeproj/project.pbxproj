@@ -122,18 +122,17 @@
 		45F7F5DA1DFD8AD200DD1E33 /* WeekTableNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7F5D91DFD8AD200DD1E33 /* WeekTableNodeCell.swift */; };
 		BD372C2BE13A69DDA8ABFAA5 /* Pods_Pace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC48F02A471D422621621F63 /* Pods_Pace.framework */; };
 		C60363131E62D0F7005F2691 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60363121E62D0F7005F2691 /* TeamCell.swift */; };
-		C60363161E62D77E005F2691 /* CommunityPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60363151E62D77E005F2691 /* CommunityPostsViewController.swift */; };
+		C60363161E62D77E005F2691 /* TeamPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60363151E62D77E005F2691 /* TeamPostsViewController.swift */; };
 		C6057EEE1E3E288400AC62EA /* PaceErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6057EED1E3E288400AC62EA /* PaceErrorHandling.swift */; };
 		C6057EF01E3E28D900AC62EA /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6057EEF1E3E28D900AC62EA /* AuthenticationService.swift */; };
 		C6057EF21E3E4B7900AC62EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6057EF11E3E4B7900AC62EA /* GoogleService-Info.plist */; };
-		C62AD0671E65370200BAD7C3 /* CommunityPostsViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62AD0661E65370200BAD7C3 /* CommunityPostsViewController+Extension.swift */; };
-		C62AD0691E65377700BAD7C3 /* CommunityPostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62AD0681E65377700BAD7C3 /* CommunityPostsCell.swift */; };
+		C62AD0671E65370200BAD7C3 /* TeamPostsViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62AD0661E65370200BAD7C3 /* TeamPostsViewController+Extension.swift */; };
+		C62AD0691E65377700BAD7C3 /* MessagePostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62AD0681E65377700BAD7C3 /* MessagePostsCell.swift */; };
 		C62AD06B1E6546B000BAD7C3 /* ProfileSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62AD06A1E6546B000BAD7C3 /* ProfileSettingsCell.swift */; };
 		C63439781E4174C000AC9E80 /* LoadImageWithCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63439771E4174C000AC9E80 /* LoadImageWithCache.swift */; };
 		C65CAAD71E3E78A90047B78A /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CAAD61E3E78A90047B78A /* HealthKitManager.swift */; };
 		C65CAADC1E3E7BC50047B78A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65CAADB1E3E7BC50047B78A /* HealthKit.framework */; };
 		C65CAADE1E3E7C900047B78A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C65CAADD1E3E7C900047B78A /* GoogleService-Info.plist */; };
-		C6738DF61E640163006C6518 /* GroupChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6738DF51E640163006C6518 /* GroupChatViewModel.swift */; };
 		C690C7771E39CE55005B359E /* LeaderBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C690C7761E39CE55005B359E /* LeaderBoardCell.swift */; };
 		C69E48D11E3BA002007AF3BF /* DayHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69E48D01E3BA002007AF3BF /* DayHeaderViewController.swift */; };
 		C69F54AA1E6353C50014366B /* WorkoutsModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69F54A61E6353C50014366B /* WorkoutsModel+CoreDataClass.swift */; };
@@ -311,19 +310,18 @@
 		A08244F9BF7AE8D216914864 /* Pods-Pace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pace/Pods-Pace.debug.xcconfig"; sourceTree = "<group>"; };
 		A99BA1B4E6F660258B376E7C /* Pods_PaceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C60363121E62D0F7005F2691 /* TeamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
-		C60363151E62D77E005F2691 /* CommunityPostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityPostsViewController.swift; sourceTree = "<group>"; };
+		C60363151E62D77E005F2691 /* TeamPostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamPostsViewController.swift; sourceTree = "<group>"; };
 		C6057EED1E3E288400AC62EA /* PaceErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceErrorHandling.swift; sourceTree = "<group>"; };
 		C6057EEF1E3E28D900AC62EA /* AuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		C6057EF11E3E4B7900AC62EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C62AD0661E65370200BAD7C3 /* CommunityPostsViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CommunityPostsViewController+Extension.swift"; sourceTree = "<group>"; };
-		C62AD0681E65377700BAD7C3 /* CommunityPostsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityPostsCell.swift; sourceTree = "<group>"; };
+		C62AD0661E65370200BAD7C3 /* TeamPostsViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TeamPostsViewController+Extension.swift"; sourceTree = "<group>"; };
+		C62AD0681E65377700BAD7C3 /* MessagePostsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePostsCell.swift; sourceTree = "<group>"; };
 		C62AD06A1E6546B000BAD7C3 /* ProfileSettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingsCell.swift; sourceTree = "<group>"; };
 		C63439771E4174C000AC9E80 /* LoadImageWithCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadImageWithCache.swift; sourceTree = "<group>"; };
 		C65CAAD61E3E78A90047B78A /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		C65CAADA1E3E7BB70047B78A /* Pace.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Pace.entitlements; path = Pace/Pace.entitlements; sourceTree = "<group>"; };
 		C65CAADB1E3E7BC50047B78A /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		C65CAADD1E3E7C900047B78A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C6738DF51E640163006C6518 /* GroupChatViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupChatViewModel.swift; sourceTree = "<group>"; };
 		C690C7761E39CE55005B359E /* LeaderBoardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderBoardCell.swift; sourceTree = "<group>"; };
 		C69E48D01E3BA002007AF3BF /* DayHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayHeaderViewController.swift; sourceTree = "<group>"; };
 		C69F54A61E6353C50014366B /* WorkoutsModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutsModel+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -770,7 +768,6 @@
 				45F3AA251E15BB4000D70C84 /* ExploreViewModel.swift */,
 				458478E71E17E31900EB2AB3 /* SettingsViewModel.swift */,
 				454535961E19034500653252 /* ExerciseViewModel.swift */,
-				C6738DF51E640163006C6518 /* GroupChatViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -822,7 +819,7 @@
 			isa = PBXGroup;
 			children = (
 				451D078B1DFE443800940301 /* Teams */,
-				C60363141E62D763005F2691 /* Posts */,
+				C60363141E62D763005F2691 /* TeamPosts */,
 				450D91691E03F636009D9144 /* Followers/Following */,
 			);
 			name = "Community Tab";
@@ -949,13 +946,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C60363141E62D763005F2691 /* Posts */ = {
+		C60363141E62D763005F2691 /* TeamPosts */ = {
 			isa = PBXGroup;
 			children = (
 				C6A8A3E71E64AE5C0038C20A /* PostMenuBar */,
-				C6A8A3E81E64C5B10038C20A /* ChatViewController */,
+				C6A8A3E81E64C5B10038C20A /* TeamPosts */,
 			);
-			name = Posts;
+			name = TeamPosts;
 			sourceTree = "<group>";
 		};
 		C6057EEC1E3E287700AC62EA /* Errors */ = {
@@ -1010,14 +1007,14 @@
 			name = PostMenuBar;
 			sourceTree = "<group>";
 		};
-		C6A8A3E81E64C5B10038C20A /* ChatViewController */ = {
+		C6A8A3E81E64C5B10038C20A /* TeamPosts */ = {
 			isa = PBXGroup;
 			children = (
-				C60363151E62D77E005F2691 /* CommunityPostsViewController.swift */,
-				C62AD0661E65370200BAD7C3 /* CommunityPostsViewController+Extension.swift */,
-				C62AD0681E65377700BAD7C3 /* CommunityPostsCell.swift */,
+				C60363151E62D77E005F2691 /* TeamPostsViewController.swift */,
+				C62AD0661E65370200BAD7C3 /* TeamPostsViewController+Extension.swift */,
+				C62AD0681E65377700BAD7C3 /* MessagePostsCell.swift */,
 			);
-			name = ChatViewController;
+			name = TeamPosts;
 			sourceTree = "<group>";
 		};
 		C6B1182F1E218037002BB4E8 /* SignUp */ = {
@@ -1379,11 +1376,11 @@
 				45AC38FC1E188EE1003DC46B /* TouchBarHeaderView.swift in Sources */,
 				454535891E18EACB00653252 /* WorkoutCompleteMenuBar.swift in Sources */,
 				45C214E61E05AF4200C5BCCF /* HeaderLabelCell.swift in Sources */,
-				C62AD0671E65370200BAD7C3 /* CommunityPostsViewController+Extension.swift in Sources */,
+				C62AD0671E65370200BAD7C3 /* TeamPostsViewController+Extension.swift in Sources */,
 				458842781E11E51D003B02C8 /* GetPopupLauncher.swift in Sources */,
 				45ECF6881E151F5D0032F6CC /* WeekRoutineModel.swift in Sources */,
 				45F7F5DA1DFD8AD200DD1E33 /* WeekTableNodeCell.swift in Sources */,
-				C60363161E62D77E005F2691 /* CommunityPostsViewController.swift in Sources */,
+				C60363161E62D77E005F2691 /* TeamPostsViewController.swift in Sources */,
 				45E2F3DA1E16BEB9007384CF /* TeamsModel.swift in Sources */,
 				45E3C0761DFD8F33002FD4F8 /* WeekViewController+Extension.swift in Sources */,
 				45B5AD851DFBFAF500115E2C /* Colors.swift in Sources */,
@@ -1403,7 +1400,7 @@
 				45A37F311DFC419100049493 /* FeaturedCollectionCell.swift in Sources */,
 				C6B118331E218245002BB4E8 /* GoalsInterestsViewController.swift in Sources */,
 				C6B118281E21670C002BB4E8 /* PasswordViewController.swift in Sources */,
-				C62AD0691E65377700BAD7C3 /* CommunityPostsCell.swift in Sources */,
+				C62AD0691E65377700BAD7C3 /* MessagePostsCell.swift in Sources */,
 				45B2A4C91DFCA7B600C099C7 /* FooterCell.swift in Sources */,
 				458842701E11A89D003B02C8 /* WorkoutViewController+Extension.swift in Sources */,
 				458478E81E17E31900EB2AB3 /* SettingsViewModel.swift in Sources */,
@@ -1411,7 +1408,6 @@
 				45F3AA1E1E154BA300D70C84 /* RoutinesViewModel.swift in Sources */,
 				45C214EC1E05BCA700C5BCCF /* AllPeopleAndTrainersViewController.swift in Sources */,
 				C6B1182C1E217BCA002BB4E8 /* PickGenderViewController.swift in Sources */,
-				C6738DF61E640163006C6518 /* GroupChatViewModel.swift in Sources */,
 				45C214E81E05B2C200C5BCCF /* WorkoutsCell.swift in Sources */,
 				450D916F1E03F89D009D9144 /* FollowerFollowingCellNode.swift in Sources */,
 				450082021DFC90F3006AA959 /* EventCollectionCell.swift in Sources */,

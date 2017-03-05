@@ -20,11 +20,11 @@ class TeamsModel: NSObject {
 	var workoutExercises: NSSet?
 }
 
-class CommunityMessagesModel: NSObject {
+class TeamMessagesModel: NSObject {
 	
 	var userSending : String?
 	var message: String?
-	var dateSent: String?
-	var numberOfLikes: Int?
+	var timeStamp: Int?
+	//var numberOfLikes: Int?
 	
 }

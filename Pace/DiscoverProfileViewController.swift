@@ -15,7 +15,7 @@ class DiscoverProfileViewController: UIViewController, UITableViewDataSource, UI
 	var profileTableView : UITableView?
 	let workoutCellID = "WorkoutCellViewID"
 	
-	static var userProfileModel : UserModel?
+	static var userProfileModel : User?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -58,9 +58,9 @@ class DiscoverProfileViewController: UIViewController, UITableViewDataSource, UI
 		headerView.discoverProfileVC = self
 		
 		headerView.nameLabel?.text = (DiscoverProfileViewController.userProfileModel?.name)!
-		headerView.detailsLabel?.text = (DiscoverProfileViewController.userProfileModel?.trainerDescription)!
+		//headerView.detailsLabel?.text = (DiscoverProfileViewController.userProfileModel?.trainerDescription)!
 		headerView.locationLabel?.text = (DiscoverProfileViewController.userProfileModel?.location)!
-		headerView.profileImageView?.image = DiscoverProfileViewController.userProfileModel?.profileImage
+		//headerView.profileImageView?.image = DiscoverProfileViewController.userProfileModel?.profileImage
 		profileTableView?.tableHeaderView = headerView
 		
 	}

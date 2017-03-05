@@ -10,7 +10,7 @@ import UIKit
 
 class PostsMenuBar: BaseView, UICollectionViewDataSource, UICollectionViewDelegate {
 
-	var communityPostsVC : CommunityPostsViewController?
+	var communityPostsVC : TeamPostsViewController?
 	let teamProfileCellID = "teamProfileCellID"
 	
 	lazy var teamMembersCollectionView: UICollectionView = {
