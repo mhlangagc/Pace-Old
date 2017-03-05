@@ -101,7 +101,7 @@
 		45D9DC561E040FFB001580B3 /* ActivityMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D9DC551E040FFB001580B3 /* ActivityMenuBar.swift */; };
 		45D9DC591E04183D001580B3 /* ActivityMenuBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D9DC581E04183D001580B3 /* ActivityMenuBar+Extension.swift */; };
 		45D9DC5B1E041899001580B3 /* MenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D9DC5A1E041899001580B3 /* MenuBarCell.swift */; };
-		45E2F3DA1E16BEB9007384CF /* GroupChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2F3D91E16BEB9007384CF /* GroupChatModel.swift */; };
+		45E2F3DA1E16BEB9007384CF /* TeamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2F3D91E16BEB9007384CF /* TeamsModel.swift */; };
 		45E3C0761DFD8F33002FD4F8 /* WeekViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3C0751DFD8F33002FD4F8 /* WeekViewController+Extension.swift */; };
 		45E3C0781DFD9493002FD4F8 /* ActitivityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3C0771DFD9493002FD4F8 /* ActitivityDetailView.swift */; };
 		45E3C07B1DFD9A4B002FD4F8 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3C07A1DFD9A4B002FD4F8 /* BaseView.swift */; };
@@ -288,7 +288,7 @@
 		45D9DC551E040FFB001580B3 /* ActivityMenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityMenuBar.swift; sourceTree = "<group>"; };
 		45D9DC581E04183D001580B3 /* ActivityMenuBar+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ActivityMenuBar+Extension.swift"; sourceTree = "<group>"; };
 		45D9DC5A1E041899001580B3 /* MenuBarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarCell.swift; sourceTree = "<group>"; };
-		45E2F3D91E16BEB9007384CF /* GroupChatModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupChatModel.swift; sourceTree = "<group>"; };
+		45E2F3D91E16BEB9007384CF /* TeamsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsModel.swift; sourceTree = "<group>"; };
 		45E3C0751DFD8F33002FD4F8 /* WeekViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WeekViewController+Extension.swift"; sourceTree = "<group>"; };
 		45E3C0771DFD9493002FD4F8 /* ActitivityDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActitivityDetailView.swift; sourceTree = "<group>"; };
 		45E3C07A1DFD9A4B002FD4F8 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
@@ -725,7 +725,7 @@
 				45F3AA1F1E15990900D70C84 /* ActivitiesModel.swift */,
 				45F3AA271E15BB9300D70C84 /* UserModel.swift */,
 				458478E91E17E33D00EB2AB3 /* SettingsModel.swift */,
-				45E2F3D91E16BEB9007384CF /* GroupChatModel.swift */,
+				45E2F3D91E16BEB9007384CF /* TeamsModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1387,7 +1387,7 @@
 				45ECF6881E151F5D0032F6CC /* WeekRoutineModel.swift in Sources */,
 				45F7F5DA1DFD8AD200DD1E33 /* WeekTableNodeCell.swift in Sources */,
 				C60363161E62D77E005F2691 /* CommunityPostsViewController.swift in Sources */,
-				45E2F3DA1E16BEB9007384CF /* GroupChatModel.swift in Sources */,
+				45E2F3DA1E16BEB9007384CF /* TeamsModel.swift in Sources */,
 				45E3C0761DFD8F33002FD4F8 /* WeekViewController+Extension.swift in Sources */,
 				45B5AD851DFBFAF500115E2C /* Colors.swift in Sources */,
 				45E3C07B1DFD9A4B002FD4F8 /* BaseView.swift in Sources */,

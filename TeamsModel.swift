@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ChatGroupModel: NSObject {
+class TeamsModel: NSObject {
 	
 	var groupImage : UIImage?
 	var groupWorkout: String?

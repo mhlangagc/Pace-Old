@@ -92,11 +92,11 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		headerView  = WorkoutDetailsHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 515.0))
 		headerView.workoutDetailVC = self
 		
-		headerView.workoutName?.text = (WorkoutViewController.exploreWorkout?.workoutName)!
-		headerView.workoutsImageView?.loadImageFromUrlString(urlString: (WorkoutViewController.exploreWorkout?.workoutImageUrl)!)
-		headerView.workoutTimeLabel?.text = "\((WorkoutViewController.exploreWorkout?.workoutMins)!) min workout".uppercased()
-		headerView.profileNameButton?.setTitle("Created by \((WorkoutViewController.exploreWorkout?.trainerName)!)", for: UIControlState.normal)
-		headerView.profileImageView?.loadImageFromUrlString(urlString: (WorkoutViewController.exploreWorkout?.trainerImageUrl)!)
+		headerView.workoutName?.text = (WorkoutViewController.exploreWorkout?.name)!
+		headerView.workoutsImageView?.loadImageFromUrlString(urlString: (WorkoutViewController.exploreWorkout?.backgroundImageUrl)!)
+		headerView.workoutTimeLabel?.text = "\((WorkoutViewController.exploreWorkout?.time)!) min workout".uppercased()
+//		headerView.profileNameButton?.setTitle("Created by \((WorkoutViewController.exploreWorkout?.trainerName)!)", for: UIControlState.normal)
+//		headerView.profileImageView?.loadImageFromUrlString(urlString: (WorkoutViewController.exploreWorkout?.trainerImageUrl)!)
 		headerView.descriptionText?.text = (WorkoutViewController.exploreWorkout?.workoutDescription)!
 		headerView.reviewLabel?.text = "\((WorkoutViewController.exploreWorkout?.numberOfReviews)!) Reviews"
 		headerView.ratingView?.ratingValue = (WorkoutViewController.exploreWorkout?.rating)!

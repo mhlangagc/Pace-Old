@@ -34,7 +34,7 @@ class TeamCell: BaseCell {
 	
 	
 	
-	var  chatGroupModel : ChatGroupModel? {
+	var  chatGroupModel : TeamsModel? {
 		
 		didSet {
 			

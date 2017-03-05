@@ -14,7 +14,7 @@ import FirebaseDatabase
 class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource {
 
 	var groupCollectionNode : ASCollectionNode?
-	var chatGroupsArray : [ChatGroupModel]?
+	var chatGroupsArray : [TeamsModel]?
 	
 	
 	lazy var ChatGroupSetup: GroupChatViewModel = {

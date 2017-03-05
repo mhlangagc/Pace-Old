@@ -10,7 +10,7 @@ import UIKit
 
 class CommunityPostsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
 	
-	var chatModel: ChatGroupModel?
+	var chatModel: TeamsModel?
 	var containerViewBottomAnchor: NSLayoutConstraint?
 	let ChatMessageCellID = "ChatMessageCellID"
 	

@@ -32,20 +32,30 @@ class JustAddedCollection: ASCellNode, ASCollectionDelegate, ASCollectionDataSou
 				
 				let popularWorkout = ExploreWorkoutModel()
 				
-				popularWorkout.workoutName = dictionary["workoutName"] as? String
-				popularWorkout.workoutMins = dictionary["workoutTime"] as? Int
-				popularWorkout.workoutImageUrl = dictionary["workoutImageURL"] as? String
-				
-				popularWorkout.trainerName = dictionary["trainerName"] as? String
-				popularWorkout.trainerImageUrl = dictionary["trainerImageUrl"] as? String
-				
+				popularWorkout.workoutID = exploreID
+				popularWorkout.name = dictionary["workoutName"] as? String
 				popularWorkout.workoutDescription = dictionary["workoutDescription"] as? String
+				popularWorkout.backgroundImageUrl = dictionary["workoutImageURL"] as? String
+				popularWorkout.time = dictionary["workoutTime"] as? Int
 				popularWorkout.rating = dictionary["rating"] as? Int
 				popularWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
 				popularWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
 				popularWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
 				
-				popularWorkout.exploreID = exploreID
+//				popularWorkout.workoutName = dictionary["workoutName"] as? String
+//				popularWorkout.workoutMins = dictionary["workoutTime"] as? Int
+//				popularWorkout.workoutImageUrl = dictionary["workoutImageURL"] as? String
+//				
+//				popularWorkout.trainerName = dictionary["trainerName"] as? String
+//				popularWorkout.trainerImageUrl = dictionary["trainerImageUrl"] as? String
+//				
+//				popularWorkout.workoutDescription = dictionary["workoutDescription"] as? String
+//				popularWorkout.rating = dictionary["rating"] as? Int
+//				popularWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
+//				popularWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
+//				popularWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
+//				
+//				popularWorkout.exploreID = exploreID
 				
 				workoutsArray.append(popularWorkout)
 				

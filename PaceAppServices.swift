@@ -50,20 +50,31 @@ class PaceAppServices : NSObject {
 				
 				let featuredWorkout = ExploreWorkoutModel()
 				
-				featuredWorkout.workoutName = dictionary["workoutName"] as? String
-				featuredWorkout.workoutMins = dictionary["workoutMins"] as? Int
-				featuredWorkout.workoutImageUrl = dictionary["workoutImageUrl"] as? String
-				
-				featuredWorkout.trainerName = dictionary["trainerName"] as? String
-				featuredWorkout.trainerImageUrl = dictionary["trainerImageUrl"] as? String
-				
+				featuredWorkout.workoutID = exploreID
+				featuredWorkout.name = dictionary["workoutName"] as? String
 				featuredWorkout.workoutDescription = dictionary["workoutDescription"] as? String
+				featuredWorkout.backgroundImageUrl = dictionary["workoutImageURL"] as? String
+				featuredWorkout.time = dictionary["workoutTime"] as? Int
 				featuredWorkout.rating = dictionary["rating"] as? Int
 				featuredWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
 				featuredWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
 				featuredWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
 				
-				featuredWorkout.exploreID = exploreID
+				
+//				featuredWorkout.workoutName = dictionary["workoutName"] as? String
+//				featuredWorkout.workoutMins = dictionary["workoutMins"] as? Int
+//				featuredWorkout.workoutImageUrl = dictionary["workoutImageUrl"] as? String
+//				
+//				featuredWorkout.trainerName = dictionary["trainerName"] as? String
+//				featuredWorkout.trainerImageUrl = dictionary["trainerImageUrl"] as? String
+//				
+//				featuredWorkout.workoutDescription = dictionary["workoutDescription"] as? String
+//				featuredWorkout.rating = dictionary["rating"] as? Int
+//				featuredWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
+//				featuredWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
+//				featuredWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
+//				
+//				featuredWorkout.exploreID = exploreID
 				
 				
 				workoutArray.append(featuredWorkout)
