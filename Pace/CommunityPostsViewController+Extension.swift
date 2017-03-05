@@ -30,17 +30,17 @@ extension CommunityPostsViewController {
 		
 	}
 
-	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-		
-		collectionView?.collectionViewLayout.invalidateLayout()
-		
-	}
+//	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//		
+//		collectionView?.collectionViewLayout.invalidateLayout()
+//		
+//	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		
 		var height: CGFloat = 80
 		if let text = messagesArray?[indexPath.item].message {
-			height = estimateFrameForText(text: text).height + 190
+			height = estimateFrameForText(text: text).height + 170 //+ 190
 		}
 		
 		let width = UIScreen.main.bounds.width

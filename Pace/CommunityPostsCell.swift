@@ -23,8 +23,8 @@ class CommunityPostsCell: CollectionBaseCell {
 	let profileNameLabel: UILabel = {
 	
 		let label = UILabel()
-		label.textColor = UIColor.greyBlackColor()
-		label.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightMedium)
+		label.textColor = UIColor.greyWhite()
+		label.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightSemibold)
 		textSpacing(label, spacing: 0.36)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
@@ -36,9 +36,9 @@ class CommunityPostsCell: CollectionBaseCell {
 		let textView = UITextView()
 		textView.isUserInteractionEnabled = false
 		textView.backgroundColor = .clear
-		textView.textAlignment = .center
+		textView.textAlignment = .left
 		textView.textColor = UIColor.greyWhite()
-		textView.font = UIFont.systemFont(ofSize: 16.5, weight: UIFontWeightMedium)
+		textView.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightMedium)
 		textView.translatesAutoresizingMaskIntoConstraints = false
 		return textView
 		
@@ -57,22 +57,9 @@ class CommunityPostsCell: CollectionBaseCell {
 		
 		let label = UILabel()
 		label.text = "12"
-		label.textColor = UIColor.darkBlack()
-		label.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightSemibold)
+		label.textColor = UIColor.greyWhite()
+		label.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightSemibold)
 		textSpacing(label, spacing: 0.36)
-		label.translatesAutoresizingMaskIntoConstraints = false
-		return label
-		
-	}()
-	
-	
-	let postTimeLabel: UILabel = {
-		
-		let label = UILabel()
-		label.text = "12 MINS AGO".uppercased()
-		label.textAlignment = .right
-		label.textColor = UIColor.darkBlack()
-		label.font = UIFont.systemFont(ofSize: 13, weight: UIFontWeightSemibold)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 		
@@ -145,42 +132,36 @@ class CommunityPostsCell: CollectionBaseCell {
 	
 	func addViews() {
 		
-		addSubview(topDividerLine)
+		//addSubview(topDividerLine)
 		addSubview(profileImageView)
 		addSubview(profileNameLabel)
 		addSubview(moreButton)
 		addSubview(textView)
 		addSubview(likeButton)
 		addSubview(numberOfLikesLabel)
-		addSubview(postTimeLabel)
-		addSubview(bottomDividerLine)
+		//addSubview(bottomDividerLine)
 		
-		topDividerLine.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-		topDividerLine.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-		topDividerLine.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-		topDividerLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+//		topDividerLine.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+//		topDividerLine.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+//		topDividerLine.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+//		topDividerLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
 		
 		
-		profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-		profileImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
+		profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15).isActive = true
+		profileImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 15).isActive = true
 		profileImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
 		profileImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
 		
 		
-		profileNameLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 20).isActive = true
+		profileNameLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 15).isActive = true
 		profileNameLabel.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor).isActive = true
 		profileNameLabel.widthAnchor.constraint(equalToConstant: 180).isActive = true
 		profileNameLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
 		
-		moreButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+		moreButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -18).isActive = true
 		moreButton.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor).isActive = true
 		moreButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
 		moreButton.heightAnchor.constraint(equalToConstant: 12).isActive = true
-		
-		textView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-		textView.topAnchor.constraint(equalTo: self.topAnchor, constant: 90).isActive = true
-		textView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-		textView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -90).isActive = true
 		
 		
 		likeButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
@@ -188,20 +169,24 @@ class CommunityPostsCell: CollectionBaseCell {
 		likeButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
 		likeButton.heightAnchor.constraint(equalToConstant: 27).isActive = true
 		
-		numberOfLikesLabel.leftAnchor.constraint(equalTo: likeButton.rightAnchor, constant: 20).isActive = true
+		numberOfLikesLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 15).isActive = true
 		numberOfLikesLabel.centerYAnchor.constraint(equalTo: likeButton.centerYAnchor).isActive = true
 		numberOfLikesLabel.widthAnchor.constraint(equalToConstant: 120).isActive = true
 		numberOfLikesLabel.heightAnchor.constraint(equalToConstant: 19).isActive = true
 		
-		postTimeLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-		postTimeLabel.centerYAnchor.constraint(equalTo: likeButton.centerYAnchor).isActive = true
-		postTimeLabel.widthAnchor.constraint(equalToConstant: 120).isActive = true
-		postTimeLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
 		
-		bottomDividerLine.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-		bottomDividerLine.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-		bottomDividerLine.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-		bottomDividerLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+		textView.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 15).isActive = true
+		textView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 25).isActive = true
+		textView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -18).isActive = true
+		textView.bottomAnchor.constraint(equalTo: likeButton.topAnchor, constant: -30).isActive = true
+		
+		
+		
+		
+//		bottomDividerLine.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+//		bottomDividerLine.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+//		bottomDividerLine.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+//		bottomDividerLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
 		
 	}
 }

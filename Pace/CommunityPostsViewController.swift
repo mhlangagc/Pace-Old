@@ -38,7 +38,7 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 		textField.tintColor = UIColor.paceBrandColor()
 		textField.attributedPlaceholder = NSAttributedString(string:"Ask the team anything...",
 		                                                     attributes:[NSForegroundColorAttributeName: UIColor.greyWhite()])
-		textField.returnType = .default
+		textField.returnKeyType = .default
 		textField.sizeToFit()
 		textField.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightMedium)
 		textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
@@ -71,7 +71,7 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 		
 		collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 62, right: 0) //58 for the top
 		collectionView?.alwaysBounceVertical = true
-		collectionView?.backgroundColor = UIColor.black //UIColor(fromHexString: "0C0E10")
+		collectionView?.backgroundColor = UIColor(fromHexString: "0C0E10")
 		collectionView?.register(CommunityPostsCell.self, forCellWithReuseIdentifier: ChatMessageCellID)
 		collectionView?.keyboardDismissMode = .interactive
 		
@@ -88,8 +88,21 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 		//self.setupNavBarItems()
 		//self.setupInputComponents()
 		//self.setupKeyboardObservers()
-		self.view.layoutIfNeeded()
+		self.setupRightNavItem()
 		messagesArray = messagesMode.createMessages()
+		self.view.layoutIfNeeded()
+		
+	}
+	
+	private func setupRightNavItem() {
+		
+		let buttonWidth : CGFloat = 35.0
+		let trainerButton = UIButton(type: .system)
+		trainerButton.setImage(#imageLiteral(resourceName: "justin").withRenderingMode(.alwaysOriginal), for: .normal)
+		trainerButton.frame = CGRect(x: 0, y: 0, width: buttonWidth, height: buttonWidth)
+		trainerButton.layer.cornerRadius = buttonWidth * 0.5
+		trainerButton.layer.masksToBounds = true
+		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: trainerButton)
 		
 	}
 	
