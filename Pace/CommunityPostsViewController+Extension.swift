@@ -69,11 +69,11 @@ extension CommunityPostsViewController {
 extension CommunityPostsViewController {
 	
 	
-	func setupKeyboardObservers() {
-		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-		
-		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-	}
+//	func setupKeyboardObservers() {
+//		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//		
+//		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//	}
 	
 	override func viewDidDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
@@ -81,26 +81,26 @@ extension CommunityPostsViewController {
 		NotificationCenter.default.removeObserver(self)
 	}
 	
-	func handleKeyboardWillShow(notification: NSNotification) {
-		let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
-		let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
-		
-		containerViewBottomAnchor?.constant = -keyboardFrame!.height
-		
-		UIView.animate(withDuration: keyboardDuration!) {
-			self.view.layoutIfNeeded()
-		}
-		
-	}
-	
-	func handleKeyboardWillHide(notification: NSNotification) {
-		
-		let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
-		
-		containerViewBottomAnchor?.constant = 0
-		UIView.animate(withDuration: keyboardDuration!) {
-			self.view.layoutIfNeeded()
-		}
-	}
+//	func handleKeyboardWillShow(notification: NSNotification) {
+//		let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+//		let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
+//		
+//		containerViewBottomAnchor?.constant = -keyboardFrame!.height
+//		
+//		UIView.animate(withDuration: keyboardDuration!) {
+//			self.view.layoutIfNeeded()
+//		}
+//		
+//	}
+//	
+//	func handleKeyboardWillHide(notification: NSNotification) {
+//		
+//		let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
+//		
+//		containerViewBottomAnchor?.constant = 0
+//		UIView.animate(withDuration: keyboardDuration!) {
+//			self.view.layoutIfNeeded()
+//		}
+//	}
 }
 

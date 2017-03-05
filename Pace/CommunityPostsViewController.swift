@@ -34,26 +34,17 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 		textField.textColor = UIColor.white
 		textField.layer.cornerRadius = 50.0 * 0.5
 		textField.layer.borderWidth = 1.5
-		textField.layer.borderColor = UIColor.darkBlack().cgColor
+		textField.layer.borderColor = UIColor.greyBlackColor().cgColor
 		textField.tintColor = UIColor.paceBrandColor()
 		textField.attributedPlaceholder = NSAttributedString(string:"Ask the team anything...",
-		                                                     attributes:[NSForegroundColorAttributeName: UIColor.greyBlackColor()])
-		textField.returnKeyType = .send
+		                                                     attributes:[NSForegroundColorAttributeName: UIColor.greyWhite()])
+		textField.returnType = .default
 		textField.sizeToFit()
 		textField.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightMedium)
 		textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
 		
-	}()
-	
-	let chatContainerView : UIView = {
-	
-		let view = UIView()
-		view.backgroundColor = UIColor.black
-		view.translatesAutoresizingMaskIntoConstraints = false
-		return view
-	
 	}()
 	
 	lazy var sendButton: UIButton = {
@@ -95,9 +86,9 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 		navigationNoLineBar()
 		//self.setupChatMenuBar()
 		//self.setupNavBarItems()
-		self.setupInputComponents()
-		self.setupKeyboardObservers()
-		
+		//self.setupInputComponents()
+		//self.setupKeyboardObservers()
+		self.view.layoutIfNeeded()
 		messagesArray = messagesMode.createMessages()
 		
 	}
@@ -107,6 +98,47 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 		
 		self.navigationController?.navigationBar.tintColor = UIColor.white
 		
+	}
+	
+	lazy var chatContainerView : UIView = {
+		
+		let containerView = UIView()
+		containerView.backgroundColor = UIColor.black
+		containerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 65)
+	
+		
+		containerView.addSubview(self.sendButton)
+		self.sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -15.0).isActive = true
+		self.sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+		self.sendButton.widthAnchor.constraint(equalToConstant: 45).isActive = true
+		self.sendButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+		
+		
+		containerView.addSubview(self.inputTextField)
+		self.inputTextField.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 15).isActive = true
+		self.inputTextField.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+		self.inputTextField.rightAnchor.constraint(equalTo: self.sendButton.leftAnchor, constant: -10.0).isActive = true
+		self.inputTextField.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+		
+		
+		return containerView
+		
+	}()
+	
+	
+	override var inputAccessoryView: UIView? {
+		
+		get {
+			
+			return chatContainerView
+		
+		}
+		
+	}
+	
+	override var canBecomeFirstResponder: Bool {
+		
+		return true
 	}
 	
 	private func setupChatMenuBar() {
@@ -126,33 +158,6 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 		
 	}
 	
-	func setupInputComponents() {
-		
-		view.addSubview(chatContainerView)
-		chatContainerView.addSubview(sendButton)
-		chatContainerView.addSubview(inputTextField)
-		inputTextField.delegate = self
-		
-		
-		chatContainerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-		chatContainerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-		chatContainerView.heightAnchor.constraint(equalToConstant: 65).isActive = true
-		containerViewBottomAnchor = chatContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-		containerViewBottomAnchor?.isActive = true
-		
-		
-		sendButton.rightAnchor.constraint(equalTo: chatContainerView.rightAnchor, constant: -10.0).isActive = true
-		sendButton.centerYAnchor.constraint(equalTo: chatContainerView.centerYAnchor).isActive = true
-		sendButton.widthAnchor.constraint(equalToConstant: 39).isActive = true
-		sendButton.heightAnchor.constraint(equalToConstant: 39).isActive = true
-		
-		inputTextField.leftAnchor.constraint(equalTo: chatContainerView.leftAnchor, constant: 15).isActive = true
-		inputTextField.centerYAnchor.constraint(equalTo: chatContainerView.centerYAnchor).isActive = true
-		inputTextField.rightAnchor.constraint(equalTo: sendButton.leftAnchor, constant: -10.0).isActive = true
-		inputTextField.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
-		
-	}
-	
 	func textFieldDidChange() {
 		
 		if (inputTextField.text?.characters.count)! > 0 {
@@ -169,21 +174,7 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 		}
 		
 	}
-	
-	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		
-		handleSend()
-		return true
-		
-	}
-	
-//	override var inputAccessoryView: UIView? {
-//		get {
-//			return chatContainerView
-//		}
-//	}
-	
-	
+
 	func handleSendingInvitation() {
 		
 		// TO DO
