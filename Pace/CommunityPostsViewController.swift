@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import AsyncDisplayKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class CommunityPostsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
 	
-	var chatModel: TeamsModel?
+	var teamModel: TeamsModel?
 	var containerViewBottomAnchor: NSLayoutConstraint?
 	let ChatMessageCellID = "ChatMessageCellID"
 	
@@ -81,13 +85,9 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 		super.viewDidLoad()
 		
 		view.backgroundColor = UIColor.black
-		//navigationItem.title = chatModel?.groupWorkout
+		navigationItem.title = teamModel?.workoutName
 		self.setupCollectionView()
 		navigationNoLineBar()
-		//self.setupChatMenuBar()
-		//self.setupNavBarItems()
-		//self.setupInputComponents()
-		//self.setupKeyboardObservers()
 		self.setupRightNavItem()
 		messagesArray = messagesMode.createMessages()
 		self.view.layoutIfNeeded()
@@ -165,12 +165,6 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 		
 	}
 	
-	func setupNavBarItems() {
-		
-		self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backArrow"), style: UIBarButtonItemStyle.done, target: self, action: #selector(handleClose))
-		
-	}
-	
 	func textFieldDidChange() {
 		
 		if (inputTextField.text?.characters.count)! > 0 {
@@ -198,7 +192,36 @@ class CommunityPostsViewController: UICollectionViewController, UICollectionView
 	
 	func handleSend() {
 		
-		//	TO DO
+		
+		let ref = FIRDatabase.database().reference().child("TeamMessagesModel")
+		let childRef = ref.childByAutoId()
+		let userID = FIRAuth.auth()!.currentUser!.uid
+		
+		guard let teamID = teamModel?.workoutID else {
+			return
+		}
+		
+		let values = ["message" : inputTextField.text!,
+		              "userSending": userID,
+		              "timeStamp": Int(NSDate().timeIntervalSince1970),
+		              "teamID": teamID] as [String : Any]
+		
+		childRef.updateChildValues(values) { (error, ref) in
+			
+			if error != nil {
+				print((error?.localizedDescription)!)
+				return
+			}
+			
+			let userPostsRef = FIRDatabase.database().reference().child("user-messages").child(userID)
+			let messageId = childRef.key
+			userPostsRef.updateChildValues([messageId: 1])
+			
+			let workoutTeamMessagesRef = FIRDatabase.database().reference().child("workoutTeam-messages").child(teamID)
+			workoutTeamMessagesRef.updateChildValues([messageId: 1])
+			
+		}
+		
 		inputTextField.text = nil
 		sendButton.isEnabled = false
 		sendButton.setImage(UIImage(named: "send_inActive"), for: UIControlState.normal)

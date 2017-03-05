@@ -9,6 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 
+
 extension TeamsViewController {
 	
 	func numberOfSections(in collectionNode: ASCollectionNode) -> Int {
@@ -33,13 +34,13 @@ extension TeamsViewController {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
-//		let flowLayout = UICollectionViewFlowLayout()
-//		flowLayout.scrollDirection = .vertical
-//		let communityPteamWorkoutsArrayostsVC = CommunityPostsViewController(collectionViewLayout: flowLayout)
-//		communityPostsVC.chatModel = teamWorkoutsArray?[indexPath.item]
-//		communityPostsVC.hidesBottomBarWhenPushed = true
-//		self.navigationController?.pushViewController(communityPostsVC, animated: true)
-//		collectionNode.deselectItem(at: indexPath, animated: true)
+		let flowLayout = UICollectionViewFlowLayout()
+		flowLayout.scrollDirection = .vertical
+		let teamMessagesVC = CommunityPostsViewController(collectionViewLayout: flowLayout)
+		teamMessagesVC.teamModel = teamWorkoutsArray?[indexPath.item]
+		teamMessagesVC.hidesBottomBarWhenPushed = true
+		self.navigationController?.pushViewController(teamMessagesVC, animated: true)
+		collectionNode.deselectItem(at: indexPath, animated: true)
 		
 		
 	}

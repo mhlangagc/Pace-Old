@@ -36,7 +36,7 @@ class AllPeopleViewController: ASViewController<ASDisplayNode>, ASCollectionDele
 		
 		self.setupCollectionView()
 		
-		allTrainersArray = ExploreWorkoutSetup.suggestedTrainers()
+		//allTrainersArray = ExploreWorkoutSetup.suggestedTrainers()
 		
 	}
 	

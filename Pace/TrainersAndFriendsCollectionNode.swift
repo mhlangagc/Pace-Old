@@ -37,7 +37,7 @@ class TrainersAndFriendsCollectionNode: ASCellNode, ASCollectionDelegate, ASColl
 		
 		self.setupCollectionNodes()
 		
-		suggestedTrainersArray = ExploreWorkoutSetup.suggestedTrainers()
+		//suggestedTrainersArray = ExploreWorkoutSetup.suggestedTrainers()
 		
 	}
 	
