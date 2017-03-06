@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TeamMemberCell: CollectionBaseCell {
+class PostsMenuBarCell: CollectionBaseCell {
 	
 	let teamProfileImage: UIImageView = {
 		

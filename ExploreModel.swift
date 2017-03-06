@@ -60,21 +60,20 @@ class ExploreModel: NSObject {
 
 class ExploreWorkoutModel: NSObject {
 	
-	var workoutName : String?
-	var workoutMins: Int?
-	var workoutImageUrl : String?
-	
-	var trainerName: String?
-	var trainerImageUrl: String?
-	
+	var workoutID : String?
+	var name : String?
 	var workoutDescription: String?
+	var backgroundImageUrl : String?
+	var trainerID: String?
+	var time: Int?
 	var rating: Int?
 	var numberOfReviews: Int?
 	var workoutPrice : PriceEnum?
 	var workoutCatergory : WorkoutCatergory?
-	var exercises: NSSet?
+	var teamMessages: NSSet?
+	var teamMembers: NSSet?
+	var workoutExercises: NSSet?
 	
-	var exploreID : String?
 }
 
 

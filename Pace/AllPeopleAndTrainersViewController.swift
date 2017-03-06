@@ -14,7 +14,7 @@ class AllPeopleViewController: ASViewController<ASDisplayNode>, ASCollectionDele
 	
 	var collectionNode : ASCollectionNode?
 	
-	var allTrainersArray : [UserModel]?
+	var allTrainersArray : [User]?
 	
 	lazy var ExploreWorkoutSetup: ExploreViewModel = {
 		
@@ -36,7 +36,7 @@ class AllPeopleViewController: ASViewController<ASDisplayNode>, ASCollectionDele
 		
 		self.setupCollectionView()
 		
-		allTrainersArray = ExploreWorkoutSetup.suggestedTrainers()
+		//allTrainersArray = ExploreWorkoutSetup.suggestedTrainers()
 		
 	}
 	

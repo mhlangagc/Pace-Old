@@ -31,14 +31,14 @@ class TeamCell: BaseCell {
 	var groupMemberAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 14, weight: UIFontWeightBold),
 	                           NSForegroundColorAttributeName: UIColor.greyBlackColor()] as [String : Any]
 	var groupMemberMutableString = NSMutableAttributedString()
-	
-	
-	
-	var  chatGroupModel : ChatGroupModel? {
+
+	var  teamModel : TeamsModel? {
 		
 		didSet {
 			
-			if let groupName  = chatGroupModel?.groupWorkout {
+			groupImageNode.url = NSURL(string: (teamModel?.backgroundImageUrl!)!)! as URL
+			
+			if let groupName  = teamModel?.workoutName {
 				
 				groupTitleMutableString = NSMutableAttributedString(string: groupName, attributes: groupTitleNodeAttributes)
 				
@@ -51,26 +51,16 @@ class TeamCell: BaseCell {
 			}
 			
 			
-			if let groupUserNumber  = chatGroupModel?.numberOfMembers {
-				
-				groupMemberMutableString = NSMutableAttributedString(string: "\(groupUserNumber) Members", attributes: groupMemberAttributes)
-				
-				let alignmentStyleCenter = NSMutableParagraphStyle()
-				alignmentStyleCenter.alignment = NSTextAlignment.center
-				groupMemberMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyleCenter] as [String: Any], range: NSRange(location: 0, length: NSString(string: "\(groupUserNumber) Members").length))
-				
-				groupMemberNumberNode.attributedText = groupMemberMutableString
-			}
-			
-			
-			
-			
-			if let groupImage = chatGroupModel?.groupImage {
-				
-				groupImageNode.image = groupImage
-				
-			}
-			
+//			if let groupUserNumber  = teamModel?.numberOfMembers {
+//				
+//				groupMemberMutableString = NSMutableAttributedString(string: "\(groupUserNumber) Members", attributes: groupMemberAttributes)
+//				
+//				let alignmentStyleCenter = NSMutableParagraphStyle()
+//				alignmentStyleCenter.alignment = NSTextAlignment.center
+//				groupMemberMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyleCenter] as [String: Any], range: NSRange(location: 0, length: NSString(string: "\(groupUserNumber) Members").length))
+//				
+//				groupMemberNumberNode.attributedText = groupMemberMutableString
+//			}
 			
 		}
 	}

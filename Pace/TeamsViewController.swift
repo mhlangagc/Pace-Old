@@ -6,6 +6,7 @@
 //  Copyright © 2016 Pace. All rights reserved.
 //
 
+import UIKit
 import AsyncDisplayKit
 import Firebase
 import FirebaseAuth
@@ -14,34 +15,40 @@ import FirebaseDatabase
 class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource {
 
 	var groupCollectionNode : ASCollectionNode?
-	var chatGroupsArray : [ChatGroupModel]?
+	var teamWorkoutsArray : [TeamsModel]?
 	
-	
-	lazy var ChatGroupSetup: GroupChatViewModel = {
+	lazy var teamsSetup: PaceAppServices = {
 		
-		let groupSetup = GroupChatViewModel()
-		return groupSetup
+		let teamSetup = PaceAppServices()
+		return teamSetup
 		
 	}()
 	
 	init() {
-		
 		let flowLayout     = UICollectionViewFlowLayout()
 		flowLayout.scrollDirection = .vertical
 		flowLayout.minimumInteritemSpacing  = 10
 		flowLayout.minimumLineSpacing       = 10
 		flowLayout.sectionInset = UIEdgeInsets(top: 30.0, left: 5.0, bottom: 20.0, right: 5.0)
 		groupCollectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
-		
 		super.init(node: groupCollectionNode!)
 		
-		navigationNoLineBar()
-		self.setupCollectionView()
-		
-		chatGroupsArray = ChatGroupSetup.createChatGroups()
+		teamsSetup.retrieveTeamsFromWorkouts { (workoutTeamsArray) in
+			
+			self.teamWorkoutsArray = workoutTeamsArray
+			
+			self.groupCollectionNode?.reloadData()
+			self.setupCollectionView()
+			
+		}
 		
 	}
 	
+	required init?(coder aDecoder: NSCoder) {
+	
+		fatalError("Storyboards are incompatible with truth and beauty")
+	
+	}
 	
 	func setupCollectionView() {
 		
@@ -53,16 +60,15 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 		groupCollectionNode?.view.backgroundColor = UIColor.black
 		
 	}
-	
-	required init?(coder aDecoder: NSCoder) {
-		fatalError("Storyboards are incompatible with truth and beauty")
-	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		self.view.backgroundColor = .black
 		self.navigationBarItems()
 		navigationNoLineBar()
+		
+		
 		
 	}
 	
@@ -82,7 +88,7 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 	func navigationBarItems() {
 		
 		let titleLabel = UILabel(frame: CGRect(x: ((view.frame.width - 100) * 0.5), y: 5, width: 100, height: view.frame.height))
-		titleLabel.text = "Workout Teams"
+		titleLabel.text = "Teams"
 		titleLabel.textAlignment = .center
 		titleLabel.textColor = UIColor.white
 		titleLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightBold)
