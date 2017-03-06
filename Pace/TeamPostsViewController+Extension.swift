@@ -53,38 +53,6 @@ extension TeamPostsViewController {
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
 		let messageCell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatMessageCellID, for: indexPath) as! MessagePostsCell
-		
-//		let fanUserMessagesRef = FIRDatabase.database().reference().child("fan-user-messages").child(messagesArray[indexPath.item].userSending!)
-//		fanUserMessagesRef.observe(.childAdded, with: { (snapshot) in
-//			
-//			let messageId = snapshot.key
-//			let messagesRef = FIRDatabase.database().reference().child("Users").child(messageId)
-//			messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
-//				
-//				if let dictionary = snapshot.value as? [String: AnyObject] {
-//					
-//					let userFound = User()
-//					
-//					userFound.name = dictionary["name"] as? String
-//					userFound.profileImageUrl = dictionary["profileImageUrl"] as? String
-//					
-//					DispatchQueue.main.async {
-//						
-//						messageCell.profileNameLabel.text = userFound.name
-//						//messageCell.profileImageView.image = UIImageView( NSURL(string: (teamModel?.backgroundImageUrl!)!)! as URL
-//						
-//						
-//					}
-//					
-//					
-//				}
-//				
-//				
-//			}, withCancel: nil)
-//			
-//		}, withCancel: nil)
-		
-		
 		messageCell.messagesModel = self.messagesArray[indexPath.item]
 		
 		return messageCell

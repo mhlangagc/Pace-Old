@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PINOperation.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>PINRemoteImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -72,12 +77,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2C9A498F7EDC03698E72AE45452A5122</key>
+		<key>3AEA8846B8309E058C668D08D6A60E9E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>489D04B5913CFF6F1422B72DBC4119D4</key>
+		<key>4AAA2D2D65039FBA49F6D32E90BB028E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5232B3CB536810CA15CB2CC7453FD7AF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,12 +97,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>884C766E4D4EBE15BEA4C272EA48089E</key>
+		<key>75484E9FC8379B0447FF84F736CC0E85</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>90A5C27C74D26EAE97B136087289EACE</key>
+		<key>7A9FA1478D80CB281CB3B597B042F3BC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A7B0FB03012B7B74DDF93D2C7E9BC308</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BA037F8A4F12B5858FBD969BDDCD6804</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,27 +122,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E43271598C1F9DF6AB5EAC760BAD15DA</key>
+		<key>D863DF209AFF2C56879854880B5ABD64</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E6B511F8068B11FA67DB52C1EF523A45</key>
+		<key>E0A59FEBE757722BE4BBBFADC6E5DD94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EA613877A93FA352547055A124401293</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F3CF16D569D976C5B7682BDECC1B73C5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F9113CC52612A9C9DB8A08D58E0471E3</key>
+		<key>EA9A2331685EEC07A31079B165A90BB5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
