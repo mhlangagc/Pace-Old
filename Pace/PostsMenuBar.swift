@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ChatMenuBar: BaseView, UICollectionViewDataSource, UICollectionViewDelegate {
+class PostsMenuBar: BaseView, UICollectionViewDataSource, UICollectionViewDelegate {
 
-	var chatVC : ChatViewController?
-	 let teamProfileCellID = "teamProfileCellID"
+	var communityPostsVC : TeamPostsViewController?
+	let teamProfileCellID = "teamProfileCellID"
 	
 	lazy var teamMembersCollectionView: UICollectionView = {
 		
@@ -47,7 +47,7 @@ class ChatMenuBar: BaseView, UICollectionViewDataSource, UICollectionViewDelegat
 	
 	func addViews() {
 		
-		teamMembersCollectionView.register(TeamMemberCell.self, forCellWithReuseIdentifier: teamProfileCellID)
+		teamMembersCollectionView.register(PostsMenuBarCell.self, forCellWithReuseIdentifier: teamProfileCellID)
 		addSubview(teamMembersCollectionView)
 		addSubview(dividerLineView)
 		
@@ -66,7 +66,7 @@ class ChatMenuBar: BaseView, UICollectionViewDataSource, UICollectionViewDelegat
 	
 }
 
-extension ChatMenuBar {
+extension PostsMenuBar {
 	
 	func numberOfSections(in collectionView: UICollectionView) -> Int {
 		
@@ -83,7 +83,7 @@ extension ChatMenuBar {
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
-		let chatProfileCell = collectionView.dequeueReusableCell(withReuseIdentifier: teamProfileCellID, for: indexPath) as! TeamMemberCell
+		let chatProfileCell = collectionView.dequeueReusableCell(withReuseIdentifier: teamProfileCellID, for: indexPath) as! PostsMenuBarCell
 		
 		return chatProfileCell
 		
@@ -100,7 +100,7 @@ extension ChatMenuBar {
 		
 		if indexPath.item == 7 {
 			
-			chatVC?.handleSendingInvitation()
+			communityPostsVC?.handleSendingInvitation()
 			
 		}
 	}

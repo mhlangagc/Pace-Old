@@ -68,6 +68,7 @@ class ProfileSettingsCell: BaseCell {
 	func setupSettingsDetails() {
 		
 		profileImage.cornerRadius = 80.0 * 0.5
+		profileImage.backgroundColor = .darkerBlack()
 		profileImage.layer.masksToBounds = true
 		addSubnode(profileImage)
 		addSubnode(profileTitle)

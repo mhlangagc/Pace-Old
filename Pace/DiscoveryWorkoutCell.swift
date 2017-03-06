@@ -35,9 +35,9 @@ class DiscoveryWorkoutCell: BaseCell {
 		
 		didSet {
 			
-			workoutImageNode.url = NSURL(string: (exploreWorkout?.workoutImageUrl!)!)! as URL
+			workoutImageNode.url = NSURL(string: (exploreWorkout?.backgroundImageUrl!)!)! as URL
 			
-			if let workoutName = exploreWorkout?.workoutName, let workoutCatergory = exploreWorkout?.workoutCatergory {
+			if let workoutName = exploreWorkout?.name, let workoutCatergory = exploreWorkout?.workoutCatergory {
 				
 				workoutNameMutableString = NSMutableAttributedString(string: workoutName, attributes: workoutNameAttributes)
 				workoutTitleNode.attributedText = workoutNameMutableString

@@ -8,16 +8,6 @@
 
 import UIKit
 
-class UserModel: NSObject {
-	
-	var name : String?
-	var profileImage : UIImage?
-	var location : String?
-	var trainerDescription: String?
-	
-}
-
-
 class User : NSObject {
 	
 	var name : String?

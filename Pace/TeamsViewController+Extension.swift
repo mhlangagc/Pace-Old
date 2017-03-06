@@ -9,6 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 
+
 extension TeamsViewController {
 	
 	func numberOfSections(in collectionNode: ASCollectionNode) -> Int {
@@ -19,14 +20,14 @@ extension TeamsViewController {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
 		
-		return (chatGroupsArray?.count)!
+		return (teamWorkoutsArray?.count)!
 		
 	}
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
 		
 		let teamNode = TeamCell()
-		teamNode.chatGroupModel = chatGroupsArray?[indexPath.item]
+		teamNode.teamModel = teamWorkoutsArray?[indexPath.item]
 		return teamNode
 		
 	}
@@ -35,10 +36,10 @@ extension TeamsViewController {
 		
 		let flowLayout = UICollectionViewFlowLayout()
 		flowLayout.scrollDirection = .vertical
-		let chatVC = ChatViewController(collectionViewLayout: flowLayout)
-		chatVC.chatModel = chatGroupsArray?[indexPath.item]
-		chatVC.hidesBottomBarWhenPushed = true
-		self.navigationController?.pushViewController(chatVC, animated: true)
+		let teamMessagesVC = TeamPostsViewController(collectionViewLayout: flowLayout)
+		teamMessagesVC.teamModel = teamWorkoutsArray?[indexPath.item]
+		teamMessagesVC.hidesBottomBarWhenPushed = true
+		self.navigationController?.pushViewController(teamMessagesVC, animated: true)
 		collectionNode.deselectItem(at: indexPath, animated: true)
 		
 		

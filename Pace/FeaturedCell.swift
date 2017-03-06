@@ -27,9 +27,9 @@ class FeaturedCell: BaseCell {
 		
 		didSet {
 			
-			workoutImageNode.url = NSURL(string: (exploreWorkoutModel?.workoutImageUrl!)!)! as URL
+			workoutImageNode.url = NSURL(string: (exploreWorkoutModel?.backgroundImageUrl!)!)! as URL
 			
-			if let workoutName = exploreWorkoutModel?.workoutName {
+			if let workoutName = exploreWorkoutModel?.name {
 				
 				workoutNameMutableString = NSMutableAttributedString(string: workoutName, attributes: workoutNameAttributes)
 				workoutTitleNode.attributedText = workoutNameMutableString

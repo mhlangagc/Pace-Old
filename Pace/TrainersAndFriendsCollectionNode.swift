@@ -14,7 +14,7 @@ class TrainersAndFriendsCollectionNode: ASCellNode, ASCollectionDelegate, ASColl
 	var catergoryCollection : ASCollectionNode?
 	var exploreVC : ExploreViewController?
 	
-	var suggestedTrainersArray : [UserModel]?
+	var suggestedTrainersArray : [User]?
 	
 	lazy var ExploreWorkoutSetup: ExploreViewModel = {
 		
@@ -37,7 +37,7 @@ class TrainersAndFriendsCollectionNode: ASCellNode, ASCollectionDelegate, ASColl
 		
 		self.setupCollectionNodes()
 		
-		suggestedTrainersArray = ExploreWorkoutSetup.suggestedTrainers()
+		//suggestedTrainersArray = ExploreWorkoutSetup.suggestedTrainers()
 		
 	}
 	
