@@ -17,6 +17,7 @@ class TeamPostsViewController: UICollectionViewController, UICollectionViewDeleg
 	var teamModel: TeamsModel?
 	var containerViewBottomAnchor: NSLayoutConstraint?
 	let ChatMessageCellID = "ChatMessageCellID"
+	var customTitleView: UIView?
 	
 	var messagesArray = [TeamMessagesModel]()
 
@@ -63,6 +64,18 @@ class TeamPostsViewController: UICollectionViewController, UICollectionViewDeleg
 	}()
 
 	
+	lazy var addImageButton: UIButton = {
+		
+		let button = UIButton()
+		button.isEnabled = false
+		button.setImage(UIImage(named: "postImage"), for: UIControlState.normal)
+		button.addTarget(self, action: #selector(handleSelectImage), for: .touchUpInside)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		return button
+		
+	}()
+
+	
 	let postsMenuBar: PostsMenuBar = {
 		
 		let postsBar = PostsMenuBar()
@@ -85,7 +98,6 @@ class TeamPostsViewController: UICollectionViewController, UICollectionViewDeleg
 		super.viewDidLoad()
 		
 		view.backgroundColor = UIColor.black
-		navigationItem.title = teamModel?.workoutName
 		navigationNoLineBar()
 		self.setupRightNavItem()
 		
@@ -103,6 +115,8 @@ class TeamPostsViewController: UICollectionViewController, UICollectionViewDeleg
 	
 	private func setupRightNavItem() {
 		
+		self.customTitleHeaderView()
+		
 		let buttonWidth : CGFloat = 35.0
 		let trainerButton = UIButton(type: .system)
 		trainerButton.setImage(#imageLiteral(resourceName: "justin").withRenderingMode(.alwaysOriginal), for: .normal)
@@ -111,6 +125,38 @@ class TeamPostsViewController: UICollectionViewController, UICollectionViewDeleg
 		trainerButton.layer.masksToBounds = true
 		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: trainerButton)
 		
+	}
+	
+	
+	func customTitleHeaderView() {
+		
+		let myLabel = UILabel()
+		myLabel.translatesAutoresizingMaskIntoConstraints = false
+		myLabel.text = teamModel?.workoutName
+		myLabel.numberOfLines = 1
+		myLabel.textColor = UIColor.white
+		myLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightBold)
+		
+		
+		let smallText = UILabel()
+		smallText.translatesAutoresizingMaskIntoConstraints = false
+		smallText.text = "2k Members"
+		smallText.numberOfLines = 1
+		smallText.textColor = UIColor.greyWhite()
+		smallText.font = UIFont.systemFont(ofSize: 13, weight: UIFontWeightBold)
+		
+		
+		let wrapper = UIView()
+		wrapper.addSubview(myLabel)
+		wrapper.addSubview(smallText)
+		wrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[myLabel]-0-|", options: [], metrics: nil, views: ["myLabel": myLabel, "smallText": smallText]))
+		wrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[myLabel]-2-[smallText]-0-|", options: .alignAllCenterX, metrics: nil, views: ["myLabel": myLabel, "smallText": smallText]))
+		
+		wrapper.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(max(myLabel.intrinsicContentSize.width, smallText.intrinsicContentSize.width)), height: CGFloat(myLabel.intrinsicContentSize.height + smallText.intrinsicContentSize.height + 2))
+		wrapper.clipsToBounds = true
+		
+		self.navigationItem.titleView = wrapper
+		self.navigationController?.navigationBar.clipsToBounds = true
 	}
 	
 	func observeTeamMessages(completion: @escaping (_ result: [TeamMessagesModel]) -> Void) {
@@ -171,12 +217,19 @@ class TeamPostsViewController: UICollectionViewController, UICollectionViewDeleg
 		containerView.addSubview(self.sendButton)
 		self.sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -15.0).isActive = true
 		self.sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-		self.sendButton.widthAnchor.constraint(equalToConstant: 45).isActive = true
-		self.sendButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+		self.sendButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+		self.sendButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+		
+		
+		containerView.addSubview(self.addImageButton)
+		self.addImageButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10.0).isActive = true
+		self.addImageButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+		self.addImageButton.widthAnchor.constraint(equalToConstant: 26).isActive = true
+		self.addImageButton.heightAnchor.constraint(equalToConstant: 22).isActive = true
 		
 		
 		containerView.addSubview(self.inputTextField)
-		self.inputTextField.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 15).isActive = true
+		self.inputTextField.leftAnchor.constraint(equalTo: self.addImageButton.rightAnchor, constant: 8).isActive = true
 		self.inputTextField.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
 		self.inputTextField.rightAnchor.constraint(equalTo: self.sendButton.leftAnchor, constant: -10.0).isActive = true
 		self.inputTextField.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
@@ -277,14 +330,9 @@ class TeamPostsViewController: UICollectionViewController, UICollectionViewDeleg
 		
 	}
 	
-	
-	func handleClose() {
+	func handleSelectImage() {
 		
-		if let navController = self.navigationController {
-			
-			navController.popViewController(animated: true)
-			
-		}
+		
 		
 	}
 	
