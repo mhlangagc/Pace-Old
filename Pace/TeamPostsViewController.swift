@@ -89,6 +89,16 @@ class TeamPostsViewController: UICollectionViewController, UICollectionViewDeleg
 		navigationNoLineBar()
 		self.setupRightNavItem()
 		
+		self.observeTeamMessages { (teamMessagesRecieved) in
+			
+			self.messagesArray = teamMessagesRecieved
+			print(self.messagesArray)
+			self.setupCollectionView()
+			self.collectionView?.reloadData()
+			self.view.layoutIfNeeded()
+			
+		}
+		
 	}
 	
 	private func setupRightNavItem() {
@@ -141,17 +151,7 @@ class TeamPostsViewController: UICollectionViewController, UICollectionViewDeleg
 		super.viewWillAppear(true)
 		
 		self.navigationController?.navigationBar.tintColor = UIColor.white
-		
-		
-		self.observeTeamMessages { (teamMessagesRecieved) in
-			
-			self.messagesArray = teamMessagesRecieved
-			print(self.messagesArray)
-			self.setupCollectionView()
-			self.collectionView?.reloadData()
-			self.view.layoutIfNeeded()
-			
-		}
+	
 		
 	}
 	

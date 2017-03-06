@@ -20,7 +20,7 @@ target 'Pace' do
 	# core
 	pod 'SLPagingView'
 	pod 'lottie-ios', '~> 1.0'
-	pod 'AsyncDisplayKit'
+	pod 'AsyncDisplayKit', :git => 'https://github.com/facebook/AsyncDisplayKit.git', :branch => '2.2'
 	pod 'pop', :git => 'https://github.com/facebook/pop.git'
 	pod 'QuickRippleButton'
 

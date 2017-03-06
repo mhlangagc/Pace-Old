@@ -1,10 +1,10 @@
 PODS:
-  - AsyncDisplayKit (2.1):
-    - AsyncDisplayKit/PINRemoteImage (= 2.1)
-  - AsyncDisplayKit/Core (2.1)
-  - AsyncDisplayKit/PINRemoteImage (2.1):
+  - AsyncDisplayKit (2.2):
+    - AsyncDisplayKit/PINRemoteImage (= 2.2)
+  - AsyncDisplayKit/Core (2.2)
+  - AsyncDisplayKit/PINRemoteImage (2.2):
     - AsyncDisplayKit/Core
-    - PINRemoteImage/iOS (= 3.0.0-beta.7)
+    - PINRemoteImage/iOS (= 3.0.0-beta.8)
     - PINRemoteImage/PINCache
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
@@ -58,17 +58,19 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.8)
   - lottie-ios (1.0.0)
-  - PINCache (3.0.1-beta.2):
-    - PINCache/Arc-exception-safe (= 3.0.1-beta.2)
-    - PINCache/Core (= 3.0.1-beta.2)
-  - PINCache/Arc-exception-safe (3.0.1-beta.2):
+  - PINCache (3.0.1-beta.4):
+    - PINCache/Arc-exception-safe (= 3.0.1-beta.4)
+    - PINCache/Core (= 3.0.1-beta.4)
+  - PINCache/Arc-exception-safe (3.0.1-beta.4):
     - PINCache/Core
-  - PINCache/Core (3.0.1-beta.2)
-  - PINRemoteImage/Core (3.0.0-beta.7)
-  - PINRemoteImage/iOS (3.0.0-beta.7):
+  - PINCache/Core (3.0.1-beta.4):
+    - PINOperation (= 1.0.3)
+  - PINOperation (1.0.3)
+  - PINRemoteImage/Core (3.0.0-beta.8)
+  - PINRemoteImage/iOS (3.0.0-beta.8):
     - PINRemoteImage/Core
-  - PINRemoteImage/PINCache (3.0.0-beta.7):
-    - PINCache (= 3.0.1-beta.2)
+  - PINRemoteImage/PINCache (3.0.0-beta.8):
+    - PINCache (= 3.0.1-beta.4)
     - PINRemoteImage/Core
   - pop (1.0.9)
   - QuickRippleButton (0.0.1)
@@ -76,7 +78,7 @@ PODS:
   - Stripe (9.3.0)
 
 DEPENDENCIES:
-  - AsyncDisplayKit
+  - AsyncDisplayKit (from `https://github.com/facebook/AsyncDisplayKit.git`, branch `2.2`)
   - Crashlytics
   - Fabric
   - Firebase/Analytics
@@ -91,16 +93,22 @@ DEPENDENCIES:
   - Stripe
 
 EXTERNAL SOURCES:
+  AsyncDisplayKit:
+    :branch: '2.2'
+    :git: https://github.com/facebook/AsyncDisplayKit.git
   pop:
     :git: https://github.com/facebook/pop.git
 
 CHECKOUT OPTIONS:
+  AsyncDisplayKit:
+    :commit: a81d4006e1633507f6a0794992d78409f03ae189
+    :git: https://github.com/facebook/AsyncDisplayKit.git
   pop:
     :commit: 92b2c5b7bcad64f7507da34f921492c71ff1d330
     :git: https://github.com/facebook/pop.git
 
 SPEC CHECKSUMS:
-  AsyncDisplayKit: 28de788f9d6ec573be7662f0fe8931e656357e93
+  AsyncDisplayKit: 1585f6cd0531ae9b30476f5912f577b73ebcb0e4
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   Firebase: 53b2343db1ebfa3eb16bdb4318b8bb65360b2220
@@ -115,13 +123,14 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
   lottie-ios: c40d67c1481d6fb9fa24fe46731ac823f5f6675b
-  PINCache: 6d273a6e0754bd26e3f12a38a90dde73cc6a42b2
-  PINRemoteImage: ff63baf185088530db6cfa41cb665e2b5126b5c3
+  PINCache: a89c8f609232afac77128557bd12c861844423d7
+  PINOperation: ac23db44796d4a564ecf9b5ea7163510f579b71d
+  PINRemoteImage: c4f9f16932840c597f32e69dd288e10e111a1929
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   QuickRippleButton: bb0de9a85ce0987a57300b2cafa87a4b42eac8b9
   SLPagingView: ba9bb6102cb318ce56f23d0a7e49a46ddcdad7e3
   Stripe: 0f41a33a6fa3ac76ee668d7df3e2680c28b8ab1a
 
-PODFILE CHECKSUM: 51f814a6d6ba6fe4f09f3f211b152eece90b8141
+PODFILE CHECKSUM: be48d22a07d2f5c334325ffdc3dee0ef10d0fcb2
 
 COCOAPODS: 1.1.1
