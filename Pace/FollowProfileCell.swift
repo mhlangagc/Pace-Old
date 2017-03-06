@@ -85,7 +85,7 @@ class FollowProfileCell: BaseCell {
 		
 		//	Follow Button Node
 		followButtonNode.backgroundColor = UIColor.darkBlack()
-		followButtonNode.setTitle("Follow", with: UIFont.systemFont(ofSize: 15.0, weight: UIFontWeightBold), with: UIColor.paceBrandColor(), for: ASControlState())
+		followButtonNode.setTitle("Follow", with: UIFont.systemFont(ofSize: 15.0, weight: UIFontWeightBold), with: UIColor.paceBrandColor(), for: UIControlState())
 		followButtonNode.addTarget(self, action: #selector(handleFollow), forControlEvents: ASControlNodeEvent.touchUpInside)
 		followButtonNode.layer.cornerRadius = 7.5
 		addSubnode(followButtonNode)

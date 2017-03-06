@@ -54,7 +54,6 @@ class FeaturedCell: BaseCell {
 		workoutImageNode.backgroundColor = UIColor.darkerBlack()
 		workoutImageNode.contentMode = .scaleAspectFill
 		workoutImageNode.layer.cornerRadius = 10.0
-		workoutImageNode.shouldRasterizeDescendants = true
 		workoutImageNode.clipsToBounds = true
 		addSubnode(workoutImageNode)
 		
