@@ -70,7 +70,7 @@ class FollowerFollowingCellNode: BaseCell {
 		
 		
 		
-		followButton.setTitle("Following", with: UIFont.systemFont(ofSize: 14, weight: UIFontWeightBold), with: UIColor.black, for: ASControlState())
+		followButton.setTitle("Following", with: UIFont.systemFont(ofSize: 14, weight: UIFontWeightBold), with: UIColor.black, for: UIControlState())
 		followButton.backgroundColor = UIColor.paceBrandColor()
 		followButton.layer.cornerRadius = 4.0
 		followButton.layer.masksToBounds = true
