@@ -34,9 +34,9 @@ extension TeamsViewController {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
-		let flowLayout = UICollectionViewFlowLayout()
-		flowLayout.scrollDirection = .vertical
-		let teamMessagesVC = TeamPostsViewController(collectionViewLayout: flowLayout)
+//		let flowLayout = UICollectionViewFlowLayout()
+//		flowLayout.scrollDirection = .vertical
+		let teamMessagesVC = PostViewController()
 		teamMessagesVC.teamModel = teamWorkoutsArray?[indexPath.item]
 		teamMessagesVC.hidesBottomBarWhenPushed = true
 		self.navigationController?.pushViewController(teamMessagesVC, animated: true)

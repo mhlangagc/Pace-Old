@@ -10,7 +10,7 @@ import UIKit
 
 class PostsMenuBar: BaseView, UICollectionViewDataSource, UICollectionViewDelegate {
 
-	var communityPostsVC : TeamPostsViewController?
+	var communityPostsVC : PostViewController?
 	let teamProfileCellID = "teamProfileCellID"
 	
 	lazy var teamMembersCollectionView: UICollectionView = {
@@ -100,7 +100,7 @@ extension PostsMenuBar {
 		
 		if indexPath.item == 7 {
 			
-			communityPostsVC?.handleSendingInvitation()
+			//communityPostsVC?.handleSendingInvitation()
 			
 		}
 	}
