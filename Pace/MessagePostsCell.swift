@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LBTAComponents
 
 class MessagePostsCell: CollectionBaseCell {
 	
@@ -43,6 +44,16 @@ class MessagePostsCell: CollectionBaseCell {
 		textView.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightMedium)
 		textView.translatesAutoresizingMaskIntoConstraints = false
 		return textView
+		
+	}()
+	
+	let messageImageView: CachedImageView = {
+		
+		let imageView = CachedImageView()
+		imageView.translatesAutoresizingMaskIntoConstraints = false
+		imageView.layer.masksToBounds = true
+		imageView.contentMode = .scaleAspectFill
+		return imageView
 		
 	}()
 	
@@ -106,6 +117,19 @@ class MessagePostsCell: CollectionBaseCell {
 				
 			}
 			
+			if let messageImageUrl = messagesModel?.imageURL {
+				
+				messageImageView.loadImage(urlString: messageImageUrl)
+				messageImageView.isHidden = false
+				backgroundColor = UIColor.clear
+			
+			} else {
+			
+				messageImageView.isHidden = true
+			
+			}
+
+			
 			if let messageSent  = messagesModel?.message {
 				
 				textView.text = messageSent
@@ -117,7 +141,6 @@ class MessagePostsCell: CollectionBaseCell {
 
 	}
 	
-	
 	override func setupViews() {
 		super.setupViews()
 		
@@ -125,22 +148,17 @@ class MessagePostsCell: CollectionBaseCell {
 		self.addViews()
 	}
 	
+	var imageHeightAnchor: NSLayoutConstraint?
+	
 	func addViews() {
 		
-		//addSubview(topDividerLine)
 		addSubview(profileImageView)
 		addSubview(profileNameLabel)
 		addSubview(moreButton)
 		addSubview(textView)
 		addSubview(likeButton)
 		addSubview(numberOfLikesLabel)
-		//addSubview(bottomDividerLine)
-		
-//		topDividerLine.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-//		topDividerLine.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-//		topDividerLine.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-//		topDividerLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-		
+		addSubview(messageImageView)
 		
 		profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15).isActive = true
 		profileImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 15).isActive = true
@@ -170,18 +188,17 @@ class MessagePostsCell: CollectionBaseCell {
 		numberOfLikesLabel.heightAnchor.constraint(equalToConstant: 19).isActive = true
 		
 		
+		messageImageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+		messageImageView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 20).isActive = true
+		messageImageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+		messageImageView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+		
+		
 		textView.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 15).isActive = true
 		textView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 25).isActive = true
 		textView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -18).isActive = true
 		textView.bottomAnchor.constraint(equalTo: likeButton.topAnchor, constant: -30).isActive = true
-		
-		
-		
-		
-//		bottomDividerLine.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-//		bottomDividerLine.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-//		bottomDividerLine.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-//		bottomDividerLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+
 		
 	}
 }

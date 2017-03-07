@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LBTAComponents
 
 class WorkoutViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
 	

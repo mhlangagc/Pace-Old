@@ -57,6 +57,7 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.8)
+  - LBTAComponents (0.1.9)
   - lottie-ios (1.0.0)
   - PINCache (3.0.1-beta.4):
     - PINCache/Arc-exception-safe (= 3.0.1-beta.4)
@@ -86,6 +87,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - LBTAComponents (~> 0.1.9)
   - lottie-ios (~> 1.0)
   - pop (from `https://github.com/facebook/pop.git`)
   - QuickRippleButton
@@ -122,6 +124,7 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
+  LBTAComponents: 9a5d314080d1f80208062ccc81a2d25225c5f572
   lottie-ios: c40d67c1481d6fb9fa24fe46731ac823f5f6675b
   PINCache: a89c8f609232afac77128557bd12c861844423d7
   PINOperation: ac23db44796d4a564ecf9b5ea7163510f579b71d
@@ -131,6 +134,6 @@ SPEC CHECKSUMS:
   SLPagingView: ba9bb6102cb318ce56f23d0a7e49a46ddcdad7e3
   Stripe: 0f41a33a6fa3ac76ee668d7df3e2680c28b8ab1a
 
-PODFILE CHECKSUM: be48d22a07d2f5c334325ffdc3dee0ef10d0fcb2
+PODFILE CHECKSUM: 5a8e86a61f6d47ee60287d46244bc5e82b651e26
 
 COCOAPODS: 1.1.1

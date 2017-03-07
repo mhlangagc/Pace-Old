@@ -18,6 +18,7 @@ target 'Pace' do
 	pod 'Crashlytics'
 	
 	# core
+	pod 'LBTAComponents', '~> 0.1.9'
 	pod 'SLPagingView'
 	pod 'lottie-ios', '~> 1.0'
 	pod 'AsyncDisplayKit', :git => 'https://github.com/facebook/AsyncDisplayKit.git', :branch => '2.2'
