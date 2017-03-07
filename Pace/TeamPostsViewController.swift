@@ -188,6 +188,16 @@ class TeamPostsViewController: UICollectionViewController, UICollectionViewDeleg
 					teamMessagesArray.sort(by: {$0.timeStamp! > $1.timeStamp!})
 					completion(teamMessagesArray)
 					
+					DispatchQueue.main.async {
+						
+						self.collectionView?.reloadData()
+						
+						//scroll to the first index
+						let indexPath = IndexPath(item: 0, section: 0)
+						self.collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
+					
+					}
+					
 				}
 				
 				
