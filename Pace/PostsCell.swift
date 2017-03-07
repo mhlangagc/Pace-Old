@@ -116,25 +116,48 @@ class PostsCell: BaseCell {
 	override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
 		
 		userSendingImageNode.style.preferredSize = CGSize(width: 30.0, height: 30.0)
-		userSendingTextNode.style.height = ASDimensionMakeWithPoints(24.0)
+		userSendingTextNode.style.preferredSize = CGSize(width: constrainedSize.max.width - 110, height: 24.0)
 		optionsButtonNode.style.preferredSize = CGSize(width: 22.0, height: 5.0)
 		postedTextNode.style.width = ASDimensionMakeWithPoints(constrainedSize.max.width - 80.0)
 		likeButtonNode.style.preferredSize = CGSize(width: 20.0, height: 18.0)
 		likesTextNode.style.preferredSize = CGSize(width: 128, height: 20)
+		postedImageNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.width * 0.7)
 		
-		let imageRatioSpec = ASRatioLayoutSpec(ratio: 1.38/1.0, child: postedImageNode)
-		let header = ASStackLayoutSpec(direction: .horizontal,
+		// ******
+		
+		let headerSpec = ASStackLayoutSpec(direction: .horizontal,
 		                                     spacing: 20.0,
 		                                     justifyContent: .start,
 		                                     alignItems: .center,
 		                                     children: [userSendingImageNode, userSendingTextNode, optionsButtonNode])
 		
-		let subHeader = ASStackLayoutSpec(direction: .vertical,
-		                               spacing: 25.0,
-		                               justifyContent: .start,
-		                               alignItems: .center,
-		                               children: [header, imageRatioSpec, postedTextNode])
+		let headerInsetSpec = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 20.0, left: 10.0, bottom: 5.0, right: 20.0), child: headerSpec)
 		
+		
+		// ******
+		
+		
+		let messageTextInsetSpec = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 5.0, left: 62.0, bottom: 5.0, right: 20.0), child: postedTextNode)
+		
+		
+		// ******
+		
+		let subHeaderSpec = ASStackLayoutSpec()
+		subHeaderSpec.direction = .vertical
+		subHeaderSpec.spacing = 25.0
+		subHeaderSpec.justifyContent = .start
+		subHeaderSpec.alignItems = .center
+		if messagesModel?.imageURL != nil {
+			
+			subHeaderSpec.children = [headerInsetSpec, postedImageNode, messageTextInsetSpec]
+			
+		} else {
+			
+			subHeaderSpec.children =  [headerInsetSpec, messageTextInsetSpec]
+			
+		}
+		
+		// ******
 		
 		let bottomHeader = ASStackLayoutSpec(direction: .horizontal,
 		                               spacing: 20.0,
@@ -142,15 +165,18 @@ class PostsCell: BaseCell {
 		                               alignItems: .center,
 		                               children: [likeButtonNode, likesTextNode])
 		
+		let bottomHeaderInsetSpec = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 5.0, left: 20.0, bottom: 5.0, right: 20.0), child: bottomHeader)
 		
-		let finalLayoutSpec = ASStackLayoutSpec(direction: .vertical,
-		                                     spacing: 28.0,
+		// ******
+		
+		return ASStackLayoutSpec(direction: .vertical,
+		                                     spacing: 10.0,
 		                                     justifyContent: .start,
 		                                     alignItems: .center,
-		                                     children: [subHeader, bottomHeader])
+		                                     children: [subHeaderSpec, bottomHeaderInsetSpec])
 		
 		//let finalInsets = UIEdgeInsets(top: CGFloat.infinity, left: 20.0, bottom: 25.0, right: 10.0) // Infinity is used to
-		return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15.0, left: 0, bottom: 15.0, right: 0), child: finalLayoutSpec)
+		//return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15.0, left: 0, bottom: 15.0, right: 0), child: finalLayoutSpec)
 		
 		
 	}

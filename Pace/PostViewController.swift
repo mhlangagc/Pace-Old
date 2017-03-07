@@ -70,10 +70,10 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 			
 			self.messagesArray = postsArray
 			
-//			let indexPath = IndexPath(item: 0, section: 0)
-//			self.collectionNode?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.top, animated: true)
-			
 			self.setupCollectionView()
+			
+			let indexPath = IndexPath(item: 0, section: 0)
+			self.collectionNode?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.top, animated: true)
 			
 		}
 
@@ -120,35 +120,6 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 			self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: window.frame.size.width, height: 80.0)
 		
 		}
-		
-	}
-	
-	func retrieveTeamsFromWorkouts(completion: @escaping (_ result: [TeamsModel]) -> Void) {
-		
-		var teamsArray = [TeamsModel]()
-		
-		FIRDatabase.database().reference().child("WorkoutAndTeam").child("Male").observe(FIRDataEventType.childAdded, with: { (snapShot) in
-			
-			let workoutID = snapShot.key
-			
-			if let dictionary = snapShot.value as? [String: AnyObject] {
-				
-				let workoutTeam = TeamsModel()
-				
-				workoutTeam.workoutID = workoutID
-				workoutTeam.workoutName = dictionary["name"] as? String
-				workoutTeam.backgroundImageUrl = dictionary["backgroundImageUrl"] as? String
-				workoutTeam.trainerID = dictionary["trainerID"] as? String
-				
-				teamsArray.append(workoutTeam)
-				
-				completion(teamsArray)
-				
-				
-			}
-			
-		}, withCancel: nil)
-		
 		
 	}
 
