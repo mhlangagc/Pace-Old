@@ -45,7 +45,7 @@ class TrainersAndFriendsLabelCell: BaseCell {
 	
 	func seeAllButtonNode() {
 		
-		seeAllButton.setImage(UIImage(named: "seeAllButton"), for: ASControlState())
+		seeAllButton.setImage(UIImage(named: "seeAllButton"), for: UIControlState())
 		seeAllButton.style.preferredSize = CGSize(width: 20.0, height: 20.0)
 		seeAllButton.addTarget(self, action: #selector(handleViewAll), forControlEvents: ASControlNodeEvent.touchUpInside)
 		addSubnode(seeAllButton)

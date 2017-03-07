@@ -85,7 +85,6 @@ class TeamCell: BaseCell {
 		groupImageNode.backgroundColor = UIColor.darkBlack()
 		groupImageNode.cropRect = CGRect(x: 0, y: 0, width: 0.0, height: 0.0)
 		groupImageNode.layer.cornerRadius = 100.0 * 0.5
-		groupImageNode.shouldRasterizeDescendants = true
 		groupImageNode.clipsToBounds = true
 		addSubnode(groupImageNode)
 		

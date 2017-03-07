@@ -70,7 +70,6 @@ class DiscoveryWorkoutCell: BaseCell {
 		workoutImageNode.backgroundColor = UIColor.darkBlack()
 		workoutImageNode.cropRect = CGRect(x: 0, y: 0, width: 0.0, height: 0.0)
 		workoutImageNode.layer.cornerRadius = 8.0
-		workoutImageNode.shouldRasterizeDescendants = true
 		workoutImageNode.clipsToBounds = true
 		addSubnode(workoutImageNode)
 		

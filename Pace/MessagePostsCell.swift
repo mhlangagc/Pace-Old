@@ -26,7 +26,7 @@ class MessagePostsCell: CollectionBaseCell {
 	
 		let label = UILabel()
 		label.textColor = UIColor.greyWhite()
-		label.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightSemibold)
+		label.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightSemibold)
 		textSpacing(label, spacing: 0.36)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
@@ -71,7 +71,7 @@ class MessagePostsCell: CollectionBaseCell {
 		
 		let button = UIButton()
 		button.setImage(UIImage(named: "more")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal)
-		button.tintColor = UIColor.greyBlackColor()
+		button.tintColor = UIColor.darkBlack()
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
 		
