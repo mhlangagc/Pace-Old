@@ -12,12 +12,13 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class TeamPostsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
+class TeamPostsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 	
 	var teamModel: TeamsModel?
 	var containerViewBottomAnchor: NSLayoutConstraint?
 	let ChatMessageCellID = "ChatMessageCellID"
 	var customTitleView: UIView?
+	var imageUrl: String?
 	
 	var messagesArray = [TeamMessagesModel]()
 
@@ -64,14 +65,17 @@ class TeamPostsViewController: UICollectionViewController, UICollectionViewDeleg
 	}()
 
 	
-	lazy var addImageButton: UIButton = {
+	lazy var addImageButton: UIImageView = {
 		
-		let button = UIButton()
-		button.isEnabled = false
-		button.setImage(UIImage(named: "postImage"), for: UIControlState.normal)
-		button.addTarget(self, action: #selector(handleSelectImage), for: .touchUpInside)
-		button.translatesAutoresizingMaskIntoConstraints = false
-		return button
+		let sendImageButton = UIImageView()
+		sendImageButton.image = UIImage(named: "postImage")
+		sendImageButton.contentMode = .scaleAspectFill
+		sendImageButton.isUserInteractionEnabled = true
+		sendImageButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectImage)))
+		sendImageButton.layer.cornerRadius = 2.5
+		sendImageButton.layer.masksToBounds = true
+		sendImageButton.translatesAutoresizingMaskIntoConstraints = false
+		return sendImageButton
 		
 	}()
 
@@ -86,7 +90,7 @@ class TeamPostsViewController: UICollectionViewController, UICollectionViewDeleg
 	
 	func setupCollectionView() {
 		
-		collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 70, right: 0) //58 for the top
+		collectionView?.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 70, right: 0) //58 for the top
 		collectionView?.alwaysBounceVertical = true
 		collectionView?.backgroundColor = UIColor(fromHexString: "0C0E10")
 		collectionView?.register(MessagePostsCell.self, forCellWithReuseIdentifier: ChatMessageCellID)
@@ -150,21 +154,21 @@ class TeamPostsViewController: UICollectionViewController, UICollectionViewDeleg
 		wrapper.addSubview(myLabel)
 		wrapper.addSubview(smallText)
 		wrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[myLabel]-0-|", options: [], metrics: nil, views: ["myLabel": myLabel, "smallText": smallText]))
-		wrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[myLabel]-2-[smallText]-0-|", options: .alignAllCenterX, metrics: nil, views: ["myLabel": myLabel, "smallText": smallText]))
+		wrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[myLabel]-5-[smallText]-0-|", options: .alignAllCenterX, metrics: nil, views: ["myLabel": myLabel, "smallText": smallText]))
 		
 		wrapper.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(max(myLabel.intrinsicContentSize.width, smallText.intrinsicContentSize.width)), height: CGFloat(myLabel.intrinsicContentSize.height + smallText.intrinsicContentSize.height + 2))
 		wrapper.clipsToBounds = true
 		
 		self.navigationItem.titleView = wrapper
 		self.navigationController?.navigationBar.clipsToBounds = true
+		self.navigationController!.navigationBar.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 80.0)
+
 	}
 	
 	func observeTeamMessages(completion: @escaping (_ result: [TeamMessagesModel]) -> Void) {
 		
 		let teamID = teamModel?.workoutID
 		var teamMessagesArray = [TeamMessagesModel]()
-		
-		print(teamID!)
 		
 		let fanTeamMessagesRef = FIRDatabase.database().reference().child("fan-team-messages").child(teamID!)
 		fanTeamMessagesRef.observe(.childAdded, with: { (snapshot) in
@@ -198,7 +202,6 @@ class TeamPostsViewController: UICollectionViewController, UICollectionViewDeleg
 		
 		self.navigationController?.navigationBar.tintColor = UIColor.white
 	
-		
 	}
 	
 	override func viewDidDisappear(_ animated: Bool) {
@@ -278,7 +281,6 @@ class TeamPostsViewController: UICollectionViewController, UICollectionViewDeleg
 			sendButton.isEnabled = false
 			sendButton.setImage(UIImage(named: "send_inActive"), for: UIControlState.normal)
 			
-			
 		}
 		
 	}
@@ -288,8 +290,70 @@ class TeamPostsViewController: UICollectionViewController, UICollectionViewDeleg
 		// TO DO
 		print("Sending Invitation to Friend")
 		
+	}
+	
+	func handleSelectImage() {
+		
+		let imagePickerController = UIImagePickerController()
+		
+		imagePickerController.allowsEditing = true
+		imagePickerController.delegate = self
+		
+		present(imagePickerController, animated: true, completion: nil)
 		
 	}
+	
+	
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+		
+		var selectedImageFromPicker: UIImage?
+		
+		if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+			
+			selectedImageFromPicker = editedImage
+			
+		} else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+			
+			selectedImageFromPicker = originalImage
+			
+			
+		}
+		
+		if let selectedImage = selectedImageFromPicker {
+			
+			self.addImageButton.image = selectedImage
+			uploadToFirebaseStorageUsingImage(image: selectedImage)
+			
+		}
+		
+		dismiss(animated: true, completion: nil)
+	
+	}
+	
+	
+	private func uploadToFirebaseStorageUsingImage(image: UIImage) {
+		
+		let imageName = NSUUID().uuidString
+		let ref = FIRStorage.storage().reference().child("post_images").child(imageName)
+		
+		if let uploadData = UIImageJPEGRepresentation(image, 0.2) {
+			ref.put(uploadData, metadata: nil, completion: { (metadata, error) in
+				
+				if error != nil {
+					print("Failed to upload image:", (error?.localizedDescription)!)
+					return
+				}
+				
+				if let imageUrl = metadata?.downloadURL()?.absoluteString {
+					
+					self.imageUrl = imageUrl
+				
+				}
+				
+			})
+		}
+	}
+	
 	
 	func handleSend() {
 		
@@ -301,40 +365,72 @@ class TeamPostsViewController: UICollectionViewController, UICollectionViewDeleg
 		let childRef = ref.childByAutoId()
 		let userID = FIRAuth.auth()!.currentUser!.uid
 		
-		let values = ["message" : inputTextField.text!,
-		              "userSending": userID,
-		              "timeStamp": Int(NSDate().timeIntervalSince1970),
-		              "teamID": teamID] as [String : Any]
-		
-		childRef.updateChildValues(values) { (error, ref) in
+		if self.imageUrl != nil {
 			
-			if error != nil {
-				print((error?.localizedDescription)!)
-				return
+			let values = ["imageUrl": imageUrl!,
+			              "message" : inputTextField.text!,
+			              "userSending": userID,
+			              "timeStamp": Int(NSDate().timeIntervalSince1970),
+			              "teamID": teamID] as [String : Any]
+			
+			childRef.updateChildValues(values) { (error, ref) in
+				
+				if error != nil {
+					print((error?.localizedDescription)!)
+					return
+				}
+				
+				let userPostsRef = FIRDatabase.database().reference().child("fan-user-messages").child(userID)
+				let messageId = childRef.key
+				userPostsRef.updateChildValues([messageId: 1])
+				
+				let workoutTeamMessagesRef = FIRDatabase.database().reference().child("fan-team-messages").child(teamID)
+				workoutTeamMessagesRef.updateChildValues([messageId: 1])
+				
+				
 			}
 			
-			let userPostsRef = FIRDatabase.database().reference().child("fan-user-messages").child(userID)
-			let messageId = childRef.key
-			userPostsRef.updateChildValues([messageId: 1])
+		} else {
 			
-			let workoutTeamMessagesRef = FIRDatabase.database().reference().child("fan-team-messages").child(teamID)
-			workoutTeamMessagesRef.updateChildValues([messageId: 1])
+			let values = ["imageUrl": "",
+			              "message" : inputTextField.text!,
+			              "userSending": userID,
+			              "timeStamp": Int(NSDate().timeIntervalSince1970),
+			              "teamID": teamID] as [String : Any]
+			
+			childRef.updateChildValues(values) { (error, ref) in
+				
+				if error != nil {
+					print((error?.localizedDescription)!)
+					return
+				}
+				
+				let userPostsRef = FIRDatabase.database().reference().child("fan-user-messages").child(userID)
+				let messageId = childRef.key
+				userPostsRef.updateChildValues([messageId: 1])
+				
+				let workoutTeamMessagesRef = FIRDatabase.database().reference().child("fan-team-messages").child(teamID)
+				workoutTeamMessagesRef.updateChildValues([messageId: 1])
+				
+				
+			}
 			
 			
 		}
-
-
+		
+		
+		imageUrl = nil
+		addImageButton.image = UIImage(named: "postImage")
 		inputTextField.text = nil
 		sendButton.isEnabled = false
 		sendButton.setImage(UIImage(named: "send_inActive"), for: UIControlState.normal)
 		
 	}
 	
-	func handleSelectImage() {
+	func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
 		
-		
-		
-	}
+		dismiss(animated: true, completion: nil)
 	
+	}
 }
 

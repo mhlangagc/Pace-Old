@@ -22,6 +22,7 @@ class TeamsModel: NSObject {
 
 class TeamMessagesModel: NSObject {
 	
+	var imageURL: String?
 	var userSending : String?
 	var message: String?
 	var timeStamp: Int?
