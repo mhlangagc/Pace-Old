@@ -185,7 +185,7 @@ class TeamPostsViewController: UICollectionViewController, UICollectionViewDeleg
 					workoutTeamMessage.message = dictionary["message"] as? String
 					workoutTeamMessage.timeStamp = dictionary["timeStamp"] as? Int
 					teamMessagesArray.append(workoutTeamMessage)
-					
+					teamMessagesArray.sort(by: {$0.timeStamp! > $1.timeStamp!})
 					completion(teamMessagesArray)
 					
 				}
