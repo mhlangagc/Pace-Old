@@ -81,7 +81,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		flowLayout.minimumLineSpacing       = 25
 		flowLayout.scrollDirection = .vertical
 		collectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
-		collectionNode?.backgroundColor = UIColor(fromHexString: "0C0E10")
+		collectionNode?.backgroundColor = UIColor.black
 		super.init(node: collectionNode!)
 		navigationNoLineBar()
 	
@@ -95,9 +95,9 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		collectionNode?.view.alwaysBounceVertical = true
 		collectionNode?.view.allowsSelection = false
 		collectionNode?.view.keyboardDismissMode = .interactive
-		collectionNode?.view.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 70, right: 0)
+		collectionNode?.view.contentInset = UIEdgeInsets(top: 20, left: 9.0, bottom: 70, right: 9.0)
 		collectionNode?.view.showsVerticalScrollIndicator = false
-		collectionNode?.view.backgroundColor = UIColor(fromHexString: "0C0E10")
+		collectionNode?.view.backgroundColor = UIColor.black
 		
 	}
 	
@@ -108,7 +108,6 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 	}
 	
 	lazy var chatContainerView : UIView = {
-		
 		
 		let containerView = UIView()
 		containerView.backgroundColor = UIColor.black
