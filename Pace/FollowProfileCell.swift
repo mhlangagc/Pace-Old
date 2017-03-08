@@ -12,7 +12,7 @@ import AsyncDisplayKit
 class FollowProfileCell: BaseCell {
 	
 	var followCollection: TrainersAndFriendsCollectionNode?
-	let profileImageNode = ASImageNode()
+	let profileImageNode = ASNetworkImageNode()
 	let nameTextNode = ASTextNode()
 	let relationTextNode = ASTextNode()
 	let followButtonNode = ASButtonNode()
@@ -35,24 +35,23 @@ class FollowProfileCell: BaseCell {
 		
 		didSet {
 			
-//			if let name  = trainerModel?.name, let image = trainerModel?.profileImage, let details = trainerModel?.trainerDescription {
-//				
-//				let alignmentStyle = NSMutableParagraphStyle()
-//				alignmentStyle.alignment = NSTextAlignment.center
-//				
-//				profileImageNode.image = image
-//				
-//				
-//				trainerNameMutableString = NSMutableAttributedString(string: name, attributes: trainerNameAttributes)
-//				trainerNameMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyle] as [String: Any], range: NSRange(location: 0, length: NSString(string: name).length))
-//				nameTextNode.attributedText = trainerNameMutableString
-//				
-//				
-//				trainerDetailsMutableString = NSMutableAttributedString(string: details, attributes: trainerDetailseAttributes)
-//				trainerDetailsMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyle] as [String: Any], range: NSRange(location: 0, length: NSString(string: details).length))
-//				relationTextNode.attributedText = trainerDetailsMutableString
-//				
-//			}
+			if let name  = trainerModel?.name, let imageURL = trainerModel?.profileImageUrl, let details = trainerModel?.speciality {
+				
+				let alignmentStyle = NSMutableParagraphStyle()
+				alignmentStyle.alignment = NSTextAlignment.center
+				
+				profileImageNode.url = NSURL(string: imageURL)! as URL
+				
+				trainerNameMutableString = NSMutableAttributedString(string: name, attributes: trainerNameAttributes)
+				trainerNameMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyle] as [String: Any], range: NSRange(location: 0, length: NSString(string: name).length))
+				nameTextNode.attributedText = trainerNameMutableString
+				
+				
+				trainerDetailsMutableString = NSMutableAttributedString(string: details, attributes: trainerDetailseAttributes)
+				trainerDetailsMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyle] as [String: Any], range: NSRange(location: 0, length: NSString(string: details).length))
+				relationTextNode.attributedText = trainerDetailsMutableString
+				
+			}
 			
 		}
 	}
@@ -88,7 +87,7 @@ class FollowProfileCell: BaseCell {
 		followButtonNode.setTitle("Follow", with: UIFont.systemFont(ofSize: 15.0, weight: UIFontWeightBold), with: UIColor.paceBrandColor(), for: UIControlState())
 		followButtonNode.addTarget(self, action: #selector(handleFollow), forControlEvents: ASControlNodeEvent.touchUpInside)
 		followButtonNode.layer.cornerRadius = 7.5
-		addSubnode(followButtonNode)
+		//addSubnode(followButtonNode)
 		
 	}
 	
@@ -97,7 +96,7 @@ class FollowProfileCell: BaseCell {
 		profileImageNode.style.preferredSize = CGSize(width: profileImageWidth, height: profileImageWidth)
 		nameTextNode.style.preferredSize = CGSize(width: 160.0, height: 22.0)
 		relationTextNode.style.preferredSize = CGSize(width: 160.0, height: 35.0)
-		followButtonNode.style.preferredSize = CGSize(width: 145.0, height: 35.0)
+		//followButtonNode.style.preferredSize = CGSize(width: 145.0, height: 35.0)
 		
 		let imageAndTitlesSpec = ASStackLayoutSpec(direction: .vertical,
 		                                           spacing: 10,
@@ -106,13 +105,13 @@ class FollowProfileCell: BaseCell {
 		                                           children: [profileImageNode, nameTextNode, relationTextNode])
 		
 		
-		let followAndTitlesSpec = ASStackLayoutSpec(direction: .vertical,
-		                                           spacing: 15,
-		                                           justifyContent: .center,
-		                                           alignItems: .center,
-		                                           children: [imageAndTitlesSpec, followButtonNode])
+//		let followAndTitlesSpec = ASStackLayoutSpec(direction: .vertical,
+//		                                           spacing: 15,
+//		                                           justifyContent: .center,
+//		                                           alignItems: .center,
+//		                                           children: [imageAndTitlesSpec, followButtonNode])
 		
-		return followAndTitlesSpec
+		return imageAndTitlesSpec
 		
 		
 	}

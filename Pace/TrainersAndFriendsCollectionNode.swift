@@ -8,6 +8,9 @@
 
 import UIKit
 import AsyncDisplayKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class TrainersAndFriendsCollectionNode: ASCellNode, ASCollectionDelegate, ASCollectionDataSource {
 	
@@ -16,12 +19,35 @@ class TrainersAndFriendsCollectionNode: ASCellNode, ASCollectionDelegate, ASColl
 	
 	var suggestedTrainersArray : [User]?
 	
-	lazy var ExploreWorkoutSetup: ExploreViewModel = {
+	func retrieveTrainers(completion: @escaping (_ result: [User]) -> Void) {
 		
-		let exploreWorkoutsSetup = ExploreViewModel()
-		return exploreWorkoutsSetup
+		var trainersArray = [User]()
 		
-	}()
+		FIRDatabase.database().reference().child("Trainers").observe(FIRDataEventType.childAdded, with: { (snapShot) in
+			
+			let trainerID = snapShot.key
+			
+			if let dictionary = snapShot.value as? [String: AnyObject] {
+				
+				let workoutTrainer = User()
+				
+				workoutTrainer.userID = trainerID
+				workoutTrainer.name = dictionary["name"] as? String
+				workoutTrainer.location = dictionary["location"] as? String
+				workoutTrainer.profileImageUrl = dictionary["profileImageUrl"] as? String
+				workoutTrainer.speciality = dictionary["speciality"] as? String
+				
+				trainersArray.append(workoutTrainer)
+				
+				completion(trainersArray)
+				
+				
+			}
+			
+		}, withCancel: nil)
+		
+		
+	}
 	
 	override init() {
 		super.init()
@@ -35,9 +61,14 @@ class TrainersAndFriendsCollectionNode: ASCellNode, ASCollectionDelegate, ASColl
 		catergoryCollection?.backgroundColor = .black
 		addSubnode(catergoryCollection!)
 		
-		self.setupCollectionNodes()
-		
-		//suggestedTrainersArray = ExploreWorkoutSetup.suggestedTrainers()
+		self.retrieveTrainers { (workoutTeamsArray) in
+			
+			self.suggestedTrainersArray = workoutTeamsArray
+			
+			self.catergoryCollection?.reloadData()
+			self.setupCollectionNodes()
+			
+		}
 		
 	}
 	
@@ -97,9 +128,12 @@ extension TrainersAndFriendsCollectionNode {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
-//		let selectedUser = suggestedTrainersArray?[indexPath.item]
-//		//DiscoverProfileViewController.userProfileModel = selectedUser
-//		exploreVC?.handleShowProfile()
+		if let selectedUser = suggestedTrainersArray?[indexPath.item] {
+			
+			exploreVC?.handleShowProfile(userSelected: selectedUser)
+			
+		}
+		
 		
 	}
 }
