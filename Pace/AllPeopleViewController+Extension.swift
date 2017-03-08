@@ -32,10 +32,10 @@ extension AllPeopleViewController {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
-		print(indexPath.item)
-		let exploreProfileVC = DiscoverProfileViewController()
-		DiscoverProfileViewController.userProfileModel = allTrainersArray?[indexPath.item]
-		self.navigationController?.pushViewController(exploreProfileVC, animated: true)
+//		print(indexPath.item)
+//		let exploreProfileVC = DiscoverProfileViewController()
+//		//DiscoverProfileViewController.userProfileModel = allTrainersArray?[indexPath.item]
+//		self.navigationController?.pushViewController(exploreProfileVC, animated: true)
 		
 	}
 	

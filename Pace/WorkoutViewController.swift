@@ -8,6 +8,9 @@
 
 import UIKit
 import LBTAComponents
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class WorkoutViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
 	
@@ -15,6 +18,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	var workoutDetailsTableView : UITableView?
 	var getButtonView : GetButtonView?
 	let exerciseCellID = "ExerciseCellViewID"
+	var trainer = User()
 	
 	var exercisesArray : [ExercisesModel]?
 	
@@ -30,14 +34,26 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		//exercisesArray = ExerciseSetup.setupExercises()
-		
 		self.setupWorkoutDetailsTableView()
 		self.setupNavigationBar()
 		self.setupGetButton()
 		view.backgroundColor = UIColor.black
 		workoutDetailsTableView?.register(ExerciseCellView.self, forCellReuseIdentifier: exerciseCellID)
-		self.workoutDetailsTableView?.reloadData()
+		
+		
+		self.setupHeaderView()
+		self.retrieveTrainer { (workoutTrainer) in
+			
+			if let trainerName = workoutTrainer.name, let trainerImageUrl = workoutTrainer.profileImageUrl {
+				
+				self.headerView.profileNameButton?.setTitle("Created by \(trainerName)", for: UIControlState.normal)
+				self.headerView.profileImageView?.loadImageFromUrlString(urlString: trainerImageUrl)
+				
+			}
+			
+			self.workoutDetailsTableView?.reloadData()
+			
+		}
 		
 	}
 	
@@ -58,8 +74,8 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		
-		self.setupHeaderView()
 		self.setupNavigationBar()
+		
 	}
 	
 	func setupNavigationBar() {
@@ -88,6 +104,38 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 	}
 	
+	func retrieveTrainer(completion: @escaping (_ result: User) -> Void) {
+		
+		
+		if let trainerID = WorkoutViewController.exploreWorkout?.trainerID {
+			
+			FIRDatabase.database().reference().child("Trainers").child(trainerID).observeSingleEvent(of: .value, with: { (snapShot) in
+				
+				if let dictionary = snapShot.value as? [String: AnyObject] {
+					
+					let workoutTrainer = User()
+					
+					workoutTrainer.name = dictionary["name"] as? String
+					workoutTrainer.location = dictionary["location"] as? String
+					workoutTrainer.profileImageUrl = dictionary["profileImageUrl"] as? String
+					workoutTrainer.speciality = dictionary["speciality"] as? String
+					
+					self.trainer = workoutTrainer
+					
+					completion(self.trainer)
+					
+					
+				}
+				
+			}, withCancel: nil)
+			
+		}
+		
+		
+		
+		
+	}
+	
 	func setupHeaderView() {
 		
 		headerView  = WorkoutDetailsHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 515.0))
@@ -96,8 +144,6 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		headerView.workoutName?.text = (WorkoutViewController.exploreWorkout?.name)!
 		headerView.workoutsImageView?.loadImageFromUrlString(urlString: (WorkoutViewController.exploreWorkout?.backgroundImageUrl)!)
 		headerView.workoutTimeLabel?.text = "\((WorkoutViewController.exploreWorkout?.time)!) min workout".uppercased()
-//		headerView.profileNameButton?.setTitle("Created by \((WorkoutViewController.exploreWorkout?.trainerName)!)", for: UIControlState.normal)
-//		headerView.profileImageView?.loadImageFromUrlString(urlString: (WorkoutViewController.exploreWorkout?.trainerImageUrl)!)
 		headerView.descriptionText?.text = (WorkoutViewController.exploreWorkout?.workoutDescription)!
 		headerView.reviewLabel?.text = "\((WorkoutViewController.exploreWorkout?.numberOfReviews)!) Reviews"
 		headerView.ratingView?.ratingValue = (WorkoutViewController.exploreWorkout?.rating)!
@@ -157,8 +203,9 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	
 	func handleOpenProfile() {
 		
-		//let exploreProfileVC = DiscoverProfileViewController()
-		//self.navigationController?.pushViewController(exploreProfileVC, animated: true)
+		let exploreProfileVC = DiscoverProfileViewController()
+		exploreProfileVC.trainer = trainer
+		self.navigationController?.pushViewController(exploreProfileVC, animated: true)
 		
 	}
 	

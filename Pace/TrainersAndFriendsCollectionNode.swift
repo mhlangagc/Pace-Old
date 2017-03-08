@@ -97,9 +97,9 @@ extension TrainersAndFriendsCollectionNode {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
-		let selectedUser = suggestedTrainersArray?[indexPath.item]
-		DiscoverProfileViewController.userProfileModel = selectedUser
-		exploreVC?.handleShowProfile()
+//		let selectedUser = suggestedTrainersArray?[indexPath.item]
+//		//DiscoverProfileViewController.userProfileModel = selectedUser
+//		exploreVC?.handleShowProfile()
 		
 	}
 }

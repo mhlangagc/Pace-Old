@@ -14,6 +14,8 @@ class User : NSObject {
 	var profileImageUrl : String?
 	var location : String?
 	var about: String?
+	var qualification: String?
+	var speciality : String?
 	
 	//	var workouts: NSSet?
 	//	var followers: NSSet?

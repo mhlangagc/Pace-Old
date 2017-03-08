@@ -488,13 +488,13 @@
 			name = GenericViewCells;
 			sourceTree = "<group>";
 		};
-		451D07941DFE5CF800940301 /* ProfileView */ = {
+		451D07941DFE5CF800940301 /* TrainerView */ = {
 			isa = PBXGroup;
 			children = (
 				451D078F1DFE586900940301 /* DiscoverProfileViewController.swift */,
 				451D07921DFE5BA200940301 /* DiscoverProfileViewController+Extension.swift */,
 			);
-			name = ProfileView;
+			name = TrainerView;
 			sourceTree = "<group>";
 		};
 		4529021B1DFC2B3900CE0C81 /* Helper Functions */ = {
@@ -789,7 +789,7 @@
 				451D078E1DFE583F00940301 /* Discovery Tab View */,
 				45C214ED1E05BCAB00C5BCCF /* AllPeopleAndTrainers */,
 				45C214E21E05AECA00C5BCCF /* AllWorkoutsViewController */,
-				451D07941DFE5CF800940301 /* ProfileView */,
+				451D07941DFE5CF800940301 /* TrainerView */,
 				459B22B11DFE649200943AC6 /* Workout Details View */,
 			);
 			name = "Explore Tab";
