@@ -51,7 +51,7 @@ class TeamCell: BaseCell {
 			}
 			
 			
-//			if let groupUserNumber  = teamModel?.numberOfMembers {
+//			if let groupUserNumber  = "2k Members" { //teamModel?.numberOfMembers
 //				
 //				groupMemberMutableString = NSMutableAttributedString(string: "\(groupUserNumber) Members", attributes: groupMemberAttributes)
 //				
@@ -61,6 +61,14 @@ class TeamCell: BaseCell {
 //				
 //				groupMemberNumberNode.attributedText = groupMemberMutableString
 //			}
+			
+			groupMemberMutableString = NSMutableAttributedString(string: "2k Members", attributes: groupMemberAttributes)
+			
+			let alignmentStyleCenter = NSMutableParagraphStyle()
+			alignmentStyleCenter.alignment = NSTextAlignment.center
+			groupMemberMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyleCenter] as [String: Any], range: NSRange(location: 0, length: NSString(string: "2k Members").length))
+			
+			groupMemberNumberNode.attributedText = groupMemberMutableString
 			
 		}
 	}

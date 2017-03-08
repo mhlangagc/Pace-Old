@@ -61,8 +61,6 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 		
 	}
 
-	
-	
 	override init() {
 		super.init()
 		
