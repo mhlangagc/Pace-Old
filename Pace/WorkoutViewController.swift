@@ -115,6 +115,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 					
 					let workoutTrainer = User()
 					
+					workoutTrainer.userID = trainerID
 					workoutTrainer.name = dictionary["name"] as? String
 					workoutTrainer.location = dictionary["location"] as? String
 					workoutTrainer.profileImageUrl = dictionary["profileImageUrl"] as? String

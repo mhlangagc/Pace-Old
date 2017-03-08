@@ -41,7 +41,7 @@ class WorkoutCellView : TableBaseCell {
 		label.textColor = UIColor.white
 		label.textAlignment = .left
 		label.font = UIFont.systemFont(ofSize: 18.0, weight: UIFontWeightBold)
-		label.text = "Bigger Chest Workout"
+		label.text = "-"
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 		
@@ -53,7 +53,7 @@ class WorkoutCellView : TableBaseCell {
 		label.textColor = UIColor.greyBlackColor()
 		label.font = UIFont.systemFont(ofSize: 16.0, weight: UIFontWeightSemibold)
 		label.textAlignment = .left
-		label.text = "15 Exercises"
+		label.text = "- Exercises"
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 		
@@ -76,6 +76,22 @@ class WorkoutCellView : TableBaseCell {
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
+	
+	
+	var  workoutModel : ExploreWorkoutModel? {
+		
+		didSet {
+			
+			if let workoutNameFound = workoutModel?.name, let workoutImageUrl = workoutModel?.backgroundImageUrl {
+				
+				workoutName.text = workoutNameFound
+				workoutImage.loadImageFromUrlString(urlString: workoutImageUrl)
+				
+			}
+			
+			
+		}
+	}
 	
 	override func setupViews() {
 		super.setupViews()

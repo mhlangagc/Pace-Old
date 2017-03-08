@@ -37,7 +37,7 @@ extension DiscoverProfileViewController {
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		
-		return "4 CREATED WORKOUTS"
+		return "\(trainerWorkoutsArray.count) CREATED WORKOUTS"
 		
 	}
 	
@@ -57,7 +57,7 @@ extension DiscoverProfileViewController {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		return 4
+		return trainerWorkoutsArray.count
 		
 	}
 	
@@ -78,6 +78,7 @@ extension DiscoverProfileViewController {
 			workoutCell!.selectedBackgroundView = backgroundView
 		}
 		
+		workoutCell?.workoutModel = trainerWorkoutsArray[indexPath.item]
 		workoutCell?.backgroundColor = UIColor.black
 		
 		return workoutCell!
@@ -85,6 +86,11 @@ extension DiscoverProfileViewController {
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		let worktoutSelected = trainerWorkoutsArray[indexPath.item]
+		WorkoutViewController.exploreWorkout = worktoutSelected
+		let showWorkoutDetailsVC = WorkoutViewController()
+		self.navigationController?.pushViewController(showWorkoutDetailsVC, animated: true)
 		
 		tableView.deselectRow(at: indexPath, animated: true)
 		

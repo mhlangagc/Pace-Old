@@ -75,7 +75,7 @@ class WorkoutDetailsHeaderView : BaseView {
 		profileImageView?.isUserInteractionEnabled = true
 		profileImageView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowProfile)))
 		profileImageView?.layer.cornerRadius = 20.0
-		profileImageView?.layer.masksToBounds = true
+		profileImageView?.clipsToBounds = true
 		addSubview(profileImageView!)
 		
 		profileNameButton = UIButton.init(frame: CGRect(x: 20.0, y: 260.0, width: frame.width - 90.0, height: 20.0))

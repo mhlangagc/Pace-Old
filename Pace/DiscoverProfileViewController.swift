@@ -8,33 +8,85 @@
 
 import UIKit
 import AsyncDisplayKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class DiscoverProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 	
 	var headerView =  ProfileHeaderView()
 	var profileTableView : UITableView?
 	let workoutCellID = "WorkoutCellViewID"
-	
 	var trainer : User?
+	var trainerWorkoutsArray = [ExploreWorkoutModel]()
+	
+	func retrieveTrainerWorkouts(completion: @escaping (_ result: [ExploreWorkoutModel]) -> Void) {
+		
+		var workoutsArray = [ExploreWorkoutModel]()
+		let trainerID = trainer?.userID
+		
+		let fanWorkoutTrainerRef = FIRDatabase.database().reference().child("fan-workout-trainer").child(trainerID!)
+		
+		fanWorkoutTrainerRef.observe(.childAdded, with: { (snapshot) in
+			
+			let workoutId = snapshot.key
+			
+			let workoutRef = FIRDatabase.database().reference().child("Workouts-Teams").child(workoutId)
+			workoutRef.observeSingleEvent(of: .value, with: { (snapShot) in
+				
+				if let dictionary = snapShot.value as? [String: AnyObject] {
+					
+					let featuredWorkout = ExploreWorkoutModel()
+					
+					featuredWorkout.workoutID = workoutId
+					featuredWorkout.name = dictionary["name"] as? String
+					featuredWorkout.workoutDescription = dictionary["workoutDescription"] as? String
+					featuredWorkout.backgroundImageUrl = dictionary["backgroundImageUrl"] as? String
+					featuredWorkout.time = dictionary["time"] as? Int
+					featuredWorkout.rating = dictionary["rating"] as? Int
+					featuredWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
+					featuredWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
+					featuredWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
+					featuredWorkout.trainerID = dictionary["trainerID"] as? String
+					
+					workoutsArray.append(featuredWorkout)
+					
+					completion(workoutsArray)
+					
+					
+				}
+				
+			}, withCancel: nil)
+			
+		}, withCancel: nil)
+		
+		
+	}
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		navigationNoLineBar()
-		self.setupWorkoutDetailsTableView()
 		view.backgroundColor = UIColor.black
 		
+		self.retrieveTrainerWorkouts { (workoutsFound) in
+			
+			self.trainerWorkoutsArray = workoutsFound
+			self.profileTableView?.reloadData()
+			
+			self.setupWorkoutDetailsTableView()
+			self.setupHeaderView()
+		}
 		
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		
-		self.setupHeaderView()
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "shareVC"), style: UIBarButtonItemStyle.done, target: self, action: #selector(handleShareProfile))
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
 
-		self.profileTableView?.reloadData()
 	}
 	
 	func setupWorkoutDetailsTableView() {
