@@ -75,7 +75,7 @@ class PaceAppServices : NSObject {
 		
 		var teamsArray = [TeamsModel]()
 		
-		FIRDatabase.database().reference().child("WorkoutAndTeam").child("Male").observe(FIRDataEventType.childAdded, with: { (snapShot) in
+		FIRDatabase.database().reference().child("Workouts-Teams").observe(FIRDataEventType.childAdded, with: { (snapShot) in
 			
 			let workoutID = snapShot.key
 			

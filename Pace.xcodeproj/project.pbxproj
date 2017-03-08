@@ -678,7 +678,7 @@
 				45AC38F61E188B70003DC46B /* WorkoutProcess */,
 				45B5AD7F1DFBFA9800115E2C /* Routines Tab */,
 				45B5AD7C1DFBFA6600115E2C /* Explore Tab */,
-				45B5AD801DFBFAA100115E2C /* Community Tab */,
+				45B5AD801DFBFAA100115E2C /* TeamConversation Tab */,
 				45B5AD811DFBFAB100115E2C /* Activity Tab */,
 				45B5AD831DFBFACD00115E2C /* Settings + Profile Tab */,
 			);
@@ -815,14 +815,14 @@
 			name = "Routines Tab";
 			sourceTree = "<group>";
 		};
-		45B5AD801DFBFAA100115E2C /* Community Tab */ = {
+		45B5AD801DFBFAA100115E2C /* TeamConversation Tab */ = {
 			isa = PBXGroup;
 			children = (
 				451D078B1DFE443800940301 /* Teams */,
 				C60363141E62D763005F2691 /* TeamPosts */,
 				450D91691E03F636009D9144 /* Followers/Following */,
 			);
-			name = "Community Tab";
+			name = "TeamConversation Tab";
 			sourceTree = "<group>";
 		};
 		45B5AD811DFBFAB100115E2C /* Activity Tab */ = {

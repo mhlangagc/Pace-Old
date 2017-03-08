@@ -23,39 +23,38 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 		
 		var workoutsArray = [ExploreWorkoutModel]()
 		
-		FIRDatabase.database().reference().child("ExploreWorkouts").child("Male").child("FeaturedWorkouts").observe(FIRDataEventType.childAdded, with: { (snapShot) in
+		let fanExploreWorkoutsRef = FIRDatabase.database().reference().child("fan-Explore-Workouts").child("male").child("featured-workout")
+		
+		fanExploreWorkoutsRef.observe(.childAdded, with: { (snapshot) in
 			
+			let workoutId = snapshot.key
 			
-			let exploreID = snapShot.key
-			
-			if let dictionary = snapShot.value as? [String: AnyObject] {
+			let workoutRef = FIRDatabase.database().reference().child("Workouts-Teams").child(workoutId)
+			workoutRef.observeSingleEvent(of: .value, with: { (snapShot) in
 				
-				let featuredWorkout = ExploreWorkoutModel()
+				if let dictionary = snapShot.value as? [String: AnyObject] {
+					
+					let featuredWorkout = ExploreWorkoutModel()
+					
+					featuredWorkout.workoutID = workoutId
+					featuredWorkout.name = dictionary["name"] as? String
+					featuredWorkout.workoutDescription = dictionary["workoutDescription"] as? String
+					featuredWorkout.backgroundImageUrl = dictionary["backgroundImageUrl"] as? String
+					featuredWorkout.time = dictionary["time"] as? Int
+					featuredWorkout.rating = dictionary["rating"] as? Int
+					featuredWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
+					featuredWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
+					featuredWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
+					featuredWorkout.trainerID = dictionary["trainerID"] as? String
+					
+					workoutsArray.append(featuredWorkout)
+					
+					completion(workoutsArray)
+					
+					
+				}
 				
-				featuredWorkout.workoutID = exploreID
-				featuredWorkout.name = dictionary["workoutName"] as? String
-				featuredWorkout.workoutDescription = dictionary["workoutDescription"] as? String
-				featuredWorkout.backgroundImageUrl = dictionary["workoutImageURL"] as? String
-				featuredWorkout.time = dictionary["workoutTime"] as? Int
-				featuredWorkout.rating = dictionary["rating"] as? Int
-				featuredWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
-				featuredWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
-				featuredWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
-				
-				//featuredWorkout.trainerName = dictionary["trainerName"] as? String
-				//featuredWorkout.trainerImageUrl = dictionary["trainerImageUrl"] as? String
-				
-				
-				
-				
-				
-				
-				workoutsArray.append(featuredWorkout)
-				
-				completion(workoutsArray)
-				
-				
-			} 
+			}, withCancel: nil)
 			
 		}, withCancel: nil)
 		
