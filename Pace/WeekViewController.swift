@@ -32,7 +32,7 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		let imageName = NSUUID().uuidString
 		let ref = FIRStorage.storage().reference().child("Workout-Team-Images").child(imageName)
 		
-		if let uploadData = UIImageJPEGRepresentation(UIImage(named: "3")!, 0.5) {
+		if let uploadData = UIImageJPEGRepresentation(UIImage(named: "2")!, 0.5) {
 			ref.put(uploadData, metadata: nil, completion: { (metadata, error) in
 				
 				if error != nil {
@@ -40,29 +40,29 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 					return
 				}
 				
-				if let imageUrl = metadata?.downloadURL()?.absoluteString {
-					self.createWorkoutWithImageUrl(imageUrl: imageUrl)
-				}
+//				if let imageUrl = metadata?.downloadURL()?.absoluteString {
+//					self.createWorkoutWithImageUrl(imageUrl: imageUrl)
+//				}
 				
 			})
 		}
 	}
 	
-	private func createWorkoutWithImageUrl(imageUrl: String) {
+	private func createWorkoutWithImageUrl() {
 		
 		let userID = FIRAuth.auth()!.currentUser!.uid
 		let ref = FIRDatabase.database().reference().child("Workouts-Teams")
 		let childRef = ref.childByAutoId()
 		
-		let values = ["name" : "V Shape Upper Body",
+		let values = ["name" : "Weekend Cardio for Two",
 		              "workoutDescription": "If you are looking to get toned and enjoy fast paced interval training to shed far this workout is for you.",
-						"backgroundImageUrl": imageUrl,
+						"backgroundImageUrl": "https://firebasestorage.googleapis.com/v0/b/pace-c9c8e.appspot.com/o/PopularWorkoutImages%2FBD454C4E-850E-47A5-BE4F-411C32DD6BA6?alt=media&token=bb2825a8-81cd-43a8-9bd4-d910a7a7fc5b",
 						"trainerID" : userID,
-						"time" : 35,
-						"rating": 4,
+						"time" : 30,
+						"rating": 5,
 						"numberOfReviews": 334,
 						"workoutPrice" : PriceEnum.threeDollars.rawValue,
-						"workoutCatergory": WorkoutCatergory.cardio.rawValue
+						"workoutCatergory": WorkoutCatergory.home.rawValue
 		              ] as [String : Any]
 		
 		childRef.updateChildValues(values) { (error, ref) in
@@ -78,7 +78,7 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			userPostsRef.updateChildValues([messageId: 1])
 			
 			//	Create Featured Workout fan
-			let fanFeaturedWorkoutRef = FIRDatabase.database().reference().child("fan-Explore-Workouts").child("male").child("featured-workout")
+			let fanFeaturedWorkoutRef = FIRDatabase.database().reference().child("fan-Explore-Workouts").child("male").child("popular-workout")
 			let workoutId = childRef.key
 			fanFeaturedWorkoutRef.updateChildValues([workoutId: 1])
 			
@@ -89,6 +89,8 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		}
 	}
 	
+	
+	//	###########	Trainer Upload	##############
 	private func uploadToFirebaseStorageUsingTrainerImage() {
 		
 		let imageName = NSUUID().uuidString
@@ -109,7 +111,6 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			})
 		}
 	}
-	
 	
 	private func createTrainerWithImageUrl(imageUrl: String) {
 	
@@ -165,6 +166,7 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		//self.createWorkoutWithImageUrl()
 		//self.uploadToFirebaseStorageUsingImage()
 		
 		RoutineSetup.loadRoutineWorkouts()

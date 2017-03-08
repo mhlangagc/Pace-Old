@@ -399,8 +399,8 @@
 		450082041DFC95F5006AA959 /* Trainers */ = {
 			isa = PBXGroup;
 			children = (
-				45B2A4C41DFC980300C099C7 /* TrainersAndFriendsCollectionNode.swift */,
 				450082051DFC961E006AA959 /* TrainersAndFriendsLabelCell.swift */,
+				45B2A4C41DFC980300C099C7 /* TrainersAndFriendsCollectionNode.swift */,
 			);
 			name = Trainers;
 			sourceTree = "<group>";

@@ -19,38 +19,44 @@ class JustAddedCollection: ASCellNode, ASCollectionDelegate, ASCollectionDataSou
 	
 	var popularWorkoutsArray = [ExploreWorkoutModel]()
 	
-	func retrieveFeaturedWorkouts(completion: @escaping (_ result: [ExploreWorkoutModel]) -> Void) {
+	func retrieveMalePopularWorkouts(completion: @escaping (_ result: [ExploreWorkoutModel]) -> Void) {
 		
 		var workoutsArray = [ExploreWorkoutModel]()
 		
-		FIRDatabase.database().reference().child("ExploreWorkouts").child("Male").child("PopularWorkouts").observe(FIRDataEventType.childAdded, with: { (snapShot) in
+		let fanExploreWorkoutsRef = FIRDatabase.database().reference().child("fan-Explore-Workouts").child("male").child("popular-workout")
+		
+		fanExploreWorkoutsRef.observe(.childAdded, with: { (snapshot) in
 			
+			let workoutId = snapshot.key
 			
-			let exploreID = snapShot.key
-			
-			if let dictionary = snapShot.value as? [String: AnyObject] {
+			let workoutRef = FIRDatabase.database().reference().child("Workouts-Teams").child(workoutId)
+			workoutRef.observeSingleEvent(of: .value, with: { (snapShot) in
 				
-				let popularWorkout = ExploreWorkoutModel()
+				if let dictionary = snapShot.value as? [String: AnyObject] {
+					
+					let featuredWorkout = ExploreWorkoutModel()
+					
+					featuredWorkout.workoutID = workoutId
+					featuredWorkout.name = dictionary["name"] as? String
+					featuredWorkout.workoutDescription = dictionary["workoutDescription"] as? String
+					featuredWorkout.backgroundImageUrl = dictionary["backgroundImageUrl"] as? String
+					featuredWorkout.time = dictionary["time"] as? Int
+					featuredWorkout.rating = dictionary["rating"] as? Int
+					featuredWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
+					featuredWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
+					featuredWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
+					featuredWorkout.trainerID = dictionary["trainerID"] as? String
+					
+					workoutsArray.append(featuredWorkout)
+					
+					completion(workoutsArray)
+					
+					
+				}
 				
-				popularWorkout.workoutID = exploreID
-				popularWorkout.name = dictionary["workoutName"] as? String
-				popularWorkout.workoutDescription = dictionary["workoutDescription"] as? String
-				popularWorkout.backgroundImageUrl = dictionary["workoutImageURL"] as? String
-				popularWorkout.time = dictionary["workoutTime"] as? Int
-				popularWorkout.rating = dictionary["rating"] as? Int
-				popularWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
-				popularWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
-				popularWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
-				
-				workoutsArray.append(popularWorkout)
-				
-				completion(workoutsArray)
-				
-				
-			}
+			}, withCancel: nil)
 			
 		}, withCancel: nil)
-		
 		
 	}
 
@@ -67,7 +73,7 @@ class JustAddedCollection: ASCellNode, ASCollectionDelegate, ASCollectionDataSou
 		newWorkoutsCollectionNode?.backgroundColor = .black
 		addSubnode(newWorkoutsCollectionNode!)
 		
-		self.retrieveFeaturedWorkouts { (freeWorkoutsArray) in
+		self.retrieveMalePopularWorkouts { (freeWorkoutsArray) in
 			
 			self.popularWorkoutsArray = freeWorkoutsArray
 			self.newWorkoutsCollectionNode?.reloadData()

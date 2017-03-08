@@ -116,10 +116,11 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 	}
 	
 	
-	func handleShowProfile() {
+	func handleShowProfile(userSelected: User) {
 		
 		let exploreProfileVC = DiscoverProfileViewController()
 		exploreProfileVC.hidesBottomBarWhenPushed = true
+		exploreProfileVC.trainer = userSelected
 		self.navigationController?.pushViewController(exploreProfileVC, animated: true)
 		
 		
