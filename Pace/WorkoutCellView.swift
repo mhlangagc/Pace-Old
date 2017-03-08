@@ -47,6 +47,26 @@ class WorkoutCellView : TableBaseCell {
 		
 	}()
 	
+	let imageOverlayView: UIView = {
+		let view = UIView()
+		view.backgroundColor = UIColor(white: 0.0, alpha: 0.55)
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+	
+	let workoutTimeLabel : UILabel = {
+		
+		let label = UILabel()
+		label.textColor = UIColor.white
+		label.textAlignment = .center
+		label.font = UIFont(name: "BebasNeueBold", size: 17)
+		textSpacing(label, spacing: 1.0)
+		label.text = "15 MINS"
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+		
+	}()
+	
 	let  workoutDetails: UILabel = {
 		
 		let label = UILabel()
@@ -89,6 +109,11 @@ class WorkoutCellView : TableBaseCell {
 				
 			}
 			
+			if let workoutTime = workoutModel?.time {
+				
+				workoutTimeLabel.text = "\(workoutTime) mins"
+			}
+			
 			
 		}
 	}
@@ -105,6 +130,8 @@ class WorkoutCellView : TableBaseCell {
 	func setupView() {
 		
 		self.contentView.addSubview(workoutImage)
+		workoutImage.addSubview(imageOverlayView)
+		imageOverlayView.addSubview(workoutTimeLabel)
 		self.contentView.addSubview(workoutName)
 		self.contentView.addSubview(workoutDetails)
 		self.contentView.addSubview(disclosureIndicator)
@@ -114,6 +141,17 @@ class WorkoutCellView : TableBaseCell {
 		workoutImage.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
 		workoutImage.widthAnchor.constraint(equalToConstant: 80.0).isActive = true
 		workoutImage.heightAnchor.constraint(equalToConstant: 80.0).isActive = true
+		
+		imageOverlayView.leftAnchor.constraint(equalTo: workoutImage.leftAnchor).isActive = true
+		imageOverlayView.rightAnchor.constraint(equalTo: workoutImage.rightAnchor).isActive = true
+		imageOverlayView.topAnchor.constraint(equalTo: workoutImage.topAnchor).isActive = true
+		imageOverlayView.bottomAnchor.constraint(equalTo: workoutImage.bottomAnchor).isActive = true
+		
+		
+		workoutTimeLabel.leftAnchor.constraint(equalTo: imageOverlayView.leftAnchor).isActive = true
+		workoutTimeLabel.centerYAnchor.constraint(equalTo: imageOverlayView.centerYAnchor).isActive = true
+		workoutTimeLabel.rightAnchor.constraint(equalTo: imageOverlayView.rightAnchor).isActive = true
+		workoutTimeLabel.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
 		
 		
 		disclosureIndicator.rightAnchor.constraint(equalTo: rightAnchor, constant: -15.0).isActive = true
