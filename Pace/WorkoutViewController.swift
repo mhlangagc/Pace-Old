@@ -20,16 +20,50 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	let exerciseCellID = "ExerciseCellViewID"
 	var trainer = User()
 	
-	var exercisesArray : [ExercisesModel]?
+	var exercisesArray = [ExploreExerciseModel]()
+	var exploreWorkout : ExploreWorkoutModel?
 	
-	lazy var ExerciseSetup: ExerciseViewModel = {
+	func retrieveWorkoutExercises(completion: @escaping (_ result: [ExploreExerciseModel]) -> Void) {
 		
-		let exericiseSetup = ExerciseViewModel()
-		return exericiseSetup
+		var exercises = [ExploreExerciseModel]()
 		
-	}()
-	
-	static var exploreWorkout : ExploreWorkoutModel?
+		let fanExploreExercisesRef = FIRDatabase.database().reference().child("fan-Workout-Exercises").child((exploreWorkout?.workoutID!)!)
+		
+		fanExploreExercisesRef.observe(.childAdded, with: { (snapshot) in
+			
+			let exerciseId = snapshot.key
+			
+			let workoutRef = FIRDatabase.database().reference().child("Exercises").child(exerciseId)
+			workoutRef.observeSingleEvent(of: .value, with: { (snapShot) in
+				
+				if let dictionary = snapShot.value as? [String: AnyObject] {
+					
+					let workoutExercise = ExploreExerciseModel()
+					
+					workoutExercise.exerciseID = exerciseId
+					workoutExercise.exerciseName = dictionary["exerciseName"] as? String
+					workoutExercise.distanceOrReps = dictionary["distanceOrReps"] as? Int
+					workoutExercise.durationOrSets = dictionary["durationOrSets"] as? Int
+					workoutExercise.weight = dictionary["weight"] as? Int
+					workoutExercise.exerciseTime = dictionary["exerciseTime"] as? Int
+					workoutExercise.exerciseType = dictionary["exerciseType"] as? String
+					workoutExercise.exerciseImageUrl = dictionary["exerciseImageURL"] as? String
+					workoutExercise.exerciseVideoURL = dictionary["exerciseVideoURL"] as? String
+					
+					exercises.append(workoutExercise)
+					
+					completion(exercises)
+					
+					
+				}
+				
+			}, withCancel: nil)
+			
+		}, withCancel: nil)
+		
+		
+	}
+
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -51,6 +85,11 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 				
 			}
 			
+		}
+		
+		self.retrieveWorkoutExercises { (exerciseArrayFound) in
+			
+			self.exercisesArray = exerciseArrayFound
 			self.workoutDetailsTableView?.reloadData()
 			
 		}
@@ -106,8 +145,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	
 	func retrieveTrainer(completion: @escaping (_ result: User) -> Void) {
 		
-		
-		if let trainerID = WorkoutViewController.exploreWorkout?.trainerID {
+		if let trainerID = self.exploreWorkout?.trainerID {
 			
 			FIRDatabase.database().reference().child("Trainers").child(trainerID).observeSingleEvent(of: .value, with: { (snapShot) in
 				
@@ -142,12 +180,12 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		headerView  = WorkoutDetailsHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 515.0))
 		headerView.workoutDetailVC = self
 		
-		headerView.workoutName?.text = (WorkoutViewController.exploreWorkout?.name)!
-		headerView.workoutsImageView?.loadImageFromUrlString(urlString: (WorkoutViewController.exploreWorkout?.backgroundImageUrl)!)
-		headerView.workoutTimeLabel?.text = "\((WorkoutViewController.exploreWorkout?.time)!) min workout".uppercased()
-		headerView.descriptionText?.text = (WorkoutViewController.exploreWorkout?.workoutDescription)!
-		headerView.reviewLabel?.text = "\((WorkoutViewController.exploreWorkout?.numberOfReviews)!) Reviews"
-		headerView.ratingView?.ratingValue = (WorkoutViewController.exploreWorkout?.rating)!
+		headerView.workoutName?.text = (self.exploreWorkout?.name)!
+		headerView.workoutsImageView?.loadImageFromUrlString(urlString: (self.exploreWorkout?.backgroundImageUrl)!)
+		headerView.workoutTimeLabel?.text = "\((self.exploreWorkout?.time)!) min workout".uppercased()
+		headerView.descriptionText?.text = (self.exploreWorkout?.workoutDescription)!
+		headerView.reviewLabel?.text = "\((self.exploreWorkout?.numberOfReviews)!) Reviews"
+		headerView.ratingView?.ratingValue = (self.exploreWorkout?.rating)!
 		
 		workoutDetailsTableView?.tableHeaderView = headerView
 		
@@ -159,7 +197,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		getButtonView = GetButtonView.init(frame: CGRect(x: 0, y: view.frame.height - 144.0, width: view.frame.width, height: 80.0))
 		getButtonView?.workoutDetailsVC = self
 		
-		let price = WorkoutViewController.exploreWorkout?.workoutPrice?.rawValue
+		let price = self.exploreWorkout?.workoutPrice?.rawValue
 		if price == 0.0 {
 			
 			getButtonView?.getButton?.setTitle("FREE", for: UIControlState.normal)
@@ -169,11 +207,8 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 			getButtonView?.getButton?.setTitle("R\(price!)", for: UIControlState.normal)
 		}
 		
-		
-			
-		
-		
 		view.addSubview(getButtonView!)
+		
 	}
 
 	lazy var popUpLauncher: GetPopupLauncher = {
@@ -200,6 +235,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 //			//	TO DO
 //			
 //		})
+		
 	}
 	
 	func handleOpenProfile() {

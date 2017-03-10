@@ -35,7 +35,16 @@ extension WorkoutViewController {
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		
-		return "4 EXERCISES"
+		if exercisesArray.count == 1 {
+			
+			return "\(exercisesArray.count) EXERCISE"
+		
+		}	else {
+	
+			return "\(exercisesArray.count) EXERCISES"
+			
+		}
+	
 		
 		
 	}
@@ -55,7 +64,7 @@ extension WorkoutViewController {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		return  3 //(exercisesArray?.count)!
+		return exercisesArray.count
 		
 	}
 	
@@ -76,8 +85,7 @@ extension WorkoutViewController {
 			exerciseCell!.selectedBackgroundView = backgroundView
 		}
 		
-		
-		//exerciseCell?.exerciseModel = exercisesArray?[indexPath.item]
+		exerciseCell?.exerciseModel = exercisesArray[indexPath.item]
 		
 		exerciseCell?.backgroundColor = UIColor.black
 		

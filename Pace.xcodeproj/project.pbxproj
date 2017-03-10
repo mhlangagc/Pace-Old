@@ -145,6 +145,7 @@
 		C6A8A3E21E649E290038C20A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A8A3E11E649E290038C20A /* SystemConfiguration.framework */; };
 		C6A8A3E41E64A6F00038C20A /* PostsMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8A3E31E64A6F00038C20A /* PostsMenuBar.swift */; };
 		C6A8A3E61E64A98D0038C20A /* TeamMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8A3E51E64A98D0038C20A /* TeamMemberCell.swift */; };
+		C6AFDECD1E73250000D2844B /* 2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C6AFDECC1E73250000D2844B /* 2.mp4 */; };
 		C6B118281E21670C002BB4E8 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118271E21670C002BB4E8 /* PasswordViewController.swift */; };
 		C6B1182A1E21729F002BB4E8 /* NameEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118291E21729F002BB4E8 /* NameEntryViewController.swift */; };
 		C6B1182C1E217BCA002BB4E8 /* PickGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1182B1E217BCA002BB4E8 /* PickGenderViewController.swift */; };
@@ -334,6 +335,7 @@
 		C6A8A3E11E649E290038C20A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C6A8A3E31E64A6F00038C20A /* PostsMenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsMenuBar.swift; sourceTree = "<group>"; };
 		C6A8A3E51E64A98D0038C20A /* TeamMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMemberCell.swift; sourceTree = "<group>"; };
+		C6AFDECC1E73250000D2844B /* 2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2.mp4; sourceTree = "<group>"; };
 		C6B118271E21670C002BB4E8 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		C6B118291E21729F002BB4E8 /* NameEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameEntryViewController.swift; sourceTree = "<group>"; };
 		C6B1182B1E217BCA002BB4E8 /* PickGenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickGenderViewController.swift; sourceTree = "<group>"; };
@@ -690,6 +692,7 @@
 			children = (
 				C6F770EC1E476A6200349C5B /* Lottie JSON */,
 				450D91701E040BF7009D9144 /* Fonts */,
+				C6AFDECC1E73250000D2844B /* 2.mp4 */,
 				45B5AD4D1DFBF71100115E2C /* LaunchScreen.storyboard */,
 				45B5AD4B1DFBF71100115E2C /* Assets.xcassets */,
 			);
@@ -1194,6 +1197,7 @@
 				C6057EF21E3E4B7900AC62EA /* GoogleService-Info.plist in Resources */,
 				C65CAADE1E3E7C900047B78A /* GoogleService-Info.plist in Resources */,
 				C6F770F21E476B1800349C5B /* T.json in Resources */,
+				C6AFDECD1E73250000D2844B /* 2.mp4 in Resources */,
 				C6F770F01E476B0E00349C5B /* M.json in Resources */,
 				C6F770F61E476B3400349C5B /* F.json in Resources */,
 				C6F770F41E476B2B00349C5B /* W.json in Resources */,

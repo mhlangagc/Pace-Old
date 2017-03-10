@@ -41,22 +41,19 @@ enum WorkoutCatergory: String {
 	
 }
 
-class ExploreModel: NSObject {
+class ExploreExerciseModel: NSObject {
 	
-	var workoutName : String?
-	var trainerName: String?
-	var workoutImage : UIImage?
-	var trainerImage : UIImage?
-	var rating: Int?
-	var numberOfReviews: Int?
-	var isDownloaded : Bool?
-	var workoutDescription: String?
-	var workoutTime: Int?
-	var workoutPrice : PriceEnum?
-	var workoutCatergory : WorkoutCatergory?
+	var exerciseID : String?
+	var exerciseName : String?
+	var exerciseVideoURL: String?
+	var exerciseImageUrl : String?
+	var distanceOrReps: Int?
+	var durationOrSets: Int?
+	var weight: Int?
+	var exerciseTime: Int?
+	var exerciseType: String?
 	
 }
-
 
 class ExploreWorkoutModel: NSObject {
 	

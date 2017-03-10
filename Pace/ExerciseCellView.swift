@@ -25,7 +25,6 @@ class ExerciseCellView : TableBaseCell {
 		imageView.layer.masksToBounds = true
 		imageView.backgroundColor = UIColor.darkBlack()
 		imageView.contentMode = .scaleAspectFill
-		imageView.image = UIImage(named : "box")
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		return imageView
 		
@@ -36,8 +35,7 @@ class ExerciseCellView : TableBaseCell {
 		let label = UILabel()
 		label.textColor = UIColor.white
 		label.textAlignment = .left
-		label.font = UIFont.systemFont(ofSize: 18.0, weight: UIFontWeightBold)
-		label.text = "Leg Stretches"
+		label.font = UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightBold)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 		
@@ -49,7 +47,6 @@ class ExerciseCellView : TableBaseCell {
 		label.textColor = UIColor.greyBlackColor()
 		label.font = UIFont.systemFont(ofSize: 16.0, weight: UIFontWeightSemibold)
 		label.textAlignment = .left
-		label.text = "5 mins"
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 		
@@ -73,25 +70,29 @@ class ExerciseCellView : TableBaseCell {
 		return view
 	}()
 	
-	/*
-	var exerciseModel : ExerciseModel? {
+
+	var exerciseModel : ExploreExerciseModel? {
 		
 		didSet {
 			
-			if let name  = exerciseModel?.exerciseName, let image = exerciseModel?.exerciseImage {
-				
-				exerciseImage.image = image
+			if let name = exerciseModel?.exerciseName {
 				
 				exerciseName.text = name
 				
+			}
+			
+			if let exerciseImageurl = exerciseModel?.exerciseImageUrl {
+				
+				exerciseImage.loadImageFromUrlString(urlString: exerciseImageurl)
 				
 			}
 			
 			if let exerciseCatergory = exerciseModel?.exerciseType {
 				
-				if exerciseCatergory == .cardio, let duration = exerciseModel?.durationOrSets, let distance = exerciseModel?.distanceOrReps {
+				//	Cardio
+				if exerciseCatergory == "Cardio", let duration = exerciseModel?.durationOrSets, let distance = exerciseModel?.distanceOrReps {
 					
-					if distance.intValue == 0 {
+					if distance == 0 {
 						
 						exerciseDetails.text = "\(duration) mins"
 						
@@ -102,10 +103,10 @@ class ExerciseCellView : TableBaseCell {
 					}
 					
 					
+				//	Strength
+				} else if exerciseCatergory == "Strength", let sets = exerciseModel?.durationOrSets, let reps = exerciseModel?.distanceOrReps, let weight = exerciseModel?.weight {
 					
-				} else if exerciseCatergory == .strength, let sets = exerciseModel?.durationOrSets, let reps = exerciseModel?.distanceOrReps, let weight = exerciseModel?.weight {
-					
-					if weight.intValue == 0 {
+					if weight == 0 {
 						
 						exerciseDetails.text = "\(sets) sets    \(reps) reps"
 						
@@ -115,8 +116,9 @@ class ExerciseCellView : TableBaseCell {
 						
 					}
 					
-					
-				} else if exerciseCatergory == .stretch, let duration = exerciseModel?.durationOrSets {
+				
+				//	Stretch
+				} else if exerciseCatergory == "Stretch", let duration = exerciseModel?.durationOrSets {
 					
 					exerciseDetails.text = "\(duration) mins"
 					
@@ -127,8 +129,7 @@ class ExerciseCellView : TableBaseCell {
 			
 		}
 	}
-	*/
-	
+
 	var videoDelegate : VideoCellDelegate?
 	var cellSelected = false
 	var recognizer : UITapGestureRecognizer?
@@ -183,12 +184,10 @@ class ExerciseCellView : TableBaseCell {
 		exerciseImage.widthAnchor.constraint(equalToConstant: 80.0).isActive = true
 		exerciseImage.heightAnchor.constraint(equalToConstant: 80.0).isActive = true
 		
-		
 		disclosureIndicator.rightAnchor.constraint(equalTo: rightAnchor, constant: -15.0).isActive = true
 		disclosureIndicator.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
 		disclosureIndicator.widthAnchor.constraint(equalToConstant: 8.0).isActive = true
 		disclosureIndicator.heightAnchor.constraint(equalToConstant: 8.0).isActive = true
-		
 		
 		exerciseName.leftAnchor.constraint(equalTo: exerciseImage.rightAnchor, constant: 15.0).isActive = true
 		exerciseName.topAnchor.constraint(equalTo: topAnchor, constant: 35.0).isActive = true

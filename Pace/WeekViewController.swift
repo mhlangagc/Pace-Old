@@ -27,10 +27,11 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		
 	}()
 	
-	private func uploadToFirebaseStorageUsingImage() {
+	//	########### Workout Creation with Image
+	private func uploadToFirebaseStorageUsingImage(image: UIImage, storageReferenceName: String, completion: @escaping (_ imageUrl: String) -> ()) {
 		
 		let imageName = NSUUID().uuidString
-		let ref = FIRStorage.storage().reference().child("Workout-Team-Images").child(imageName)
+		let ref = FIRStorage.storage().reference().child(storageReferenceName).child(imageName)
 		
 		if let uploadData = UIImageJPEGRepresentation(UIImage(named: "2")!, 0.5) {
 			ref.put(uploadData, metadata: nil, completion: { (metadata, error) in
@@ -40,12 +41,14 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 					return
 				}
 				
-//				if let imageUrl = metadata?.downloadURL()?.absoluteString {
-//					self.createWorkoutWithImageUrl(imageUrl: imageUrl)
-//				}
+				if let imageUrl = metadata?.downloadURL()?.absoluteString {
+					completion(imageUrl)
+				}
 				
 			})
+	
 		}
+	
 	}
 	
 	private func createWorkoutWithImageUrl() {
@@ -89,6 +92,69 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		}
 	}
 	
+	//	########### Exercise Creation
+	private func handleVideoSelectedForUrl(url: NSURL, exericiseImage: UIImage) {
+		
+		let filename = NSUUID().uuidString + ".mp4"
+		
+		//	Get a localised URL to user 
+		
+		FIRStorage.storage().reference().child("Exercises").child(filename).putFile(url as URL, metadata: nil, completion: { (metadata, error) in
+			
+			if error != nil {
+				print("Failed upload of video:", (error?.localizedDescription)!)
+				return
+			}
+			
+			if let videoUrl = metadata?.downloadURL()?.absoluteString {
+				
+				self.uploadToFirebaseStorageUsingImage(image: exericiseImage, storageReferenceName: "Exercise-Images", completion: { (imageUrl) in
+					
+					// "imageWidth": (thumbnailImage?.size.width)!, "imageHeight": (thumbnailImage?.size.height)!,
+					
+					let properties = ["exerciseImageURL": imageUrl,
+					                  "exerciseVideoURL": videoUrl] as [String: Any]
+					
+					self.createExerciseWithProperties(properties: properties as [String : Any])
+					
+				})
+
+			}
+			
+			
+		
+		})
+		
+	}
+	
+	private func createExerciseWithProperties(properties: [String: Any]) {
+		
+		let workoutID = "-KegY3GxO2C58L405kZA"	//Workout being uploaded to
+		let ref = FIRDatabase.database().reference().child("Exercises")
+		let childRef = ref.childByAutoId()
+		
+		var values = ["exerciseName": "Machine Seated Chest Press",
+		              "distanceOrReps" : 15,
+		              "durationOrSets" : 2,
+		              "exerciseTime" : 0,
+		              "weight" : 10,
+		              "exerciseType" : "Strength"] as [String: Any]
+		
+		properties.forEach({values[$0] = $1})	// Apend the Above Values
+		
+		childRef.updateChildValues(values) { (error, ref) in
+			if error != nil {
+				
+				print((error?.localizedDescription)!)
+				return
+			
+			}
+			
+			let workoutExerciseRef = FIRDatabase.database().reference().child("fan-Workout-Exercises").child(workoutID)
+			workoutExerciseRef.updateChildValues([childRef.key: 1])
+		}
+
+	}
 	
 	//	###########	Trainer Upload	##############
 	private func uploadToFirebaseStorageUsingTrainerImage() {
@@ -168,6 +234,12 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		
 		//self.createWorkoutWithImageUrl()
 		//self.uploadToFirebaseStorageUsingImage()
+		
+		//	Create Exercise
+//		if let path = Bundle.main.path(forResource: "2", ofType:"mp4") {
+//			
+//			self.handleVideoSelectedForUrl(url: URL(fileURLWithPath: path) as NSURL, exericiseImage: UIImage(named: "workoutImage")!)
+//		}
 		
 		RoutineSetup.loadRoutineWorkouts()
 		

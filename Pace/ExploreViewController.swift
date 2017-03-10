@@ -102,14 +102,12 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 		
 	}
 	
-	var exploreWorkoutsToPass : [ExploreModel]?
 	var allWorkoutsTitle : String?
 	
 	func handleSeeAllWorkouts() {
 		
 		let seeAllWorkoutsVC = AllWorkoutsViewController()
 		seeAllWorkoutsVC.navigationItem.title = allWorkoutsTitle
-		//seeAllWorkoutsVC.workoutsPassed = exploreWorkoutsToPass
 		seeAllWorkoutsVC.hidesBottomBarWhenPushed = true
 		self.navigationController?.pushViewController(seeAllWorkoutsVC, animated: true)
 	
@@ -126,13 +124,13 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 		
 	}
 	
-	func handleShowWorkoutView() {
-		
-		//let daySelected = weeklyWorkouts?[indexPath.item]
+	func handleShowWorkoutView(workoutSelected: ExploreWorkoutModel) {
 		
 		let showWorkoutDetailsVC = WorkoutViewController()
+		showWorkoutDetailsVC.exploreWorkout = workoutSelected
 		showWorkoutDetailsVC.hidesBottomBarWhenPushed = true
 		self.navigationController?.pushViewController(showWorkoutDetailsVC, animated: true)
+		
 	}
 	
 	

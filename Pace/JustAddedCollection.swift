@@ -140,8 +140,7 @@ extension JustAddedCollection {
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
 		let workoutSelected = popularWorkoutsArray[indexPath.item]
-		WorkoutViewController.exploreWorkout = workoutSelected
-		discoveryVC?.handleShowWorkoutView()
+		discoveryVC?.handleShowWorkoutView(workoutSelected: workoutSelected)
 		
 	}
 	
