@@ -49,7 +49,6 @@
 		458842721E11B280003B02C8 /* ExerciseCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458842711E11B280003B02C8 /* ExerciseCellView.swift */; };
 		458842741E11D69D003B02C8 /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458842731E11D69D003B02C8 /* DayViewController.swift */; };
 		458842761E11D89F003B02C8 /* DayViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458842751E11D89F003B02C8 /* DayViewController+Extension.swift */; };
-		458842781E11E51D003B02C8 /* GetPopupLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458842771E11E51D003B02C8 /* GetPopupLauncher.swift */; };
 		45A37F311DFC419100049493 /* FeaturedCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A37F301DFC419100049493 /* FeaturedCollectionCell.swift */; };
 		45A37F351DFC454600049493 /* ExploreView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A37F341DFC454600049493 /* ExploreView+Extension.swift */; };
 		45A37F371DFC459300049493 /* FeaturedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A37F361DFC459300049493 /* FeaturedCell.swift */; };
@@ -229,7 +228,6 @@
 		458842711E11B280003B02C8 /* ExerciseCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCellView.swift; sourceTree = "<group>"; };
 		458842731E11D69D003B02C8 /* DayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
 		458842751E11D89F003B02C8 /* DayViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DayViewController+Extension.swift"; sourceTree = "<group>"; };
-		458842771E11E51D003B02C8 /* GetPopupLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPopupLauncher.swift; sourceTree = "<group>"; };
 		45A37F301DFC419100049493 /* FeaturedCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedCollectionCell.swift; sourceTree = "<group>"; };
 		45A37F341DFC454600049493 /* ExploreView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExploreView+Extension.swift"; sourceTree = "<group>"; };
 		45A37F361DFC459300049493 /* FeaturedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedCell.swift; sourceTree = "<group>"; };
@@ -972,7 +970,6 @@
 		C61EB9EC1E755D340083C966 /* Workout Downloading */ = {
 			isa = PBXGroup;
 			children = (
-				458842771E11E51D003B02C8 /* GetPopupLauncher.swift */,
 				C61EB9ED1E7561F60083C966 /* SaveToMyRoutinesView.swift */,
 				C61EB9EA1E755B6E0083C966 /* WorkoutDownloadViewController.swift */,
 				C61EB9F01E7571960083C966 /* WorkoutDownloadViewController+Extension.swift */,
@@ -1396,7 +1393,6 @@
 				45AC38FC1E188EE1003DC46B /* TouchBarHeaderView.swift in Sources */,
 				454535891E18EACB00653252 /* WorkoutCompleteMenuBar.swift in Sources */,
 				45C214E61E05AF4200C5BCCF /* HeaderLabelCell.swift in Sources */,
-				458842781E11E51D003B02C8 /* GetPopupLauncher.swift in Sources */,
 				45ECF6881E151F5D0032F6CC /* WeekRoutineModel.swift in Sources */,
 				45F7F5DA1DFD8AD200DD1E33 /* WeekTableCell.swift in Sources */,
 				45E2F3DA1E16BEB9007384CF /* TeamsModel.swift in Sources */,

@@ -27,6 +27,7 @@ class WorkoutDownloadViewController: UIViewController, UITableViewDataSource, UI
 		self.setupNavBar()
 		self.setupWorkoutDetailsTableView()
 		self.setupSaveToRoutinesButton()
+		workoutDaysTableView?.register(WeekTableCell.self, forCellReuseIdentifier: workoutDaysCellID)
 	
 	}
 	
@@ -40,7 +41,6 @@ class WorkoutDownloadViewController: UIViewController, UITableViewDataSource, UI
 		workoutDaysTableView?.separatorStyle = .none
 		workoutDaysTableView?.showsVerticalScrollIndicator = false
 		view.addSubview(workoutDaysTableView!)
-		
 		
 	}
 	
@@ -58,7 +58,7 @@ class WorkoutDownloadViewController: UIViewController, UITableViewDataSource, UI
 		
 		if let window = UIApplication.shared.keyWindow {
 			
-			saveToMyWorkoutsView = SaveToMyRoutinesView.init(frame: CGRect(x: 0, y: window.frame.height - 120.0, width: window.frame.width, height: 80.0))
+			saveToMyWorkoutsView = SaveToMyRoutinesView.init(frame: CGRect(x: 0, y: window.frame.height - 115.0, width: window.frame.width, height: 70.0))
 			saveToMyWorkoutsView?.workoutDownloadVC = self
 			view.addSubview(saveToMyWorkoutsView!)
 			

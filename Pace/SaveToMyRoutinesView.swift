@@ -34,7 +34,7 @@ class SaveToMyRoutinesView : BaseView {
 			addSubview(gradientBackground!)
 			
 			saveButton = UIButton()
-			saveButton?.frame = CGRect(x: 20.0, y: 15.0, width: window.frame.width - 40.0, height: 50.0)
+			saveButton?.frame = CGRect(x: 20.0, y: 10.0, width: window.frame.width - 40.0, height: 50.0)
 			saveButton?.setTitle("SAVE TO MY ROUTINES".uppercased(), for: UIControlState.normal)
 			saveButton?.setTitleColor(UIColor.paceBrandColor(), for: UIControlState.normal)
 			textSpacing((saveButton?.titleLabel)!, spacing: 0.5)

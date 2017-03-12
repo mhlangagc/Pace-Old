@@ -12,7 +12,7 @@ extension WorkoutDownloadViewController {
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		
-		return 120.0
+		return 85.0
 	}
 	
 	
@@ -34,13 +34,15 @@ extension WorkoutDownloadViewController {
 		//	let indexPathFound = IndexPath(item: indexPath.row, section: 0)
 		//	let thisDay = RoutineSetup.fetchedResultsController.object(at: indexPathFound) as WorkoutsModel
 		
-		var routineCell = tableView.dequeueReusableCell(withIdentifier: weekCellID) as? WeekTableCell
+		var routineCell = tableView.dequeueReusableCell(withIdentifier: workoutDaysCellID) as? WeekTableCell
 		
 		if (routineCell == nil) {
-			tableView.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
-			routineCell = tableView.dequeueReusableCell(withIdentifier: weekCellID) as? WeekTableCell
+			tableView.register(WeekTableCell.self, forCellReuseIdentifier: workoutDaysCellID)
+			routineCell = tableView.dequeueReusableCell(withIdentifier: workoutDaysCellID) as? WeekTableCell
 		}
-
+		
+		routineCell?.dayNameLabel.text = "Sun"
+		routineCell?.workoutNameText.text = "-"
 		routineCell?.todayIndicatorView.isHidden = true
 		routineCell?.activityIndicator.isHidden = true
 		
@@ -49,6 +51,7 @@ extension WorkoutDownloadViewController {
 			let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: routineCell!.frame.size.width, height: routineCell!.frame.size.height))
 			backgroundView.backgroundColor = UIColor.darkerBlack()
 			routineCell!.selectedBackgroundView = backgroundView
+		
 		}
 		
 		routineCell?.backgroundColor = UIColor.black
