@@ -20,6 +20,15 @@ class WorkoutDownloadViewController: UIViewController, UITableViewDataSource, UI
 		
 	}
 	
+	var weekDays = [WorkoutDaysModel]()
+	
+	lazy var weekRoutineViewModel: WorkoutDaysViewModel = {
+		
+		let workoutDays = WorkoutDaysViewModel()
+		return workoutDays
+		
+	}()
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -28,6 +37,8 @@ class WorkoutDownloadViewController: UIViewController, UITableViewDataSource, UI
 		self.setupWorkoutDetailsTableView()
 		self.setupSaveToRoutinesButton()
 		workoutDaysTableView?.register(WeekTableCell.self, forCellReuseIdentifier: workoutDaysCellID)
+		
+		weekDays = weekRoutineViewModel.setupWeekRoutines()
 	
 	}
 	

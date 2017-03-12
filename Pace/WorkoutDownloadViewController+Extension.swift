@@ -25,7 +25,7 @@ extension WorkoutDownloadViewController {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		return 7
+		return weekDays.count
 		
 	}
 	
@@ -41,10 +41,6 @@ extension WorkoutDownloadViewController {
 			routineCell = tableView.dequeueReusableCell(withIdentifier: workoutDaysCellID) as? WeekTableCell
 		}
 		
-		routineCell?.dayNameLabel.text = "Sun"
-		routineCell?.workoutNameText.text = "-"
-		routineCell?.todayIndicatorView.isHidden = true
-		routineCell?.activityIndicator.isHidden = true
 		
 		if (routineCell!.selectedBackgroundView != nil) {
 			
@@ -53,6 +49,12 @@ extension WorkoutDownloadViewController {
 			routineCell!.selectedBackgroundView = backgroundView
 		
 		}
+		
+		routineCell?.dayNameLabel.text = weekDays[indexPath.item].dayName
+		routineCell?.workoutNameText.text = weekDays[indexPath.item].workoutName
+		routineCell?.workoutNameText.textColor = weekDays[indexPath.item].color
+		routineCell?.todayIndicatorView.isHidden = true
+		routineCell?.activityIndicator.isHidden = true
 		
 		routineCell?.backgroundColor = UIColor.black
 		
