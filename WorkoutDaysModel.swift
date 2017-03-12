@@ -8,17 +8,10 @@
 
 import Foundation
 
-class WeekRoutineModel : NSObject {
+class WorkoutDaysModel : NSObject {
 	
 	var dayName: String?
 	var workoutName: String?
 	var color: UIColor?
-	var isOccupied : Bool?
-	var isCompleted: Bool?
-	var isRecovery: Bool?
-	var backgroundImage: UIImage?
-	var creatingTrainer: String?
-	var creatingTrainerImage: UIImage?
-	var exercises: NSSet?
 	
 }

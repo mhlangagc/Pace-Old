@@ -8,11 +8,10 @@
 
 import UIKit
 
-class WorkoutDownloadViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class WorkoutDownloadViewController: UITableViewController {
 	
-	var saveToMyWorkoutsView : SaveToMyRoutinesView?
-	var workoutDaysTableView : UITableView?
 	let workoutDaysCellID = "workoutDaysCellID"
+	let SaveToMyRoutinesCellID = "SaveToMyRoutinesCellID"
 	
 	override var prefersStatusBarHidden: Bool {
 		
@@ -20,51 +19,63 @@ class WorkoutDownloadViewController: UIViewController, UITableViewDataSource, UI
 		
 	}
 	
+	var weekDays = [WorkoutDaysModel]()
+	
+	lazy var weekRoutineViewModel: WorkoutDaysViewModel = {
+		
+		let workoutDays = WorkoutDaysViewModel()
+		return workoutDays
+		
+	}()
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		view.backgroundColor = UIColor.black
 		self.setupNavBar()
 		self.setupWorkoutDetailsTableView()
-		self.setupSaveToRoutinesButton()
-		workoutDaysTableView?.register(WeekTableCell.self, forCellReuseIdentifier: workoutDaysCellID)
+		//self.setupSaveToRoutinesButton()
+		tableView.register(WeekTableCell.self, forCellReuseIdentifier: workoutDaysCellID)
+		tableView.register(SaveToMyRoutinesCell.self, forCellReuseIdentifier: SaveToMyRoutinesCellID)
+		
+		weekDays = weekRoutineViewModel.setupWeekRoutines()
 	
 	}
 	
 	func setupWorkoutDetailsTableView() {
 		
-		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height - 120.0)
-		workoutDaysTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.plain)
-		workoutDaysTableView?.backgroundColor = .black
-		workoutDaysTableView?.delegate = self
-		workoutDaysTableView?.dataSource = self
-		workoutDaysTableView?.separatorStyle = .none
-		workoutDaysTableView?.showsVerticalScrollIndicator = false
-		view.addSubview(workoutDaysTableView!)
+		//let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height) //120.0
+		//tableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.plain)
+		tableView.backgroundColor = .black
+		tableView.delegate = self
+		tableView.dataSource = self
+		tableView.separatorStyle = .none
+		tableView.showsVerticalScrollIndicator = false
+//		view.addSubview(tableView!)
 		
 	}
 	
 	func setupNavBar() {
 		
 		navigationNoLineBar()
-		self.navigationItem.title = "Choose a day"
+		self.navigationItem.title = "Save Workout"
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "close"), style: .done, target: self, action: #selector(handleCancel))
 		self.navigationController?.navigationBar.tintColor = UIColor.greyWhite()
 		self.navigationController?.navigationBar.barTintColor = UIColor.black
 		
 	}
 	
-	func setupSaveToRoutinesButton() {
-		
-		if let window = UIApplication.shared.keyWindow {
-			
-			saveToMyWorkoutsView = SaveToMyRoutinesView.init(frame: CGRect(x: 0, y: window.frame.height - 115.0, width: window.frame.width, height: 70.0))
-			saveToMyWorkoutsView?.workoutDownloadVC = self
-			view.addSubview(saveToMyWorkoutsView!)
-			
-		}
-		
-	}
+//	func setupSaveToRoutinesButton() {
+//		
+//		if let window = UIApplication.shared.keyWindow {
+//			
+//			saveToMyWorkoutsView = SaveToMyRoutinesView.init(frame: CGRect(x: 0, y: window.frame.height - 115.0, width: window.frame.width, height: 70.0))
+//			saveToMyWorkoutsView?.workoutDownloadVC = self
+//			view.addSubview(saveToMyWorkoutsView!)
+//			
+//		}
+//		
+//	}
 	
 	func handleSaveWorkoutToRoutine() {
 		

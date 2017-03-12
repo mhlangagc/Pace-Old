@@ -11,7 +11,7 @@ import Lottie
 
 class EmptyDayViewController: UIViewController {
 	
-	var routineWorkoutModel : WeekRoutineModel?
+	var routineWorkoutModel : WorkoutDaysModel?
 	var lottieAnimationView : LAAnimationView?
 	
 	let detailLabel: UILabel = {

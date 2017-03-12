@@ -14,7 +14,7 @@ class DayViewController : UIViewController, UITableViewDataSource, UITableViewDe
 	var workoutDetailsTableView : UITableView?
 	var startButtonView : StartButtonView?
 	let exerciseCellID = "ExerciseCellViewID"
-	var routineWorkoutModel : WeekRoutineModel?
+	var routineWorkoutModel : WorkoutDaysModel?
 	
 	var exercisesArray : [ExercisesModel]?
 	
@@ -101,12 +101,12 @@ class DayViewController : UIViewController, UITableViewDataSource, UITableViewDe
 	func setupHeaderView() {
 		
 		headerView  = DayHeaderViewController.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 330.0))
-		headerView.workoutsImageView?.image = routineWorkoutModel?.backgroundImage
+		//headerView.workoutsImageView?.image = routineWorkoutModel?.backgroundImage
 		headerView.workoutName?.text = routineWorkoutModel?.workoutName
-		headerView.profileImageView?.image = routineWorkoutModel?.creatingTrainerImage
-		if let trainerName = routineWorkoutModel?.creatingTrainer {
-			headerView.profileNameButton?.setTitle("by \(trainerName)", for: UIControlState.normal)
-		}
+//		headerView.profileImageView?.image = routineWorkoutModel?.creatingTrainerImage
+//		if let trainerName = routineWorkoutModel?.creatingTrainer {
+//			headerView.profileNameButton?.setTitle("by \(trainerName)", for: UIControlState.normal)
+//		}
 		
 		headerView.dayDetailVC = self
 		workoutDetailsTableView?.tableHeaderView = headerView
