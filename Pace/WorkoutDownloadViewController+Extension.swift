@@ -10,60 +10,132 @@ import UIKit
 
 extension WorkoutDownloadViewController {
 	
-	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		
-		return 85.0
+		let sectionHeaderView : UIView = UIView.init(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 70))
+		sectionHeaderView.backgroundColor = UIColor.black
+		
+		
+		let sectionHeaderLabel: UILabel = UILabel.init(frame: CGRect(x: 0.0, y: 25.0, width: tableView.frame.width, height: 20))
+		sectionHeaderLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
+		sectionHeaderLabel.textColor = UIColor.greyBlackColor()
+		sectionHeaderLabel.textAlignment = .center
+		sectionHeaderLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+		sectionHeaderView.addSubview(sectionHeaderLabel)
+		
+		
+		return sectionHeaderView
+		
 	}
 	
-	
-	func numberOfSections(in tableView: UITableView) -> Int {
+	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		
-		return 1
-		
-	}
-	
-	
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		
-		return weekDays.count
-		
-	}
-	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		
-		//	let indexPathFound = IndexPath(item: indexPath.row, section: 0)
-		//	let thisDay = RoutineSetup.fetchedResultsController.object(at: indexPathFound) as WorkoutsModel
-		
-		var routineCell = tableView.dequeueReusableCell(withIdentifier: workoutDaysCellID) as? WeekTableCell
-		
-		if (routineCell == nil) {
-			tableView.register(WeekTableCell.self, forCellReuseIdentifier: workoutDaysCellID)
-			routineCell = tableView.dequeueReusableCell(withIdentifier: workoutDaysCellID) as? WeekTableCell
-		}
-		
-		
-		if (routineCell!.selectedBackgroundView != nil) {
+		if section == 0 {
 			
-			let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: routineCell!.frame.size.width, height: routineCell!.frame.size.height))
-			backgroundView.backgroundColor = UIColor.darkerBlack()
-			routineCell!.selectedBackgroundView = backgroundView
+			return 0.0
+			
+		} else {
+			
+			return 70.0
 		
 		}
 		
-		routineCell?.dayNameLabel.text = weekDays[indexPath.item].dayName
-		routineCell?.workoutNameText.text = weekDays[indexPath.item].workoutName
-		routineCell?.workoutNameText.textColor = weekDays[indexPath.item].color
-		routineCell?.todayIndicatorView.isHidden = true
-		routineCell?.activityIndicator.isHidden = true
+	}
+	
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		
-		routineCell?.backgroundColor = UIColor.black
+		if section == 0 {
+			
+			return nil
+			
+		} else  {
+			
+			return "or pick a workout day"
+			
+		}
 		
-		return routineCell!
+	}
+	
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		
+		if indexPath.section == 0 {
+			
+			return 70.0
+			
+		} else {
+			
+			return 85.0
+			
+		}
+	}
+	
+	
+	override func numberOfSections(in tableView: UITableView) -> Int {
+		
+		return 2
+		
+	}
+	
+	
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		
+		if section == 0 {
+			
+			return 1
+			
+		} else {
+			
+			return weekDays.count
+			
+		}
+		
+		
+	}
+	
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		
+		if indexPath.section == 0 {
+			
+			let saveToMyWorkoutsCell = tableView.dequeueReusableCell(withIdentifier: SaveToMyRoutinesCellID) as? SaveToMyRoutinesCell
+			
+			if (saveToMyWorkoutsCell!.selectedBackgroundView != nil) {
+				
+				let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: saveToMyWorkoutsCell!.frame.size.width, height: saveToMyWorkoutsCell!.frame.size.height))
+				backgroundView.backgroundColor = UIColor.darkerBlack()
+				saveToMyWorkoutsCell!.selectedBackgroundView = backgroundView
+				
+			}
+			
+			return saveToMyWorkoutsCell!
+			
+		} else {
+			
+			let routineCell = tableView.dequeueReusableCell(withIdentifier: workoutDaysCellID) as? WeekTableCell
+			
+			if (routineCell!.selectedBackgroundView != nil) {
+				
+				let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: routineCell!.frame.size.width, height: routineCell!.frame.size.height))
+				backgroundView.backgroundColor = UIColor.darkerBlack()
+				routineCell!.selectedBackgroundView = backgroundView
+				
+			}
+			
+			routineCell?.dayNameLabel.text = weekDays[indexPath.item].dayName
+			routineCell?.workoutNameText.text = weekDays[indexPath.item].workoutName
+			routineCell?.workoutNameText.textColor = weekDays[indexPath.item].color
+			routineCell?.todayIndicatorView.isHidden = true
+			routineCell?.activityIndicator.isHidden = true
+			
+			routineCell?.backgroundColor = UIColor.black
+			
+			return routineCell!
+		}
+		
 		
 	}
 	
 	//  TableView Delegation
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		tableView.deselectRow(at: indexPath as IndexPath, animated: true)
 		

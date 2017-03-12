@@ -128,7 +128,7 @@
 		C608AD2E1E6EA37F005934B3 /* PostViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C608AD2D1E6EA37F005934B3 /* PostViewController+Extension.swift */; };
 		C608AD301E6EA5DC005934B3 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */; };
 		C61EB9EB1E755B6E0083C966 /* WorkoutDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61EB9EA1E755B6E0083C966 /* WorkoutDownloadViewController.swift */; };
-		C61EB9EE1E7561F60083C966 /* SaveToMyRoutinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61EB9ED1E7561F60083C966 /* SaveToMyRoutinesView.swift */; };
+		C61EB9EE1E7561F60083C966 /* SaveToMyRoutinesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61EB9ED1E7561F60083C966 /* SaveToMyRoutinesCell.swift */; };
 		C61EB9F11E7571960083C966 /* WorkoutDownloadViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61EB9F01E7571960083C966 /* WorkoutDownloadViewController+Extension.swift */; };
 		C62AD06B1E6546B000BAD7C3 /* ProfileSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62AD06A1E6546B000BAD7C3 /* ProfileSettingsCell.swift */; };
 		C63439781E4174C000AC9E80 /* LoadImageWithCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63439771E4174C000AC9E80 /* LoadImageWithCache.swift */; };
@@ -319,7 +319,7 @@
 		C608AD2D1E6EA37F005934B3 /* PostViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PostViewController+Extension.swift"; sourceTree = "<group>"; };
 		C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		C61EB9EA1E755B6E0083C966 /* WorkoutDownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutDownloadViewController.swift; sourceTree = "<group>"; };
-		C61EB9ED1E7561F60083C966 /* SaveToMyRoutinesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveToMyRoutinesView.swift; sourceTree = "<group>"; };
+		C61EB9ED1E7561F60083C966 /* SaveToMyRoutinesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveToMyRoutinesCell.swift; sourceTree = "<group>"; };
 		C61EB9F01E7571960083C966 /* WorkoutDownloadViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutDownloadViewController+Extension.swift"; sourceTree = "<group>"; };
 		C62AD06A1E6546B000BAD7C3 /* ProfileSettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingsCell.swift; sourceTree = "<group>"; };
 		C63439771E4174C000AC9E80 /* LoadImageWithCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadImageWithCache.swift; sourceTree = "<group>"; };
@@ -973,9 +973,9 @@
 		C61EB9EC1E755D340083C966 /* Workout Downloading */ = {
 			isa = PBXGroup;
 			children = (
-				C61EB9ED1E7561F60083C966 /* SaveToMyRoutinesView.swift */,
 				C61EB9EA1E755B6E0083C966 /* WorkoutDownloadViewController.swift */,
 				C61EB9F01E7571960083C966 /* WorkoutDownloadViewController+Extension.swift */,
+				C61EB9ED1E7561F60083C966 /* SaveToMyRoutinesCell.swift */,
 			);
 			name = "Workout Downloading";
 			sourceTree = "<group>";
@@ -1422,7 +1422,7 @@
 				458842701E11A89D003B02C8 /* WorkoutViewController+Extension.swift in Sources */,
 				458478E81E17E31900EB2AB3 /* SettingsViewModel.swift in Sources */,
 				45B5AD421DFBF71100115E2C /* AppDelegate.swift in Sources */,
-				C61EB9EE1E7561F60083C966 /* SaveToMyRoutinesView.swift in Sources */,
+				C61EB9EE1E7561F60083C966 /* SaveToMyRoutinesCell.swift in Sources */,
 				45F3AA1E1E154BA300D70C84 /* RoutinesViewModel.swift in Sources */,
 				45C214EC1E05BCA700C5BCCF /* AllPeopleAndTrainersViewController.swift in Sources */,
 				C6B1182C1E217BCA002BB4E8 /* PickGenderViewController.swift in Sources */,
