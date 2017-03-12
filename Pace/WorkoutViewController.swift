@@ -29,8 +29,13 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		return retrieveWorkoutDetails
 		
 	}()
-
 	
+	override var prefersStatusBarHidden: Bool {
+		
+		return false
+		
+	}
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -146,19 +151,28 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 	}
 
-	lazy var popUpLauncher: GetPopupLauncher = {
-		
-		let launcher = GetPopupLauncher()
-		return launcher
-		
-	}()
+//	lazy var popUpLauncher: GetPopupLauncher = {
+//		
+//		let launcher = GetPopupLauncher()
+//		return launcher
+//		
+//	}()
+//	
+//	func launchGetPopUp() {
+//		
+//		
+//		
+//		if let window = UIApplication.shared.keyWindow {
+//			
+//			popUpLauncher.showGetPopUp(currentView: window)
+//		}
+//		
+//	}
 	
-	func launchGetPopUp() {
+	func handleDownloadWorkout() {
 		
-		if let window = UIApplication.shared.keyWindow {
-			
-			popUpLauncher.showGetPopUp(currentView: window)
-		}
+		let workoutDownloadNavVC = UINavigationController(rootViewController: WorkoutDownloadViewController())
+		self.present(workoutDownloadNavVC, animated: true, completion: nil)
 		
 	}
 	
