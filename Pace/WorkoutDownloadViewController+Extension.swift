@@ -17,7 +17,7 @@ extension WorkoutDownloadViewController {
 		
 		
 		let sectionHeaderLabel: UILabel = UILabel.init(frame: CGRect(x: 0.0, y: 25.0, width: tableView.frame.width, height: 20))
-		sectionHeaderLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
+		sectionHeaderLabel.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightMedium)
 		sectionHeaderLabel.textColor = UIColor.greyBlackColor()
 		sectionHeaderLabel.textAlignment = .center
 		sectionHeaderLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
@@ -101,7 +101,7 @@ extension WorkoutDownloadViewController {
 			if (saveToMyWorkoutsCell!.selectedBackgroundView != nil) {
 				
 				let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: saveToMyWorkoutsCell!.frame.size.width, height: saveToMyWorkoutsCell!.frame.size.height))
-				backgroundView.backgroundColor = UIColor.darkerBlack()
+				backgroundView.backgroundColor = UIColor.darkBlack()
 				saveToMyWorkoutsCell!.selectedBackgroundView = backgroundView
 				
 			}

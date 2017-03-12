@@ -35,13 +35,13 @@ class SaveToMyRoutinesCell: TableBaseCell {
 	
 	override var isHighlighted: Bool {
 		didSet {
-			backgroundColor = isHighlighted ? UIColor.headerBlack() : UIColor.black
+			backgroundColor = isHighlighted ? UIColor.darkBlack() : UIColor.black
 		}
 	}
 	
 	override var isSelected: Bool {
 		didSet {
-			backgroundColor = isSelected ? UIColor.headerBlack() : UIColor.black
+			backgroundColor = isSelected ? UIColor.darkBlack() : UIColor.black
 		}
 	}
 	
@@ -63,9 +63,9 @@ class SaveToMyRoutinesCell: TableBaseCell {
 		backgroundButtonView.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
 		backgroundButtonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
 		
-		buttonLabel.leftAnchor.constraint(equalTo: backgroundButtonView.rightAnchor).isActive = true
+		buttonLabel.leftAnchor.constraint(equalTo: backgroundButtonView.leftAnchor).isActive = true
 		buttonLabel.topAnchor.constraint(equalTo: backgroundButtonView.topAnchor).isActive = true
-		buttonLabel.rightAnchor.constraint(equalTo: backgroundButtonView.leftAnchor).isActive = true
+		buttonLabel.rightAnchor.constraint(equalTo: backgroundButtonView.rightAnchor).isActive = true
 		buttonLabel.bottomAnchor.constraint(equalTo: backgroundButtonView.bottomAnchor).isActive = true
 
 		
