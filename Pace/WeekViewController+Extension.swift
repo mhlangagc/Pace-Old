@@ -72,7 +72,7 @@ extension WeekViewController {
 			
 		} else {
 			
-			return 1
+			return downloadedWorkoutsArray.count
 			
 		}
 		
@@ -138,6 +138,14 @@ extension WeekViewController {
 				workoutCell!.selectedBackgroundView = backgroundView
 			}
 			
+			//	Retrieve Workout
+			if let workoutName = downloadedWorkoutsArray[indexPath.item].name, let workoutTime = downloadedWorkoutsArray[indexPath.item].time, let imageURL = downloadedWorkoutsArray[indexPath.item].backgroundImageUrl {
+				
+				workoutCell?.workoutTimeLabel.text = "\(workoutTime) mins".uppercased()
+				workoutCell?.workoutName.text = workoutName
+					workoutCell?.workoutImage.loadImageFromUrlString(urlString: imageURL)
+				
+			}
 			
 			workoutCell?.backgroundColor = UIColor.black
 			

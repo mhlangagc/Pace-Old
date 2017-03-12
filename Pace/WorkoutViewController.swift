@@ -171,8 +171,10 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	
 	func handleDownloadWorkout() {
 		
-		let workoutDownloadNavVC = UINavigationController(rootViewController: WorkoutDownloadViewController())
-		self.present(workoutDownloadNavVC, animated: true, completion: nil)
+		let workoutDownloadVC = WorkoutDownloadViewController()
+		workoutDownloadVC.workoutDetailsVC = self
+		let navVC = UINavigationController(rootViewController: workoutDownloadVC)
+		self.present(navVC, animated: true, completion: nil)
 		
 	}
 	

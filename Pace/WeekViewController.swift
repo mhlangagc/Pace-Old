@@ -229,6 +229,15 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		
 	}
 	
+	lazy var paceAppService: PaceAppServices = {
+		
+		let retrieveFeaturedWorkouts = PaceAppServices()
+		return retrieveFeaturedWorkouts
+		
+	}()
+	
+	var downloadedWorkoutsArray = [ExploreWorkoutModel]()
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -241,6 +250,8 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //			self.handleVideoSelectedForUrl(url: URL(fileURLWithPath: path) as NSURL, exericiseImage: UIImage(named: "MachineLowRow")!)
 //		}
 		
+		
+		
 		RoutineSetup.loadRoutineWorkouts()
 		
 		self.setupWeekTableView()
@@ -248,9 +259,17 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		self.navigationController?.navigationBar.isHidden = true
 		view.backgroundColor = UIColor.black
 		weekTableView?.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
-		weekTableView?.reloadData()
-		
 		self.setupRoutineData()
+		
+		paceAppService.retrieveUserDownloadedWorkouts { (purchasedWorkoutsArray) in
+			
+			self.downloadedWorkoutsArray = purchasedWorkoutsArray
+			UIApplication.shared.isNetworkActivityIndicatorVisible = false
+			self.weekTableView?.reloadData()
+			
+		}
+		
+		
 	}
 	
 	func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

@@ -15,7 +15,42 @@ import FirebaseDatabase
 class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource {
 
 	var groupCollectionNode : ASCollectionNode?
-	var teamWorkoutsArray : [TeamsModel]?
+	var teamWorkoutsArray = [TeamsModel]()
+	var usersUsingWorkoutArray = [User]()
+	
+	func retrieveUsersUsingWorkout(workoutID: String, completion: @escaping (_ result: [User]) -> Void) {
+		
+		var userArray = [User]()
+		
+		FIRDatabase.database().reference().child("fan-PurchasedWorkout-Users").child(workoutID).observe(.childAdded, with: { (snapshot) in
+			
+			let userId = snapshot.key
+			
+			FIRDatabase.database().reference().child("Users").child(userId).observe(FIRDataEventType.value, with: { (snapShot) in
+				
+				if let dictionary = snapShot.value as? [String: AnyObject] {
+					
+					let userWorkout = User()
+					
+					userWorkout.name = dictionary["name"] as? String
+					userWorkout.profileImageUrl = dictionary["profileImageUrl"] as? String
+					userWorkout.location = dictionary["location"] as? String
+					userWorkout.about = dictionary["about"] as? String
+					
+					userArray.append(userWorkout)
+					
+					completion(userArray)
+					
+					
+				}
+				
+			}, withCancel: nil)
+			
+			
+		}, withCancel: nil)
+		
+		
+	}
 	
 	lazy var teamsSetup: PaceAppServices = {
 		
@@ -25,22 +60,24 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 	}()
 	
 	init() {
+		
 		let flowLayout     = UICollectionViewFlowLayout()
 		flowLayout.scrollDirection = .vertical
 		flowLayout.minimumInteritemSpacing  = 10
 		flowLayout.minimumLineSpacing       = 10
-		flowLayout.sectionInset = UIEdgeInsets(top: 30.0, left: 5.0, bottom: 20.0, right: 5.0)
+		flowLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 5.0, bottom: 20.0, right: 5.0)
 		groupCollectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
 		super.init(node: groupCollectionNode!)
 		
 		teamsSetup.retrieveTeamsFromWorkouts { (workoutTeamsArray) in
 			
 			self.teamWorkoutsArray = workoutTeamsArray
-			
 			self.groupCollectionNode?.reloadData()
 			self.setupCollectionView()
 			
 		}
+		
+		
 		
 	}
 	

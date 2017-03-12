@@ -17,6 +17,7 @@ class TeamCell: BaseCell {
 	let messageCountNode = ASDisplayNode()
 	
 	let imageSize : CGFloat = 100
+	var numberOfUsers : Int?
 	
 	
 	//	Group Title
@@ -62,11 +63,11 @@ class TeamCell: BaseCell {
 //				groupMemberNumberNode.attributedText = groupMemberMutableString
 //			}
 			
-			groupMemberMutableString = NSMutableAttributedString(string: "2k Members", attributes: groupMemberAttributes)
+			groupMemberMutableString = NSMutableAttributedString(string: "\(numberOfUsers) Members", attributes: groupMemberAttributes)
 			
 			let alignmentStyleCenter = NSMutableParagraphStyle()
 			alignmentStyleCenter.alignment = NSTextAlignment.center
-			groupMemberMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyleCenter] as [String: Any], range: NSRange(location: 0, length: NSString(string: "2k Members").length))
+			groupMemberMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyleCenter] as [String: Any], range: NSRange(location: 0, length: NSString(string: "\(numberOfUsers) Members").length))
 			
 			groupMemberNumberNode.attributedText = groupMemberMutableString
 			
