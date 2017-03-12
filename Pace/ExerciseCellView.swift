@@ -83,7 +83,7 @@ class ExerciseCellView : TableBaseCell {
 			
 			if let exerciseImageurl = exerciseModel?.exerciseImageUrl {
 				
-				exerciseImage.loadImageFromUrlString(urlString: exerciseImageurl)
+				exerciseImage.loadImageFromCacheWithUrlString(urlString: exerciseImageurl)
 				
 			}
 			

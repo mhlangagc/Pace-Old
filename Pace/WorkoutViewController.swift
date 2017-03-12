@@ -20,8 +20,10 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	let exerciseCellID = "ExerciseCellViewID"
 	var trainer = User()
 	
+	
 	var exercisesArray = [ExploreExerciseModel]()
 	var exploreWorkout : ExploreWorkoutModel?
+	
 	
 	lazy var paceAppService: PaceAppServices = {
 		
@@ -121,7 +123,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		headerView.workoutDetailVC = self
 		
 		headerView.workoutName?.text = (self.exploreWorkout?.name)!
-		headerView.workoutsImageView?.loadImageFromUrlString(urlString: (self.exploreWorkout?.backgroundImageUrl)!)
+		headerView.workoutsImageView?.loadImageFromCacheWithUrlString(urlString: (self.exploreWorkout?.backgroundImageUrl)!)
 		headerView.workoutTimeLabel?.text = "\((self.exploreWorkout?.time)!) min workout".uppercased()
 		headerView.descriptionText?.text = (self.exploreWorkout?.workoutDescription)!
 		headerView.reviewLabel?.text = "\((self.exploreWorkout?.numberOfReviews)!) Reviews"

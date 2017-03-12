@@ -143,7 +143,7 @@ extension WeekViewController {
 				
 				workoutCell?.workoutTimeLabel.text = "\(workoutTime) mins".uppercased()
 				workoutCell?.workoutName.text = workoutName
-					workoutCell?.workoutImage.loadImageFromUrlString(urlString: imageURL)
+					workoutCell?.workoutImage.loadImageFromCacheWithUrlString(urlString: imageURL)
 				
 			}
 			
@@ -174,34 +174,51 @@ extension WeekViewController {
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
-//		if indexPath.item == 1 || indexPath.item == 2 || indexPath.item == 5 || indexPath.item == 6 {
-//			
-//			let daySelected = weeklyWorkoutsArray?[indexPath.item]
-//			selectedDayColour = (daySelected?.color)!
-//			
-//			let emptyDayVC = EmptyDayViewController()
-//			emptyDayVC.routineWorkoutModel = daySelected
-//			emptyDayVC.hidesBottomBarWhenPushed = true
-//			self.navigationController?.pushViewController(emptyDayVC, animated: true)
-//			
-//			weekTableView?.deselectRow(at: indexPath, animated: true)
-//		
-//		} else {
-//			
-//			let daySelected = weeklyWorkoutsArray?[indexPath.item]
-//			selectedDayColour = (daySelected?.color)!
-//			
-//			let dayDetailsVC = DayViewController()
-//			dayDetailsVC.routineWorkoutModel = daySelected
-//			dayDetailsVC.hidesBottomBarWhenPushed = true
-//			self.navigationController?.pushViewController(dayDetailsVC, animated: true)
-//			
-//			weekTableView?.deselectRow(at: indexPath, animated: true)
-//			
-//		}
+		if indexPath.section == 0 {
+			
+//			if indexPath.item == 1 || indexPath.item == 2 || indexPath.item == 5 || indexPath.item == 6 {
+//				
+//				let daySelected = weeklyWorkoutsArray?[indexPath.item]
+//				selectedDayColour = (daySelected?.color)!
+//				
+//				let emptyDayVC = EmptyDayViewController()
+//				emptyDayVC.routineWorkoutModel = daySelected
+//				emptyDayVC.hidesBottomBarWhenPushed = true
+//				self.navigationController?.pushViewController(emptyDayVC, animated: true)
+//				
+//				weekTableView?.deselectRow(at: indexPath, animated: true)
+//				
+//			} else {
+//				
+//				let daySelected = weeklyWorkoutsArray?[indexPath.item]
+//				selectedDayColour = (daySelected?.color)!
+//				
+//				let dayDetailsVC = DayViewController()
+//				dayDetailsVC.routineWorkoutModel = daySelected
+//				dayDetailsVC.hidesBottomBarWhenPushed = true
+//				self.navigationController?.pushViewController(dayDetailsVC, animated: true)
+//				
+//			}
+			
+			
+		} else {
+			
+			//	let daySelected = downloadedWorkoutsArray[indexPath.item]
+			//	selectedDayColour = (daySelected.color)!
+			
+			let dayDetailsVC = DayViewController()
+			dayDetailsVC.exploreWorkout = downloadedWorkoutsArray[indexPath.item]
+			//	dayDetailsVC.routineWorkoutModel = daySelected
+			dayDetailsVC.hidesBottomBarWhenPushed = true
+			self.navigationController?.pushViewController(dayDetailsVC, animated: true)
+			
+			
+			
+		}
 		
 		
 		
+		weekTableView?.deselectRow(at: indexPath, animated: true)
 		
 	}
 	

@@ -15,15 +15,25 @@ class DayViewController : UIViewController, UITableViewDataSource, UITableViewDe
 	var startButtonView : StartButtonView?
 	let exerciseCellID = "ExerciseCellViewID"
 	var routineWorkoutModel : WorkoutDaysModel?
+	var trainer = User()
 	
-	var exercisesArray : [ExercisesModel]?
+	var exercisesArray = [ExploreExerciseModel]()
+	var exploreWorkout : ExploreWorkoutModel?
 	
-	lazy var ExerciseSetup: ExerciseViewModel = {
+	lazy var paceAppService: PaceAppServices = {
 		
-		let exericiseSetup = ExerciseViewModel()
-		return exericiseSetup
+		let retrieveWorkoutDetails = PaceAppServices()
+		return retrieveWorkoutDetails
 		
 	}()
+	
+	
+//	lazy var ExerciseSetup: ExerciseViewModel = {
+//		
+//		let exericiseSetup = ExerciseViewModel()
+//		return exericiseSetup
+//		
+//	}()
 
 	
 	override func viewDidLoad() {
@@ -36,6 +46,27 @@ class DayViewController : UIViewController, UITableViewDataSource, UITableViewDe
 		self.setupStartButton()
 		view.backgroundColor = UIColor.black
 		workoutDetailsTableView?.register(ExerciseCellView.self, forCellReuseIdentifier: exerciseCellID)
+		
+		paceAppService.retrieveTrainer(exploreWorkout: exploreWorkout!) { (workoutTrainer) in
+			
+			self.trainer = workoutTrainer
+			
+			if let trainerName = workoutTrainer.name, let trainerImageUrl = workoutTrainer.profileImageUrl {
+				
+				self.headerView.profileNameButton?.setTitle("Created by \(trainerName)", for: UIControlState.normal)
+				self.headerView.profileImageView?.loadImageFromUrlString(urlString: trainerImageUrl)
+				
+			}
+			
+		}
+		
+		paceAppService.retrieveWorkoutExercises(exploreWorkout: exploreWorkout!) { (exerciseArrayFound) in
+			
+			self.exercisesArray = exerciseArrayFound
+			self.workoutDetailsTableView?.reloadData()
+			
+		}
+
 		
 	}
 	
@@ -101,13 +132,9 @@ class DayViewController : UIViewController, UITableViewDataSource, UITableViewDe
 	func setupHeaderView() {
 		
 		headerView  = DayHeaderViewController.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 330.0))
-		//headerView.workoutsImageView?.image = routineWorkoutModel?.backgroundImage
-		headerView.workoutName?.text = routineWorkoutModel?.workoutName
-//		headerView.profileImageView?.image = routineWorkoutModel?.creatingTrainerImage
-//		if let trainerName = routineWorkoutModel?.creatingTrainer {
-//			headerView.profileNameButton?.setTitle("by \(trainerName)", for: UIControlState.normal)
-//		}
-		
+		headerView.workoutsImageView?.loadImageFromCacheWithUrlString(urlString: (exploreWorkout?.backgroundImageUrl)!)
+		headerView.workoutName?.text = exploreWorkout?.name
+		headerView.workoutTimeLabel?.text = "\((exploreWorkout?.time)!) MIN WORKOUT"
 		headerView.dayDetailVC = self
 		workoutDetailsTableView?.tableHeaderView = headerView
 		
@@ -181,23 +208,24 @@ class DayViewController : UIViewController, UITableViewDataSource, UITableViewDe
 	}
 	
 	
-	func handleOpenProfile() {
+	func handleShowProfile() {
 		
-		//let exploreProfileVC = DiscoverProfileViewController()
-//		DiscoverProfileViewController.userProfileModel
-		//self.navigationController?.pushViewController(exploreProfileVC, animated: true)
+		let exploreProfileVC = DiscoverProfileViewController()
+		exploreProfileVC.trainer = trainer
+		self.navigationController?.pushViewController(exploreProfileVC, animated: true)
+		
 		
 	}
 	
 	func startWorkout() {
 		
-		let workoutProcessViewController = WorkoutProcessViewController()
-		let navBar = UINavigationController(rootViewController: workoutProcessViewController)
-		self.navigationController?.present(navBar, animated: true, completion: {
-			
-			//	TO DO
-			
-		})
+//		let workoutProcessViewController = WorkoutProcessViewController()
+//		let navBar = UINavigationController(rootViewController: workoutProcessViewController)
+//		self.navigationController?.present(navBar, animated: true, completion: {
+//			
+//			//	TO DO
+//			
+//		})
 		
 	}
 	

@@ -82,9 +82,7 @@ class DayHeaderViewController : BaseView {
 	
 	func handleShowProfile() {
 		
-		print("Show Profile")
-		
-		dayDetailVC?.handleOpenProfile()
+		dayDetailVC?.handleShowProfile()
 		
 	}
 	
