@@ -23,48 +23,19 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	var exercisesArray = [ExploreExerciseModel]()
 	var exploreWorkout : ExploreWorkoutModel?
 	
-	func retrieveWorkoutExercises(completion: @escaping (_ result: [ExploreExerciseModel]) -> Void) {
+	lazy var paceAppService: PaceAppServices = {
 		
-		var exercises = [ExploreExerciseModel]()
+		let retrieveWorkoutDetails = PaceAppServices()
+		return retrieveWorkoutDetails
 		
-		let fanExploreExercisesRef = FIRDatabase.database().reference().child("fan-Workout-Exercises").child((exploreWorkout?.workoutID!)!)
+	}()
+	
+	override var prefersStatusBarHidden: Bool {
 		
-		fanExploreExercisesRef.observe(.childAdded, with: { (snapshot) in
-			
-			let exerciseId = snapshot.key
-			
-			let workoutRef = FIRDatabase.database().reference().child("Exercises").child(exerciseId)
-			workoutRef.observeSingleEvent(of: .value, with: { (snapShot) in
-				
-				if let dictionary = snapShot.value as? [String: AnyObject] {
-					
-					let workoutExercise = ExploreExerciseModel()
-					
-					workoutExercise.exerciseID = exerciseId
-					workoutExercise.exerciseName = dictionary["exerciseName"] as? String
-					workoutExercise.distanceOrReps = dictionary["distanceOrReps"] as? Int
-					workoutExercise.durationOrSets = dictionary["durationOrSets"] as? Int
-					workoutExercise.weight = dictionary["weight"] as? Int
-					workoutExercise.exerciseTime = dictionary["exerciseTime"] as? Int
-					workoutExercise.exerciseType = dictionary["exerciseType"] as? String
-					workoutExercise.exerciseImageUrl = dictionary["exerciseImageURL"] as? String
-					workoutExercise.exerciseVideoURL = dictionary["exerciseVideoURL"] as? String
-					
-					exercises.append(workoutExercise)
-					
-					completion(exercises)
-					
-					
-				}
-				
-			}, withCancel: nil)
-			
-		}, withCancel: nil)
-		
+		return false
 		
 	}
 
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -76,7 +47,8 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 		
 		self.setupHeaderView()
-		self.retrieveTrainer { (workoutTrainer) in
+		
+		paceAppService.retrieveTrainer(exploreWorkout: exploreWorkout!) { (workoutTrainer) in
 			
 			if let trainerName = workoutTrainer.name, let trainerImageUrl = workoutTrainer.profileImageUrl {
 				
@@ -87,7 +59,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 			
 		}
 		
-		self.retrieveWorkoutExercises { (exerciseArrayFound) in
+		paceAppService.retrieveWorkoutExercises(exploreWorkout: exploreWorkout!) { (exerciseArrayFound) in
 			
 			self.exercisesArray = exerciseArrayFound
 			self.workoutDetailsTableView?.reloadData()
@@ -143,38 +115,6 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 	}
 	
-	func retrieveTrainer(completion: @escaping (_ result: User) -> Void) {
-		
-		if let trainerID = self.exploreWorkout?.trainerID {
-			
-			FIRDatabase.database().reference().child("Trainers").child(trainerID).observeSingleEvent(of: .value, with: { (snapShot) in
-				
-				if let dictionary = snapShot.value as? [String: AnyObject] {
-					
-					let workoutTrainer = User()
-					
-					workoutTrainer.userID = trainerID
-					workoutTrainer.name = dictionary["name"] as? String
-					workoutTrainer.location = dictionary["location"] as? String
-					workoutTrainer.profileImageUrl = dictionary["profileImageUrl"] as? String
-					workoutTrainer.speciality = dictionary["speciality"] as? String
-					
-					self.trainer = workoutTrainer
-					
-					completion(self.trainer)
-					
-					
-				}
-				
-			}, withCancel: nil)
-			
-		}
-		
-		
-		
-		
-	}
-	
 	func setupHeaderView() {
 		
 		headerView  = WorkoutDetailsHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 515.0))
@@ -211,19 +151,28 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 	}
 
-	lazy var popUpLauncher: GetPopupLauncher = {
-		
-		let launcher = GetPopupLauncher()
-		return launcher
-		
-	}()
+//	lazy var popUpLauncher: GetPopupLauncher = {
+//		
+//		let launcher = GetPopupLauncher()
+//		return launcher
+//		
+//	}()
+//	
+//	func launchGetPopUp() {
+//		
+//		
+//		
+//		if let window = UIApplication.shared.keyWindow {
+//			
+//			popUpLauncher.showGetPopUp(currentView: window)
+//		}
+//		
+//	}
 	
-	func launchGetPopUp() {
+	func handleDownloadWorkout() {
 		
-		if let window = UIApplication.shared.keyWindow {
-			
-			popUpLauncher.showGetPopUp(currentView: window)
-		}
+		let workoutDownloadNavVC = UINavigationController(rootViewController: WorkoutDownloadViewController())
+		self.present(workoutDownloadNavVC, animated: true, completion: nil)
 		
 	}
 	

@@ -19,47 +19,12 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 	
 	var featuredWorkoutsArray = [ExploreWorkoutModel]()
 	
-	func retrieveMaleFeaturedWorkouts(completion: @escaping (_ result: [ExploreWorkoutModel]) -> Void) {
+	lazy var paceAppService: PaceAppServices = {
 		
-		var workoutsArray = [ExploreWorkoutModel]()
+		let retrieveFeaturedWorkouts = PaceAppServices()
+		return retrieveFeaturedWorkouts
 		
-		let fanExploreWorkoutsRef = FIRDatabase.database().reference().child("fan-Explore-Workouts").child("male").child("featured-workout")
-		
-		fanExploreWorkoutsRef.observe(.childAdded, with: { (snapshot) in
-			
-			let workoutId = snapshot.key
-			
-			let workoutRef = FIRDatabase.database().reference().child("Workouts-Teams").child(workoutId)
-			workoutRef.observeSingleEvent(of: .value, with: { (snapShot) in
-				
-				if let dictionary = snapShot.value as? [String: AnyObject] {
-					
-					let featuredWorkout = ExploreWorkoutModel()
-					
-					featuredWorkout.workoutID = workoutId
-					featuredWorkout.name = dictionary["name"] as? String
-					featuredWorkout.workoutDescription = dictionary["workoutDescription"] as? String
-					featuredWorkout.backgroundImageUrl = dictionary["backgroundImageUrl"] as? String
-					featuredWorkout.time = dictionary["time"] as? Int
-					featuredWorkout.rating = dictionary["rating"] as? Int
-					featuredWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
-					featuredWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
-					featuredWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
-					featuredWorkout.trainerID = dictionary["trainerID"] as? String
-					
-					workoutsArray.append(featuredWorkout)
-					
-					completion(workoutsArray)
-					
-					
-				}
-				
-			}, withCancel: nil)
-			
-		}, withCancel: nil)
-		
-		
-	}
+	}()
 
 	override init() {
 		super.init()
@@ -75,7 +40,7 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 		
 		
 		
-		self.retrieveMaleFeaturedWorkouts { (featuredWorkoutsArray) in
+		paceAppService.retrieveMaleFeaturedWorkouts { (featuredWorkoutsArray) in
 			
 			self.featuredWorkoutsArray = featuredWorkoutsArray
 			self.featuredCollectionNode?.reloadData()

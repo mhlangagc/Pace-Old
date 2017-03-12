@@ -76,7 +76,7 @@ class GetButtonView : BaseView {
 	
 	func handleGet() {
 		
-		workoutDetailsVC?.launchGetPopUp()
+		workoutDetailsVC?.handleDownloadWorkout()
 		
 	}
 	
