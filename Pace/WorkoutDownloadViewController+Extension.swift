@@ -141,6 +141,8 @@ extension WorkoutDownloadViewController {
 			
 //			self.createDownloadWorkout(completion: { (completed) in
 //				
+//				print("Workout Downloaded")
+//				
 //				self.dismiss(animated: true) {
 //					
 //					// Workout Save Popup
@@ -151,6 +153,8 @@ extension WorkoutDownloadViewController {
 			
 		} else {
 			
+			
+			//	TO DO: Workout Downloading to each day
 			
 			
 		}

@@ -40,6 +40,9 @@ class WorkoutDownloadViewController: UITableViewController {
 		let userDownloadedWorkoutsRef = FIRDatabase.database().reference().child("fan-User-PurchasedWorkouts").child(userID)
 		userDownloadedWorkoutsRef.updateChildValues([workoutID!: 1])
 		
+		let purchasedWorkoutsUserRef = FIRDatabase.database().reference().child("fan-PurchasedWorkout-Users").child(workoutID!)
+		purchasedWorkoutsUserRef.updateChildValues([userID: 1])
+		
 	}
 	
 	
