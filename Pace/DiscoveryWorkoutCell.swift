@@ -81,8 +81,6 @@ class DiscoveryWorkoutCell: BaseCell {
 		catergoryTitleNode.maximumNumberOfLines = 1
 		addSubnode(catergoryTitleNode)
 		
-		
-		
 	}
 	
 	override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {

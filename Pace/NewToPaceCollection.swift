@@ -30,7 +30,7 @@ class NewToPaceCollection: ASCellNode, ASCollectionDelegate, ASCollectionDataSou
 			let workoutId = snapshot.key
 			
 			let workoutRef = FIRDatabase.database().reference().child("Workouts-Teams").child(workoutId)
-			workoutRef.observeSingleEvent(of: .value, with: { (snapShot) in
+			workoutRef.observe(FIRDataEventType.value, with: { (snapShot) in
 				
 				if let dictionary = snapShot.value as? [String: AnyObject] {
 					
@@ -51,10 +51,11 @@ class NewToPaceCollection: ASCellNode, ASCollectionDelegate, ASCollectionDataSou
 					
 					completion(workoutsArray)
 					
-					
 				}
 				
+				
 			}, withCancel: nil)
+			
 			
 		}, withCancel: nil)
 		

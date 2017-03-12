@@ -23,6 +23,7 @@ class TrainersAndFriendsCollectionNode: ASCellNode, ASCollectionDelegate, ASColl
 		
 		var trainersArray = [User]()
 		
+		
 		FIRDatabase.database().reference().child("Trainers").observe(FIRDataEventType.childAdded, with: { (snapShot) in
 			
 			let trainerID = snapShot.key
@@ -43,8 +44,14 @@ class TrainersAndFriendsCollectionNode: ASCellNode, ASCollectionDelegate, ASColl
 				
 				
 			}
+
 			
 		}, withCancel: nil)
+		
+//		FIRDatabase.database().reference().child("Trainers").observe(FIRDataEventType.childAdded, with: { (snapShot) in
+//			
+//			
+//		}, withCancel: nil)
 		
 		
 	}
