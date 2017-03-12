@@ -169,26 +169,32 @@ class PaceAppServices : NSObject {
 	func retrieveTeamsFromWorkouts(completion: @escaping (_ result: [TeamsModel]) -> Void) {
 		
 		var teamsArray = [TeamsModel]()
+		let userID = FIRAuth.auth()!.currentUser!.uid
 		
-		FIRDatabase.database().reference().child("Workouts-Teams").observe(FIRDataEventType.childAdded, with: { (snapShot) in
+		FIRDatabase.database().reference().child("fan-User-PurchasedWorkouts").child(userID).observe(.childAdded, with: { (snapshot) in
 			
-			let workoutID = snapShot.key
+			FIRDatabase.database().reference().child("Workouts-Teams").child(snapshot.key).observe(FIRDataEventType.childAdded, with: { (snapShot) in
+				
+				let workoutID = snapShot.key
+				
+				if let dictionary = snapShot.value as? [String: AnyObject] {
+					
+					let workoutTeam = TeamsModel()
+					
+					workoutTeam.workoutID = workoutID
+					workoutTeam.workoutName = dictionary["name"] as? String
+					workoutTeam.backgroundImageUrl = dictionary["backgroundImageUrl"] as? String
+					workoutTeam.trainerID = dictionary["trainerID"] as? String
+					
+					teamsArray.append(workoutTeam)
+					
+					completion(teamsArray)
+					
+					
+				}
+				
+			}, withCancel: nil)
 			
-			if let dictionary = snapShot.value as? [String: AnyObject] {
-				
-				let workoutTeam = TeamsModel()
-				
-				workoutTeam.workoutID = workoutID
-				workoutTeam.workoutName = dictionary["name"] as? String
-				workoutTeam.backgroundImageUrl = dictionary["backgroundImageUrl"] as? String
-				workoutTeam.trainerID = dictionary["trainerID"] as? String
-				
-				teamsArray.append(workoutTeam)
-				
-				completion(teamsArray)
-				
-				
-			}
 			
 		}, withCancel: nil)
 		
