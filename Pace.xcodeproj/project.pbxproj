@@ -128,8 +128,6 @@
 		C608AD2C1E6EA1EC005934B3 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C608AD2B1E6EA1EC005934B3 /* PostViewController.swift */; };
 		C608AD2E1E6EA37F005934B3 /* PostViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C608AD2D1E6EA37F005934B3 /* PostViewController+Extension.swift */; };
 		C608AD301E6EA5DC005934B3 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */; };
-		C61EB9E81E753F250083C966 /* MachineLowRow.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C61EB9E51E753F250083C966 /* MachineLowRow.mp4 */; };
-		C61EB9E91E753F250083C966 /* SeatedOverheadTricepExtension.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C61EB9E61E753F250083C966 /* SeatedOverheadTricepExtension.mp4 */; };
 		C62AD06B1E6546B000BAD7C3 /* ProfileSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62AD06A1E6546B000BAD7C3 /* ProfileSettingsCell.swift */; };
 		C63439781E4174C000AC9E80 /* LoadImageWithCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63439771E4174C000AC9E80 /* LoadImageWithCache.swift */; };
 		C65CAAD71E3E78A90047B78A /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CAAD61E3E78A90047B78A /* HealthKitManager.swift */; };
@@ -318,8 +316,6 @@
 		C608AD2B1E6EA1EC005934B3 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		C608AD2D1E6EA37F005934B3 /* PostViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PostViewController+Extension.swift"; sourceTree = "<group>"; };
 		C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
-		C61EB9E51E753F250083C966 /* MachineLowRow.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = MachineLowRow.mp4; sourceTree = "<group>"; };
-		C61EB9E61E753F250083C966 /* SeatedOverheadTricepExtension.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = SeatedOverheadTricepExtension.mp4; sourceTree = "<group>"; };
 		C62AD06A1E6546B000BAD7C3 /* ProfileSettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingsCell.swift; sourceTree = "<group>"; };
 		C63439771E4174C000AC9E80 /* LoadImageWithCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadImageWithCache.swift; sourceTree = "<group>"; };
 		C65CAAD61E3E78A90047B78A /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
@@ -695,8 +691,6 @@
 				C6F770EC1E476A6200349C5B /* Lottie JSON */,
 				450D91701E040BF7009D9144 /* Fonts */,
 				45B5AD4D1DFBF71100115E2C /* LaunchScreen.storyboard */,
-				C61EB9E51E753F250083C966 /* MachineLowRow.mp4 */,
-				C61EB9E61E753F250083C966 /* SeatedOverheadTricepExtension.mp4 */,
 				45B5AD4B1DFBF71100115E2C /* Assets.xcassets */,
 			);
 			name = Assets;
@@ -1206,9 +1200,7 @@
 				45B5AD4F1DFBF71100115E2C /* LaunchScreen.storyboard in Resources */,
 				C6F770D81E4718C200349C5B /* LottieLogo2.json in Resources */,
 				45B5AD4C1DFBF71100115E2C /* Assets.xcassets in Resources */,
-				C61EB9E91E753F250083C966 /* SeatedOverheadTricepExtension.mp4 in Resources */,
 				C6F770EE1E476B0500349C5B /* S.json in Resources */,
-				C61EB9E81E753F250083C966 /* MachineLowRow.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
