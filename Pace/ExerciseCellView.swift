@@ -98,7 +98,7 @@ class ExerciseCellView : TableBaseCell {
 						
 					} else {
 						
-						exerciseDetails.text = "\(duration) mins   \(distance) km"
+						exerciseDetails.text = "\(duration) mins   •   \(distance) km"
 						
 					}
 					
@@ -108,11 +108,11 @@ class ExerciseCellView : TableBaseCell {
 					
 					if weight == 0 {
 						
-						exerciseDetails.text = "\(sets) sets    \(reps) reps"
+						exerciseDetails.text = "\(sets) sets   •   \(reps) reps"
 						
 					} else {
 						
-						exerciseDetails.text = "\(sets) sets    \(reps) reps    \(weight) kg"
+						exerciseDetails.text = "\(sets) sets   •   \(reps) reps   •   \(weight) kg"
 						
 					}
 					

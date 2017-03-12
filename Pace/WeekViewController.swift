@@ -33,7 +33,7 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		let imageName = NSUUID().uuidString
 		let ref = FIRStorage.storage().reference().child(storageReferenceName).child(imageName)
 		
-		if let uploadData = UIImageJPEGRepresentation(UIImage(named: "2")!, 0.5) {
+		if let uploadData = UIImageJPEGRepresentation(image, 0.5) {
 			ref.put(uploadData, metadata: nil, completion: { (metadata, error) in
 				
 				if error != nil {
@@ -133,12 +133,12 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		let ref = FIRDatabase.database().reference().child("Exercises")
 		let childRef = ref.childByAutoId()
 		
-		var values = ["exerciseName": "Machine Seated Chest Press",
-		              "distanceOrReps" : 15,
-		              "durationOrSets" : 2,
-		              "exerciseTime" : 0,
-		              "weight" : 10,
-		              "exerciseType" : "Strength"] as [String: Any]
+		var values = ["exerciseName": "Machine Low Row",
+		              "distanceOrReps" : 2,
+		              "durationOrSets" : 20,
+		              "exerciseTime" : 20,
+		              "weight" : 0,
+		              "exerciseType" : ExerciseType.cardio.rawValue] as [String: Any]
 		
 		properties.forEach({values[$0] = $1})	// Apend the Above Values
 		
@@ -235,10 +235,10 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		//self.createWorkoutWithImageUrl()
 		//self.uploadToFirebaseStorageUsingImage()
 		
-		//	Create Exercise
-//		if let path = Bundle.main.path(forResource: "2", ofType:"mp4") {
+		//	Create Exercise with Video
+//		if let path = Bundle.main.path(forResource: "MachineLowRow", ofType:"mp4") {
 //			
-//			self.handleVideoSelectedForUrl(url: URL(fileURLWithPath: path) as NSURL, exericiseImage: UIImage(named: "workoutImage")!)
+//			self.handleVideoSelectedForUrl(url: URL(fileURLWithPath: path) as NSURL, exericiseImage: UIImage(named: "MachineLowRow")!)
 //		}
 		
 		RoutineSetup.loadRoutineWorkouts()
