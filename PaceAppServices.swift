@@ -173,15 +173,15 @@ class PaceAppServices : NSObject {
 		
 		FIRDatabase.database().reference().child("fan-User-PurchasedWorkouts").child(userID).observe(.childAdded, with: { (snapshot) in
 			
-			FIRDatabase.database().reference().child("Workouts-Teams").child(snapshot.key).observe(FIRDataEventType.childAdded, with: { (snapShot) in
-				
-				let workoutID = snapShot.key
+			let workoutId = snapshot.key
+			
+			FIRDatabase.database().reference().child("Workouts-Teams").child(workoutId).observe(FIRDataEventType.value, with: { (snapShot) in
 				
 				if let dictionary = snapShot.value as? [String: AnyObject] {
 					
 					let workoutTeam = TeamsModel()
 					
-					workoutTeam.workoutID = workoutID
+					workoutTeam.workoutID = workoutId
 					workoutTeam.workoutName = dictionary["name"] as? String
 					workoutTeam.backgroundImageUrl = dictionary["backgroundImageUrl"] as? String
 					workoutTeam.trainerID = dictionary["trainerID"] as? String
