@@ -146,7 +146,8 @@ extension WorkoutDownloadViewController {
 //				self.dismiss(animated: true) {
 //					
 //					// Workout Save Popup
-//					
+//					self.workoutDetailsVC?.checkIfWorkoutIsDownloaded()
+//
 //				}
 //				
 //			})

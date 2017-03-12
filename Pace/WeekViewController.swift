@@ -231,8 +231,8 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	
 	lazy var paceAppService: PaceAppServices = {
 		
-		let retrieveFeaturedWorkouts = PaceAppServices()
-		return retrieveFeaturedWorkouts
+		let retrieveDownloadedWorkouts = PaceAppServices()
+		return retrieveDownloadedWorkouts
 		
 	}()
 	

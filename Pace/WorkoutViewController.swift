@@ -17,11 +17,12 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	var headerView =  WorkoutDetailsHeaderView()
 	var workoutDetailsTableView : UITableView?
 	var getButtonView : GetButtonView?
+	var startButtonView : StartButtonView?
 	let exerciseCellID = "ExerciseCellViewID"
 	var trainer = User()
 	
-	
 	var exercisesArray = [ExploreExerciseModel]()
+	var downloadedWorkoutIDArray = [String]()
 	var exploreWorkout : ExploreWorkoutModel?
 	
 	
@@ -41,14 +42,20 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		paceAppService.retrieveUserDownloadedWorkoutIDs { (IDs) in
+			
+			self.downloadedWorkoutIDArray = IDs
+			self.checkIfWorkoutIsDownloaded()
+		}
+		
 		self.setupWorkoutDetailsTableView()
 		self.setupNavigationBar()
-		self.setupGetButton()
 		view.backgroundColor = UIColor.black
 		workoutDetailsTableView?.register(ExerciseCellView.self, forCellReuseIdentifier: exerciseCellID)
 		
-		
 		self.setupHeaderView()
+		
+		
 		
 		paceAppService.retrieveTrainer(exploreWorkout: exploreWorkout!) { (workoutTrainer) in
 			
@@ -72,7 +79,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	
 	func setupWorkoutDetailsTableView() {
 		
-		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height - 144.0)
+		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height - 80.0)
 		workoutDetailsTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.plain)
 		workoutDetailsTableView?.backgroundColor = .black
 		workoutDetailsTableView?.delegate = self
@@ -82,12 +89,31 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		view.addSubview(workoutDetailsTableView!)
 		
 		
+		
+	}
+	
+	func checkIfWorkoutIsDownloaded() {
+		
+		for eachID in downloadedWorkoutIDArray {
+			
+			if eachID == exploreWorkout?.workoutID {
+				
+				self.setupStartButton()
+				
+			} else {
+				
+				self.setupGetButton()
+				
+			}
+			
+		}
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		
 		self.setupNavigationBar()
+		
 		
 	}
 	
@@ -133,10 +159,19 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 	}
 	
+	func setupStartButton() {
+		
+		startButtonView = StartButtonView.init(frame: CGRect(x: 0, y: view.frame.height - 80.0, width: view.frame.width, height: 80.0))
+		//startButtonView?.dayDetailsVC = self
+		startButtonView?.startButton?.setTitleColor(.paceBrandColor(), for: UIControlState.normal)
+		startButtonView?.startButton?.backgroundColor = UIColor.darkBlack()
+		view.addSubview(startButtonView!)
+	}
+	
 	
 	func setupGetButton() {
 		
-		getButtonView = GetButtonView.init(frame: CGRect(x: 0, y: view.frame.height - 144.0, width: view.frame.width, height: 80.0))
+		getButtonView = GetButtonView.init(frame: CGRect(x: 0, y: view.frame.height - 80.0, width: view.frame.width, height: 80.0))
 		getButtonView?.workoutDetailsVC = self
 		
 		let price = self.exploreWorkout?.workoutPrice?.rawValue
@@ -153,24 +188,6 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 	}
 
-//	lazy var popUpLauncher: GetPopupLauncher = {
-//		
-//		let launcher = GetPopupLauncher()
-//		return launcher
-//		
-//	}()
-//	
-//	func launchGetPopUp() {
-//		
-//		
-//		
-//		if let window = UIApplication.shared.keyWindow {
-//			
-//			popUpLauncher.showGetPopUp(currentView: window)
-//		}
-//		
-//	}
-	
 	func handleDownloadWorkout() {
 		
 		let workoutDownloadVC = WorkoutDownloadViewController()
