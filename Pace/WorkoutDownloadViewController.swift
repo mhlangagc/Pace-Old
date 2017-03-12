@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class WorkoutDownloadViewController: UITableViewController {
 	
 	let workoutDaysCellID = "workoutDaysCellID"
 	let SaveToMyRoutinesCellID = "SaveToMyRoutinesCellID"
+	var workoutDetailsVC : WorkoutViewController?
 	
 	override var prefersStatusBarHidden: Bool {
 		
@@ -27,6 +31,17 @@ class WorkoutDownloadViewController: UITableViewController {
 		return workoutDays
 		
 	}()
+	
+	func createDownloadWorkout(completion: @escaping (_ completed: Bool) -> ()) {
+		
+		let userID = FIRAuth.auth()!.currentUser!.uid
+		let workoutID = workoutDetailsVC?.exploreWorkout?.workoutID
+		
+		let userDownloadedWorkoutsRef = FIRDatabase.database().reference().child("fan-User-PurchasedWorkouts").child(userID)
+		userDownloadedWorkoutsRef.updateChildValues([workoutID!: 1])
+		
+	}
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -65,18 +80,7 @@ class WorkoutDownloadViewController: UITableViewController {
 		
 	}
 	
-//	func setupSaveToRoutinesButton() {
-//		
-//		if let window = UIApplication.shared.keyWindow {
-//			
-//			saveToMyWorkoutsView = SaveToMyRoutinesView.init(frame: CGRect(x: 0, y: window.frame.height - 115.0, width: window.frame.width, height: 70.0))
-//			saveToMyWorkoutsView?.workoutDownloadVC = self
-//			view.addSubview(saveToMyWorkoutsView!)
-//			
-//		}
-//		
-//	}
-	
+
 	func handleSaveWorkoutToRoutine() {
 		
 		//	TO DO

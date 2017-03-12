@@ -137,6 +137,26 @@ extension WorkoutDownloadViewController {
 	//  TableView Delegation
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
+		if indexPath.section == 0 {
+			
+//			self.createDownloadWorkout(completion: { (completed) in
+//				
+//				self.dismiss(animated: true) {
+//					
+//					// Workout Save Popup
+//					
+//				}
+//				
+//			})
+			
+		} else {
+			
+			
+			
+		}
+		
+		
+		
 		tableView.deselectRow(at: indexPath as IndexPath, animated: true)
 		
 	}

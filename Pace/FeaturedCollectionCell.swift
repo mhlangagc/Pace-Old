@@ -46,6 +46,7 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 			self.featuredCollectionNode?.reloadData()
 			
 			self.setupCollectionNodes()
+		
 		}
 		
 		
