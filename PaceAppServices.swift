@@ -288,7 +288,21 @@ class PaceAppServices : NSObject {
 		
 	}
 
-
+	func retrieveUserDownloadedWorkoutIDs(completion: @escaping (_ result: [String]) -> Void) {
+		
+		var workoutIDArray = [String]()
+		let userID = FIRAuth.auth()!.currentUser!.uid
+		
+		let fanUserDownloadedRef = FIRDatabase.database().reference().child("fan-User-PurchasedWorkouts").child(userID)
+		
+		fanUserDownloadedRef.observe(.childAdded, with: { (snapshot) in
+			
+			workoutIDArray.append(snapshot.key)
+			completion(workoutIDArray)
+			
+		}, withCancel: nil)
+		
+	}
 	
 	
 	func retrieveTrainer(exploreWorkout: ExploreWorkoutModel, completion: @escaping (_ result: User) -> Void) {

@@ -105,7 +105,7 @@ class WorkoutCellView : TableBaseCell {
 			if let workoutNameFound = workoutModel?.name, let workoutImageUrl = workoutModel?.backgroundImageUrl {
 				
 				workoutName.text = workoutNameFound
-				workoutImage.loadImageFromUrlString(urlString: workoutImageUrl)
+				workoutImage.loadImageFromCacheWithUrlString(urlString: workoutImageUrl)
 				
 			}
 			

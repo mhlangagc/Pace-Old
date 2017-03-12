@@ -91,7 +91,7 @@ class DayDetailsHeaderView : BaseView, UICollectionViewDelegate, UICollectionVie
 	
 	func handleShowProfile() {
 		
-		dayDetailVC?.handleOpenProfile()
+		dayDetailVC?.handleShowProfile()
 		
 	}
 	

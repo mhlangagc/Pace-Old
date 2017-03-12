@@ -35,7 +35,7 @@ extension DayViewController {
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		
-		return "5 EXERCISES"
+		return "\(exercisesArray.count) EXERCISES"
 		
 		
 	}
@@ -55,7 +55,7 @@ extension DayViewController {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		return (exercisesArray?.count)!
+		return exercisesArray.count
 		
 	}
 	
@@ -76,9 +76,9 @@ extension DayViewController {
 			exerciseCell!.selectedBackgroundView = backgroundView
 		}
 		
-		//exerciseCell?.exerciseModel = exercisesArray?[indexPath.item]
+		exerciseCell?.exerciseModel = exercisesArray[indexPath.item]
 		exerciseCell?.backgroundColor = UIColor.black
-		//exerciseCell?.videoDelegate = self
+		//	exerciseCell?.videoDelegate = self
 		
 		return exerciseCell!
 		
