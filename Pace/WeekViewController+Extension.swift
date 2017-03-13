@@ -52,7 +52,7 @@ extension WeekViewController {
 		
 		if section == 0 {
 			
-			return ""
+			return nil
 			
 		} else {
 			
@@ -67,8 +67,8 @@ extension WeekViewController {
 		
 		if section == 0 {
 			
-			let sectionInfo = RoutineSetup.fetchedResultsController.sections![section].numberOfObjects
-			return sectionInfo
+			//let sectionInfo = RoutineSetup.fetchedResultsController.sections![section].numberOfObjects
+			return weekDays.count
 			
 		} else {
 			
@@ -82,8 +82,8 @@ extension WeekViewController {
 		
 		if indexPath.section == 0 {
 			
-			let indexPathFound = IndexPath(item: indexPath.row, section: 0)
-			let thisDay = RoutineSetup.fetchedResultsController.object(at: indexPathFound) as WorkoutsModel
+			//	let indexPathFound = IndexPath(item: indexPath.row, section: 0)
+			let thisDay = weekDays[indexPath.item]	//RoutineSetup.fetchedResultsController.object(at: indexPathFound) as WorkoutsModel
 			
 			var routineCell = tableView.dequeueReusableCell(withIdentifier: weekCellID) as? WeekTableCell
 			
@@ -101,7 +101,7 @@ extension WeekViewController {
 				
 				routineCell?.todayIndicatorView.isHidden = false
 				routineCell?.dayNameLabel.textColor = UIColor.white
-				routineCell?.todayIndicatorView.backgroundColor = UIColor(fromHexString: thisDay.colour)
+				routineCell?.todayIndicatorView.backgroundColor = thisDay.color	//UIColor(fromHexString: thisDay.colour)
 				
 			} else {
 				
@@ -176,39 +176,21 @@ extension WeekViewController {
 		
 		if indexPath.section == 0 {
 			
-//			if indexPath.item == 1 || indexPath.item == 2 || indexPath.item == 5 || indexPath.item == 6 {
-//				
-//				let daySelected = weeklyWorkoutsArray?[indexPath.item]
-//				selectedDayColour = (daySelected?.color)!
-//				
-//				let emptyDayVC = EmptyDayViewController()
-//				emptyDayVC.routineWorkoutModel = daySelected
-//				emptyDayVC.hidesBottomBarWhenPushed = true
-//				self.navigationController?.pushViewController(emptyDayVC, animated: true)
-//				
-//				weekTableView?.deselectRow(at: indexPath, animated: true)
-//				
-//			} else {
-//				
-//				let daySelected = weeklyWorkoutsArray?[indexPath.item]
-//				selectedDayColour = (daySelected?.color)!
-//				
-//				let dayDetailsVC = DayViewController()
-//				dayDetailsVC.routineWorkoutModel = daySelected
-//				dayDetailsVC.hidesBottomBarWhenPushed = true
-//				self.navigationController?.pushViewController(dayDetailsVC, animated: true)
-//				
-//			}
+			let daySelected = weekDays[indexPath.item]
+			selectedDayColour = daySelected.color!
+			
+			let emptyDayVC = EmptyDayViewController()
+			emptyDayVC.routineWorkoutModel = daySelected
+			emptyDayVC.hidesBottomBarWhenPushed = true
+			self.navigationController?.pushViewController(emptyDayVC, animated: true)
+			
+			weekTableView?.deselectRow(at: indexPath, animated: true)
 			
 			
 		} else {
 			
-			//	let daySelected = downloadedWorkoutsArray[indexPath.item]
-			//	selectedDayColour = (daySelected.color)!
-			
 			let dayDetailsVC = DayViewController()
 			dayDetailsVC.exploreWorkout = downloadedWorkoutsArray[indexPath.item]
-			//	dayDetailsVC.routineWorkoutModel = daySelected
 			dayDetailsVC.hidesBottomBarWhenPushed = true
 			self.navigationController?.pushViewController(dayDetailsVC, animated: true)
 			
