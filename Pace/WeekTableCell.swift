@@ -52,7 +52,7 @@ class WeekTableCell: TableBaseCell {
 		
 	}()
 	
-	var  routineModel : WorkoutsModel? {
+	var  routineModel : WorkoutDaysModel? {
 		
 		didSet {
 			
@@ -62,7 +62,7 @@ class WeekTableCell: TableBaseCell {
 				
 			}
 			
-			if let workoutName  = routineModel?.workoutName, let dayColor = UIColor(fromHexString: routineModel?.colour) {
+			if let workoutName  = routineModel?.workoutName, let dayColor = routineModel?.color { //	UIColor(fromHexString: routineModel?.colour) {
 				
 				workoutNameText.text = workoutName
 				workoutNameText.textColor = dayColor

@@ -38,15 +38,11 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		return false
 		
 	}
+	
+	
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-//		paceAppService.retrieveUserDownloadedWorkoutIDs { (IDs) in
-//			
-//			self.downloadedWorkoutIDArray = IDs
-//			self.checkIfWorkoutIsDownloaded()
-//		}
 		
 		self.setupWorkoutDetailsTableView()
 		self.setupNavigationBar()
@@ -63,7 +59,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 			if let trainerName = workoutTrainer.name, let trainerImageUrl = workoutTrainer.profileImageUrl {
 				
 				self.headerView.profileNameButton?.setTitle("Created by \(trainerName)", for: UIControlState.normal)
-				self.headerView.profileImageView?.loadImageFromUrlString(urlString: trainerImageUrl)
+				self.headerView.profileImageView?.loadImageFromCacheWithUrlString(urlString: trainerImageUrl)
 				
 			}
 			
@@ -114,6 +110,11 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		super.viewWillAppear(true)
 		
 		self.setupNavigationBar()
+		//		paceAppService.retrieveUserDownloadedWorkoutIDs { (IDs) in
+		//
+		//			self.downloadedWorkoutIDArray = IDs
+		//			self.checkIfWorkoutIsDownloaded()
+		//		}
 		
 		
 	}

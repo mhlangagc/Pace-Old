@@ -229,6 +229,15 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		
 	}
 	
+	var weekDays = [WorkoutDaysModel]()
+	
+	lazy var weekRoutineViewModel: WorkoutDaysViewModel = {
+		
+		let workoutDays = WorkoutDaysViewModel()
+		return workoutDays
+		
+	}()
+	
 	lazy var paceAppService: PaceAppServices = {
 		
 		let retrieveDownloadedWorkouts = PaceAppServices()
@@ -251,7 +260,7 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //		}
 		
 		
-		
+		weekDays = weekRoutineViewModel.setupWeekRoutines()
 		RoutineSetup.loadRoutineWorkouts()
 		
 		self.setupWeekTableView()
