@@ -62,7 +62,7 @@ class SettingsCellView : TableBaseCell {
 	
 	let dividerLineView: UIView = {
 		let view = UIView()
-		view.backgroundColor = UIColor.headerBlack()
+		view.backgroundColor = UIColor.darkerBlack()
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
