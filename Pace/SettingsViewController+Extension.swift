@@ -16,33 +16,29 @@ import SafariServices
 
 extension SettingsViewController {
 	
-	func numberOfSections(in tableNode: ASTableNode) -> Int {
-		
-		return 6
-		
+	func numberOfSections(in tableView: UITableView) -> Int {
+	
+		return 5
+	
 	}
 	
-	func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
 		switch section {
 			
 		case 0:
 			
-			return 1
+			return (topSettingsArray?.count)!
 			
 		case 1:
 			
-			return (topSettingsArray?.count)!
+			return (trainerJoinArray?.count)!
 			
 		case 2:
 			
-			return (trainerJoinArray?.count)!
-			
-		case 3:
-			
 			return (middleSectionArray?.count)!
 			
-		case 4:
+		case 3:
 			
 			return (bottomSectionArray?.count)!
 			
@@ -52,57 +48,58 @@ extension SettingsViewController {
 		}
 		
 	}
-	
-	func tableNode(_ tableNode: ASTableNode, nodeForRowAt indexPath: IndexPath) -> ASCellNode {
+
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let settingsCell = SettingsCell()
-		let profileCell = ProfileSettingsCell()
+		var settingsCell = tableView.dequeueReusableCell(withIdentifier: settingsCellID) as? SettingsCellView
+		
+		if (settingsCell == nil) {
+			tableView.register(SettingsCellView.self, forCellReuseIdentifier: settingsCellID)
+			settingsCell = tableView.dequeueReusableCell(withIdentifier: settingsCellID) as? SettingsCellView
+		}
+		
+		if (settingsCell!.selectedBackgroundView != nil) {
+			
+			let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: settingsCell!.frame.size.width, height: settingsCell!.frame.size.height))
+			backgroundView.backgroundColor = UIColor.darkBlack()
+			settingsCell!.selectedBackgroundView = backgroundView
+		}
+		
 		
 		switch indexPath.section {
 			
 		case 0:
 			
-			profileSetup.retrieveUser(completion: { (userFound) in
-				
-				profileCell.userModel  = userFound
-				
-			})
-			
-			return profileCell
-			
+			settingsCell?.settingsModel = topSettingsArray?[indexPath.item]
+			return settingsCell!
 			
 		case 1:
 			
-			settingsCell.settingsModel = topSettingsArray?[indexPath.item]
-			return settingsCell
+			settingsCell?.settingsModel = trainerJoinArray?[indexPath.item]
+			return settingsCell!
 			
 		case 2:
 			
-			settingsCell.settingsModel = trainerJoinArray?[indexPath.item]
-			return settingsCell
+			settingsCell?.settingsModel = middleSectionArray?[indexPath.item]
+			return settingsCell!
 			
 		case 3:
 			
-			settingsCell.settingsModel = middleSectionArray?[indexPath.item]
-			return settingsCell
-			
-		case 4:
-			
-			settingsCell.settingsModel = bottomSectionArray?[indexPath.item]
-			return settingsCell
+			settingsCell?.settingsModel = bottomSectionArray?[indexPath.item]
+			return settingsCell!
 			
 		default:
 			
-			settingsCell.settingsModel = logoutArray?[indexPath.item]
-			settingsCell.settingsTitle.layer.opacity = 0.3
-			return settingsCell
+			settingsCell?.settingsModel = logoutArray?[indexPath.item]
+			settingsCell?.settingName.layer.opacity = 0.3
+			return settingsCell!
 		}
-		
-		
+
+
 		
 	}
 	
-	func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		switch indexPath.section {
 			
@@ -122,13 +119,13 @@ extension SettingsViewController {
 				
 				print("Change Units")
 				
-			
+				
 			} else {
 				
 				print("Health Kit")
-			
+				
 			}
-
+			
 			
 		case 2:
 			
@@ -199,10 +196,16 @@ extension SettingsViewController {
 			}
 		}
 
-		
-		tableNode.deselectRow(at: indexPath, animated: true)
+		tableView.deselectRow(at: indexPath, animated: true)
 		
 	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		
+		return 55
+		
+	}
+	
 	
 	func handleLogout() {
 		
