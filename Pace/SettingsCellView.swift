@@ -53,7 +53,7 @@ class SettingsCellView : TableBaseCell {
 		
 		let imageView = UIImageView()
 		imageView.contentMode = .scaleAspectFill
-		imageView.image = UIImage(named: "downIndicator")
+		imageView.image = UIImage(named: "DisclosureIndicator")
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		return imageView
 		
