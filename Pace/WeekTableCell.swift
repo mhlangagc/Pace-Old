@@ -20,7 +20,7 @@ class WeekTableCell: TableBaseCell {
 	let dayNameLabel: UILabel = {
 		
 		let label = UILabel()
-		label.textColor = UIColor.greyBlackColor()
+		label.textColor = UIColor.greyWhite()
 		label.textAlignment = .left
 		textSpacing(label, spacing: 1.0)
 		label.font = UIFont.systemFont(ofSize: 20.0, weight: UIFontWeightBold)

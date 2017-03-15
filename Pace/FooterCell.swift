@@ -22,7 +22,7 @@ class FooterCell: BaseCell {
 		
 		self.setupNodesInView()
 		
-		backgroundColor = UIColor.black
+		backgroundColor = UIColor.paceBackgroundBlack()
 	
 	}
 	
@@ -35,7 +35,7 @@ class FooterCell: BaseCell {
 			string: "Extras",
 			attributes: [
 				NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightHeavy),
-				NSForegroundColorAttributeName: UIColor.greyBlackColor(),
+				NSForegroundColorAttributeName: UIColor.greyWhite(),
 				NSKernAttributeName: -0.4,
 				NSParagraphStyleAttributeName: alignmentStyle
 			])

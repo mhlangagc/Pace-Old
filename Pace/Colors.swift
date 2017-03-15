@@ -39,6 +39,10 @@ public extension UIColor {
 		return UIColor(fromHexString: "080A0B")
 	}
 	
+	static func paceBackgroundBlack() -> UIColor {
+		return UIColor(fromHexString: "0A0C0E")
+	}
+	
 	//	Day Colors
 	static func sunday() -> UIColor {
 		return UIColor(fromHexString: "F71952")

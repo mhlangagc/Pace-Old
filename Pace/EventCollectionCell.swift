@@ -85,7 +85,7 @@ class EventCollectionCell: BaseCell {
 	
 	func setupImageAndText() {
 		
-		eventImageNode.backgroundColor = UIColor.darkBlack()
+		eventImageNode.backgroundColor = UIColor.black
 		eventImageNode.contentMode = .scaleAspectFill
 		eventImageNode.layer.cornerRadius = 10.0
 		eventImageNode.clipsToBounds = true

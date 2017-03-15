@@ -304,7 +304,7 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		
-		UIApplication.shared.statusBarView?.backgroundColor = .black
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
 		navigationItem.title = "My Routine"
 		self.navigationController?.navigationBar.isHidden = true
 	

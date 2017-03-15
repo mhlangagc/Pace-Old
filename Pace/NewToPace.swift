@@ -38,7 +38,7 @@ class PopularLabel: BaseCell {
 			string: "Free Workouts",
 			attributes: [
 				NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightHeavy),
-				NSForegroundColorAttributeName: UIColor.greyBlackColor(),
+				NSForegroundColorAttributeName: UIColor.greyWhite(),
 				NSKernAttributeName: 0.0,
 				NSParagraphStyleAttributeName: alignmentStyle
 			])
