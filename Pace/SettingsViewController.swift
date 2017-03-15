@@ -7,16 +7,17 @@
 //
 
 import UIKit
-import AsyncDisplayKit
 import MessageUI
 import SafariServices
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class SettingsViewController: ASViewController<ASDisplayNode>, ASTableDelegate, ASTableDataSource, MFMailComposeViewControllerDelegate {
+class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate {
 	
-	var settingsTableNode : ASTableNode?
+	var settingsTableView : UITableView?
+	let settingsCellID = "settingsCellID"
+	var settingsHeaderView =  ProfileSettingsHeaderView()
 	
 	var topSettingsArray : [SettingsModel]?
 	var trainerJoinArray : [SettingsModel]?
@@ -39,32 +40,45 @@ class SettingsViewController: ASViewController<ASDisplayNode>, ASTableDelegate, 
 		
 	}()
 	
-	init() {
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(true)
 		
-		settingsTableNode = ASTableNode(style:.grouped)
-		super.init(node: settingsTableNode!)
+		self.navigationController?.navigationBar.tintColor = UIColor.white
+		self.navigationController?.navigationBar.barTintColor = UIColor.black
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
 		
-		self.setupSettingsNode()
+	}
+	
+	func setupWorkoutDetailsTableView() {
+		
+		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height)
+		settingsTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.grouped)
+		settingsTableView?.backgroundColor = UIColor.black
+		settingsTableView?.delegate = self
+		settingsTableView?.dataSource = self
+		settingsTableView?.separatorStyle = .none
+		settingsTableView?.showsVerticalScrollIndicator = false
+		view.addSubview(settingsTableView!)
 		
 		topSettingsArray = SettingsSetup.createTopSettings()
 		trainerJoinArray = SettingsSetup.createJoinTheTrainers()
 		middleSectionArray = SettingsSetup.createMiddleSettings()
 		bottomSectionArray = SettingsSetup.createBottomSettings()
 		logoutArray = SettingsSetup.createLogout()
-	}
-	
-	required init?(coder aDecoder: NSCoder) {
-		fatalError("Storyboards are incompatible with truth and beauty")
+		
+		
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		settingsTableView?.register(SettingsCellView.self, forCellReuseIdentifier: settingsCellID)
 		self.navigationController?.navigationBar.isHidden = false
 		navigationLineBar()
-		self.navigationItem.title = "Settings"
+		self.navigationItem.title = "Me"
 		view.backgroundColor = .black
 		self.navigationBarItems()
+		self.setupWorkoutDetailsTableView()
 		
 		
 	}
@@ -73,33 +87,59 @@ class SettingsViewController: ASViewController<ASDisplayNode>, ASTableDelegate, 
 		super.viewWillAppear(true)
 		
 		self.navigationController?.navigationBar.isHidden = false
-		self.navigationItem.title = "Settings"
+		self.navigationItem.title = "Me"
 		navigationNoLineBar()
 		self.navigationBarItems()
+		self.setupHeaderView()
+		self.settingsTableView?.reloadData()
 		
 	}
 	
 	func navigationBarItems() {
 		
 		let titleLabel = UILabel(frame: CGRect(x: ((view.frame.width - 100) * 0.5), y: 5, width: 100, height: view.frame.height))
-		titleLabel.text = "Settings"
+		titleLabel.text = "Me"
 		titleLabel.textAlignment = .center
 		titleLabel.textColor = UIColor.white
 		titleLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightBold)
 		textSpacing(titleLabel, spacing: 0.5)
 		navigationItem.titleView = titleLabel
 	}
-
-
-	func setupSettingsNode() {
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		sizeHeaderToFit()
+	}
+	
+	func sizeHeaderToFit() {
 		
-		self.settingsTableNode?.delegate = self
-		self.settingsTableNode?.dataSource = self
-		self.settingsTableNode?.backgroundColor = UIColor.headerBlack()
-		self.settingsTableNode?.view.separatorStyle = .none
-		self.settingsTableNode?.view.showsVerticalScrollIndicator = false
+		settingsHeaderView.setNeedsLayout()
+		settingsHeaderView.layoutIfNeeded()
+		
+		let height = settingsHeaderView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+		var frame = settingsHeaderView.frame
+		frame.size.height = height
+		settingsHeaderView.frame = frame
+	}
+	
+	func setupHeaderView() {
+		
+		settingsHeaderView  = ProfileSettingsHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 270.0))
+		
+		profileSetup.retrieveUser(completion: { (userFound) in
+			
+			if let userName  = userFound.name, let profileImageURL = userFound.profileImageUrl {
+				
+				self.settingsHeaderView.profileNameButton?.setTitle(userName, for: UIControlState.normal)
+				self.settingsHeaderView.profileImageView?.loadImageFromUrlString(urlString: profileImageURL)
+			}
+				
+		})
+
+		settingsTableView?.tableHeaderView = settingsHeaderView
 		
 	}
+
 	
 	func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
 		controller.dismiss(animated: true, completion: nil)
