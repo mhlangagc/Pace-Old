@@ -35,7 +35,7 @@ class JustAddedCollection: ASCellNode, ASCollectionDelegate, ASCollectionDataSou
 		flowLayout.scrollDirection = .horizontal
 		flowLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 10.0, bottom: 15.0, right: 15.0)
 		newWorkoutsCollectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
-		newWorkoutsCollectionNode?.backgroundColor = .black
+		newWorkoutsCollectionNode?.backgroundColor = .paceBackgroundBlack()
 		addSubnode(newWorkoutsCollectionNode!)
 		
 		paceAppService.retrieveMalePopularWorkouts { (freeWorkoutsArray) in

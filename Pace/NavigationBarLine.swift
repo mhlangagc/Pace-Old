@@ -43,6 +43,19 @@ extension UIViewController {
 		
 	}
 	
+	
+	public func navigationNoLineTranslucentBar() {
+		
+		self.navigationController?.navigationBar.isHidden = false
+		self.navigationController?.navigationBar.tintColor = UIColor.white
+		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+		self.navigationController?.navigationBar.shadowImage = UIImage()
+		self.navigationController?.navigationBar.isTranslucent = true
+		self.navigationController?.navigationBar.barStyle = .black
+		
+		
+	}
+	
 	public func navigationClearBar() {
 		
 		self.navigationController?.navigationBar.isHidden = false

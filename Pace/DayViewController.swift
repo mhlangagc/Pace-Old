@@ -44,7 +44,7 @@ class DayViewController : UIViewController, UITableViewDataSource, UITableViewDe
 		self.setupWorkoutDetailsTableView()
 		self.setupNavigationBar()
 		self.setupStartButton()
-		view.backgroundColor = UIColor.black
+		view.backgroundColor = UIColor.paceBackgroundBlack()
 		workoutDetailsTableView?.register(ExerciseCellView.self, forCellReuseIdentifier: exerciseCellID)
 		
 		paceAppService.retrieveTrainer(exploreWorkout: exploreWorkout!) { (workoutTrainer) in
@@ -74,7 +74,7 @@ class DayViewController : UIViewController, UITableViewDataSource, UITableViewDe
 		
 		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height - 144.0)
 		workoutDetailsTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.plain)
-		workoutDetailsTableView?.backgroundColor = .black
+		workoutDetailsTableView?.backgroundColor = .paceBackgroundBlack()
 		workoutDetailsTableView?.delegate = self
 		workoutDetailsTableView?.dataSource = self
 		workoutDetailsTableView?.separatorStyle = .none

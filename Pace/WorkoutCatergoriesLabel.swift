@@ -32,7 +32,7 @@ class EventCollectionLabel: BaseCell {
 			string: "Sports Events",
 			attributes: [
 				NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightHeavy),
-				NSForegroundColorAttributeName: UIColor.greyBlackColor(),
+				NSForegroundColorAttributeName: UIColor.greyWhite(),
 				NSKernAttributeName: 0.0,
 				NSParagraphStyleAttributeName: alignmentStyle
 			])

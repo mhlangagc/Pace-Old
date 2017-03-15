@@ -115,8 +115,8 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		self.navigationBarItems()
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.black
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
+		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
 		
 		
 	}

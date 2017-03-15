@@ -29,12 +29,12 @@ class CustomTabBarController: ASTabBarController {
         tabBar.shadowImage = nil
         tabBar.backgroundImage = nil
         
-        UITabBar.appearance().barTintColor = UIColor.black
+        UITabBar.appearance().barTintColor = UIColor.paceBackgroundBlack()
         tabBarController?.tabBar.clipsToBounds = true
-        UITabBar.appearance().selectionIndicatorImage = UIImage().makeImageWithColorAndSize(UIColor.paceBrandColor(), size: CGSize(width: tabBar.frame.width/3, height: tabBar.frame.height))
-        UITabBar.appearance().tintColor = UIColor.paceBrandColor()
+        UITabBar.appearance().selectionIndicatorImage = UIImage().makeImageWithColorAndSize(UIColor.greyWhite(), size: CGSize(width: tabBar.frame.width/3, height: tabBar.frame.height))
+        UITabBar.appearance().tintColor = UIColor.greyWhite()
 		UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.greyBlackColor()], for: .normal)
-		UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.paceBrandColor()], for: .selected)
+		UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.greyWhite()], for: .selected)
 		
         for i in 0..<Int((tabBar.items?.count)!) {
             
@@ -60,7 +60,7 @@ class CustomTabBarController: ASTabBarController {
 				
 				case 3:
 				
-					imageName = "profile-male"
+					imageName = "profile-female"
 				
 				default: break
 				
