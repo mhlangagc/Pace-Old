@@ -91,7 +91,7 @@ extension SettingsViewController {
 		default:
 			
 			settingsCell?.settingsModel = logoutArray?[indexPath.item]
-			settingsCell?.settingName.layer.opacity = 0.3
+			settingsCell?.settingName.textColor = UIColor.darkBlack()
 			return settingsCell!
 		}
 
@@ -107,15 +107,6 @@ extension SettingsViewController {
 			
 			if indexPath.item == 0 {
 				
-				print("Edit Profile")
-				
-			}
-			
-			
-		case 1:
-			
-			if indexPath.item == 0 {
-				
 				
 				print("Change Units")
 				
@@ -127,7 +118,7 @@ extension SettingsViewController {
 			}
 			
 			
-		case 2:
+		case 1:
 			
 			if indexPath.item == 0 {
 				
@@ -144,7 +135,7 @@ extension SettingsViewController {
 				
 			}
 			
-		case 3:
+		case 2:
 			
 			if indexPath.item == 0 {
 				
@@ -161,7 +152,7 @@ extension SettingsViewController {
 				
 			}
 			
-		case 4:
+		case 3:
 			
 			if indexPath.item == 0 {
 				
