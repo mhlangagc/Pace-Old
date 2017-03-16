@@ -121,7 +121,7 @@ class WorkoutCellView : TableBaseCell {
 	override func setupViews() {
 		super.setupViews()
 		
-		backgroundColor = UIColor.paceBackgroundBlack()
+		backgroundColor = UIColor.closeBlack()
 		self.setupView()
 		
 	}

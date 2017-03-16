@@ -94,7 +94,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		collectionNode?.view.alwaysBounceVertical = true
 		collectionNode?.view.allowsSelection = false
 		collectionNode?.view.keyboardDismissMode = .interactive
-		collectionNode?.view.contentInset = UIEdgeInsets(top: 20, left: 0.0, bottom: 56, right: 0.0)
+		collectionNode?.view.contentInset = UIEdgeInsets(top: 20, left: 0.0, bottom: 60, right: 0.0)
 		collectionNode?.view.showsVerticalScrollIndicator = false
 		collectionNode?.view.backgroundColor = UIColor.paceBackgroundBlack()
 		
@@ -172,8 +172,8 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 			
 			self.setupCollectionView()
 			
-			//			let indexPath = IndexPath(item: 0, section: 0)
-			//			self.collectionNode?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.top, animated: true)
+			let indexPath = IndexPath(item: 0, section: 0)
+			self.collectionNode?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.bottom, animated: true)
 			
 		}
 		
