@@ -25,16 +25,13 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 	
 	lazy var inputTextField: UITextField = {
 		
-		let textField = TextField()
+		let textField = UITextField()
 		textField.borderStyle = .none
 		textField.keyboardType = .default
 		textField.keyboardAppearance = .dark
 		textField.backgroundColor = .black
 		textField.autocapitalizationType = .sentences
 		textField.textColor = UIColor.white
-		textField.layer.cornerRadius = 50.0 * 0.5
-		textField.layer.borderWidth = 1.5
-		textField.layer.borderColor = UIColor.greyBlackColor().cgColor
 		textField.tintColor = UIColor.paceBrandColor()
 		textField.attributedPlaceholder = NSAttributedString(string:"Ask the team anything...",
 		                                                     attributes:[NSForegroundColorAttributeName: UIColor.greyWhite()])
@@ -66,8 +63,6 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		sendImageButton.contentMode = .scaleAspectFill
 		sendImageButton.isUserInteractionEnabled = true
 		sendImageButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectImage)))
-		sendImageButton.layer.cornerRadius = 2.5
-		sendImageButton.layer.masksToBounds = true
 		sendImageButton.translatesAutoresizingMaskIntoConstraints = false
 		return sendImageButton
 		
@@ -111,28 +106,27 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		let containerView = UIView()
 		containerView.backgroundColor = UIColor.black
-		containerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 65)
+		containerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 56)
 		
 		
 		containerView.addSubview(self.sendButton)
 		self.sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -15.0).isActive = true
 		self.sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-		self.sendButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-		self.sendButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-		
+		self.sendButton.widthAnchor.constraint(equalToConstant: 32).isActive = true
+		self.sendButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
 		
 		containerView.addSubview(self.addImageButton)
-		self.addImageButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10.0).isActive = true
+		self.addImageButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 15.0).isActive = true
 		self.addImageButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-		self.addImageButton.widthAnchor.constraint(equalToConstant: 26).isActive = true
-		self.addImageButton.heightAnchor.constraint(equalToConstant: 22).isActive = true
+		self.addImageButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
+		self.addImageButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
 		
 		
 		containerView.addSubview(self.inputTextField)
-		self.inputTextField.leftAnchor.constraint(equalTo: self.addImageButton.rightAnchor, constant: 8).isActive = true
+		self.inputTextField.leftAnchor.constraint(equalTo: self.addImageButton.rightAnchor, constant: 15).isActive = true
 		self.inputTextField.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
 		self.inputTextField.rightAnchor.constraint(equalTo: self.sendButton.leftAnchor, constant: -10.0).isActive = true
-		self.inputTextField.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+		self.inputTextField.heightAnchor.constraint(equalToConstant: 45.0).isActive = true
 		
 		
 		return containerView
