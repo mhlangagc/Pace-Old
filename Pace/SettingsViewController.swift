@@ -53,7 +53,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 		
 		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height)
 		settingsTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.grouped)
-		settingsTableView?.backgroundColor = UIColor(fromHexString: "050505")
+		settingsTableView?.backgroundColor = UIColor.black
 		settingsTableView?.delegate = self
 		settingsTableView?.dataSource = self
 		settingsTableView?.separatorStyle = .none
@@ -80,8 +80,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 		self.setupWorkoutDetailsTableView()
 		
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor(fromHexString: "050505")
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor(fromHexString: "050505")
+		self.navigationController?.navigationBar.barTintColor = UIColor.closeBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.closeBlack()
 		
 		
 	}
@@ -95,6 +95,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 		self.navigationBarItems()
 		self.setupHeaderView()
 		self.settingsTableView?.reloadData()
+		
+		navigationNoLineBar()
+		self.navigationController?.navigationBar.barTintColor = UIColor.closeBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.closeBlack()
 		
 	}
 	

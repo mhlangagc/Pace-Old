@@ -392,14 +392,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		450081FC1DFC8D6D006AA959 /* Sports Events in Cape Town */ = {
+		450081FC1DFC8D6D006AA959 /* Clubs */ = {
 			isa = PBXGroup;
 			children = (
 				450081FD1DFC8D8A006AA959 /* WorkoutCatergoriesLabel.swift */,
 				450081FF1DFC9051006AA959 /* EventCollection.swift */,
 				450082011DFC90F3006AA959 /* EventCollectionCell.swift */,
 			);
-			name = "Sports Events in Cape Town";
+			name = Clubs;
 			sourceTree = "<group>";
 		};
 		450082041DFC95F5006AA959 /* Trainers */ = {
@@ -465,7 +465,7 @@
 				451276131DFC835A008B57DE /* DiscoveryWorkoutCell.swift */,
 				45A37F321DFC424400049493 /* FeaturedSection */,
 				45C247441DFC600100B16AEE /* Free workouts */,
-				450081FC1DFC8D6D006AA959 /* Sports Events in Cape Town */,
+				450081FC1DFC8D6D006AA959 /* Clubs */,
 				45ECF68B1E152F0C0032F6CC /* Popular on Pace */,
 				450082041DFC95F5006AA959 /* Trainers */,
 				45C214F01E05D87900C5BCCF /* Footer Cell */,

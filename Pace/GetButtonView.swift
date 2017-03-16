@@ -19,7 +19,8 @@ class GetButtonView : BaseView {
 		super.setupViews()
 		
 		self.setupButtons()
-	
+		backgroundColor = UIColor.black
+		
 	}
 	
 	func setupButtons() {

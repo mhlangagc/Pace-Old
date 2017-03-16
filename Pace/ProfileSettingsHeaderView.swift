@@ -16,7 +16,7 @@ class ProfileSettingsHeaderView : BaseView {
 	override func setupViews() {
 		super.setupViews()
 		
-		backgroundColor = UIColor.paceBackgroundBlack()
+		backgroundColor = UIColor.closeBlack()
 		
 		self.addViews()
 	}
