@@ -43,9 +43,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(true)
 		
-		self.navigationController?.navigationBar.tintColor = UIColor.white
-		self.navigationController?.navigationBar.barTintColor = UIColor.black
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
+		navigationNoLineBar()
+		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
 		
 	}
 	
@@ -74,11 +74,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 		
 		settingsTableView?.register(SettingsCellView.self, forCellReuseIdentifier: settingsCellID)
 		self.navigationController?.navigationBar.isHidden = false
-		navigationLineBar()
 		self.navigationItem.title = "Me"
 		view.backgroundColor = .black
 		self.navigationBarItems()
 		self.setupWorkoutDetailsTableView()
+		
+		navigationNoLineBar()
+		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
 		
 		
 	}

@@ -177,25 +177,6 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 			
 		}
 		
-//		paceAppService.retrieveTrainer(exploreWorkout: exploreWorkout!) { (workoutTrainer) in
-//			
-//			self.trainer = workoutTrainer
-//			
-//			if workoutTrainer.profileImageUrl != nil {
-//				
-//				self.trainerButton = UIButton(type: .system)
-//				self.trainerButton?.frame = CGRect(x: 0, y: 0, width: 35, height: 35)
-//				self.trainerButton?.addTarget(self, action: #selector(self.handleViewTrainerProfile), for: UIControlEvents.touchUpInside)
-//				
-//				//let trainerImage : UIImage = loadFromCacheWithUrlString(urlString: workoutTrainer.profileImageUrl)
-//				self.trainerButton?.setImage(UIImage(named: "logo"), for: UIControlState.normal)
-//				
-//				self.navigationController?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.trainerButton!)
-//				
-//			}
-//			
-//		}
-		
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -285,7 +266,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 						workoutTeamMessage.userSendingName = dictionary["userSendingName"] as? String
 						workoutTeamMessage.userSendingImageURL = dictionary["userSendingImageURL"] as? String
 						teamMessagesArray.append(workoutTeamMessage)
-						teamMessagesArray.sort(by: {$0.timeStamp! > $1.timeStamp!})
+						//teamMessagesArray.sort(by: {$0.timeStamp! > $1.timeStamp!})
 						
 						completion(teamMessagesArray)
 						
