@@ -94,7 +94,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		collectionNode?.view.alwaysBounceVertical = true
 		collectionNode?.view.allowsSelection = false
 		collectionNode?.view.keyboardDismissMode = .interactive
-		collectionNode?.view.contentInset = UIEdgeInsets(top: 20, left: 9.0, bottom: 70, right: 9.0)
+		collectionNode?.view.contentInset = UIEdgeInsets(top: 20, left: 0.0, bottom: 56, right: 0.0)
 		collectionNode?.view.showsVerticalScrollIndicator = false
 		collectionNode?.view.backgroundColor = UIColor.paceBackgroundBlack()
 		
