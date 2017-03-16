@@ -19,9 +19,13 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 
 	var messagesArray = [TeamMessagesModel]()
 	var imageUrl: String?
-
+	
+	var userName: String?
+	var userImageURL : String?
 	
 	var collectionNode : ASCollectionNode?
+	var trainer = User()
+	var exploreWorkout : ExploreWorkoutModel?
 	
 	lazy var inputTextField: UITextField = {
 		
@@ -34,10 +38,10 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		textField.textColor = UIColor.white
 		textField.tintColor = UIColor.paceBrandColor()
 		textField.attributedPlaceholder = NSAttributedString(string:"Ask the team anything...",
-		                                                     attributes:[NSForegroundColorAttributeName: UIColor.greyWhite()])
+		                                                     attributes:[NSForegroundColorAttributeName: UIColor.greyBlackColor()])
 		textField.returnKeyType = .default
 		textField.sizeToFit()
-		textField.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightMedium)
+		textField.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightSemibold)
 		textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
@@ -73,10 +77,10 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		let flowLayout     = UICollectionViewFlowLayout()
 		flowLayout.minimumInteritemSpacing  = 0
-		flowLayout.minimumLineSpacing       = 25
+		flowLayout.minimumLineSpacing       = 8
 		flowLayout.scrollDirection = .vertical
 		collectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
-		collectionNode?.backgroundColor = UIColor.black
+		collectionNode?.backgroundColor = UIColor.paceBackgroundBlack()
 		super.init(node: collectionNode!)
 		navigationNoLineBar()
 	
@@ -92,7 +96,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		collectionNode?.view.keyboardDismissMode = .interactive
 		collectionNode?.view.contentInset = UIEdgeInsets(top: 20, left: 9.0, bottom: 70, right: 9.0)
 		collectionNode?.view.showsVerticalScrollIndicator = false
-		collectionNode?.view.backgroundColor = UIColor.black
+		collectionNode?.view.backgroundColor = UIColor.paceBackgroundBlack()
 		
 	}
 	
@@ -149,12 +153,48 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		return true
 	}
 
+	lazy var paceAppService: PaceAppServices = {
+		
+		let retrieveWorkoutDetails = PaceAppServices()
+		return retrieveWorkoutDetails
+		
+	}()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		self.setupNavBar()
 		navigationNoLineBar()
+		
+		self.observeTeamMessages { (postsArray) in
+			
+			self.messagesArray = postsArray
+			
+			self.setupCollectionView()
+			
+			//			let indexPath = IndexPath(item: 0, section: 0)
+			//			self.collectionNode?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.top, animated: true)
+			
+		}
+		
+//		paceAppService.retrieveTrainer(exploreWorkout: exploreWorkout!) { (workoutTrainer) in
+//			
+//			self.trainer = workoutTrainer
+//			
+//			if workoutTrainer.profileImageUrl != nil {
+//				
+//				self.trainerButton = UIButton(type: .system)
+//				self.trainerButton?.frame = CGRect(x: 0, y: 0, width: 35, height: 35)
+//				self.trainerButton?.addTarget(self, action: #selector(self.handleViewTrainerProfile), for: UIControlEvents.touchUpInside)
+//				
+//				//let trainerImage : UIImage = loadFromCacheWithUrlString(urlString: workoutTrainer.profileImageUrl)
+//				self.trainerButton?.setImage(UIImage(named: "logo"), for: UIControlState.normal)
+//				
+//				self.navigationController?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.trainerButton!)
+//				
+//			}
+//			
+//		}
 		
 	}
 	
@@ -163,25 +203,21 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		self.setupNavBar()
 		
-		print((teamModel?.workoutID)!)
-		
-		self.observeTeamMessages { (postsArray) in
-			
-			self.messagesArray = postsArray
-			
-			self.setupCollectionView()
-			
-			let indexPath = IndexPath(item: 0, section: 0)
-			self.collectionNode?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.top, animated: true)
-			
-		}
-
-		
 		navigationNoLineBar()
 		self.navigationController?.navigationBar.barTintColor = UIColor.black
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
 		self.navigationController?.navigationBar.tintColor = UIColor.white
 		
+	}
+	
+	var trainerButton: UIButton?
+	
+	func handleViewTrainerProfile() {
+	
+		let exploreProfileVC = DiscoverProfileViewController()
+		exploreProfileVC.trainer = trainer
+		self.navigationController?.pushViewController(exploreProfileVC, animated: true)
+	
 	}
 	
 	private func setupNavBar() {
@@ -220,6 +256,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		}
 		
+		
 	}
 
 	
@@ -245,6 +282,8 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 						workoutTeamMessage.userSending = dictionary["userSending"] as? String
 						workoutTeamMessage.message = dictionary["message"] as? String
 						workoutTeamMessage.timeStamp = dictionary["timeStamp"] as? Int
+						workoutTeamMessage.userSendingName = dictionary["userSendingName"] as? String
+						workoutTeamMessage.userSendingImageURL = dictionary["userSendingImageURL"] as? String
 						teamMessagesArray.append(workoutTeamMessage)
 						teamMessagesArray.sort(by: {$0.timeStamp! > $1.timeStamp!})
 						
@@ -362,6 +401,8 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 			let values = ["imageUrl": imageUrl!,
 			              "message" : inputTextField.text!,
 			              "userSending": userID,
+			              "userSendingName": userName!,
+			              "userSendingImageURL": userImageURL!,
 			              "timeStamp": Int(NSDate().timeIntervalSince1970),
 			              "teamID": teamID] as [String : Any]
 			
@@ -387,6 +428,8 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 			let values = ["imageUrl": "",
 			              "message" : inputTextField.text!,
 			              "userSending": userID,
+			              "userSendingName": userName!,
+			              "userSendingImageURL": userImageURL!,
 			              "timeStamp": Int(NSDate().timeIntervalSince1970),
 			              "teamID": teamID] as [String : Any]
 			

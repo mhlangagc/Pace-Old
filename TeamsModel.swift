@@ -22,6 +22,8 @@ class TeamsModel: NSObject {
 
 class TeamMessagesModel: NSObject {
 	
+	var userSendingName: String?
+	var userSendingImageURL: String?
 	var imageURL: String?
 	var userSending : String?
 	var message: String?

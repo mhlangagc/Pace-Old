@@ -11,7 +11,7 @@ import AsyncDisplayKit
 
 class PostsCell: BaseCell {
 	
-	let userSendingImageNode = ASImageNode()
+	let userSendingImageNode = ASNetworkImageNode()
 	let userSendingTextNode = ASTextNode()
 	
 	let postedImageNode = ASNetworkImageNode()
@@ -20,11 +20,11 @@ class PostsCell: BaseCell {
 	let likeButtonNode = ASButtonNode()
 	let likesTextNode = ASTextNode()
 	
-	let userNameAttributes = [NSFontAttributeName : UIFont.systemFont(ofSize: 17, weight: UIFontWeightBold), NSForegroundColorAttributeName: UIColor(fromHexString: "C9D5EB")] as [String : Any]
+	let userNameAttributes = [NSFontAttributeName : UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold), NSForegroundColorAttributeName: UIColor(fromHexString: "97A9CA")] as [String : Any]
 	var userNameMutableString = NSMutableAttributedString()
 	
 	
-	let postedTextAttributes = [NSFontAttributeName : UIFont.systemFont(ofSize: 16, weight: UIFontWeightSemibold), NSForegroundColorAttributeName: UIColor(fromHexString: "7788A4")] as [String : Any]
+	let postedTextAttributes = [NSFontAttributeName : UIFont.systemFont(ofSize: 16, weight: UIFontWeightSemibold), NSForegroundColorAttributeName: UIColor.greyWhite()] as [String : Any]
 	var postedTextMutableString = NSMutableAttributedString()
 	
 	
@@ -35,19 +35,26 @@ class PostsCell: BaseCell {
 		
 		didSet {
 			
-			userSendingImageNode.image = UIImage(named: "cynthia")
-			
-			if let userSendingName = messagesModel?.userSending {
+			if let userSendingName = messagesModel?.userSendingName {
 				
 				userNameMutableString = NSMutableAttributedString(string: userSendingName, attributes: userNameAttributes)
 				userSendingTextNode.attributedText = userNameMutableString
 				
 			}
 			
+			if messagesModel?.userSendingImageURL != nil {
+				
+				userSendingImageNode.url = NSURL(string: (messagesModel?.userSendingImageURL!)!)! as URL
+				
+			}
+			
 			
 			if let postedMessage = messagesModel?.message {
 				
+				let paragraphStyle = NSMutableParagraphStyle()
+				paragraphStyle.lineSpacing = 1.0
 				postedTextMutableString = NSMutableAttributedString(string: postedMessage, attributes: postedTextAttributes)
+				postedTextMutableString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, postedTextMutableString.length))
 				postedTextNode.attributedText = postedTextMutableString
 				
 				
@@ -72,9 +79,7 @@ class PostsCell: BaseCell {
 	override func setupNodes() {
 		super.setupNodes()
 		
-		backgroundColor = UIColor(fromHexString: "0C0E10")
-		layer.cornerRadius = 13.0
-		layer.masksToBounds = true
+		backgroundColor = .black
 		self.setupImageAndText()
 		
 	}
@@ -83,15 +88,14 @@ class PostsCell: BaseCell {
 		
 		//	Profie Name
 		userSendingTextNode.maximumNumberOfLines = 1
-		userSendingTextNode.style.preferredSize = CGSize(width: 260, height: 20.0)
 		addSubnode(userSendingTextNode)
 		
 		//	Profile Image
 		userSendingImageNode.backgroundColor = UIColor.darkerBlack()
 		userSendingImageNode.contentMode = .scaleAspectFill
-		userSendingImageNode.layer.cornerRadius = 20.0
+		userSendingImageNode.layer.cornerRadius = 36.0 * 0.5
 		userSendingImageNode.clipsToBounds = true
-		userSendingImageNode.style.preferredSize = CGSize(width: 40.0, height: 40.0)
+		userSendingImageNode.style.preferredSize = CGSize(width: 36.0, height: 36.0)
 		addSubnode(userSendingImageNode)
 		
 		
@@ -99,7 +103,7 @@ class PostsCell: BaseCell {
 		postedImageNode.backgroundColor = UIColor.black
 		postedImageNode.contentMode = .scaleAspectFill
 		postedImageNode.clipsToBounds = true
-		addSubnode(postedImageNode)
+		//addSubnode(postedImageNode)
 		
 		
 		//	Posted Text
@@ -107,57 +111,65 @@ class PostsCell: BaseCell {
 		
 		
 		//	Like Button
-		likeButtonNode.style.preferredSize = CGSize(width: 20.0, height: 18.0)
+		likeButtonNode.style.preferredSize = CGSize(width: 18.0, height: 18.0)
 		likeButtonNode.setImage(UIImage(named: "like"), for: UIControlState.normal)
 		addSubnode(likeButtonNode)
 		
+		
 		//	Likes Text
-		addSubnode(likesTextNode)
+		//addSubnode(likesTextNode)
+		
 		
 	}
 	
 	override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
 		
-		likesTextNode.style.preferredSize = CGSize(width: constrainedSize.max.width - 80, height: 20)
-		postedTextNode.style.width = ASDimensionMakeWithPoints(constrainedSize.max.width - 80.0)
-		postedImageNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.width * 0.7)
+		postedTextNode.style.width = ASDimensionMakeWithPoints(constrainedSize.max.width - 85.0)
+		userSendingTextNode.style.preferredSize = CGSize(width: constrainedSize.max.width - 115, height: 20.0)
+		//postedImageNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.width * 0.7)
 		
 		
 		// Header Spec
 		let headerProfileSpec = ASStackLayoutSpec(direction: .horizontal,
-		                                   spacing: 20.0,
-		                                   justifyContent: .end,
+		                                   spacing: 15.0,
+		                                   justifyContent: .start,
 		                                   alignItems: .center,
-		                                   children: [userSendingTextNode, userSendingImageNode])
+		                                   children: [userSendingImageNode, userSendingTextNode, likeButtonNode])
+		
+		
+		let postedHeaderInset = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15.0, left: 15.0, bottom: 0.0, right: 20.0), child: headerProfileSpec)
+		
+		let postedTextInset = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0.0, left: 62.0, bottom: 0.0, right: 20.0), child: postedTextNode)
+		
 		
 		// Bottom Header
-		let bottomHeader = ASStackLayoutSpec(direction: .horizontal,
-		                                     spacing: 18.0,
+		let finalSpec = ASStackLayoutSpec(direction: .vertical,
+		                                     spacing: 5.0,
 		                                     justifyContent: .start,
-		                                     alignItems: .center,
-		                                     children: [likeButtonNode, likesTextNode])
+		                                     alignItems: .start,
+		                                     children: [postedHeaderInset, postedTextInset])
 		
 		// Header + Message + Imagenode
-		let finalSpec = ASStackLayoutSpec()
-		finalSpec.direction = .vertical
-		finalSpec.justifyContent = .start
-		finalSpec.alignItems = .start
-		
-		if messagesModel?.imageURL != nil {
-			
-			finalSpec.spacing = 15.0
-			finalSpec.children = [headerProfileSpec, postedImageNode, postedTextNode, bottomHeader]
-			
-		} else { 
-			
-			finalSpec.spacing = 20.0
-			finalSpec.children =  [headerProfileSpec, postedTextNode, bottomHeader]
-			
-		}
+//		let finalSpec = ASStackLayoutSpec()
+//		finalSpec.direction = .vertical
+//		finalSpec.justifyContent = .start
+//		finalSpec.alignItems = .start
+//		
+//		if messagesModel?.imageURL != nil {
+//			
+//			finalSpec.spacing = 15.0
+//			finalSpec.children = [headerProfileSpec, postedImageNode, postedTextNode, bottomHeader]
+//			
+//		} else { 
+//			
+//			finalSpec.spacing = 20.0
+//			finalSpec.children =  [headerProfileSpec, postedTextNode, bottomHeader]
+//			
+//		}
 		
 		
 		// ******
-		return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 20.0, left: 27.0, bottom: 20.0, right: 13.0), child: finalSpec)
+		return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0.0, left: 0.0, bottom: 25.0, right: 0.0), child: finalSpec)
 		
 		
 		
