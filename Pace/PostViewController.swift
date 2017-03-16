@@ -19,28 +19,29 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 
 	var messagesArray = [TeamMessagesModel]()
 	var imageUrl: String?
-
+	
+	var userName: String?
+	var userImageURL : String?
 	
 	var collectionNode : ASCollectionNode?
+	var trainer = User()
+	var exploreWorkout : ExploreWorkoutModel?
 	
 	lazy var inputTextField: UITextField = {
 		
-		let textField = TextField()
+		let textField = UITextField()
 		textField.borderStyle = .none
 		textField.keyboardType = .default
 		textField.keyboardAppearance = .dark
 		textField.backgroundColor = .black
 		textField.autocapitalizationType = .sentences
 		textField.textColor = UIColor.white
-		textField.layer.cornerRadius = 50.0 * 0.5
-		textField.layer.borderWidth = 1.5
-		textField.layer.borderColor = UIColor.greyBlackColor().cgColor
 		textField.tintColor = UIColor.paceBrandColor()
 		textField.attributedPlaceholder = NSAttributedString(string:"Ask the team anything...",
-		                                                     attributes:[NSForegroundColorAttributeName: UIColor.greyWhite()])
+		                                                     attributes:[NSForegroundColorAttributeName: UIColor.greyBlackColor()])
 		textField.returnKeyType = .default
 		textField.sizeToFit()
-		textField.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightMedium)
+		textField.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightSemibold)
 		textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
@@ -66,8 +67,6 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		sendImageButton.contentMode = .scaleAspectFill
 		sendImageButton.isUserInteractionEnabled = true
 		sendImageButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectImage)))
-		sendImageButton.layer.cornerRadius = 2.5
-		sendImageButton.layer.masksToBounds = true
 		sendImageButton.translatesAutoresizingMaskIntoConstraints = false
 		return sendImageButton
 		
@@ -78,10 +77,10 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		let flowLayout     = UICollectionViewFlowLayout()
 		flowLayout.minimumInteritemSpacing  = 0
-		flowLayout.minimumLineSpacing       = 25
+		flowLayout.minimumLineSpacing       = 8
 		flowLayout.scrollDirection = .vertical
 		collectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
-		collectionNode?.backgroundColor = UIColor.black
+		collectionNode?.backgroundColor = UIColor.paceBackgroundBlack()
 		super.init(node: collectionNode!)
 		navigationNoLineBar()
 	
@@ -97,7 +96,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		collectionNode?.view.keyboardDismissMode = .interactive
 		collectionNode?.view.contentInset = UIEdgeInsets(top: 20, left: 9.0, bottom: 70, right: 9.0)
 		collectionNode?.view.showsVerticalScrollIndicator = false
-		collectionNode?.view.backgroundColor = UIColor.black
+		collectionNode?.view.backgroundColor = UIColor.paceBackgroundBlack()
 		
 	}
 	
@@ -111,28 +110,27 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		let containerView = UIView()
 		containerView.backgroundColor = UIColor.black
-		containerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 65)
+		containerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 56)
 		
 		
 		containerView.addSubview(self.sendButton)
 		self.sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -15.0).isActive = true
 		self.sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-		self.sendButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-		self.sendButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-		
+		self.sendButton.widthAnchor.constraint(equalToConstant: 32).isActive = true
+		self.sendButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
 		
 		containerView.addSubview(self.addImageButton)
-		self.addImageButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10.0).isActive = true
+		self.addImageButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 15.0).isActive = true
 		self.addImageButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-		self.addImageButton.widthAnchor.constraint(equalToConstant: 26).isActive = true
-		self.addImageButton.heightAnchor.constraint(equalToConstant: 22).isActive = true
+		self.addImageButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
+		self.addImageButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
 		
 		
 		containerView.addSubview(self.inputTextField)
-		self.inputTextField.leftAnchor.constraint(equalTo: self.addImageButton.rightAnchor, constant: 8).isActive = true
+		self.inputTextField.leftAnchor.constraint(equalTo: self.addImageButton.rightAnchor, constant: 15).isActive = true
 		self.inputTextField.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
 		self.inputTextField.rightAnchor.constraint(equalTo: self.sendButton.leftAnchor, constant: -10.0).isActive = true
-		self.inputTextField.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+		self.inputTextField.heightAnchor.constraint(equalToConstant: 45.0).isActive = true
 		
 		
 		return containerView
@@ -155,12 +153,48 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		return true
 	}
 
+	lazy var paceAppService: PaceAppServices = {
+		
+		let retrieveWorkoutDetails = PaceAppServices()
+		return retrieveWorkoutDetails
+		
+	}()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		self.setupNavBar()
 		navigationNoLineBar()
+		
+		self.observeTeamMessages { (postsArray) in
+			
+			self.messagesArray = postsArray
+			
+			self.setupCollectionView()
+			
+			//			let indexPath = IndexPath(item: 0, section: 0)
+			//			self.collectionNode?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.top, animated: true)
+			
+		}
+		
+//		paceAppService.retrieveTrainer(exploreWorkout: exploreWorkout!) { (workoutTrainer) in
+//			
+//			self.trainer = workoutTrainer
+//			
+//			if workoutTrainer.profileImageUrl != nil {
+//				
+//				self.trainerButton = UIButton(type: .system)
+//				self.trainerButton?.frame = CGRect(x: 0, y: 0, width: 35, height: 35)
+//				self.trainerButton?.addTarget(self, action: #selector(self.handleViewTrainerProfile), for: UIControlEvents.touchUpInside)
+//				
+//				//let trainerImage : UIImage = loadFromCacheWithUrlString(urlString: workoutTrainer.profileImageUrl)
+//				self.trainerButton?.setImage(UIImage(named: "logo"), for: UIControlState.normal)
+//				
+//				self.navigationController?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.trainerButton!)
+//				
+//			}
+//			
+//		}
 		
 	}
 	
@@ -169,25 +203,21 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		self.setupNavBar()
 		
-		print((teamModel?.workoutID)!)
-		
-		self.observeTeamMessages { (postsArray) in
-			
-			self.messagesArray = postsArray
-			
-			self.setupCollectionView()
-			
-			let indexPath = IndexPath(item: 0, section: 0)
-			self.collectionNode?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.top, animated: true)
-			
-		}
-
-		
 		navigationNoLineBar()
 		self.navigationController?.navigationBar.barTintColor = UIColor.black
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
 		self.navigationController?.navigationBar.tintColor = UIColor.white
 		
+	}
+	
+	var trainerButton: UIButton?
+	
+	func handleViewTrainerProfile() {
+	
+		let exploreProfileVC = DiscoverProfileViewController()
+		exploreProfileVC.trainer = trainer
+		self.navigationController?.pushViewController(exploreProfileVC, animated: true)
+	
 	}
 	
 	private func setupNavBar() {
@@ -226,6 +256,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		}
 		
+		
 	}
 
 	
@@ -251,6 +282,8 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 						workoutTeamMessage.userSending = dictionary["userSending"] as? String
 						workoutTeamMessage.message = dictionary["message"] as? String
 						workoutTeamMessage.timeStamp = dictionary["timeStamp"] as? Int
+						workoutTeamMessage.userSendingName = dictionary["userSendingName"] as? String
+						workoutTeamMessage.userSendingImageURL = dictionary["userSendingImageURL"] as? String
 						teamMessagesArray.append(workoutTeamMessage)
 						teamMessagesArray.sort(by: {$0.timeStamp! > $1.timeStamp!})
 						
@@ -368,6 +401,8 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 			let values = ["imageUrl": imageUrl!,
 			              "message" : inputTextField.text!,
 			              "userSending": userID,
+			              "userSendingName": userName!,
+			              "userSendingImageURL": userImageURL!,
 			              "timeStamp": Int(NSDate().timeIntervalSince1970),
 			              "teamID": teamID] as [String : Any]
 			
@@ -393,6 +428,8 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 			let values = ["imageUrl": "",
 			              "message" : inputTextField.text!,
 			              "userSending": userID,
+			              "userSendingName": userName!,
+			              "userSendingImageURL": userImageURL!,
 			              "timeStamp": Int(NSDate().timeIntervalSince1970),
 			              "teamID": teamID] as [String : Any]
 			

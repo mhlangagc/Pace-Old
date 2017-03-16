@@ -17,6 +17,7 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 	var groupCollectionNode : ASCollectionNode?
 	var teamWorkoutsArray = [TeamsModel]()
 	var usersUsingWorkoutArray = [User]()
+	var trainer = User()
 	
 	func retrieveUsersUsingWorkout(workoutID: String, completion: @escaping (_ result: [User]) -> Void) {
 		
@@ -59,6 +60,17 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 	}()
 	
+	lazy var profileSetup: PaceAppServices = {
+		
+		let profileSetup = PaceAppServices()
+		return profileSetup
+		
+	}()
+
+	
+	var userName = String()
+	var userImageURL = String()
+	
 	init() {
 		
 		let flowLayout     = UICollectionViewFlowLayout()
@@ -69,6 +81,17 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 		groupCollectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
 		super.init(node: groupCollectionNode!)
 		
+		profileSetup.retrieveUser(completion: { (userFound) in
+			
+			if let userName  = userFound.name, let profileImageURL = userFound.profileImageUrl {
+				
+				self.userName = userName
+				self.userImageURL = profileImageURL
+				
+			}
+			
+		})
+		
 		teamsSetup.retrieveTeamsFromWorkouts { (workoutTeamsArray) in
 			
 			self.teamWorkoutsArray = workoutTeamsArray
@@ -76,8 +99,6 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 			self.setupCollectionView()
 			
 		}
-		
-		
 		
 	}
 	
