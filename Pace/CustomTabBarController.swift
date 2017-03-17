@@ -51,14 +51,10 @@ class CustomTabBarController: ASTabBarController {
 					imageName = "home"
 				
 				case 1:
-					
-					imageName = "discovery"
-				
-				case 2:
 				
 					imageName = "chat"
 				
-				case 3:
+				case 2:
 				
 					imageName = "profile-female"
 				
@@ -98,7 +94,7 @@ class CustomTabBarController: ASTabBarController {
 		profileSettingsViewController.extendedLayoutIncludesOpaqueBars = true
 		
 		
-        viewControllers = [weekNavController, exploreNavController, groupsNavController, profileSettingsNavController]
+        viewControllers = [exploreNavController, groupsNavController, profileSettingsNavController]
         
     }
     

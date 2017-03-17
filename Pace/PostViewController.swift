@@ -15,7 +15,7 @@ import FirebaseDatabase
 class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 	
 	var teamModel: TeamsModel?
-	var containerViewBottomAnchor: NSLayoutConstraint?
+	var imageContainerViewTopAnchor: NSLayoutConstraint?
 
 	var messagesArray = [TeamMessagesModel]()
 	var imageUrl: String?
@@ -58,7 +58,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		return button
 		
 	}()
-	
+		
 	
 	lazy var addImageButton: UIImageView = {
 		
@@ -71,8 +71,63 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		return sendImageButton
 		
 	}()
-
 	
+	
+	//	Bottom View
+	lazy var captureImageButton: UIImageView = {
+		
+		let sendImageButton = UIImageView()
+		sendImageButton.image = UIImage(named: "cameraSelection")
+		sendImageButton.contentMode = .scaleAspectFit
+		sendImageButton.isUserInteractionEnabled = true
+		sendImageButton.backgroundColor = UIColor.darkBlack()
+		sendImageButton.layer.cornerRadius = 8.0
+		sendImageButton.layer.masksToBounds = true
+		sendImageButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handlePickImage)))
+		sendImageButton.translatesAutoresizingMaskIntoConstraints = false
+		return sendImageButton
+		
+	}()
+	
+	lazy var selectImageButton: UIImageView = {
+		
+		let sendImageButton = UIImageView()
+				sendImageButton.image = UIImage(named: "ImageSelection")
+		sendImageButton.contentMode = .scaleAspectFit
+		sendImageButton.isUserInteractionEnabled = true
+		sendImageButton.backgroundColor = UIColor.darkBlack()
+		sendImageButton.layer.cornerRadius = 8.0
+		sendImageButton.layer.masksToBounds = true
+		sendImageButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handlePickImage)))
+		sendImageButton.translatesAutoresizingMaskIntoConstraints = false
+		return sendImageButton
+		
+	}()
+	
+	lazy var imageSelectionContainerView : UIView = {
+		
+		let containerView = UIView()
+		containerView.backgroundColor = UIColor.closeBlack()
+		containerView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 143)
+		
+		containerView.addSubview(self.captureImageButton)
+		self.captureImageButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 17.0).isActive = true
+		self.captureImageButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+		self.captureImageButton.widthAnchor.constraint(equalToConstant: 110).isActive = true
+		self.captureImageButton.heightAnchor.constraint(equalToConstant: 110).isActive = true
+		
+		
+		containerView.addSubview(self.selectImageButton)
+		self.selectImageButton.leftAnchor.constraint(equalTo: self.captureImageButton.rightAnchor, constant: 28.0).isActive = true
+		self.selectImageButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+		self.selectImageButton.widthAnchor.constraint(equalToConstant: 110).isActive = true
+		self.selectImageButton.heightAnchor.constraint(equalToConstant: 110).isActive = true
+		
+		
+		return containerView
+		
+	}()
+
 	init() {
 		
 		let flowLayout     = UICollectionViewFlowLayout()
@@ -94,7 +149,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		collectionNode?.view.alwaysBounceVertical = true
 		collectionNode?.view.allowsSelection = false
 		collectionNode?.view.keyboardDismissMode = .interactive
-		collectionNode?.view.contentInset = UIEdgeInsets(top: 20, left: 0.0, bottom: 60, right: 0.0)
+		collectionNode?.view.contentInset = UIEdgeInsets(top: 20, left: 0.0, bottom: 64, right: 0.0)
 		collectionNode?.view.showsVerticalScrollIndicator = false
 		collectionNode?.view.backgroundColor = UIColor.paceBackgroundBlack()
 		
@@ -104,6 +159,12 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		fatalError("Storyboards are incompatible with truth and beauty")
 	
+	}
+	
+	func setupImageSelectionContainerView() {
+		
+		self.view.addSubview(imageSelectionContainerView)
+		
 	}
 	
 	lazy var chatContainerView : UIView = {
@@ -137,6 +198,18 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 	}()
 	
+	func setupKeyboardObservers() {
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+		
+	}
+
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
+		
+		NotificationCenter.default.removeObserver(self)
+	
+	}
 	
 	override var inputAccessoryView: UIView? {
 		
@@ -163,8 +236,10 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		self.setupImageSelectionContainerView()
 		self.setupNavBar()
 		navigationNoLineBar()
+		self.setupKeyboardObservers()
 		
 		self.observeTeamMessages { (postsArray) in
 			
@@ -172,11 +247,18 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 			
 			self.setupCollectionView()
 			
-			let indexPath = IndexPath(item: 0, section: 0)
-			self.collectionNode?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.bottom, animated: true)
-			
 		}
 		
+	}
+	
+	func handleKeyboardDidShow() {
+		
+		if messagesArray.count > 0 {
+			
+			let indexPath = IndexPath(item: messagesArray.count - 1, section: 0)
+			self.collectionNode?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.top, animated: true)
+			
+		}
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -185,9 +267,10 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		self.setupNavBar()
 		
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.black
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
+		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
 		self.navigationController?.navigationBar.tintColor = UIColor.white
+		
 		
 	}
 	
@@ -239,7 +322,6 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		
 	}
-
 	
 	func observeTeamMessages(completion: @escaping (_ result: [TeamMessagesModel]) -> Void) {
 		
@@ -304,7 +386,41 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 	}
 	
+	var viewOpened = false
 	func handleSelectImage() {
+		
+		if viewOpened == false {
+			
+			UIView.animate(withDuration: 0.25) {
+				
+				self.addImageButton.image = #imageLiteral(resourceName: "ImageOpened")
+				self.imageSelectionContainerView.frame = CGRect(x: 0, y: self.view.frame.height - 143, width: self.view.frame.width, height: 143)
+				//self.imageContainerViewTopAnchor?.constant = self.view.frame.height-143
+				self.view.layoutIfNeeded()
+				
+			}
+			viewOpened = true
+			
+		} else {
+			
+			UIView.animate(withDuration: 0.3) {
+				
+				self.addImageButton.image = #imageLiteral(resourceName: "postImage")
+				self.imageSelectionContainerView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 143)
+				self.view.layoutIfNeeded()
+				
+			}
+			
+			viewOpened = false
+			
+			
+		}
+		
+	}
+	
+	func handlePickImage() {
+		
+		//	Moving the Picker Up
 		
 		let imagePickerController = UIImagePickerController()
 		

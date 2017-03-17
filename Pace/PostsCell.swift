@@ -79,7 +79,7 @@ class PostsCell: BaseCell {
 	override func setupNodes() {
 		super.setupNodes()
 		
-		backgroundColor = .black
+		backgroundColor = .closeBlack()
 		self.setupImageAndText()
 		
 	}
