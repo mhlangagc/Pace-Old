@@ -245,7 +245,7 @@ class PaceAppServices : NSObject {
 		var workoutsArray = [ExploreWorkoutModel]()
 		let userID = FIRAuth.auth()!.currentUser!.uid
 		
-		UIApplication.shared.isNetworkActivityIndicatorVisible = true
+		//UIApplication.shared.isNetworkActivityIndicatorVisible = true
 		
 		let fanUserDownloadedRef = FIRDatabase.database().reference().child("fan-User-PurchasedWorkouts").child(userID)
 		
@@ -298,6 +298,30 @@ class PaceAppServices : NSObject {
 			completion(workoutIDArray)
 			
 		}, withCancel: nil)
+		
+	}
+	
+	func retrieveClubTrainer(club: ClubModel, completion: @escaping (User) -> ()) {
+		
+		if let userID = FIRAuth.auth()?.currentUser?.uid {
+			
+			FIRDatabase.database().reference().child("Users").child(userID).observe(FIRDataEventType.value, with: { (snapShot) in
+				
+				if let dictionary = snapShot.value as? [String: AnyObject] {
+					
+					let user = User()
+					user.name = dictionary["name"] as? String
+					user.profileImageUrl = dictionary["profileImageUrl"] as? String
+					user.location = dictionary["location"] as? String
+					user.about = dictionary["about"] as? String
+					
+					completion(user)
+					
+				}
+				
+			})
+			
+		}
 		
 	}
 	

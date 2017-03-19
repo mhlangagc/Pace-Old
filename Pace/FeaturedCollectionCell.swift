@@ -36,6 +36,7 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 		flowLayout.sectionInset = UIEdgeInsets(top: 22.5, left: 20.0, bottom: 22.5, right: 20.0)
 		self.featuredCollectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
 		self.featuredCollectionNode?.backgroundColor = .black
+		self.featuredCollectionNode?.view.showsHorizontalScrollIndicator = false
 		self.addSubnode(self.featuredCollectionNode!)
 		
 		
@@ -44,8 +45,8 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 		
 			self.featuredClubsArray = featuredClubs
 			self.featuredCollectionNode?.reloadData()
-			
 			self.setupCollectionNodes()
+			UIApplication.shared.isNetworkActivityIndicatorVisible = false
 		
 		}
 		

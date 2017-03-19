@@ -210,7 +210,7 @@ class WorkoutDetailsHeaderView : BaseView {
 	
 	func handleShowProfile() {
 		
-		workoutDetailVC?.handleOpenProfile()
+		//workoutDetailVC?.handleOpenProfile()
 		
 	}
 	

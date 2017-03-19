@@ -27,14 +27,14 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 		let ref = FIRDatabase.database().reference().child("Clubs")
 		let childRef = ref.childByAutoId()
 		
-		let values = ["name" : "Sea Point Cardio Runners",
+		let values = ["name" : "Sea Point Two Oceaners",
 		              "clubDescription": "If you are looking to get toned and enjoy fast paced interval training to shed far this workout is for you.",
-		              "backgroundImageUrl": "https://firebasestorage.googleapis.com/v0/b/pace-c9c8e.appspot.com/o/Workout-Team-Images%2F93D4F0FF-6877-42EA-A264-3FB60F617B1A?alt=media&token=e6ccc73e-63ee-4851-a2c9-d68857f82534",
+		              "backgroundImageUrl": "https://firebasestorage.googleapis.com/v0/b/pace-c9c8e.appspot.com/o/PopularWorkoutImages%2F428CD808-78A5-4F77-8B03-AFA70970F58B?alt=media&token=53b01402-4d29-425d-ab03-ca5c39331c1f",
 		              "trainerID" : userID,
-		              "distance" : 456,
-		              "totalRuns": 55,
-		              "paceMins": 7,
-		              "paceSeconds": 14
+		              "distance" : 301,
+		              "totalRuns": 89,
+		              "paceMins": 5,
+		              "paceSeconds": 45
 			] as [String : Any]
 		
 		childRef.updateChildValues(values) { (error, ref) in
@@ -45,7 +45,7 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 			}
 			
 			//	Create workout Trainer Fan
-			let trainerClubRef = FIRDatabase.database().reference().child("fan-club-trainer").child(userID)
+			let trainerClubRef = FIRDatabase.database().reference().child("fan-User-CreatedClubs").child(userID)
 			let messageId = childRef.key
 			trainerClubRef.updateChildValues([messageId: 1])
 			
@@ -130,12 +130,13 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 				
 				self.userName = userName
 				self.userImageURL = profileImageURL
+				UIApplication.shared.isNetworkActivityIndicatorVisible = false
 				
 			}
 			
 		})
 		
-//		self.createClub()
+		//self.createClub()
 		
 //		teamsSetup.retrieveUserClubs { (clubsArray) in
 //			

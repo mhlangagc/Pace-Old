@@ -52,7 +52,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 		self.setupHeaderView()
 		
-		paceAppService.retrieveTrainer(club: club!) { (trainer) in
+		paceAppService.retrieveClubTrainer(club: self.club!) { (trainer) in
 			
 			self.trainer = trainer
 			
