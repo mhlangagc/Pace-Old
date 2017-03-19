@@ -29,7 +29,7 @@ extension WorkoutViewController {
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		
-		return 55.0
+		return 0.0 //55.0
 		
 	}
 	
@@ -62,7 +62,7 @@ extension WorkoutViewController {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		return exercisesArray.count
+		return 0 //exercisesArray.count
 		
 	}
 	

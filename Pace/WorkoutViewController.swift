@@ -17,7 +17,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	var headerView =  WorkoutDetailsHeaderView()
 	var workoutDetailsTableView : UITableView?
 	var getButtonView : GetButtonView?
-	var startButtonView : StartButtonView?
+	var joinButton : StartButtonView?
 	let exerciseCellID = "ExerciseCellViewID"
 	var trainer = User()
 	
@@ -46,7 +46,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 		self.setupWorkoutDetailsTableView()
 		self.setupNavigationBar()
-		self.setupGetButton()
+		self.setupJoinButton()
 		view.backgroundColor = UIColor.paceBackgroundBlack()
 		workoutDetailsTableView?.register(ExerciseCellView.self, forCellReuseIdentifier: exerciseCellID)
 		
@@ -95,7 +95,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 			
 			if eachID == exploreWorkout?.workoutID {
 				
-				self.setupStartButton()
+				self.setupJoinButton()
 				
 			} else {
 				
@@ -147,27 +147,28 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	
 	func setupHeaderView() {
 		
-		headerView  = WorkoutDetailsHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 515.0))
+		headerView  = WorkoutDetailsHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 635.0))
 		headerView.workoutDetailVC = self
 		
 		headerView.workoutName?.text = (self.exploreWorkout?.name)!
 		headerView.workoutsImageView?.loadImageFromCacheWithUrlString(urlString: (self.exploreWorkout?.backgroundImageUrl)!)
 		headerView.workoutTimeLabel?.text = "\((self.exploreWorkout?.time)!) min workout".uppercased()
 		headerView.descriptionText?.text = (self.exploreWorkout?.workoutDescription)!
-		headerView.reviewLabel?.text = "\((self.exploreWorkout?.numberOfReviews)!) Reviews"
+		headerView.memberNumberLabel?.text = "345 Members" //"\((self.exploreWorkout?.numberOfReviews)!) Reviews"
 		headerView.ratingView?.ratingValue = (self.exploreWorkout?.rating)!
 		
 		workoutDetailsTableView?.tableHeaderView = headerView
 		
 	}
 	
-	func setupStartButton() {
+	func setupJoinButton() {
 		
-		startButtonView = StartButtonView.init(frame: CGRect(x: 0, y: view.frame.height - 80.0, width: view.frame.width, height: 80.0))
+		joinButton = StartButtonView.init(frame: CGRect(x: 0, y: view.frame.height - 144.0, width: view.frame.width, height: 80.0))
 		//startButtonView?.dayDetailsVC = self
-		startButtonView?.startButton?.setTitleColor(.paceBrandColor(), for: UIControlState.normal)
-		startButtonView?.startButton?.backgroundColor = UIColor.darkBlack()
-		view.addSubview(startButtonView!)
+		joinButton?.startButton?.setTitle("Join", for: UIControlState.normal)
+		joinButton?.startButton?.setTitleColor(.black, for: UIControlState.normal)
+		joinButton?.startButton?.backgroundColor = UIColor.paceBrandColor()
+		view.addSubview(joinButton!)
 	}
 	
 	

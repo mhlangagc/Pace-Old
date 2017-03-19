@@ -25,7 +25,7 @@ class StartButtonView : BaseView {
 	func setupButton() {
 		
 		startButton = UIButton()
-		startButton?.frame = CGRect(x: 20.0, y: 10.0, width: frame.width - 40.0, height: 47.5)
+		startButton?.frame = CGRect(x: 20.0, y: 15.0, width: frame.width - 40.0, height: 47.5)
 		startButton?.setTitle("start workout".uppercased(), for: UIControlState.normal)
 		startButton?.setTitleColor(UIColor.black, for: UIControlState.normal)
 		startButton?.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
