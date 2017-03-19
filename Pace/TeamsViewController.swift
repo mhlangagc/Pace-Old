@@ -130,7 +130,6 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 				
 				self.userName = userName
 				self.userImageURL = profileImageURL
-				UIApplication.shared.isNetworkActivityIndicatorVisible = false
 				
 			}
 			
@@ -143,6 +142,8 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 			self.clubsArray = clubsArray
 			self.groupCollectionNode?.reloadData()
 			self.setupCollectionView()
+			
+			UIApplication.shared.isNetworkActivityIndicatorVisible = false
 			
 		}
 		

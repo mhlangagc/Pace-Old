@@ -51,25 +51,19 @@ class ClubCell: BaseCell {
 				
 			}
 			
-			
-//			if let groupUserNumber  = "2k Members" { //teamModel?.numberOfMembers
-//				
-//				groupMemberMutableString = NSMutableAttributedString(string: "\(groupUserNumber) Members", attributes: groupMemberAttributes)
-//				
-//				let alignmentStyleCenter = NSMutableParagraphStyle()
-//				alignmentStyleCenter.alignment = NSTextAlignment.center
-//				groupMemberMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyleCenter] as [String: Any], range: NSRange(location: 0, length: NSString(string: "\(groupUserNumber) Members").length))
-//				
-//				groupMemberNumberNode.attributedText = groupMemberMutableString
-//			}
-			
-			groupMemberMutableString = NSMutableAttributedString(string: "\(numberOfUsers) Members", attributes: groupMemberAttributes)
-			
-			let alignmentStyleCenter = NSMutableParagraphStyle()
-			alignmentStyleCenter.alignment = NSTextAlignment.center
-			groupMemberMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyleCenter] as [String: Any], range: NSRange(location: 0, length: NSString(string: "\(numberOfUsers) Members").length))
-			
-			groupMemberNumberNode.attributedText = groupMemberMutableString
+			if let distance = clubModel?.distance {
+				
+				
+				groupMemberMutableString = NSMutableAttributedString(string: "\(distance) Total km", attributes: groupMemberAttributes)
+				
+				let alignmentStyleCenter = NSMutableParagraphStyle()
+				alignmentStyleCenter.alignment = NSTextAlignment.center
+				groupMemberMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyleCenter] as [String: Any], range: NSRange(location: 0, length: NSString(string: "\(distance) Total km").length))
+				
+				groupMemberNumberNode.attributedText = groupMemberMutableString
+				
+				
+			}
 			
 		}
 	}

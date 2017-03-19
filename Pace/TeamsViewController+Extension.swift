@@ -41,8 +41,6 @@ extension TeamsViewController {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
-//		let flowLayout = UICollectionViewFlowLayout()
-//		flowLayout.scrollDirection = .vertical
 		let teamMessagesVC = PostViewController()
 		teamMessagesVC.userName = self.userName
 		teamMessagesVC.userImageURL = self.userImageURL

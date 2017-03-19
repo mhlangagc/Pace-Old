@@ -16,6 +16,8 @@ class PaceAppServices : NSObject {
 	//	User Retrieval
 	func retrieveUser(completion: @escaping (User) -> ()) {
 		
+		UIApplication.shared.isNetworkActivityIndicatorVisible = true
+		
 		if let userID = FIRAuth.auth()?.currentUser?.uid {
 			
 			FIRDatabase.database().reference().child("Users").child(userID).observe(FIRDataEventType.value, with: { (snapShot) in
@@ -164,6 +166,8 @@ class PaceAppServices : NSObject {
 	}
 	
 	func retrieveUserClubs(completion: @escaping (_ result: [ClubModel]) -> Void) {
+		
+		UIApplication.shared.isNetworkActivityIndicatorVisible = true
 		
 		var clubArray = [ClubModel]()
 		let userID = FIRAuth.auth()!.currentUser!.uid
