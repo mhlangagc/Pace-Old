@@ -129,6 +129,7 @@
 		C608AD301E6EA5DC005934B3 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */; };
 		C61C4C061E7E7DD5007C7E37 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4C051E7E7DD5007C7E37 /* ProfileViewController.swift */; };
 		C61C4C091E7E7EB6007C7E37 /* ProfileViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4C081E7E7EB6007C7E37 /* ProfileViewController+Extension.swift */; };
+		C61C4C0C1E7E8FC1007C7E37 /* RunsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4C0B1E7E8FC1007C7E37 /* RunsCellView.swift */; };
 		C61EB9EB1E755B6E0083C966 /* WorkoutDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61EB9EA1E755B6E0083C966 /* WorkoutDownloadViewController.swift */; };
 		C61EB9EE1E7561F60083C966 /* SaveToMyRoutinesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61EB9ED1E7561F60083C966 /* SaveToMyRoutinesCell.swift */; };
 		C61EB9F11E7571960083C966 /* WorkoutDownloadViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61EB9F01E7571960083C966 /* WorkoutDownloadViewController+Extension.swift */; };
@@ -322,6 +323,7 @@
 		C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		C61C4C051E7E7DD5007C7E37 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C61C4C081E7E7EB6007C7E37 /* ProfileViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Extension.swift"; sourceTree = "<group>"; };
+		C61C4C0B1E7E8FC1007C7E37 /* RunsCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunsCellView.swift; sourceTree = "<group>"; };
 		C61EB9EA1E755B6E0083C966 /* WorkoutDownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutDownloadViewController.swift; sourceTree = "<group>"; };
 		C61EB9ED1E7561F60083C966 /* SaveToMyRoutinesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveToMyRoutinesCell.swift; sourceTree = "<group>"; };
 		C61EB9F01E7571960083C966 /* WorkoutDownloadViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutDownloadViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -681,7 +683,7 @@
 			path = PaceUITests;
 			sourceTree = "<group>";
 		};
-		45B5AD721DFBF8C900115E2C /* Views */ = {
+		45B5AD721DFBF8C900115E2C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				C61C4C0A1E7E8057007C7E37 /* Archieved Tabs */,
@@ -690,7 +692,7 @@
 				45B5AD7C1DFBFA6600115E2C /* Explore Tab */,
 				45B5AD831DFBFACD00115E2C /*  Profile Tab */,
 			);
-			name = Views;
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		45B5AD731DFBF8E900115E2C /* Assets */ = {
@@ -761,7 +763,7 @@
 				45B5ADA41DFC05A900115E2C /* CustomTabBarController.swift */,
 				451D07911DFE58E100940301 /* GenericViewCells */,
 				45B5AD7B1DFBFA4100115E2C /* Main */,
-				45B5AD721DFBF8C900115E2C /* Views */,
+				45B5AD721DFBF8C900115E2C /* ViewControllers */,
 				45B5AD7A1DFBF9DE00115E2C /* ViewModels */,
 				45B5AD731DFBF8E900115E2C /* Assets */,
 			);
@@ -852,6 +854,7 @@
 				C662F0031E79BF9B0001E8D9 /* ProfileTabHeaderView.swift */,
 				C61C4C051E7E7DD5007C7E37 /* ProfileViewController.swift */,
 				C61C4C081E7E7EB6007C7E37 /* ProfileViewController+Extension.swift */,
+				C61C4C0B1E7E8FC1007C7E37 /* RunsCellView.swift */,
 				C61C4C071E7E7DE1007C7E37 /* Settings */,
 			);
 			name = " Profile Tab";
@@ -1358,6 +1361,7 @@
 				C6F770E21E4757A200349C5B /* EmptyDayViewController.swift in Sources */,
 				450082001DFC9051006AA959 /* EventCollection.swift in Sources */,
 				C662F0041E79BF9B0001E8D9 /* ProfileTabHeaderView.swift in Sources */,
+				C61C4C0C1E7E8FC1007C7E37 /* RunsCellView.swift in Sources */,
 				C6B1182A1E21729F002BB4E8 /* NameEntryViewController.swift in Sources */,
 				45C247431DFC5FF700B16AEE /* JustAdded Label.swift in Sources */,
 				4527D4051E1F7C0600F1A643 /* EmailViewController.swift in Sources */,
