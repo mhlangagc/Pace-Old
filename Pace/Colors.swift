@@ -43,6 +43,12 @@ public extension UIColor {
 		return UIColor(fromHexString: "0A0C0E")
 	}
 	
+	static func closeBlack() -> UIColor {
+		
+		return UIColor(fromHexString: "050505")
+	
+	}
+	
 	//	Day Colors
 	static func sunday() -> UIColor {
 		return UIColor(fromHexString: "F71952")

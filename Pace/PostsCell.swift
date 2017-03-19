@@ -52,7 +52,7 @@ class PostsCell: BaseCell {
 			if let postedMessage = messagesModel?.message {
 				
 				let paragraphStyle = NSMutableParagraphStyle()
-				paragraphStyle.lineSpacing = 1.0
+				paragraphStyle.lineSpacing = 1.5
 				postedTextMutableString = NSMutableAttributedString(string: postedMessage, attributes: postedTextAttributes)
 				postedTextMutableString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, postedTextMutableString.length))
 				postedTextNode.attributedText = postedTextMutableString
@@ -79,7 +79,7 @@ class PostsCell: BaseCell {
 	override func setupNodes() {
 		super.setupNodes()
 		
-		backgroundColor = .black
+		backgroundColor = .closeBlack()
 		self.setupImageAndText()
 		
 	}
@@ -137,9 +137,9 @@ class PostsCell: BaseCell {
 		                                   children: [userSendingImageNode, userSendingTextNode, likeButtonNode])
 		
 		
-		let postedHeaderInset = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15.0, left: 15.0, bottom: 0.0, right: 20.0), child: headerProfileSpec)
+		let postedHeaderInset = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 20.0), child: headerProfileSpec)
 		
-		let postedTextInset = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0.0, left: 62.0, bottom: 0.0, right: 20.0), child: postedTextNode)
+		let postedTextInset = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0.0, left: 57.0, bottom: 0.0, right: 20.0), child: postedTextNode)
 		
 		
 		// Bottom Header
@@ -169,7 +169,7 @@ class PostsCell: BaseCell {
 		
 		
 		// ******
-		return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0.0, left: 0.0, bottom: 25.0, right: 0.0), child: finalSpec)
+		return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15.0, left: 15.0, bottom: 25.0, right: 15.0), child: finalSpec)
 		
 		
 		

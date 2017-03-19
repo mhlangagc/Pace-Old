@@ -22,7 +22,7 @@ class FooterCell: BaseCell {
 		
 		self.setupNodesInView()
 		
-		backgroundColor = UIColor.paceBackgroundBlack()
+		backgroundColor = UIColor.closeBlack()
 	
 	}
 	

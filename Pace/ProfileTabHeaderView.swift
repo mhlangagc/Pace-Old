@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileSettingsHeaderView : BaseView {
+class ProfileTabHeaderView : BaseView {
 	
 	var profileImageView : UIImageView?
 	var profileNameButton : UIButton?
@@ -16,7 +16,7 @@ class ProfileSettingsHeaderView : BaseView {
 	override func setupViews() {
 		super.setupViews()
 		
-		backgroundColor = UIColor.paceBackgroundBlack()
+		backgroundColor = UIColor.closeBlack()
 		
 		self.addViews()
 	}

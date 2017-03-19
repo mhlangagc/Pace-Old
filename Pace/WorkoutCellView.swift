@@ -12,13 +12,13 @@ class WorkoutCellView : TableBaseCell {
 	
 	override var isHighlighted: Bool {
 		didSet {
-			backgroundColor = isHighlighted ? UIColor.darkBlack() : UIColor.paceBackgroundBlack()
+			backgroundColor = isHighlighted ? UIColor.darkBlack() : UIColor.closeBlack()
 		}
 	}
 	
 	override var isSelected: Bool {
 		didSet {
-			backgroundColor = isSelected ? UIColor.darkBlack() : UIColor.paceBackgroundBlack()
+			backgroundColor = isSelected ? UIColor.darkBlack() : UIColor.closeBlack()
 		}
 	}
 	
@@ -121,7 +121,7 @@ class WorkoutCellView : TableBaseCell {
 	override func setupViews() {
 		super.setupViews()
 		
-		backgroundColor = UIColor.paceBackgroundBlack()
+		backgroundColor = UIColor.closeBlack()
 		self.setupView()
 		
 	}

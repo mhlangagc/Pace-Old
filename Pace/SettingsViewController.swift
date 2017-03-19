@@ -17,7 +17,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 	
 	var settingsTableView : UITableView?
 	let settingsCellID = "settingsCellID"
-	var settingsHeaderView =  ProfileSettingsHeaderView()
 	
 	var topSettingsArray : [SettingsModel]?
 	var trainerJoinArray : [SettingsModel]?
@@ -43,9 +42,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(true)
 		
-		self.navigationController?.navigationBar.tintColor = UIColor.white
-		self.navigationController?.navigationBar.barTintColor = UIColor.black
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
+		navigationNoLineBar()
+		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
 		
 	}
 	
@@ -74,11 +73,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 		
 		settingsTableView?.register(SettingsCellView.self, forCellReuseIdentifier: settingsCellID)
 		self.navigationController?.navigationBar.isHidden = false
-		navigationLineBar()
 		self.navigationItem.title = "Me"
 		view.backgroundColor = .black
 		self.navigationBarItems()
 		self.setupWorkoutDetailsTableView()
+		
+		navigationNoLineBar()
+		self.navigationController?.navigationBar.barTintColor = UIColor.closeBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.closeBlack()
 		
 		
 	}
@@ -87,60 +89,29 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 		super.viewWillAppear(true)
 		
 		self.navigationController?.navigationBar.isHidden = false
-		self.navigationItem.title = "Me"
+		self.navigationItem.title = "Settings"
 		navigationNoLineBar()
 		self.navigationBarItems()
-		self.setupHeaderView()
 		self.settingsTableView?.reloadData()
+		
+		navigationNoLineBar()
+		self.navigationController?.navigationBar.barTintColor = UIColor.closeBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.closeBlack()
 		
 	}
 	
 	func navigationBarItems() {
 		
 		let titleLabel = UILabel(frame: CGRect(x: ((view.frame.width - 100) * 0.5), y: 5, width: 100, height: view.frame.height))
-		titleLabel.text = "Me"
+		titleLabel.text = "Settings"
 		titleLabel.textAlignment = .center
 		titleLabel.textColor = UIColor.white
 		titleLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightBold)
 		textSpacing(titleLabel, spacing: 0.5)
 		navigationItem.titleView = titleLabel
 	}
-	
-	override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
-		sizeHeaderToFit()
-	}
-	
-	func sizeHeaderToFit() {
-		
-		settingsHeaderView.setNeedsLayout()
-		settingsHeaderView.layoutIfNeeded()
-		
-		let height = settingsHeaderView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-		var frame = settingsHeaderView.frame
-		frame.size.height = height
-		settingsHeaderView.frame = frame
-	}
-	
-	func setupHeaderView() {
-		
-		settingsHeaderView  = ProfileSettingsHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 270.0))
-		
-		profileSetup.retrieveUser(completion: { (userFound) in
-			
-			if let userName  = userFound.name, let profileImageURL = userFound.profileImageUrl {
-				
-				self.settingsHeaderView.profileNameButton?.setTitle(userName, for: UIControlState.normal)
-				self.settingsHeaderView.profileImageView?.loadImageFromUrlString(urlString: profileImageURL)
-			}
-				
-		})
 
-		settingsTableView?.tableHeaderView = settingsHeaderView
-		
-	}
 
-	
 	func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
 		controller.dismiss(animated: true, completion: nil)
 	}

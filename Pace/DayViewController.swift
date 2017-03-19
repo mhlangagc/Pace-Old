@@ -72,9 +72,9 @@ class DayViewController : UIViewController, UITableViewDataSource, UITableViewDe
 	
 	func setupWorkoutDetailsTableView() {
 		
-		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height - 144.0)
+		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height - 135.0)
 		workoutDetailsTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.plain)
-		workoutDetailsTableView?.backgroundColor = .paceBackgroundBlack()
+		workoutDetailsTableView?.backgroundColor = .black
 		workoutDetailsTableView?.delegate = self
 		workoutDetailsTableView?.dataSource = self
 		workoutDetailsTableView?.separatorStyle = .none
