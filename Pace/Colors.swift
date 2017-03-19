@@ -32,7 +32,7 @@ public extension UIColor {
 	}
 	
 	static func headerBlack() -> UIColor {
-		return UIColor(fromHexString: "0C0E10")
+		return UIColor(fromHexString: "0B0C0E")
 	}
 	
 	static func darkerBlack() -> UIColor {
@@ -40,7 +40,7 @@ public extension UIColor {
 	}
 	
 	static func paceBackgroundBlack() -> UIColor {
-		return UIColor(fromHexString: "0A0C0E")
+		return UIColor(fromHexString: "0B0C0E")
 	}
 	
 	static func closeBlack() -> UIColor {

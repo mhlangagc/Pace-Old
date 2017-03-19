@@ -44,7 +44,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		profileTableView?.register(SettingsCellView.self, forCellReuseIdentifier: runsCellID)
+		profileTableView?.register(RunsCellView.self, forCellReuseIdentifier: runsCellID)
 		self.navigationController?.navigationBar.isHidden = false
 		self.navigationItem.title = "Me"
 		view.backgroundColor = .black
@@ -52,8 +52,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 		self.setupWorkoutDetailsTableView()
 		
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.closeBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.closeBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
 		
 		
 	}
@@ -70,8 +70,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 		self.profileTableView?.reloadData()
 		
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.closeBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.closeBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
 		
 	}
 	
@@ -114,7 +114,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 	
 	func setupHeaderView() {
 		
-		profileHeaderView  = ProfileTabHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 270.0))
+		profileHeaderView  = ProfileTabHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 380.0))
 		
 		profileSetup.retrieveUser(completion: { (userFound) in
 			

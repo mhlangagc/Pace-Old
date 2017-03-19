@@ -39,15 +39,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 		
 	}()
 	
-	override func viewWillDisappear(_ animated: Bool) {
-		super.viewWillDisappear(true)
-		
-		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
-		
-	}
-	
 	func setupWorkoutDetailsTableView() {
 		
 		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height)
@@ -79,8 +70,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 		self.setupWorkoutDetailsTableView()
 		
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.closeBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.closeBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
 		
 		
 	}
@@ -95,8 +86,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 		self.settingsTableView?.reloadData()
 		
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.closeBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.closeBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
 		
 	}
 	
