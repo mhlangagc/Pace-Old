@@ -17,7 +17,7 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 	var featuredCollectionNode : ASCollectionNode?
 	var discoveryVC : ExploreViewController?
 	
-	var featuredWorkoutsArray = [ExploreWorkoutModel]()
+	var featuredClubsArray = [ClubModel]()
 	
 	lazy var paceAppService: PaceAppServices = {
 		
@@ -36,16 +36,17 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 		flowLayout.sectionInset = UIEdgeInsets(top: 22.5, left: 20.0, bottom: 22.5, right: 20.0)
 		self.featuredCollectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
 		self.featuredCollectionNode?.backgroundColor = .black
+		self.featuredCollectionNode?.view.showsHorizontalScrollIndicator = false
 		self.addSubnode(self.featuredCollectionNode!)
 		
 		
 		
-		paceAppService.retrieveMaleFeaturedWorkouts { (featuredWorkoutsArray) in
-			
-			self.featuredWorkoutsArray = featuredWorkoutsArray
+		paceAppService.retrieveFeaturedClubs { (featuredClubs) in
+		
+			self.featuredClubsArray = featuredClubs
 			self.featuredCollectionNode?.reloadData()
-			
 			self.setupCollectionNodes()
+			UIApplication.shared.isNetworkActivityIndicatorVisible = false
 		
 		}
 		
@@ -91,7 +92,7 @@ extension FeaturedCollectionCell {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
 		
-		return featuredWorkoutsArray.count
+		return featuredClubsArray.count
 		
 	}
 	
@@ -101,15 +102,15 @@ extension FeaturedCollectionCell {
 		let featuredCellNode = FeaturedCell()
 		featuredCellNode.featureCollection = self
 		//featuredCellNode.workoutImageNode.url = NSURL(string: featuredWorkoutsArray[indexPath.item].workoutImageUrl!)! as URL
-		featuredCellNode.exploreWorkoutModel = featuredWorkoutsArray[indexPath.item]
+		featuredCellNode.exploreClubModel = featuredClubsArray[indexPath.item]
 		return featuredCellNode
 	
 	}
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
-		let worktoutSelected = featuredWorkoutsArray[indexPath.item]
-		discoveryVC?.handleShowWorkoutView(workoutSelected: worktoutSelected)
+		let clubSelected = featuredClubsArray[indexPath.item]
+		discoveryVC?.handleShowClubView(clubSelected: clubSelected)
 		
 	}
 }

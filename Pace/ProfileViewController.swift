@@ -124,6 +124,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 				self.profileHeaderView.profileImageView?.loadImageFromUrlString(urlString: profileImageURL)
 			}
 			
+			UIApplication.shared.isNetworkActivityIndicatorVisible = false
+			
 		})
 		
 		profileTableView?.tableHeaderView = profileHeaderView

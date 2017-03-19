@@ -20,33 +20,31 @@ extension TeamsViewController {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
 		
-		return teamWorkoutsArray.count
+		return clubsArray.count
 		
 	}
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
 		
-		let teamNode = TeamCell()
-		teamNode.teamModel = teamWorkoutsArray[indexPath.item]
+		let clubNode = ClubCell()
+		clubNode.clubModel = clubsArray[indexPath.item]
 		
-		self.retrieveUsersUsingWorkout(workoutID: teamWorkoutsArray[indexPath.item].workoutID!, completion: { (usersFound) in
+		self.retrieveUsersUsingWorkout(workoutID: clubsArray[indexPath.item].clubID!, completion: { (usersFound) in
 			
-			teamNode.numberOfUsers = usersFound.count
+			clubNode.numberOfUsers = usersFound.count
 			
 		})
 		
-		return teamNode
+		return clubNode
 		
 	}
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
-//		let flowLayout = UICollectionViewFlowLayout()
-//		flowLayout.scrollDirection = .vertical
 		let teamMessagesVC = PostViewController()
 		teamMessagesVC.userName = self.userName
 		teamMessagesVC.userImageURL = self.userImageURL
-		teamMessagesVC.teamModel = teamWorkoutsArray[indexPath.item]
+		teamMessagesVC.teamModel = clubsArray[indexPath.item]
 		teamMessagesVC.hidesBottomBarWhenPushed = true
 		self.navigationController?.pushViewController(teamMessagesVC, animated: true)
 		collectionNode.deselectItem(at: indexPath, animated: true)

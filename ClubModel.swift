@@ -15,9 +15,20 @@ class TeamsModel: NSObject {
 	var workoutName : String?
 	var backgroundImageUrl : String?
 	var trainerID: String?
-	var teamMessages: NSSet?
-	var teamMembers: NSSet?
-	var workoutExercises: NSSet?
+}
+
+class ClubModel: NSObject {
+	
+	var clubID : String?
+	var name : String?
+	var clubDescription: String?
+	var backgroundImageUrl : String?
+	var trainerID: String?
+	var distance: Int?
+	var totalRuns: Int?
+	var paceMins: Int?
+	var paceSeconds: Int?
+	
 }
 
 class TeamMessagesModel: NSObject {

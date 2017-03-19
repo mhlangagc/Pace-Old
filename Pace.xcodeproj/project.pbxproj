@@ -99,7 +99,7 @@
 		45D9DC561E040FFB001580B3 /* ActivityMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D9DC551E040FFB001580B3 /* ActivityMenuBar.swift */; };
 		45D9DC591E04183D001580B3 /* ActivityMenuBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D9DC581E04183D001580B3 /* ActivityMenuBar+Extension.swift */; };
 		45D9DC5B1E041899001580B3 /* MenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D9DC5A1E041899001580B3 /* MenuBarCell.swift */; };
-		45E2F3DA1E16BEB9007384CF /* TeamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2F3D91E16BEB9007384CF /* TeamsModel.swift */; };
+		45E2F3DA1E16BEB9007384CF /* ClubModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2F3D91E16BEB9007384CF /* ClubModel.swift */; };
 		45E3C0761DFD8F33002FD4F8 /* WeekViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3C0751DFD8F33002FD4F8 /* WeekViewController+Extension.swift */; };
 		45E3C0781DFD9493002FD4F8 /* ActitivityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3C0771DFD9493002FD4F8 /* ActitivityDetailView.swift */; };
 		45E3C07B1DFD9A4B002FD4F8 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3C07A1DFD9A4B002FD4F8 /* BaseView.swift */; };
@@ -290,7 +290,7 @@
 		45D9DC551E040FFB001580B3 /* ActivityMenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityMenuBar.swift; sourceTree = "<group>"; };
 		45D9DC581E04183D001580B3 /* ActivityMenuBar+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ActivityMenuBar+Extension.swift"; sourceTree = "<group>"; };
 		45D9DC5A1E041899001580B3 /* MenuBarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarCell.swift; sourceTree = "<group>"; };
-		45E2F3D91E16BEB9007384CF /* TeamsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsModel.swift; sourceTree = "<group>"; };
+		45E2F3D91E16BEB9007384CF /* ClubModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubModel.swift; sourceTree = "<group>"; };
 		45E3C0751DFD8F33002FD4F8 /* WeekViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WeekViewController+Extension.swift"; sourceTree = "<group>"; };
 		45E3C0771DFD9493002FD4F8 /* ActitivityDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActitivityDetailView.swift; sourceTree = "<group>"; };
 		45E3C07A1DFD9A4B002FD4F8 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
@@ -398,14 +398,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		450081FC1DFC8D6D006AA959 /* Clubs */ = {
+		450081FC1DFC8D6D006AA959 /* Events */ = {
 			isa = PBXGroup;
 			children = (
 				450081FD1DFC8D8A006AA959 /* WorkoutCatergoriesLabel.swift */,
 				450081FF1DFC9051006AA959 /* EventCollection.swift */,
 				450082011DFC90F3006AA959 /* EventCollectionCell.swift */,
 			);
-			name = Clubs;
+			name = Events;
 			sourceTree = "<group>";
 		};
 		450082041DFC95F5006AA959 /* Trainers */ = {
@@ -469,10 +469,10 @@
 				45B5AD431DFBF71100115E2C /* ExploreViewController.swift */,
 				45A37F341DFC454600049493 /* ExploreView+Extension.swift */,
 				451276131DFC835A008B57DE /* DiscoveryWorkoutCell.swift */,
-				45A37F321DFC424400049493 /* FeaturedSection */,
-				45C247441DFC600100B16AEE /* Free workouts */,
-				450081FC1DFC8D6D006AA959 /* Clubs */,
-				45ECF68B1E152F0C0032F6CC /* Popular on Pace */,
+				45A37F321DFC424400049493 /* Featured */,
+				45C247441DFC600100B16AEE /* Newly Added */,
+				450081FC1DFC8D6D006AA959 /* Events */,
+				45ECF68B1E152F0C0032F6CC /* Popular */,
 				450082041DFC95F5006AA959 /* Trainers */,
 				45C214F01E05D87900C5BCCF /* Footer Cell */,
 			);
@@ -593,13 +593,13 @@
 			name = "Workout Details View";
 			sourceTree = "<group>";
 		};
-		45A37F321DFC424400049493 /* FeaturedSection */ = {
+		45A37F321DFC424400049493 /* Featured */ = {
 			isa = PBXGroup;
 			children = (
 				45A37F301DFC419100049493 /* FeaturedCollectionCell.swift */,
 				45A37F361DFC459300049493 /* FeaturedCell.swift */,
 			);
-			name = FeaturedSection;
+			name = Featured;
 			sourceTree = "<group>";
 		};
 		45AC38F61E188B70003DC46B /* WorkoutProcess */ = {
@@ -731,7 +731,7 @@
 				45F3AA1F1E15990900D70C84 /* ActivitiesModel.swift */,
 				45F3AA271E15BB9300D70C84 /* UserModel.swift */,
 				458478E91E17E33D00EB2AB3 /* SettingsModel.swift */,
-				45E2F3D91E16BEB9007384CF /* TeamsModel.swift */,
+				45E2F3D91E16BEB9007384CF /* ClubModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -906,13 +906,13 @@
 			name = "Footer Cell";
 			sourceTree = "<group>";
 		};
-		45C247441DFC600100B16AEE /* Free workouts */ = {
+		45C247441DFC600100B16AEE /* Newly Added */ = {
 			isa = PBXGroup;
 			children = (
 				45ECF68C1E152F590032F6CC /* NewToPace.swift */,
 				45ECF6891E152D450032F6CC /* NewToPaceCollection.swift */,
 			);
-			name = "Free workouts";
+			name = "Newly Added";
 			sourceTree = "<group>";
 		};
 		45D9DC571E041824001580B3 /* ActivityMenu Bar */ = {
@@ -925,13 +925,13 @@
 			name = "ActivityMenu Bar";
 			sourceTree = "<group>";
 		};
-		45ECF68B1E152F0C0032F6CC /* Popular on Pace */ = {
+		45ECF68B1E152F0C0032F6CC /* Popular */ = {
 			isa = PBXGroup;
 			children = (
 				45C247421DFC5FF700B16AEE /* JustAdded Label.swift */,
 				451276111DFC747C008B57DE /* JustAddedCollection.swift */,
 			);
-			name = "Popular on Pace";
+			name = Popular;
 			sourceTree = "<group>";
 		};
 		93DFEAB27632B3EA446215DD /* Pods */ = {
@@ -1425,7 +1425,7 @@
 				45C214E61E05AF4200C5BCCF /* HeaderLabelCell.swift in Sources */,
 				45ECF6881E151F5D0032F6CC /* WorkoutDaysModel.swift in Sources */,
 				45F7F5DA1DFD8AD200DD1E33 /* WeekTableCell.swift in Sources */,
-				45E2F3DA1E16BEB9007384CF /* TeamsModel.swift in Sources */,
+				45E2F3DA1E16BEB9007384CF /* ClubModel.swift in Sources */,
 				45E3C0761DFD8F33002FD4F8 /* WeekViewController+Extension.swift in Sources */,
 				45B5AD851DFBFAF500115E2C /* Colors.swift in Sources */,
 				45E3C07B1DFD9A4B002FD4F8 /* BaseView.swift in Sources */,

@@ -113,7 +113,7 @@ class ActivityViewController: UIViewController, UICollectionViewDelegateFlowLayo
 	func handleShowWorkoutView(workoutSelected: ExploreWorkoutModel) {
 		
 		let showWorkoutDetailsVC = WorkoutViewController()
-		showWorkoutDetailsVC.exploreWorkout = workoutSelected
+		//showWorkoutDetailsVC.exploreWorkout = workoutSelected
 		showWorkoutDetailsVC.hidesBottomBarWhenPushed = true
 		self.navigationController?.pushViewController(showWorkoutDetailsVC, animated: true)
 	}

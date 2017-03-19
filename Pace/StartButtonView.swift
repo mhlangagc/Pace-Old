@@ -25,7 +25,7 @@ class StartButtonView : BaseView {
 	func setupButton() {
 		
 		startButton = UIButton()
-		startButton?.frame = CGRect(x: 20.0, y: 10.0, width: frame.width - 40.0, height: 47.5)
+		startButton?.frame = CGRect(x: 20.0, y: 15.0, width: frame.width - 40.0, height: 47.5)
 		startButton?.setTitle("start workout".uppercased(), for: UIControlState.normal)
 		startButton?.setTitleColor(UIColor.black, for: UIControlState.normal)
 		startButton?.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
@@ -40,7 +40,46 @@ class StartButtonView : BaseView {
 	
 	func handleStart() {
 		
-		dayDetailsVC?.startWorkout()
+		//dayDetailsVC?.startWorkout()
+		
+	}
+	
+}
+
+
+class JoinButtonView : BaseView {
+	
+	var joinButton: UIButton?
+	
+	var workoutVC : WorkoutViewController?
+	
+	override func setupViews() {
+		super.setupViews()
+		
+		backgroundColor = .black
+		self.setupButton()
+		
+	}
+	
+	func setupButton() {
+		
+		joinButton = UIButton()
+		joinButton?.frame = CGRect(x: 20.0, y: 15.0, width: frame.width - 40.0, height: 47.5)
+		joinButton?.setTitle("join club".uppercased(), for: UIControlState.normal)
+		joinButton?.setTitleColor(UIColor.black, for: UIControlState.normal)
+		joinButton?.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
+		textSpacing((joinButton?.titleLabel)!, spacing: 1.0)
+		joinButton?.layer.cornerRadius = 10.0
+		joinButton?.layer.masksToBounds = true
+		joinButton?.addTarget(self, action: #selector(handleJoinClub), for: UIControlEvents.touchUpInside)
+		addSubview(joinButton!)
+		
+	}
+	
+	
+	func handleJoinClub() {
+		
+		workoutVC?.joinClub()
 		
 	}
 	

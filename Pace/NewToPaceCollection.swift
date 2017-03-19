@@ -103,8 +103,8 @@ extension NewToPaceCollection {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
-		let worktoutSelected = freeWorkoutsArray[indexPath.item]
-		discoveryVC?.handleShowWorkoutView(workoutSelected: worktoutSelected)
+//		let clubSelected = freeWorkoutsArray[indexPath.item]
+//		discoveryVC?.handleShowClubView(clubSelected: clubSelected)
 		
 	}
 	

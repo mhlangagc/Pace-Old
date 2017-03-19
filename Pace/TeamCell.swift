@@ -9,7 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 
-class TeamCell: BaseCell {
+class ClubCell: BaseCell {
 	
 	let groupImageNode = ASNetworkImageNode()
 	let groupTitleNode = ASTextNode()
@@ -33,13 +33,13 @@ class TeamCell: BaseCell {
 	                           NSForegroundColorAttributeName: UIColor.greyBlackColor()] as [String : Any]
 	var groupMemberMutableString = NSMutableAttributedString()
 
-	var  teamModel : TeamsModel? {
+	var  clubModel : ClubModel? {
 		
 		didSet {
 			
-			groupImageNode.url = NSURL(string: (teamModel?.backgroundImageUrl!)!)! as URL
+			groupImageNode.url = NSURL(string: (clubModel?.backgroundImageUrl!)!)! as URL
 			
-			if let groupName  = teamModel?.workoutName {
+			if let groupName  = clubModel?.name {
 				
 				groupTitleMutableString = NSMutableAttributedString(string: groupName, attributes: groupTitleNodeAttributes)
 				
@@ -51,25 +51,19 @@ class TeamCell: BaseCell {
 				
 			}
 			
-			
-//			if let groupUserNumber  = "2k Members" { //teamModel?.numberOfMembers
-//				
-//				groupMemberMutableString = NSMutableAttributedString(string: "\(groupUserNumber) Members", attributes: groupMemberAttributes)
-//				
-//				let alignmentStyleCenter = NSMutableParagraphStyle()
-//				alignmentStyleCenter.alignment = NSTextAlignment.center
-//				groupMemberMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyleCenter] as [String: Any], range: NSRange(location: 0, length: NSString(string: "\(groupUserNumber) Members").length))
-//				
-//				groupMemberNumberNode.attributedText = groupMemberMutableString
-//			}
-			
-			groupMemberMutableString = NSMutableAttributedString(string: "\(numberOfUsers) Members", attributes: groupMemberAttributes)
-			
-			let alignmentStyleCenter = NSMutableParagraphStyle()
-			alignmentStyleCenter.alignment = NSTextAlignment.center
-			groupMemberMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyleCenter] as [String: Any], range: NSRange(location: 0, length: NSString(string: "\(numberOfUsers) Members").length))
-			
-			groupMemberNumberNode.attributedText = groupMemberMutableString
+			if let distance = clubModel?.distance {
+				
+				
+				groupMemberMutableString = NSMutableAttributedString(string: "\(distance) Total km", attributes: groupMemberAttributes)
+				
+				let alignmentStyleCenter = NSMutableParagraphStyle()
+				alignmentStyleCenter.alignment = NSTextAlignment.center
+				groupMemberMutableString.addAttributes([NSParagraphStyleAttributeName: alignmentStyleCenter] as [String: Any], range: NSRange(location: 0, length: NSString(string: "\(distance) Total km").length))
+				
+				groupMemberNumberNode.attributedText = groupMemberMutableString
+				
+				
+			}
 			
 		}
 	}
