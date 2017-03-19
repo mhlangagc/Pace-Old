@@ -52,7 +52,7 @@ class CustomTabBarController: ASTabBarController {
 				
 				case 1:
 				
-					imageName = "chat"
+					imageName = "discovery"
 				
 				case 2:
 				
@@ -69,10 +69,10 @@ class CustomTabBarController: ASTabBarController {
     func setUpViewControllers() {
      
         //  My Routine
-        let weekViewController = WeekViewController()
-        let weekNavController = ASNavigationController(rootViewController: weekViewController)
-        weekViewController.navigationController?.navigationBar.barStyle = .black
-        weekViewController.extendedLayoutIncludesOpaqueBars = true
+//        let weekViewController = WeekViewController()
+//        let weekNavController = ASNavigationController(rootViewController: weekViewController)
+//        weekViewController.navigationController?.navigationBar.barStyle = .black
+//        weekViewController.extendedLayoutIncludesOpaqueBars = true
 		
         //	Discovery
         let exploreViewController = ExploreViewController()
@@ -87,14 +87,14 @@ class CustomTabBarController: ASTabBarController {
         teamViewController.extendedLayoutIncludesOpaqueBars = true
 		
 		//  Activity View Controller
-		let profileSettingsViewController = SettingsViewController()
-		let profileSettingsNavController = ASNavigationController(rootViewController: profileSettingsViewController)
+		let profileViewController = ProfileViewController()
+		let profileNavController = ASNavigationController(rootViewController: profileViewController)
 		//profileSettingsNavController.tabBarItem.title = "Profile"
-		profileSettingsViewController.navigationController?.navigationBar.barStyle = .black
-		profileSettingsViewController.extendedLayoutIncludesOpaqueBars = true
+		profileViewController.navigationController?.navigationBar.barStyle = .black
+		profileViewController.extendedLayoutIncludesOpaqueBars = true
 		
 		
-        viewControllers = [exploreNavController, groupsNavController, profileSettingsNavController]
+        viewControllers = [groupsNavController, exploreNavController, profileNavController]
         
     }
     

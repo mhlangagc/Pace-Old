@@ -108,7 +108,12 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		let containerView = UIView()
 		containerView.backgroundColor = UIColor.closeBlack()
-		containerView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 143)
+		
+		if let window = UIApplication.shared.keyWindow {
+			
+			containerView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: 143)
+			
+		}
 		
 		containerView.addSubview(self.captureImageButton)
 		self.captureImageButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 17.0).isActive = true
@@ -125,6 +130,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		
 		return containerView
+
 		
 	}()
 
@@ -389,14 +395,22 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 	var viewOpened = false
 	func handleSelectImage() {
 		
+//		if let window = UIApplication.
+		
 		if viewOpened == false {
 			
 			UIView.animate(withDuration: 0.25) {
 				
 				self.addImageButton.image = #imageLiteral(resourceName: "ImageOpened")
-				self.imageSelectionContainerView.frame = CGRect(x: 0, y: self.view.frame.height - 143, width: self.view.frame.width, height: 143)
-				//self.imageContainerViewTopAnchor?.constant = self.view.frame.height-143
-				self.view.layoutIfNeeded()
+				
+				if let window = UIApplication.shared.keyWindow {
+					
+					self.imageSelectionContainerView.frame = CGRect(x: 0, y: window.frame.height - 143, width: window.frame.width, height: 143)
+					self.view.layoutIfNeeded()
+					
+				}
+			
+				
 				
 			}
 			viewOpened = true
@@ -406,8 +420,13 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 			UIView.animate(withDuration: 0.3) {
 				
 				self.addImageButton.image = #imageLiteral(resourceName: "postImage")
-				self.imageSelectionContainerView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 143)
-				self.view.layoutIfNeeded()
+				if let window = UIApplication.shared.keyWindow {
+					
+					self.imageSelectionContainerView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: 143)
+					self.view.layoutIfNeeded()
+					
+				}
+				
 				
 			}
 			

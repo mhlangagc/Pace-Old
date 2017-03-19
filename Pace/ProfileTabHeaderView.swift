@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileSettingsHeaderView : BaseView {
+class ProfileTabHeaderView : BaseView {
 	
 	var profileImageView : UIImageView?
 	var profileNameButton : UIButton?
