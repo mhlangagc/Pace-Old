@@ -17,7 +17,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	var headerView =  WorkoutDetailsHeaderView()
 	var workoutDetailsTableView : UITableView?
 	var getButtonView : GetButtonView?
-	var joinButton : StartButtonView?
+	var joinButtonView : JoinButtonView?
 	let exerciseCellID = "ExerciseCellViewID"
 	var trainer = User()
 	
@@ -39,6 +39,19 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 	}
 	
+	
+	func userClubCreation(completion: @escaping (_ completed: Bool) -> ()) {
+		
+		let userID = FIRAuth.auth()!.currentUser!.uid
+		let clubID = self.club?.clubID
+		
+		let userDownloadedWorkoutsRef = FIRDatabase.database().reference().child("fan-User-JoinedClubs").child(userID)
+		userDownloadedWorkoutsRef.updateChildValues([clubID!: 1])
+		
+		let purchasedWorkoutsUserRef = FIRDatabase.database().reference().child("fan-Club-Members").child(clubID!)
+		purchasedWorkoutsUserRef.updateChildValues([userID: 1])
+		
+	}
 	
 
 	override func viewDidLoad() {
@@ -165,12 +178,27 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	
 	func setupJoinButton() {
 		
-		joinButton = StartButtonView.init(frame: CGRect(x: 0, y: view.frame.height - 144.0, width: view.frame.width, height: 80.0))
-		//startButtonView?.dayDetailsVC = self
-		joinButton?.startButton?.setTitle("Join", for: UIControlState.normal)
-		joinButton?.startButton?.setTitleColor(.black, for: UIControlState.normal)
-		joinButton?.startButton?.backgroundColor = UIColor.paceBrandColor()
-		view.addSubview(joinButton!)
+		joinButtonView = JoinButtonView.init(frame: CGRect(x: 0, y: view.frame.height - 144.0, width: view.frame.width, height: 80.0))
+		joinButtonView?.workoutVC = self
+		joinButtonView?.joinButton?.setTitle("Join", for: UIControlState.normal)
+		joinButtonView?.joinButton?.setTitleColor(.black, for: UIControlState.normal)
+		joinButtonView?.joinButton?.backgroundColor = UIColor.paceBrandColor()
+		view.addSubview(joinButtonView!)
+		
+	}
+	
+	func joinClub() {
+		
+//		self.userClubCreation(completion: { (completed) in
+//			
+//			print("Club Joined")
+//			
+//			self.joinButtonView?.joinButton?.setTitle("Club Joined", for: UIControlState.normal)
+//			self.joinButtonView?.joinButton?.setTitleColor(UIColor.greyBlackColor(), for: UIControlState.normal)
+//			self.joinButtonView?.joinButton?.backgroundColor = UIColor.headerBlack()
+//			
+//		})
+		
 	}
 	
 	

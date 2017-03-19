@@ -168,7 +168,7 @@ class PaceAppServices : NSObject {
 		var clubArray = [ClubModel]()
 		let userID = FIRAuth.auth()!.currentUser!.uid
 		
-		FIRDatabase.database().reference().child("fan-User-Clubs").child(userID).observe(.childAdded, with: { (snapshot) in
+		FIRDatabase.database().reference().child("fan-User-JoinedClubs").child(userID).observe(.childAdded, with: { (snapshot) in
 			
 			let workoutId = snapshot.key
 			

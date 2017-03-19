@@ -138,13 +138,13 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		//self.createClub()
 		
-//		teamsSetup.retrieveUserClubs { (clubsArray) in
-//			
-//			self.clubsArray = clubsArray
-//			self.groupCollectionNode?.reloadData()
-//			self.setupCollectionView()
-//			
-//		}
+		teamsSetup.retrieveUserClubs { (clubsArray) in
+			
+			self.clubsArray = clubsArray
+			self.groupCollectionNode?.reloadData()
+			self.setupCollectionView()
+			
+		}
 		
 	}
 	
