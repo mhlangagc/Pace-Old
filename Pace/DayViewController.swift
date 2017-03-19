@@ -47,18 +47,18 @@ class DayViewController : UIViewController, UITableViewDataSource, UITableViewDe
 		view.backgroundColor = UIColor.paceBackgroundBlack()
 		workoutDetailsTableView?.register(ExerciseCellView.self, forCellReuseIdentifier: exerciseCellID)
 		
-		paceAppService.retrieveTrainer(exploreWorkout: exploreWorkout!) { (workoutTrainer) in
-			
-			self.trainer = workoutTrainer
-			
-			if let trainerName = workoutTrainer.name, let trainerImageUrl = workoutTrainer.profileImageUrl {
-				
-				self.headerView.profileNameButton?.setTitle("Created by \(trainerName)", for: UIControlState.normal)
-				self.headerView.profileImageView?.loadImageFromUrlString(urlString: trainerImageUrl)
-				
-			}
-			
-		}
+//		paceAppService.retrieveTrainer(club: exploreWorkout!) { (workoutTrainer) in
+//			
+//			self.trainer = workoutTrainer
+//			
+//			if let trainerName = workoutTrainer.name, let trainerImageUrl = workoutTrainer.profileImageUrl {
+//				
+//				self.headerView.profileNameButton?.setTitle("Created by \(trainerName)", for: UIControlState.normal)
+//				self.headerView.profileImageView?.loadImageFromUrlString(urlString: trainerImageUrl)
+//				
+//			}
+//			
+//		}
 		
 		paceAppService.retrieveWorkoutExercises(exploreWorkout: exploreWorkout!) { (exerciseArrayFound) in
 			

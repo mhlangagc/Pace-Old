@@ -104,8 +104,8 @@ extension JustAddedCollection {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
 		
-		let workoutSelected = popularWorkoutsArray[indexPath.item]
-		discoveryVC?.handleShowWorkoutView(workoutSelected: workoutSelected)
+//		let clubSelected = popularWorkoutsArray[indexPath.item]
+//		discoveryVC?.handleShowClubView(clubSelected: clubSelected)
 		
 	}
 	

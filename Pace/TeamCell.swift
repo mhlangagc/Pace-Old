@@ -9,7 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 
-class TeamCell: BaseCell {
+class ClubCell: BaseCell {
 	
 	let groupImageNode = ASNetworkImageNode()
 	let groupTitleNode = ASTextNode()
@@ -33,13 +33,13 @@ class TeamCell: BaseCell {
 	                           NSForegroundColorAttributeName: UIColor.greyBlackColor()] as [String : Any]
 	var groupMemberMutableString = NSMutableAttributedString()
 
-	var  teamModel : TeamsModel? {
+	var  clubModel : ClubModel? {
 		
 		didSet {
 			
-			groupImageNode.url = NSURL(string: (teamModel?.backgroundImageUrl!)!)! as URL
+			groupImageNode.url = NSURL(string: (clubModel?.backgroundImageUrl!)!)! as URL
 			
-			if let groupName  = teamModel?.workoutName {
+			if let groupName  = clubModel?.name {
 				
 				groupTitleMutableString = NSMutableAttributedString(string: groupName, attributes: groupTitleNodeAttributes)
 				

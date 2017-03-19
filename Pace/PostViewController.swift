@@ -14,7 +14,7 @@ import FirebaseDatabase
 
 class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 	
-	var teamModel: TeamsModel?
+	var teamModel: ClubModel?
 	var imageContainerViewTopAnchor: NSLayoutConstraint?
 
 	var messagesArray = [TeamMessagesModel]()
@@ -294,7 +294,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		let myLabel = UILabel()
 		myLabel.translatesAutoresizingMaskIntoConstraints = false
-		myLabel.text = teamModel?.workoutName
+		myLabel.text = teamModel?.name
 		myLabel.numberOfLines = 1
 		myLabel.textColor = UIColor.white
 		myLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightBold)
@@ -333,7 +333,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		var teamMessagesArray = [TeamMessagesModel]()
 		
-		if let teamID = teamModel?.workoutID {
+		if let teamID = teamModel?.clubID {
 			
 			let fanTeamMessagesRef = FIRDatabase.database().reference().child("fan-team-messages").child(teamID)
 			
@@ -504,7 +504,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 	
 	func handleSend() {
 		
-		guard let teamID = teamModel?.workoutID else {
+		guard let teamID = teamModel?.clubID else {
 			return
 		}
 		

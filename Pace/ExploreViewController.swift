@@ -124,12 +124,12 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 		
 	}
 	
-	func handleShowWorkoutView(workoutSelected: ExploreWorkoutModel) {
+	func handleShowClubView(clubSelected: ClubModel) {
 		
-		let showWorkoutDetailsVC = WorkoutViewController()
-		showWorkoutDetailsVC.exploreWorkout = workoutSelected
-		showWorkoutDetailsVC.hidesBottomBarWhenPushed = true
-		self.navigationController?.pushViewController(showWorkoutDetailsVC, animated: true)
+		let showClubDetailsVC = WorkoutViewController()
+		showClubDetailsVC.club = clubSelected
+		showClubDetailsVC.hidesBottomBarWhenPushed = true
+		self.navigationController?.pushViewController(showClubDetailsVC, animated: true)
 		
 	}
 	

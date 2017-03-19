@@ -13,26 +13,37 @@ class FeaturedCell: BaseCell {
 	
 	var featureCollection: FeaturedCollectionCell?
 	let workoutImageNode = ASNetworkImageNode()
-	let featuredTageNode = ASImageNode()
-	let workoutTitleNode = ASTextNode()
+	let clubNameTextNode = ASTextNode()
+	
+	//	Distance Ran
+	let clubDistanceNumberTextNode = ASTextNode()
+	let clubDistanceTextNode = ASTextNode()
+	
+	//	Distance Ran
+	let clubMembersNumberTextNode = ASTextNode()
+	let clubMembersTextNode = ASTextNode()
 	
 	
-	let imageWidth : CGFloat = 325
-	let imageHeight : CGFloat = 225
+	//	Average Pace Ran
+	let clubPaceNumberTextNode = ASTextNode()
+	let clubPaceTextNode = ASTextNode()
 	
-	let workoutNameAttributes = [NSFontAttributeName : UIFont.systemFont(ofSize: 24, weight: UIFontWeightHeavy), NSForegroundColorAttributeName: UIColor.white] as [String : Any]
+	let imageWidth : CGFloat = 320
+	let imageHeight : CGFloat = 400
+	
+	let workoutNameAttributes = [NSFontAttributeName : UIFont.systemFont(ofSize: 20, weight: UIFontWeightHeavy), NSForegroundColorAttributeName: UIColor.white] as [String : Any]
 	var workoutNameMutableString = NSMutableAttributedString()
 	
-	var  exploreWorkoutModel : ExploreWorkoutModel? {
+	var  exploreClubModel : ClubModel? {
 		
 		didSet {
 			
-			workoutImageNode.url = NSURL(string: (exploreWorkoutModel?.backgroundImageUrl!)!)! as URL
+			workoutImageNode.url = NSURL(string: (exploreClubModel?.backgroundImageUrl!)!)! as URL
 			
-			if let workoutName = exploreWorkoutModel?.name {
+			if let workoutName = exploreClubModel?.name {
 				
 				workoutNameMutableString = NSMutableAttributedString(string: workoutName, attributes: workoutNameAttributes)
-				workoutTitleNode.attributedText = workoutNameMutableString
+				clubNameTextNode.attributedText = workoutNameMutableString
 				
 			}
 			
@@ -57,33 +68,26 @@ class FeaturedCell: BaseCell {
 		workoutImageNode.clipsToBounds = true
 		addSubnode(workoutImageNode)
 		
-		featuredTageNode.image = UIImage(named: "featuredTag")
-		featuredTageNode.contentMode = .scaleAspectFit
-		featuredTageNode.clipsToBounds = true
-		addSubnode(featuredTageNode)
-		
-		
-		workoutTitleNode.maximumNumberOfLines = 2
-		addSubnode(workoutTitleNode)
+		clubNameTextNode.maximumNumberOfLines = 2
+		addSubnode(clubNameTextNode)
 		
 	}
+	
 	
 	override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
 		
 		workoutImageNode.style.preferredSize = CGSize(width: imageWidth, height: imageHeight)
-		featuredTageNode.style.preferredSize = CGSize(width: 90.0, height: 22.0)
 		
 		let textNodeSpec = ASStackLayoutSpec(direction: .vertical,
                                           spacing: 10.0,
-                                          justifyContent: .start,
-                                          alignItems: .start,
-                                          children: [featuredTageNode, workoutTitleNode])
+                                          justifyContent: .center,
+                                          alignItems: .center,
+                                          children: [clubNameTextNode])
 		
 		let insets = UIEdgeInsets(top: CGFloat.infinity, left: 20.0, bottom: 25.0, right: 10.0) // Infinity is used to make the inset unbounded
 		let textInsetSpec = ASInsetLayoutSpec(insets: insets, child: textNodeSpec)
 		
 		return ASOverlayLayoutSpec(child: workoutImageNode, overlay: textInsetSpec)
-		
 		
 	}
 	

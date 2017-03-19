@@ -23,7 +23,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	
 	var exercisesArray = [ExploreExerciseModel]()
 	var downloadedWorkoutIDArray = [String]()
-	var exploreWorkout : ExploreWorkoutModel?
+	var club : ClubModel?
 	
 	
 	lazy var paceAppService: PaceAppServices = {
@@ -52,11 +52,11 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 		self.setupHeaderView()
 		
-		paceAppService.retrieveTrainer(exploreWorkout: exploreWorkout!) { (workoutTrainer) in
+		paceAppService.retrieveTrainer(club: club!) { (trainer) in
 			
-			self.trainer = workoutTrainer
+			self.trainer = trainer
 			
-			if let trainerName = workoutTrainer.name, let trainerImageUrl = workoutTrainer.profileImageUrl {
+			if let trainerName = trainer.name, let trainerImageUrl = trainer.profileImageUrl {
 				
 				self.headerView.profileNameButton?.setTitle("Created by \(trainerName)", for: UIControlState.normal)
 				self.headerView.profileImageView?.loadImageFromCacheWithUrlString(urlString: trainerImageUrl)
@@ -65,12 +65,12 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 			
 		}
 		
-		paceAppService.retrieveWorkoutExercises(exploreWorkout: exploreWorkout!) { (exerciseArrayFound) in
-			
-			self.exercisesArray = exerciseArrayFound
-			self.workoutDetailsTableView?.reloadData()
-			
-		}
+//		paceAppService.retrieveWorkoutExercises(exploreWorkout: club!) { (exerciseArrayFound) in
+//			
+//			self.exercisesArray = exerciseArrayFound
+//			self.workoutDetailsTableView?.reloadData()
+//			
+//		}
 		
 	}
 	
@@ -93,7 +93,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 		for eachID in downloadedWorkoutIDArray {
 			
-			if eachID == exploreWorkout?.workoutID {
+			if eachID == club?.clubID {
 				
 				self.setupJoinButton()
 				
@@ -150,12 +150,14 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		headerView  = WorkoutDetailsHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 635.0))
 		headerView.workoutDetailVC = self
 		
-		headerView.workoutName?.text = (self.exploreWorkout?.name)!
-		headerView.workoutsImageView?.loadImageFromCacheWithUrlString(urlString: (self.exploreWorkout?.backgroundImageUrl)!)
-		headerView.workoutTimeLabel?.text = "\((self.exploreWorkout?.time)!) min workout".uppercased()
-		headerView.descriptionText?.text = (self.exploreWorkout?.workoutDescription)!
-		headerView.memberNumberLabel?.text = "345 Members" //"\((self.exploreWorkout?.numberOfReviews)!) Reviews"
-		headerView.ratingView?.ratingValue = (self.exploreWorkout?.rating)!
+		headerView.workoutName?.text = (self.club?.name)!
+		headerView.workoutsImageView?.loadImageFromCacheWithUrlString(urlString: (self.club?.backgroundImageUrl)!)
+		headerView.memberNumberLabel?.text = "345 Members"
+		
+		headerView.kmNumberLabel?.text = "\((self.club?.distance)!)"
+		headerView.totalRunsNumberLabel?.text = "\((self.club?.totalRuns)!)"
+		headerView.paceNumberLabel?.text = "\((self.club?.paceMins)!):\((self.club?.paceSeconds)!)"
+		headerView.descriptionText?.text = (self.club?.clubDescription)!
 		
 		workoutDetailsTableView?.tableHeaderView = headerView
 		
@@ -174,20 +176,20 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	
 	func setupGetButton() {
 		
-		getButtonView = GetButtonView.init(frame: CGRect(x: 0, y: view.frame.height - 144.0, width: view.frame.width, height: 80.0))
-		getButtonView?.workoutDetailsVC = self
-		
-		let price = self.exploreWorkout?.workoutPrice?.rawValue
-		if price == 0.0 {
-			
-			getButtonView?.getButton?.setTitle("FREE", for: UIControlState.normal)
-			
-		} else {
-			
-			getButtonView?.getButton?.setTitle("R\(price!)", for: UIControlState.normal)
-		}
-		
-		view.addSubview(getButtonView!)
+//		getButtonView = GetButtonView.init(frame: CGRect(x: 0, y: view.frame.height - 144.0, width: view.frame.width, height: 80.0))
+//		getButtonView?.workoutDetailsVC = self
+//		
+//		let price = self.exploreWorkout?.workoutPrice?.rawValue
+//		if price == 0.0 {
+//			
+//			getButtonView?.getButton?.setTitle("FREE", for: UIControlState.normal)
+//			
+//		} else {
+//			
+//			getButtonView?.getButton?.setTitle("R\(price!)", for: UIControlState.normal)
+//		}
+//		
+//		view.addSubview(getButtonView!)
 		
 	}
 

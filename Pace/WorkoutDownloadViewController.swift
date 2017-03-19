@@ -35,7 +35,7 @@ class WorkoutDownloadViewController: UITableViewController {
 	func createDownloadWorkout(completion: @escaping (_ completed: Bool) -> ()) {
 		
 		let userID = FIRAuth.auth()!.currentUser!.uid
-		let workoutID = workoutDetailsVC?.exploreWorkout?.workoutID
+		let workoutID = workoutDetailsVC?.club?.clubID
 		
 		let userDownloadedWorkoutsRef = FIRDatabase.database().reference().child("fan-User-PurchasedWorkouts").child(userID)
 		userDownloadedWorkoutsRef.updateChildValues([workoutID!: 1])

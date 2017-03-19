@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			//	Do nothing for now
 		}
 		
-		paceAppService.retrieveTeamsFromWorkouts { (workoutTeamsArray) in
+		paceAppService.retrieveUserDownloadedWorkouts { (workoutTeamsArray) in
 			
 		}
 

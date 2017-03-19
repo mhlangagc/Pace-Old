@@ -15,9 +15,52 @@ import FirebaseDatabase
 class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource {
 
 	var groupCollectionNode : ASCollectionNode?
-	var teamWorkoutsArray = [TeamsModel]()
+	var clubsArray = [ClubModel]()
 	var usersUsingWorkoutArray = [User]()
 	var trainer = User()
+	
+	//	########### Club Creation
+	private func createClub() {
+		
+		
+		let userID = FIRAuth.auth()!.currentUser!.uid
+		let ref = FIRDatabase.database().reference().child("Clubs")
+		let childRef = ref.childByAutoId()
+		
+		let values = ["name" : "Sea Point Cardio Runners",
+		              "clubDescription": "If you are looking to get toned and enjoy fast paced interval training to shed far this workout is for you.",
+		              "backgroundImageUrl": "https://firebasestorage.googleapis.com/v0/b/pace-c9c8e.appspot.com/o/Workout-Team-Images%2F93D4F0FF-6877-42EA-A264-3FB60F617B1A?alt=media&token=e6ccc73e-63ee-4851-a2c9-d68857f82534",
+		              "trainerID" : userID,
+		              "distance" : 456,
+		              "totalRuns": 55,
+		              "paceMins": 7,
+		              "paceSeconds": 14
+			] as [String : Any]
+		
+		childRef.updateChildValues(values) { (error, ref) in
+			
+			if error != nil {
+				print((error?.localizedDescription)!)
+				return
+			}
+			
+			//	Create workout Trainer Fan
+			let trainerClubRef = FIRDatabase.database().reference().child("fan-club-trainer").child(userID)
+			let messageId = childRef.key
+			trainerClubRef.updateChildValues([messageId: 1])
+			
+			//	Create Featured Workout fan
+			let fanFeaturedClubRef = FIRDatabase.database().reference().child("fan-Explore-Clubs").child("featured-clubs")
+			let workoutId = childRef.key
+			fanFeaturedClubRef.updateChildValues([workoutId: 1])
+			
+			//	Create the Trainer Uploading the workout - Once
+			//	self.uploadToFirebaseStorageUsingTrainerImage()
+			
+			
+		}
+	}
+
 	
 	func retrieveUsersUsingWorkout(workoutID: String, completion: @escaping (_ result: [User]) -> Void) {
 		
@@ -92,13 +135,15 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 			
 		})
 		
-		teamsSetup.retrieveTeamsFromWorkouts { (workoutTeamsArray) in
-			
-			self.teamWorkoutsArray = workoutTeamsArray
-			self.groupCollectionNode?.reloadData()
-			self.setupCollectionView()
-			
-		}
+//		self.createClub()
+		
+//		teamsSetup.retrieveUserClubs { (clubsArray) in
+//			
+//			self.clubsArray = clubsArray
+//			self.groupCollectionNode?.reloadData()
+//			self.setupCollectionView()
+//			
+//		}
 		
 	}
 	

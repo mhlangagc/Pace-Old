@@ -89,7 +89,7 @@ extension DiscoverProfileViewController {
 		
 		let worktoutSelected = trainerWorkoutsArray[indexPath.item]
 		let showWorkoutDetailsVC = WorkoutViewController()
-		showWorkoutDetailsVC.exploreWorkout = worktoutSelected
+		//showWorkoutDetailsVC.exploreWorkout = worktoutSelected
 		self.navigationController?.pushViewController(showWorkoutDetailsVC, animated: true)
 		
 		tableView.deselectRow(at: indexPath, animated: true)

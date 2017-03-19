@@ -38,43 +38,39 @@ class PaceAppServices : NSObject {
 		
 	}
 	
-	//	Dicovery Workouts and Trainer Retrieva
-	func retrieveMaleFeaturedWorkouts(completion: @escaping (_ result: [ExploreWorkoutModel]) -> Void) {
+	//	Retrieve Clubs
+	func retrieveFeaturedClubs(completion: @escaping (_ result: [ClubModel]) -> Void) {
 		
-		var workoutsArray = [ExploreWorkoutModel]()
+		var clubsArray = [ClubModel]()
 		
-		let fanExploreWorkoutsRef = FIRDatabase.database().reference().child("fan-Explore-Workouts").child("male").child("featured-workout")
+		let fanExploreWorkoutsRef = FIRDatabase.database().reference().child("fan-Explore-Clubs").child("featured-clubs")
 		
 		fanExploreWorkoutsRef.observe(.childAdded, with: { (snapshot) in
 			
 			let workoutId = snapshot.key
 			
-			let workoutRef = FIRDatabase.database().reference().child("Workouts-Teams").child(workoutId)
+			let workoutRef = FIRDatabase.database().reference().child("Clubs").child(workoutId)
 			
 			workoutRef.observe(FIRDataEventType.value, with: { (snapShot) in
 				
 				if let dictionary = snapShot.value as? [String: AnyObject] {
 					
-					let featuredWorkout = ExploreWorkoutModel()
+					let featuredClub = ClubModel()
+					featuredClub.clubID = workoutId
+					featuredClub.trainerID = dictionary["trainerID"] as? String
+					featuredClub.name = dictionary["name"] as? String
+					featuredClub.clubDescription = dictionary["clubDescription"] as? String
+					featuredClub.backgroundImageUrl = dictionary["backgroundImageUrl"] as? String
+					featuredClub.distance = dictionary["distance"] as? Int
+					featuredClub.totalRuns = dictionary["totalRuns"] as? Int
+					featuredClub.paceMins = dictionary["paceMins"] as? Int
+					featuredClub.paceSeconds = dictionary["paceSeconds"] as? Int
 					
-					featuredWorkout.workoutID = workoutId
-					featuredWorkout.name = dictionary["name"] as? String
-					featuredWorkout.workoutDescription = dictionary["workoutDescription"] as? String
-					featuredWorkout.backgroundImageUrl = dictionary["backgroundImageUrl"] as? String
-					featuredWorkout.time = dictionary["time"] as? Int
-					featuredWorkout.rating = dictionary["rating"] as? Int
-					featuredWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
-					featuredWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
-					featuredWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
-					featuredWorkout.trainerID = dictionary["trainerID"] as? String
+					clubsArray.append(featuredClub)
 					
-					workoutsArray.append(featuredWorkout)
-					
-					completion(workoutsArray)
-					
+					completion(clubsArray)
 					
 				}
-				
 				
 			}, withCancel: nil)
 			
@@ -82,6 +78,7 @@ class PaceAppServices : NSObject {
 		
 		
 	}
+
 	
 	func retrieveMaleFreeWorkouts(completion: @escaping (_ result: [ExploreWorkoutModel]) -> Void) {
 		
@@ -166,29 +163,29 @@ class PaceAppServices : NSObject {
 		
 	}
 	
-	func retrieveTeamsFromWorkouts(completion: @escaping (_ result: [TeamsModel]) -> Void) {
+	func retrieveUserClubs(completion: @escaping (_ result: [ClubModel]) -> Void) {
 		
-		var teamsArray = [TeamsModel]()
+		var clubArray = [ClubModel]()
 		let userID = FIRAuth.auth()!.currentUser!.uid
 		
-		FIRDatabase.database().reference().child("fan-User-PurchasedWorkouts").child(userID).observe(.childAdded, with: { (snapshot) in
+		FIRDatabase.database().reference().child("fan-User-Clubs").child(userID).observe(.childAdded, with: { (snapshot) in
 			
 			let workoutId = snapshot.key
 			
-			FIRDatabase.database().reference().child("Workouts-Teams").child(workoutId).observe(FIRDataEventType.value, with: { (snapShot) in
+			FIRDatabase.database().reference().child("Clubs").child(workoutId).observe(FIRDataEventType.value, with: { (snapShot) in
 				
 				if let dictionary = snapShot.value as? [String: AnyObject] {
 					
-					let workoutTeam = TeamsModel()
+					let club = ClubModel()
 					
-					workoutTeam.workoutID = workoutId
-					workoutTeam.workoutName = dictionary["name"] as? String
-					workoutTeam.backgroundImageUrl = dictionary["backgroundImageUrl"] as? String
-					workoutTeam.trainerID = dictionary["trainerID"] as? String
+					club.clubID = workoutId
+					club.name = dictionary["name"] as? String
+					club.backgroundImageUrl = dictionary["backgroundImageUrl"] as? String
+					club.trainerID = dictionary["trainerID"] as? String
 					
-					teamsArray.append(workoutTeam)
+					clubArray.append(club)
 					
-					completion(teamsArray)
+					completion(clubArray)
 					
 					
 				}
@@ -304,10 +301,9 @@ class PaceAppServices : NSObject {
 		
 	}
 	
-	
-	func retrieveTrainer(exploreWorkout: ExploreWorkoutModel, completion: @escaping (_ result: User) -> Void) {
+	func retrieveTrainer(club: ClubModel, completion: @escaping (_ result: User) -> Void) {
 		
-		if let trainerID = exploreWorkout.trainerID {
+		if let trainerID = club.trainerID {
 			
 			FIRDatabase.database().reference().child("Trainers").child(trainerID).observeSingleEvent(of: .value, with: { (snapShot) in
 				

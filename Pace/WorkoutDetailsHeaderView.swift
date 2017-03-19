@@ -90,7 +90,7 @@ class WorkoutDetailsHeaderView : BaseView {
 	func clubStas() {
 		
 		//	Distance Section
-		kmNumberLabel = UILabel.init(frame: CGRect(x: 24.0, y: 280, width: textWidth, height: 46))
+		kmNumberLabel = UILabel.init(frame: CGRect(x: 24.0, y: 265, width: textWidth, height: 46))
 		kmNumberLabel?.text = "8.49"
 		kmNumberLabel?.font = UIFont(name: "BebasNeueBold", size: 42)
 		kmNumberLabel?.textColor = UIColor.greyWhite()
@@ -99,7 +99,7 @@ class WorkoutDetailsHeaderView : BaseView {
 		addSubview(kmNumberLabel!)
 		
 		
-		kmTextLabel = UILabel.init(frame: CGRect(x: 24.0, y: 330, width: textWidth, height: 20))
+		kmTextLabel = UILabel.init(frame: CGRect(x: 24.0, y: 315, width: textWidth, height: 20))
 		kmTextLabel?.text = "total km"
 		kmTextLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
 		kmTextLabel?.textColor = UIColor.greyBlackColor()
@@ -115,7 +115,7 @@ class WorkoutDetailsHeaderView : BaseView {
 			
 		}
 		
-		totalRunsNumberLabel = UILabel.init(frame: CGRect(x: xPosition, y: 280, width: textWidth, height: 46))
+		totalRunsNumberLabel = UILabel.init(frame: CGRect(x: xPosition, y: 265, width: textWidth, height: 46))
 		totalRunsNumberLabel?.text = "49"
 		totalRunsNumberLabel?.font = UIFont(name: "BebasNeueBold", size: 42)
 		totalRunsNumberLabel?.textColor = UIColor.greyWhite()
@@ -124,7 +124,7 @@ class WorkoutDetailsHeaderView : BaseView {
 		addSubview(totalRunsNumberLabel!)
 		
 		
-		totalRunsTextLabel = UILabel.init(frame: CGRect(x: xPosition, y: 330, width: textWidth, height: 20))
+		totalRunsTextLabel = UILabel.init(frame: CGRect(x: xPosition, y: 315, width: textWidth, height: 20))
 		totalRunsTextLabel?.text = "total runs"
 		totalRunsTextLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
 		totalRunsTextLabel?.textColor = UIColor.greyBlackColor()
@@ -141,7 +141,7 @@ class WorkoutDetailsHeaderView : BaseView {
 			xEndPosition = window.frame.width - textWidth - 24
 			
 		}
-		paceNumberLabel = UILabel.init(frame: CGRect(x: xEndPosition, y: 280, width: textWidth, height: 46))
+		paceNumberLabel = UILabel.init(frame: CGRect(x: xEndPosition, y: 265, width: textWidth, height: 46))
 		paceNumberLabel?.text = "7:09"
 		paceNumberLabel?.font = UIFont(name: "BebasNeueBold", size: 42)
 		paceNumberLabel?.textColor = UIColor.greyWhite()
@@ -150,7 +150,7 @@ class WorkoutDetailsHeaderView : BaseView {
 		addSubview(paceNumberLabel!)
 		
 		
-		paceTextLabel = UILabel.init(frame: CGRect(x: xEndPosition, y: 330, width: textWidth, height: 20))
+		paceTextLabel = UILabel.init(frame: CGRect(x: xEndPosition, y: 315, width: textWidth, height: 20))
 		paceTextLabel?.text = "mins/km"
 		paceTextLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
 		paceTextLabel?.textColor = UIColor.greyBlackColor()
