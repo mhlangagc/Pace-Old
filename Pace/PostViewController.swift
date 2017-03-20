@@ -161,6 +161,16 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 	}
 	
+	private func setupRightNavItem() {
+		
+		let moreButton = UIButton(type: .system)
+		moreButton.setImage(#imageLiteral(resourceName: "moreGreen").withRenderingMode(.alwaysOriginal), for: .normal)
+		moreButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+		moreButton.addTarget(self, action: #selector(handleMoreOptions), for: UIControlEvents.touchUpInside)
+		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: moreButton)
+		
+	}
+	
 	required init?(coder aDecoder: NSCoder) {
 		
 		fatalError("Storyboards are incompatible with truth and beauty")
@@ -245,6 +255,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		self.setupImageSelectionContainerView()
 		self.setupNavBar()
 		navigationNoLineBar()
+		self.setupRightNavItem()
 		self.setupKeyboardObservers()
 		
 		self.observeTeamMessages { (postsArray) in
@@ -273,8 +284,8 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		self.setupNavBar()
 		
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.greyBlackColor()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.greyBlackColor()
 		self.navigationController?.navigationBar.tintColor = UIColor.white
 		
 		
@@ -392,6 +403,12 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 	}
 	
+	func handleMoreOptions() {
+		
+		
+		//	TO DO
+		
+	}
 	var viewOpened = false
 	func handleSelectImage() {
 		

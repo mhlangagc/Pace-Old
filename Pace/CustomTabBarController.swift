@@ -80,11 +80,11 @@ class CustomTabBarController: ASTabBarController {
 		exploreViewController.navigationController?.navigationBar.barStyle = .black
         exploreViewController.extendedLayoutIncludesOpaqueBars = true
 		
-        //	Teams
-        let teamViewController = TeamsViewController()
-        let groupsNavController = ASNavigationController(rootViewController: teamViewController)
-        teamViewController.navigationController?.navigationBar.barStyle = .black
-        teamViewController.extendedLayoutIncludesOpaqueBars = true
+        //	Clubs
+        let clubsViewController = ClubsViewController()
+        let clubsNavController = ASNavigationController(rootViewController: clubsViewController)
+        clubsViewController.navigationController?.navigationBar.barStyle = .black
+        clubsViewController.extendedLayoutIncludesOpaqueBars = true
 		
 		//  Activity View Controller
 		let profileViewController = ProfileViewController()
@@ -94,7 +94,7 @@ class CustomTabBarController: ASTabBarController {
 		profileViewController.extendedLayoutIncludesOpaqueBars = true
 		
 		
-        viewControllers = [groupsNavController, exploreNavController, profileNavController]
+        viewControllers = [clubsNavController, exploreNavController, profileNavController]
         
     }
     
