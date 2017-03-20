@@ -29,7 +29,6 @@ extension ClubsViewController {
 		sectionHeaderLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
 		sectionHeaderView.addSubview(sectionHeaderLabel)
 		
-		
 		return sectionHeaderView
 		
 	}
@@ -38,11 +37,11 @@ extension ClubsViewController {
 		
 		if section == 0 {
 			
-			return 55.0
+			return 0.0 //55.0
 			
 		} else {
 			
-			return 0.0
+			return 55.0
 			
 		}
 		
@@ -96,6 +95,7 @@ extension ClubsViewController {
 				clubCell!.selectedBackgroundView = backgroundView
 			}
 			
+			clubCell?.clubsViewController = self
 			clubCell?.backgroundColor = UIColor.closeBlack()
 			
 			return clubCell!
@@ -125,7 +125,7 @@ extension ClubsViewController {
 				workoutCell?.workoutImage.loadImageFromCacheWithUrlString(urlString: imageURL)
 				
 			}
-			
+		
 			workoutCell?.backgroundColor = UIColor.closeBlack()
 			
 			

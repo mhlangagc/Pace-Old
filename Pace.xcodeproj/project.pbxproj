@@ -18,7 +18,6 @@
 		450D916F1E03F89D009D9144 /* FollowerFollowingCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450D916E1E03F89D009D9144 /* FollowerFollowingCellNode.swift */; };
 		451276121DFC747C008B57DE /* JustAddedCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451276111DFC747C008B57DE /* JustAddedCollection.swift */; };
 		451276141DFC835A008B57DE /* DiscoveryWorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451276131DFC835A008B57DE /* DiscoveryWorkoutCell.swift */; };
-		451D078A1DFE43DC00940301 /* TeamsViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451D07891DFE43DC00940301 /* TeamsViewController+Extension.swift */; };
 		451D078D1DFE44BF00940301 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451D078C1DFE44BF00940301 /* ProfileHeaderView.swift */; };
 		451D07901DFE586900940301 /* DiscoverProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451D078F1DFE586900940301 /* DiscoverProfileViewController.swift */; };
 		451D07931DFE5BA200940301 /* DiscoverProfileViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451D07921DFE5BA200940301 /* DiscoverProfileViewController+Extension.swift */; };
@@ -83,7 +82,6 @@
 		45B5ADA51DFC05A900115E2C /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B5ADA41DFC05A900115E2C /* CustomTabBarController.swift */; };
 		45B5ADA71DFC095000115E2C /* WeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B5ADA61DFC095000115E2C /* WeekViewController.swift */; };
 		45B5ADA91DFC097300115E2C /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B5ADA81DFC097300115E2C /* ActivityViewController.swift */; };
-		45B5ADAB1DFC09A000115E2C /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B5ADAA1DFC099F00115E2C /* TeamsViewController.swift */; };
 		45BE49901DFF42E3006C671B /* RatingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BE498F1DFF42E3006C671B /* RatingsView.swift */; };
 		45C214E11E05AE0400C5BCCF /* AllWorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C214E01E05AE0400C5BCCF /* AllWorkoutsViewController.swift */; };
 		45C214E41E05AEEE00C5BCCF /* AllWorkoutsViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C214E31E05AEEE00C5BCCF /* AllWorkoutsViewController+Extension.swift */; };
@@ -120,7 +118,6 @@
 		45F7F5D81DFD66EC00DD1E33 /* NewsDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7F5D71DFD66EC00DD1E33 /* NewsDetailsCell.swift */; };
 		45F7F5DA1DFD8AD200DD1E33 /* WeekTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F7F5D91DFD8AD200DD1E33 /* WeekTableCell.swift */; };
 		BD372C2BE13A69DDA8ABFAA5 /* Pods_Pace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC48F02A471D422621621F63 /* Pods_Pace.framework */; };
-		C60363131E62D0F7005F2691 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60363121E62D0F7005F2691 /* TeamCell.swift */; };
 		C6057EEE1E3E288400AC62EA /* PaceErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6057EED1E3E288400AC62EA /* PaceErrorHandling.swift */; };
 		C6057EF01E3E28D900AC62EA /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6057EEF1E3E28D900AC62EA /* AuthenticationService.swift */; };
 		C6057EF21E3E4B7900AC62EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6057EF11E3E4B7900AC62EA /* GoogleService-Info.plist */; };
@@ -204,7 +201,6 @@
 		450D916E1E03F89D009D9144 /* FollowerFollowingCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerFollowingCellNode.swift; sourceTree = "<group>"; };
 		451276111DFC747C008B57DE /* JustAddedCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JustAddedCollection.swift; sourceTree = "<group>"; };
 		451276131DFC835A008B57DE /* DiscoveryWorkoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryWorkoutCell.swift; sourceTree = "<group>"; };
-		451D07891DFE43DC00940301 /* TeamsViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TeamsViewController+Extension.swift"; sourceTree = "<group>"; };
 		451D078C1DFE44BF00940301 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		451D078F1DFE586900940301 /* DiscoverProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverProfileViewController.swift; sourceTree = "<group>"; };
 		451D07921DFE5BA200940301 /* DiscoverProfileViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DiscoverProfileViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -278,7 +274,6 @@
 		45B5ADA41DFC05A900115E2C /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		45B5ADA61DFC095000115E2C /* WeekViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekViewController.swift; sourceTree = "<group>"; };
 		45B5ADA81DFC097300115E2C /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
-		45B5ADAA1DFC099F00115E2C /* TeamsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
 		45BE498F1DFF42E3006C671B /* RatingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingsView.swift; sourceTree = "<group>"; };
 		45C214E01E05AE0400C5BCCF /* AllWorkoutsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllWorkoutsViewController.swift; sourceTree = "<group>"; };
 		45C214E31E05AEEE00C5BCCF /* AllWorkoutsViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AllWorkoutsViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -318,7 +313,6 @@
 		59335CBDC2D2803DE42031D5 /* Pods_PaceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A08244F9BF7AE8D216914864 /* Pods-Pace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pace/Pods-Pace.debug.xcconfig"; sourceTree = "<group>"; };
 		A99BA1B4E6F660258B376E7C /* Pods_PaceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C60363121E62D0F7005F2691 /* TeamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
 		C6057EED1E3E288400AC62EA /* PaceErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceErrorHandling.swift; sourceTree = "<group>"; };
 		C6057EEF1E3E28D900AC62EA /* AuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		C6057EF11E3E4B7900AC62EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -468,9 +462,6 @@
 				C65D7FC01E7FF625003C9548 /* ClubsViewController+Extension.swift */,
 				C65D7FC21E7FFA16003C9548 /* ClubsTableViewCell.swift */,
 				C6AE449B1E803E360088BC05 /* ClubCollectionViewCell.swift */,
-				45B5ADAA1DFC099F00115E2C /* TeamsViewController.swift */,
-				451D07891DFE43DC00940301 /* TeamsViewController+Extension.swift */,
-				C60363121E62D0F7005F2691 /* TeamCell.swift */,
 			);
 			name = Clubs;
 			sourceTree = "<group>";
@@ -1356,7 +1347,6 @@
 				45C214EA1E05B84400C5BCCF /* RatingsNodeView.swift in Sources */,
 				45C214F21E05DBC400C5BCCF /* SettingsViewController.swift in Sources */,
 				C6BB14911E3FB08A00BF6F66 /* OnboardingImageView.swift in Sources */,
-				451D078A1DFE43DC00940301 /* TeamsViewController+Extension.swift in Sources */,
 				45B5ADA51DFC05A900115E2C /* CustomTabBarController.swift in Sources */,
 				45B5ADA91DFC097300115E2C /* ActivityViewController.swift in Sources */,
 				45C214F61E05DD9A00C5BCCF /* SettingsCellView.swift in Sources */,
@@ -1364,7 +1354,6 @@
 				45ACEAB31DFFB1EB00C94B7D /* GetButtonView.swift in Sources */,
 				45ECF68A1E152D450032F6CC /* NewToPaceCollection.swift in Sources */,
 				45275E0C1DFF0B9000DF6F38 /* WorkoutDetailsHeaderView.swift in Sources */,
-				C60363131E62D0F7005F2691 /* TeamCell.swift in Sources */,
 				45E3C0781DFD9493002FD4F8 /* ActitivityDetailView.swift in Sources */,
 				C6BB148F1E3FA1E700BF6F66 /* LoginViewController.swift in Sources */,
 				45F7F5D61DFD565A00DD1E33 /* ActivityCell.swift in Sources */,
@@ -1420,7 +1409,6 @@
 				C6BE5C131E402ADA00770A42 /* PaceAppServices.swift in Sources */,
 				454535871E18EAAC00653252 /* WorkoutCompleteVIewController.swift in Sources */,
 				45ACEABD1DFFBA7700C94B7D /* StartButtonView.swift in Sources */,
-				45B5ADAB1DFC09A000115E2C /* TeamsViewController.swift in Sources */,
 				45C214F41E05DC7C00C5BCCF /* SettingsViewController+Extension.swift in Sources */,
 				45BE49901DFF42E3006C671B /* RatingsView.swift in Sources */,
 				C61EB9EB1E755B6E0083C966 /* WorkoutDownloadViewController.swift in Sources */,

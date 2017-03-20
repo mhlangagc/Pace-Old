@@ -184,8 +184,14 @@ class PaceAppServices : NSObject {
 					
 					club.clubID = workoutId
 					club.name = dictionary["name"] as? String
+					club.clubDescription = dictionary["clubDescription"] as? String
 					club.backgroundImageUrl = dictionary["backgroundImageUrl"] as? String
 					club.trainerID = dictionary["trainerID"] as? String
+					club.totalRuns = dictionary["totalRuns"] as? Int
+					club.distance = dictionary["distance"] as? Int
+					club.paceMins = dictionary["paceMins"] as? Int
+					club.paceSeconds = dictionary["paceSeconds"] as? Int
+					
 					
 					clubArray.append(club)
 					

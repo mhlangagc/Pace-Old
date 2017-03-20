@@ -37,8 +37,8 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		textField.autocapitalizationType = .sentences
 		textField.textColor = UIColor.white
 		textField.tintColor = UIColor.paceBrandColor()
-		textField.attributedPlaceholder = NSAttributedString(string:"Ask the team anything...",
-		                                                     attributes:[NSForegroundColorAttributeName: UIColor.greyBlackColor()])
+		textField.attributedPlaceholder = NSAttributedString(string:"Chat with the club...",
+		                                                     attributes:[NSForegroundColorAttributeName: UIColor.greyWhite()])
 		textField.returnKeyType = .default
 		textField.sizeToFit()
 		textField.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightSemibold)
@@ -141,7 +141,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		flowLayout.minimumLineSpacing       = 8
 		flowLayout.scrollDirection = .vertical
 		collectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
-		collectionNode?.backgroundColor = UIColor.paceBackgroundBlack()
+		collectionNode?.backgroundColor = UIColor.closeBlack()
 		super.init(node: collectionNode!)
 		navigationNoLineBar()
 	
@@ -157,7 +157,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		collectionNode?.view.keyboardDismissMode = .interactive
 		collectionNode?.view.contentInset = UIEdgeInsets(top: 20, left: 0.0, bottom: 64, right: 0.0)
 		collectionNode?.view.showsVerticalScrollIndicator = false
-		collectionNode?.view.backgroundColor = UIColor.paceBackgroundBlack()
+		collectionNode?.view.backgroundColor = UIColor.closeBlack()
 		
 	}
 	
@@ -253,7 +253,6 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		super.viewDidLoad()
 		
 		self.setupImageSelectionContainerView()
-		self.setupNavBar()
 		navigationNoLineBar()
 		self.setupRightNavItem()
 		self.setupKeyboardObservers()
@@ -282,10 +281,9 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		super.viewWillAppear(true)
 		
 		self.setupNavBar()
-		
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.greyBlackColor()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.greyBlackColor()
+		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
 		self.navigationController?.navigationBar.tintColor = UIColor.white
 		
 		
@@ -301,43 +299,15 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 	
 	}
 	
-	private func setupNavBar() {
+	func setupNavBar() {
 		
-		let myLabel = UILabel()
-		myLabel.translatesAutoresizingMaskIntoConstraints = false
-		myLabel.text = teamModel?.name
-		myLabel.numberOfLines = 1
-		myLabel.textColor = UIColor.white
-		myLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightBold)
-		
-		
-		let smallText = UILabel()
-		smallText.translatesAutoresizingMaskIntoConstraints = false
-		smallText.text = "2k Members"
-		smallText.numberOfLines = 1
-		smallText.textColor = UIColor.greyWhite()
-		smallText.font = UIFont.systemFont(ofSize: 13, weight: UIFontWeightBold)
-		
-		
-		let wrapper = UIView()
-		wrapper.addSubview(myLabel)
-		wrapper.addSubview(smallText)
-		wrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[myLabel]-0-|", options: [], metrics: nil, views: ["myLabel": myLabel, "smallText": smallText]))
-		wrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[myLabel]-2-[smallText]-0-|", options: .alignAllCenterX, metrics: nil, views: ["myLabel": myLabel, "smallText": smallText]))
-		
-		wrapper.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(max(myLabel.intrinsicContentSize.width, smallText.intrinsicContentSize.width)), height: CGFloat(myLabel.intrinsicContentSize.height + smallText.intrinsicContentSize.height + 2))
-		wrapper.clipsToBounds = true
-		
-		self.navigationItem.titleView = wrapper
-		self.navigationController?.navigationBar.clipsToBounds = true
-		
-		if let window = UIApplication.shared.keyWindow {
-			
-			self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: window.frame.size.width, height: 80.0)
-		
-		}
-		
-		
+		let titleLabel = UILabel(frame: CGRect(x: ((view.frame.width - 100) * 0.5), y: 5, width: 100, height: view.frame.height))
+		titleLabel.text = teamModel?.name
+		titleLabel.textAlignment = .center
+		titleLabel.textColor = UIColor.white
+		titleLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightBold)
+		textSpacing(titleLabel, spacing: 0.5)
+		navigationItem.titleView = titleLabel
 	}
 	
 	func observeTeamMessages(completion: @escaping (_ result: [TeamMessagesModel]) -> Void) {
@@ -600,6 +570,49 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		dismiss(animated: true, completion: nil)
 		
 	}
+	
+	
+	/*
+	private func setupNavBar() {
+		
+		let myLabel = UILabel()
+		myLabel.translatesAutoresizingMaskIntoConstraints = false
+		myLabel.text = teamModel?.name
+		myLabel.numberOfLines = 1
+		myLabel.textColor = UIColor.white
+		myLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightBold)
+		
+		
+		let smallText = UILabel()
+		smallText.translatesAutoresizingMaskIntoConstraints = false
+		smallText.text = "2k Members"
+		smallText.numberOfLines = 1
+		smallText.textColor = UIColor.greyWhite()
+		smallText.font = UIFont.systemFont(ofSize: 13, weight: UIFontWeightBold)
+		
+		
+		let wrapper = UIView()
+		wrapper.addSubview(myLabel)
+		wrapper.addSubview(smallText)
+		wrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[myLabel]-0-|", options: [], metrics: nil, views: ["myLabel": myLabel, "smallText": smallText]))
+		wrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[myLabel]-2-[smallText]-0-|", options: .alignAllCenterX, metrics: nil, views: ["myLabel": myLabel, "smallText": smallText]))
+		
+		wrapper.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(max(myLabel.intrinsicContentSize.width, smallText.intrinsicContentSize.width)), height: CGFloat(myLabel.intrinsicContentSize.height + smallText.intrinsicContentSize.height + 2))
+		wrapper.clipsToBounds = true
+		
+		self.navigationItem.titleView = wrapper
+		self.navigationController?.navigationBar.clipsToBounds = true
+		
+		if let window = UIApplication.shared.keyWindow {
+			
+			self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: window.frame.size.width, height: 80.0)
+			
+		}
+		
+		
+	}
+
+	*/
 
 
 	

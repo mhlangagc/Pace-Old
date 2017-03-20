@@ -20,6 +20,8 @@ class ClubsTableViewCell : TableBaseCell, UICollectionViewDelegateFlowLayout, UI
 	var usersUsingWorkoutArray = [User]()
 	var trainer = User()
 	
+	var clubsViewController: ClubsViewController?
+	
 	lazy var teamsSetup: PaceAppServices = {
 		
 		let teamSetup = PaceAppServices()
@@ -90,7 +92,7 @@ class ClubsTableViewCell : TableBaseCell, UICollectionViewDelegateFlowLayout, UI
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		
-		return 5
+		return self.clubsArray.count
 		
 	}
 	
@@ -106,11 +108,12 @@ class ClubsTableViewCell : TableBaseCell, UICollectionViewDelegateFlowLayout, UI
 		if (clubCell!.selectedBackgroundView != nil) {
 			
 			let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: clubCell!.frame.size.width, height: clubCell!.frame.size.height))
-			backgroundView.backgroundColor = UIColor.yellow
+			backgroundView.backgroundColor = UIColor.paceBackgroundBlack()
 			clubCell!.selectedBackgroundView = backgroundView
 		}
 		
-		clubCell?.backgroundColor = .yellow
+		clubCell?.clubModel = self.clubsArray[indexPath.item]
+		clubCell?.backgroundColor = UIColor.closeBlack()
 		
 		return clubCell!
 		
@@ -125,7 +128,17 @@ class ClubsTableViewCell : TableBaseCell, UICollectionViewDelegateFlowLayout, UI
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 		
 		return UIEdgeInsets(top: 5.0, left: 16.0, bottom: 5.0, right: 16.0)
+	
 	}
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		
+		self.clubsViewController?.handleClubSelection(clubSelected: self.clubsArray[indexPath.item])
+		collectionView.deselectItem(at: indexPath, animated: true)
+		
+	}
+	
+
 	
 }
 

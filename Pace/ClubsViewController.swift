@@ -164,7 +164,6 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		
 		self.setupWeekTableView()
 		navigationItem.title = "My Clubs"
-		self.navigationController?.navigationBar.isHidden = true
 		view.backgroundColor = UIColor.black
 		self.navigationBarItems()
 		self.setupRightNavItem()
@@ -191,6 +190,12 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		self.setupRightNavItem()
 		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
+		
+		if let window = UIApplication.shared.keyWindow {
+			
+			self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: window.frame.size.width, height: 64.0)
+			
+		}
 		
 	}
 	
@@ -219,7 +224,7 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		
 		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height)
 		clubsTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.plain)
-		clubsTableView?.backgroundColor = .black
+		clubsTableView?.backgroundColor = .closeBlack()
 		clubsTableView?.delegate = self
 		clubsTableView?.dataSource = self
 		clubsTableView?.separatorStyle = .none
@@ -235,7 +240,16 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		
 	}
 	
-	
+	func handleClubSelection(clubSelected: ClubModel) {
+		
+		let teamMessagesVC = PostViewController()
+		//teamMessagesVC.userName = userName
+		//teamMessagesVC.userImageURL = userImageURL
+		teamMessagesVC.teamModel = clubSelected
+		teamMessagesVC.hidesBottomBarWhenPushed = true
+		self.navigationController?.pushViewController(teamMessagesVC, animated: true)
+		
+	}
 	
 }
 
