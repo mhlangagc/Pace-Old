@@ -92,11 +92,11 @@ extension ClubsViewController {
 			if (clubCell!.selectedBackgroundView != nil) {
 				
 				let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: clubCell!.frame.size.width, height: clubCell!.frame.size.height))
-				backgroundView.backgroundColor = .red //UIColor.closeBlack()
+				backgroundView.backgroundColor = UIColor.closeBlack()
 				clubCell!.selectedBackgroundView = backgroundView
 			}
 			
-			clubCell?.backgroundColor = .red
+			clubCell?.backgroundColor = UIColor.closeBlack()
 			
 			return clubCell!
 

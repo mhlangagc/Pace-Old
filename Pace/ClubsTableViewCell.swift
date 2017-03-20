@@ -40,9 +40,9 @@ class ClubsTableViewCell : TableBaseCell, UICollectionViewDelegateFlowLayout, UI
 		layout.minimumInteritemSpacing = 16.0
 		layout.minimumLineSpacing = 16.0
 		layout.scrollDirection = .horizontal
-		let frame = CGRect(x: 0.0, y: 0.0, width: self.frame.width, height: 210)
+		let frame = CGRect(x: 0.0, y: 0.0, width: 375, height: 210)
 		let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-		collectionView.backgroundColor = UIColor.yellow
+		collectionView.backgroundColor = UIColor.closeBlack()
 		collectionView.showsHorizontalScrollIndicator = false
 		return collectionView
 		
@@ -78,7 +78,6 @@ class ClubsTableViewCell : TableBaseCell, UICollectionViewDelegateFlowLayout, UI
 			
 		}
 		
-		
 		backgroundColor = .closeBlack()
 		
 	}
@@ -91,7 +90,7 @@ class ClubsTableViewCell : TableBaseCell, UICollectionViewDelegateFlowLayout, UI
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		
-		return 3
+		return 5
 		
 	}
 	
@@ -107,11 +106,11 @@ class ClubsTableViewCell : TableBaseCell, UICollectionViewDelegateFlowLayout, UI
 		if (clubCell!.selectedBackgroundView != nil) {
 			
 			let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: clubCell!.frame.size.width, height: clubCell!.frame.size.height))
-			backgroundView.backgroundColor = UIColor.closeBlack()
+			backgroundView.backgroundColor = UIColor.yellow
 			clubCell!.selectedBackgroundView = backgroundView
 		}
 		
-		clubCell?.backgroundColor = .closeBlack()
+		clubCell?.backgroundColor = .yellow
 		
 		return clubCell!
 		
@@ -131,13 +130,4 @@ class ClubsTableViewCell : TableBaseCell, UICollectionViewDelegateFlowLayout, UI
 }
 
 
-class ClubCollectionViewCell : CollectionBaseCell  {
 
-	override func setupViews() {
-		super.setupViews()
-		
-		backgroundColor = .yellow
-		
-	}
-	
-}

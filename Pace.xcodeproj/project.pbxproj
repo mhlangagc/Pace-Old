@@ -154,6 +154,7 @@
 		C6A8A3E21E649E290038C20A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A8A3E11E649E290038C20A /* SystemConfiguration.framework */; };
 		C6A8A3E41E64A6F00038C20A /* PostsMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8A3E31E64A6F00038C20A /* PostsMenuBar.swift */; };
 		C6A8A3E61E64A98D0038C20A /* TeamMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8A3E51E64A98D0038C20A /* TeamMemberCell.swift */; };
+		C6AE449C1E803E360088BC05 /* ClubCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AE449B1E803E360088BC05 /* ClubCollectionViewCell.swift */; };
 		C6B118281E21670C002BB4E8 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118271E21670C002BB4E8 /* PasswordViewController.swift */; };
 		C6B1182A1E21729F002BB4E8 /* NameEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118291E21729F002BB4E8 /* NameEntryViewController.swift */; };
 		C6B1182C1E217BCA002BB4E8 /* PickGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1182B1E217BCA002BB4E8 /* PickGenderViewController.swift */; };
@@ -352,6 +353,7 @@
 		C6A8A3E11E649E290038C20A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C6A8A3E31E64A6F00038C20A /* PostsMenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsMenuBar.swift; sourceTree = "<group>"; };
 		C6A8A3E51E64A98D0038C20A /* TeamMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMemberCell.swift; sourceTree = "<group>"; };
+		C6AE449B1E803E360088BC05 /* ClubCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubCollectionViewCell.swift; sourceTree = "<group>"; };
 		C6B118271E21670C002BB4E8 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		C6B118291E21729F002BB4E8 /* NameEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameEntryViewController.swift; sourceTree = "<group>"; };
 		C6B1182B1E217BCA002BB4E8 /* PickGenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickGenderViewController.swift; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 				C65D7FBE1E7FF5C3003C9548 /* ClubsViewController.swift */,
 				C65D7FC01E7FF625003C9548 /* ClubsViewController+Extension.swift */,
 				C65D7FC21E7FFA16003C9548 /* ClubsTableViewCell.swift */,
+				C6AE449B1E803E360088BC05 /* ClubCollectionViewCell.swift */,
 				45B5ADAA1DFC099F00115E2C /* TeamsViewController.swift */,
 				451D07891DFE43DC00940301 /* TeamsViewController+Extension.swift */,
 				C60363121E62D0F7005F2691 /* TeamCell.swift */,
@@ -1436,6 +1439,7 @@
 				45ECF6881E151F5D0032F6CC /* WorkoutDaysModel.swift in Sources */,
 				45F7F5DA1DFD8AD200DD1E33 /* WeekTableCell.swift in Sources */,
 				45E2F3DA1E16BEB9007384CF /* ClubModel.swift in Sources */,
+				C6AE449C1E803E360088BC05 /* ClubCollectionViewCell.swift in Sources */,
 				C65D7FC11E7FF625003C9548 /* ClubsViewController+Extension.swift in Sources */,
 				45E3C0761DFD8F33002FD4F8 /* WeekViewController+Extension.swift in Sources */,
 				45B5AD851DFBFAF500115E2C /* Colors.swift in Sources */,
