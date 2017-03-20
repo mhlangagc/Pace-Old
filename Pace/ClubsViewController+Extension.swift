@@ -37,7 +37,7 @@ extension ClubsViewController {
 		
 		if section == 0 {
 			
-			return 0.0 //55.0
+			return 55.0
 			
 		} else {
 			
