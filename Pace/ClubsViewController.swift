@@ -1,23 +1,33 @@
 //
-//  ProfileViewController.swift
+//  ClubsViewController.swift
 //  Pace
 //
-//  Created by Gugulethu Mhlanga on 2016/12/10.
-//  Copyright © 2016 Pace. All rights reserved.
+//  Created by Gugulethu Mhlanga on 2017/03/20.
+//  Copyright © 2017 Pace. All rights reserved.
 //
 
-import UIKit
-import AsyncDisplayKit
+
 import Firebase
-import FirebaseAuth
-import FirebaseDatabase
+import UIKit
 
-class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource {
-
-	var groupCollectionNode : ASCollectionNode?
+class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+	
+	var clubsTableView : UITableView?
+	let weekCellID = "RoutineCellViewID"
+	let workoutCellID = "workoutCellID"
+	let clubCellID = "clubCellID"
+	
 	var clubsArray = [ClubModel]()
 	var usersUsingWorkoutArray = [User]()
 	var trainer = User()
+	
+	lazy var RoutineSetup: RoutinesViewModel = {
+		
+		let routineWorkoutsSetup = RoutinesViewModel()
+		return routineWorkoutsSetup
+		
+	}()
+	
 	
 	//	########### Club Creation
 	private func createClub() {
@@ -60,7 +70,6 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 			
 		}
 	}
-
 	
 	func retrieveUsersUsingWorkout(workoutID: String, completion: @escaping (_ result: [User]) -> Void) {
 		
@@ -109,86 +118,96 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 		return profileSetup
 		
 	}()
-
 	
 	var userName = String()
 	var userImageURL = String()
 	
-	init() {
+	
+	func setupRoutineData() {
 		
-		let flowLayout     = UICollectionViewFlowLayout()
-		flowLayout.scrollDirection = .vertical
-		flowLayout.minimumInteritemSpacing  = 10
-		flowLayout.minimumLineSpacing       = 10
-		flowLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 5.0, bottom: 20.0, right: 5.0)
-		groupCollectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
-		super.init(node: groupCollectionNode!)
-		
-		profileSetup.retrieveUser(completion: { (userFound) in
+		let weekCreationLaunch = UserDefaults.standard.bool(forKey: "routineCreationLaunch")
+		if weekCreationLaunch  {
 			
-			if let userName  = userFound.name, let profileImageURL = userFound.profileImageUrl {
+			//  Not First Launch
+			
+			
+		} else {
+			
+			RoutineSetup.routinesCreation(completion: {
 				
-				self.userName = userName
-				self.userImageURL = profileImageURL
+				RoutineSetup.loadRoutineWorkouts()
 				
-			}
+			})
 			
-		})
-		
-		//self.createClub()
-		
-		teamsSetup.retrieveUserClubs { (clubsArray) in
+			UserDefaults.standard.set(true, forKey: "routineCreationLaunch")
 			
-			self.clubsArray = clubsArray
-			self.groupCollectionNode?.reloadData()
-			self.setupCollectionView()
-			
-			UIApplication.shared.isNetworkActivityIndicatorVisible = false
+			// **  Save Date for Renewing
+			//self.firstLaunchDate()
 			
 		}
 		
 	}
 	
-	required init?(coder aDecoder: NSCoder) {
-	
-		fatalError("Storyboards are incompatible with truth and beauty")
-	
-	}
-	
-	func setupCollectionView() {
+	lazy var paceAppService: PaceAppServices = {
 		
-		groupCollectionNode?.delegate   = self
-		groupCollectionNode?.dataSource = self
-		groupCollectionNode?.view.alwaysBounceVertical = true
-		groupCollectionNode?.view.allowsSelection = true
-		groupCollectionNode?.view.showsVerticalScrollIndicator = false
-		groupCollectionNode?.view.backgroundColor = UIColor.black
+		let retrieveDownloadedWorkouts = PaceAppServices()
+		return retrieveDownloadedWorkouts
 		
-	}
-
+	}()
+	
+	var downloadedWorkoutsArray = [ExploreWorkoutModel]()
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.view.backgroundColor = .black
+		RoutineSetup.loadRoutineWorkouts()
+		
+		self.setupWeekTableView()
+		navigationItem.title = "My Clubs"
+		view.backgroundColor = UIColor.black
 		self.navigationBarItems()
-		navigationNoLineBar()
+		self.setupRightNavItem()
+		clubsTableView?.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
+		self.setupRoutineData()
 		
-		
+		paceAppService.retrieveUserDownloadedWorkouts { (purchasedWorkoutsArray) in
+			
+			self.downloadedWorkoutsArray = purchasedWorkoutsArray
+			UIApplication.shared.isNetworkActivityIndicatorVisible = false
+			self.clubsTableView?.reloadData()
+			
+		}
 		
 	}
-	
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		
-		self.navigationBarItems()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
+		navigationItem.title = "My Clubs"
 		navigationNoLineBar()
+		self.navigationBarItems()
+		self.setupRightNavItem()
 		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
 		
+		if let window = UIApplication.shared.keyWindow {
+			
+			self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: window.frame.size.width, height: 64.0)
+			
+		}
 		
 	}
 	
+	private func setupRightNavItem() {
+		
+		let moreButton = UIButton(type: .system)
+		moreButton.setImage(#imageLiteral(resourceName: "create").withRenderingMode(.alwaysOriginal), for: .normal)
+		moreButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+		moreButton.addTarget(self, action: #selector(handleCreateClub), for: UIControlEvents.touchUpInside)
+		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: moreButton)
+		
+	}
 	
 	func navigationBarItems() {
 		
@@ -200,7 +219,37 @@ class TeamsViewController: ASViewController<ASDisplayNode>, ASCollectionDelegate
 		textSpacing(titleLabel, spacing: 0.5)
 		navigationItem.titleView = titleLabel
 	}
-
+	
+	func setupWeekTableView() {
+		
+		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height)
+		clubsTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.plain)
+		clubsTableView?.backgroundColor = .closeBlack()
+		clubsTableView?.delegate = self
+		clubsTableView?.dataSource = self
+		clubsTableView?.separatorStyle = .none
+		clubsTableView?.showsVerticalScrollIndicator = false
+		view.addSubview(clubsTableView!)
+		
+		
+	}
+	
+	func handleCreateClub() {
+		
+		//	TO DO
+		
+	}
+	
+	func handleClubSelection(clubSelected: ClubModel) {
+		
+		let teamMessagesVC = PostViewController()
+		//teamMessagesVC.userName = userName
+		//teamMessagesVC.userImageURL = userImageURL
+		teamMessagesVC.teamModel = clubSelected
+		teamMessagesVC.hidesBottomBarWhenPushed = true
+		self.navigationController?.pushViewController(teamMessagesVC, animated: true)
+		
+	}
 	
 }
 
