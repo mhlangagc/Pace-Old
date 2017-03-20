@@ -178,30 +178,6 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 			
 		}
 		
-		profileSetup.retrieveUser(completion: { (userFound) in
-			
-			if let userName  = userFound.name, let profileImageURL = userFound.profileImageUrl {
-				
-				self.userName = userName
-				self.userImageURL = profileImageURL
-				
-			}
-			
-		})
-		
-		//self.createClub()
-		
-		teamsSetup.retrieveUserClubs { (clubsArray) in
-			
-			self.clubsArray = clubsArray
-			self.groupCollectionNode?.reloadData()
-			self.setupCollectionView()
-			
-			UIApplication.shared.isNetworkActivityIndicatorVisible = false
-			
-		}
-		
-		
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {

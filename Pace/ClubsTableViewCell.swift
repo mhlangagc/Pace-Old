@@ -11,8 +11,9 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class ClubsTableViewCell : TableBaseCell, UICollectionViewFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
-	
+class ClubsTableViewCell : TableBaseCell {
+
+	/*
 	let ClubCellID = "ClubCellID"
 	var userName = String()
 	var userImageURL = String()
@@ -65,6 +66,8 @@ class ClubsTableViewCell : TableBaseCell, UICollectionViewFlowLayout, UICollecti
 		
 		
 	}
+	*/
+	
 	
 	override func setupViews() {
 		super.setupViews()
@@ -73,20 +76,20 @@ class ClubsTableViewCell : TableBaseCell, UICollectionViewFlowLayout, UICollecti
 		
 	}
 	
-	func numberOfSections(in collectionView: UICollectionView) -> Int {
+//	func numberOfSections(in collectionView: UICollectionView) -> Int {
+//	
+//		return 1
+//		
+//	}
+//	
+//	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//		
+//		return 3
+//		
+//	}
 	
-		return 1
-		
-	}
+//	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 	
-	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		
-		return 3
-		
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		
 //		var clubCell = tableView.dequeueReusableCell(withIdentifier: ClubCellID) as? ClubCollectionViewCell
 //		
 //		if (clubCell == nil) {
@@ -105,7 +108,7 @@ class ClubsTableViewCell : TableBaseCell, UICollectionViewFlowLayout, UICollecti
 //		
 //		return clubCell!
 		
-	}
+//	}
 	
 }
 
