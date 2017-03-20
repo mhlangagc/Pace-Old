@@ -167,6 +167,7 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		self.navigationController?.navigationBar.isHidden = true
 		view.backgroundColor = UIColor.black
 		self.navigationBarItems()
+		self.setupRightNavItem()
 		clubsTableView?.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
 		self.setupRoutineData()
 		
@@ -187,11 +188,21 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		navigationItem.title = "My Clubs"
 		navigationNoLineBar()
 		self.navigationBarItems()
+		self.setupRightNavItem()
 		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
 		
 	}
 	
+	private func setupRightNavItem() {
+		
+		let moreButton = UIButton(type: .system)
+		moreButton.setImage(#imageLiteral(resourceName: "create").withRenderingMode(.alwaysOriginal), for: .normal)
+		moreButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+		moreButton.addTarget(self, action: #selector(handleCreateClub), for: UIControlEvents.touchUpInside)
+		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: moreButton)
+		
+	}
 	
 	func navigationBarItems() {
 		
@@ -215,6 +226,12 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		clubsTableView?.showsVerticalScrollIndicator = false
 		view.addSubview(clubsTableView!)
 		
+		
+	}
+	
+	func handleCreateClub() {
+		
+		//	TO DO
 		
 	}
 	

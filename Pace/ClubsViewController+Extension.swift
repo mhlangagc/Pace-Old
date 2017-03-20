@@ -53,7 +53,7 @@ extension ClubsViewController {
 		
 		if section == 0 {
 			
-			return "MY ClUBS"
+			return "MY CLUBS"
 			
 		} else {
 			
