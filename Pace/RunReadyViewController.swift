@@ -193,8 +193,8 @@ class RunReadyViewController : UIViewController {
 		self.setupPaceContainerView()
 		self.setupGoButton()
 		self.setupPlayerView()
-		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.closeBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.closeBlack()
 		
 	}
 	
@@ -203,8 +203,8 @@ class RunReadyViewController : UIViewController {
 		self.navigationController?.navigationBar.isHidden = false
 		
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.closeBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.closeBlack()
 	}
 	
 	

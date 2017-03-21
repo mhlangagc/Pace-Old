@@ -230,6 +230,7 @@ class RunningViewController: UIViewController {
 		super.viewWillAppear(true)
 		
 		navigationNoLineBar()
+		self.navigationItem.setHidesBackButton(true, animated: true)
 		self.navigationController?.navigationBar.isHidden = false
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.closeBlack()
 		self.navigationController?.navigationBar.isHidden = true
@@ -305,7 +306,7 @@ extension RunningViewController {
 	
 	func setupPlayerView() {
 		
-		musicPlayerView = MusicPlayerView.init(frame: CGRect(x: 0, y: view.frame.height - 85.0, width: view.frame.width, height: 85.0))
+		musicPlayerView = MusicPlayerView.init(frame: CGRect(x: 0, y: view.frame.height - 149.0, width: view.frame.width, height: 85.0))
 		view.addSubview(musicPlayerView!)
 	}
 	
