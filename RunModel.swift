@@ -8,20 +8,20 @@
 
 import Foundation
 
-class RunModel: NSObject {
-	
-	var duration: NSNumber?
-	var distance: NSNumber?
-	var timestamp: NSDate?
-	var locations: NSOrderedSet?
-	
-}
-
-class LocationModel: NSObject {
-	
-	var timestamp: NSDate?
-	var latitude: NSNumber?
-	var longitude: NSNumber?
-	var run: RunModel?
-	
-}
+//class RunModel: NSObject {
+//	
+//	var duration: NSNumber?
+//	var distance: NSNumber?
+//	var timestamp: NSDate?
+//	var locations: NSOrderedSet?
+//	
+//}
+//
+//class LocationModel: NSObject {
+//	
+//	var timestamp: NSDate?
+//	var latitude: NSNumber?
+//	var longitude: NSNumber?
+//	var run: RunModel?
+//	
+//}

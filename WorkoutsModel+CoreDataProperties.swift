@@ -2,7 +2,7 @@
 //  WorkoutsModel+CoreDataProperties.swift
 //  Pace
 //
-//  Created by Gugulethu Mhlanga on 2017/02/26.
+//  Created by Gugulethu Mhlanga on 2017/03/21.
 //  Copyright © 2017 Pace. All rights reserved.
 //
 
@@ -28,21 +28,3 @@ extension WorkoutsModel {
 
 }
 
-/*
-// MARK: Generated accessors for exercises
-extension WorkoutsModel {
-
-    @objc(addExercisesObject:)
-    @NSManaged public func addToExercises(_ value: ExercisesModel)
-
-    @objc(removeExercisesObject:)
-    @NSManaged public func removeFromExercises(_ value: ExercisesModel)
-
-    @objc(addExercises:)
-    @NSManaged public func addToExercises(_ values: NSSet)
-
-    @objc(removeExercises:)
-    @NSManaged public func removeFromExercises(_ values: NSSet)
-
-}
-*/
