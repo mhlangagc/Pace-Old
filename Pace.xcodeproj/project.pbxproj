@@ -170,6 +170,8 @@
 		C6F770F21E476B1800349C5B /* T.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F770F11E476B1800349C5B /* T.json */; };
 		C6F770F41E476B2B00349C5B /* W.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F770F31E476B2B00349C5B /* W.json */; };
 		C6F770F61E476B3400349C5B /* F.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F770F51E476B3400349C5B /* F.json */; };
+		C6F7E6201E8077FE008CABAB /* RunReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7E61F1E8077FE008CABAB /* RunReadyViewController.swift */; };
+		C6F7E6221E80782E008CABAB /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7E6211E80782E008CABAB /* RunningViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -366,6 +368,8 @@
 		C6F770F11E476B1800349C5B /* T.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = T.json; sourceTree = "<group>"; };
 		C6F770F31E476B2B00349C5B /* W.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = W.json; sourceTree = "<group>"; };
 		C6F770F51E476B3400349C5B /* F.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = F.json; sourceTree = "<group>"; };
+		C6F7E61F1E8077FE008CABAB /* RunReadyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunReadyViewController.swift; sourceTree = "<group>"; };
+		C6F7E6211E80782E008CABAB /* RunningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningViewController.swift; sourceTree = "<group>"; };
 		DC48F02A471D422621621F63 /* Pods_Pace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -552,7 +556,6 @@
 				45AC38F71E188B95003DC46B /* WorkoutProcessViewController.swift */,
 				45AC38F91E188DF9003DC46B /* WorkoutProcessViewController+Extension.swift */,
 				4581FC241E18ABCC00B6E32D /* WorkoutProcessCellView.swift */,
-				45AC38FF1E18912B003DC46B /* MusicPlayerView.swift */,
 			);
 			name = "Workout View";
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 				C61C4C0A1E7E8057007C7E37 /* Archieved Tabs */,
 				45B5AD7D1DFBFA6F00115E2C /* Onboarding */,
 				45B5AD801DFBFAA100115E2C /* Clubs Tab */,
+				C6F7E6251E80D13D008CABAB /* Running */,
 				45B5AD7C1DFBFA6600115E2C /* Explore Tab */,
 				45B5AD831DFBFACD00115E2C /*  Profile Tab */,
 			);
@@ -834,7 +838,6 @@
 			children = (
 				451D078B1DFE443800940301 /* Clubs */,
 				C60363141E62D763005F2691 /* TeamPosts */,
-				450D91691E03F636009D9144 /* Followers/Following */,
 			);
 			name = "Clubs Tab";
 			sourceTree = "<group>";
@@ -991,6 +994,7 @@
 		C61C4C0A1E7E8057007C7E37 /* Archieved Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				450D91691E03F636009D9144 /* Followers/Following */,
 				45AC38F61E188B70003DC46B /* WorkoutProcess */,
 				45B5AD7F1DFBFA9800115E2C /* Routines Tab */,
 				45B5AD811DFBFAB100115E2C /* Activity Tab */,
@@ -1111,6 +1115,16 @@
 				C6F770D71E4718C200349C5B /* LottieLogo2.json */,
 			);
 			name = "Lottie JSON";
+			sourceTree = "<group>";
+		};
+		C6F7E6251E80D13D008CABAB /* Running */ = {
+			isa = PBXGroup;
+			children = (
+				C6F7E61F1E8077FE008CABAB /* RunReadyViewController.swift */,
+				C6F7E6211E80782E008CABAB /* RunningViewController.swift */,
+				45AC38FF1E18912B003DC46B /* MusicPlayerView.swift */,
+			);
+			name = Running;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1367,6 +1381,7 @@
 				C6B1182A1E21729F002BB4E8 /* NameEntryViewController.swift in Sources */,
 				45C247431DFC5FF700B16AEE /* JustAdded Label.swift in Sources */,
 				4527D4051E1F7C0600F1A643 /* EmailViewController.swift in Sources */,
+				C6F7E6221E80782E008CABAB /* RunningViewController.swift in Sources */,
 				45A37F371DFC459300049493 /* FeaturedCell.swift in Sources */,
 				45D9DC561E040FFB001580B3 /* ActivityMenuBar.swift in Sources */,
 				C69F54AC1E6353C50014366B /* ExercisesModel+CoreDataClass.swift in Sources */,
@@ -1401,6 +1416,7 @@
 				458478EE1E18441D00EB2AB3 /* ShareLinkActivity.swift in Sources */,
 				452A00B81E05E34E00CACA18 /* WorkoutCellView.swift in Sources */,
 				4545358D1E18F2A500653252 /* RateButtonView.swift in Sources */,
+				C6F7E6201E8077FE008CABAB /* RunReadyViewController.swift in Sources */,
 				C69E48D11E3BA002007AF3BF /* DayHeaderViewController.swift in Sources */,
 				45ECF68D1E152F590032F6CC /* NewToPace.swift in Sources */,
 				45B5AD901DFBFC1D00115E2C /* MathematicalHelpers.swift in Sources */,

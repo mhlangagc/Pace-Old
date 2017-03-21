@@ -191,12 +191,6 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
 		
-		if let window = UIApplication.shared.keyWindow {
-			
-			self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: window.frame.size.width, height: 64.0)
-			
-		}
-		
 	}
 	
 	private func setupRightNavItem() {
