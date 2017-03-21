@@ -172,6 +172,10 @@
 		C6F770F61E476B3400349C5B /* F.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F770F51E476B3400349C5B /* F.json */; };
 		C6F7E6201E8077FE008CABAB /* RunReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7E61F1E8077FE008CABAB /* RunReadyViewController.swift */; };
 		C6F7E6221E80782E008CABAB /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7E6211E80782E008CABAB /* RunningViewController.swift */; };
+		C6F7E6271E80E6D9008CABAB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6F7E6261E80E6D9008CABAB /* MapKit.framework */; };
+		C6F7E6291E80E783008CABAB /* RunModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7E6281E80E783008CABAB /* RunModel.swift */; };
+		C6F7E62B1E80EDB2008CABAB /* RunningViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7E62A1E80EDB2008CABAB /* RunningViewController+Extension.swift */; };
+		C6F7E62F1E80EDEE008CABAB /* RunReadyViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7E62E1E80EDEE008CABAB /* RunReadyViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -370,6 +374,10 @@
 		C6F770F51E476B3400349C5B /* F.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = F.json; sourceTree = "<group>"; };
 		C6F7E61F1E8077FE008CABAB /* RunReadyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunReadyViewController.swift; sourceTree = "<group>"; };
 		C6F7E6211E80782E008CABAB /* RunningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningViewController.swift; sourceTree = "<group>"; };
+		C6F7E6261E80E6D9008CABAB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C6F7E6281E80E783008CABAB /* RunModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunModel.swift; sourceTree = "<group>"; };
+		C6F7E62A1E80EDB2008CABAB /* RunningViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RunningViewController+Extension.swift"; sourceTree = "<group>"; };
+		C6F7E62E1E80EDEE008CABAB /* RunReadyViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RunReadyViewController+Extension.swift"; sourceTree = "<group>"; };
 		DC48F02A471D422621621F63 /* Pods_Pace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -382,6 +390,7 @@
 				C6A8A3E01E649E1E0038C20A /* AVFoundation.framework in Frameworks */,
 				BD372C2BE13A69DDA8ABFAA5 /* Pods_Pace.framework in Frameworks */,
 				C6A8A3DE1E649BD10038C20A /* SpotifyAuthentication.framework in Frameworks */,
+				C6F7E6271E80E6D9008CABAB /* MapKit.framework in Frameworks */,
 				C65CAADC1E3E7BC50047B78A /* HealthKit.framework in Frameworks */,
 				C6A8A3DC1E649BC90038C20A /* SpotifyAudioPlayback.framework in Frameworks */,
 			);
@@ -739,6 +748,7 @@
 				45F3AA271E15BB9300D70C84 /* UserModel.swift */,
 				458478E91E17E33D00EB2AB3 /* SettingsModel.swift */,
 				45E2F3D91E16BEB9007384CF /* ClubModel.swift */,
+				C6F7E6281E80E783008CABAB /* RunModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -952,6 +962,7 @@
 		A5EF86AE2C91C8D5AB86B880 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C6F7E6261E80E6D9008CABAB /* MapKit.framework */,
 				C6A8A3E11E649E290038C20A /* SystemConfiguration.framework */,
 				C6A8A3DF1E649E1E0038C20A /* AVFoundation.framework */,
 				C6A8A3DD1E649BD10038C20A /* SpotifyAuthentication.framework */,
@@ -1120,11 +1131,29 @@
 		C6F7E6251E80D13D008CABAB /* Running */ = {
 			isa = PBXGroup;
 			children = (
-				C6F7E61F1E8077FE008CABAB /* RunReadyViewController.swift */,
-				C6F7E6211E80782E008CABAB /* RunningViewController.swift */,
 				45AC38FF1E18912B003DC46B /* MusicPlayerView.swift */,
+				C6F7E62D1E80EDD4008CABAB /* RunReadyViewController */,
+				C6F7E62C1E80EDBB008CABAB /* RunningViewController */,
 			);
 			name = Running;
+			sourceTree = "<group>";
+		};
+		C6F7E62C1E80EDBB008CABAB /* RunningViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C6F7E6211E80782E008CABAB /* RunningViewController.swift */,
+				C6F7E62A1E80EDB2008CABAB /* RunningViewController+Extension.swift */,
+			);
+			name = RunningViewController;
+			sourceTree = "<group>";
+		};
+		C6F7E62D1E80EDD4008CABAB /* RunReadyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C6F7E61F1E8077FE008CABAB /* RunReadyViewController.swift */,
+				C6F7E62E1E80EDEE008CABAB /* RunReadyViewController+Extension.swift */,
+			);
+			name = RunReadyViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1202,7 +1231,13 @@
 						DevelopmentTeam = TS4EZ25PY5;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.HealthKit = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
 							com.apple.WAC = {
@@ -1350,6 +1385,7 @@
 				451D078D1DFE44BF00940301 /* ProfileHeaderView.swift in Sources */,
 				458478F01E184ED400EB2AB3 /* RoundButtonCorners.swift in Sources */,
 				45AC38F81E188B95003DC46B /* WorkoutProcessViewController.swift in Sources */,
+				C6F7E62F1E80EDEE008CABAB /* RunReadyViewController+Extension.swift in Sources */,
 				452902241DFC2C9000CE0C81 /* UIColor+Hex.m in Sources */,
 				451276121DFC747C008B57DE /* JustAddedCollection.swift in Sources */,
 				45C214EF1E05BD9C00C5BCCF /* AllPeopleViewController+Extension.swift in Sources */,
@@ -1421,6 +1457,7 @@
 				45ECF68D1E152F590032F6CC /* NewToPace.swift in Sources */,
 				45B5AD901DFBFC1D00115E2C /* MathematicalHelpers.swift in Sources */,
 				45F3AA2A1E15E7B300D70C84 /* PreferencesPopUpLauncher.swift in Sources */,
+				C6F7E62B1E80EDB2008CABAB /* RunningViewController+Extension.swift in Sources */,
 				C69F54AD1E6353C50014366B /* ExercisesModel+CoreDataProperties.swift in Sources */,
 				C6BE5C131E402ADA00770A42 /* PaceAppServices.swift in Sources */,
 				454535871E18EAAC00653252 /* WorkoutCompleteVIewController.swift in Sources */,
@@ -1469,6 +1506,7 @@
 				45B2A4C91DFCA7B600C099C7 /* FooterCell.swift in Sources */,
 				458842701E11A89D003B02C8 /* WorkoutViewController+Extension.swift in Sources */,
 				458478E81E17E31900EB2AB3 /* SettingsViewModel.swift in Sources */,
+				C6F7E6291E80E783008CABAB /* RunModel.swift in Sources */,
 				45B5AD421DFBF71100115E2C /* AppDelegate.swift in Sources */,
 				C61EB9EE1E7561F60083C966 /* SaveToMyRoutinesCell.swift in Sources */,
 				C65D7FBF1E7FF5C3003C9548 /* ClubsViewController.swift in Sources */,

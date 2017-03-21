@@ -7,8 +7,31 @@
 //
 
 import UIKit
+import CoreLocation
+import HealthKit
 
-class RunningViewController: UIViewController {
+class RunningViewController: UIViewController, CLLocationManagerDelegate {
+	
+	var club: ClubModel?
+	var musicPlayerView : MusicPlayerView?
+	var seconds = 0.0
+	var distance = 0.0
+ 
+	lazy var locationManager: CLLocationManager = {
+  
+		var locationManage = CLLocationManager()
+		locationManage.delegate = self
+		locationManage.desiredAccuracy = kCLLocationAccuracyBest
+		locationManage.activityType = .fitness
+		
+		// Movement threshold for new events
+		locationManage.distanceFilter = 10.0
+		return locationManage
+		
+	}()
+ 
+	lazy var locations = [CLLocation]()
+	lazy var timer = Timer()
 	
 	//	Distance
 	let kmTimer: UILabel = {
@@ -210,8 +233,6 @@ class RunningViewController: UIViewController {
 		
 	}()
 	
-	var musicPlayerView : MusicPlayerView?
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -229,85 +250,81 @@ class RunningViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		
+		locationManager.requestAlwaysAuthorization()
 		navigationNoLineBar()
 		self.navigationItem.setHidesBackButton(true, animated: true)
 		self.navigationController?.navigationBar.isHidden = false
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.closeBlack()
 		self.navigationController?.navigationBar.isHidden = true
 		self.setupLogoNavItem()
+		self.startRun()
 	
 	}
 	
+	override func viewWillDisappear(_ animated: Bool) {
 	
+		super.viewWillDisappear(animated)
+		timer.invalidate()
+	
+	}
+	
+	func startRun() {
+		
+		seconds = 0.0
+		distance = 0.0
+		locations.removeAll(keepingCapacity: false)
+		timer = Timer.scheduledTimer(timeInterval: 1,
+		                                               target: self,
+		                                               selector: #selector(eachSecond),
+		                                               userInfo: nil,
+		                                               repeats: true)
+		startLocationUpdates()
+	}
+	
+	func eachSecond(timer: Timer) {
+		seconds += 1
+		
+		let secondsQuantity = HKQuantity(unit: HKUnit.second(), doubleValue: seconds)
+		timeNumberLabel.text = secondsQuantity.description
+		
+		
+		let distanceQuantity = HKQuantity(unit: HKUnit.meter(), doubleValue: distance)
+		kmTimer.text = distanceQuantity.description
+		
+		let paceUnit = HKUnit.second().unitDivided(by: HKUnit.meter())
+		let paceQuantity = HKQuantity(unit: paceUnit, doubleValue: seconds / distance)
+		paceNumberLabel.text = paceQuantity.description
+	
+	}
+	
+	func startLocationUpdates() {
+	
+		// Here, the location manager will be lazily instantiated
+		locationManager.startUpdatingLocation()
+	
+	}
+	
+	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		
+		for location in locations {
+			
+			if location.horizontalAccuracy < 20 {
+				//update distance
+				if self.locations.count > 0 {
+					distance += location.distance(from: self.locations.last!)
+				}
+				
+				//save location
+				self.locations.append(location)
+			}
+			
+		}
+		
+	}
 	
 	func handlePauseRun() {
 		
 		//	 TODO
 	}
 
-}
-
-extension RunningViewController {
-	
-	func setupLogoNavItem() {
-		
-		let titleImageView = UIImageView(image: #imageLiteral(resourceName: "logo"))
-		titleImageView.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-		titleImageView.contentMode = .scaleAspectFit
-		
-		navigationItem.titleView = titleImageView
-		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.closeBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.closeBlack()
-	}
-	
-	func setupDistanceContainerView() {
-		
-		view.addSubview(distanceContainerView)
-		
-		self.distanceContainerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-		self.distanceContainerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 24).isActive = true
-		self.distanceContainerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-		self.distanceContainerView.heightAnchor.constraint(equalToConstant: 150).isActive = true
-	
-	}
-	
-	func setupTimerContainerView() {
-		
-		view.addSubview(timeContainerView)
-		
-		self.timeContainerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 42).isActive = true
-		self.timeContainerView.topAnchor.constraint(equalTo: self.distanceContainerView.bottomAnchor, constant: 32).isActive = true
-		self.timeContainerView.widthAnchor.constraint(equalToConstant: 90).isActive = true
-		self.timeContainerView.heightAnchor.constraint(equalToConstant: 105).isActive = true
-	}
-	
-	
-	func setupPaceContainerView() {
-		
-		view.addSubview(paceContainerView)
-		
-		self.paceContainerView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -42).isActive = true
-		self.paceContainerView.topAnchor.constraint(equalTo: self.distanceContainerView.bottomAnchor, constant: 32).isActive = true
-		self.paceContainerView.widthAnchor.constraint(equalToConstant: 90).isActive = true
-		self.paceContainerView.heightAnchor.constraint(equalToConstant: 105).isActive = true
-	}
-	
-	func setupPauseButton() {
-		
-		view.addSubview(pauseButton)
-		
-		pauseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-		pauseButton.heightAnchor.constraint(equalToConstant: 116).isActive = true
-		pauseButton.widthAnchor.constraint(equalToConstant: 116).isActive = true
-		pauseButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -116).isActive = true
-		
-	}
-	
-	func setupPlayerView() {
-		
-		musicPlayerView = MusicPlayerView.init(frame: CGRect(x: 0, y: view.frame.height - 149.0, width: view.frame.width, height: 85.0))
-		view.addSubview(musicPlayerView!)
-	}
-	
 }
