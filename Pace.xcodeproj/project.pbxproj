@@ -341,6 +341,7 @@
 		C65D7FC01E7FF625003C9548 /* ClubsViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ClubsViewController+Extension.swift"; sourceTree = "<group>"; };
 		C65D7FC21E7FFA16003C9548 /* ClubsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubsTableViewCell.swift; sourceTree = "<group>"; };
 		C662F0031E79BF9B0001E8D9 /* ProfileTabHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTabHeaderView.swift; sourceTree = "<group>"; };
+		C680A72F1E81527C008ACA5A /* Pace_v_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pace_v_2.xcdatamodel; sourceTree = "<group>"; };
 		C690C7761E39CE55005B359E /* LeaderBoardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderBoardCell.swift; sourceTree = "<group>"; };
 		C69E48D01E3BA002007AF3BF /* DayHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayHeaderViewController.swift; sourceTree = "<group>"; };
 		C69F54A61E6353C50014366B /* WorkoutsModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutsModel+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -1813,9 +1814,10 @@
 		45B5AD481DFBF71100115E2C /* Pace.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				C680A72F1E81527C008ACA5A /* Pace_v_2.xcdatamodel */,
 				45B5AD491DFBF71100115E2C /* Pace.xcdatamodel */,
 			);
-			currentVersion = 45B5AD491DFBF71100115E2C /* Pace.xcdatamodel */;
+			currentVersion = C680A72F1E81527C008ACA5A /* Pace_v_2.xcdatamodel */;
 			name = Pace.xcdatamodeld;
 			path = Pace/Pace.xcdatamodeld;
 			sourceTree = "<group>";
