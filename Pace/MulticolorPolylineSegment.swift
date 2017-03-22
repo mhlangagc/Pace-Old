@@ -13,7 +13,7 @@ import MapKit
 class MulticolorPolylineSegment: MKPolyline {
     var color: UIColor?
     
-    private class func allSpeeds(forLocations locations: [Location]) ->
+    private class func allSpeeds(forLocations locations: [LocationModel]) ->
         (speeds: [Double], minSpeed: Double, maxSpeed: Double) {
             // Make Array of all speeds. Find slowest and fastest
             var speeds = [Double]()
@@ -24,12 +24,12 @@ class MulticolorPolylineSegment: MKPolyline {
                 let l1 = locations[i-1]
                 let l2 = locations[i]
                 
-                let cl1 = CLLocation(latitude: l1.latitude.doubleValue, longitude: l1.longitude.doubleValue)
-                let cl2 = CLLocation(latitude: l2.latitude.doubleValue, longitude: l2.longitude.doubleValue)
+                let cl1 = CLLocation(latitude: Double(l1.latitude), longitude: Double(l1.longitude))
+                let cl2 = CLLocation(latitude: Double(l2.latitude), longitude: Double(l2.longitude))
                 
                 let distance = cl2.distance(from: cl1)
-                let time = l2.timestamp.timeIntervalSince(l1.timestamp)
-                let speed = distance/time
+                let time = l2.timestamp?.timeIntervalSince(l1.timestamp as! Date)
+                let speed = distance/time!
                 
                 minSpeed = min(minSpeed, speed)
                 maxSpeed = max(maxSpeed, speed)
@@ -41,7 +41,7 @@ class MulticolorPolylineSegment: MKPolyline {
     }
     
     
-    class func colorSegments(forLocations locations: [Location]) -> [MulticolorPolylineSegment] {
+    class func colorSegments(forLocations locations: [LocationModel]) -> [MulticolorPolylineSegment] {
         var colorSegments = [MulticolorPolylineSegment]()
         
         // RGB for Red (slowest)
@@ -67,8 +67,8 @@ class MulticolorPolylineSegment: MKPolyline {
             
             var coords = [CLLocationCoordinate2D]()
             
-            coords.append(CLLocationCoordinate2D(latitude: l1.latitude.doubleValue, longitude: l1.longitude.doubleValue))
-            coords.append(CLLocationCoordinate2D(latitude: l2.latitude.doubleValue, longitude: l2.longitude.doubleValue))
+            coords.append(CLLocationCoordinate2D(latitude: Double(l1.latitude), longitude: Double(l1.longitude)))
+            coords.append(CLLocationCoordinate2D(latitude: Double(l2.latitude), longitude: Double(l2.longitude)))
             
             let speed = speeds[i-1]
             var color = UIColor.black

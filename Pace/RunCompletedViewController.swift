@@ -24,6 +24,7 @@ class RunCompletedViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
 
 		self.configureView()
+		self.configureViewDetails()
 		navigationNoLineBar()
 		self.navigationController?.navigationBar.barTintColor = UIColor.closeBlack()
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.closeBlack()
@@ -139,9 +140,9 @@ class RunCompletedViewController: UIViewController, MKMapViewDelegate {
 			runMapView.region = mapRegion()
 			
 			// Make the line(s!) on the map
-			let colorSegments = MulticolorPolylineSegment.colorSegments(forLocations: run.locations.array as! [LocationModel])
+			let colorSegments = MulticolorPolylineSegment.colorSegments(forLocations: run?.locations?.array as! [LocationModel])
 			
-			mapView.addOverlays(colorSegments)
+			runMapView.addOverlays(colorSegments)
 		
 		} else {
 		
