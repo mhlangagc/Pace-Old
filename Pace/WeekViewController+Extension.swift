@@ -169,7 +169,6 @@ extension WeekViewController {
 			
 		}
 		
-		
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -194,11 +193,7 @@ extension WeekViewController {
 			dayDetailsVC.hidesBottomBarWhenPushed = true
 			self.navigationController?.pushViewController(dayDetailsVC, animated: true)
 			
-			
-			
 		}
-		
-		
 		
 		weekTableView?.deselectRow(at: indexPath, animated: true)
 		

@@ -91,7 +91,7 @@ extension RunReadyViewController {
 	
 	func handleGo() {
 		
-		self.navigationController?.pushViewController(RunningViewController(), animated: true)
+		//self.navigationController?.pushViewController(RunningViewController(), animated: true)
 		
 	}
 	

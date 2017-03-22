@@ -206,6 +206,7 @@ class RunReadyViewController : UIViewController {
 		navigationNoLineBar()
 		self.navigationController?.navigationBar.barTintColor = UIColor.closeBlack()
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.closeBlack()
+	
 	}
 	
 	

@@ -19,7 +19,7 @@ extension RunModel {
     @NSManaged public var distance: Float
     @NSManaged public var duration: Int64
     @NSManaged public var timestamp: NSDate?
-    @NSManaged public var locations: NSSet?
+    @NSManaged public var locations: NSOrderedSet?
 
 }
 
