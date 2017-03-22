@@ -12,6 +12,18 @@
         <attribute name="weight" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WorkoutsModel" inverseName="exercises" inverseEntity="WorkoutsModel" syncable="YES"/>
     </entity>
+    <entity name="LocationModel" representedClassName=".LocationModel" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="run" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RunModel" inverseName="locations" inverseEntity="RunModel" syncable="YES"/>
+    </entity>
+    <entity name="RunModel" representedClassName=".RunModel" syncable="YES">
+        <attribute name="distance" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="locations" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="LocationModel" inverseName="run" inverseEntity="LocationModel" syncable="YES"/>
+    </entity>
     <entity name="WorkoutsModel" representedClassName=".WorkoutsModel" syncable="YES">
         <attribute name="colour" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dayName" optional="YES" attributeType="String" syncable="YES"/>
@@ -25,6 +37,8 @@
     </entity>
     <elements>
         <element name="ExercisesModel" positionX="-45" positionY="63" width="128" height="193"/>
+        <element name="LocationModel" positionX="-128" positionY="297" width="128" height="105"/>
+        <element name="RunModel" positionX="-362" positionY="297" width="128" height="103"/>
         <element name="WorkoutsModel" positionX="-360" positionY="72" width="128" height="178"/>
     </elements>
 </model>

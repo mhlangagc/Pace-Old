@@ -34,12 +34,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
 		self.runTimeDependencies()
-		self.loadDataForViews()
+		//self.loadDataForViews()
 		
 		if FIRAuth.auth()?.currentUser?.uid == nil {
 			
 			self.window = UIWindow(frame: UIScreen.main.bounds)
-			self.window?.rootViewController = UINavigationController(rootViewController: WelcomeLaunchViewController())
+			self.window?.rootViewController = UINavigationController(rootViewController: RunViewController(nibName: "RunViewController", bundle: nil)) //UINavigationController(rootViewController: WelcomeLaunchViewController())
 			self.window?.makeKeyAndVisible()
 			self.window?.tintColor = UIColor.black
 			
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			
 			
 			self.window = UIWindow(frame: UIScreen.main.bounds)
-			self.window?.rootViewController = UINavigationController(rootViewController: RunReadyViewController())  //CustomTabBarController()
+			self.window?.rootViewController = UINavigationController(rootViewController: RunViewController(nibName: "RunViewController", bundle: nil))  //CustomTabBarController()
 			self.window?.makeKeyAndVisible()
 			self.window?.tintColor = UIColor.black
 			

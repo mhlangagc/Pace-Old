@@ -2,12 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Pace would like to access your camera to take photos. </string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Pace would like to access your photos to post photos. </string>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>Pace would like to access your photos to post photos. </string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Pace wants to track your run.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Pace wants to track your run. </string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -70,13 +68,23 @@
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Pace would like to access your photos to post photos. </string>
+	<key>NSCameraUsageDescription</key>
+	<string>Pace would like to access your camera to take photos. </string>
 	<key>NSHealthShareUsageDescription</key>
 	<string>Pace will use read your steps, sleep and other workout to calculate your activity and transfer your workouts into your Health App.</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>Each time you workout Pace will sync and update Apple Health. </string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Pace would like to access your photos to post photos. </string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>BebasNeue-Bold.otf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

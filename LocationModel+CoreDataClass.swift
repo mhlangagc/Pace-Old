@@ -1,5 +1,5 @@
 //
-//  ExercisesModel+CoreDataClass.swift
+//  LocationModel+CoreDataClass.swift
 //  Pace
 //
 //  Created by Gugulethu Mhlanga on 2017/03/21.
@@ -10,6 +10,6 @@ import Foundation
 import CoreData
 
 
-public class ExercisesModel: NSManagedObject {
+public class LocationModel: NSManagedObject {
 
 }
