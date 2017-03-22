@@ -78,15 +78,19 @@ class RunViewController: UIViewController, CLLocationManagerDelegate {
 		let minutesQuantity = HKQuantity(unit: HKUnit.minute(), doubleValue: Double(m))
 		_ = HKQuantity(unit: HKUnit.hour(), doubleValue: Double(h)) //	Hours
 		//timeLabel.text = "Time: "+hoursQuantity.description+" "+minutesQuantity.description+" "+secondsQuantity.description
-		
-		timeLabel.text = "\(minutesQuantity.description):\(secondsQuantity.description)"
-		
-		
-		let distanceQuantity = HKQuantity(unit: HKUnit.meterUnit(with: HKMetricPrefix.kilo), doubleValue: distance)
-		kmLabel.text = distanceQuantity.description
+		let secs = Int(secondsQuantity.doubleValue(for: HKUnit.second()))
+		let mins = Int(minutesQuantity.doubleValue(for: HKUnit.minute()))
+		timeLabel.text = "\(String(format: "%02d", mins)):\(String(format: "%02d", secs))"
 		
 		
-		paceLabel.text = "\(String((distance/seconds*3.6*10).rounded()/10))" //km/h
+		let distanceQuantity = HKQuantity(unit: HKUnit.meter(), doubleValue: distance.rounded()).doubleValue(for: HKUnit.meter())
+		let distanceInKm = (distanceQuantity/1000).roundToPlaces(places: 2)
+		kmLabel.text = "\(distanceInKm)"
+		
+		
+		let minutes = seconds/60.0
+		let kilometers = distance/1000
+		paceLabel.text = "\(String((minutes/kilometers).roundToPlaces(places: 2)))" //km/h
 		//climbLabel.text = "Total climb: "+String((vertClimb*10).rounded()/10)+" m"
 		//descentLabel.text = "Total descent: "+String((vertDescent*10).rounded()/10)+" m"
 		
