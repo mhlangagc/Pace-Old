@@ -90,6 +90,20 @@ class RunViewController: UIViewController, CLLocationManagerDelegate {
 		
 		let minutes = seconds/60.0
 		let kilometers = distance/1000
+		//let pace = minutes/kilometers
+		/*
+		if pace < 1.0 {
+			let paceSeconds = (pace * 60.0).roundToPlaces(places: 0)
+			print(paceSeconds)
+			paceLabel.text = "00:\(paceSeconds)"
+			print(paceLabel.text!)
+			
+		} else {
+			
+			paceLabel.text = "\(String(format: "%02d", pace.rounded())):\(String(format: "%02d", pace.truncatingRemainder(dividingBy: pace.rounded())))"
+			
+		}
+		*/
 		paceLabel.text = "\(String((minutes/kilometers).roundToPlaces(places: 2)))" //km/h
 		//climbLabel.text = "Total climb: "+String((vertClimb*10).rounded()/10)+" m"
 		//descentLabel.text = "Total descent: "+String((vertDescent*10).rounded()/10)+" m"
