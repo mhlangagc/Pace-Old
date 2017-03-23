@@ -63,7 +63,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 	lazy var addImageButton: UIImageView = {
 		
 		let sendImageButton = UIImageView()
-		sendImageButton.image = UIImage(named: "postImage")
+		sendImageButton.image = UIImage(named: "postImage").reder
 		sendImageButton.contentMode = .scaleAspectFill
 		sendImageButton.isUserInteractionEnabled = true
 		sendImageButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectImage)))
@@ -144,27 +144,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		collectionNode?.backgroundColor = UIColor.closeBlack()
 		super.init(node: collectionNode!)
 		navigationNoLineBar()
-		setupStartBar()
-	
-	}
-	
-	let startWorkoutButtonBar: StartButtonView = {
-		
-		let startBar = StartButtonView()
-		startBar.translatesAutoresizingMaskIntoConstraints = false
-		return startBar
-		
-	}()
-	
-	private func setupStartBar() {
-		
-//		startWorkoutButtonBar.frame = CGRect(x: 0, y: 64, width: 375, height: 70)
-		self.view.addSubview(startWorkoutButtonBar)
-		
-		startWorkoutButtonBar.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-		startWorkoutButtonBar.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-		startWorkoutButtonBar.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-		startWorkoutButtonBar.heightAnchor.constraint(equalToConstant: 70.0).isActive = true
+		self.setupJoinButton()
 		
 	}
 	
@@ -189,6 +169,19 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		moreButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
 		moreButton.addTarget(self, action: #selector(handleMoreOptions), for: UIControlEvents.touchUpInside)
 		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: moreButton)
+		
+	}
+	
+	var joinButtonView : JoinButtonView?
+	
+	func setupJoinButton() {
+		
+		joinButtonView = JoinButtonView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 80.0))
+		joinButtonView?.joinButton?.setTitle("START RUN", for: UIControlState.normal)
+		joinButtonView?.joinButton?.setTitleColor(UIColor.paceBrandColor(), for: UIControlState.normal)
+		joinButtonView?.joinButton?.backgroundColor = UIColor(fromHexString: "14161B")
+		joinButtonView?.backgroundColor = .paceBackgroundBlack()
+		self.view.addSubview(joinButtonView!)
 		
 	}
 	

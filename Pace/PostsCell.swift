@@ -20,7 +20,7 @@ class PostsCell: BaseCell {
 	let likeButtonNode = ASButtonNode()
 	let likesTextNode = ASTextNode()
 	
-	let userNameAttributes = [NSFontAttributeName : UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold), NSForegroundColorAttributeName: UIColor(fromHexString: "97A9CA")] as [String : Any]
+	let userNameAttributes = [NSFontAttributeName : UIFont.systemFont(ofSize: 16, weight: UIFontWeightBlack), NSForegroundColorAttributeName: UIColor(fromHexString: "97A9CA")] as [String : Any]
 	var userNameMutableString = NSMutableAttributedString()
 	
 	
