@@ -863,7 +863,7 @@
 			isa = PBXGroup;
 			children = (
 				451D078B1DFE443800940301 /* Clubs */,
-				C60363141E62D763005F2691 /* TeamPosts */,
+				C60363141E62D763005F2691 /* Clubs Posts */,
 			);
 			name = "Clubs Tab";
 			sourceTree = "<group>";
@@ -991,13 +991,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C60363141E62D763005F2691 /* TeamPosts */ = {
+		C60363141E62D763005F2691 /* Clubs Posts */ = {
 			isa = PBXGroup;
 			children = (
 				C6A8A3E71E64AE5C0038C20A /* PostMenuBar */,
 				C6A8A3E81E64C5B10038C20A /* Posts */,
 			);
-			name = TeamPosts;
+			name = "Clubs Posts";
 			sourceTree = "<group>";
 		};
 		C6057EEC1E3E287700AC62EA /* Errors */ = {
