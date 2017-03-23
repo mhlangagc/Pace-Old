@@ -42,7 +42,7 @@ class CompletedRunHeaderView : BaseView {
 		runMapView?.showsBuildings = true
 		runMapView?.showsCompass = true
 		runMapView?.showsPointsOfInterest = true
-		runMapView?.showsUserLocation = true
+		runMapView?.showsUserLocation = false 
 		runMapView?.layer.cornerRadius = 10.0
 		runMapView?.layer.masksToBounds = true
 		addSubview(runMapView!)
