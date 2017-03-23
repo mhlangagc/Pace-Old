@@ -124,6 +124,7 @@
 		C608AD2C1E6EA1EC005934B3 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C608AD2B1E6EA1EC005934B3 /* PostViewController.swift */; };
 		C608AD2E1E6EA37F005934B3 /* PostViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C608AD2D1E6EA37F005934B3 /* PostViewController+Extension.swift */; };
 		C608AD301E6EA5DC005934B3 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */; };
+		C61AD0F41E838BB500C377B9 /* CompletedRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0F31E838BB500C377B9 /* CompletedRunViewController.swift */; };
 		C61C4C061E7E7DD5007C7E37 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4C051E7E7DD5007C7E37 /* ProfileViewController.swift */; };
 		C61C4C091E7E7EB6007C7E37 /* ProfileViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4C081E7E7EB6007C7E37 /* ProfileViewController+Extension.swift */; };
 		C61C4C0C1E7E8FC1007C7E37 /* RunsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4C0B1E7E8FC1007C7E37 /* RunsCellView.swift */; };
@@ -331,6 +332,7 @@
 		C608AD2B1E6EA1EC005934B3 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		C608AD2D1E6EA37F005934B3 /* PostViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PostViewController+Extension.swift"; sourceTree = "<group>"; };
 		C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
+		C61AD0F31E838BB500C377B9 /* CompletedRunViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedRunViewController.swift; sourceTree = "<group>"; };
 		C61C4C051E7E7DD5007C7E37 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C61C4C081E7E7EB6007C7E37 /* ProfileViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Extension.swift"; sourceTree = "<group>"; };
 		C61C4C0B1E7E8FC1007C7E37 /* RunsCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunsCellView.swift; sourceTree = "<group>"; };
@@ -1151,6 +1153,7 @@
 		C6B1BA561E82499D00EF7223 /* RunCompleted */ = {
 			isa = PBXGroup;
 			children = (
+				C61AD0F31E838BB500C377B9 /* CompletedRunViewController.swift */,
 				C6B1BA521E82499700EF7223 /* RunCompletedViewController.swift */,
 				C6B1BA571E8251FD00EF7223 /* MulticolorPolylineSegment.swift */,
 				C6B1BA531E82499700EF7223 /* RunCompletedViewController.xib */,
@@ -1519,6 +1522,7 @@
 				45B5AD8E1DFBFC1700115E2C /* Reachability.swift in Sources */,
 				45F3AA261E15BB4000D70C84 /* ExploreViewModel.swift in Sources */,
 				45F3AA281E15BB9300D70C84 /* UserModel.swift in Sources */,
+				C61AD0F41E838BB500C377B9 /* CompletedRunViewController.swift in Sources */,
 				45AC38FC1E188EE1003DC46B /* TouchBarHeaderView.swift in Sources */,
 				454535891E18EACB00653252 /* WorkoutCompleteMenuBar.swift in Sources */,
 				45C214E61E05AF4200C5BCCF /* HeaderLabelCell.swift in Sources */,
