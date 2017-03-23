@@ -124,6 +124,9 @@
 		C608AD2C1E6EA1EC005934B3 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C608AD2B1E6EA1EC005934B3 /* PostViewController.swift */; };
 		C608AD2E1E6EA37F005934B3 /* PostViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C608AD2D1E6EA37F005934B3 /* PostViewController+Extension.swift */; };
 		C608AD301E6EA5DC005934B3 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */; };
+		C61AD0F41E838BB500C377B9 /* CompletedRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0F31E838BB500C377B9 /* CompletedRunViewController.swift */; };
+		C61AD0F61E838E8700C377B9 /* CompletedRunHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0F51E838E8700C377B9 /* CompletedRunHeaderView.swift */; };
+		C61AD0F81E8390F500C377B9 /* CompletedRunViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0F71E8390F500C377B9 /* CompletedRunViewController+Extension.swift */; };
 		C61C4C061E7E7DD5007C7E37 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4C051E7E7DD5007C7E37 /* ProfileViewController.swift */; };
 		C61C4C091E7E7EB6007C7E37 /* ProfileViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4C081E7E7EB6007C7E37 /* ProfileViewController+Extension.swift */; };
 		C61C4C0C1E7E8FC1007C7E37 /* RunsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4C0B1E7E8FC1007C7E37 /* RunsCellView.swift */; };
@@ -164,8 +167,6 @@
 		C6B118351E218259002BB4E8 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118341E218259002BB4E8 /* RoutineViewController.swift */; };
 		C6B1BA4F1E8234F200EF7223 /* RunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1BA4D1E8234F200EF7223 /* RunViewController.swift */; };
 		C6B1BA501E8234F200EF7223 /* RunViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6B1BA4E1E8234F200EF7223 /* RunViewController.xib */; };
-		C6B1BA541E82499700EF7223 /* RunCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1BA521E82499700EF7223 /* RunCompletedViewController.swift */; };
-		C6B1BA551E82499700EF7223 /* RunCompletedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6B1BA531E82499700EF7223 /* RunCompletedViewController.xib */; };
 		C6B1BA581E8251FD00EF7223 /* MulticolorPolylineSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1BA571E8251FD00EF7223 /* MulticolorPolylineSegment.swift */; };
 		C6B2253E1E47C5BA00A4B9B3 /* WorkoutProcessPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2253D1E47C5BA00A4B9B3 /* WorkoutProcessPopup.swift */; };
 		C6BB148F1E3FA1E700BF6F66 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB148E1E3FA1E700BF6F66 /* LoginViewController.swift */; };
@@ -331,6 +332,9 @@
 		C608AD2B1E6EA1EC005934B3 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		C608AD2D1E6EA37F005934B3 /* PostViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PostViewController+Extension.swift"; sourceTree = "<group>"; };
 		C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
+		C61AD0F31E838BB500C377B9 /* CompletedRunViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedRunViewController.swift; sourceTree = "<group>"; };
+		C61AD0F51E838E8700C377B9 /* CompletedRunHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedRunHeaderView.swift; sourceTree = "<group>"; };
+		C61AD0F71E8390F500C377B9 /* CompletedRunViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CompletedRunViewController+Extension.swift"; sourceTree = "<group>"; };
 		C61C4C051E7E7DD5007C7E37 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C61C4C081E7E7EB6007C7E37 /* ProfileViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Extension.swift"; sourceTree = "<group>"; };
 		C61C4C0B1E7E8FC1007C7E37 /* RunsCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunsCellView.swift; sourceTree = "<group>"; };
@@ -373,8 +377,6 @@
 		C6B118341E218259002BB4E8 /* RoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
 		C6B1BA4D1E8234F200EF7223 /* RunViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunViewController.swift; sourceTree = "<group>"; };
 		C6B1BA4E1E8234F200EF7223 /* RunViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RunViewController.xib; sourceTree = "<group>"; };
-		C6B1BA521E82499700EF7223 /* RunCompletedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunCompletedViewController.swift; sourceTree = "<group>"; };
-		C6B1BA531E82499700EF7223 /* RunCompletedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RunCompletedViewController.xib; sourceTree = "<group>"; };
 		C6B1BA571E8251FD00EF7223 /* MulticolorPolylineSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticolorPolylineSegment.swift; sourceTree = "<group>"; };
 		C6B2253D1E47C5BA00A4B9B3 /* WorkoutProcessPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutProcessPopup.swift; sourceTree = "<group>"; };
 		C6BB148E1E3FA1E700BF6F66 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -1151,9 +1153,10 @@
 		C6B1BA561E82499D00EF7223 /* RunCompleted */ = {
 			isa = PBXGroup;
 			children = (
-				C6B1BA521E82499700EF7223 /* RunCompletedViewController.swift */,
+				C61AD0F51E838E8700C377B9 /* CompletedRunHeaderView.swift */,
+				C61AD0F31E838BB500C377B9 /* CompletedRunViewController.swift */,
+				C61AD0F71E8390F500C377B9 /* CompletedRunViewController+Extension.swift */,
 				C6B1BA571E8251FD00EF7223 /* MulticolorPolylineSegment.swift */,
-				C6B1BA531E82499700EF7223 /* RunCompletedViewController.xib */,
 			);
 			name = RunCompleted;
 			sourceTree = "<group>";
@@ -1327,7 +1330,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6B1BA551E82499700EF7223 /* RunCompletedViewController.xib in Resources */,
 				45B5AD981DFBFC4500115E2C /* BebasNeue-Bold.otf in Resources */,
 				C6057EF21E3E4B7900AC62EA /* GoogleService-Info.plist in Resources */,
 				C6B1BA501E8234F200EF7223 /* RunViewController.xib in Resources */,
@@ -1438,6 +1440,7 @@
 				4545358F1E18F2FC00653252 /* RatingPopUpLauncher.swift in Sources */,
 				45B5AD9F1DFC022A00115E2C /* StringExtensions.swift in Sources */,
 				45F7F5CE1DFD4E6100DD1E33 /* CollectionViewBaseCell.swift in Sources */,
+				C61AD0F61E838E8700C377B9 /* CompletedRunHeaderView.swift in Sources */,
 				45C214EA1E05B84400C5BCCF /* RatingsNodeView.swift in Sources */,
 				45C214F21E05DBC400C5BCCF /* SettingsViewController.swift in Sources */,
 				C6BB14911E3FB08A00BF6F66 /* OnboardingImageView.swift in Sources */,
@@ -1449,7 +1452,6 @@
 				45ECF68A1E152D450032F6CC /* NewToPaceCollection.swift in Sources */,
 				45275E0C1DFF0B9000DF6F38 /* WorkoutDetailsHeaderView.swift in Sources */,
 				45E3C0781DFD9493002FD4F8 /* ActitivityDetailView.swift in Sources */,
-				C6B1BA541E82499700EF7223 /* RunCompletedViewController.swift in Sources */,
 				C6BB148F1E3FA1E700BF6F66 /* LoginViewController.swift in Sources */,
 				45F7F5D61DFD565A00DD1E33 /* ActivityCell.swift in Sources */,
 				45F7F5D21DFD4F1700DD1E33 /* NewsCollectionCell.swift in Sources */,
@@ -1510,6 +1512,7 @@
 				45C214F41E05DC7C00C5BCCF /* SettingsViewController+Extension.swift in Sources */,
 				45BE49901DFF42E3006C671B /* RatingsView.swift in Sources */,
 				C61EB9EB1E755B6E0083C966 /* WorkoutDownloadViewController.swift in Sources */,
+				C61AD0F81E8390F500C377B9 /* CompletedRunViewController+Extension.swift in Sources */,
 				4529021A1DFC2AA600CE0C81 /* BaseCell.swift in Sources */,
 				C690C7771E39CE55005B359E /* LeaderBoardCell.swift in Sources */,
 				456B83361DFF50340012A1A2 /* StoreImageGradient.swift in Sources */,
@@ -1519,6 +1522,7 @@
 				45B5AD8E1DFBFC1700115E2C /* Reachability.swift in Sources */,
 				45F3AA261E15BB4000D70C84 /* ExploreViewModel.swift in Sources */,
 				45F3AA281E15BB9300D70C84 /* UserModel.swift in Sources */,
+				C61AD0F41E838BB500C377B9 /* CompletedRunViewController.swift in Sources */,
 				45AC38FC1E188EE1003DC46B /* TouchBarHeaderView.swift in Sources */,
 				454535891E18EACB00653252 /* WorkoutCompleteMenuBar.swift in Sources */,
 				45C214E61E05AF4200C5BCCF /* HeaderLabelCell.swift in Sources */,

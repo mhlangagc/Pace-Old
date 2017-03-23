@@ -221,7 +221,7 @@ class RunViewController: UIViewController, CLLocationManagerDelegate {
 		self.saveRun { 
 			
 			print("Run Saved")
-			let runCompleteVC = RunCompletedViewController(nibName: "RunCompletedViewController", bundle: nil)
+			let runCompleteVC = CompletedRunViewController()
 			runCompleteVC.run = self.run
 			self.navigationController?.pushViewController(runCompleteVC, animated: true)
 		}
