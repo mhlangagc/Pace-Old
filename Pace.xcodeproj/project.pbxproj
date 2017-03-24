@@ -127,6 +127,9 @@
 		C61AD0F41E838BB500C377B9 /* CompletedRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0F31E838BB500C377B9 /* CompletedRunViewController.swift */; };
 		C61AD0F61E838E8700C377B9 /* CompletedRunHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0F51E838E8700C377B9 /* CompletedRunHeaderView.swift */; };
 		C61AD0F81E8390F500C377B9 /* CompletedRunViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0F71E8390F500C377B9 /* CompletedRunViewController+Extension.swift */; };
+		C61AD0FB1E847B9000C377B9 /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0F91E847B9000C377B9 /* ReadyViewController.swift */; };
+		C61AD0FC1E847B9000C377B9 /* ReadyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C61AD0FA1E847B9000C377B9 /* ReadyViewController.xib */; };
+		C61AD0FE1E84864900C377B9 /* GoButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0FD1E84864900C377B9 /* GoButtonView.swift */; };
 		C61C4C061E7E7DD5007C7E37 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4C051E7E7DD5007C7E37 /* ProfileViewController.swift */; };
 		C61C4C091E7E7EB6007C7E37 /* ProfileViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4C081E7E7EB6007C7E37 /* ProfileViewController+Extension.swift */; };
 		C61C4C0C1E7E8FC1007C7E37 /* RunsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4C0B1E7E8FC1007C7E37 /* RunsCellView.swift */; };
@@ -156,8 +159,6 @@
 		C6A8A3DE1E649BD10038C20A /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A8A3DD1E649BD10038C20A /* SpotifyAuthentication.framework */; };
 		C6A8A3E01E649E1E0038C20A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A8A3DF1E649E1E0038C20A /* AVFoundation.framework */; };
 		C6A8A3E21E649E290038C20A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A8A3E11E649E290038C20A /* SystemConfiguration.framework */; };
-		C6A8A3E41E64A6F00038C20A /* PostsMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8A3E31E64A6F00038C20A /* PostsMenuBar.swift */; };
-		C6A8A3E61E64A98D0038C20A /* TeamMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8A3E51E64A98D0038C20A /* TeamMemberCell.swift */; };
 		C6AE449C1E803E360088BC05 /* ClubCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AE449B1E803E360088BC05 /* ClubCollectionViewCell.swift */; };
 		C6B118281E21670C002BB4E8 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118271E21670C002BB4E8 /* PasswordViewController.swift */; };
 		C6B1182A1E21729F002BB4E8 /* NameEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B118291E21729F002BB4E8 /* NameEntryViewController.swift */; };
@@ -180,9 +181,7 @@
 		C6F770F21E476B1800349C5B /* T.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F770F11E476B1800349C5B /* T.json */; };
 		C6F770F41E476B2B00349C5B /* W.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F770F31E476B2B00349C5B /* W.json */; };
 		C6F770F61E476B3400349C5B /* F.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F770F51E476B3400349C5B /* F.json */; };
-		C6F7E6201E8077FE008CABAB /* RunReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7E61F1E8077FE008CABAB /* RunReadyViewController.swift */; };
 		C6F7E6271E80E6D9008CABAB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6F7E6261E80E6D9008CABAB /* MapKit.framework */; };
-		C6F7E62F1E80EDEE008CABAB /* RunReadyViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7E62E1E80EDEE008CABAB /* RunReadyViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -335,6 +334,9 @@
 		C61AD0F31E838BB500C377B9 /* CompletedRunViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedRunViewController.swift; sourceTree = "<group>"; };
 		C61AD0F51E838E8700C377B9 /* CompletedRunHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedRunHeaderView.swift; sourceTree = "<group>"; };
 		C61AD0F71E8390F500C377B9 /* CompletedRunViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CompletedRunViewController+Extension.swift"; sourceTree = "<group>"; };
+		C61AD0F91E847B9000C377B9 /* ReadyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadyViewController.swift; sourceTree = "<group>"; };
+		C61AD0FA1E847B9000C377B9 /* ReadyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadyViewController.xib; sourceTree = "<group>"; };
+		C61AD0FD1E84864900C377B9 /* GoButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoButtonView.swift; sourceTree = "<group>"; };
 		C61C4C051E7E7DD5007C7E37 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C61C4C081E7E7EB6007C7E37 /* ProfileViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Extension.swift"; sourceTree = "<group>"; };
 		C61C4C0B1E7E8FC1007C7E37 /* RunsCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunsCellView.swift; sourceTree = "<group>"; };
@@ -366,8 +368,6 @@
 		C6A8A3DD1E649BD10038C20A /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
 		C6A8A3DF1E649E1E0038C20A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C6A8A3E11E649E290038C20A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		C6A8A3E31E64A6F00038C20A /* PostsMenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsMenuBar.swift; sourceTree = "<group>"; };
-		C6A8A3E51E64A98D0038C20A /* TeamMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMemberCell.swift; sourceTree = "<group>"; };
 		C6AE449B1E803E360088BC05 /* ClubCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubCollectionViewCell.swift; sourceTree = "<group>"; };
 		C6B118271E21670C002BB4E8 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		C6B118291E21729F002BB4E8 /* NameEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameEntryViewController.swift; sourceTree = "<group>"; };
@@ -390,9 +390,7 @@
 		C6F770F11E476B1800349C5B /* T.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = T.json; sourceTree = "<group>"; };
 		C6F770F31E476B2B00349C5B /* W.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = W.json; sourceTree = "<group>"; };
 		C6F770F51E476B3400349C5B /* F.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = F.json; sourceTree = "<group>"; };
-		C6F7E61F1E8077FE008CABAB /* RunReadyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunReadyViewController.swift; sourceTree = "<group>"; };
 		C6F7E6261E80E6D9008CABAB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		C6F7E62E1E80EDEE008CABAB /* RunReadyViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RunReadyViewController+Extension.swift"; sourceTree = "<group>"; };
 		DC48F02A471D422621621F63 /* Pods_Pace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -527,6 +525,7 @@
 				45ACEABC1DFFBA7700C94B7D /* StartButtonView.swift */,
 				45ACEAB21DFFB1EB00C94B7D /* GetButtonView.swift */,
 				C6BB14901E3FB08A00BF6F66 /* OnboardingImageView.swift */,
+				C61AD0FD1E84864900C377B9 /* GoButtonView.swift */,
 			);
 			name = GenericViewCells;
 			sourceTree = "<group>";
@@ -994,8 +993,9 @@
 		C60363141E62D763005F2691 /* Clubs Posts */ = {
 			isa = PBXGroup;
 			children = (
-				C6A8A3E71E64AE5C0038C20A /* PostMenuBar */,
-				C6A8A3E81E64C5B10038C20A /* Posts */,
+				C608AD2B1E6EA1EC005934B3 /* PostViewController.swift */,
+				C608AD2D1E6EA37F005934B3 /* PostViewController+Extension.swift */,
+				C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */,
 			);
 			name = "Clubs Posts";
 			sourceTree = "<group>";
@@ -1092,25 +1092,6 @@
 			name = "Workouts Model";
 			sourceTree = "<group>";
 		};
-		C6A8A3E71E64AE5C0038C20A /* PostMenuBar */ = {
-			isa = PBXGroup;
-			children = (
-				C6A8A3E31E64A6F00038C20A /* PostsMenuBar.swift */,
-				C6A8A3E51E64A98D0038C20A /* TeamMemberCell.swift */,
-			);
-			name = PostMenuBar;
-			sourceTree = "<group>";
-		};
-		C6A8A3E81E64C5B10038C20A /* Posts */ = {
-			isa = PBXGroup;
-			children = (
-				C608AD2B1E6EA1EC005934B3 /* PostViewController.swift */,
-				C608AD2D1E6EA37F005934B3 /* PostViewController+Extension.swift */,
-				C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */,
-			);
-			name = Posts;
-			sourceTree = "<group>";
-		};
 		C6B1182F1E218037002BB4E8 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -1196,8 +1177,8 @@
 		C6F7E62D1E80EDD4008CABAB /* RunReadyViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C6F7E61F1E8077FE008CABAB /* RunReadyViewController.swift */,
-				C6F7E62E1E80EDEE008CABAB /* RunReadyViewController+Extension.swift */,
+				C61AD0FA1E847B9000C377B9 /* ReadyViewController.xib */,
+				C61AD0F91E847B9000C377B9 /* ReadyViewController.swift */,
 			);
 			name = RunReadyViewController;
 			sourceTree = "<group>";
@@ -1336,6 +1317,7 @@
 				C65CAADE1E3E7C900047B78A /* GoogleService-Info.plist in Resources */,
 				C6F770F21E476B1800349C5B /* T.json in Resources */,
 				C6F770F01E476B0E00349C5B /* M.json in Resources */,
+				C61AD0FC1E847B9000C377B9 /* ReadyViewController.xib in Resources */,
 				C6F770F61E476B3400349C5B /* F.json in Resources */,
 				C6F770F41E476B2B00349C5B /* W.json in Resources */,
 				45B5AD4F1DFBF71100115E2C /* LaunchScreen.storyboard in Resources */,
@@ -1432,7 +1414,6 @@
 				451D078D1DFE44BF00940301 /* ProfileHeaderView.swift in Sources */,
 				458478F01E184ED400EB2AB3 /* RoundButtonCorners.swift in Sources */,
 				45AC38F81E188B95003DC46B /* WorkoutProcessViewController.swift in Sources */,
-				C6F7E62F1E80EDEE008CABAB /* RunReadyViewController+Extension.swift in Sources */,
 				452902241DFC2C9000CE0C81 /* UIColor+Hex.m in Sources */,
 				451276121DFC747C008B57DE /* JustAddedCollection.swift in Sources */,
 				45C214EF1E05BD9C00C5BCCF /* AllPeopleViewController+Extension.swift in Sources */,
@@ -1441,6 +1422,7 @@
 				45B5AD9F1DFC022A00115E2C /* StringExtensions.swift in Sources */,
 				45F7F5CE1DFD4E6100DD1E33 /* CollectionViewBaseCell.swift in Sources */,
 				C61AD0F61E838E8700C377B9 /* CompletedRunHeaderView.swift in Sources */,
+				C61AD0FB1E847B9000C377B9 /* ReadyViewController.swift in Sources */,
 				45C214EA1E05B84400C5BCCF /* RatingsNodeView.swift in Sources */,
 				45C214F21E05DBC400C5BCCF /* SettingsViewController.swift in Sources */,
 				C6BB14911E3FB08A00BF6F66 /* OnboardingImageView.swift in Sources */,
@@ -1501,7 +1483,6 @@
 				452A00B81E05E34E00CACA18 /* WorkoutCellView.swift in Sources */,
 				4545358D1E18F2A500653252 /* RateButtonView.swift in Sources */,
 				C6B1BA4F1E8234F200EF7223 /* RunViewController.swift in Sources */,
-				C6F7E6201E8077FE008CABAB /* RunReadyViewController.swift in Sources */,
 				C69E48D11E3BA002007AF3BF /* DayHeaderViewController.swift in Sources */,
 				45ECF68D1E152F590032F6CC /* NewToPace.swift in Sources */,
 				45B5AD901DFBFC1D00115E2C /* MathematicalHelpers.swift in Sources */,
@@ -1558,6 +1539,7 @@
 				458842701E11A89D003B02C8 /* WorkoutViewController+Extension.swift in Sources */,
 				C680A73B1E8155BE008ACA5A /* RunModel+CoreDataClass.swift in Sources */,
 				458478E81E17E31900EB2AB3 /* SettingsViewModel.swift in Sources */,
+				C61AD0FE1E84864900C377B9 /* GoButtonView.swift in Sources */,
 				45B5AD421DFBF71100115E2C /* AppDelegate.swift in Sources */,
 				C61EB9EE1E7561F60083C966 /* SaveToMyRoutinesCell.swift in Sources */,
 				C65D7FBF1E7FF5C3003C9548 /* ClubsViewController.swift in Sources */,
@@ -1567,7 +1549,6 @@
 				45C214E81E05B2C200C5BCCF /* WorkoutsCell.swift in Sources */,
 				450D916F1E03F89D009D9144 /* FollowerFollowingCellNode.swift in Sources */,
 				450082021DFC90F3006AA959 /* EventCollectionCell.swift in Sources */,
-				C6A8A3E41E64A6F00038C20A /* PostsMenuBar.swift in Sources */,
 				45B5AD941DFBFC2800115E2C /* TextField.swift in Sources */,
 				452A00BA1E05E69500CACA18 /* StatusBarBackground.swift in Sources */,
 				454535971E19034500653252 /* ExerciseViewModel.swift in Sources */,
@@ -1578,7 +1559,6 @@
 				45B5AD921DFBFC2100115E2C /* TextSpacing.swift in Sources */,
 				45B5AD4A1DFBF71100115E2C /* Pace.xcdatamodeld in Sources */,
 				C6F770DA1E4718F800349C5B /* WelcomeLaunchViewController.swift in Sources */,
-				C6A8A3E61E64A98D0038C20A /* TeamMemberCell.swift in Sources */,
 				456DFFEA1E0D10B60057338D /* NavigationBarLine.swift in Sources */,
 				C680A73F1E8155D2008ACA5A /* LocationModel+CoreDataClass.swift in Sources */,
 				C65105141E758C2E007AD119 /* WorkoutDaysViewModel.swift in Sources */,

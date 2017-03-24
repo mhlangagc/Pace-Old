@@ -63,7 +63,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 	lazy var addImageButton: UIImageView = {
 		
 		let sendImageButton = UIImageView()
-		sendImageButton.image = UIImage(named: "postImage").reder
+		sendImageButton.image = UIImage(named: "postImage")
 		sendImageButton.contentMode = .scaleAspectFill
 		sendImageButton.isUserInteractionEnabled = true
 		sendImageButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectImage)))
@@ -172,16 +172,17 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 	}
 	
-	var joinButtonView : JoinButtonView?
+	var startRunButtonView : StartRunView?
 	
 	func setupJoinButton() {
 		
-		joinButtonView = JoinButtonView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 80.0))
-		joinButtonView?.joinButton?.setTitle("START RUN", for: UIControlState.normal)
-		joinButtonView?.joinButton?.setTitleColor(UIColor.paceBrandColor(), for: UIControlState.normal)
-		joinButtonView?.joinButton?.backgroundColor = UIColor(fromHexString: "14161B")
-		joinButtonView?.backgroundColor = .paceBackgroundBlack()
-		self.view.addSubview(joinButtonView!)
+		startRunButtonView = StartRunView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 70.0))
+		startRunButtonView?.startRun?.setTitle("START RUN", for: UIControlState.normal)
+		startRunButtonView?.startRun?.setTitleColor(UIColor.paceBrandColor(), for: UIControlState.normal)
+		startRunButtonView?.startRun?.backgroundColor = UIColor(fromHexString: "14161B")
+		startRunButtonView?.backgroundColor = .paceBackgroundBlack()
+		startRunButtonView?.postsVC = self
+		self.view.addSubview(startRunButtonView!)
 		
 	}
 	
@@ -402,6 +403,19 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		
 		//	TO DO
+		
+	}
+	
+	func handleStartWorkout() {
+		
+		let readyToRunVC = ReadyViewController()
+		readyToRunVC.club = self.teamModel
+		let readyNavBar = UINavigationController(rootViewController: readyToRunVC)
+		self.navigationController?.present(readyNavBar, animated: true, completion: { 
+			
+			//	TO DO
+			
+		})
 		
 	}
 	
