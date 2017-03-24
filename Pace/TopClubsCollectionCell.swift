@@ -12,7 +12,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionDataSource {
+class TopClubsCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionDataSource {
 	
 	var featuredCollectionNode : ASCollectionNode?
 	var discoveryVC : ExploreViewController?
@@ -72,7 +72,7 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 	
 	override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
 		
-		featuredCollectionNode?.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 270)
+		featuredCollectionNode?.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 330)
 		return ASStackLayoutSpec(direction: .horizontal,
                                           spacing: 0,
                                           justifyContent: .start,
@@ -84,7 +84,7 @@ class FeaturedCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 
 }
 
-extension FeaturedCollectionCell {
+extension TopClubsCollectionCell {
 	
 	func numberOfSections(in collectionNode: ASCollectionNode) -> Int {
 		return 1
@@ -99,7 +99,7 @@ extension FeaturedCollectionCell {
 	func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
 		
 		
-		let featuredCellNode = FeaturedCell()
+		let featuredCellNode = TopClubCell()
 		featuredCellNode.featureCollection = self
 		//featuredCellNode.workoutImageNode.url = NSURL(string: featuredWorkoutsArray[indexPath.item].workoutImageUrl!)! as URL
 		featuredCellNode.exploreClubModel = featuredClubsArray[indexPath.item]

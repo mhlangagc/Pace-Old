@@ -25,6 +25,8 @@ class CompletedRunHeaderView : BaseView {
 	var completedRunVC : CompletedRunViewController?
 	let textWidth : CGFloat = 78.0
 	
+	var lineView : UIView?
+	
 	override func setupViews() {
 		super.setupViews()
 		
@@ -32,12 +34,13 @@ class CompletedRunHeaderView : BaseView {
 		
 		self.addViews()
 		self.clubStas()
+		self.setuplineView()
 		
 	}
 	
 	func addViews() {
 		
-		runMapView = MKMapView.init(frame: CGRect(x: 20.0, y: 15.0, width: frame.width - 40.0, height: 370))
+		runMapView = MKMapView.init(frame: CGRect(x: 15.0, y: 15.0, width: frame.width - 30.0, height: 370))
 		runMapView?.mapType = .standard
 		runMapView?.showsBuildings = true
 		runMapView?.showsCompass = true
@@ -47,6 +50,13 @@ class CompletedRunHeaderView : BaseView {
 		runMapView?.layer.masksToBounds = true
 		addSubview(runMapView!)
 	
+	}
+	
+	func setuplineView() {
+		
+		lineView = UIView.init(frame: CGRect(x: 15.0, y: 530.0, width: frame.width - 30.0, height: 0.5))
+		lineView?.backgroundColor = UIColor(fromHexString: "7F6008")
+		addSubview(lineView!)
 	}
 	
 	func clubStas() {

@@ -52,9 +52,10 @@ class RunViewController: UIViewController, CLLocationManagerDelegate {
 		
 		self.resumeRun.isHidden = true
 		self.stopRun.isHidden = true
-
         self.configureView()
 		self.setupPlayerView()
+		self.handleStartRunning()
+		
 		
     }
 	
@@ -104,9 +105,17 @@ class RunViewController: UIViewController, CLLocationManagerDelegate {
 			
 		}
 		*/
-		paceLabel.text = "\(String((minutes/kilometers).roundToPlaces(places: 2)))" //km/h
-		//climbLabel.text = "Total climb: "+String((vertClimb*10).rounded()/10)+" m"
-		//descentLabel.text = "Total descent: "+String((vertDescent*10).rounded()/10)+" m"
+		
+		if minutes/kilometers == Double.infinity {
+			
+			paceLabel.text = "0.00"
+			
+		} else {
+			
+			paceLabel.text = "\(String((minutes/kilometers).roundToPlaces(places: 2)))"
+			
+		}
+		
 		
 	}
 	
@@ -165,6 +174,20 @@ class RunViewController: UIViewController, CLLocationManagerDelegate {
 		
 		completion()
 		
+	}
+	
+	func handleStartRunning() {
+		
+		isRunning = true
+		runButtton.isHidden = false
+		runButtton.setImage(#imageLiteral(resourceName: "PauseWorkout"), for: UIControlState.normal)
+		locations.removeAll(keepingCapacity: false)
+		timer = Timer.scheduledTimer(timeInterval: 1,
+		                             target: self,
+		                             selector: #selector(eachSecond(_:)),
+		                             userInfo: nil,
+		                             repeats: true)
+		locationManager.startUpdatingLocation()
 	}
 	
 	@IBAction func handlePauseRun(_ sender: Any) {

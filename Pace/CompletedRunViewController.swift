@@ -58,6 +58,16 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 	func setupNavigationBar() {
 		
 		navigationNoLineBar()
+		
+		let titleLabel = UILabel(frame: CGRect(x: ((view.frame.width - 100) * 0.5), y: 5, width: 100, height: view.frame.height))
+		titleLabel.text = "Run Completed"
+		titleLabel.textAlignment = .center
+		titleLabel.textColor = UIColor.white
+		titleLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightBold)
+		textSpacing(titleLabel, spacing: 0.5)
+		navigationItem.titleView = titleLabel
+		
+		
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "shareVC"), style: UIBarButtonItemStyle.done, target: self, action: #selector(handleShareWorkout))
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(handleDoneWorkout))
 		self.navigationController?.navigationBar.barTintColor = UIColor.darkerBlack()
@@ -126,7 +136,16 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 		
 		let minutes = Double((run?.duration)!)/60.0
 		let kilometers = Double((run?.distance)!)/1000
-		headerView.paceNumberLabel?.text = "\(String((minutes/kilometers).roundToPlaces(places: 2)))"
+		if minutes/kilometers == Double.infinity {
+			
+			headerView.paceNumberLabel?.text = "0.00"
+			
+		} else {
+			
+			headerView.paceNumberLabel?.text = "\(String((minutes/kilometers).roundToPlaces(places: 2)))"
+			
+		}
+		
 		
 		self.loadMap()
 		

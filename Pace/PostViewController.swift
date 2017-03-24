@@ -144,27 +144,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		collectionNode?.backgroundColor = UIColor.closeBlack()
 		super.init(node: collectionNode!)
 		navigationNoLineBar()
-		setupStartBar()
-	
-	}
-	
-	let startWorkoutButtonBar: StartButtonView = {
-		
-		let startBar = StartButtonView()
-		startBar.translatesAutoresizingMaskIntoConstraints = false
-		return startBar
-		
-	}()
-	
-	private func setupStartBar() {
-		
-//		startWorkoutButtonBar.frame = CGRect(x: 0, y: 64, width: 375, height: 70)
-		self.view.addSubview(startWorkoutButtonBar)
-		
-		startWorkoutButtonBar.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-		startWorkoutButtonBar.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-		startWorkoutButtonBar.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-		startWorkoutButtonBar.heightAnchor.constraint(equalToConstant: 70.0).isActive = true
+		self.setupJoinButton()
 		
 	}
 	
@@ -189,6 +169,20 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		moreButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
 		moreButton.addTarget(self, action: #selector(handleMoreOptions), for: UIControlEvents.touchUpInside)
 		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: moreButton)
+		
+	}
+	
+	var startRunButtonView : StartRunView?
+	
+	func setupJoinButton() {
+		
+		startRunButtonView = StartRunView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 70.0))
+		startRunButtonView?.startRun?.setTitle("START RUN", for: UIControlState.normal)
+		startRunButtonView?.startRun?.setTitleColor(UIColor.paceBrandColor(), for: UIControlState.normal)
+		startRunButtonView?.startRun?.backgroundColor = UIColor(fromHexString: "14161B")
+		startRunButtonView?.backgroundColor = .paceBackgroundBlack()
+		startRunButtonView?.postsVC = self
+		self.view.addSubview(startRunButtonView!)
 		
 	}
 	
@@ -409,6 +403,19 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		
 		//	TO DO
+		
+	}
+	
+	func handleStartWorkout() {
+		
+		let readyToRunVC = ReadyViewController()
+		readyToRunVC.club = self.teamModel
+		let readyNavBar = UINavigationController(rootViewController: readyToRunVC)
+		self.navigationController?.present(readyNavBar, animated: true, completion: { 
+			
+			//	TO DO
+			
+		})
 		
 	}
 	
