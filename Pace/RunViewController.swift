@@ -52,9 +52,10 @@ class RunViewController: UIViewController, CLLocationManagerDelegate {
 		
 		self.resumeRun.isHidden = true
 		self.stopRun.isHidden = true
-
         self.configureView()
 		self.setupPlayerView()
+		self.handleStartRunning()
+		
 		
     }
 	
@@ -165,6 +166,19 @@ class RunViewController: UIViewController, CLLocationManagerDelegate {
 		
 		completion()
 		
+	}
+	
+	func handleStartRunning() {
+		
+		runButtton.isHidden = false
+		runButtton.setImage(#imageLiteral(resourceName: "PauseWorkout"), for: UIControlState.normal)
+		locations.removeAll(keepingCapacity: false)
+		timer = Timer.scheduledTimer(timeInterval: 1,
+		                             target: self,
+		                             selector: #selector(eachSecond(_:)),
+		                             userInfo: nil,
+		                             repeats: true)
+		locationManager.startUpdatingLocation()
 	}
 	
 	@IBAction func handlePauseRun(_ sender: Any) {
