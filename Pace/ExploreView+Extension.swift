@@ -17,7 +17,7 @@ extension ExploreViewController {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
 		
-		return 10
+		return 3
 		
 	}
 	
@@ -26,57 +26,57 @@ extension ExploreViewController {
 		switch indexPath.item {
 		case 0:
 			
-			let featuredNode = FeaturedCollectionCell()
-			featuredNode.discoveryVC = self
+			let topClubsNode = TopClubsCollectionCell()
+			topClubsNode.discoveryVC = self
 			//featuredNode.featuredWorkoutsArray = retrieveFeaturedWorkouts()
-			return featuredNode
+			return topClubsNode
 			
 		case 1:
 			
-			let popularLabelNode = PopularLabel()
-			popularLabelNode.discoveryVC = self
-			return popularLabelNode
+			let AllClubsNode = AllClubsLabel()
+			AllClubsNode.discoveryVC = self
+			return AllClubsNode
 			
-		case 2:
-			
-			let newToPaceVC  = NewToPaceCollection()
-			newToPaceVC.discoveryVC = self
-			return newToPaceVC
-			
-		case 3:
-			
-			let eventLabelCell = EventCollectionLabel()
-			return eventLabelCell
-			
-		case 4:
-			
-			let eventCollection = EventCollection()
-			eventCollection.discoveryVC = self
-			return eventCollection
-			
-		case 5:
-			
-			let justAddedLabelNode = JustAddedLabel()
-			justAddedLabelNode.discoveryVC = self
-			return justAddedLabelNode
-			
-		case 6:
-			
-			let justAddedVC  = JustAddedCollection()
-			justAddedVC.discoveryVC = self
-			return justAddedVC
-			
-		case 7:
-			
-			let trainersAndFriendsLabel = TrainersAndFriendsLabelCell()
-			trainersAndFriendsLabel.discoveryVC = self
-			return trainersAndFriendsLabel
-			
-		case 8:
-			
-			let followCollectionNode = TrainersAndFriendsCollectionNode()
-			followCollectionNode.exploreVC = self
-			return followCollectionNode
+//		case 2:
+//			
+//			let newToPaceVC  = NewToPaceCollection()
+//			newToPaceVC.discoveryVC = self
+//			return newToPaceVC
+//			
+//		case 3:
+//			
+//			let eventLabelCell = EventCollectionLabel()
+//			return eventLabelCell
+//			
+//		case 4:
+//			
+//			let eventCollection = EventCollection()
+//			eventCollection.discoveryVC = self
+//			return eventCollection
+//			
+//		case 5:
+//			
+//			let justAddedLabelNode = JustAddedLabel()
+//			justAddedLabelNode.discoveryVC = self
+//			return justAddedLabelNode
+//			
+//		case 6:
+//			
+//			let justAddedVC  = JustAddedCollection()
+//			justAddedVC.discoveryVC = self
+//			return justAddedVC
+//			
+//		case 7:
+//			
+//			let trainersAndFriendsLabel = TrainersAndFriendsLabelCell()
+//			trainersAndFriendsLabel.discoveryVC = self
+//			return trainersAndFriendsLabel
+//			
+//		case 8:
+//			
+//			let followCollectionNode = TrainersAndFriendsCollectionNode()
+//			followCollectionNode.exploreVC = self
+//			return followCollectionNode
 			
 		default:
 			

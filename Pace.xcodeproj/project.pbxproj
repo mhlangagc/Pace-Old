@@ -48,9 +48,9 @@
 		458842721E11B280003B02C8 /* ExerciseCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458842711E11B280003B02C8 /* ExerciseCellView.swift */; };
 		458842741E11D69D003B02C8 /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458842731E11D69D003B02C8 /* DayViewController.swift */; };
 		458842761E11D89F003B02C8 /* DayViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458842751E11D89F003B02C8 /* DayViewController+Extension.swift */; };
-		45A37F311DFC419100049493 /* FeaturedCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A37F301DFC419100049493 /* FeaturedCollectionCell.swift */; };
+		45A37F311DFC419100049493 /* TopClubsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A37F301DFC419100049493 /* TopClubsCollectionCell.swift */; };
 		45A37F351DFC454600049493 /* ExploreView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A37F341DFC454600049493 /* ExploreView+Extension.swift */; };
-		45A37F371DFC459300049493 /* FeaturedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A37F361DFC459300049493 /* FeaturedCell.swift */; };
+		45A37F371DFC459300049493 /* TopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A37F361DFC459300049493 /* TopCell.swift */; };
 		45AC38F81E188B95003DC46B /* WorkoutProcessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AC38F71E188B95003DC46B /* WorkoutProcessViewController.swift */; };
 		45AC38FA1E188DF9003DC46B /* WorkoutProcessViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AC38F91E188DF9003DC46B /* WorkoutProcessViewController+Extension.swift */; };
 		45AC38FC1E188EE1003DC46B /* TouchBarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AC38FB1E188EE1003DC46B /* TouchBarHeaderView.swift */; };
@@ -103,7 +103,7 @@
 		45E3C07B1DFD9A4B002FD4F8 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3C07A1DFD9A4B002FD4F8 /* BaseView.swift */; };
 		45ECF6881E151F5D0032F6CC /* WorkoutDaysModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECF6871E151F5D0032F6CC /* WorkoutDaysModel.swift */; };
 		45ECF68A1E152D450032F6CC /* NewToPaceCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECF6891E152D450032F6CC /* NewToPaceCollection.swift */; };
-		45ECF68D1E152F590032F6CC /* NewToPace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECF68C1E152F590032F6CC /* NewToPace.swift */; };
+		45ECF68D1E152F590032F6CC /* AllClubsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECF68C1E152F590032F6CC /* AllClubsLabel.swift */; };
 		45F3AA1E1E154BA300D70C84 /* RoutinesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F3AA1D1E154BA300D70C84 /* RoutinesViewModel.swift */; };
 		45F3AA201E15990900D70C84 /* ActivitiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F3AA1F1E15990900D70C84 /* ActivitiesModel.swift */; };
 		45F3AA221E159AA200D70C84 /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F3AA211E159AA200D70C84 /* ActivityViewModel.swift */; };
@@ -244,9 +244,9 @@
 		458842711E11B280003B02C8 /* ExerciseCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCellView.swift; sourceTree = "<group>"; };
 		458842731E11D69D003B02C8 /* DayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
 		458842751E11D89F003B02C8 /* DayViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DayViewController+Extension.swift"; sourceTree = "<group>"; };
-		45A37F301DFC419100049493 /* FeaturedCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedCollectionCell.swift; sourceTree = "<group>"; };
+		45A37F301DFC419100049493 /* TopClubsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopClubsCollectionCell.swift; sourceTree = "<group>"; };
 		45A37F341DFC454600049493 /* ExploreView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExploreView+Extension.swift"; sourceTree = "<group>"; };
-		45A37F361DFC459300049493 /* FeaturedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedCell.swift; sourceTree = "<group>"; };
+		45A37F361DFC459300049493 /* TopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopCell.swift; sourceTree = "<group>"; };
 		45AC38F71E188B95003DC46B /* WorkoutProcessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutProcessViewController.swift; sourceTree = "<group>"; };
 		45AC38F91E188DF9003DC46B /* WorkoutProcessViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutProcessViewController+Extension.swift"; sourceTree = "<group>"; };
 		45AC38FB1E188EE1003DC46B /* TouchBarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchBarHeaderView.swift; sourceTree = "<group>"; };
@@ -307,7 +307,7 @@
 		45E3C07A1DFD9A4B002FD4F8 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		45ECF6871E151F5D0032F6CC /* WorkoutDaysModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutDaysModel.swift; sourceTree = "<group>"; };
 		45ECF6891E152D450032F6CC /* NewToPaceCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewToPaceCollection.swift; sourceTree = "<group>"; };
-		45ECF68C1E152F590032F6CC /* NewToPace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewToPace.swift; sourceTree = "<group>"; };
+		45ECF68C1E152F590032F6CC /* AllClubsLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllClubsLabel.swift; sourceTree = "<group>"; };
 		45F3AA1D1E154BA300D70C84 /* RoutinesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutinesViewModel.swift; sourceTree = "<group>"; };
 		45F3AA1F1E15990900D70C84 /* ActivitiesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesModel.swift; sourceTree = "<group>"; };
 		45F3AA211E159AA200D70C84 /* ActivityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
@@ -498,7 +498,7 @@
 				45B5AD431DFBF71100115E2C /* ExploreViewController.swift */,
 				45A37F341DFC454600049493 /* ExploreView+Extension.swift */,
 				451276131DFC835A008B57DE /* DiscoveryWorkoutCell.swift */,
-				45A37F321DFC424400049493 /* Featured */,
+				45A37F321DFC424400049493 /* Top Clubs */,
 				45C247441DFC600100B16AEE /* Newly Added */,
 				450081FC1DFC8D6D006AA959 /* Events */,
 				45ECF68B1E152F0C0032F6CC /* Popular */,
@@ -622,13 +622,13 @@
 			name = "Workout Details View";
 			sourceTree = "<group>";
 		};
-		45A37F321DFC424400049493 /* Featured */ = {
+		45A37F321DFC424400049493 /* Top Clubs */ = {
 			isa = PBXGroup;
 			children = (
-				45A37F301DFC419100049493 /* FeaturedCollectionCell.swift */,
-				45A37F361DFC459300049493 /* FeaturedCell.swift */,
+				45A37F301DFC419100049493 /* TopClubsCollectionCell.swift */,
+				45A37F361DFC459300049493 /* TopCell.swift */,
 			);
-			name = Featured;
+			name = "Top Clubs";
 			sourceTree = "<group>";
 		};
 		45AC38F61E188B70003DC46B /* WorkoutProcess */ = {
@@ -940,7 +940,7 @@
 		45C247441DFC600100B16AEE /* Newly Added */ = {
 			isa = PBXGroup;
 			children = (
-				45ECF68C1E152F590032F6CC /* NewToPace.swift */,
+				45ECF68C1E152F590032F6CC /* AllClubsLabel.swift */,
 				45ECF6891E152D450032F6CC /* NewToPaceCollection.swift */,
 			);
 			name = "Newly Added";
@@ -1446,7 +1446,7 @@
 				C6B1182A1E21729F002BB4E8 /* NameEntryViewController.swift in Sources */,
 				45C247431DFC5FF700B16AEE /* JustAdded Label.swift in Sources */,
 				4527D4051E1F7C0600F1A643 /* EmailViewController.swift in Sources */,
-				45A37F371DFC459300049493 /* FeaturedCell.swift in Sources */,
+				45A37F371DFC459300049493 /* TopCell.swift in Sources */,
 				C680A73C1E8155BE008ACA5A /* RunModel+CoreDataProperties.swift in Sources */,
 				45D9DC561E040FFB001580B3 /* ActivityMenuBar.swift in Sources */,
 				450D916B1E03F657009D9144 /* FollowersViewController.swift in Sources */,
@@ -1484,7 +1484,7 @@
 				4545358D1E18F2A500653252 /* RateButtonView.swift in Sources */,
 				C6B1BA4F1E8234F200EF7223 /* RunViewController.swift in Sources */,
 				C69E48D11E3BA002007AF3BF /* DayHeaderViewController.swift in Sources */,
-				45ECF68D1E152F590032F6CC /* NewToPace.swift in Sources */,
+				45ECF68D1E152F590032F6CC /* AllClubsLabel.swift in Sources */,
 				45B5AD901DFBFC1D00115E2C /* MathematicalHelpers.swift in Sources */,
 				45F3AA2A1E15E7B300D70C84 /* PreferencesPopUpLauncher.swift in Sources */,
 				C6BE5C131E402ADA00770A42 /* PaceAppServices.swift in Sources */,
@@ -1532,7 +1532,7 @@
 				C61EB9F11E7571960083C966 /* WorkoutDownloadViewController+Extension.swift in Sources */,
 				450082061DFC961E006AA959 /* TrainersAndFriendsLabelCell.swift in Sources */,
 				458842721E11B280003B02C8 /* ExerciseCellView.swift in Sources */,
-				45A37F311DFC419100049493 /* FeaturedCollectionCell.swift in Sources */,
+				45A37F311DFC419100049493 /* TopClubsCollectionCell.swift in Sources */,
 				C6B118331E218245002BB4E8 /* GoalsInterestsViewController.swift in Sources */,
 				C6B118281E21670C002BB4E8 /* PasswordViewController.swift in Sources */,
 				45B2A4C91DFCA7B600C099C7 /* FooterCell.swift in Sources */,
