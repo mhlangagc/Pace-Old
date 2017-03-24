@@ -11,7 +11,7 @@ import AsyncDisplayKit
 
 class TopCell: BaseCell {
 	
-	var featureCollection: FeaturedCollectionCell?
+	var featureCollection: TopClubsCollectionCell?
 	let workoutImageNode = ASNetworkImageNode()
 	let lockImageNode = ASImageNode()
 	let clubNameTextNode = ASTextNode()
