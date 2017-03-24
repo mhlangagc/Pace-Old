@@ -85,3 +85,39 @@ class JoinButtonView : BaseView {
 	
 }
 
+class StartRunView : BaseView {
+	
+	var startRun: UIButton?
+	
+	var postsVC : PostViewController?
+	
+	override func setupViews() {
+		super.setupViews()
+		
+		backgroundColor = .black
+		self.setupButton()
+		
+	}
+	
+	func setupButton() {
+		
+		startRun = UIButton()
+		startRun?.frame = CGRect(x: 20.0, y: 12.0, width: frame.width - 40.0, height: 46)
+		startRun?.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
+		textSpacing((startRun?.titleLabel)!, spacing: 1.0)
+		startRun?.layer.cornerRadius = 8.0
+		startRun?.layer.masksToBounds = true
+		startRun?.addTarget(self, action: #selector(handleStartRun), for: UIControlEvents.touchUpInside)
+		addSubview(startRun!)
+		
+	}
+	
+	
+	func handleStartRun() {
+		
+		postsVC?.handleStartWorkout()
+		
+	}
+	
+}
+

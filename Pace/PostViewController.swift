@@ -144,7 +144,8 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		collectionNode?.backgroundColor = UIColor.closeBlack()
 		super.init(node: collectionNode!)
 		navigationNoLineBar()
-	
+		self.setupJoinButton()
+		
 	}
 	
 	func setupCollectionView() {
@@ -168,6 +169,30 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		moreButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
 		moreButton.addTarget(self, action: #selector(handleMoreOptions), for: UIControlEvents.touchUpInside)
 		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: moreButton)
+		
+	}
+	
+	var startRunButtonView : StartRunView?
+	
+	func setupJoinButton() {
+		
+		startRunButtonView = StartRunView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 70.0))
+		startRunButtonView?.startRun?.setTitle("START RUN", for: UIControlState.normal)
+		startRunButtonView?.startRun?.setTitleColor(UIColor.paceBrandColor(), for: UIControlState.normal)
+		startRunButtonView?.startRun?.backgroundColor = UIColor(fromHexString: "14161B")
+		startRunButtonView?.backgroundColor = .paceBackgroundBlack()
+		startRunButtonView?.postsVC = self
+		self.view.addSubview(startRunButtonView!)
+		
+	}
+	
+	private func setupLeftNavItem() {
+		
+		let moreButton = UIButton(type: .system)
+		moreButton.setImage(#imageLiteral(resourceName: "backArrow").withRenderingMode(.alwaysOriginal), for: .normal)
+		moreButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+		moreButton.addTarget(self, action: #selector(handleBack), for: UIControlEvents.touchUpInside)
+		navigationItem.leftBarButtonItem = UIBarButtonItem(customView: moreButton)
 		
 	}
 	
@@ -255,6 +280,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		self.setupImageSelectionContainerView()
 		navigationNoLineBar()
 		self.setupRightNavItem()
+		self.setupLeftNavItem()
 		self.setupKeyboardObservers()
 		
 		self.observeTeamMessages { (postsArray) in
@@ -379,6 +405,30 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		//	TO DO
 		
 	}
+	
+	func handleStartWorkout() {
+		
+		let readyToRunVC = ReadyViewController()
+		readyToRunVC.club = self.teamModel
+		let readyNavBar = UINavigationController(rootViewController: readyToRunVC)
+		self.navigationController?.present(readyNavBar, animated: true, completion: { 
+			
+			//	TO DO
+			
+		})
+		
+	}
+	
+	func handleBack() {
+		
+		if let navController = self.navigationController {
+			
+			navController.popViewController(animated: true)
+			
+		}
+	
+	}
+	
 	var viewOpened = false
 	func handleSelectImage() {
 		

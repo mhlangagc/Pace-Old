@@ -12,7 +12,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class PopularLabel: BaseCell {
+class AllClubsLabel: BaseCell {
 	
 	var discoveryVC : ExploreViewController?
 	let newWorkoutLabel = ASTextNode()
@@ -35,7 +35,7 @@ class PopularLabel: BaseCell {
 		let alignmentStyle = NSMutableParagraphStyle()
 		alignmentStyle.alignment = NSTextAlignment.left
 		newWorkoutLabel.attributedText = NSAttributedString(
-			string: "Free Workouts",
+			string: "All Clubs",
 			attributes: [
 				NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightHeavy),
 				NSForegroundColorAttributeName: UIColor.greyWhite(),
@@ -45,7 +45,7 @@ class PopularLabel: BaseCell {
 		addSubnode(newWorkoutLabel)
 		
 		descriptionLabel.attributedText = NSAttributedString(
-			string: "Because it's your first month here",
+			string: "From the most recent to oldest",
 			attributes: [
 				NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightSemibold),
 				NSForegroundColorAttributeName: UIColor.greyBlackColor(),
