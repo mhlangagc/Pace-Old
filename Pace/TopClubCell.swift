@@ -9,7 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 
-class TopCell: BaseCell {
+class TopClubCell: BaseCell {
 	
 	var featureCollection: TopClubsCollectionCell?
 	let workoutImageNode = ASNetworkImageNode()
@@ -85,7 +85,7 @@ class TopCell: BaseCell {
 		
 		workoutImageNode.style.preferredSize = CGSize(width: imageWidth, height: imageHeight)
 		lockImageNode.style.preferredSize = CGSize(width: 30, height: 30)
-		clubNameTextNode.style.preferredSize = CGSize(width: imageWidth, height: 26)
+		clubNameTextNode.style.preferredSize = CGSize(width: imageWidth, height: 25)
 		clubDetailsTextNode.style.preferredSize = CGSize(width: imageWidth, height: 20)
 		
 		let lockImageNodeSpec = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: imageWidth - 45.0, bottom: imageHeight - 45.0, right: 15.0), child: lockImageNode)
@@ -96,7 +96,7 @@ class TopCell: BaseCell {
 		                                   spacing: 20,
 		                                   justifyContent: .start,
 		                                   alignItems: .start,
-		                                   children: [imagesOverlaySpec, clubNameTextNode])
+		                                   children: [workoutImageNode, clubNameTextNode])
 		
 		let finalLayoutSpec = ASStackLayoutSpec(direction: .vertical,
 		                                   spacing: 15,

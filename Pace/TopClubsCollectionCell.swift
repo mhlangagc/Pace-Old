@@ -72,7 +72,7 @@ class TopClubsCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 	
 	override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
 		
-		featuredCollectionNode?.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 300)
+		featuredCollectionNode?.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 330)
 		return ASStackLayoutSpec(direction: .horizontal,
                                           spacing: 0,
                                           justifyContent: .start,
@@ -99,7 +99,7 @@ extension TopClubsCollectionCell {
 	func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
 		
 		
-		let featuredCellNode = TopCell()
+		let featuredCellNode = TopClubCell()
 		featuredCellNode.featureCollection = self
 		//featuredCellNode.workoutImageNode.url = NSURL(string: featuredWorkoutsArray[indexPath.item].workoutImageUrl!)! as URL
 		featuredCellNode.exploreClubModel = featuredClubsArray[indexPath.item]

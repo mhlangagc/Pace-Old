@@ -50,7 +50,7 @@
 		458842761E11D89F003B02C8 /* DayViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458842751E11D89F003B02C8 /* DayViewController+Extension.swift */; };
 		45A37F311DFC419100049493 /* TopClubsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A37F301DFC419100049493 /* TopClubsCollectionCell.swift */; };
 		45A37F351DFC454600049493 /* ExploreView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A37F341DFC454600049493 /* ExploreView+Extension.swift */; };
-		45A37F371DFC459300049493 /* TopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A37F361DFC459300049493 /* TopCell.swift */; };
+		45A37F371DFC459300049493 /* TopClubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A37F361DFC459300049493 /* TopClubCell.swift */; };
 		45AC38F81E188B95003DC46B /* WorkoutProcessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AC38F71E188B95003DC46B /* WorkoutProcessViewController.swift */; };
 		45AC38FA1E188DF9003DC46B /* WorkoutProcessViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AC38F91E188DF9003DC46B /* WorkoutProcessViewController+Extension.swift */; };
 		45AC38FC1E188EE1003DC46B /* TouchBarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AC38FB1E188EE1003DC46B /* TouchBarHeaderView.swift */; };
@@ -246,7 +246,7 @@
 		458842751E11D89F003B02C8 /* DayViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DayViewController+Extension.swift"; sourceTree = "<group>"; };
 		45A37F301DFC419100049493 /* TopClubsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopClubsCollectionCell.swift; sourceTree = "<group>"; };
 		45A37F341DFC454600049493 /* ExploreView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExploreView+Extension.swift"; sourceTree = "<group>"; };
-		45A37F361DFC459300049493 /* TopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopCell.swift; sourceTree = "<group>"; };
+		45A37F361DFC459300049493 /* TopClubCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopClubCell.swift; sourceTree = "<group>"; };
 		45AC38F71E188B95003DC46B /* WorkoutProcessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutProcessViewController.swift; sourceTree = "<group>"; };
 		45AC38F91E188DF9003DC46B /* WorkoutProcessViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutProcessViewController+Extension.swift"; sourceTree = "<group>"; };
 		45AC38FB1E188EE1003DC46B /* TouchBarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchBarHeaderView.swift; sourceTree = "<group>"; };
@@ -626,7 +626,7 @@
 			isa = PBXGroup;
 			children = (
 				45A37F301DFC419100049493 /* TopClubsCollectionCell.swift */,
-				45A37F361DFC459300049493 /* TopCell.swift */,
+				45A37F361DFC459300049493 /* TopClubCell.swift */,
 			);
 			name = "Top Clubs";
 			sourceTree = "<group>";
@@ -1446,7 +1446,7 @@
 				C6B1182A1E21729F002BB4E8 /* NameEntryViewController.swift in Sources */,
 				45C247431DFC5FF700B16AEE /* JustAdded Label.swift in Sources */,
 				4527D4051E1F7C0600F1A643 /* EmailViewController.swift in Sources */,
-				45A37F371DFC459300049493 /* TopCell.swift in Sources */,
+				45A37F371DFC459300049493 /* TopClubCell.swift in Sources */,
 				C680A73C1E8155BE008ACA5A /* RunModel+CoreDataProperties.swift in Sources */,
 				45D9DC561E040FFB001580B3 /* ActivityMenuBar.swift in Sources */,
 				450D916B1E03F657009D9144 /* FollowersViewController.swift in Sources */,
