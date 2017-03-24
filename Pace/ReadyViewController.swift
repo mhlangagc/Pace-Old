@@ -21,16 +21,11 @@ class ReadyViewController: UIViewController {
 	
 	}()
 	
-	@IBOutlet weak var totalKMLabel: UILabel!
-	@IBOutlet weak var totalRunsLabel: UILabel!
-	@IBOutlet weak var averagePaceLabel: UILabel!
-	
     override func viewDidLoad() {
         super.viewDidLoad()
 
 		self.view.backgroundColor = .closeBlack()
 		self.setupNavBar()
-		self.configureViews()
 		self.setupPlayerView()
 		self.setupGoButtonView()
        
@@ -68,19 +63,6 @@ class ReadyViewController: UIViewController {
 		closeButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
 		closeButton.addTarget(self, action: #selector(handleClose), for: UIControlEvents.touchUpInside)
 		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: closeButton)
-		
-		
-	}
-	
-	func configureViews() {
-		
-		totalKMLabel.font = UIFont(name: "BebasNeueBold", size: 42)
-		totalRunsLabel.font = UIFont(name: "BebasNeueBold", size: 42)
-		averagePaceLabel.font = UIFont(name: "BebasNeueBold", size: 42)
-		
-		textSpacing(totalKMLabel, spacing: 2.4)
-		textSpacing(totalRunsLabel, spacing: 2.4)
-		textSpacing(averagePaceLabel, spacing: 2.4)
 		
 		
 	}

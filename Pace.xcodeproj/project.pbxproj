@@ -128,7 +128,6 @@
 		C61AD0F61E838E8700C377B9 /* CompletedRunHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0F51E838E8700C377B9 /* CompletedRunHeaderView.swift */; };
 		C61AD0F81E8390F500C377B9 /* CompletedRunViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0F71E8390F500C377B9 /* CompletedRunViewController+Extension.swift */; };
 		C61AD0FB1E847B9000C377B9 /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0F91E847B9000C377B9 /* ReadyViewController.swift */; };
-		C61AD0FC1E847B9000C377B9 /* ReadyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C61AD0FA1E847B9000C377B9 /* ReadyViewController.xib */; };
 		C61AD0FE1E84864900C377B9 /* GoButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0FD1E84864900C377B9 /* GoButtonView.swift */; };
 		C61C4C061E7E7DD5007C7E37 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4C051E7E7DD5007C7E37 /* ProfileViewController.swift */; };
 		C61C4C091E7E7EB6007C7E37 /* ProfileViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4C081E7E7EB6007C7E37 /* ProfileViewController+Extension.swift */; };
@@ -335,7 +334,6 @@
 		C61AD0F51E838E8700C377B9 /* CompletedRunHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedRunHeaderView.swift; sourceTree = "<group>"; };
 		C61AD0F71E8390F500C377B9 /* CompletedRunViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CompletedRunViewController+Extension.swift"; sourceTree = "<group>"; };
 		C61AD0F91E847B9000C377B9 /* ReadyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadyViewController.swift; sourceTree = "<group>"; };
-		C61AD0FA1E847B9000C377B9 /* ReadyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadyViewController.xib; sourceTree = "<group>"; };
 		C61AD0FD1E84864900C377B9 /* GoButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoButtonView.swift; sourceTree = "<group>"; };
 		C61C4C051E7E7DD5007C7E37 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C61C4C081E7E7EB6007C7E37 /* ProfileViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -1177,7 +1175,6 @@
 		C6F7E62D1E80EDD4008CABAB /* RunReadyViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C61AD0FA1E847B9000C377B9 /* ReadyViewController.xib */,
 				C61AD0F91E847B9000C377B9 /* ReadyViewController.swift */,
 			);
 			name = RunReadyViewController;
@@ -1317,7 +1314,6 @@
 				C65CAADE1E3E7C900047B78A /* GoogleService-Info.plist in Resources */,
 				C6F770F21E476B1800349C5B /* T.json in Resources */,
 				C6F770F01E476B0E00349C5B /* M.json in Resources */,
-				C61AD0FC1E847B9000C377B9 /* ReadyViewController.xib in Resources */,
 				C6F770F61E476B3400349C5B /* F.json in Resources */,
 				C6F770F41E476B2B00349C5B /* W.json in Resources */,
 				45B5AD4F1DFBF71100115E2C /* LaunchScreen.storyboard in Resources */,
