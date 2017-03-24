@@ -69,7 +69,7 @@ class JoinButtonView : BaseView {
 		joinButton?.setTitleColor(UIColor.black, for: UIControlState.normal)
 		joinButton?.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
 		textSpacing((joinButton?.titleLabel)!, spacing: 1.0)
-		joinButton?.layer.cornerRadius = 10.0
+		joinButton?.layer.cornerRadius = 8.0
 		joinButton?.layer.masksToBounds = true
 		joinButton?.addTarget(self, action: #selector(handleJoinClub), for: UIControlEvents.touchUpInside)
 		addSubview(joinButton!)
