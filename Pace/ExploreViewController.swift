@@ -24,23 +24,40 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 		
 	}()
 	
+	var allClubsArray = [ExploreWorkoutModel]()
+	
+	lazy var paceAppService: PaceAppServices = {
+		
+		let retrieveFreeWorkouts = PaceAppServices()
+		return retrieveFreeWorkouts
+		
+	}()
+	
 	init() {
 		
 		let flowLayout     = UICollectionViewFlowLayout()
-		flowLayout.minimumInteritemSpacing  = 0
 		flowLayout.minimumLineSpacing       = 15
+		flowLayout.minimumInteritemSpacing = 15
 		flowLayout.scrollDirection = .vertical
+		flowLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 5.0, bottom: 15.0, right: 15.0)
 		collectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
-		
+		collectionNode?.backgroundColor = .black
 		super.init(node: collectionNode!)
 		
 		navigationNoLineBar()
-		self.setupCollectionView()
+		
+		paceAppService.retrieveMaleFreeWorkouts { (allClubsArray) in
+			
+			self.allClubsArray = allClubsArray
+			self.collectionNode?.reloadData()
+			
+			self.setupCollectionNode()
+		}
 		
 	}
 	
 	
-	func setupCollectionView() {
+	func setupCollectionNode() {
 		
 		collectionNode?.delegate   = self
 		collectionNode?.dataSource = self

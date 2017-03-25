@@ -16,8 +16,8 @@ class DiscoveryWorkoutCell: BaseCell {
 	let catergoryTitleNode = ASTextNode()
 	let ratings = RatingsNodeView()
 	
-	let imageWidth : CGFloat = 200
-	let imageHeight : CGFloat = 150
+	let imageWidth : CGFloat = 165
+	let imageHeight : CGFloat = 200
 	
 	let workoutNameAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold),
 	                             NSForegroundColorAttributeName: UIColor.white,
@@ -97,7 +97,7 @@ class DiscoveryWorkoutCell: BaseCell {
 		
 		
 		
-		return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 18.0, left: 0.0, bottom: 37.0, right: 0.0), child: layoutSpec)
+		return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 18.0, left: 0.0, bottom: 5.0, right: 0.0), child: layoutSpec)
 		
 		
 	}

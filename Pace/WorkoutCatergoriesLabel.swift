@@ -29,7 +29,7 @@ class EventCollectionLabel: BaseCell {
 		let alignmentStyle = NSMutableParagraphStyle()
 		alignmentStyle.alignment = NSTextAlignment.left
 		categoryLabel.attributedText = NSAttributedString(
-			string: "Cape Town Clubs",
+			string: "Featured Clubs",
 			attributes: [
 				NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightHeavy),
 				NSForegroundColorAttributeName: UIColor.greyWhite(),

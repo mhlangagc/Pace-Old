@@ -102,7 +102,7 @@
 		45E3C0781DFD9493002FD4F8 /* ActitivityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3C0771DFD9493002FD4F8 /* ActitivityDetailView.swift */; };
 		45E3C07B1DFD9A4B002FD4F8 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3C07A1DFD9A4B002FD4F8 /* BaseView.swift */; };
 		45ECF6881E151F5D0032F6CC /* WorkoutDaysModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECF6871E151F5D0032F6CC /* WorkoutDaysModel.swift */; };
-		45ECF68A1E152D450032F6CC /* NewToPaceCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECF6891E152D450032F6CC /* NewToPaceCollection.swift */; };
+		45ECF68A1E152D450032F6CC /* AllClubsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECF6891E152D450032F6CC /* AllClubsCollection.swift */; };
 		45ECF68D1E152F590032F6CC /* AllClubsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECF68C1E152F590032F6CC /* AllClubsLabel.swift */; };
 		45F3AA1E1E154BA300D70C84 /* RoutinesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F3AA1D1E154BA300D70C84 /* RoutinesViewModel.swift */; };
 		45F3AA201E15990900D70C84 /* ActivitiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F3AA1F1E15990900D70C84 /* ActivitiesModel.swift */; };
@@ -305,7 +305,7 @@
 		45E3C0771DFD9493002FD4F8 /* ActitivityDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActitivityDetailView.swift; sourceTree = "<group>"; };
 		45E3C07A1DFD9A4B002FD4F8 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		45ECF6871E151F5D0032F6CC /* WorkoutDaysModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutDaysModel.swift; sourceTree = "<group>"; };
-		45ECF6891E152D450032F6CC /* NewToPaceCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewToPaceCollection.swift; sourceTree = "<group>"; };
+		45ECF6891E152D450032F6CC /* AllClubsCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllClubsCollection.swift; sourceTree = "<group>"; };
 		45ECF68C1E152F590032F6CC /* AllClubsLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllClubsLabel.swift; sourceTree = "<group>"; };
 		45F3AA1D1E154BA300D70C84 /* RoutinesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutinesViewModel.swift; sourceTree = "<group>"; };
 		45F3AA1F1E15990900D70C84 /* ActivitiesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesModel.swift; sourceTree = "<group>"; };
@@ -716,7 +716,6 @@
 				C61C4C0A1E7E8057007C7E37 /* Archieved Tabs */,
 				45B5AD7D1DFBFA6F00115E2C /* Onboarding */,
 				45B5AD801DFBFAA100115E2C /* Clubs Tab */,
-				C6F7E6251E80D13D008CABAB /* Running */,
 				45B5AD7C1DFBFA6600115E2C /* Explore Tab */,
 				45B5AD831DFBFACD00115E2C /*  Profile Tab */,
 			);
@@ -861,6 +860,7 @@
 			children = (
 				451D078B1DFE443800940301 /* Clubs */,
 				C60363141E62D763005F2691 /* Clubs Posts */,
+				C6F7E6251E80D13D008CABAB /* Running */,
 			);
 			name = "Clubs Tab";
 			sourceTree = "<group>";
@@ -939,7 +939,7 @@
 			isa = PBXGroup;
 			children = (
 				45ECF68C1E152F590032F6CC /* AllClubsLabel.swift */,
-				45ECF6891E152D450032F6CC /* NewToPaceCollection.swift */,
+				45ECF6891E152D450032F6CC /* AllClubsCollection.swift */,
 			);
 			name = "Newly Added";
 			sourceTree = "<group>";
@@ -1427,7 +1427,7 @@
 				45C214F61E05DD9A00C5BCCF /* SettingsCellView.swift in Sources */,
 				45B5AD441DFBF71100115E2C /* ExploreViewController.swift in Sources */,
 				45ACEAB31DFFB1EB00C94B7D /* GetButtonView.swift in Sources */,
-				45ECF68A1E152D450032F6CC /* NewToPaceCollection.swift in Sources */,
+				45ECF68A1E152D450032F6CC /* AllClubsCollection.swift in Sources */,
 				45275E0C1DFF0B9000DF6F38 /* WorkoutDetailsHeaderView.swift in Sources */,
 				45E3C0781DFD9493002FD4F8 /* ActitivityDetailView.swift in Sources */,
 				C6BB148F1E3FA1E700BF6F66 /* LoginViewController.swift in Sources */,
