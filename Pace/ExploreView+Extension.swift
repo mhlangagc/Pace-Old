@@ -21,7 +21,7 @@ extension ExploreViewController {
 		
 		switch section {
 		
-		case 2:
+		case 3:
 			
 			return allClubsArray.count
 		
@@ -40,20 +40,20 @@ extension ExploreViewController {
 		case 0:
 			
 			let eventLabelCell = EventCollectionLabel()
+			eventLabelCell.catergoryString = "Featured Clubs"
 			return eventLabelCell
 			
 		case 1:
 			
 			let topClubsNode = TopClubsCollectionCell()
 			topClubsNode.discoveryVC = self
-			//featuredNode.featuredWorkoutsArray = retrieveFeaturedWorkouts()
 			return topClubsNode
 			
 		case 2:
 			
-			let AllClubsNode = AllClubsLabel()
-			AllClubsNode.discoveryVC = self
-			return AllClubsNode
+			let eventLabelCell = EventCollectionLabel()
+			eventLabelCell.catergoryString = "All Clubs"
+			return eventLabelCell
 		
 		case 3:
 			
