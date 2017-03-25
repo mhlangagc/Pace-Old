@@ -13,7 +13,6 @@ class EventCollectionLabel: BaseCell {
 	
 	var discoveryVC : ExploreViewController?
 	let categoryLabel = ASTextNode()
-	var catergoryString: String?
 	
 	override func setupNodes() {
 		super.setupNodes()
@@ -30,10 +29,10 @@ class EventCollectionLabel: BaseCell {
 		let alignmentStyle = NSMutableParagraphStyle()
 		alignmentStyle.alignment = NSTextAlignment.left
 		categoryLabel.attributedText = NSAttributedString(
-			string: catergoryString!,
+			string: "Featured Clubs".uppercased(),
 			attributes: [
-				NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightHeavy),
-				NSForegroundColorAttributeName: UIColor.greyWhite(),
+				NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightHeavy),
+				NSForegroundColorAttributeName: UIColor.greyBlackColor(),
 				NSKernAttributeName: 0.0,
 				NSParagraphStyleAttributeName: alignmentStyle
 			])

@@ -40,7 +40,6 @@ extension ExploreViewController {
 		case 0:
 			
 			let eventLabelCell = EventCollectionLabel()
-			eventLabelCell.catergoryString = "Featured Clubs"
 			return eventLabelCell
 			
 		case 1:
@@ -51,9 +50,8 @@ extension ExploreViewController {
 			
 		case 2:
 			
-			let eventLabelCell = EventCollectionLabel()
-			eventLabelCell.catergoryString = "All Clubs"
-			return eventLabelCell
+			let allClubsLabelCell = AllClubsLabel()
+			return allClubsLabelCell
 		
 		case 3:
 			
