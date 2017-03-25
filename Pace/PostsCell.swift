@@ -139,7 +139,7 @@ class PostsCell: BaseCell {
 		
 		let postedHeaderInset = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 20.0), child: headerProfileSpec)
 		
-		let postedTextInset = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0.0, left: 57.0, bottom: 0.0, right: 20.0), child: postedTextNode)
+		let postedTextInset = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0.0, left: 50.0, bottom: 0.0, right: 20.0), child: postedTextNode)
 		
 		
 		// Bottom Header

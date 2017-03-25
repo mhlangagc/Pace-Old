@@ -9,7 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 
-extension PostViewController {
+extension ChatsViewController {
 	
 	func numberOfSections(in collectionNode: ASCollectionNode) -> Int {
 		

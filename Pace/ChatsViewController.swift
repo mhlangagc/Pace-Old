@@ -12,9 +12,9 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ChatsViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 	
-	var teamModel: ClubModel?
+	var clubModel: ClubModel?
 	var imageContainerViewTopAnchor: NSLayoutConstraint?
 
 	var messagesArray = [TeamMessagesModel]()
@@ -56,6 +56,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
+		
 		
 	}()
 		
@@ -144,7 +145,6 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		collectionNode?.backgroundColor = UIColor.closeBlack()
 		super.init(node: collectionNode!)
 		navigationNoLineBar()
-		self.setupJoinButton()
 		
 	}
 	
@@ -156,7 +156,8 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		collectionNode?.view.alwaysBounceVertical = true
 		collectionNode?.view.allowsSelection = false
 		collectionNode?.view.keyboardDismissMode = .interactive
-		collectionNode?.view.contentInset = UIEdgeInsets(top: 20, left: 0.0, bottom: 64, right: 0.0)
+		//collectionNode?.view.scrollIndicatorInsets = UIEdgeInsets(top: 70, left: 0.0, bottom: 64, right: 0.0)
+		collectionNode?.view.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 64, right: 0.0)
 		collectionNode?.view.showsVerticalScrollIndicator = false
 		collectionNode?.view.backgroundColor = UIColor.closeBlack()
 		
@@ -172,20 +173,6 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 	}
 	
-	var startRunButtonView : StartRunView?
-	
-	func setupJoinButton() {
-		
-		startRunButtonView = StartRunView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 70.0))
-		startRunButtonView?.startRun?.setTitle("START RUN", for: UIControlState.normal)
-		startRunButtonView?.startRun?.setTitleColor(UIColor.paceBrandColor(), for: UIControlState.normal)
-		startRunButtonView?.startRun?.backgroundColor = UIColor(fromHexString: "14161B")
-		startRunButtonView?.backgroundColor = .paceBackgroundBlack()
-		startRunButtonView?.postsVC = self
-		self.view.addSubview(startRunButtonView!)
-		
-	}
-	
 	private func setupLeftNavItem() {
 		
 		let moreButton = UIButton(type: .system)
@@ -193,6 +180,27 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		moreButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
 		moreButton.addTarget(self, action: #selector(handleBack), for: UIControlEvents.touchUpInside)
 		navigationItem.leftBarButtonItem = UIBarButtonItem(customView: moreButton)
+		
+	}
+	
+	var startRunButtonView : StartRunView?
+	
+	func setupStartRunButton() {
+		
+		startRunButtonView = StartRunView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 70.0))
+		startRunButtonView?.startRun?.setTitle("START RUN", for: UIControlState.normal)
+		startRunButtonView?.startRun?.setTitleColor(UIColor.paceBrandColor(), for: UIControlState.normal)
+		startRunButtonView?.startRun?.backgroundColor = UIColor(fromHexString: "14161B")
+		startRunButtonView?.backgroundColor = .paceBackgroundBlack()
+		startRunButtonView?.postsVC = self
+		startRunButtonView?.translatesAutoresizingMaskIntoConstraints = false
+		view.addSubview(startRunButtonView!)
+		
+		startRunButtonView?.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+		startRunButtonView?.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+		startRunButtonView?.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+		startRunButtonView?.heightAnchor.constraint(equalToConstant: 70.0).isActive = true
+
 		
 	}
 	
@@ -204,7 +212,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 	
 	func setupImageSelectionContainerView() {
 		
-		self.view.addSubview(imageSelectionContainerView)
+		//self.view.addSubview(imageSelectionContainerView)
 		
 	}
 	
@@ -221,15 +229,16 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		self.sendButton.widthAnchor.constraint(equalToConstant: 32).isActive = true
 		self.sendButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
 		
-		containerView.addSubview(self.addImageButton)
-		self.addImageButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 15.0).isActive = true
-		self.addImageButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-		self.addImageButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
-		self.addImageButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+//		containerView.addSubview(self.addImageButton)
+//		self.addImageButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 15.0).isActive = true
+//		self.addImageButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+//		self.addImageButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
+//		self.addImageButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
 		
 		
 		containerView.addSubview(self.inputTextField)
-		self.inputTextField.leftAnchor.constraint(equalTo: self.addImageButton.rightAnchor, constant: 15).isActive = true
+//		self.inputTextField.leftAnchor.constraint(equalTo: self.addImageButton.rightAnchor, constant: 15).isActive = true
+		self.inputTextField.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 15).isActive = true
 		self.inputTextField.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
 		self.inputTextField.rightAnchor.constraint(equalTo: self.sendButton.leftAnchor, constant: -10.0).isActive = true
 		self.inputTextField.heightAnchor.constraint(equalToConstant: 45.0).isActive = true
@@ -279,17 +288,20 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		self.setupImageSelectionContainerView()
 		navigationNoLineBar()
+		self.setupNavBar()
 		self.setupRightNavItem()
 		self.setupLeftNavItem()
 		self.setupKeyboardObservers()
 		
-		self.observeTeamMessages { (postsArray) in
+		self.observeTeamMessages(clubID: (clubModel?.clubID)!, completion: { (clubMessagesArray) in
 			
-			self.messagesArray = postsArray
-			
+			self.messagesArray = clubMessagesArray
 			self.setupCollectionView()
+			self.collectionNode?.reloadData()
 			
-		}
+		})
+		
+		//self.setupStartRunButton()
 		
 	}
 	
@@ -297,7 +309,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		if messagesArray.count > 0 {
 			
-			let indexPath = IndexPath(item: messagesArray.count - 1, section: 0)
+			let indexPath = IndexPath(item: messagesArray.count, section: 0)
 			self.collectionNode?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.top, animated: true)
 			
 		}
@@ -306,7 +318,6 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		
-		self.setupNavBar()
 		navigationNoLineBar()
 		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
@@ -314,8 +325,6 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		
 		
 	}
-	
-	var trainerButton: UIButton?
 	
 	func handleViewTrainerProfile() {
 	
@@ -328,7 +337,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 	func setupNavBar() {
 		
 		let titleLabel = UILabel(frame: CGRect(x: ((view.frame.width - 100) * 0.5), y: 5, width: 100, height: view.frame.height))
-		titleLabel.text = teamModel?.name
+		titleLabel.text = clubModel?.name
 		titleLabel.textAlignment = .center
 		titleLabel.textColor = UIColor.white
 		titleLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightBold)
@@ -336,46 +345,43 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		navigationItem.titleView = titleLabel
 	}
 	
-	func observeTeamMessages(completion: @escaping (_ result: [TeamMessagesModel]) -> Void) {
+	func observeTeamMessages(clubID: String, completion: @escaping (_ result: [TeamMessagesModel]) -> Void) {
 		
 		var teamMessagesArray = [TeamMessagesModel]()
 		
-		if let teamID = teamModel?.clubID {
+		let fanTeamMessagesRef = FIRDatabase.database().reference().child("fan-club-messages").child(clubID)
+		
+		fanTeamMessagesRef.observe(.childAdded, with: { (snapshot) in
 			
-			let fanTeamMessagesRef = FIRDatabase.database().reference().child("fan-team-messages").child(teamID)
-			
-			fanTeamMessagesRef.observe(.childAdded, with: { (snapshot) in
+			let messageId = snapshot.key
+			let messagesRef = FIRDatabase.database().reference().child("ClubMessages").child(messageId)
+			messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
 				
-				let messageId = snapshot.key
-				let messagesRef = FIRDatabase.database().reference().child("TeamMessages").child(messageId)
-				messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+				if let dictionary = snapshot.value as? [String: AnyObject] {
 					
-					if let dictionary = snapshot.value as? [String: AnyObject] {
-						
-						let workoutTeamMessage = TeamMessagesModel()
-						
-						workoutTeamMessage.imageURL = dictionary["imageUrl"] as? String
-						workoutTeamMessage.userSending = dictionary["userSending"] as? String
-						workoutTeamMessage.message = dictionary["message"] as? String
-						workoutTeamMessage.timeStamp = dictionary["timeStamp"] as? Int
-						workoutTeamMessage.userSendingName = dictionary["userSendingName"] as? String
-						workoutTeamMessage.userSendingImageURL = dictionary["userSendingImageURL"] as? String
-						teamMessagesArray.append(workoutTeamMessage)
-						//teamMessagesArray.sort(by: {$0.timeStamp! > $1.timeStamp!})
-						
-						completion(teamMessagesArray)
-						
-					}
+					let workoutTeamMessage = TeamMessagesModel()
 					
+					workoutTeamMessage.imageURL = dictionary["imageUrl"] as? String
+					workoutTeamMessage.userSending = dictionary["userSending"] as? String
+					workoutTeamMessage.message = dictionary["message"] as? String
+					workoutTeamMessage.timeStamp = dictionary["timeStamp"] as? Int
+					workoutTeamMessage.userSendingName = dictionary["userSendingName"] as? String
+					workoutTeamMessage.userSendingImageURL = dictionary["userSendingImageURL"] as? String
+					teamMessagesArray.append(workoutTeamMessage)
+					//teamMessagesArray.sort(by: {$0.timeStamp! > $1.timeStamp!})
 					
-				}, withCancel: nil)
+					completion(teamMessagesArray)
+					
+				}
+				
 				
 			}, withCancel: nil)
+			
+		}, withCancel: nil)
 
-		}
-		
-	}
 	
+	}
+
 	func textFieldDidChange() {
 		
 		if (inputTextField.text?.characters.count)! > 0 {
@@ -409,7 +415,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 	func handleStartWorkout() {
 		
 		let readyToRunVC = ReadyViewController()
-		readyToRunVC.club = self.teamModel
+		readyToRunVC.club = self.clubModel
 		let readyNavBar = UINavigationController(rootViewController: readyToRunVC)
 		self.navigationController?.present(readyNavBar, animated: true, completion: { 
 			
@@ -541,11 +547,9 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 	
 	func handleSend() {
 		
-		guard let teamID = teamModel?.clubID else {
-			return
-		}
+		let clubID = (clubModel?.clubID)!
 		
-		let ref = FIRDatabase.database().reference().child("TeamMessages")
+		let ref = FIRDatabase.database().reference().child("ClubMessages")
 		let childRef = ref.childByAutoId()
 		let userID = FIRAuth.auth()!.currentUser!.uid
 		
@@ -557,7 +561,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 			              "userSendingName": userName!,
 			              "userSendingImageURL": userImageURL!,
 			              "timeStamp": Int(NSDate().timeIntervalSince1970),
-			              "teamID": teamID] as [String : Any]
+			              "teamID": clubID] as [String : Any]
 			
 			childRef.updateChildValues(values) { (error, ref) in
 				
@@ -570,7 +574,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 				let messageId = childRef.key
 				userPostsRef.updateChildValues([messageId: 1])
 				
-				let workoutTeamMessagesRef = FIRDatabase.database().reference().child("fan-team-messages").child(teamID)
+				let workoutTeamMessagesRef = FIRDatabase.database().reference().child("fan-club-messages").child(clubID)
 				workoutTeamMessagesRef.updateChildValues([messageId: 1])
 				
 				
@@ -584,7 +588,7 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 			              "userSendingName": userName!,
 			              "userSendingImageURL": userImageURL!,
 			              "timeStamp": Int(NSDate().timeIntervalSince1970),
-			              "teamID": teamID] as [String : Any]
+			              "teamID": clubID] as [String : Any]
 			
 			childRef.updateChildValues(values) { (error, ref) in
 				
@@ -597,9 +601,8 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 				let messageId = childRef.key
 				userPostsRef.updateChildValues([messageId: 1])
 				
-				let workoutTeamMessagesRef = FIRDatabase.database().reference().child("fan-team-messages").child(teamID)
+				let workoutTeamMessagesRef = FIRDatabase.database().reference().child("fan-club-messages").child(clubID)
 				workoutTeamMessagesRef.updateChildValues([messageId: 1])
-				
 				
 			}
 			
@@ -620,51 +623,5 @@ class PostViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate
 		dismiss(animated: true, completion: nil)
 		
 	}
-	
-	
-	/*
-	private func setupNavBar() {
-		
-		let myLabel = UILabel()
-		myLabel.translatesAutoresizingMaskIntoConstraints = false
-		myLabel.text = teamModel?.name
-		myLabel.numberOfLines = 1
-		myLabel.textColor = UIColor.white
-		myLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightBold)
-		
-		
-		let smallText = UILabel()
-		smallText.translatesAutoresizingMaskIntoConstraints = false
-		smallText.text = "2k Members"
-		smallText.numberOfLines = 1
-		smallText.textColor = UIColor.greyWhite()
-		smallText.font = UIFont.systemFont(ofSize: 13, weight: UIFontWeightBold)
-		
-		
-		let wrapper = UIView()
-		wrapper.addSubview(myLabel)
-		wrapper.addSubview(smallText)
-		wrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[myLabel]-0-|", options: [], metrics: nil, views: ["myLabel": myLabel, "smallText": smallText]))
-		wrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[myLabel]-2-[smallText]-0-|", options: .alignAllCenterX, metrics: nil, views: ["myLabel": myLabel, "smallText": smallText]))
-		
-		wrapper.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(max(myLabel.intrinsicContentSize.width, smallText.intrinsicContentSize.width)), height: CGFloat(myLabel.intrinsicContentSize.height + smallText.intrinsicContentSize.height + 2))
-		wrapper.clipsToBounds = true
-		
-		self.navigationItem.titleView = wrapper
-		self.navigationController?.navigationBar.clipsToBounds = true
-		
-		if let window = UIApplication.shared.keyWindow {
-			
-			self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: window.frame.size.width, height: 80.0)
-			
-		}
-		
-		
-	}
-
-	*/
-
-
-	
 
 }

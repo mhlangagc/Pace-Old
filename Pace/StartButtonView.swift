@@ -89,7 +89,7 @@ class StartRunView : BaseView {
 	
 	var startRun: UIButton?
 	
-	var postsVC : PostViewController?
+	var postsVC : ChatsViewController?
 	
 	override func setupViews() {
 		super.setupViews()
