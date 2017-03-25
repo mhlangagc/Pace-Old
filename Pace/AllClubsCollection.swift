@@ -12,12 +12,12 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class NewToPaceCollection: ASCellNode, ASCollectionDelegate, ASCollectionDataSource {
+class AllClubsCollection: ASCellNode, ASCollectionDelegate, ASCollectionDataSource {
 	
-	var newWorkoutsCollectionNode : ASCollectionNode?
+	var allClubsCollectionNode : ASCollectionNode?
 	var discoveryVC : ExploreViewController?
 	
-	var freeWorkoutsArray = [ExploreWorkoutModel]()
+	var allClubsArray = [ExploreWorkoutModel]()
 	
 	lazy var paceAppService: PaceAppServices = {
 		
@@ -32,16 +32,16 @@ class NewToPaceCollection: ASCellNode, ASCollectionDelegate, ASCollectionDataSou
 		let flowLayout     = UICollectionViewFlowLayout()
 		flowLayout.minimumLineSpacing       = 15
 		flowLayout.minimumInteritemSpacing = 15
-		flowLayout.scrollDirection = .horizontal
+		flowLayout.scrollDirection = .vertical
 		flowLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 5.0, bottom: 15.0, right: 15.0)
-		newWorkoutsCollectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
-		newWorkoutsCollectionNode?.backgroundColor = .black
-		addSubnode(newWorkoutsCollectionNode!)
+		allClubsCollectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
+		allClubsCollectionNode?.backgroundColor = .black
+		addSubnode(allClubsCollectionNode!)
 		
 		paceAppService.retrieveMaleFreeWorkouts { (freeWorkoutsArray) in
 			
-			self.freeWorkoutsArray = freeWorkoutsArray
-			self.newWorkoutsCollectionNode?.reloadData()
+			self.allClubsArray = freeWorkoutsArray
+			self.allClubsCollectionNode?.reloadData()
 			
 			self.setupCollectionNodes()
 		}
@@ -57,31 +57,31 @@ class NewToPaceCollection: ASCellNode, ASCollectionDelegate, ASCollectionDataSou
 		
 		backgroundColor = UIColor.paceBrandColor()
 		
-		newWorkoutsCollectionNode?.delegate   = self
-		newWorkoutsCollectionNode?.dataSource = self
-		newWorkoutsCollectionNode?.view.leadingScreensForBatching = 1.0
-		newWorkoutsCollectionNode?.view.alwaysBounceHorizontal = true
-		newWorkoutsCollectionNode?.view.allowsSelection = true
-		newWorkoutsCollectionNode?.view.backgroundColor = UIColor.black
+		allClubsCollectionNode?.delegate   = self
+		allClubsCollectionNode?.dataSource = self
+		allClubsCollectionNode?.view.leadingScreensForBatching = 1.0
+		allClubsCollectionNode?.view.alwaysBounceHorizontal = true
+		allClubsCollectionNode?.view.allowsSelection = true
+		allClubsCollectionNode?.view.backgroundColor = UIColor.black
 		
 		
 	}
 	
 	override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
 		
-		newWorkoutsCollectionNode?.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 265)
+		allClubsCollectionNode?.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 290)
 		
 		return ASStackLayoutSpec(direction: .horizontal,
 		                         spacing: 0,
 		                         justifyContent: .start,
 		                         alignItems: .center,
-		                         children: [newWorkoutsCollectionNode!])
+		                         children: [allClubsCollectionNode!])
 	}
 	
 	
 }
 
-extension NewToPaceCollection {
+extension AllClubsCollection {
 	
 	func numberOfSections(in collectionNode: ASCollectionNode) -> Int {
 		return 1
@@ -89,14 +89,14 @@ extension NewToPaceCollection {
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
 		
-		return freeWorkoutsArray.count
+		return allClubsArray.count
 		
 	}
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
 		
 		let cellNode = DiscoveryWorkoutCell()
-		cellNode.exploreWorkout = freeWorkoutsArray[indexPath.item]
+		cellNode.exploreWorkout = allClubsArray[indexPath.item]
 		return cellNode
 		
 	}

@@ -14,83 +14,47 @@ import FirebaseDatabase
 
 class AllClubsLabel: BaseCell {
 	
-	var discoveryVC : ExploreViewController?
-	let newWorkoutLabel = ASTextNode()
-	let descriptionLabel = ASTextNode()
-	let seeAllButton = ASButtonNode()
+	let categoryLabel = ASTextNode()
 	
 	override func setupNodes() {
 		super.setupNodes()
 		
-		self.newWorkoutsLabelSetup()
-		self.seeAllButtonNode()
+		self.eventLabelSetup()
 		
 		backgroundColor = UIColor.black
 		
 	}
 	
 	
-	func newWorkoutsLabelSetup() {
+	func eventLabelSetup() {
 		
 		let alignmentStyle = NSMutableParagraphStyle()
 		alignmentStyle.alignment = NSTextAlignment.left
-		newWorkoutLabel.attributedText = NSAttributedString(
-			string: "All Clubs",
+		categoryLabel.attributedText = NSAttributedString(
+			string: "All Clubs".uppercased(),
 			attributes: [
-				NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightHeavy),
-				NSForegroundColorAttributeName: UIColor.greyWhite(),
+				NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightHeavy),
+				NSForegroundColorAttributeName: UIColor.greyBlackColor(),
 				NSKernAttributeName: 0.0,
 				NSParagraphStyleAttributeName: alignmentStyle
 			])
-		addSubnode(newWorkoutLabel)
-		
-		descriptionLabel.attributedText = NSAttributedString(
-			string: "From the most recent to oldest",
-			attributes: [
-				NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightSemibold),
-				NSForegroundColorAttributeName: UIColor.greyBlackColor(),
-				NSKernAttributeName: 0.47,
-				NSParagraphStyleAttributeName: alignmentStyle
-			])
-		addSubnode(descriptionLabel)
+		addSubnode(categoryLabel)
 		
 	}
-	
-	func seeAllButtonNode() {
-		
-		seeAllButton.setImage(UIImage(named: "seeAllButton"), for: UIControlState())
-		seeAllButton.style.preferredSize = CGSize(width: 20.0, height: 20.0)
-		seeAllButton.addTarget(self, action: #selector(handleViewAll), forControlEvents: ASControlNodeEvent.touchUpInside)
-		//addSubnode(seeAllButton)
-		
-		
-	}
-	
 	
 	override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
 		
 		
-		newWorkoutLabel.style.preferredSize = CGSize(width: constrainedSize.max.width - 130.0, height: 25.0)
-		descriptionLabel.style.preferredSize = CGSize(width: constrainedSize.max.width - 40, height: 20.0)
-		
-		let labelsSpec = ASStackLayoutSpec(direction: .vertical,
-		                                                spacing: 5,
-		                                                justifyContent: .start,
-		                                                alignItems: .start,
-		                                                children: [newWorkoutLabel, descriptionLabel])
-		
-		return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 30, left: 20.0, bottom: 0, right: 15), child: labelsSpec)
+		categoryLabel.style.preferredSize = CGSize(width: constrainedSize.max.width - 40.0, height: 25.0)
+		let catergoryLayoutLabel = ASStackLayoutSpec(direction: .horizontal,
+		                                             spacing: 0.0,
+		                                             justifyContent: .start,
+		                                             alignItems: .start,
+		                                             children: [categoryLabel])
+		return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 20.0, left: 20.0, bottom: 0.0, right: 20.0), child: catergoryLayoutLabel)
 		
 		
 	}
-	
-	
-	func handleViewAll() {
-		
-		discoveryVC!.handleSeeAllWorkouts()
-		
-	}
-	
 	
 	
 }

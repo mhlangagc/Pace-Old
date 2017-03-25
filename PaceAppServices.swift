@@ -181,7 +181,6 @@ class PaceAppServices : NSObject {
 				if let dictionary = snapShot.value as? [String: AnyObject] {
 					
 					let club = ClubModel()
-					
 					club.clubID = workoutId
 					club.name = dictionary["name"] as? String
 					club.clubDescription = dictionary["clubDescription"] as? String

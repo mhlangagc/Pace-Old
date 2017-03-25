@@ -121,32 +121,7 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 	
 	var userName = String()
 	var userImageURL = String()
-	
-	
-	func setupRoutineData() {
-		
-		let weekCreationLaunch = UserDefaults.standard.bool(forKey: "routineCreationLaunch")
-		if weekCreationLaunch  {
-			
-			//  Not First Launch
-			
-			
-		} else {
-			
-			RoutineSetup.routinesCreation(completion: {
-				
-				RoutineSetup.loadRoutineWorkouts()
-				
-			})
-			
-			UserDefaults.standard.set(true, forKey: "routineCreationLaunch")
-			
-			// **  Save Date for Renewing
-			//self.firstLaunchDate()
-			
-		}
-		
-	}
+
 	
 	lazy var paceAppService: PaceAppServices = {
 		
@@ -168,7 +143,6 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		self.navigationBarItems()
 		self.setupRightNavItem()
 		clubsTableView?.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
-		self.setupRoutineData()
 		
 		paceAppService.retrieveUserDownloadedWorkouts { (purchasedWorkoutsArray) in
 			
@@ -177,6 +151,16 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 			self.clubsTableView?.reloadData()
 			
 		}
+		
+		profileSetup.retrieveUser(completion: { (userFound) in
+			
+			if let userName  = userFound.name, let profileImageURL = userFound.profileImageUrl {
+				
+				self.userName = userName
+				self.userImageURL = profileImageURL
+			}
+			
+		})
 		
 	}
 	
@@ -236,12 +220,12 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 	
 	func handleClubSelection(clubSelected: ClubModel) {
 		
-		let teamMessagesVC = PostViewController()
-		//teamMessagesVC.userName = userName
-		//teamMessagesVC.userImageURL = userImageURL
-		teamMessagesVC.teamModel = clubSelected
-		teamMessagesVC.hidesBottomBarWhenPushed = true
-		self.navigationController?.pushViewController(teamMessagesVC, animated: true)
+		let clubMessagesVC = ChatsViewController()
+		clubMessagesVC.userName = userName
+		clubMessagesVC.userImageURL = userImageURL
+		clubMessagesVC.clubModel = clubSelected
+		clubMessagesVC.hidesBottomBarWhenPushed = true
+		self.navigationController?.pushViewController(clubMessagesVC, animated: true)
 		
 	}
 	

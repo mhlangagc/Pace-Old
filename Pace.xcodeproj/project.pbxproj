@@ -102,7 +102,7 @@
 		45E3C0781DFD9493002FD4F8 /* ActitivityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3C0771DFD9493002FD4F8 /* ActitivityDetailView.swift */; };
 		45E3C07B1DFD9A4B002FD4F8 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3C07A1DFD9A4B002FD4F8 /* BaseView.swift */; };
 		45ECF6881E151F5D0032F6CC /* WorkoutDaysModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECF6871E151F5D0032F6CC /* WorkoutDaysModel.swift */; };
-		45ECF68A1E152D450032F6CC /* NewToPaceCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECF6891E152D450032F6CC /* NewToPaceCollection.swift */; };
+		45ECF68A1E152D450032F6CC /* AllClubsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECF6891E152D450032F6CC /* AllClubsCollection.swift */; };
 		45ECF68D1E152F590032F6CC /* AllClubsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECF68C1E152F590032F6CC /* AllClubsLabel.swift */; };
 		45F3AA1E1E154BA300D70C84 /* RoutinesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F3AA1D1E154BA300D70C84 /* RoutinesViewModel.swift */; };
 		45F3AA201E15990900D70C84 /* ActivitiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F3AA1F1E15990900D70C84 /* ActivitiesModel.swift */; };
@@ -121,14 +121,13 @@
 		C6057EEE1E3E288400AC62EA /* PaceErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6057EED1E3E288400AC62EA /* PaceErrorHandling.swift */; };
 		C6057EF01E3E28D900AC62EA /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6057EEF1E3E28D900AC62EA /* AuthenticationService.swift */; };
 		C6057EF21E3E4B7900AC62EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6057EF11E3E4B7900AC62EA /* GoogleService-Info.plist */; };
-		C608AD2C1E6EA1EC005934B3 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C608AD2B1E6EA1EC005934B3 /* PostViewController.swift */; };
-		C608AD2E1E6EA37F005934B3 /* PostViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C608AD2D1E6EA37F005934B3 /* PostViewController+Extension.swift */; };
+		C608AD2C1E6EA1EC005934B3 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C608AD2B1E6EA1EC005934B3 /* ChatsViewController.swift */; };
+		C608AD2E1E6EA37F005934B3 /* ChatsViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C608AD2D1E6EA37F005934B3 /* ChatsViewController+Extension.swift */; };
 		C608AD301E6EA5DC005934B3 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */; };
 		C61AD0F41E838BB500C377B9 /* CompletedRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0F31E838BB500C377B9 /* CompletedRunViewController.swift */; };
 		C61AD0F61E838E8700C377B9 /* CompletedRunHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0F51E838E8700C377B9 /* CompletedRunHeaderView.swift */; };
 		C61AD0F81E8390F500C377B9 /* CompletedRunViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0F71E8390F500C377B9 /* CompletedRunViewController+Extension.swift */; };
 		C61AD0FB1E847B9000C377B9 /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0F91E847B9000C377B9 /* ReadyViewController.swift */; };
-		C61AD0FC1E847B9000C377B9 /* ReadyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C61AD0FA1E847B9000C377B9 /* ReadyViewController.xib */; };
 		C61AD0FE1E84864900C377B9 /* GoButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0FD1E84864900C377B9 /* GoButtonView.swift */; };
 		C61C4C061E7E7DD5007C7E37 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4C051E7E7DD5007C7E37 /* ProfileViewController.swift */; };
 		C61C4C091E7E7EB6007C7E37 /* ProfileViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61C4C081E7E7EB6007C7E37 /* ProfileViewController+Extension.swift */; };
@@ -306,7 +305,7 @@
 		45E3C0771DFD9493002FD4F8 /* ActitivityDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActitivityDetailView.swift; sourceTree = "<group>"; };
 		45E3C07A1DFD9A4B002FD4F8 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		45ECF6871E151F5D0032F6CC /* WorkoutDaysModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutDaysModel.swift; sourceTree = "<group>"; };
-		45ECF6891E152D450032F6CC /* NewToPaceCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewToPaceCollection.swift; sourceTree = "<group>"; };
+		45ECF6891E152D450032F6CC /* AllClubsCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllClubsCollection.swift; sourceTree = "<group>"; };
 		45ECF68C1E152F590032F6CC /* AllClubsLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllClubsLabel.swift; sourceTree = "<group>"; };
 		45F3AA1D1E154BA300D70C84 /* RoutinesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutinesViewModel.swift; sourceTree = "<group>"; };
 		45F3AA1F1E15990900D70C84 /* ActivitiesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesModel.swift; sourceTree = "<group>"; };
@@ -328,14 +327,13 @@
 		C6057EED1E3E288400AC62EA /* PaceErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceErrorHandling.swift; sourceTree = "<group>"; };
 		C6057EEF1E3E28D900AC62EA /* AuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		C6057EF11E3E4B7900AC62EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C608AD2B1E6EA1EC005934B3 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		C608AD2D1E6EA37F005934B3 /* PostViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PostViewController+Extension.swift"; sourceTree = "<group>"; };
+		C608AD2B1E6EA1EC005934B3 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
+		C608AD2D1E6EA37F005934B3 /* ChatsViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatsViewController+Extension.swift"; sourceTree = "<group>"; };
 		C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		C61AD0F31E838BB500C377B9 /* CompletedRunViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedRunViewController.swift; sourceTree = "<group>"; };
 		C61AD0F51E838E8700C377B9 /* CompletedRunHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedRunHeaderView.swift; sourceTree = "<group>"; };
 		C61AD0F71E8390F500C377B9 /* CompletedRunViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CompletedRunViewController+Extension.swift"; sourceTree = "<group>"; };
 		C61AD0F91E847B9000C377B9 /* ReadyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadyViewController.swift; sourceTree = "<group>"; };
-		C61AD0FA1E847B9000C377B9 /* ReadyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadyViewController.xib; sourceTree = "<group>"; };
 		C61AD0FD1E84864900C377B9 /* GoButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoButtonView.swift; sourceTree = "<group>"; };
 		C61C4C051E7E7DD5007C7E37 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C61C4C081E7E7EB6007C7E37 /* ProfileViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -718,7 +716,6 @@
 				C61C4C0A1E7E8057007C7E37 /* Archieved Tabs */,
 				45B5AD7D1DFBFA6F00115E2C /* Onboarding */,
 				45B5AD801DFBFAA100115E2C /* Clubs Tab */,
-				C6F7E6251E80D13D008CABAB /* Running */,
 				45B5AD7C1DFBFA6600115E2C /* Explore Tab */,
 				45B5AD831DFBFACD00115E2C /*  Profile Tab */,
 			);
@@ -863,6 +860,7 @@
 			children = (
 				451D078B1DFE443800940301 /* Clubs */,
 				C60363141E62D763005F2691 /* Clubs Posts */,
+				C6F7E6251E80D13D008CABAB /* Running */,
 			);
 			name = "Clubs Tab";
 			sourceTree = "<group>";
@@ -941,7 +939,7 @@
 			isa = PBXGroup;
 			children = (
 				45ECF68C1E152F590032F6CC /* AllClubsLabel.swift */,
-				45ECF6891E152D450032F6CC /* NewToPaceCollection.swift */,
+				45ECF6891E152D450032F6CC /* AllClubsCollection.swift */,
 			);
 			name = "Newly Added";
 			sourceTree = "<group>";
@@ -993,8 +991,8 @@
 		C60363141E62D763005F2691 /* Clubs Posts */ = {
 			isa = PBXGroup;
 			children = (
-				C608AD2B1E6EA1EC005934B3 /* PostViewController.swift */,
-				C608AD2D1E6EA37F005934B3 /* PostViewController+Extension.swift */,
+				C608AD2B1E6EA1EC005934B3 /* ChatsViewController.swift */,
+				C608AD2D1E6EA37F005934B3 /* ChatsViewController+Extension.swift */,
 				C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */,
 			);
 			name = "Clubs Posts";
@@ -1177,7 +1175,6 @@
 		C6F7E62D1E80EDD4008CABAB /* RunReadyViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C61AD0FA1E847B9000C377B9 /* ReadyViewController.xib */,
 				C61AD0F91E847B9000C377B9 /* ReadyViewController.swift */,
 			);
 			name = RunReadyViewController;
@@ -1317,7 +1314,6 @@
 				C65CAADE1E3E7C900047B78A /* GoogleService-Info.plist in Resources */,
 				C6F770F21E476B1800349C5B /* T.json in Resources */,
 				C6F770F01E476B0E00349C5B /* M.json in Resources */,
-				C61AD0FC1E847B9000C377B9 /* ReadyViewController.xib in Resources */,
 				C6F770F61E476B3400349C5B /* F.json in Resources */,
 				C6F770F41E476B2B00349C5B /* W.json in Resources */,
 				45B5AD4F1DFBF71100115E2C /* LaunchScreen.storyboard in Resources */,
@@ -1431,7 +1427,7 @@
 				45C214F61E05DD9A00C5BCCF /* SettingsCellView.swift in Sources */,
 				45B5AD441DFBF71100115E2C /* ExploreViewController.swift in Sources */,
 				45ACEAB31DFFB1EB00C94B7D /* GetButtonView.swift in Sources */,
-				45ECF68A1E152D450032F6CC /* NewToPaceCollection.swift in Sources */,
+				45ECF68A1E152D450032F6CC /* AllClubsCollection.swift in Sources */,
 				45275E0C1DFF0B9000DF6F38 /* WorkoutDetailsHeaderView.swift in Sources */,
 				45E3C0781DFD9493002FD4F8 /* ActitivityDetailView.swift in Sources */,
 				C6BB148F1E3FA1E700BF6F66 /* LoginViewController.swift in Sources */,
@@ -1466,10 +1462,10 @@
 				454535931E18F66F00653252 /* CompletedHeaderView.swift in Sources */,
 				458842741E11D69D003B02C8 /* DayViewController.swift in Sources */,
 				45ACEABB1DFFB82200C94B7D /* DayDetailsHeaderView.swift in Sources */,
-				C608AD2C1E6EA1EC005934B3 /* PostViewController.swift in Sources */,
+				C608AD2C1E6EA1EC005934B3 /* ChatsViewController.swift in Sources */,
 				C680A7321E815542008ACA5A /* ExercisesModel+CoreDataClass.swift in Sources */,
 				45B5ADA11DFC025300115E2C /* CalendarExtension.swift in Sources */,
-				C608AD2E1E6EA37F005934B3 /* PostViewController+Extension.swift in Sources */,
+				C608AD2E1E6EA37F005934B3 /* ChatsViewController+Extension.swift in Sources */,
 				45AC38FE1E188FE0003DC46B /* WorkoutProcessMenuBar.swift in Sources */,
 				C680A7331E815542008ACA5A /* ExercisesModel+CoreDataProperties.swift in Sources */,
 				45AC38FA1E188DF9003DC46B /* WorkoutProcessViewController+Extension.swift in Sources */,

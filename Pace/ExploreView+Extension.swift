@@ -12,42 +12,71 @@ import AsyncDisplayKit
 extension ExploreViewController {
 	
 	func numberOfSections(in collectionNode: ASCollectionNode) -> Int {
-		return 1
+		
+		return 5
+	
 	}
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
 		
-		return 3
+		switch section {
+		
+		case 3:
+			
+			return allClubsArray.count
+		
+		default:
+		
+			return 1
+		
+		}
 		
 	}
 	
 	func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
 		
-		switch indexPath.item {
+		switch indexPath.section {
+			
 		case 0:
 			
-			let topClubsNode = TopClubsCollectionCell()
-			topClubsNode.discoveryVC = self
-			//featuredNode.featuredWorkoutsArray = retrieveFeaturedWorkouts()
-			return topClubsNode
+			let eventLabelCell = EventCollectionLabel()
+			return eventLabelCell
 			
 		case 1:
 			
-			let AllClubsNode = AllClubsLabel()
-			AllClubsNode.discoveryVC = self
-			return AllClubsNode
+			let topClubsNode = TopClubsCollectionCell()
+			topClubsNode.discoveryVC = self
+			return topClubsNode
 			
+		case 2:
+			
+			let allClubsLabelCell = AllClubsLabel()
+			return allClubsLabelCell
+		
+		case 3:
+			
+			let cellNode = DiscoveryWorkoutCell()
+			cellNode.exploreWorkout = allClubsArray[indexPath.item]
+			return cellNode
+			
+		default:
+			
+			let footerCell = FooterCell()
+			footerCell.discoveryVC = self
+			return footerCell
+		
+//
 //		case 2:
 //			
-//			let newToPaceVC  = NewToPaceCollection()
-//			newToPaceVC.discoveryVC = self
-//			return newToPaceVC
-//			
+//			let allClubsVC  = AllClubsCollection()
+//			allClubsVC.discoveryVC = self
+//			return allClubsVC
+			
 //		case 3:
 //			
 //			let eventLabelCell = EventCollectionLabel()
 //			return eventLabelCell
-//			
+//
 //		case 4:
 //			
 //			let eventCollection = EventCollection()
@@ -78,11 +107,11 @@ extension ExploreViewController {
 //			followCollectionNode.exploreVC = self
 //			return followCollectionNode
 			
-		default:
-			
-			let footerCell = FooterCell()
-			footerCell.discoveryVC = self
-			return footerCell
+//		default:
+//			
+//			let footerCell = FooterCell()
+//			footerCell.discoveryVC = self
+//			return footerCell
 			
 //		case 7:
 //			
