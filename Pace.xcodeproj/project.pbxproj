@@ -136,7 +136,6 @@
 		C61EB9EE1E7561F60083C966 /* SaveToMyRoutinesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61EB9ED1E7561F60083C966 /* SaveToMyRoutinesCell.swift */; };
 		C61EB9F11E7571960083C966 /* WorkoutDownloadViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61EB9F01E7571960083C966 /* WorkoutDownloadViewController+Extension.swift */; };
 		C627E1CA1E925CC100816750 /* ClubChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627E1C91E925CC100816750 /* ClubChatViewController.swift */; };
-		C627E1CC1E925F7700816750 /* TextComposingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627E1CB1E925F7700816750 /* TextComposingView.swift */; };
 		C627E1CF1E925FB700816750 /* StartWorkoutButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627E1CE1E925FB700816750 /* StartWorkoutButtonView.swift */; };
 		C627E1D11E925FE100816750 /* ChatImageSelectionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627E1D01E925FE100816750 /* ChatImageSelectionBarView.swift */; };
 		C63439781E4174C000AC9E80 /* LoadImageWithCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63439771E4174C000AC9E80 /* LoadImageWithCache.swift */; };
@@ -346,7 +345,6 @@
 		C61EB9ED1E7561F60083C966 /* SaveToMyRoutinesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveToMyRoutinesCell.swift; sourceTree = "<group>"; };
 		C61EB9F01E7571960083C966 /* WorkoutDownloadViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutDownloadViewController+Extension.swift"; sourceTree = "<group>"; };
 		C627E1C91E925CC100816750 /* ClubChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubChatViewController.swift; sourceTree = "<group>"; };
-		C627E1CB1E925F7700816750 /* TextComposingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextComposingView.swift; sourceTree = "<group>"; };
 		C627E1CE1E925FB700816750 /* StartWorkoutButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartWorkoutButtonView.swift; sourceTree = "<group>"; };
 		C627E1D01E925FE100816750 /* ChatImageSelectionBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatImageSelectionBarView.swift; sourceTree = "<group>"; };
 		C63439771E4174C000AC9E80 /* LoadImageWithCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadImageWithCache.swift; sourceTree = "<group>"; };
@@ -1051,7 +1049,6 @@
 			isa = PBXGroup;
 			children = (
 				C627E1CE1E925FB700816750 /* StartWorkoutButtonView.swift */,
-				C627E1CB1E925F7700816750 /* TextComposingView.swift */,
 				C627E1D01E925FE100816750 /* ChatImageSelectionBarView.swift */,
 			);
 			name = ChatBarViews;
@@ -1443,7 +1440,6 @@
 				45C214F21E05DBC400C5BCCF /* SettingsViewController.swift in Sources */,
 				C6BB14911E3FB08A00BF6F66 /* OnboardingImageView.swift in Sources */,
 				45B5ADA51DFC05A900115E2C /* CustomTabBarController.swift in Sources */,
-				C627E1CC1E925F7700816750 /* TextComposingView.swift in Sources */,
 				45B5ADA91DFC097300115E2C /* ActivityViewController.swift in Sources */,
 				45C214F61E05DD9A00C5BCCF /* SettingsCellView.swift in Sources */,
 				45B5AD441DFBF71100115E2C /* ExploreViewController.swift in Sources */,
