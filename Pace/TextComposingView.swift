@@ -10,6 +10,8 @@ import UIKit
 
 class TextComposingView: BaseView {
 	
+	var clubChatVC: ClubChatViewController?
+	
 	lazy var inputTextField: UITextField = {
 		
 		let textField = UITextField()
@@ -47,7 +49,7 @@ class TextComposingView: BaseView {
 	let line: UIView = {
 		
 		let view = UIView()
-		view.backgroundColor = UIColor(fromHexString: "3C4459")
+		view.backgroundColor = UIColor(fromHexString: "282C36")
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 		
@@ -70,20 +72,53 @@ class TextComposingView: BaseView {
 	override func setupViews() {
 		super.setupViews()
 		
-		backgroundColor = .yellow
+		backgroundColor = .black
+		self.handleConfigureView()
+		
+	}
+	
+	func handleConfigureView() {
+		
+		addSubview(sendButton)
+		addSubview(addImageButton)
+		addSubview(inputTextField)
+		addSubview(line)
+		
+		addImageButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+		addImageButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+		addImageButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
+		addImageButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+		
+		
+		sendButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -16).isActive = true
+		sendButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+		sendButton.widthAnchor.constraint(equalToConstant: 26).isActive = true
+		sendButton.heightAnchor.constraint(equalToConstant: 26).isActive = true
+		
+		
+		line.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+		line.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+		line.topAnchor.constraint(equalTo: topAnchor).isActive = true
+		line.heightAnchor.constraint(equalToConstant: 0.4).isActive = true
+		
+		
+		inputTextField.leftAnchor.constraint(equalTo: addImageButton.rightAnchor, constant: 16).isActive = true
+		inputTextField.rightAnchor.constraint(equalTo: sendButton.leftAnchor, constant: -16).isActive = true
+		inputTextField.topAnchor.constraint(equalTo: topAnchor).isActive = true
+		inputTextField.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
 		
 	}
 	
 	func handleSelectImage() {
 		
-		
+		//	TO DO
 		
 	}
 	
 	
 	func textFieldDidChange() {
 		
-		
+		clubChatVC?.textFieldDidChange()
 		
 	}
 	

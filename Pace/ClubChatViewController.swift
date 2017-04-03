@@ -40,7 +40,7 @@ class ClubChatViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		view.backgroundColor = UIColor.black
+		view.backgroundColor = UIColor.closeBlack()
 		self.setupNavBar()
 		self.setupOverlayViews()
 		
@@ -79,6 +79,7 @@ class ClubChatViewController: UIViewController {
 		
 		
 		view.addSubview(textFieldBar)
+		textFieldBar.clubChatVC = self
 		
 		startWorkoutBar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
 		startWorkoutBar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
