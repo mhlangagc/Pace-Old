@@ -119,7 +119,7 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 		
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateStyle = .medium
-		self.navigationController?.navigationItem.title = dateFormatter.string(from: run?.timestamp as! Date)
+		self.navigationController?.navigationItem.title = dateFormatter.string(from: (run?.timestamp as Date?)!)
 		
 		let (h,m,s) = secondsToHoursMinutesSeconds(seconds: Int((run?.duration)!))
 		let secondsQuantity = HKQuantity(unit: HKUnit.second(), doubleValue: Double(s))

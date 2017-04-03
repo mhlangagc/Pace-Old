@@ -11,8 +11,9 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
 	
+	let ClubChatCellID = "ClubChatCellID"
 	var clubModel: ClubModel?
 	var imageContainerViewTopAnchor: NSLayoutConstraint?
 	
@@ -158,23 +159,44 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		
 	}()
 	
+	lazy var clubChatCollectionView: UICollectionView = {
+		
+		let flowLayout     = UICollectionViewFlowLayout()
+		flowLayout.minimumInteritemSpacing  = 0
+		flowLayout.minimumLineSpacing       = 16
+		flowLayout.scrollDirection = .vertical
+		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+		collectionView.backgroundColor = UIColor.closeBlack()
+		collectionView.delegate = self
+		collectionView.dataSource = self
+		collectionView.contentInset = UIEdgeInsets(top: 8.0, left: 0.0, bottom: 56.0, right: 0.0)
+		collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 8.0, left: 0.0, bottom: 56.0, right: 0.0)
+		collectionView.alwaysBounceVertical = true
+		collectionView.alwaysBounceHorizontal = false
+		collectionView.allowsSelection = false
+		collectionView.showsHorizontalScrollIndicator = false
+		collectionView.translatesAutoresizingMaskIntoConstraints = false
+		return collectionView
+		
+	}()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		view.backgroundColor = UIColor.closeBlack()
 		self.setupNavBar()
-		self.setupOverlayViews()
 		self.setupKeyboardObservers()
 		
 		self.observeTeamMessages(clubID: (clubModel?.clubID)!, completion: { (clubMessagesArray) in
 			
 			self.messagesArray = clubMessagesArray
-//			self.setupCollectionView()
-//			self.collectionNode?.reloadData()
+			self.setupCollectionView()
 			
-//			let indexPath = IndexPath(item: self.messagesArray.count - 1, section: 0)
-//			self.collectionNode?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.bottom, animated: true)
+			self.clubChatCollectionView.reloadData()
+			self.clubChatCollectionView.keyboardDismissMode = .interactive
+			
+			let indexPath = IndexPath(item: self.messagesArray.count - 1, section: 0)
+			self.clubChatCollectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.bottom, animated: true)
 			
 		})
 		
@@ -209,19 +231,33 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 	}
 	
 	
-	func setupOverlayViews() {
+	func setupCollectionView() {
 		
 		view.addSubview(startWorkoutBar)
 		startWorkoutBar.clubChatVC = self
+		
+		view.addSubview(clubChatCollectionView)
+		clubChatCollectionView.register(ClubChatCell.self, forCellWithReuseIdentifier: ClubChatCellID)
 		
 		startWorkoutBar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
 		startWorkoutBar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
 		startWorkoutBar.heightAnchor.constraint(equalToConstant: 62).isActive = true
 		startWorkoutBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
 		
+		clubChatCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+		clubChatCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+		clubChatCollectionView.topAnchor.constraint(equalTo: startWorkoutBar.bottomAnchor).isActive = true
+		clubChatCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 		
 		
 	}
+	
+	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+		
+		clubChatCollectionView.collectionViewLayout.invalidateLayout()
+	
+	}
+	
 	
 	func setupKeyboardObservers() {
 		
@@ -244,8 +280,8 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		
 		if isKeyboardShowing {
 			
-//			let indexPath = IndexPath(item: self.messagesArray.count - 1, section: 0)
-//			self.collectionNode?.scrollToItem(at: indexPath, at: .bottom, animated: true)
+			let indexPath = IndexPath(item: self.messagesArray.count - 1, section: 0)
+			self.clubChatCollectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
 		
 		}
 		

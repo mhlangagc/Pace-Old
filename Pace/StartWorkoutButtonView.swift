@@ -28,17 +28,32 @@ class StartWorkoutButtonView: BaseView {
 		
 	}()
 	
+	let line: UIView = {
+		
+		let view = UIView()
+		view.backgroundColor = UIColor(fromHexString: "282C36")
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+		
+	}()
+	
 	override func setupViews() {
 		super.setupViews()
 		
 		backgroundColor = .paceBackgroundBlack()
 		
 		addSubview(startWorkoutButton)
+		addSubview(line)
 		
 		startWorkoutButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
 		startWorkoutButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -16).isActive = true
 		startWorkoutButton.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
 		startWorkoutButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
+		
+		line.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+		line.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+		line.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+		line.heightAnchor.constraint(equalToConstant: 0.4).isActive = true
 		
 	}
 	
