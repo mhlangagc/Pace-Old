@@ -74,7 +74,6 @@ PODS:
     - PINCache (= 3.0.1-beta.4)
     - PINRemoteImage/Core
   - pop (1.0.9)
-  - QuickRippleButton (0.0.1)
   - SLPagingView (0.0.5)
   - Stripe (9.3.0)
 
@@ -90,7 +89,6 @@ DEPENDENCIES:
   - LBTAComponents (~> 0.1.9)
   - lottie-ios (~> 1.0)
   - pop (from `https://github.com/facebook/pop.git`)
-  - QuickRippleButton
   - SLPagingView
   - Stripe
 
@@ -130,10 +128,9 @@ SPEC CHECKSUMS:
   PINOperation: ac23db44796d4a564ecf9b5ea7163510f579b71d
   PINRemoteImage: c4f9f16932840c597f32e69dd288e10e111a1929
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
-  QuickRippleButton: bb0de9a85ce0987a57300b2cafa87a4b42eac8b9
   SLPagingView: ba9bb6102cb318ce56f23d0a7e49a46ddcdad7e3
   Stripe: 0f41a33a6fa3ac76ee668d7df3e2680c28b8ab1a
 
-PODFILE CHECKSUM: 5a8e86a61f6d47ee60287d46244bc5e82b651e26
+PODFILE CHECKSUM: 6734d5fe8faf3cda76ee8180b0ede90ab189fae9
 
 COCOAPODS: 1.1.1

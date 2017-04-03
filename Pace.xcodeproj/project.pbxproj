@@ -135,6 +135,10 @@
 		C61EB9EB1E755B6E0083C966 /* WorkoutDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61EB9EA1E755B6E0083C966 /* WorkoutDownloadViewController.swift */; };
 		C61EB9EE1E7561F60083C966 /* SaveToMyRoutinesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61EB9ED1E7561F60083C966 /* SaveToMyRoutinesCell.swift */; };
 		C61EB9F11E7571960083C966 /* WorkoutDownloadViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61EB9F01E7571960083C966 /* WorkoutDownloadViewController+Extension.swift */; };
+		C627E1CA1E925CC100816750 /* ClubChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627E1C91E925CC100816750 /* ClubChatViewController.swift */; };
+		C627E1CC1E925F7700816750 /* TextComposingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627E1CB1E925F7700816750 /* TextComposingView.swift */; };
+		C627E1CF1E925FB700816750 /* StartWorkoutButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627E1CE1E925FB700816750 /* StartWorkoutButtonView.swift */; };
+		C627E1D11E925FE100816750 /* ChatImageSelectionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627E1D01E925FE100816750 /* ChatImageSelectionBarView.swift */; };
 		C63439781E4174C000AC9E80 /* LoadImageWithCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63439771E4174C000AC9E80 /* LoadImageWithCache.swift */; };
 		C65105141E758C2E007AD119 /* WorkoutDaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65105131E758C2E007AD119 /* WorkoutDaysViewModel.swift */; };
 		C65CAAD71E3E78A90047B78A /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CAAD61E3E78A90047B78A /* HealthKitManager.swift */; };
@@ -341,6 +345,10 @@
 		C61EB9EA1E755B6E0083C966 /* WorkoutDownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutDownloadViewController.swift; sourceTree = "<group>"; };
 		C61EB9ED1E7561F60083C966 /* SaveToMyRoutinesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveToMyRoutinesCell.swift; sourceTree = "<group>"; };
 		C61EB9F01E7571960083C966 /* WorkoutDownloadViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutDownloadViewController+Extension.swift"; sourceTree = "<group>"; };
+		C627E1C91E925CC100816750 /* ClubChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubChatViewController.swift; sourceTree = "<group>"; };
+		C627E1CB1E925F7700816750 /* TextComposingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextComposingView.swift; sourceTree = "<group>"; };
+		C627E1CE1E925FB700816750 /* StartWorkoutButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartWorkoutButtonView.swift; sourceTree = "<group>"; };
+		C627E1D01E925FE100816750 /* ChatImageSelectionBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatImageSelectionBarView.swift; sourceTree = "<group>"; };
 		C63439771E4174C000AC9E80 /* LoadImageWithCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadImageWithCache.swift; sourceTree = "<group>"; };
 		C65105131E758C2E007AD119 /* WorkoutDaysViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutDaysViewModel.swift; sourceTree = "<group>"; };
 		C65CAAD61E3E78A90047B78A /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
@@ -610,14 +618,14 @@
 			name = Rating;
 			sourceTree = "<group>";
 		};
-		459B22B11DFE649200943AC6 /* Workout Details View */ = {
+		459B22B11DFE649200943AC6 /* Club Details */ = {
 			isa = PBXGroup;
 			children = (
 				4588426C1E11A213003B02C8 /* WorkoutViewController.swift */,
 				4588426F1E11A89D003B02C8 /* WorkoutViewController+Extension.swift */,
 				C61EB9EC1E755D340083C966 /* Workout Downloading */,
 			);
-			name = "Workout Details View";
+			name = "Club Details";
 			sourceTree = "<group>";
 		};
 		45A37F321DFC424400049493 /* Top Clubs */ = {
@@ -830,7 +838,7 @@
 				45C214ED1E05BCAB00C5BCCF /* AllPeopleAndTrainers */,
 				45C214E21E05AECA00C5BCCF /* AllWorkoutsViewController */,
 				451D07941DFE5CF800940301 /* TrainerView */,
-				459B22B11DFE649200943AC6 /* Workout Details View */,
+				459B22B11DFE649200943AC6 /* Club Details */,
 			);
 			name = "Explore Tab";
 			sourceTree = "<group>";
@@ -991,6 +999,8 @@
 		C60363141E62D763005F2691 /* Clubs Posts */ = {
 			isa = PBXGroup;
 			children = (
+				C627E1CD1E925FA400816750 /* ChatBarViews */,
+				C627E1C91E925CC100816750 /* ClubChatViewController.swift */,
 				C608AD2B1E6EA1EC005934B3 /* ChatsViewController.swift */,
 				C608AD2D1E6EA37F005934B3 /* ChatsViewController+Extension.swift */,
 				C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */,
@@ -1035,6 +1045,16 @@
 				C61EB9ED1E7561F60083C966 /* SaveToMyRoutinesCell.swift */,
 			);
 			name = "Workout Downloading";
+			sourceTree = "<group>";
+		};
+		C627E1CD1E925FA400816750 /* ChatBarViews */ = {
+			isa = PBXGroup;
+			children = (
+				C627E1CE1E925FB700816750 /* StartWorkoutButtonView.swift */,
+				C627E1CB1E925F7700816750 /* TextComposingView.swift */,
+				C627E1D01E925FE100816750 /* ChatImageSelectionBarView.swift */,
+			);
+			name = ChatBarViews;
 			sourceTree = "<group>";
 		};
 		C680A7341E815560008ACA5A /* ExercisesModel */ = {
@@ -1247,7 +1267,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Pace;
 				TargetAttributes = {
 					45B5AD3D1DFBF71100115E2C = {
@@ -1423,6 +1443,7 @@
 				45C214F21E05DBC400C5BCCF /* SettingsViewController.swift in Sources */,
 				C6BB14911E3FB08A00BF6F66 /* OnboardingImageView.swift in Sources */,
 				45B5ADA51DFC05A900115E2C /* CustomTabBarController.swift in Sources */,
+				C627E1CC1E925F7700816750 /* TextComposingView.swift in Sources */,
 				45B5ADA91DFC097300115E2C /* ActivityViewController.swift in Sources */,
 				45C214F61E05DD9A00C5BCCF /* SettingsCellView.swift in Sources */,
 				45B5AD441DFBF71100115E2C /* ExploreViewController.swift in Sources */,
@@ -1483,6 +1504,7 @@
 				45ECF68D1E152F590032F6CC /* AllClubsLabel.swift in Sources */,
 				45B5AD901DFBFC1D00115E2C /* MathematicalHelpers.swift in Sources */,
 				45F3AA2A1E15E7B300D70C84 /* PreferencesPopUpLauncher.swift in Sources */,
+				C627E1CA1E925CC100816750 /* ClubChatViewController.swift in Sources */,
 				C6BE5C131E402ADA00770A42 /* PaceAppServices.swift in Sources */,
 				454535871E18EAAC00653252 /* WorkoutCompleteVIewController.swift in Sources */,
 				45ACEABD1DFFBA7700C94B7D /* StartButtonView.swift in Sources */,
@@ -1494,11 +1516,13 @@
 				C690C7771E39CE55005B359E /* LeaderBoardCell.swift in Sources */,
 				456B83361DFF50340012A1A2 /* StoreImageGradient.swift in Sources */,
 				45F3AA221E159AA200D70C84 /* ActivityViewModel.swift in Sources */,
+				C627E1CF1E925FB700816750 /* StartWorkoutButtonView.swift in Sources */,
 				45B5AD9B1DFC01DE00115E2C /* MBProgressHUD.m in Sources */,
 				45F7F5D01DFD4EE000DD1E33 /* ActivityCollectionCell.swift in Sources */,
 				45B5AD8E1DFBFC1700115E2C /* Reachability.swift in Sources */,
 				45F3AA261E15BB4000D70C84 /* ExploreViewModel.swift in Sources */,
 				45F3AA281E15BB9300D70C84 /* UserModel.swift in Sources */,
+				C627E1D11E925FE100816750 /* ChatImageSelectionBarView.swift in Sources */,
 				C61AD0F41E838BB500C377B9 /* CompletedRunViewController.swift in Sources */,
 				45AC38FC1E188EE1003DC46B /* TouchBarHeaderView.swift in Sources */,
 				454535891E18EACB00653252 /* WorkoutCompleteMenuBar.swift in Sources */,
@@ -1710,6 +1734,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Pace/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fitness.pace.Pace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1731,6 +1756,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Pace/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fitness.pace.Pace;
 				PRODUCT_NAME = "$(TARGET_NAME)";

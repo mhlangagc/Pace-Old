@@ -12,7 +12,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class ChatsViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ChatsViewController : ASViewController<ASDisplayNode>, ASCollectionDelegate, ASCollectionDelegateFlowLayout, ASCollectionDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 	
 	var clubModel: ClubModel?
 	var imageContainerViewTopAnchor: NSLayoutConstraint?
@@ -57,6 +57,16 @@ class ChatsViewController : ASViewController<ASDisplayNode>, ASCollectionDelegat
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
 		
+		
+	}()
+	
+	
+	let line: UIView = {
+		
+		let view = UIView()
+		view.backgroundColor = UIColor(fromHexString: "3C4459")
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
 		
 	}()
 		
@@ -244,15 +254,45 @@ class ChatsViewController : ASViewController<ASDisplayNode>, ASCollectionDelegat
 		self.inputTextField.heightAnchor.constraint(equalToConstant: 45.0).isActive = true
 		
 		
+		containerView.addSubview(self.line)
+		self.line.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+		self.line.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 1.0).isActive = true
+		self.line.rightAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+		self.line.heightAnchor.constraint(equalToConstant: 1).isActive = true
+		
 		return containerView
 		
 	}()
 	
 	func setupKeyboardObservers() {
 		
-		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+		
+//		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
 		
 	}
+	
+	func handleKeyboardNotification(notification: NSNotification) {
+		
+		let isKeyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
+		
+		if isKeyboardShowing {
+			let indexPath = IndexPath(item: self.messagesArray.count - 1, section: 0)
+			self.collectionNode?.scrollToItem(at: indexPath, at: .bottom, animated: true)
+		}
+		
+//		UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+//			
+//			self.view.layoutIfNeeded()
+//			
+//		}, completion: { (completed) in
+//			
+//			
+//		})
+	}
+
 
 	override func viewDidDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
@@ -299,20 +339,13 @@ class ChatsViewController : ASViewController<ASDisplayNode>, ASCollectionDelegat
 			self.setupCollectionView()
 			self.collectionNode?.reloadData()
 			
+			let indexPath = IndexPath(item: self.messagesArray.count - 1, section: 0)
+			self.collectionNode?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.bottom, animated: true)
+			
 		})
 		
 		//self.setupStartRunButton()
 		
-	}
-	
-	func handleKeyboardDidShow() {
-		
-		if messagesArray.count > 0 {
-			
-			let indexPath = IndexPath(item: messagesArray.count, section: 0)
-			self.collectionNode?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.top, animated: true)
-			
-		}
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -343,6 +376,7 @@ class ChatsViewController : ASViewController<ASDisplayNode>, ASCollectionDelegat
 		titleLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightBold)
 		textSpacing(titleLabel, spacing: 0.5)
 		navigationItem.titleView = titleLabel
+		
 	}
 	
 	func observeTeamMessages(clubID: String, completion: @escaping (_ result: [TeamMessagesModel]) -> Void) {
@@ -520,7 +554,7 @@ class ChatsViewController : ASViewController<ASDisplayNode>, ASCollectionDelegat
 		
 	}
 	
-	
+	//	Generate an image URL from the selected image
 	private func uploadToFirebaseStorageUsingImage(image: UIImage) {
 		
 		let imageName = NSUUID().uuidString
@@ -543,16 +577,16 @@ class ChatsViewController : ASViewController<ASDisplayNode>, ASCollectionDelegat
 			})
 		}
 	}
-
 	
+	//	Send Message
 	func handleSend() {
 		
 		let clubID = (clubModel?.clubID)!
-		
 		let ref = FIRDatabase.database().reference().child("ClubMessages")
 		let childRef = ref.childByAutoId()
 		let userID = FIRAuth.auth()!.currentUser!.uid
 		
+		//	Code to send a message with an image
 		if self.imageUrl != nil {
 			
 			let values = ["imageUrl": imageUrl!,
@@ -580,7 +614,8 @@ class ChatsViewController : ASViewController<ASDisplayNode>, ASCollectionDelegat
 				
 			}
 			
-		} else {
+		
+		} else { //	Code to send a message without an image
 			
 			let values = ["imageUrl": "",
 			              "message" : inputTextField.text!,

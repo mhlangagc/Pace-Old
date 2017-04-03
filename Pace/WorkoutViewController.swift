@@ -25,7 +25,6 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	var downloadedWorkoutIDArray = [String]()
 	var club : ClubModel?
 	
-	
 	lazy var paceAppService: PaceAppServices = {
 		
 		let retrieveWorkoutDetails = PaceAppServices()
@@ -40,7 +39,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	}
 	
 	
-	func userClubCreation(completion: @escaping (_ completed: Bool) -> ()) {
+	func userClubJoined(completion: @escaping (_ completed: Bool) -> ()) {
 		
 		let userID = FIRAuth.auth()!.currentUser!.uid
 		let clubID = self.club?.clubID
@@ -97,8 +96,6 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		workoutDetailsTableView?.separatorStyle = .none
 		workoutDetailsTableView?.showsVerticalScrollIndicator = false
 		view.addSubview(workoutDetailsTableView!)
-		
-		
 		
 	}
 	
@@ -189,9 +186,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 	
 	func joinClub() {
 		
-//		self.userClubCreation(completion: { (completed) in
-//			
-//			print("Club Joined")
+//		self.userClubJoined(completion: { (completed) in
 //			
 //			self.joinButtonView?.joinButton?.setTitle("Club Joined", for: UIControlState.normal)
 //			self.joinButtonView?.joinButton?.setTitleColor(UIColor.greyBlackColor(), for: UIControlState.normal)
