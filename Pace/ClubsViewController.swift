@@ -94,7 +94,6 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 					
 					completion(userArray)
 					
-					
 				}
 				
 			}, withCancel: nil)
@@ -209,7 +208,6 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		clubsTableView?.showsVerticalScrollIndicator = false
 		view.addSubview(clubsTableView!)
 		
-		
 	}
 	
 	func handleCreateClub() {
@@ -220,7 +218,7 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 	
 	func handleClubSelection(clubSelected: ClubModel) {
 		
-		let clubMessagesVC = ChatsViewController()
+		let clubMessagesVC = ClubChatViewController()
 		clubMessagesVC.userName = userName
 		clubMessagesVC.userImageURL = userImageURL
 		clubMessagesVC.clubModel = clubSelected

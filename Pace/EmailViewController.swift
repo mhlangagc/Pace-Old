@@ -29,7 +29,8 @@ class EmailViewController : UIViewController, UITextFieldDelegate {
 		return label
 		
 	}()
-    
+	
+	
     lazy var emailTextField: TextField = {
        
         let textField = TextField()

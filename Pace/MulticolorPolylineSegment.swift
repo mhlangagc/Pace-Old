@@ -17,7 +17,7 @@ class MulticolorPolylineSegment: MKPolyline {
         (speeds: [Double], minSpeed: Double, maxSpeed: Double) {
             // Make Array of all speeds. Find slowest and fastest
             var speeds = [Double]()
-            var minSpeed = DBL_MAX
+            var minSpeed = Double.greatestFiniteMagnitude
             var maxSpeed = 0.0
             
             for i in 1..<locations.count {
@@ -28,7 +28,7 @@ class MulticolorPolylineSegment: MKPolyline {
                 let cl2 = CLLocation(latitude: Double(l2.latitude), longitude: Double(l2.longitude))
                 
                 let distance = cl2.distance(from: cl1)
-                let time = l2.timestamp?.timeIntervalSince(l1.timestamp as! Date)
+                let time = l2.timestamp?.timeIntervalSince((l1.timestamp as Date?)!)
                 let speed = distance/time!
                 
                 minSpeed = min(minSpeed, speed)

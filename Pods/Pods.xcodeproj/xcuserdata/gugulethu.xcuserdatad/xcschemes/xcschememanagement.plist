@@ -44,11 +44,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>QuickRippleButton.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SLPagingView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,7 +72,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>07E0226805FE076ADF82E108BF396446</key>
+		<key>07895EC09B5BFA6AD130FDB29BA6DFDC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,11 +87,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>38C71E790A462A9EA26E37B0E480FDB8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>5232B3CB536810CA15CB2CC7453FD7AF</key>
 		<dict>
 			<key>primary</key>
@@ -107,22 +97,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>735CD7DC5BE56B6843A8C543DC10A169</key>
+		<key>6DCAFFB6E01C915FBE7F6FB1C1D50B07</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>75484E9FC8379B0447FF84F736CC0E85</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A8F40FC747B5976E8A332017EAFAC488</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B5D38DDDC03D86655640483B0B851481</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,12 +117,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>DC9D8EE0D6D5F1C6EAAB8BDC0242DFC9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DCD98C2F799C6003435EF7B163016035</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E0A59FEBE757722BE4BBBFADC6E5DD94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E1248ADE126A06937373BD12D8A390B7</key>
+		<key>FD83F1E63DD91F2BB284622BB24C0696</key>
 		<dict>
 			<key>primary</key>
 			<true/>

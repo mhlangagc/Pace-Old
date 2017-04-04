@@ -115,7 +115,7 @@
       CGPoint vertex = [self _pointFromValueArray:endPoint];
       [pointKeyframes addObject:[NSValue valueWithCGPoint:vertex]];
       
-      if (controlPoint1 && controlPoint2) {
+      if ( controlPoint2) {
         // Quadratic Spatial Interpolation
         cp1 = [self _pointFromValueArray:controlPoint1];
         cp2 = [self _pointFromValueArray:controlPoint2];
