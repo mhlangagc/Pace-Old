@@ -63,8 +63,8 @@ class ClubChatCell: CollectionBaseCell {
 	let timeStampLabel : UILabel = {
 		
 		let label = UILabel()
-		label.textColor = UIColor(fromHexString: "3C4459")
-		label.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
+		label.textColor = UIColor(fromHexString: "282E3E")
+		label.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightBold)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 		
@@ -136,7 +136,7 @@ class ClubChatCell: CollectionBaseCell {
 		nameLabel.rightAnchor.constraint(equalTo: likeImageView.leftAnchor, constant: -10).isActive = true
 		likeImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
 		
-		timeStampLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 10).isActive = true
+		timeStampLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 11).isActive = true
 		timeStampLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -18).isActive = true
 		timeStampLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24).isActive = true
 		timeStampLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
