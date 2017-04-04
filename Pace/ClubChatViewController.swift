@@ -280,8 +280,8 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		
 		if isKeyboardShowing {
 			
-			let indexPath = IndexPath(item: self.messagesArray.count - 1, section: 0)
-			self.clubChatCollectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
+//			let indexPath = IndexPath(item: self.messagesArray.count - 1, section: 0)
+//			self.clubChatCollectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
 		
 		}
 		

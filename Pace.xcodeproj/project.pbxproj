@@ -121,7 +121,6 @@
 		C6057EEE1E3E288400AC62EA /* PaceErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6057EED1E3E288400AC62EA /* PaceErrorHandling.swift */; };
 		C6057EF01E3E28D900AC62EA /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6057EEF1E3E28D900AC62EA /* AuthenticationService.swift */; };
 		C6057EF21E3E4B7900AC62EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6057EF11E3E4B7900AC62EA /* GoogleService-Info.plist */; };
-		C608AD301E6EA5DC005934B3 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */; };
 		C61AD0F41E838BB500C377B9 /* CompletedRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0F31E838BB500C377B9 /* CompletedRunViewController.swift */; };
 		C61AD0F61E838E8700C377B9 /* CompletedRunHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0F51E838E8700C377B9 /* CompletedRunHeaderView.swift */; };
 		C61AD0F81E8390F500C377B9 /* CompletedRunViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AD0F71E8390F500C377B9 /* CompletedRunViewController+Extension.swift */; };
@@ -175,6 +174,7 @@
 		C6BE5C131E402ADA00770A42 /* PaceAppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE5C121E402ADA00770A42 /* PaceAppServices.swift */; };
 		C6F0D9491E92E97300BF56C1 /* ClubChatViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0D9481E92E97300BF56C1 /* ClubChatViewController+Extension.swift */; };
 		C6F0D94B1E92EBDD00BF56C1 /* ClubChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0D94A1E92EBDD00BF56C1 /* ClubChatCell.swift */; };
+		C6F0D94D1E93605900BF56C1 /* TimeAgoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0D94C1E93605900BF56C1 /* TimeAgoDisplay.swift */; };
 		C6F770D81E4718C200349C5B /* LottieLogo2.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F770D71E4718C200349C5B /* LottieLogo2.json */; };
 		C6F770DA1E4718F800349C5B /* WelcomeLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F770D91E4718F800349C5B /* WelcomeLaunchViewController.swift */; };
 		C6F770E21E4757A200349C5B /* EmptyDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F770E01E4757A200349C5B /* EmptyDayViewController.swift */; };
@@ -330,7 +330,6 @@
 		C6057EED1E3E288400AC62EA /* PaceErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceErrorHandling.swift; sourceTree = "<group>"; };
 		C6057EEF1E3E28D900AC62EA /* AuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		C6057EF11E3E4B7900AC62EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		C61AD0F31E838BB500C377B9 /* CompletedRunViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedRunViewController.swift; sourceTree = "<group>"; };
 		C61AD0F51E838E8700C377B9 /* CompletedRunHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedRunHeaderView.swift; sourceTree = "<group>"; };
 		C61AD0F71E8390F500C377B9 /* CompletedRunViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CompletedRunViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -386,6 +385,7 @@
 		C6BE5C121E402ADA00770A42 /* PaceAppServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceAppServices.swift; sourceTree = "<group>"; };
 		C6F0D9481E92E97300BF56C1 /* ClubChatViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ClubChatViewController+Extension.swift"; sourceTree = "<group>"; };
 		C6F0D94A1E92EBDD00BF56C1 /* ClubChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubChatCell.swift; sourceTree = "<group>"; };
+		C6F0D94C1E93605900BF56C1 /* TimeAgoDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAgoDisplay.swift; sourceTree = "<group>"; };
 		C6F770D71E4718C200349C5B /* LottieLogo2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LottieLogo2.json; sourceTree = "<group>"; };
 		C6F770D91E4718F800349C5B /* WelcomeLaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeLaunchViewController.swift; sourceTree = "<group>"; };
 		C6F770E01E4757A200349C5B /* EmptyDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyDayViewController.swift; sourceTree = "<group>"; };
@@ -547,6 +547,7 @@
 			isa = PBXGroup;
 			children = (
 				456B83351DFF50340012A1A2 /* StoreImageGradient.swift */,
+				C6F0D94C1E93605900BF56C1 /* TimeAgoDisplay.swift */,
 				458478ED1E18441D00EB2AB3 /* ShareLinkActivity.swift */,
 				456DFFE91E0D10B60057338D /* NavigationBarLine.swift */,
 				452A00B91E05E69500CACA18 /* StatusBarBackground.swift */,
@@ -1001,7 +1002,6 @@
 				C627E1C91E925CC100816750 /* ClubChatViewController.swift */,
 				C6F0D9481E92E97300BF56C1 /* ClubChatViewController+Extension.swift */,
 				C6F0D94A1E92EBDD00BF56C1 /* ClubChatCell.swift */,
-				C608AD2F1E6EA5DC005934B3 /* PostsCell.swift */,
 			);
 			name = "Clubs Posts";
 			sourceTree = "<group>";
@@ -1533,6 +1533,7 @@
 				450CE7EA1DFD2A6F00A3EACE /* ActivityViewController+Extension.swift in Sources */,
 				4545358B1E18EDFD00653252 /* WorkoutCompleteVC + Extension.swift in Sources */,
 				C680A7371E815590008ACA5A /* WorkoutsModel+CoreDataClass.swift in Sources */,
+				C6F0D94D1E93605900BF56C1 /* TimeAgoDisplay.swift in Sources */,
 				C680A7381E815590008ACA5A /* WorkoutsModel+CoreDataProperties.swift in Sources */,
 				C61C4C061E7E7DD5007C7E37 /* ProfileViewController.swift in Sources */,
 				45F3AA241E15B37300D70C84 /* ExploreModel.swift in Sources */,
@@ -1568,7 +1569,6 @@
 				C6F0D94B1E92EBDD00BF56C1 /* ClubChatCell.swift in Sources */,
 				452A00BA1E05E69500CACA18 /* StatusBarBackground.swift in Sources */,
 				454535971E19034500653252 /* ExerciseViewModel.swift in Sources */,
-				C608AD301E6EA5DC005934B3 /* PostsCell.swift in Sources */,
 				454535951E18FB8600653252 /* ExerciseTypeEnum.swift in Sources */,
 				45D9DC5B1E041899001580B3 /* MenuBarCell.swift in Sources */,
 				C6B1BA581E8251FD00EF7223 /* MulticolorPolylineSegment.swift in Sources */,

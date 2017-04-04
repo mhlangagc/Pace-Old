@@ -219,8 +219,8 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 	func handleClubSelection(clubSelected: ClubModel) {
 		
 		let clubMessagesVC = ClubChatViewController()
-//		clubMessagesVC.userName = userName
-//		clubMessagesVC.userImageURL = userImageURL
+		clubMessagesVC.userName = userName
+		clubMessagesVC.userImageURL = userImageURL
 		clubMessagesVC.clubModel = clubSelected
 		clubMessagesVC.hidesBottomBarWhenPushed = true
 		self.navigationController?.pushViewController(clubMessagesVC, animated: true)

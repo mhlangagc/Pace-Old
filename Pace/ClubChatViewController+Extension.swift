@@ -30,10 +30,28 @@ extension ClubChatViewController {
 		
 	}
 	
+	private func estimateFrameForText(text: String) -> CGRect {
+		
+		let size = CGSize(width: 290, height: 1000)
+		let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+		return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightSemibold)], context: nil)
+	}
+
+	
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		
-		return CGSize(width: view.frame.width, height: 180)
+		var height: CGFloat = 80
+		
+		if let text = messagesArray[indexPath.item].message {
+			
+			height = estimateFrameForText(text: text).height + 118
+		
+		}
+		
+		let width = UIScreen.main.bounds.width
+		
+		return CGSize(width: width, height: height)
 	}
 	
 }
