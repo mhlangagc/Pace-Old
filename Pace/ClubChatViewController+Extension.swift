@@ -35,6 +35,7 @@ extension ClubChatViewController {
 		let size = CGSize(width: 290, height: 1000)
 		let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
 		return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightSemibold)], context: nil)
+	
 	}
 
 	

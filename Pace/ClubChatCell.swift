@@ -64,7 +64,7 @@ class ClubChatCell: CollectionBaseCell {
 		
 		let label = UILabel()
 		label.textColor = UIColor(fromHexString: "282E3E")
-		label.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightBold)
+		label.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightBold)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 		

@@ -23,7 +23,6 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 	var userName: String?
 	var userImageURL : String?
 	
-//	var collectionNode : ASCollectionNode?
 	var trainer = User()
 	var exploreWorkout : ExploreWorkoutModel?
 	
@@ -62,7 +61,9 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		let button = UIButton()
 		button.isEnabled = false
 		button.setImage(UIImage(named: "send_inActive"), for: UIControlState.normal)
-		button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
+		button.imageView?.contentMode = .scaleAspectFit
+		button.imageEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+		button.addTarget(self, action: #selector(handleSend), for: UIControlEvents.touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
 		
@@ -80,13 +81,13 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 	}()
 	
 	
-	lazy var addImageButton: UIImageView = {
+	lazy var addImageButton: UIButton = {
 		
-		let sendImageButton = UIImageView()
-		sendImageButton.image = UIImage(named: "postImage")
-		sendImageButton.contentMode = .scaleAspectFill
-		sendImageButton.isUserInteractionEnabled = true
-		sendImageButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectImage)))
+		let sendImageButton = UIButton()
+		sendImageButton.setImage(UIImage(named: "postImage"), for: UIControlState.normal)
+		sendImageButton.imageView?.contentMode = .scaleAspectFit
+		sendImageButton.imageEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+		sendImageButton.addTarget(self, action: #selector(handleSelectImage), for: UIControlEvents.touchUpInside)
 		sendImageButton.translatesAutoresizingMaskIntoConstraints = false
 		return sendImageButton
 		
@@ -99,17 +100,17 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		containerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 56)
 		
 		containerView.addSubview(self.addImageButton)
-		self.addImageButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 16).isActive = true
+		self.addImageButton.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
 		self.addImageButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-		self.addImageButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
-		self.addImageButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+		self.addImageButton.widthAnchor.constraint(equalToConstant: 56).isActive = true
+		self.addImageButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
 		
 		
 		containerView.addSubview(self.sendButton)
-		self.sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -16).isActive = true
+		self.sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
 		self.sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-		self.sendButton.widthAnchor.constraint(equalToConstant: 26).isActive = true
-		self.sendButton.heightAnchor.constraint(equalToConstant: 26).isActive = true
+		self.sendButton.widthAnchor.constraint(equalToConstant: 56).isActive = true
+		self.sendButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
 		
 		
 		containerView.addSubview(self.line)
@@ -230,6 +231,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		
 	}
 	
+	var selectImageBarBottomConstraint: NSLayoutConstraint?
 	
 	func setupCollectionView() {
 		
@@ -238,6 +240,9 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		
 		view.addSubview(clubChatCollectionView)
 		clubChatCollectionView.register(ClubChatCell.self, forCellWithReuseIdentifier: ClubChatCellID)
+		
+		view.addSubview(selectImageBar)
+		selectImageBar.chatVC = self
 		
 		startWorkoutBar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
 		startWorkoutBar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
@@ -249,6 +254,11 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		clubChatCollectionView.topAnchor.constraint(equalTo: startWorkoutBar.bottomAnchor).isActive = true
 		clubChatCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 		
+		selectImageBar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+		selectImageBar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+		selectImageBar.heightAnchor.constraint(equalToConstant: 142).isActive = true
+		selectImageBarBottomConstraint = selectImageBar.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 86)
+		selectImageBarBottomConstraint?.isActive = true
 		
 	}
 	
@@ -308,6 +318,44 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 			
 			sendButton.isEnabled = false
 			sendButton.setImage(UIImage(named: "send_inActive"), for: UIControlState.normal)
+			
+		}
+		
+	}
+	
+	var imageViewSelectionButtonOpen = false
+	
+	func handleSelectImage() {
+		
+		if imageViewSelectionButtonOpen == false {
+			
+			UIView.animate(withDuration: 0.25, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+				
+				self.line.isHidden = true
+				self.selectImageBarBottomConstraint?.constant = -56
+				self.view.layoutIfNeeded()
+				
+			}, completion: { (completed) in
+				
+				self.addImageButton.setImage(UIImage(named: "ImageOpened"), for: UIControlState.normal)
+				self.imageViewSelectionButtonOpen = true
+				
+			})
+			
+		} else {
+			
+			UIView.animate(withDuration: 0.25, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+				
+				self.line.isHidden = false
+				self.selectImageBarBottomConstraint?.constant = 86
+				self.view.layoutIfNeeded()
+				
+			}, completion: { (completed) in
+				
+				self.addImageButton.setImage(UIImage(named: "postImage"), for: UIControlState.normal)
+				self.imageViewSelectionButtonOpen = false
+				
+			})
 			
 		}
 		
@@ -386,17 +434,10 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		
 		
 		imageUrl = nil
-		addImageButton.image = UIImage(named: "postImage")
+		addImageButton.setImage(UIImage(named: "postImage"), for: UIControlState.normal)
 		inputTextField.text = nil
 		sendButton.isEnabled = false
 		sendButton.setImage(UIImage(named: "send_inActive"), for: UIControlState.normal)
-		
-	}
-	
-	func handleSelectImage() {
-		
-		//	TO DO
-		print("Select Image")
 		
 	}
 	
@@ -419,7 +460,17 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		})
 	}
 	
+	func handlePickImage() {
+		
+		print("Select Image")
+		
+	}
 	
+	func handleCameraOpen() {
+		
+		print("Open Camera")
+		
+	}
 
 	
 }
