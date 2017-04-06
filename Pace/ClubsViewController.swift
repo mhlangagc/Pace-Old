@@ -166,7 +166,6 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
 		navigationItem.title = "My Clubs"
 		navigationNoLineBar()
 		self.navigationBarItems()
@@ -178,11 +177,9 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 	
 	private func setupRightNavItem() {
 		
-		let moreButton = UIButton(type: .system)
-		moreButton.setImage(#imageLiteral(resourceName: "create").withRenderingMode(.alwaysOriginal), for: .normal)
-		moreButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-		moreButton.addTarget(self, action: #selector(handleCreateClub), for: UIControlEvents.touchUpInside)
-		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: moreButton)
+		self.navigationController?.navigationBar.tintColor = UIColor.paceBrandColor()
+		self.navigationController?.navigationBar.barTintColor = UIColor.paceBrandColor()
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: UIBarButtonItemStyle.done, target: self, action: #selector(handleCreateClub))
 		
 	}
 	
@@ -212,7 +209,9 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 	
 	func handleCreateClub() {
 		
-		//	TO DO
+		let createClubVC = CreateClubViewController()
+		let navBarVC = UINavigationController(rootViewController: createClubVC)
+		self.present(navBarVC, animated: true, completion: nil)
 		
 	}
 	

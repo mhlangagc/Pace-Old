@@ -8,13 +8,6 @@
 
 import UIKit
 
-protocol VideoCellDelegate {
-	
-	func didBeginVideo(cell: ExerciseCellView)
-	func didEndBeginVideoView(cell: ExerciseCellView)
-	
-}
-
 class ExerciseCellView : TableBaseCell {
 	
 	
@@ -129,10 +122,6 @@ class ExerciseCellView : TableBaseCell {
 			
 		}
 	}
-
-	var videoDelegate : VideoCellDelegate?
-	var cellSelected = false
-	var recognizer : UITapGestureRecognizer?
 	
 	override func setupViews() {
 		super.setupViews()
@@ -140,37 +129,9 @@ class ExerciseCellView : TableBaseCell {
 		backgroundColor = UIColor.black
 		self.setupView()
 		
-		
-		recognizer = UITapGestureRecognizer(target: self, action: #selector(handleCellSelected))
-		recognizer?.delegate = self
-		addGestureRecognizer(recognizer!)
-		
 	}
 	
-	func handleCellSelected() {
-  
-		if videoDelegate != nil {
-			
-			videoDelegate!.didBeginVideo(cell: self)
-			cellSelected = true
-			recognizer = UITapGestureRecognizer(target: self, action: #selector(handleDeleselectedCell))
-			
-		}
 		
-	}
- 
-	func handleDeleselectedCell() {
-		
-		if videoDelegate != nil {
-			
-			videoDelegate!.didEndBeginVideoView(cell: self)
-			cellSelected = false
-			recognizer = UITapGestureRecognizer(target: self, action: #selector(handleCellSelected))
-			
-		}
-		
-	}
-	
 	func setupView() {
 		
 		self.contentView.addSubview(exerciseImage)

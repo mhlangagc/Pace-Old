@@ -40,6 +40,44 @@ class PaceAppServices : NSObject {
 		
 	}
 	
+	//	Retrieve Club Memmbers
+	func retrieveClubMembers(clubID: String, completion: @escaping (_ result: [User]) -> Void) {
+		
+		var clubMembersArray = [User]()
+		
+		let fanClubMemberRef = FIRDatabase.database().reference().child("fan-Club-Members").child(clubID)
+		
+		fanClubMemberRef.observe(.childAdded, with: { (snapshot) in
+			
+			let userID = snapshot.key
+			
+			let userRef = FIRDatabase.database().reference().child("Users").child(userID)
+			
+			userRef.observe(FIRDataEventType.value, with: { (snapShot) in
+				
+				if let dictionary = snapShot.value as? [String: AnyObject] {
+					
+					let user = User()
+					user.userID = userID
+					user.name = dictionary["name"] as? String
+					user.profileImageUrl = dictionary["profileImageUrl"] as? String
+					user.location = dictionary["location"] as? String
+					user.about = dictionary["about"] as? String
+					
+					clubMembersArray.append(user)
+					
+					completion(clubMembersArray)
+					
+				}
+				
+			}, withCancel: nil)
+			
+		}, withCancel: nil)
+		
+		
+	}
+
+	
 	//	Retrieve Clubs
 	func retrieveFeaturedClubs(completion: @escaping (_ result: [ClubModel]) -> Void) {
 		

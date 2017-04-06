@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import MessageUI
 
 class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
 	
@@ -99,11 +100,11 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		containerView.backgroundColor = UIColor.black
 		containerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 56)
 		
-		containerView.addSubview(self.addImageButton)
-		self.addImageButton.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
-		self.addImageButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-		self.addImageButton.widthAnchor.constraint(equalToConstant: 56).isActive = true
-		self.addImageButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
+//		containerView.addSubview(self.addImageButton)
+//		self.addImageButton.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+//		self.addImageButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+//		self.addImageButton.widthAnchor.constraint(equalToConstant: 56).isActive = true
+//		self.addImageButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
 		
 		
 		containerView.addSubview(self.sendButton)
@@ -121,7 +122,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		
 		
 		containerView.addSubview(self.inputTextField)
-		self.inputTextField.leftAnchor.constraint(equalTo: self.addImageButton.rightAnchor, constant: 16).isActive = true
+		self.inputTextField.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 16).isActive = true
 		self.inputTextField.rightAnchor.constraint(equalTo: self.sendButton.leftAnchor, constant: -16).isActive = true
 		self.inputTextField.topAnchor.constraint(equalTo: self.line.bottomAnchor).isActive = true
 		self.inputTextField.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
@@ -226,7 +227,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		let moreButton = UIButton(type: .system)
 		moreButton.setImage(#imageLiteral(resourceName: "create").withRenderingMode(.alwaysOriginal), for: .normal)
 		moreButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-		moreButton.addTarget(self, action: #selector(handleMoreOptions), for: UIControlEvents.touchUpInside)
+		moreButton.addTarget(self, action: #selector(handleInviteFriends), for: UIControlEvents.touchUpInside)
 		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: moreButton)
 		
 	}
@@ -349,11 +350,14 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 				self.line.isHidden = false
 				self.selectImageBarBottomConstraint?.constant = 86
 				self.view.layoutIfNeeded()
+				self.imageViewSelectionButtonOpen = false
 				
 			}, completion: { (completed) in
 				
 				self.addImageButton.setImage(UIImage(named: "postImage"), for: UIControlState.normal)
-				self.imageViewSelectionButtonOpen = false
+				self.selectImageBar.imageViewButton.imageEdgeInsets = UIEdgeInsets(top: 44, left: 40, bottom: 44, right: 40)
+				self.selectImageBar.imageViewButton.setImage(UIImage(named: "ImageSelection"), for: UIControlState.normal)
+				self.imageSelected = nil
 				
 			})
 			
@@ -361,10 +365,22 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		
 	}
 	
-	func handleMoreOptions() {
+	let messageComposer = MessageComposer()
+	
+	func handleInviteFriends() {
 		
-		//	TO DO
+		if (messageComposer.canSendText()) {
+			
+			let messageComposeVC = messageComposer.configuredMessageComposeViewController()
+			present(messageComposeVC, animated: true, completion: nil)
 		
+		} else {
+			
+			print("Cannot Send Text Message")
+			
+		}
+		
+	
 	}
 	
 	func handleSend() {
@@ -375,32 +391,38 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		let userID = FIRAuth.auth()!.currentUser!.uid
 		
 		//	Code to send a message with an image
-		if self.imageUrl != nil {
+		if self.imageSelected != nil {
 			
-			let values = ["imageUrl": imageUrl!,
-			              "message" : inputTextField.text!,
-			              "userSending": userID,
-			              "userSendingName": userName!,
-			              "userSendingImageURL": userImageURL!,
-			              "timeStamp": Int(NSDate().timeIntervalSince1970),
-			              "teamID": clubID] as [String : Any]
-			
-			childRef.updateChildValues(values) { (error, ref) in
+			self.uploadToFirebaseStorageUsingImage {
 				
-				if error != nil {
-					print((error?.localizedDescription)!)
-					return
+				let values = ["imageUrl": imageUrl!,
+				              "message" : inputTextField.text!,
+				              "userSending": userID,
+				              "userSendingName": userName!,
+				              "userSendingImageURL": userImageURL!,
+				              "timeStamp": Int(NSDate().timeIntervalSince1970),
+				              "teamID": clubID] as [String : Any]
+				
+				childRef.updateChildValues(values) { (error, ref) in
+					
+					if error != nil {
+						print((error?.localizedDescription)!)
+						return
+					}
+					
+					let userPostsRef = FIRDatabase.database().reference().child("fan-user-messages").child(userID)
+					let messageId = childRef.key
+					userPostsRef.updateChildValues([messageId: 1])
+					
+					let workoutTeamMessagesRef = FIRDatabase.database().reference().child("fan-club-messages").child(clubID)
+					workoutTeamMessagesRef.updateChildValues([messageId: 1])
+					
+					
 				}
 				
-				let userPostsRef = FIRDatabase.database().reference().child("fan-user-messages").child(userID)
-				let messageId = childRef.key
-				userPostsRef.updateChildValues([messageId: 1])
-				
-				let workoutTeamMessagesRef = FIRDatabase.database().reference().child("fan-club-messages").child(clubID)
-				workoutTeamMessagesRef.updateChildValues([messageId: 1])
-				
-				
 			}
+			
+			
 			
 			
 		} else { //	Code to send a message without an image
@@ -432,18 +454,24 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 			
 		}
 		
-		
+		imageSelected = nil
 		imageUrl = nil
 		addImageButton.setImage(UIImage(named: "postImage"), for: UIControlState.normal)
 		inputTextField.text = nil
 		sendButton.isEnabled = false
 		sendButton.setImage(UIImage(named: "send_inActive"), for: UIControlState.normal)
+		selectImageBar.imageViewButton.imageEdgeInsets = UIEdgeInsets(top: 44, left: 40, bottom: 44, right: 40)
+		selectImageBar.imageViewButton.setImage(UIImage(named: "ImageSelection"), for: UIControlState.normal)
 		
 	}
 	
 	func handleShowGroup() {
 		
 		print("Show Club Details")
+		let clubDetailsVC = ClubDetailsViewController()
+		clubDetailsVC.club = clubModel
+		self.navigationController?.pushViewController(clubDetailsVC, animated: true)
+		
 		
 	}
 	
@@ -459,10 +487,77 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 			
 		})
 	}
-	
+
 	func handlePickImage() {
 		
-		print("Select Image")
+		//	Moving the Picker Up
+		
+		let imagePickerController = UIImagePickerController()
+		
+		imagePickerController.allowsEditing = true
+		imagePickerController.delegate = self
+		
+		present(imagePickerController, animated: true, completion: nil)
+		
+	}
+	
+	
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+		
+		var selectedImageFromPicker: UIImage?
+		
+		if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+			
+			selectedImageFromPicker = editedImage
+			
+		} else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+			
+			selectedImageFromPicker = originalImage
+			
+			
+		}
+		
+		if let selectedImage = selectedImageFromPicker {
+			
+			selectImageBar.imageViewButton.setImage(selectedImage, for: UIControlState.normal)
+			selectImageBar.imageViewButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+			self.imageSelected = selectedImage
+			
+		}
+		
+		dismiss(animated: true, completion: nil)
+		
+	}
+	
+	var imageSelected : UIImage?
+	
+	//	Generate an image URL from the selected image
+	private func uploadToFirebaseStorageUsingImage(completion: () -> Void) {
+		
+		let imageName = NSUUID().uuidString
+		let ref = FIRStorage.storage().reference().child("post_images").child(imageName)
+		
+		if let uploadData = UIImageJPEGRepresentation(imageSelected!, 0.2) {
+			ref.put(uploadData, metadata: nil, completion: { (metadata, error) in
+				
+				if error != nil {
+					print("Failed to upload image:", (error?.localizedDescription)!)
+					return
+				}
+				
+				if let imageUrl = metadata?.downloadURL()?.absoluteString {
+					
+					self.imageUrl = imageUrl
+					
+				}
+				
+			})
+		}
+	}
+
+	func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+		
+		dismiss(animated: true, completion: nil)
 		
 	}
 	
@@ -471,7 +566,6 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		print("Open Camera")
 		
 	}
-
 	
 }
 
