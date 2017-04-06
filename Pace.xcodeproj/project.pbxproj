@@ -150,6 +150,8 @@
 		C6659E1F1E9667E2004929A3 /* ClubDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6659E1E1E9667E2004929A3 /* ClubDetailsCell.swift */; };
 		C676FE6C1E969D3F006A1F83 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C676FE6B1E969D3F006A1F83 /* UserProfileViewController.swift */; };
 		C676FE6E1E96A795006A1F83 /* UserProfileViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C676FE6D1E96A795006A1F83 /* UserProfileViewController+Extension.swift */; };
+		C676FE701E96ED01006A1F83 /* ClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C676FE6F1E96ED01006A1F83 /* ClubViewController.swift */; };
+		C676FE721E96ED76006A1F83 /* ClubViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C676FE711E96ED76006A1F83 /* ClubViewController+Extension.swift */; };
 		C680A7321E815542008ACA5A /* ExercisesModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680A7301E815542008ACA5A /* ExercisesModel+CoreDataClass.swift */; };
 		C680A7331E815542008ACA5A /* ExercisesModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680A7311E815542008ACA5A /* ExercisesModel+CoreDataProperties.swift */; };
 		C680A7371E815590008ACA5A /* WorkoutsModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680A7351E815590008ACA5A /* WorkoutsModel+CoreDataClass.swift */; };
@@ -368,6 +370,8 @@
 		C6659E1E1E9667E2004929A3 /* ClubDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDetailsCell.swift; sourceTree = "<group>"; };
 		C676FE6B1E969D3F006A1F83 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		C676FE6D1E96A795006A1F83 /* UserProfileViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserProfileViewController+Extension.swift"; sourceTree = "<group>"; };
+		C676FE6F1E96ED01006A1F83 /* ClubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubViewController.swift; sourceTree = "<group>"; };
+		C676FE711E96ED76006A1F83 /* ClubViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ClubViewController+Extension.swift"; sourceTree = "<group>"; };
 		C680A72F1E81527C008ACA5A /* Pace_v_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pace_v_2.xcdatamodel; sourceTree = "<group>"; };
 		C680A7301E815542008ACA5A /* ExercisesModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExercisesModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C680A7311E815542008ACA5A /* ExercisesModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExercisesModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -633,14 +637,14 @@
 			name = Rating;
 			sourceTree = "<group>";
 		};
-		459B22B11DFE649200943AC6 /* Club Details */ = {
+		459B22B11DFE649200943AC6 /* WorkoutDetails */ = {
 			isa = PBXGroup;
 			children = (
 				4588426C1E11A213003B02C8 /* WorkoutViewController.swift */,
 				4588426F1E11A89D003B02C8 /* WorkoutViewController+Extension.swift */,
 				C61EB9EC1E755D340083C966 /* Workout Downloading */,
 			);
-			name = "Club Details";
+			name = WorkoutDetails;
 			sourceTree = "<group>";
 		};
 		45A37F321DFC424400049493 /* Top Clubs */ = {
@@ -853,7 +857,8 @@
 				45C214ED1E05BCAB00C5BCCF /* AllPeopleAndTrainers */,
 				45C214E21E05AECA00C5BCCF /* AllWorkoutsViewController */,
 				451D07941DFE5CF800940301 /* TrainerView */,
-				459B22B11DFE649200943AC6 /* Club Details */,
+				C676FE731E96EFA4006A1F83 /* Club Details */,
+				459B22B11DFE649200943AC6 /* WorkoutDetails */,
 			);
 			name = "Explore Tab";
 			sourceTree = "<group>";
@@ -1084,6 +1089,15 @@
 				C6659E1E1E9667E2004929A3 /* ClubDetailsCell.swift */,
 			);
 			name = ClubView;
+			sourceTree = "<group>";
+		};
+		C676FE731E96EFA4006A1F83 /* Club Details */ = {
+			isa = PBXGroup;
+			children = (
+				C676FE6F1E96ED01006A1F83 /* ClubViewController.swift */,
+				C676FE711E96ED76006A1F83 /* ClubViewController+Extension.swift */,
+			);
+			name = "Club Details";
 			sourceTree = "<group>";
 		};
 		C680A7341E815560008ACA5A /* ExercisesModel */ = {
@@ -1520,6 +1534,7 @@
 				C6B118351E218259002BB4E8 /* RoutineViewController.swift in Sources */,
 				C6659E1B1E964EF4004929A3 /* ClubDetailsViewController+Extension.swift in Sources */,
 				4581FC251E18ABCC00B6E32D /* WorkoutProcessCellView.swift in Sources */,
+				C676FE721E96ED76006A1F83 /* ClubViewController+Extension.swift in Sources */,
 				451D07931DFE5BA200940301 /* DiscoverProfileViewController+Extension.swift in Sources */,
 				454535931E18F66F00653252 /* CompletedHeaderView.swift in Sources */,
 				458842741E11D69D003B02C8 /* DayViewController.swift in Sources */,
@@ -1544,6 +1559,7 @@
 				C6659E1F1E9667E2004929A3 /* ClubDetailsCell.swift in Sources */,
 				45ECF68D1E152F590032F6CC /* AllClubsLabel.swift in Sources */,
 				45B5AD901DFBFC1D00115E2C /* MathematicalHelpers.swift in Sources */,
+				C676FE701E96ED01006A1F83 /* ClubViewController.swift in Sources */,
 				45F3AA2A1E15E7B300D70C84 /* PreferencesPopUpLauncher.swift in Sources */,
 				C627E1CA1E925CC100816750 /* ClubChatViewController.swift in Sources */,
 				C6BE5C131E402ADA00770A42 /* PaceAppServices.swift in Sources */,

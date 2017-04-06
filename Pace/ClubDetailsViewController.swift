@@ -33,12 +33,13 @@ class ClubDetailsViewController : UIViewController, UITableViewDataSource, UITab
 		self.setupNavigationBar()
 		self.setupWorkoutDetailsTableView()
 		self.setupHeaderView()
-		view.backgroundColor = UIColor.paceBackgroundBlack()
+		view.backgroundColor = UIColor.black
 		
 		paceAppService.retrieveClubMembers(clubID: (self.club?.clubID)!) { (membersRetrived) in
 			
 			self.members = membersRetrived
 			self.workoutDetailsTableView?.reloadData()
+		
 		}
 		
 	}
@@ -47,7 +48,7 @@ class ClubDetailsViewController : UIViewController, UITableViewDataSource, UITab
 		
 		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height)
 		workoutDetailsTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.plain)
-		workoutDetailsTableView?.backgroundColor = .paceBackgroundBlack()
+		workoutDetailsTableView?.backgroundColor = .black
 		workoutDetailsTableView?.delegate = self
 		workoutDetailsTableView?.dataSource = self
 		workoutDetailsTableView?.separatorStyle = .none

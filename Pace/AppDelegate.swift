@@ -59,6 +59,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		}
 		
+		let barAppearace = UIBarButtonItem.appearance()
+		barAppearace.setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), for:UIBarMetrics.default)
+		
 		return true
 	}
 	
@@ -71,7 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		paceAppService.retrieveUserDownloadedWorkouts { (workoutTeamsArray) in
 			
 		}
-
 		
 	}
 	

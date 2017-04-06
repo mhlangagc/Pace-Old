@@ -143,7 +143,7 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 	
 	func handleShowClubView(clubSelected: ClubModel) {
 		
-		let showClubDetailsVC = WorkoutViewController()
+		let showClubDetailsVC = ClubViewController()
 		showClubDetailsVC.club = clubSelected
 		showClubDetailsVC.hidesBottomBarWhenPushed = true
 		self.navigationController?.pushViewController(showClubDetailsVC, animated: true)

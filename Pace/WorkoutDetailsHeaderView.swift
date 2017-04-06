@@ -43,7 +43,7 @@ class WorkoutDetailsHeaderView : BaseView {
 	override func setupViews() {
 		super.setupViews()
 		
-		backgroundColor = UIColor.darkerBlack()
+		backgroundColor = UIColor.paceBackgroundBlack()
 		
 		self.addViews()
 	}
@@ -83,7 +83,6 @@ class WorkoutDetailsHeaderView : BaseView {
 		self.clubStas()
 		self.trainerSection()
 		self.clubDetails()
-		self.clubMembers()
 		
 	}
 	
@@ -180,7 +179,7 @@ class WorkoutDetailsHeaderView : BaseView {
 	func clubDetails() {
 		
 		descriptionLabel = UILabel.init(frame: CGRect(x: 20.0, y: 450, width: 200, height: 20.0))
-		descriptionLabel?.text = "What you get"
+		descriptionLabel?.text = "About"
 		descriptionLabel?.textColor = UIColor.greyWhite()
 		descriptionLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
 		addSubview(descriptionLabel!)
@@ -193,19 +192,6 @@ class WorkoutDetailsHeaderView : BaseView {
 		descriptionText?.isSelectable = false
 		descriptionText?.isScrollEnabled = false
 		addSubview(descriptionText!)
-	}
-	
-	func clubMembers() {
-		
-		memberNumberLabel = UILabel.init(frame: CGRect(x: 20.0, y: 600.0, width: 150.0, height: 20.0))
-		memberNumberLabel?.textColor = UIColor.greyWhite()
-		memberNumberLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
-		addSubview(memberNumberLabel!)
-		
-		ratingView = RatingView.init(frame: CGRect(x: frame.width - 145, y: 600.0, width: 117.0, height: 18.0))
-		ratingView?.ratingValue = 4
-		//addSubview(ratingView!)
-		
 	}
 	
 	func handleShowProfile() {
