@@ -158,6 +158,13 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 		self.navigationController?.pushViewController(seeCatergoryWorkoutsVC, animated: true)
 	}
 	
+	func handleCreateClub() {
+		
+		let createClubVC = CreateClubViewController()
+		let navBarVC = UINavigationController(rootViewController: createClubVC)
+		self.present(navBarVC, animated: true, completion: nil)
+		
+	}
 	
 	func becomeATrainer() {
 		

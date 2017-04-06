@@ -54,8 +54,8 @@ class FooterCell: BaseCell {
 		
 		
 		becomeATrainerButton.backgroundColor = UIColor.darkBlack()
-		becomeATrainerButton.setTitle("Upload your workout", with: UIFont.systemFont(ofSize: 15.0, weight: UIFontWeightBold), with: UIColor.paceBrandColor(), for: UIControlState())
-		becomeATrainerButton.addTarget(self, action: #selector(handleBecomeATrainer), forControlEvents: ASControlNodeEvent.touchUpInside)
+		becomeATrainerButton.setTitle("Create a club", with: UIFont.systemFont(ofSize: 15.0, weight: UIFontWeightBold), with: UIColor.paceBrandColor(), for: UIControlState())
+		becomeATrainerButton.addTarget(self, action: #selector(handleCreateClub), forControlEvents: ASControlNodeEvent.touchUpInside)
 		becomeATrainerButton.layer.cornerRadius = 7.5
 		addSubnode(becomeATrainerButton)
 		
@@ -104,9 +104,9 @@ class FooterCell: BaseCell {
 	}
 	
 	
-	func handleSendFeedback() {
+	func handleCreateClub() {
 		
-		discoveryVC?.sendFeedback()
+		discoveryVC?.handleCreateClub()
 		
 	}
 	
