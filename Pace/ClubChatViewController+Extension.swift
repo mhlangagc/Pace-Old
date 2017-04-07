@@ -25,6 +25,21 @@ extension ClubChatViewController {
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
 		let chatCell : ClubChatCell = collectionView.dequeueReusableCell(withReuseIdentifier: ClubChatCellID, for: indexPath) as! ClubChatCell
+		
+		if messagesArray[indexPath.item].message == "" {
+			
+			chatCell.messageTextView.isHidden = true
+			chatCell.runStatsContainerView.isHidden = false
+			chatCell.backgroundColor = .black
+			
+		} else {
+			
+			chatCell.messageTextView.isHidden = false
+			chatCell.runStatsContainerView.isHidden = true
+			chatCell.backgroundColor = .closeBlack()
+			
+		}
+		
 		chatCell.messagesModel = messagesArray[indexPath.item]
 		return chatCell
 		
@@ -42,11 +57,21 @@ extension ClubChatViewController {
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		
-		var height: CGFloat = 80
+		var height: CGFloat = 220
 		
 		if let text = messagesArray[indexPath.item].message {
 			
-			height = estimateFrameForText(text: text).height + 118
+			if messagesArray[indexPath.item].message == "" {
+			
+				height = 220.0
+				
+			} else {
+				
+				height = estimateFrameForText(text: text).height + 118
+				
+			}
+			
+			
 		
 		}
 		

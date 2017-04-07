@@ -96,17 +96,17 @@ class FooterCell: BaseCell {
 	
 	
 	
-	func handleBecomeATrainer() {
+	func handleCreateClub() {
 		
 	
-		discoveryVC?.becomeATrainer()
+		discoveryVC?.handleCreateClub()
 	
 	}
 	
 	
-	func handleCreateClub() {
+	func handleSendFeedback() {
 		
-		discoveryVC?.handleCreateClub()
+		discoveryVC?.sendFeedback()
 		
 	}
 	
