@@ -36,7 +36,7 @@ extension ClubChatViewController {
 			
 			chatCell.messageTextView.isHidden = false
 			chatCell.runStatsContainerView.isHidden = true
-			chatCell.backgroundColor = .closeBlack()
+			chatCell.backgroundColor = UIColor.paceBackgroundBlack()
 			
 		}
 		
@@ -71,8 +71,6 @@ extension ClubChatViewController {
 				
 			}
 			
-			
-		
 		}
 		
 		let width = UIScreen.main.bounds.width

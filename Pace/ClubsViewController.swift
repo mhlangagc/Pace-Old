@@ -138,7 +138,7 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		
 		self.setupWeekTableView()
 		navigationItem.title = "My Clubs"
-		view.backgroundColor = UIColor.black
+		view.backgroundColor = UIColor.closeBlack()
 		self.navigationBarItems()
 		self.setupRightNavItem()
 		clubsTableView?.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
@@ -170,8 +170,8 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		navigationNoLineBar()
 		self.navigationBarItems()
 		self.setupRightNavItem()
-		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.headerBlack()
 		
 	}
 	
@@ -198,7 +198,7 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		
 		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height)
 		clubsTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.plain)
-		clubsTableView?.backgroundColor = .closeBlack()
+		clubsTableView?.backgroundColor = UIColor.closeBlack()
 		clubsTableView?.delegate = self
 		clubsTableView?.dataSource = self
 		clubsTableView?.separatorStyle = .none

@@ -20,12 +20,12 @@ extension ClubsViewController {
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		
 		let sectionHeaderView : UIView = UIView.init(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 55))
-		sectionHeaderView.backgroundColor = UIColor.closeBlack()
+		sectionHeaderView.backgroundColor = UIColor.clear
 		
 		
 		let sectionHeaderLabel: UILabel = UILabel.init(frame: CGRect(x: 20.0, y: 15.0, width: tableView.frame.width - 20, height: 25))
 		sectionHeaderLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
-		sectionHeaderLabel.textColor = UIColor.greyBlackColor()
+		sectionHeaderLabel.textColor = UIColor.greyWhite()
 		sectionHeaderLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
 		sectionHeaderView.addSubview(sectionHeaderLabel)
 		
@@ -52,7 +52,7 @@ extension ClubsViewController {
 		
 		if section == 0 {
 			
-			return "MY CLUBS"
+			return "RUNNING CLUBS"
 			
 		} else {
 			
@@ -96,7 +96,7 @@ extension ClubsViewController {
 			}
 			
 			clubCell?.clubsViewController = self
-			clubCell?.backgroundColor = UIColor.closeBlack()
+			clubCell?.backgroundColor = UIColor.clear
 			
 			return clubCell!
 
@@ -126,7 +126,7 @@ extension ClubsViewController {
 				
 			}
 		
-			workoutCell?.backgroundColor = UIColor.closeBlack()
+			workoutCell?.backgroundColor = UIColor.clear
 			
 			
 			return workoutCell!

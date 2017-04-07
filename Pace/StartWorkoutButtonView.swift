@@ -15,11 +15,11 @@ class StartWorkoutButtonView: BaseView {
 	lazy var startWorkoutButton: UIButton = {
 		
 		let button = UIButton()
-		button.setTitle("START RUN", for: UIControlState.normal)
+		button.setTitle("START RUNNING", for: UIControlState.normal)
 		button.setTitleColor(UIColor.paceBrandColor(), for: UIControlState.normal)
 		button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
 		textSpacing((button.titleLabel)!, spacing: 1.0)
-		button.backgroundColor = UIColor(fromHexString: "14161B")
+		button.backgroundColor = UIColor(fromHexString: "272932")
 		button.layer.cornerRadius = 6.0
 		button.layer.masksToBounds = true
 		button.addTarget(self, action: #selector(handleStartRun), for: UIControlEvents.touchUpInside)
@@ -31,7 +31,7 @@ class StartWorkoutButtonView: BaseView {
 	let line: UIView = {
 		
 		let view = UIView()
-		view.backgroundColor = UIColor(fromHexString: "282C36")
+		view.backgroundColor = UIColor(fromHexString: "272932")
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 		
@@ -40,7 +40,7 @@ class StartWorkoutButtonView: BaseView {
 	override func setupViews() {
 		super.setupViews()
 		
-		backgroundColor = .paceBackgroundBlack()
+		backgroundColor = .headerBlack()
 		
 		addSubview(startWorkoutButton)
 		addSubview(line)

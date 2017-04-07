@@ -15,7 +15,7 @@ class ClubChatCell: CollectionBaseCell {
 		let imageView = UIImageView()
 		imageView.contentMode = .scaleAspectFill
 		imageView.layer.masksToBounds = true
-		imageView.backgroundColor = UIColor.darkerBlack()
+		imageView.backgroundColor = UIColor.headerBlack()
 		imageView.layer.cornerRadius = 36 * 0.5
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		return imageView
@@ -25,7 +25,7 @@ class ClubChatCell: CollectionBaseCell {
 	let nameLabel : UILabel = {
 		
 		let label = UILabel()
-		label.textColor = UIColor(fromHexString: "97A9CA")
+		label.textColor = UIColor.white
 		label.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBlack)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
@@ -50,6 +50,7 @@ class ClubChatCell: CollectionBaseCell {
 		let tView = UITextView()
 		tView.text = "A delicious wave of Calamari black mussels, clams, crab…"
 		tView.textColor = UIColor.greyWhite()
+		tView.isScrollEnabled = false
 		tView.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightSemibold)
 		tView.translatesAutoresizingMaskIntoConstraints = false
 		tView.backgroundColor = UIColor.clear
@@ -196,8 +197,9 @@ class ClubChatCell: CollectionBaseCell {
 	let timeStampLabel : UILabel = {
 		
 		let label = UILabel()
-		label.textColor = UIColor(fromHexString: "282E3E")
-		label.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightBold)
+		label.textColor = UIColor.greyBlackColor()
+		label.textAlignment = .right
+		label.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightSemibold)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 		
@@ -247,7 +249,7 @@ class ClubChatCell: CollectionBaseCell {
 		
 		addSubview(profileImageView)
 		addSubview(nameLabel)
-		addSubview(likeImageView)
+//		addSubview(likeImageView)
 		addSubview(messageTextView)
 		addSubview(runStatsContainerView)
 		addSubview(timeStampLabel)
@@ -258,21 +260,21 @@ class ClubChatCell: CollectionBaseCell {
 		profileImageView.heightAnchor.constraint(equalToConstant: 36).isActive = true
 		
 		
-		likeImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24).isActive = true
-		likeImageView.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor).isActive = true
-		likeImageView.widthAnchor.constraint(equalToConstant: 18).isActive = true
-		likeImageView.heightAnchor.constraint(equalToConstant: 17).isActive = true
+		timeStampLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24).isActive = true
+		timeStampLabel.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor).isActive = true
+		timeStampLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
+		timeStampLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
 		
 		
 		nameLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 10).isActive = true
 		nameLabel.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor).isActive = true
-		nameLabel.rightAnchor.constraint(equalTo: likeImageView.leftAnchor, constant: -10).isActive = true
-		likeImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+		nameLabel.widthAnchor.constraint(equalToConstant: 160).isActive = true
+		nameLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
 		
-		timeStampLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 11).isActive = true
-		timeStampLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -18).isActive = true
-		timeStampLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24).isActive = true
-		timeStampLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+//		timeStampLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 11).isActive = true
+//		timeStampLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -18).isActive = true
+//		timeStampLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24).isActive = true
+//		timeStampLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
 		
 		
 		runStatsContainerView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
@@ -280,10 +282,10 @@ class ClubChatCell: CollectionBaseCell {
 		runStatsContainerView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant : 2).isActive = true
 		runStatsContainerView.bottomAnchor.constraint(equalTo: timeStampLabel.topAnchor, constant: -8).isActive = true
 		
-		messageTextView.rightAnchor.constraint(equalTo: likeImageView.rightAnchor).isActive = true
+		messageTextView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24).isActive = true
 		messageTextView.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 8).isActive = true
 		messageTextView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant : 2).isActive = true
-		messageTextView.bottomAnchor.constraint(equalTo: timeStampLabel.topAnchor, constant: -16).isActive = true
+		messageTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -24).isActive = true
 		
 		
 		

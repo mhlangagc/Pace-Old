@@ -13,7 +13,7 @@ class CreateClubViewController : UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		view.backgroundColor = UIColor.black
+		view.backgroundColor = UIColor.paceBackgroundBlack()
 		self.setupNavBar()
 		
 	}
@@ -25,8 +25,8 @@ class CreateClubViewController : UIViewController {
 		self.navigationController?.navigationBar.barTintColor = UIColor.paceBrandColor()
 		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.done, target: self, action: #selector(handleShowPreview))
 		navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.done, target: self, action: #selector(handleCancel))
-		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.headerBlack()
 		
 	}
 	

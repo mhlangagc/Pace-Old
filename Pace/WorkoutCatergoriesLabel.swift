@@ -19,7 +19,7 @@ class EventCollectionLabel: BaseCell {
 		
 		self.eventLabelSetup()
 		
-		backgroundColor = UIColor.black
+		backgroundColor = UIColor.clear
 		
 	}
 	
@@ -32,7 +32,7 @@ class EventCollectionLabel: BaseCell {
 			string: "Featured Clubs".uppercased(),
 			attributes: [
 				NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightHeavy),
-				NSForegroundColorAttributeName: UIColor.greyBlackColor(),
+				NSForegroundColorAttributeName: UIColor.greyWhite(),
 				NSKernAttributeName: 0.0,
 				NSParagraphStyleAttributeName: alignmentStyle
 			])

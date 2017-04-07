@@ -53,7 +53,7 @@ class EventCollection: ASCellNode, ASCollectionDelegate, ASCollectionDataSource 
 		catergoryCollection?.view.leadingScreensForBatching = 1.0
 		catergoryCollection?.view.alwaysBounceHorizontal = true
 		catergoryCollection?.view.allowsSelection = true
-		catergoryCollection?.view.backgroundColor = UIColor.black
+		catergoryCollection?.view.backgroundColor = UIColor.clear
 		
 		
 	}

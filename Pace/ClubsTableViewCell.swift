@@ -44,7 +44,7 @@ class ClubsTableViewCell : TableBaseCell, UICollectionViewDelegateFlowLayout, UI
 		layout.scrollDirection = .horizontal
 		let frame = CGRect(x: 0.0, y: 0.0, width: 375, height: 210)
 		let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-		collectionView.backgroundColor = UIColor.closeBlack()
+		collectionView.backgroundColor = UIColor.clear
 		collectionView.showsHorizontalScrollIndicator = false
 		return collectionView
 		
@@ -80,7 +80,7 @@ class ClubsTableViewCell : TableBaseCell, UICollectionViewDelegateFlowLayout, UI
 			
 		}
 		
-		backgroundColor = .closeBlack()
+		backgroundColor = .paceBackgroundBlack()
 		
 	}
 	
@@ -113,7 +113,7 @@ class ClubsTableViewCell : TableBaseCell, UICollectionViewDelegateFlowLayout, UI
 		}
 		
 		clubCell?.clubModel = self.clubsArray[indexPath.item]
-		clubCell?.backgroundColor = UIColor.closeBlack()
+		clubCell?.backgroundColor = UIColor.clear
 		
 		return clubCell!
 		

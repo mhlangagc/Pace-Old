@@ -14,34 +14,49 @@ public extension UIColor {
 		return UIColor(fromHexString: "50E3C2")
 	}
 	
+	static func greyWhite() -> UIColor {
+	
+		return UIColor(fromHexString: "C9D5EB")
+	
+	}
+	
 	static func greyBlackColor() -> UIColor {
 		
-		return UIColor(fromHexString: "485870")
-	}
-	
-	static func darkBlack() -> UIColor {
-		return UIColor(fromHexString: "14161B") 
-	}
-	
-	static func offWhite() -> UIColor {
-		return UIColor(fromHexString: "D2D7E4")
-	}
-	
-	static func greyWhite() -> UIColor {
-		return UIColor(fromHexString: "C9D5EB")
-	}
-	
-	static func headerBlack() -> UIColor {
-		return UIColor(fromHexString: "0B0C0E")
-	}
-	
-	static func darkerBlack() -> UIColor {
-		return UIColor(fromHexString: "080A0B")
+		return UIColor(fromHexString: "6E7A8F")
 	}
 	
 	static func paceBackgroundBlack() -> UIColor {
-		return UIColor(fromHexString: "0B0C0E")
+		
+		return UIColor(fromHexString: "14161B")
+	
 	}
+	
+	static func headerBlack() -> UIColor {
+		
+		return UIColor(fromHexString: "0F1013")
+		
+	}
+	
+	
+	static func darkBlack() -> UIColor {
+		
+		return UIColor(fromHexString: "14161B")
+	
+	}
+	
+	static func offWhite() -> UIColor {
+		
+		return UIColor(fromHexString: "D2D7E4")
+	
+	}
+
+	
+	static func darkerBlack() -> UIColor {
+		
+		return UIColor(fromHexString: "080A0B")
+	
+	}
+	
 	
 	static func closeBlack() -> UIColor {
 		

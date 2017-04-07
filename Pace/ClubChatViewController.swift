@@ -168,7 +168,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		flowLayout.minimumLineSpacing       = 16
 		flowLayout.scrollDirection = .vertical
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-		collectionView.backgroundColor = UIColor.closeBlack()
+		collectionView.backgroundColor = UIColor.paceBackgroundBlack()
 		collectionView.delegate = self
 		collectionView.dataSource = self
 		collectionView.contentInset = UIEdgeInsets(top: 8.0, left: 0.0, bottom: 56.0, right: 0.0)
@@ -185,7 +185,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		view.backgroundColor = UIColor.closeBlack()
+		view.backgroundColor = UIColor.paceBackgroundBlack()
 		self.setupNavBar()
 		self.setupKeyboardObservers()
 		
@@ -208,8 +208,8 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		
 		// Title
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.headerBlack()
 		self.navigationController?.navigationBar.tintColor = UIColor.white
 		
 		//	Title

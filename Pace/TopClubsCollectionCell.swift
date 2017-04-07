@@ -35,7 +35,7 @@ class TopClubsCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 		flowLayout.scrollDirection = .horizontal
 		flowLayout.sectionInset = UIEdgeInsets(top: 22.5, left: 20.0, bottom: 22.5, right: 20.0)
 		self.featuredCollectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
-		self.featuredCollectionNode?.backgroundColor = .black
+		self.featuredCollectionNode?.backgroundColor = .clear
 		self.featuredCollectionNode?.view.showsHorizontalScrollIndicator = false
 		self.addSubnode(self.featuredCollectionNode!)
 		
@@ -59,14 +59,14 @@ class TopClubsCollectionCell: ASCellNode, ASCollectionDelegate, ASCollectionData
 	
 	func setupCollectionNodes() {
 		
-		backgroundColor = UIColor.black
+		backgroundColor = UIColor.clear
 		
 		featuredCollectionNode?.delegate   = self
 		featuredCollectionNode?.dataSource = self
 		featuredCollectionNode?.view.leadingScreensForBatching = 5.0
 		featuredCollectionNode?.view.alwaysBounceHorizontal = true
 		featuredCollectionNode?.view.allowsSelection = true
-		featuredCollectionNode?.view.backgroundColor = UIColor.black
+		featuredCollectionNode?.view.backgroundColor = UIColor.clear
 		
 	}
 	
