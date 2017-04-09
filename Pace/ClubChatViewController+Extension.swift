@@ -36,7 +36,7 @@ extension ClubChatViewController {
 			
 			chatCell.messageTextView.isHidden = false
 			chatCell.runStatsContainerView.isHidden = true
-			chatCell.backgroundColor = UIColor.paceBackgroundBlack()
+			chatCell.backgroundColor = UIColor.clear
 			
 		}
 		
@@ -63,11 +63,11 @@ extension ClubChatViewController {
 			
 			if messagesArray[indexPath.item].message == "" {
 			
-				height = 220.0
+				height = 200.0
 				
 			} else {
 				
-				height = estimateFrameForText(text: text).height + 118
+				height = estimateFrameForText(text: text).height + 100
 				
 			}
 			

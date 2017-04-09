@@ -17,6 +17,8 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 	var workoutCompletedTableView : UITableView?
 	var trainer = User()
 	var club : ClubModel?
+	var userName: String?
+	var userSendingImageURL: String?
 	let exerciseCellID = "exerciseCellID"
 	
 	var run: RunModel?
@@ -115,6 +117,17 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 		
 	}
 	
+	
+	//	Time
+	var mins : Int?
+	var secs : Int?
+	
+	//	Distance
+	var distance: String?
+	
+	//	Pace 
+	var pace: String?
+	
 	func configureViewDetails() {
 		
 		let dateFormatter = DateFormatter()
@@ -125,14 +138,15 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 		let secondsQuantity = HKQuantity(unit: HKUnit.second(), doubleValue: Double(s))
 		let minutesQuantity = HKQuantity(unit: HKUnit.minute(), doubleValue: Double(m))
 		_ = HKQuantity(unit: HKUnit.hour(), doubleValue: Double(h))
-		let secs = Int(secondsQuantity.doubleValue(for: HKUnit.second()))
-		let mins = Int(minutesQuantity.doubleValue(for: HKUnit.minute()))
-		headerView.runningDurationLabel?.text = "\(String(format: "%02d", mins)):\(String(format: "%02d", secs))"
+		
+		secs = Int(secondsQuantity.doubleValue(for: HKUnit.second()))
+		mins = Int(minutesQuantity.doubleValue(for: HKUnit.minute()))
+		headerView.runningDurationLabel?.text = "\(String(format: "%02d", mins!)):\(String(format: "%02d", secs!))"
 		
 		
 		let distanceQuantity = HKQuantity(unit: HKUnit.meter(), doubleValue: Double((run?.distance)!)).doubleValue(for: HKUnit.meter())
-		let distanceInKm = (distanceQuantity/1000).roundToPlaces(places: 2)
-		headerView.distanceLabel?.text = "\(distanceInKm)"
+		distance = "\((distanceQuantity/1000).roundToPlaces(places: 2))"
+		headerView.distanceLabel?.text = distance
 		
 		let minutes = Double((run?.duration)!)/60.0
 		let kilometers = Double((run?.distance)!)/1000
@@ -142,6 +156,7 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 			
 		} else {
 			
+			pace = "\(String((minutes/kilometers).roundToPlaces(places: 2)))"
 			headerView.paceNumberLabel?.text = "\(String((minutes/kilometers).roundToPlaces(places: 2)))"
 			
 		}
@@ -246,12 +261,79 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 	}
 	
 	
+	func handlePostDataToUser(completion: @escaping ()->()) {
+		
+		let clubID = (club?.clubID)!
+		let ref = FIRDatabase.database().reference().child("ClubMessages")
+		let childRef = ref.childByAutoId()
+		let userID = FIRAuth.auth()!.currentUser!.uid
+		
+		
+		let values = ["imageUrl": "",
+		              "message" : "",
+		              "userSending": userID,
+		              "userSendingName": userName!,
+		              "userSendingImageURL": userSendingImageURL!,
+		              "timeStamp": Int(NSDate().timeIntervalSince1970),
+		              "minutes" : mins!,
+		              "seconds" : secs!,
+		              "distance" : distance!,
+		              "pace" : pace!,
+		              "teamID": clubID] as [String : Any]
+		
+		childRef.updateChildValues(values) { (error, ref) in
+			
+			if error != nil {
+				print((error?.localizedDescription)!)
+				return
+			}
+			
+			let userRunsRef = FIRDatabase.database().reference().child("fan-user-runningData").child(userID)
+			let messageId = childRef.key
+			userRunsRef.updateChildValues([messageId: 1])
+			
+			self.handlePostDataToClub()
+			
+			completion()
+			
+		}
+		
+	}
+	
+	func handlePostDataToClub() {
+		
+		let clubID = (club?.clubID)!
+		let runningClubRef = FIRDatabase.database().reference().child("ClubRunningData")
+		let childRef_2 = runningClubRef.childByAutoId()
+		let values_2 = ["timeStamp": Int(NSDate().timeIntervalSince1970),
+		                "minutes" : self.mins!,
+		                "seconds" : self.secs!,
+		                "distance" : self.distance!,
+		                "pace" : self.pace!,
+		                "teamID": clubID] as [String : Any]
+		childRef_2.updateChildValues(values_2)
+		
+		
+		let workoutTeamMessagesRef = FIRDatabase.database().reference().child("fan-club-RunningData").child(clubID)
+		let messageId_2 = childRef_2.key
+		workoutTeamMessagesRef.updateChildValues([messageId_2: 1])
+		
+	}
+	
 	
 	func handleDoneWorkout() {
 		
+		
+		
 		self.dismiss(animated: true) { 
 			
-			//	post data to Club
+			self.handlePostDataToUser {
+				
+				// analytics
+				
+
+				
+			}
 			
 		}
 		

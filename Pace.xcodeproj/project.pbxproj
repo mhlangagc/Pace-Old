@@ -842,6 +842,7 @@
 		45B5AD7B1DFBFA4100115E2C /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				C6F8F03E1E963EA3006F503A /* MessageComposer.swift */,
 				45B5AD841DFBFAF500115E2C /* Colors.swift */,
 				452902191DFC2AA600CE0C81 /* BaseCell.swift */,
 				45E3C07A1DFD9A4B002FD4F8 /* BaseView.swift */,
@@ -1026,7 +1027,6 @@
 				C627E1CD1E925FA400816750 /* ChatBarViews */,
 				C627E1C91E925CC100816750 /* ClubChatViewController.swift */,
 				C6F0D9481E92E97300BF56C1 /* ClubChatViewController+Extension.swift */,
-				C6F8F03E1E963EA3006F503A /* MessageComposer.swift */,
 				C6F0D94A1E92EBDD00BF56C1 /* ClubChatCell.swift */,
 			);
 			name = "Clubs Posts";

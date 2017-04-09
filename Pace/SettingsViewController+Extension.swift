@@ -91,7 +91,7 @@ extension SettingsViewController {
 		default:
 			
 			settingsCell?.settingsModel = logoutArray?[indexPath.item]
-			settingsCell?.settingName.textColor = UIColor(fromHexString: "303C4E")
+			settingsCell?.settingName.textColor = UIColor(fromHexString: "F71952")
 			return settingsCell!
 		}
 

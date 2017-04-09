@@ -60,7 +60,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		self.setupWorkoutDetailsTableView()
 		self.setupNavigationBar()
 		self.setupJoinButton()
-		view.backgroundColor = UIColor.paceBackgroundBlack()
+		view.backgroundColor = UIColor.closeBlack()
 		workoutDetailsTableView?.register(ExerciseCellView.self, forCellReuseIdentifier: exerciseCellID)
 		
 		self.setupHeaderView()
@@ -98,7 +98,7 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height - 144.0)
 		workoutDetailsTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.plain)
-		workoutDetailsTableView?.backgroundColor = .paceBackgroundBlack()
+		workoutDetailsTableView?.backgroundColor = .closeBlack()
 		workoutDetailsTableView?.delegate = self
 		workoutDetailsTableView?.dataSource = self
 		workoutDetailsTableView?.separatorStyle = .none
@@ -141,8 +141,8 @@ class WorkoutViewController : UIViewController, UITableViewDataSource, UITableVi
 		
 		navigationNoLineBar()
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "shareVC"), style: UIBarButtonItemStyle.done, target: self, action: #selector(handleShareWorkout))
-		self.navigationController?.navigationBar.barTintColor = UIColor.darkerBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.darkerBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.headerBlack()
 		
 	}
 	

@@ -33,7 +33,7 @@ class ClubDetailsViewController : UIViewController, UITableViewDataSource, UITab
 		self.setupNavigationBar()
 		self.setupWorkoutDetailsTableView()
 		self.setupHeaderView()
-		view.backgroundColor = UIColor.black
+		view.backgroundColor = UIColor.closeBlack()
 		
 		paceAppService.retrieveClubMembers(clubID: (self.club?.clubID)!) { (membersRetrived) in
 			
@@ -48,7 +48,7 @@ class ClubDetailsViewController : UIViewController, UITableViewDataSource, UITab
 		
 		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height)
 		workoutDetailsTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.plain)
-		workoutDetailsTableView?.backgroundColor = .black
+		workoutDetailsTableView?.backgroundColor = .closeBlack()
 		workoutDetailsTableView?.delegate = self
 		workoutDetailsTableView?.dataSource = self
 		workoutDetailsTableView?.separatorStyle = .none
@@ -68,8 +68,8 @@ class ClubDetailsViewController : UIViewController, UITableViewDataSource, UITab
 	func setupNavigationBar() {
 		
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.darkerBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.darkerBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.headerBlack()
 		
 		//	Right Bar
 		let moreButton = UIButton(type: .system)

@@ -45,8 +45,8 @@ class ReadyViewController: UIViewController {
 	func setupNavBar() {
 		
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.closeBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.closeBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
 		
 		
 		let titleLabel = UILabel(frame: CGRect(x: ((view.frame.width - 100) * 0.5), y: 5, width: 100, height: view.frame.height))
@@ -95,6 +95,8 @@ class ReadyViewController: UIViewController {
 	
 	func handleStartRunning() {
 		
+		let runVC = RunViewController()
+		runVC.club = self.club
 		self.navigationController?.pushViewController(RunViewController(), animated: true)
 		
 	}

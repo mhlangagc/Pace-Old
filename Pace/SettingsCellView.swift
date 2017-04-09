@@ -40,7 +40,7 @@ class SettingsCellView : TableBaseCell {
 	let settingDetailName: UILabel = {
 		
 		let label = UILabel()
-		label.textColor = UIColor(fromHexString: "303C4E")
+		label.textColor = UIColor.greyBlackColor()
 		label.textAlignment = .right
 		label.font = UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightBold)
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -54,7 +54,7 @@ class SettingsCellView : TableBaseCell {
 		let imageView = UIImageView()
 		imageView.contentMode = .scaleAspectFill
 		imageView.image = UIImage(named: "DisclosureIndicator")?.withRenderingMode(.alwaysTemplate)
-		imageView.tintColor = UIColor(fromHexString: "303C4E")
+		imageView.tintColor = UIColor.greyBlackColor()
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		return imageView
 		
@@ -93,7 +93,7 @@ class SettingsCellView : TableBaseCell {
 	override func setupViews() {
 		super.setupViews()
 		
-		backgroundColor = UIColor.black
+		backgroundColor = UIColor.closeBlack()
 		self.setupView()
 		
 		

@@ -42,7 +42,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		textField.borderStyle = .none
 		textField.keyboardType = .default
 		textField.keyboardAppearance = .dark
-		textField.backgroundColor = .black
+		textField.backgroundColor = .clear
 		textField.autocapitalizationType = .sentences
 		textField.textColor = UIColor.white
 		textField.tintColor = UIColor.paceBrandColor()
@@ -97,7 +97,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 	lazy var chatContainerView : UIView = {
 		
 		let containerView = UIView()
-		containerView.backgroundColor = UIColor.black
+		containerView.backgroundColor = UIColor.headerBlack()
 		containerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 56)
 		
 //		containerView.addSubview(self.addImageButton)
@@ -168,7 +168,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		flowLayout.minimumLineSpacing       = 16
 		flowLayout.scrollDirection = .vertical
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-		collectionView.backgroundColor = UIColor.paceBackgroundBlack()
+		collectionView.backgroundColor = UIColor.closeBlack()
 		collectionView.delegate = self
 		collectionView.dataSource = self
 		collectionView.contentInset = UIEdgeInsets(top: 8.0, left: 0.0, bottom: 56.0, right: 0.0)
@@ -185,7 +185,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		view.backgroundColor = UIColor.paceBackgroundBlack()
+		view.backgroundColor = UIColor.closeBlack()
 		self.setupNavBar()
 		self.setupKeyboardObservers()
 		
@@ -202,6 +202,12 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 			
 		})
 		
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		
+		self.setupNavBar()
 	}
 	
 	func setupNavBar() {

@@ -19,8 +19,8 @@ class UserProfileViewController : UIViewController, UITableViewDelegate, UITable
 		super.viewWillDisappear(true)
 		
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.headerBlack()
 		
 	}
 	
@@ -28,7 +28,7 @@ class UserProfileViewController : UIViewController, UITableViewDelegate, UITable
 		
 		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height)
 		profileTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.grouped)
-		profileTableView?.backgroundColor = UIColor.black
+		profileTableView?.backgroundColor = UIColor.closeBlack()
 		profileTableView?.delegate = self
 		profileTableView?.dataSource = self
 		profileTableView?.separatorStyle = .none
@@ -42,11 +42,11 @@ class UserProfileViewController : UIViewController, UITableViewDelegate, UITable
 		
 		profileTableView?.register(RunsCellView.self, forCellReuseIdentifier: runsCellID)
 		self.navigationController?.navigationBar.isHidden = false
-		view.backgroundColor = .black
+		view.backgroundColor = .closeBlack()
 		self.setupWorkoutDetailsTableView()
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.headerBlack()
 		
 		
 	}
@@ -58,8 +58,8 @@ class UserProfileViewController : UIViewController, UITableViewDelegate, UITable
 		self.profileTableView?.reloadData()
 		self.navigationController?.navigationBar.isHidden = false
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.headerBlack()
 		
 	}
 	

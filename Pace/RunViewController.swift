@@ -21,7 +21,7 @@ class RunViewController: UIViewController, CLLocationManagerDelegate {
 	
 	@IBOutlet weak var resumeRun: UIButton!
 	@IBOutlet weak var stopRun: UIButton!
-	
+	var club : ClubModel?
 	var musicPlayerView : MusicPlayerView?
 	var run: RunModel?
 	lazy var locations = [CLLocation]()
@@ -246,6 +246,7 @@ class RunViewController: UIViewController, CLLocationManagerDelegate {
 			print("Run Saved")
 			let runCompleteVC = CompletedRunViewController()
 			runCompleteVC.run = self.run
+			runCompleteVC.club = self.club
 			self.navigationController?.pushViewController(runCompleteVC, animated: true)
 		}
 	

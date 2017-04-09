@@ -57,7 +57,7 @@ class MusicPlayerView : BaseView {
 	override func setupViews() {
 		super.setupViews()
 		
-		backgroundColor = UIColor.black
+		backgroundColor = UIColor.headerBlack()
 		
 		self.addButtonViews()
 	
