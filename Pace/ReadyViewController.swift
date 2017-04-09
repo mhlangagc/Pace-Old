@@ -10,7 +10,6 @@ import UIKit
 
 class ReadyViewController: UIViewController {
 	
-	var club: ClubModel?
 	var musicPlayerView : MusicPlayerView?
 	lazy var goButtonView: GoButtonView = {
 		
@@ -28,6 +27,7 @@ class ReadyViewController: UIViewController {
 		self.setupNavBar()
 		self.setupPlayerView()
 		self.setupGoButtonView()
+		
        
     }
 	
@@ -89,14 +89,12 @@ class ReadyViewController: UIViewController {
 			
 			//	TO DO
 			
-			
 		}
 	}
 	
 	func handleStartRunning() {
 		
 		let runVC = RunViewController()
-		runVC.club = self.club
 		self.navigationController?.pushViewController(RunViewController(), animated: true)
 		
 	}

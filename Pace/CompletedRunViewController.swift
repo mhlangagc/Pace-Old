@@ -16,9 +16,6 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 	var headerView =  CompletedRunHeaderView()
 	var workoutCompletedTableView : UITableView?
 	var trainer = User()
-	var club : ClubModel?
-	var userName: String?
-	var userSendingImageURL: String?
 	let exerciseCellID = "exerciseCellID"
 	
 	var run: RunModel?
@@ -262,8 +259,7 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 	
 	
 	func handlePostDataToUser(completion: @escaping ()->()) {
-		
-		let clubID = (club?.clubID)!
+		 
 		let ref = FIRDatabase.database().reference().child("ClubMessages")
 		let childRef = ref.childByAutoId()
 		let userID = FIRAuth.auth()!.currentUser!.uid
@@ -272,8 +268,8 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 		let values = ["imageUrl": "",
 		              "message" : "",
 		              "userSending": userID,
-		              "userSendingName": userName!,
-		              "userSendingImageURL": userSendingImageURL!,
+		              "userSendingName": usersName,
+		              "userSendingImageURL": usersImageURL,
 		              "timeStamp": Int(NSDate().timeIntervalSince1970),
 		              "minutes" : mins!,
 		              "seconds" : secs!,
@@ -302,7 +298,6 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 	
 	func handlePostDataToClub() {
 		
-		let clubID = (club?.clubID)!
 		let runningClubRef = FIRDatabase.database().reference().child("ClubRunningData")
 		let childRef_2 = runningClubRef.childByAutoId()
 		let values_2 = ["timeStamp": Int(NSDate().timeIntervalSince1970),
@@ -323,15 +318,9 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 	
 	func handleDoneWorkout() {
 		
-		
-		
-		self.dismiss(animated: true) { 
-			
-			self.handlePostDataToUser {
+		self.handlePostDataToUser {
 				
-				// analytics
-				
-
+			self.dismiss(animated: true) {
 				
 			}
 			

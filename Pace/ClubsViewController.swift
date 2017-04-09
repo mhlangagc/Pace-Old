@@ -10,6 +10,10 @@
 import Firebase
 import UIKit
 
+var usersName = String()
+var usersImageURL = String()
+var clubID = String()
+
 class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	
 	var clubsTableView : UITableView?
@@ -155,8 +159,8 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 			
 			if let userName  = userFound.name, let profileImageURL = userFound.profileImageUrl {
 				
-				self.userName = userName
-				self.userImageURL = profileImageURL
+				usersName = userName
+				usersImageURL = profileImageURL
 			}
 			
 		})
@@ -217,9 +221,8 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 	
 	func handleClubSelection(clubSelected: ClubModel) {
 		
+		clubID = clubSelected.clubID!
 		let clubMessagesVC = ClubChatViewController()
-		clubMessagesVC.userName = userName
-		clubMessagesVC.userImageURL = userImageURL
 		clubMessagesVC.clubModel = clubSelected
 		clubMessagesVC.hidesBottomBarWhenPushed = true
 		self.navigationController?.pushViewController(clubMessagesVC, animated: true)

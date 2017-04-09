@@ -21,9 +21,6 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 	var messagesArray = [TeamMessagesModel]()
 	var imageUrl: String?
 	
-	var userName: String?
-	var userImageURL : String?
-	
 	var trainer = User()
 	var exploreWorkout : ExploreWorkoutModel?
 	
@@ -189,7 +186,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		self.setupNavBar()
 		self.setupKeyboardObservers()
 		
-		self.observeTeamMessages(clubID: (clubModel?.clubID)!, completion: { (clubMessagesArray) in
+		self.observeTeamMessages(clubID: clubID, completion: { (clubMessagesArray) in
 			
 			self.messagesArray = clubMessagesArray
 			self.setupCollectionView()
@@ -201,6 +198,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 			self.clubChatCollectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.bottom, animated: true)
 			
 		})
+		
 		
 	}
 	
@@ -391,7 +389,6 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 	
 	func handleSend() {
 		
-		let clubID = (clubModel?.clubID)!
 		let ref = FIRDatabase.database().reference().child("ClubMessages")
 		let childRef = ref.childByAutoId()
 		let userID = FIRAuth.auth()!.currentUser!.uid
@@ -404,8 +401,8 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 				let values = ["imageUrl": imageUrl!,
 				              "message" : inputTextField.text!,
 				              "userSending": userID,
-				              "userSendingName": userName!,
-				              "userSendingImageURL": userImageURL!,
+				              "userSendingName": usersName,
+				              "userSendingImageURL": usersImageURL,
 				              "timeStamp": Int(NSDate().timeIntervalSince1970),
 				              "teamID": clubID] as [String : Any]
 				
@@ -436,8 +433,8 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 			let values = ["imageUrl": "",
 			              "message" : inputTextField.text!,
 			              "userSending": userID,
-			              "userSendingName": userName!,
-			              "userSendingImageURL": userImageURL!,
+			              "userSendingName": usersName,
+			              "userSendingImageURL": usersImageURL,
 			              "timeStamp": Int(NSDate().timeIntervalSince1970),
 			              "teamID": clubID] as [String : Any]
 			
@@ -485,7 +482,6 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 	func handleStartWorkout() {
 		
 		let readyToRunVC = ReadyViewController()
-		readyToRunVC.club = self.clubModel
 		let readyNavBar = UINavigationController(rootViewController: readyToRunVC)
 		self.navigationController?.present(readyNavBar, animated: true, completion: {
 			
