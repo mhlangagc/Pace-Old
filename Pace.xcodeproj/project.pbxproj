@@ -136,6 +136,8 @@
 		C627E1CF1E925FB700816750 /* StartWorkoutButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627E1CE1E925FB700816750 /* StartWorkoutButtonView.swift */; };
 		C627E1D11E925FE100816750 /* ChatImageSelectionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627E1D01E925FE100816750 /* ChatImageSelectionBarView.swift */; };
 		C63439781E4174C000AC9E80 /* LoadImageWithCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63439771E4174C000AC9E80 /* LoadImageWithCache.swift */; };
+		C64E74961EA2B4430084A07F /* ShareButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E74951EA2B4430084A07F /* ShareButtonView.swift */; };
+		C64E74981EA2D0FB0084A07F /* ClubRunsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E74971EA2D0FB0084A07F /* ClubRunsCell.swift */; };
 		C65105141E758C2E007AD119 /* WorkoutDaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65105131E758C2E007AD119 /* WorkoutDaysViewModel.swift */; };
 		C65CAAD71E3E78A90047B78A /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CAAD61E3E78A90047B78A /* HealthKitManager.swift */; };
 		C65CAADC1E3E7BC50047B78A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65CAADB1E3E7BC50047B78A /* HealthKit.framework */; };
@@ -355,6 +357,8 @@
 		C627E1CE1E925FB700816750 /* StartWorkoutButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartWorkoutButtonView.swift; sourceTree = "<group>"; };
 		C627E1D01E925FE100816750 /* ChatImageSelectionBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatImageSelectionBarView.swift; sourceTree = "<group>"; };
 		C63439771E4174C000AC9E80 /* LoadImageWithCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadImageWithCache.swift; sourceTree = "<group>"; };
+		C64E74951EA2B4430084A07F /* ShareButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareButtonView.swift; sourceTree = "<group>"; };
+		C64E74971EA2D0FB0084A07F /* ClubRunsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubRunsCell.swift; sourceTree = "<group>"; };
 		C65105131E758C2E007AD119 /* WorkoutDaysViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutDaysViewModel.swift; sourceTree = "<group>"; };
 		C65CAAD61E3E78A90047B78A /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		C65CAADA1E3E7BB70047B78A /* Pace.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Pace.entitlements; path = Pace/Pace.entitlements; sourceTree = "<group>"; };
@@ -1027,6 +1031,7 @@
 				C627E1CD1E925FA400816750 /* ChatBarViews */,
 				C627E1C91E925CC100816750 /* ClubChatViewController.swift */,
 				C6F0D9481E92E97300BF56C1 /* ClubChatViewController+Extension.swift */,
+				C64E74971EA2D0FB0084A07F /* ClubRunsCell.swift */,
 				C6F0D94A1E92EBDD00BF56C1 /* ClubChatCell.swift */,
 			);
 			name = "Clubs Posts";
@@ -1078,6 +1083,15 @@
 				C627E1D01E925FE100816750 /* ChatImageSelectionBarView.swift */,
 			);
 			name = ChatBarViews;
+			sourceTree = "<group>";
+		};
+		C64E74941EA2B4220084A07F /* HeaderandFooterView */ = {
+			isa = PBXGroup;
+			children = (
+				C61AD0F51E838E8700C377B9 /* CompletedRunHeaderView.swift */,
+				C64E74951EA2B4430084A07F /* ShareButtonView.swift */,
+			);
+			name = HeaderandFooterView;
 			sourceTree = "<group>";
 		};
 		C6659E171E964E1A004929A3 /* ClubView */ = {
@@ -1195,7 +1209,7 @@
 		C6B1BA561E82499D00EF7223 /* RunCompleted */ = {
 			isa = PBXGroup;
 			children = (
-				C61AD0F51E838E8700C377B9 /* CompletedRunHeaderView.swift */,
+				C64E74941EA2B4220084A07F /* HeaderandFooterView */,
 				C61AD0F31E838BB500C377B9 /* CompletedRunViewController.swift */,
 				C61AD0F71E8390F500C377B9 /* CompletedRunViewController+Extension.swift */,
 				C6B1BA571E8251FD00EF7223 /* MulticolorPolylineSegment.swift */,
@@ -1600,6 +1614,7 @@
 				C680A7381E815590008ACA5A /* WorkoutsModel+CoreDataProperties.swift in Sources */,
 				C61C4C061E7E7DD5007C7E37 /* ProfileViewController.swift in Sources */,
 				45F3AA241E15B37300D70C84 /* ExploreModel.swift in Sources */,
+				C64E74961EA2B4430084A07F /* ShareButtonView.swift in Sources */,
 				C61C4C091E7E7EB6007C7E37 /* ProfileViewController+Extension.swift in Sources */,
 				C6B1182E1E217E47002BB4E8 /* HealthConnectViewController.swift in Sources */,
 				450D916D1E03F778009D9144 /* FollowersViewController+Extension.swift in Sources */,
@@ -1630,6 +1645,7 @@
 				450082021DFC90F3006AA959 /* EventCollectionCell.swift in Sources */,
 				45B5AD941DFBFC2800115E2C /* TextField.swift in Sources */,
 				C6F0D94B1E92EBDD00BF56C1 /* ClubChatCell.swift in Sources */,
+				C64E74981EA2D0FB0084A07F /* ClubRunsCell.swift in Sources */,
 				452A00BA1E05E69500CACA18 /* StatusBarBackground.swift in Sources */,
 				454535971E19034500653252 /* ExerciseViewModel.swift in Sources */,
 				454535951E18FB8600653252 /* ExerciseTypeEnum.swift in Sources */,

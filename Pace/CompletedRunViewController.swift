@@ -14,7 +14,6 @@ import HealthKit
 class CompletedRunViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate {
 	
 	var headerView =  CompletedRunHeaderView()
-	var workoutCompletedTableView : UITableView?
 	var trainer = User()
 	let exerciseCellID = "exerciseCellID"
 	
@@ -35,13 +34,21 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 		
 	}
 	
+	let shareWorkoutBar : ShareButtonView = {
+		
+		let shareWorkoutBar = ShareButtonView()
+		shareWorkoutBar.translatesAutoresizingMaskIntoConstraints = false
+		return shareWorkoutBar
+		
+	}()
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.setupWorkoutCompletedTableView()
 		self.setupNavigationBar()
-		view.backgroundColor = UIColor.closeBlack()
-		workoutCompletedTableView?.register(ExerciseCellView.self, forCellReuseIdentifier: exerciseCellID)
+		self.setupshareWorkoutBar()
+		view.backgroundColor = UIColor.black
+		self.setupWorkoutCompletedTableView()
 		self.setupHeaderView()
 		self.configureViewDetails()
 		
@@ -67,24 +74,49 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 		navigationItem.titleView = titleLabel
 		
 		
-		self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "shareVC"), style: UIBarButtonItemStyle.done, target: self, action: #selector(handleShareWorkout))
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.done, target: self, action: #selector(handleNothing))
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(handleDoneWorkout))
 		self.navigationController?.navigationBar.barTintColor = UIColor.darkerBlack()
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.darkerBlack()
 		
 	}
 	
+	lazy var workoutCompletedTableView : UITableView = {
+		
+		let tableView = UITableView(frame: .zero, style: UITableViewStyle.plain)
+		tableView.backgroundColor = .closeBlack()
+		tableView.delegate = self
+		tableView.dataSource = self
+		tableView.separatorStyle = .none
+		tableView.showsVerticalScrollIndicator = false
+		tableView.translatesAutoresizingMaskIntoConstraints = false
+		return tableView
+		
+	}()
+	
 	func setupWorkoutCompletedTableView() {
 		
-		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height)
-		workoutCompletedTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.plain)
-		workoutCompletedTableView?.backgroundColor = .closeBlack()
-		workoutCompletedTableView?.delegate = self
-		workoutCompletedTableView?.dataSource = self
-		workoutCompletedTableView?.separatorStyle = .none
-		workoutCompletedTableView?.showsVerticalScrollIndicator = false
-		view.addSubview(workoutCompletedTableView!)
+		view.addSubview(workoutCompletedTableView)
+		workoutCompletedTableView.register(ExerciseCellView.self, forCellReuseIdentifier: exerciseCellID)
 		
+		workoutCompletedTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+		workoutCompletedTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+		workoutCompletedTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+		workoutCompletedTableView.bottomAnchor.constraint(equalTo: shareWorkoutBar.topAnchor).isActive = true
+		
+		
+		
+	}
+	
+	func setupshareWorkoutBar() {
+		
+		view.addSubview(shareWorkoutBar)
+		shareWorkoutBar.completedWorkoutVC = self
+		
+		shareWorkoutBar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+		shareWorkoutBar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+		shareWorkoutBar.heightAnchor.constraint(equalToConstant: 62).isActive = true
+		shareWorkoutBar.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 		
 		
 	}
@@ -108,9 +140,9 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 	
 	func setupHeaderView() {
 		
-		headerView  = CompletedRunHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 667.0))
+		headerView  = CompletedRunHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 520.0))
 		headerView.runMapView?.delegate = self
-		workoutCompletedTableView?.tableHeaderView = headerView
+		workoutCompletedTableView.tableHeaderView = headerView
 		
 	}
 	
@@ -260,16 +292,14 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 	
 	func handlePostDataToUser(completion: @escaping ()->()) {
 		 
-		let ref = FIRDatabase.database().reference().child("ClubMessages")
+		let ref = FIRDatabase.database().reference().child("ClubRuns")
 		let childRef = ref.childByAutoId()
 		let userID = FIRAuth.auth()!.currentUser!.uid
 		
 		
-		let values = ["imageUrl": "",
-		              "message" : "",
-		              "userSending": userID,
-		              "userSendingName": usersName,
-		              "userSendingImageURL": usersImageURL,
+		let values = ["userRunning": userID,
+		              "userName": usersName,
+		              "userImageURL": usersImageURL,
 		              "timeStamp": Int(NSDate().timeIntervalSince1970),
 		              "minutes" : mins!,
 		              "seconds" : secs!,
@@ -284,11 +314,15 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 				return
 			}
 			
-			let userRunsRef = FIRDatabase.database().reference().child("fan-user-runningData").child(userID)
+			let clubRunsRef = FIRDatabase.database().reference().child("fan-club-runs").child(clubID)
+			let clubRunId = childRef.key
+			clubRunsRef.updateChildValues([clubRunId: 1])
+			
+			let userRunsRef = FIRDatabase.database().reference().child("fan-user-runs").child(userID)
 			let messageId = childRef.key
 			userRunsRef.updateChildValues([messageId: 1])
 			
-			self.handlePostDataToClub()
+			//self.handlePostDataToClub()
 			
 			completion()
 			
@@ -326,6 +360,12 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 			
 		}
 		
+	}
+	
+	func handleNothing() {
+	
+		//	DO NOTHING
+	
 	}
 
 	func handleShareWorkout() {

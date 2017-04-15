@@ -18,30 +18,15 @@ extension ClubChatViewController {
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		
-		return messagesArray.count
+		return userRunsArray.count
 		
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
-		let chatCell : ClubChatCell = collectionView.dequeueReusableCell(withReuseIdentifier: ClubChatCellID, for: indexPath) as! ClubChatCell
-		
-		if messagesArray[indexPath.item].message == "" {
-			
-			chatCell.messageTextView.isHidden = true
-			chatCell.runStatsContainerView.isHidden = false
-			chatCell.backgroundColor = .black
-			
-		} else {
-			
-			chatCell.messageTextView.isHidden = false
-			chatCell.runStatsContainerView.isHidden = true
-			chatCell.backgroundColor = UIColor.clear
-			
-		}
-		
-		chatCell.messagesModel = messagesArray[indexPath.item]
-		return chatCell
+		let runsCell : ClubRunsCell = collectionView.dequeueReusableCell(withReuseIdentifier: ClubRunsCellID, for: indexPath) as! ClubRunsCell
+		runsCell.runsModel = userRunsArray[indexPath.item]
+		return runsCell
 		
 	}
 	
@@ -57,6 +42,7 @@ extension ClubChatViewController {
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		
+		/*
 		var height: CGFloat = 220
 		
 		if let text = messagesArray[indexPath.item].message {
@@ -74,8 +60,9 @@ extension ClubChatViewController {
 		}
 		
 		let width = UIScreen.main.bounds.width
+		*/
 		
-		return CGSize(width: width, height: height)
+		return CGSize(width: UIScreen.main.bounds.width, height: 200)
 	}
 	
 }

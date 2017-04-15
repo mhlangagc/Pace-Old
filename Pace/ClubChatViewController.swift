@@ -14,11 +14,11 @@ import MessageUI
 
 class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
 	
-	let ClubChatCellID = "ClubChatCellID"
+	let ClubRunsCellID = "ClubRunsCellID"
 	var clubModel: ClubModel?
 	var imageContainerViewTopAnchor: NSLayoutConstraint?
 	
-	var messagesArray = [TeamMessagesModel]()
+	var userRunsArray = [ClubRunsModel]()
 	var imageUrl: String?
 	let messageComposer = MessageComposer()
 	var trainer = User()
@@ -189,15 +189,15 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		self.setupStartRunningBar()
 		//self.setupKeyboardObservers()
 		
-		self.observeTeamMessages(clubID: clubID, completion: { (clubMessagesArray) in
+		self.observeClubRuns(clubID: clubID, completion: { (clubRunsArray) in
 			
-			self.messagesArray = clubMessagesArray
+			self.userRunsArray = clubRunsArray
 			self.setupCollectionView()
 			
 			self.clubChatCollectionView.reloadData()
 			//self.clubChatCollectionView.keyboardDismissMode = .interactive
 			
-			let indexPath = IndexPath(item: self.messagesArray.count - 1, section: 0)
+			let indexPath = IndexPath(item: self.userRunsArray.count - 1, section: 0)
 			self.clubChatCollectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.bottom, animated: true)
 			
 		})
@@ -253,10 +253,12 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		
 		
 	}
+	
+	
 	func setupCollectionView() {
 		
 		view.addSubview(clubChatCollectionView)
-		clubChatCollectionView.register(ClubChatCell.self, forCellWithReuseIdentifier: ClubChatCellID)
+		clubChatCollectionView.register(ClubRunsCell.self, forCellWithReuseIdentifier: ClubRunsCellID)
 		
 		//view.addSubview(selectImageBar)
 		//selectImageBar.chatVC = self
@@ -584,32 +586,37 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 
 extension ClubChatViewController {
 	
-	func observeTeamMessages(clubID: String, completion: @escaping (_ result: [TeamMessagesModel]) -> Void) {
+	func observeClubRuns(clubID: String, completion: @escaping (_ result: [ClubRunsModel]) -> Void) {
 		
-		var teamMessagesArray = [TeamMessagesModel]()
+		var clubRunsArray = [ClubRunsModel]()
 		
-		let fanTeamMessagesRef = FIRDatabase.database().reference().child("fan-club-messages").child(clubID)
+		let fanClubRunsRef = FIRDatabase.database().reference().child("fan-club-runs").child(clubID)
 		
-		fanTeamMessagesRef.observe(.childAdded, with: { (snapshot) in
+		fanClubRunsRef.observe(.childAdded, with: { (snapshot) in
 			
 			let messageId = snapshot.key
-			let messagesRef = FIRDatabase.database().reference().child("ClubMessages").child(messageId)
-			messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+			let runsRef = FIRDatabase.database().reference().child("ClubRuns").child(messageId)
+			runsRef.observeSingleEvent(of: .value, with: { (snapshot) in
 				
 				if let dictionary = snapshot.value as? [String: AnyObject] {
 					
-					let workoutTeamMessage = TeamMessagesModel()
+					let clubsRuns = ClubRunsModel()
 					
-					workoutTeamMessage.imageURL = dictionary["imageUrl"] as? String
-					workoutTeamMessage.userSending = dictionary["userSending"] as? String
-					workoutTeamMessage.message = dictionary["message"] as? String
-					workoutTeamMessage.timeStamp = dictionary["timeStamp"] as? Int
-					workoutTeamMessage.userSendingName = dictionary["userSendingName"] as? String
-					workoutTeamMessage.userSendingImageURL = dictionary["userSendingImageURL"] as? String
-					teamMessagesArray.append(workoutTeamMessage)
+					clubsRuns.userID = dictionary["userRunning"] as? String
+					clubsRuns.userName = dictionary["userName"] as? String
+					clubsRuns.userImageURL = dictionary["userImageURL"] as? String
+					clubsRuns.seconds = dictionary["seconds"] as? Int
+					clubsRuns.mins = dictionary["minutes"] as? Int
+					clubsRuns.distance = dictionary["distance"] as? String
+					clubsRuns.pace = dictionary["pace"] as? String
+					clubsRuns.clubID = dictionary["teamID"] as? String
+					clubsRuns.timeStamp = dictionary["timeStamp"] as? Int
+					
+					
+					clubRunsArray.append(clubsRuns)
 					//teamMessagesArray.sort(by: {$0.timeStamp! > $1.timeStamp!})
 					
-					completion(teamMessagesArray)
+					completion(clubRunsArray)
 					
 				}
 				

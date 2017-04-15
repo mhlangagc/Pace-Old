@@ -40,7 +40,7 @@ class StartWorkoutButtonView: BaseView {
 	override func setupViews() {
 		super.setupViews()
 		
-		backgroundColor = .headerBlack()
+		backgroundColor = .black
 		
 		addSubview(startWorkoutButton)
 		addSubview(line)
