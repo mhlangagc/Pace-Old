@@ -179,6 +179,15 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		
 	}
 	
+	private func setupRemainingNavItems() {
+		
+		let titleImageView = UIImageView(image: #imageLiteral(resourceName: "title_icon"))
+		titleImageView.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+		titleImageView.contentMode = .scaleAspectFit
+		
+		navigationItem.titleView = titleImageView
+	}
+	
 	private func setupRightNavItem() {
 		
 		self.navigationController?.navigationBar.tintColor = UIColor.paceBrandColor()
@@ -189,13 +198,10 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 	
 	func navigationBarItems() {
 		
-		let titleLabel = UILabel(frame: CGRect(x: ((view.frame.width - 100) * 0.5), y: 5, width: 100, height: view.frame.height))
-		titleLabel.text = "My Clubs"
-		titleLabel.textAlignment = .center
-		titleLabel.textColor = UIColor.white
-		titleLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightBold)
-		textSpacing(titleLabel, spacing: 0.5)
-		navigationItem.titleView = titleLabel
+		let titleImageView = UIImageView(image: #imageLiteral(resourceName: "home_Active"))
+		titleImageView.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+		titleImageView.contentMode = .scaleAspectFit
+		navigationItem.titleView = titleImageView
 	}
 	
 	func setupWeekTableView() {

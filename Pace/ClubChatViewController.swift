@@ -20,7 +20,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 	
 	var messagesArray = [TeamMessagesModel]()
 	var imageUrl: String?
-	
+	let messageComposer = MessageComposer()
 	var trainer = User()
 	var exploreWorkout : ExploreWorkoutModel?
 	
@@ -48,7 +48,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		textField.returnKeyType = .default
 		textField.sizeToFit()
 		textField.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightSemibold)
-		textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
+		//textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
 		
@@ -61,7 +61,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		button.setImage(UIImage(named: "send_inActive"), for: UIControlState.normal)
 		button.imageView?.contentMode = .scaleAspectFit
 		button.imageEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-		button.addTarget(self, action: #selector(handleSend), for: UIControlEvents.touchUpInside)
+		//button.addTarget(self, action: #selector(handleSend), for: UIControlEvents.touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
 		
@@ -85,7 +85,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		sendImageButton.setImage(UIImage(named: "postImage"), for: UIControlState.normal)
 		sendImageButton.imageView?.contentMode = .scaleAspectFit
 		sendImageButton.imageEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-		sendImageButton.addTarget(self, action: #selector(handleSelectImage), for: UIControlEvents.touchUpInside)
+		//sendImageButton.addTarget(self, action: #selector(handleSelectImage), for: UIControlEvents.touchUpInside)
 		sendImageButton.translatesAutoresizingMaskIntoConstraints = false
 		return sendImageButton
 		
@@ -128,6 +128,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		
 	}()
 	
+	/*
 	override var inputAccessoryView: UIView? {
 		
 		get {
@@ -142,6 +143,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		
 		return true
 	}
+	*/
 	
 	let selectImageBar : ChatImageSelectionBarView = {
 		
@@ -168,8 +170,8 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		collectionView.backgroundColor = UIColor.closeBlack()
 		collectionView.delegate = self
 		collectionView.dataSource = self
-		collectionView.contentInset = UIEdgeInsets(top: 8.0, left: 0.0, bottom: 56.0, right: 0.0)
-		collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 8.0, left: 0.0, bottom: 56.0, right: 0.0)
+		collectionView.contentInset = UIEdgeInsets(top: 8.0, left: 0.0, bottom: 62.0, right: 0.0)
+		collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 8.0, left: 0.0, bottom: 62.0, right: 0.0)
 		collectionView.alwaysBounceVertical = true
 		collectionView.alwaysBounceHorizontal = false
 		collectionView.allowsSelection = false
@@ -184,7 +186,8 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		
 		view.backgroundColor = UIColor.closeBlack()
 		self.setupNavBar()
-		self.setupKeyboardObservers()
+		self.setupStartRunningBar()
+		//self.setupKeyboardObservers()
 		
 		self.observeTeamMessages(clubID: clubID, completion: { (clubMessagesArray) in
 			
@@ -192,7 +195,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 			self.setupCollectionView()
 			
 			self.clubChatCollectionView.reloadData()
-			self.clubChatCollectionView.keyboardDismissMode = .interactive
+			//self.clubChatCollectionView.keyboardDismissMode = .interactive
 			
 			let indexPath = IndexPath(item: self.messagesArray.count - 1, section: 0)
 			self.clubChatCollectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.bottom, animated: true)
@@ -238,32 +241,38 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 	
 	var selectImageBarBottomConstraint: NSLayoutConstraint?
 	
-	func setupCollectionView() {
+	func setupStartRunningBar() {
 		
 		view.addSubview(startWorkoutBar)
 		startWorkoutBar.clubChatVC = self
 		
-		view.addSubview(clubChatCollectionView)
-		clubChatCollectionView.register(ClubChatCell.self, forCellWithReuseIdentifier: ClubChatCellID)
-		
-		view.addSubview(selectImageBar)
-		selectImageBar.chatVC = self
-		
 		startWorkoutBar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
 		startWorkoutBar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
 		startWorkoutBar.heightAnchor.constraint(equalToConstant: 62).isActive = true
-		startWorkoutBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+		startWorkoutBar.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+		
+		
+	}
+	func setupCollectionView() {
+		
+		view.addSubview(clubChatCollectionView)
+		clubChatCollectionView.register(ClubChatCell.self, forCellWithReuseIdentifier: ClubChatCellID)
+		
+		//view.addSubview(selectImageBar)
+		//selectImageBar.chatVC = self
 		
 		clubChatCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
 		clubChatCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-		clubChatCollectionView.topAnchor.constraint(equalTo: startWorkoutBar.bottomAnchor).isActive = true
-		clubChatCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+		clubChatCollectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+		clubChatCollectionView.bottomAnchor.constraint(equalTo: startWorkoutBar.topAnchor).isActive = true
 		
+		/*
 		selectImageBar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
 		selectImageBar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
 		selectImageBar.heightAnchor.constraint(equalToConstant: 142).isActive = true
 		selectImageBarBottomConstraint = selectImageBar.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 86)
 		selectImageBarBottomConstraint?.isActive = true
+		*/
 		
 	}
 	
@@ -273,7 +282,52 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 	
 	}
 	
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
+		
+		//NotificationCenter.default.removeObserver(self)
+		
+	}
 	
+	func handleInviteFriends() {
+		
+		if (messageComposer.canSendText()) {
+			
+			let messageComposeVC = messageComposer.configuredMessageComposeViewController()
+			present(messageComposeVC, animated: true, completion: nil)
+		
+		} else {
+			
+			print("Cannot Send Text Message")
+			
+		}
+		
+	
+	}
+	
+	func handleShowGroup() {
+		
+		print("Show Club Details")
+		let clubDetailsVC = ClubDetailsViewController()
+		clubDetailsVC.club = clubModel
+		self.navigationController?.pushViewController(clubDetailsVC, animated: true)
+		
+		
+	}
+	
+	func handleStartWorkout() {
+		
+		let readyToRunVC = ReadyViewController()
+		let readyNavBar = UINavigationController(rootViewController: readyToRunVC)
+		self.navigationController?.present(readyNavBar, animated: true, completion: {
+			
+			//	TO DO
+			
+		})
+	}
+	
+	
+	/*
 	func setupKeyboardObservers() {
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -282,12 +336,6 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		
 	}
 	
-	override func viewDidDisappear(_ animated: Bool) {
-		super.viewDidDisappear(animated)
-		
-		NotificationCenter.default.removeObserver(self)
-		
-	}
 	
 	func handleKeyboardNotification(notification: NSNotification) {
 		
@@ -295,9 +343,9 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		
 		if isKeyboardShowing {
 			
-//			let indexPath = IndexPath(item: self.messagesArray.count - 1, section: 0)
-//			self.clubChatCollectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
-		
+			//			let indexPath = IndexPath(item: self.messagesArray.count - 1, section: 0)
+			//			self.clubChatCollectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
+			
 		}
 		
 		//		UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
@@ -308,9 +356,9 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		//
 		//
 		//		})
-
+		
 	}
-
+	
 	
 	func textFieldDidChange() {
 		
@@ -361,7 +409,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 				self.addImageButton.setImage(UIImage(named: "postImage"), for: UIControlState.normal)
 				self.selectImageBar.imageViewButton.imageEdgeInsets = UIEdgeInsets(top: 44, left: 40, bottom: 44, right: 40)
 				self.selectImageBar.imageViewButton.setImage(UIImage(named: "ImageSelection"), for: UIControlState.normal)
-				self.imageSelected = nil
+				//self.imageSelected = nil
 				
 			})
 			
@@ -369,23 +417,6 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		
 	}
 	
-	let messageComposer = MessageComposer()
-	
-	func handleInviteFriends() {
-		
-		if (messageComposer.canSendText()) {
-			
-			let messageComposeVC = messageComposer.configuredMessageComposeViewController()
-			present(messageComposeVC, animated: true, completion: nil)
-		
-		} else {
-			
-			print("Cannot Send Text Message")
-			
-		}
-		
-	
-	}
 	
 	func handleSend() {
 		
@@ -468,28 +499,6 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		
 	}
 	
-	func handleShowGroup() {
-		
-		print("Show Club Details")
-		let clubDetailsVC = ClubDetailsViewController()
-		clubDetailsVC.club = clubModel
-		self.navigationController?.pushViewController(clubDetailsVC, animated: true)
-		
-		
-	}
-	
-	
-	func handleStartWorkout() {
-		
-		let readyToRunVC = ReadyViewController()
-		let readyNavBar = UINavigationController(rootViewController: readyToRunVC)
-		self.navigationController?.present(readyNavBar, animated: true, completion: {
-			
-			//	TO DO
-			
-		})
-	}
-
 	func handlePickImage() {
 		
 		//	Moving the Picker Up
@@ -568,6 +577,8 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		print("Open Camera")
 		
 	}
+	
+	*/
 	
 }
 

@@ -46,14 +46,6 @@ class RunsCellView : TableBaseCell {
 		
 	}()
 	
-	let dividerLineView: UIView = {
-		let view = UIView()
-		view.backgroundColor = UIColor.headerBlack()
-		view.translatesAutoresizingMaskIntoConstraints = false
-		return view
-	}()
-	
-	
 	override func setupViews() {
 		super.setupViews()
 		
@@ -67,7 +59,6 @@ class RunsCellView : TableBaseCell {
 		self.contentView.addSubview(runsImage)
 		self.contentView.addSubview(runDayName)
 		self.contentView.addSubview(runDetails)
-		self.contentView.addSubview(dividerLineView)
 		
 		runsImage.leftAnchor.constraint(equalTo: leftAnchor, constant: 20.0).isActive = true
 		runsImage.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
@@ -84,12 +75,6 @@ class RunsCellView : TableBaseCell {
 		runDetails.topAnchor.constraint(equalTo: runDayName.bottomAnchor, constant: 10.0).isActive = true
 		runDetails.rightAnchor.constraint(equalTo:  rightAnchor, constant: -20.0).isActive = true
 		runDetails.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
-		
-		
-		dividerLineView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20.0).isActive = true
-		dividerLineView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -1.0).isActive = true
-		dividerLineView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-		dividerLineView.heightAnchor.constraint(equalToConstant: 0.8).isActive = true
 		
 	}
 	

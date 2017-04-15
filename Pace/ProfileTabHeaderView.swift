@@ -28,7 +28,7 @@ class ProfileTabHeaderView : BaseView {
 	override func setupViews() {
 		super.setupViews()
 		
-		backgroundColor = UIColor.headerBlack()
+		backgroundColor = UIColor(fromHexString: "0C0E10")
 		
 		self.addViews()
 	}
@@ -101,9 +101,7 @@ class ProfileTabHeaderView : BaseView {
 		addSubview(totalRunsTextLabel!)
 		
 		//	Average Pace
-		
 		var xEndPosition = CGFloat()
-		
 		if let window = UIApplication.shared.keyWindow {
 			
 			xEndPosition = window.frame.width - textWidth - 24

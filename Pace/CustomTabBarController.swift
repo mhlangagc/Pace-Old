@@ -29,7 +29,7 @@ class CustomTabBarController: ASTabBarController {
         tabBar.shadowImage = nil
         tabBar.backgroundImage = nil
         
-        UITabBar.appearance().barTintColor = UIColor.headerBlack()
+        UITabBar.appearance().barTintColor = UIColor(fromHexString: "0C0E10")
         tabBarController?.tabBar.clipsToBounds = true
         UITabBar.appearance().selectionIndicatorImage = UIImage().makeImageWithColorAndSize(UIColor.greyWhite(), size: CGSize(width: tabBar.frame.width/3, height: tabBar.frame.height))
         UITabBar.appearance().tintColor = UIColor.greyWhite()

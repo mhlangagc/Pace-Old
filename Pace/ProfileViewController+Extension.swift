@@ -18,7 +18,7 @@ extension ProfileViewController {
 		
 		let sectionHeaderLabel: UILabel = UILabel.init(frame: CGRect(x: 20.0, y: 16.0, width: tableView.frame.width - 20, height: 24))
 		sectionHeaderLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
-		sectionHeaderLabel.textColor = UIColor.paceBrandColor()
+		sectionHeaderLabel.textColor = UIColor.greyWhite()
 		sectionHeaderLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
 		sectionHeaderView.addSubview(sectionHeaderLabel)
 		

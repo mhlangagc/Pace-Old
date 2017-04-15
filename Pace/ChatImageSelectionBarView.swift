@@ -83,12 +83,12 @@ class ChatImageSelectionBarView: BaseView {
 	
 	func handleCameraSelection() {
 		
-		chatVC?.handleCameraOpen()
+		//chatVC?.handleCameraOpen()
 		
 	}
 	
 	func handleImageSelection() {
 		
-		chatVC?.handlePickImage()
+		//chatVC?.handlePickImage()
 	}
 }

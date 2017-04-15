@@ -13,7 +13,7 @@ class CreateClubViewController : UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		view.backgroundColor = UIColor.paceBackgroundBlack()
+		view.backgroundColor = UIColor.black
 		self.setupNavBar()
 		
 	}

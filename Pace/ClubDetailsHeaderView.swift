@@ -34,7 +34,7 @@ class ClubDetailsHeaderView : BaseView {
 	override func setupViews() {
 		super.setupViews()
 		
-		backgroundColor = UIColor.headerBlack()
+		backgroundColor = UIColor(fromHexString: "0C0E10")
 		self.addViews()
 		
 	}

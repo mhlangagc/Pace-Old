@@ -33,7 +33,7 @@ public extension UIColor {
 	
 	static func headerBlack() -> UIColor {
 		
-		return UIColor(fromHexString: "0F1013")
+		return UIColor(fromHexString: "14161B")
 		
 	}
 	

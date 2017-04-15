@@ -16,10 +16,10 @@ class StartWorkoutButtonView: BaseView {
 		
 		let button = UIButton()
 		button.setTitle("START RUNNING", for: UIControlState.normal)
-		button.setTitleColor(UIColor.paceBrandColor(), for: UIControlState.normal)
+		button.setTitleColor(UIColor.black, for: UIControlState.normal)
 		button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
 		textSpacing((button.titleLabel)!, spacing: 1.0)
-		button.backgroundColor = UIColor(fromHexString: "272932")
+		button.backgroundColor = UIColor.paceBrandColor()
 		button.layer.cornerRadius = 6.0
 		button.layer.masksToBounds = true
 		button.addTarget(self, action: #selector(handleStartRun), for: UIControlEvents.touchUpInside)
