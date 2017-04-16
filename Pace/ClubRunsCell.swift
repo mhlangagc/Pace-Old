@@ -15,7 +15,7 @@ class ClubRunsCell: CollectionBaseCell {
 		let imageView = UIImageView()
 		imageView.contentMode = .scaleAspectFill
 		imageView.layer.masksToBounds = true
-		imageView.backgroundColor = UIColor.headerBlack()
+		imageView.backgroundColor = UIColor(fromHexString: "242830")
 		imageView.layer.cornerRadius = 36 * 0.5
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		return imageView
