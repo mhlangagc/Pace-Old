@@ -12,7 +12,7 @@ import Lottie
 class EmptyDayViewController: UIViewController {
 	
 	var routineWorkoutModel : WorkoutDaysModel?
-	var lottieAnimationView : LAAnimationView?
+	var lottieAnimationView : LOTAnimationView?
 	
 	let detailLabel: UILabel = {
 		
@@ -80,7 +80,7 @@ class EmptyDayViewController: UIViewController {
 	
 	func addViews() {
 		
-		lottieAnimationView = LAAnimationView.animationNamed("\((routineWorkoutModel?.dayName)![0...0])")
+		lottieAnimationView = LOTAnimationView(name: "\((routineWorkoutModel?.dayName)![0...0])")
 		lottieAnimationView?.backgroundColor = UIColor.darkerBlack()
 		lottieAnimationView?.isUserInteractionEnabled = true
 		lottieAnimationView?.tintColor = selectedDayColour
