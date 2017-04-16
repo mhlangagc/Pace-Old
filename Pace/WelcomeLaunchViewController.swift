@@ -20,7 +20,7 @@ class WelcomeLaunchViewController: UIViewController {
 		
 	}
 	
-	var animationView : LAAnimationView?
+	var animationView : LOTAnimationView?
 	
 	let detailsLabel: UILabel = {
 		
@@ -115,7 +115,7 @@ class WelcomeLaunchViewController: UIViewController {
 	
 	func addAnimationView() {
 		
-		animationView = LAAnimationView.animationNamed("LottieLogo2")
+		animationView = LOTAnimationView(name: "LottieLogo2")
 		animationView?.backgroundColor = .black
 		animationView?.translatesAutoresizingMaskIntoConstraints = false
 		self.view.addSubview(animationView!)

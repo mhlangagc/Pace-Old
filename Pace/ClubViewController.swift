@@ -64,19 +64,6 @@ class ClubViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		
 		self.setupHeaderView()
 		
-		paceAppService.retrieveClubTrainer(club: self.club!) { (trainer) in
-			
-			self.trainer = trainer
-			
-			if let trainerName = trainer.name, let trainerImageUrl = trainer.profileImageUrl {
-				
-				self.headerView.profileNameButton?.setTitle("Created by \(trainerName)", for: UIControlState.normal)
-				self.headerView.profileImageView?.loadImageFromCacheWithUrlString(urlString: trainerImageUrl)
-				
-			}
-			
-		}
-		
 		paceAppService.retrieveClubMembers(clubID: (self.club?.clubID)!) { (membersRetrived) in
 			
 			self.members = membersRetrived
@@ -127,8 +114,8 @@ class ClubViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		
 		navigationNoLineBar()
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "shareVC"), style: UIBarButtonItemStyle.done, target: self, action: #selector(handleShareWorkout))
-		self.navigationController?.navigationBar.barTintColor = UIColor.darkerBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.darkerBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.headerBlack()
 		
 	}
 	
@@ -151,7 +138,7 @@ class ClubViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	
 	func setupHeaderView() {
 		
-		headerView  = WorkoutDetailsHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 580.0))
+		headerView  = WorkoutDetailsHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 515.0))
 		
 		headerView.workoutName?.text = (self.club?.name)!
 		headerView.workoutsImageView?.loadImageFromCacheWithUrlString(urlString: (self.club?.backgroundImageUrl)!)
@@ -168,7 +155,7 @@ class ClubViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	func setupJoinButton() {
 		
 		joinButtonView = JoinButtonView.init(frame: CGRect(x: 0, y: view.frame.height - 144.0, width: view.frame.width, height: 80.0))
-		//joinButtonView?.workoutVC = self
+		joinButtonView?.clubVC = self
 		joinButtonView?.joinButton?.setTitle("Join", for: UIControlState.normal)
 		joinButtonView?.joinButton?.setTitleColor(.black, for: UIControlState.normal)
 		joinButtonView?.joinButton?.backgroundColor = UIColor.paceBrandColor()
@@ -178,13 +165,15 @@ class ClubViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	
 	func joinClub() {
 		
-		//		self.userClubJoined(completion: { (completed) in
-		//
-		//			self.joinButtonView?.joinButton?.setTitle("Club Joined", for: UIControlState.normal)
-		//			self.joinButtonView?.joinButton?.setTitleColor(UIColor.greyBlackColor(), for: UIControlState.normal)
-		//			self.joinButtonView?.joinButton?.backgroundColor = UIColor.headerBlack()
-		//
-		//		})
+		/*
+		self.userClubJoined(completion: { (completed) in
+		
+				self.joinButtonView?.joinButton?.setTitle("Club Joined", for: UIControlState.normal)
+				self.joinButtonView?.joinButton?.setTitleColor(UIColor.greyBlackColor(), for: UIControlState.normal)
+				self.joinButtonView?.joinButton?.backgroundColor = UIColor.headerBlack()
+			
+		})
+		*/
 		
 	}
 		

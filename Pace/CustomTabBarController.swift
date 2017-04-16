@@ -74,17 +74,17 @@ class CustomTabBarController: ASTabBarController {
 //        weekViewController.navigationController?.navigationBar.barStyle = .black
 //        weekViewController.extendedLayoutIncludesOpaqueBars = true
 		
-        //	Discovery
-        let exploreViewController = ExploreViewController()
-        let exploreNavController = ASNavigationController(rootViewController: exploreViewController)
-		exploreViewController.navigationController?.navigationBar.barStyle = .black
-        exploreViewController.extendedLayoutIncludesOpaqueBars = true
-		
         //	Clubs
         let clubsViewController = ClubsViewController()
         let clubsNavController = ASNavigationController(rootViewController: clubsViewController)
         clubsViewController.navigationController?.navigationBar.barStyle = .black
         clubsViewController.extendedLayoutIncludesOpaqueBars = true
+		
+		//	Discovery
+		let exploreViewController = ExploreViewController()
+		let exploreNavController = ASNavigationController(rootViewController: exploreViewController)
+		exploreViewController.navigationController?.navigationBar.barStyle = .black
+		exploreViewController.extendedLayoutIncludesOpaqueBars = true
 		
 		//  Activity View Controller
 		let profileViewController = ProfileViewController()

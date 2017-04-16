@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "559C06FA313FFF7CC17CB145C1B27505"
+               BlueprintIdentifier = "B5C29066B32BC3DBA7CD2538B4ED3A47"
                BuildableName = "Lottie.framework"
                BlueprintName = "lottie-ios"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "559C06FA313FFF7CC17CB145C1B27505"
+            BlueprintIdentifier = "B5C29066B32BC3DBA7CD2538B4ED3A47"
             BuildableName = "Lottie.framework"
             BlueprintName = "lottie-ios"
             ReferencedContainer = "container:Pods.xcodeproj">

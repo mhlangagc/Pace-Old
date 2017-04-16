@@ -9,6 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 import Fabric
+import Branch
 import Stripe
 import Crashlytics
 import CoreData
@@ -46,6 +47,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			
 			self.loadDataForViews()
 			
+			Branch.getInstance().initSession(launchOptions: launchOptions, automaticallyDisplayDeepLinkController: true, deepLinkHandler: { params, error in
+				if error == nil {
+				
+					// params are the deep linked params associated with the link that the user clicked -> was re-directed to this app
+					// params will be empty if no data found
+					// ... insert custom logic here ...
+					print("params: %@", (params?.description)!)
+				
+				}
+				
+			})
+
+
+			
 			self.window = UIWindow(frame: UIScreen.main.bounds)
 			self.window?.rootViewController = CustomTabBarController()
 			self.window?.makeKeyAndVisible()
@@ -80,9 +95,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func runTimeDependencies() {
 		
 		FIRApp.configure()
-		Fabric.with([Crashlytics.self, STPAPIClient.self])
+		Fabric.with([Crashlytics.self, STPAPIClient.self, Branch.self])
+		
 		
 	}
+	
+	// Respond to URI scheme links
+	func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+		
+		// For Branch to detect when a URI scheme is clicked
+		Branch.getInstance().handleDeepLink(url)
+		
+		// do other deep link routing for the Facebook SDK, Pinterest SDK, etc
+		
+		return true
+	
+	}
+	
+	// Respond to Universal Links
+	private func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: @escaping ([AnyObject]?) -> Void) -> Bool {
+		
+		// For Branch to detect when a Universal Link is clicked
+		Branch.getInstance().continue(userActivity)
+		return true
+	
+	}
+
 
 	func applicationWillResignActive(_ application: UIApplication) {
 		// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

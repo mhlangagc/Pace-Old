@@ -51,7 +51,7 @@ class JoinButtonView : BaseView {
 	
 	var joinButton: UIButton?
 	
-	var workoutVC : WorkoutViewController?
+	var clubVC : ClubViewController?
 	
 	override func setupViews() {
 		super.setupViews()
@@ -79,7 +79,7 @@ class JoinButtonView : BaseView {
 	
 	func handleJoinClub() {
 		
-		workoutVC?.joinClub()
+		clubVC?.joinClub()
 		
 	}
 	

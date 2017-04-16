@@ -27,9 +27,6 @@ class WorkoutDetailsHeaderView : BaseView {
 	
 	let textWidth : CGFloat = 78.0
 	
-	var profileImageView : UIImageView?
-	var profileNameButton : UIButton?
-	
 	var descriptionLabel : UILabel?
 	var descriptionText : UITextView?
 	
@@ -43,7 +40,7 @@ class WorkoutDetailsHeaderView : BaseView {
 	override func setupViews() {
 		super.setupViews()
 		
-		backgroundColor = UIColor.headerBlack()
+		backgroundColor = UIColor(fromHexString: "0C0E10")
 		
 		self.addViews()
 	}
@@ -81,7 +78,6 @@ class WorkoutDetailsHeaderView : BaseView {
 		
 		
 		self.clubStas()
-		self.trainerSection()
 		self.clubDetails()
 		
 	}
@@ -157,34 +153,15 @@ class WorkoutDetailsHeaderView : BaseView {
 		addSubview(paceTextLabel!)
 	}
 	
-	func trainerSection() {
-		
-		profileImageView = UIImageView.init(frame: CGRect(x: frame.width - 60.0, y: 380.0, width: 40.0, height: 40.0))
-		profileImageView?.contentMode = .scaleAspectFill
-		profileImageView?.isUserInteractionEnabled = true
-		profileImageView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowProfile)))
-		profileImageView?.layer.cornerRadius = 20.0
-		profileImageView?.clipsToBounds = true
-		addSubview(profileImageView!)
-		
-		profileNameButton = UIButton.init(frame: CGRect(x: 20.0, y: 390.0, width: frame.width - 90.0, height: 20.0))
-		profileNameButton?.contentHorizontalAlignment = .left
-		profileNameButton?.setTitleColor(UIColor.greyWhite(), for: UIControlState.normal)
-		profileNameButton?.addTarget(self, action: #selector(handleShowProfile), for: UIControlEvents.touchUpInside)
-		profileNameButton?.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
-		addSubview(profileNameButton!)
-		
-	}
-	
 	func clubDetails() {
 		
-		descriptionLabel = UILabel.init(frame: CGRect(x: 20.0, y: 450, width: 200, height: 20.0))
+		descriptionLabel = UILabel.init(frame: CGRect(x: 20.0, y: 380.0, width: 200, height: 20.0))
 		descriptionLabel?.text = "About"
 		descriptionLabel?.textColor = UIColor.greyWhite()
 		descriptionLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
 		addSubview(descriptionLabel!)
 		
-		descriptionText = UITextView.init(frame: CGRect(x: 20.0, y: 485, width: frame.width - 40.0, height: 85))
+		descriptionText = UITextView.init(frame: CGRect(x: 20.0, y: 415, width: frame.width - 40.0, height: 85))
 		descriptionText?.textColor = UIColor.greyBlackColor()
 		descriptionText?.backgroundColor = UIColor.clear
 		descriptionText?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightSemibold)

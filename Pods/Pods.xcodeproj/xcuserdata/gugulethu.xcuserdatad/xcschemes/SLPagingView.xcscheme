@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FD83F1E63DD91F2BB284622BB24C0696"
+               BlueprintIdentifier = "53C4A4199DAA8404BEF639DD8E89F1EB"
                BuildableName = "SLPagingView.framework"
                BlueprintName = "SLPagingView"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FD83F1E63DD91F2BB284622BB24C0696"
+            BlueprintIdentifier = "53C4A4199DAA8404BEF639DD8E89F1EB"
             BuildableName = "SLPagingView.framework"
             BlueprintName = "SLPagingView"
             ReferencedContainer = "container:Pods.xcodeproj">
