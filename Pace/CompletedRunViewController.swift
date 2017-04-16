@@ -354,9 +354,11 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 		
 		self.handlePostDataToUser {
 				
-			self.dismiss(animated: true) {
+			self.dismiss(animated: true, completion: { 
 				
-			}
+				//	Send Analytics to Fabric
+				
+			})
 			
 		}
 		
