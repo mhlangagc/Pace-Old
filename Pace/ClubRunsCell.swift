@@ -189,7 +189,7 @@ class ClubRunsCell: CollectionBaseCell {
 	
 	
 	
-	var  runsModel : ClubRunsModel? {
+	var  runsModel : RunsModel? {
 		
 		didSet {
 			

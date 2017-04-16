@@ -118,6 +118,50 @@ class PaceAppServices : NSObject {
 		
 		
 	}
+	
+	//	Retrieve User Runs
+	func observeUserRuns(userID: String, completion: @escaping (_ result: [RunsModel]) -> Void) {
+		
+		var userRunsArray = [RunsModel]()
+		
+		let fanClubRunsRef = FIRDatabase.database().reference().child("fan-user-runs").child(userID)
+		
+		fanClubRunsRef.observe(.childAdded, with: { (snapshot) in
+			
+			let messageId = snapshot.key
+			let runsRef = FIRDatabase.database().reference().child("ClubRuns").child(messageId)
+			runsRef.observeSingleEvent(of: .value, with: { (snapshot) in
+				
+				if let dictionary = snapshot.value as? [String: AnyObject] {
+					
+					let runs = RunsModel()
+					
+					runs.userID = dictionary["userRunning"] as? String
+					runs.userName = dictionary["userName"] as? String
+					runs.userImageURL = dictionary["userImageURL"] as? String
+					runs.seconds = dictionary["seconds"] as? Int
+					runs.mins = dictionary["minutes"] as? Int
+					runs.distance = dictionary["distance"] as? String
+					runs.pace = dictionary["pace"] as? String
+					runs.clubID = dictionary["teamID"] as? String
+					runs.timeStamp = dictionary["timeStamp"] as? Int
+					
+					
+					userRunsArray.append(runs)
+					//teamMessagesArray.sort(by: {$0.timeStamp! > $1.timeStamp!})
+					
+					completion(userRunsArray)
+					
+				}
+				
+				
+			}, withCancel: nil)
+			
+		}, withCancel: nil)
+		
+		
+	}
+
 
 	
 	func retrieveMaleFreeWorkouts(completion: @escaping (_ result: [ExploreWorkoutModel]) -> Void) {

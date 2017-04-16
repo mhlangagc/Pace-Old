@@ -44,7 +44,7 @@ class TeamMessagesModel: NSObject {
 }
 
 
-class ClubRunsModel: NSObject {
+class RunsModel: NSObject {
 	
 	var userID : String?
 	var userImageURL: String?

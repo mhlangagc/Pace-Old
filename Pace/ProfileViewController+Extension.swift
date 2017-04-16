@@ -54,7 +54,7 @@ extension ProfileViewController {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		return 4
+		return userRunsArray.count
 		
 	}
 	
@@ -75,6 +75,7 @@ extension ProfileViewController {
 			runsCell!.selectedBackgroundView = backgroundView
 		}
 		
+		runsCell?.runsModel = userRunsArray[indexPath.item]
 		return runsCell!
 		
 	}

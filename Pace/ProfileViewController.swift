@@ -6,12 +6,18 @@
 //  Copyright © 2017 Pace. All rights reserved.
 //
 
+import UIKit 
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
+
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	
 	var profileTableView : UITableView?
 	let runsCellID = "runsCellID"
 	var profileHeaderView =  ProfileTabHeaderView()
 	var user : User?
+	var userRunsArray = [RunsModel]()
 
 	lazy var profileSetup: PaceAppServices = {
 		
@@ -55,6 +61,19 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 		navigationNoLineBar()
 		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.headerBlack()
+		
+		if let userID = FIRAuth.auth()?.currentUser?.uid {
+			
+			self.profileSetup.observeUserRuns(userID: userID, completion: { (userRuns) in
+				
+				self.userRunsArray = userRuns
+				
+				self.profileTableView?.reloadData()
+				
+				
+			})
+			
+		}
 		
 		
 	}
@@ -112,6 +131,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 		var frame = profileHeaderView.frame
 		frame.size.height = height
 		profileHeaderView.frame = frame
+	
 	}
 	
 	func setupHeaderView() {
@@ -120,9 +140,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 		
 		profileSetup.retrieveUser(completion: { (userFound) in
 			
-			
-			
-			if let userName  = userFound.name, let profileImageURL = userFound.profileImageUrl {
+			if let userName  = userFound.name, let profileImageURL = userFound.profileImageUrl  {
 				
 				self.profileHeaderView.profileNameButton?.setTitle(userName, for: UIControlState.normal)
 				self.profileHeaderView.profileImageView?.loadImageFromUrlString(urlString: profileImageURL)

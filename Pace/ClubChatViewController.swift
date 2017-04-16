@@ -18,7 +18,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 	var clubModel: ClubModel?
 	var imageContainerViewTopAnchor: NSLayoutConstraint?
 	
-	var userRunsArray = [ClubRunsModel]()
+	var userRunsArray = [RunsModel]()
 	var imageUrl: String?
 	let messageComposer = MessageComposer()
 	var trainer = User()
@@ -586,9 +586,9 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 
 extension ClubChatViewController {
 	
-	func observeClubRuns(clubID: String, completion: @escaping (_ result: [ClubRunsModel]) -> Void) {
+	func observeClubRuns(clubID: String, completion: @escaping (_ result: [RunsModel]) -> Void) {
 		
-		var clubRunsArray = [ClubRunsModel]()
+		var clubRunsArray = [RunsModel]()
 		
 		let fanClubRunsRef = FIRDatabase.database().reference().child("fan-club-runs").child(clubID)
 		
@@ -600,7 +600,7 @@ extension ClubChatViewController {
 				
 				if let dictionary = snapshot.value as? [String: AnyObject] {
 					
-					let clubsRuns = ClubRunsModel()
+					let clubsRuns = RunsModel()
 					
 					clubsRuns.userID = dictionary["userRunning"] as? String
 					clubsRuns.userName = dictionary["userName"] as? String

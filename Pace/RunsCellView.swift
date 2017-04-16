@@ -37,7 +37,6 @@ class RunsCellView : TableBaseCell {
 	let runDetails: UILabel = {
 		
 		let label = UILabel()
-		label.text = "4.40km        8:05/km         35:31"
 		label.textColor = UIColor.greyBlackColor()
 		label.font = UIFont.systemFont(ofSize: 16.0, weight: UIFontWeightSemibold)
 		label.textAlignment = .left
@@ -45,6 +44,22 @@ class RunsCellView : TableBaseCell {
 		return label
 		
 	}()
+	
+	var  runsModel : RunsModel? {
+		
+		didSet {
+			
+			if let distanceRan = runsModel?.distance, let pace = runsModel?.pace, let mins = runsModel?.mins, let seconds = runsModel?.seconds {
+				
+				runDetails.text = "\(distanceRan)km        \(pace)mins/km         \(mins):\(seconds)"
+			
+			}
+			
+		}
+		
+		
+	}
+
 	
 	override func setupViews() {
 		super.setupViews()

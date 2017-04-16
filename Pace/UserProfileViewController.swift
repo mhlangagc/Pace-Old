@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class UserProfileViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
 	
@@ -14,6 +17,14 @@ class UserProfileViewController : UIViewController, UITableViewDelegate, UITable
 	let runsCellID = "runsCellID"
 	var profileHeaderView =  ProfileTabHeaderView()
 	var user : User?
+	var userRunsArray = [RunsModel]()
+	
+	lazy var paceServices: PaceAppServices = {
+		
+		let profileSetup = PaceAppServices()
+		return profileSetup
+		
+	}()
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(true)
@@ -47,6 +58,15 @@ class UserProfileViewController : UIViewController, UITableViewDelegate, UITable
 		navigationNoLineBar()
 		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.headerBlack()
+		
+		paceServices.observeUserRuns(userID: (user?.userID)!, completion: { (userRuns) in
+			
+			self.userRunsArray = userRuns
+			
+			self.profileTableView?.reloadData()
+			
+			
+		})
 		
 		
 	}
