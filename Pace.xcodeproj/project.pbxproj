@@ -1349,6 +1349,9 @@
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
+							com.apple.SafariKeychain = {
+								enabled = 0;
+							};
 							com.apple.WAC = {
 								enabled = 0;
 							};

@@ -6,6 +6,11 @@ PODS:
     - AsyncDisplayKit/Core
     - PINRemoteImage/iOS (= 3.0.0-beta.8)
     - PINRemoteImage/PINCache
+  - Branch (0.13.5):
+    - Branch/Core (= 0.13.5)
+    - Branch/without-IDFA (= 0.13.5)
+  - Branch/Core (0.13.5)
+  - Branch/without-IDFA (0.13.5)
   - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
@@ -79,6 +84,7 @@ PODS:
 
 DEPENDENCIES:
   - AsyncDisplayKit (from `https://github.com/facebook/AsyncDisplayKit.git`, branch `2.2`)
+  - Branch
   - Crashlytics
   - Fabric
   - Firebase/Analytics
@@ -109,6 +115,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AsyncDisplayKit: 1585f6cd0531ae9b30476f5912f577b73ebcb0e4
+  Branch: 08e40d84f20b188443fd808fe01dadcc13d1727e
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   Firebase: 53b2343db1ebfa3eb16bdb4318b8bb65360b2220
@@ -131,6 +138,6 @@ SPEC CHECKSUMS:
   SLPagingView: ba9bb6102cb318ce56f23d0a7e49a46ddcdad7e3
   Stripe: 0f41a33a6fa3ac76ee668d7df3e2680c28b8ab1a
 
-PODFILE CHECKSUM: 6734d5fe8faf3cda76ee8180b0ede90ab189fae9
+PODFILE CHECKSUM: 9736fa5ba20005cf1b2131d7b31c4fee0b12b6e1
 
 COCOAPODS: 1.1.1

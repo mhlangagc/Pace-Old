@@ -1,6 +1,0 @@
-framework module SLPagingView {
-  umbrella header "SLPagingView-umbrella.h"
-
-  export *
-  module * { export * }
-}

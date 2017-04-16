@@ -16,6 +16,7 @@ target 'Pace' do
 	pod 'Stripe'
 	pod 'Fabric'
 	pod 'Crashlytics'
+	pod 'Branch'
 	
 	# core
 	pod 'LBTAComponents', '~> 0.1.9'

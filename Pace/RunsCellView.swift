@@ -38,7 +38,7 @@ class RunsCellView : TableBaseCell {
 		
 		let label = UILabel()
 		label.textColor = UIColor.greyBlackColor()
-		label.font = UIFont.systemFont(ofSize: 16.0, weight: UIFontWeightSemibold)
+		label.font = UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightSemibold)
 		label.textAlignment = .left
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
@@ -51,7 +51,7 @@ class RunsCellView : TableBaseCell {
 			
 			if let distanceRan = runsModel?.distance, let pace = runsModel?.pace, let mins = runsModel?.mins, let seconds = runsModel?.seconds {
 				
-				runDetails.text = "\(distanceRan)km        \(pace)mins/km         \(mins):\(seconds)"
+				runDetails.text = "\(distanceRan)km    \(pace)mins/km    \(mins):\(seconds)mins"
 			
 			}
 			
@@ -88,7 +88,7 @@ class RunsCellView : TableBaseCell {
 		
 		runDetails.leftAnchor.constraint(equalTo: runsImage.rightAnchor, constant: 15.0).isActive = true
 		runDetails.topAnchor.constraint(equalTo: runDayName.bottomAnchor, constant: 10.0).isActive = true
-		runDetails.rightAnchor.constraint(equalTo:  rightAnchor, constant: -20.0).isActive = true
+		runDetails.rightAnchor.constraint(equalTo:  rightAnchor, constant: -8.0).isActive = true
 		runDetails.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
 		
 	}
