@@ -43,7 +43,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 		
 		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height)
 		settingsTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.grouped)
-		settingsTableView?.backgroundColor = UIColor.black
+		settingsTableView?.backgroundColor = UIColor.closeBlack()
 		settingsTableView?.delegate = self
 		settingsTableView?.dataSource = self
 		settingsTableView?.separatorStyle = .none
@@ -65,13 +65,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 		settingsTableView?.register(SettingsCellView.self, forCellReuseIdentifier: settingsCellID)
 		self.navigationController?.navigationBar.isHidden = false
 		self.navigationItem.title = "Me"
-		view.backgroundColor = .black
+		view.backgroundColor = .closeBlack()
 		self.navigationBarItems()
 		self.setupWorkoutDetailsTableView()
 		
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.headerBlack()
 		
 		
 	}
@@ -86,8 +86,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 		self.settingsTableView?.reloadData()
 		
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.headerBlack()
 		
 	}
 	

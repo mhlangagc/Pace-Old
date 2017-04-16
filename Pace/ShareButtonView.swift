@@ -1,21 +1,21 @@
 //
-//  StartWorkoutButtonView.swift
+//  ShareButtonView.swift
 //  Pace
 //
-//  Created by Gugulethu Mhlanga on 2017/04/03.
+//  Created by Gugulethu Mhlanga on 2017/04/15.
 //  Copyright © 2017 Pace. All rights reserved.
 //
 
 import UIKit
 
-class StartWorkoutButtonView: BaseView {
+class ShareButtonView: BaseView {
 	
-	var clubChatVC: ClubChatViewController?
+	var completedWorkoutVC: CompletedRunViewController?
 	
 	lazy var startWorkoutButton: UIButton = {
 		
 		let button = UIButton()
-		button.setTitle("START RUNNING", for: UIControlState.normal)
+		button.setTitle("SHARE", for: UIControlState.normal)
 		button.setTitleColor(UIColor.black, for: UIControlState.normal)
 		button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
 		textSpacing((button.titleLabel)!, spacing: 1.0)
@@ -58,8 +58,8 @@ class StartWorkoutButtonView: BaseView {
 	}
 	
 	func handleStartRun() {
-	
-		clubChatVC?.handleStartWorkout()
-	
+		
+		completedWorkoutVC?.handleShareWorkout()
+		
 	}
 }

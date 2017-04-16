@@ -34,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
 		self.runTimeDependencies()
-		self.loadDataForViews()
 		
 		if FIRAuth.auth()?.currentUser?.uid == nil {
 			
@@ -45,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			
 		} else {
 			
+			self.loadDataForViews()
 			
 			self.window = UIWindow(frame: UIScreen.main.bounds)
 			self.window?.rootViewController = CustomTabBarController()
@@ -59,6 +59,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		}
 		
+		let barAppearace = UIBarButtonItem.appearance()
+		barAppearace.setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), for:UIBarMetrics.default)
+		
 		return true
 	}
 	
@@ -71,7 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		paceAppService.retrieveUserDownloadedWorkouts { (workoutTeamsArray) in
 			
 		}
-
 		
 	}
 	

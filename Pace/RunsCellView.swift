@@ -37,7 +37,6 @@ class RunsCellView : TableBaseCell {
 	let runDetails: UILabel = {
 		
 		let label = UILabel()
-		label.text = "4.40km        8:05/km         35:31"
 		label.textColor = UIColor.greyBlackColor()
 		label.font = UIFont.systemFont(ofSize: 16.0, weight: UIFontWeightSemibold)
 		label.textAlignment = .left
@@ -46,13 +45,21 @@ class RunsCellView : TableBaseCell {
 		
 	}()
 	
-	let dividerLineView: UIView = {
-		let view = UIView()
-		view.backgroundColor = UIColor.headerBlack()
-		view.translatesAutoresizingMaskIntoConstraints = false
-		return view
-	}()
-	
+	var  runsModel : RunsModel? {
+		
+		didSet {
+			
+			if let distanceRan = runsModel?.distance, let pace = runsModel?.pace, let mins = runsModel?.mins, let seconds = runsModel?.seconds {
+				
+				runDetails.text = "\(distanceRan)km        \(pace)mins/km         \(mins):\(seconds)"
+			
+			}
+			
+		}
+		
+		
+	}
+
 	
 	override func setupViews() {
 		super.setupViews()
@@ -67,7 +74,6 @@ class RunsCellView : TableBaseCell {
 		self.contentView.addSubview(runsImage)
 		self.contentView.addSubview(runDayName)
 		self.contentView.addSubview(runDetails)
-		self.contentView.addSubview(dividerLineView)
 		
 		runsImage.leftAnchor.constraint(equalTo: leftAnchor, constant: 20.0).isActive = true
 		runsImage.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
@@ -84,12 +90,6 @@ class RunsCellView : TableBaseCell {
 		runDetails.topAnchor.constraint(equalTo: runDayName.bottomAnchor, constant: 10.0).isActive = true
 		runDetails.rightAnchor.constraint(equalTo:  rightAnchor, constant: -20.0).isActive = true
 		runDetails.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
-		
-		
-		dividerLineView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20.0).isActive = true
-		dividerLineView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -1.0).isActive = true
-		dividerLineView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-		dividerLineView.heightAnchor.constraint(equalToConstant: 0.8).isActive = true
 		
 	}
 	

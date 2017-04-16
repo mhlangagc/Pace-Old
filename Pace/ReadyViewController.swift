@@ -10,7 +10,6 @@ import UIKit
 
 class ReadyViewController: UIViewController {
 	
-	var club: ClubModel?
 	var musicPlayerView : MusicPlayerView?
 	lazy var goButtonView: GoButtonView = {
 		
@@ -28,6 +27,7 @@ class ReadyViewController: UIViewController {
 		self.setupNavBar()
 		self.setupPlayerView()
 		self.setupGoButtonView()
+		
        
     }
 	
@@ -45,8 +45,8 @@ class ReadyViewController: UIViewController {
 	func setupNavBar() {
 		
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.closeBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.closeBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
 		
 		
 		let titleLabel = UILabel(frame: CGRect(x: ((view.frame.width - 100) * 0.5), y: 5, width: 100, height: view.frame.height))
@@ -89,12 +89,12 @@ class ReadyViewController: UIViewController {
 			
 			//	TO DO
 			
-			
 		}
 	}
 	
 	func handleStartRunning() {
 		
+		let runVC = RunViewController()
 		self.navigationController?.pushViewController(RunViewController(), animated: true)
 		
 	}

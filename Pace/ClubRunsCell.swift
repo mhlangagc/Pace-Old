@@ -1,14 +1,14 @@
 //
-//  ClubChatCell.swift
+//  ClubRunsCell.swift
 //  Pace
 //
-//  Created by Gugulethu Mhlanga on 2017/04/03.
+//  Created by Gugulethu Mhlanga on 2017/04/16.
 //  Copyright © 2017 Pace. All rights reserved.
 //
 
 import UIKit
 
-class ClubChatCell: CollectionBaseCell {
+class ClubRunsCell: CollectionBaseCell {
 	
 	let profileImageView: UIImageView = {
 		
@@ -45,29 +45,12 @@ class ClubChatCell: CollectionBaseCell {
 		
 	}()
 	
-	let messageTextView : UITextView = {
-		
-		let tView = UITextView()
-		tView.text = "A delicious wave of Calamari black mussels, clams, crab…"
-		tView.textColor = UIColor.greyWhite()
-		tView.isScrollEnabled = false
-		tView.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightSemibold)
-		tView.translatesAutoresizingMaskIntoConstraints = false
-		tView.backgroundColor = UIColor.clear
-		tView.isEditable = false
-		tView.isSelectable = false
-		return tView
-
-		
-	}()
-	
 	//	Distance
 	let kmDistanceLabel : UILabel = {
 		
 		let label = UILabel()
-		label.text = "8.49"
 		label.font = UIFont(name: "BebasNeueBold", size: 35)
-		label.textColor = UIColor.greyWhite()
+		label.textColor = UIColor.paceBrandColor()
 		label.textAlignment = .center
 		textSpacing(label, spacing: 2.0)
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -93,9 +76,8 @@ class ClubChatCell: CollectionBaseCell {
 	let timeLabel : UILabel = {
 		
 		let label = UILabel()
-		label.text = "24:57"
 		label.font = UIFont(name: "BebasNeueBold", size: 35)
-		label.textColor = UIColor.greyWhite()
+		label.textColor = UIColor.paceBrandColor()
 		label.textAlignment = .center
 		textSpacing(label, spacing: 2.0)
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -121,9 +103,8 @@ class ClubChatCell: CollectionBaseCell {
 	let paceLabel : UILabel = {
 		
 		let label = UILabel()
-		label.text = "6:54"
 		label.font = UIFont(name: "BebasNeueBold", size: 35)
-		label.textColor = UIColor.greyWhite()
+		label.textColor = UIColor.paceBrandColor()
 		label.textAlignment = .center
 		textSpacing(label, spacing: 2.0)
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -149,54 +130,51 @@ class ClubChatCell: CollectionBaseCell {
 		
 		let containerView = UIView()
 		containerView.backgroundColor = UIColor.clear
-		containerView.layer.cornerRadius = 12.0
-		containerView.layer.borderWidth = 2.5
-		containerView.layer.borderColor = UIColor(fromHexString: "034033").cgColor
 		containerView.layer.masksToBounds = true
 		containerView.translatesAutoresizingMaskIntoConstraints = false
 		
 		containerView.addSubview(self.distanceTextLabel)
 		self.distanceTextLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
 		self.distanceTextLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -28.0).isActive = true
-		self.distanceTextLabel.widthAnchor.constraint(equalToConstant: 65).isActive = true
+		self.distanceTextLabel.widthAnchor.constraint(equalToConstant: 85).isActive = true
 		self.distanceTextLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
 		
 		containerView.addSubview(self.kmDistanceLabel)
 		self.kmDistanceLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
 		self.kmDistanceLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 12.0).isActive = true
-		self.kmDistanceLabel.widthAnchor.constraint(equalToConstant: 65).isActive = true
+		self.kmDistanceLabel.widthAnchor.constraint(equalToConstant: 85).isActive = true
 		self.kmDistanceLabel.heightAnchor.constraint(equalToConstant: 65).isActive = true
 		
 		//
 		containerView.addSubview(self.timeTextLabel)
-		self.timeTextLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 24.0).isActive = true
+		self.timeTextLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 20.0).isActive = true
 		self.timeTextLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -28.0).isActive = true
-		self.timeTextLabel.widthAnchor.constraint(equalToConstant: 65).isActive = true
+		self.timeTextLabel.widthAnchor.constraint(equalToConstant: 85).isActive = true
 		self.timeTextLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
 		
 		containerView.addSubview(self.timeLabel)
-		self.timeLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 24.0).isActive = true
+		self.timeLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 20.0).isActive = true
 		self.timeLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 12.0).isActive = true
-		self.timeLabel.widthAnchor.constraint(equalToConstant: 75).isActive = true
+		self.timeLabel.widthAnchor.constraint(equalToConstant: 85).isActive = true
 		self.timeLabel.heightAnchor.constraint(equalToConstant: 65).isActive = true
 		
 		//
 		containerView.addSubview(self.paceTextLabel)
 		self.paceTextLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -24.0).isActive = true
 		self.paceTextLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -28.0).isActive = true
-		self.paceTextLabel.widthAnchor.constraint(equalToConstant: 65).isActive = true
+		self.paceTextLabel.widthAnchor.constraint(equalToConstant: 85).isActive = true
 		self.paceTextLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
 		
 		containerView.addSubview(self.paceLabel)
 		self.paceLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -24.0).isActive = true
 		self.paceLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 12.0).isActive = true
-		self.paceLabel.widthAnchor.constraint(equalToConstant: 65).isActive = true
+		self.paceLabel.widthAnchor.constraint(equalToConstant: 85).isActive = true
 		self.paceLabel.heightAnchor.constraint(equalToConstant: 65).isActive = true
 		
 		return containerView
 		
 	}()
-
+	
 	
 	let timeStampLabel : UILabel = {
 		
@@ -208,45 +186,56 @@ class ClubChatCell: CollectionBaseCell {
 		return label
 		
 	}()
-
 	
-	/*
-	var  runsModel : ClubRunsModel? {
+	
+	
+	var  runsModel : RunsModel? {
 		
 		didSet {
 			
-			if let userName = messagesModel?.userSendingName, let messageText = messagesModel?.message {
+			if let userName = runsModel?.userName{
 				
 				nameLabel.text = userName
-				messageTextView.text = messageText
-			
+				
 			}
 			
-			if let userProfileImageURL = messagesModel?.userSendingImageURL {
+			if let userProfileImageURL = runsModel?.userImageURL {
 				
 				profileImageView.loadImageFromCacheWithUrlString(urlString: userProfileImageURL)
 				
 			}
 			
-			if let messageTime = messagesModel?.timeStamp {
+			if let messageTime = runsModel?.timeStamp {
 				
 				timeStampLabel.text = Date(timeIntervalSince1970: Double(messageTime)).timeAgoDisplay()
 				
 			}
 			
-		
+			if let distanceRan = runsModel?.distance, let pace = runsModel?.pace {
+				
+				kmDistanceLabel.text = distanceRan
+				paceLabel.text = pace
+				
+			}
+			
+			if let mins = runsModel?.mins, let seconds = runsModel?.seconds {
+				
+				timeLabel.text = "\(mins):\(seconds)"
+				
+			}
+			
+			
 		}
-	
+		
 		
 	}
-	*/
-	
 	
 	override func setupViews() {
 		super.setupViews()
-	
+		
+		backgroundColor = UIColor.headerBlack()
 		self.configureViews()
-	
+		
 	}
 	
 	var textViewHeight: CGFloat?
@@ -255,8 +244,6 @@ class ClubChatCell: CollectionBaseCell {
 		
 		addSubview(profileImageView)
 		addSubview(nameLabel)
-//		addSubview(likeImageView)
-		addSubview(messageTextView)
 		addSubview(runStatsContainerView)
 		addSubview(timeStampLabel)
 		
@@ -277,21 +264,10 @@ class ClubChatCell: CollectionBaseCell {
 		nameLabel.widthAnchor.constraint(equalToConstant: 160).isActive = true
 		nameLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
 		
-//		timeStampLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 11).isActive = true
-//		timeStampLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -18).isActive = true
-//		timeStampLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24).isActive = true
-//		timeStampLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-		
-		
-		runStatsContainerView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24).isActive = true
-		runStatsContainerView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 24).isActive = true
+		runStatsContainerView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+		runStatsContainerView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
 		runStatsContainerView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant : 16).isActive = true
 		runStatsContainerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -24).isActive = true
-		
-		messageTextView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24).isActive = true
-		messageTextView.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 8).isActive = true
-		messageTextView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant : 2).isActive = true
-		messageTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16).isActive = true
 		
 		
 		
@@ -305,7 +281,7 @@ class ClubChatCell: CollectionBaseCell {
 			
 			likeImageView.image = #imageLiteral(resourceName: "like_Active")
 			isLiked = true
-		
+			
 		} else {
 			
 			likeImageView.image = #imageLiteral(resourceName: "like")
@@ -316,3 +292,4 @@ class ClubChatCell: CollectionBaseCell {
 	}
 	
 }
+

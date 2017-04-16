@@ -21,7 +21,6 @@ class RunViewController: UIViewController, CLLocationManagerDelegate {
 	
 	@IBOutlet weak var resumeRun: UIButton!
 	@IBOutlet weak var stopRun: UIButton!
-	
 	var musicPlayerView : MusicPlayerView?
 	var run: RunModel?
 	lazy var locations = [CLLocation]()
@@ -55,7 +54,6 @@ class RunViewController: UIViewController, CLLocationManagerDelegate {
         self.configureView()
 		self.setupPlayerView()
 		self.handleStartRunning()
-		
 		
     }
 	

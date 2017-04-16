@@ -40,6 +40,44 @@ class PaceAppServices : NSObject {
 		
 	}
 	
+	//	Retrieve Club Memmbers
+	func retrieveClubMembers(clubID: String, completion: @escaping (_ result: [User]) -> Void) {
+		
+		var clubMembersArray = [User]()
+		
+		let fanClubMemberRef = FIRDatabase.database().reference().child("fan-Club-Members").child(clubID)
+		
+		fanClubMemberRef.observe(.childAdded, with: { (snapshot) in
+			
+			let userID = snapshot.key
+			
+			let userRef = FIRDatabase.database().reference().child("Users").child(userID)
+			
+			userRef.observe(FIRDataEventType.value, with: { (snapShot) in
+				
+				if let dictionary = snapShot.value as? [String: AnyObject] {
+					
+					let user = User()
+					user.userID = userID
+					user.name = dictionary["name"] as? String
+					user.profileImageUrl = dictionary["profileImageUrl"] as? String
+					user.location = dictionary["location"] as? String
+					user.about = dictionary["about"] as? String
+					
+					clubMembersArray.append(user)
+					
+					completion(clubMembersArray)
+					
+				}
+				
+			}, withCancel: nil)
+			
+		}, withCancel: nil)
+		
+		
+	}
+
+	
 	//	Retrieve Clubs
 	func retrieveFeaturedClubs(completion: @escaping (_ result: [ClubModel]) -> Void) {
 		
@@ -80,6 +118,50 @@ class PaceAppServices : NSObject {
 		
 		
 	}
+	
+	//	Retrieve User Runs
+	func observeUserRuns(userID: String, completion: @escaping (_ result: [RunsModel]) -> Void) {
+		
+		var userRunsArray = [RunsModel]()
+		
+		let fanClubRunsRef = FIRDatabase.database().reference().child("fan-user-runs").child(userID)
+		
+		fanClubRunsRef.observe(.childAdded, with: { (snapshot) in
+			
+			let messageId = snapshot.key
+			let runsRef = FIRDatabase.database().reference().child("ClubRuns").child(messageId)
+			runsRef.observeSingleEvent(of: .value, with: { (snapshot) in
+				
+				if let dictionary = snapshot.value as? [String: AnyObject] {
+					
+					let runs = RunsModel()
+					
+					runs.userID = dictionary["userRunning"] as? String
+					runs.userName = dictionary["userName"] as? String
+					runs.userImageURL = dictionary["userImageURL"] as? String
+					runs.seconds = dictionary["seconds"] as? Int
+					runs.mins = dictionary["minutes"] as? Int
+					runs.distance = dictionary["distance"] as? String
+					runs.pace = dictionary["pace"] as? String
+					runs.clubID = dictionary["teamID"] as? String
+					runs.timeStamp = dictionary["timeStamp"] as? Int
+					
+					
+					userRunsArray.append(runs)
+					//teamMessagesArray.sort(by: {$0.timeStamp! > $1.timeStamp!})
+					
+					completion(userRunsArray)
+					
+				}
+				
+				
+			}, withCancel: nil)
+			
+		}, withCancel: nil)
+		
+		
+	}
+
 
 	
 	func retrieveMaleFreeWorkouts(completion: @escaping (_ result: [ExploreWorkoutModel]) -> Void) {
@@ -252,45 +334,47 @@ class PaceAppServices : NSObject {
 	func retrieveUserDownloadedWorkouts(completion: @escaping (_ result: [ExploreWorkoutModel]) -> Void) {
 		
 		var workoutsArray = [ExploreWorkoutModel]()
-		let userID = FIRAuth.auth()!.currentUser!.uid
-		
-		//UIApplication.shared.isNetworkActivityIndicatorVisible = true
-		
-		let fanUserDownloadedRef = FIRDatabase.database().reference().child("fan-User-PurchasedWorkouts").child(userID)
-		
-		fanUserDownloadedRef.observe(.childAdded, with: { (snapshot) in
+		if let userID = FIRAuth.auth()?.currentUser?.uid {
 			
-			let workoutId = snapshot.key
+			let fanUserDownloadedRef = FIRDatabase.database().reference().child("fan-User-PurchasedWorkouts").child(userID)
 			
-			let workoutRef = FIRDatabase.database().reference().child("Workouts-Teams").child(workoutId)
-			workoutRef.observe(FIRDataEventType.value, with: { (snapShot) in
+			fanUserDownloadedRef.observe(.childAdded, with: { (snapshot) in
 				
-				if let dictionary = snapShot.value as? [String: AnyObject] {
+				let workoutId = snapshot.key
+				
+				let workoutRef = FIRDatabase.database().reference().child("Workouts-Teams").child(workoutId)
+				workoutRef.observe(FIRDataEventType.value, with: { (snapShot) in
 					
-					let featuredWorkout = ExploreWorkoutModel()
+					if let dictionary = snapShot.value as? [String: AnyObject] {
+						
+						let featuredWorkout = ExploreWorkoutModel()
+						
+						featuredWorkout.workoutID = workoutId
+						featuredWorkout.name = dictionary["name"] as? String
+						featuredWorkout.workoutDescription = dictionary["workoutDescription"] as? String
+						featuredWorkout.backgroundImageUrl = dictionary["backgroundImageUrl"] as? String
+						featuredWorkout.time = dictionary["time"] as? Int
+						featuredWorkout.rating = dictionary["rating"] as? Int
+						featuredWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
+						featuredWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
+						featuredWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
+						featuredWorkout.trainerID = dictionary["trainerID"] as? String
+						
+						workoutsArray.append(featuredWorkout)
+						
+						
+						completion(workoutsArray)
+						
+						
+					}
 					
-					featuredWorkout.workoutID = workoutId
-					featuredWorkout.name = dictionary["name"] as? String
-					featuredWorkout.workoutDescription = dictionary["workoutDescription"] as? String
-					featuredWorkout.backgroundImageUrl = dictionary["backgroundImageUrl"] as? String
-					featuredWorkout.time = dictionary["time"] as? Int
-					featuredWorkout.rating = dictionary["rating"] as? Int
-					featuredWorkout.numberOfReviews = dictionary["numberOfReviews"] as? Int
-					featuredWorkout.workoutPrice = (dictionary["workoutPrice"] as? Double).map { PriceEnum(rawValue: $0) }!
-					featuredWorkout.workoutCatergory = (dictionary["workoutCatergory"] as? String).map { WorkoutCatergory(rawValue: $0) }!
-					featuredWorkout.trainerID = dictionary["trainerID"] as? String
-					
-					workoutsArray.append(featuredWorkout)
-					
-					
-					completion(workoutsArray)
-					
-					
-				}
+				}, withCancel: nil)
 				
 			}, withCancel: nil)
+
 			
-		}, withCancel: nil)
+		}
+		
 		
 	}
 

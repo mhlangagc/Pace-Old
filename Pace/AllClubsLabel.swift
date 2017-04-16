@@ -21,7 +21,7 @@ class AllClubsLabel: BaseCell {
 		
 		self.eventLabelSetup()
 		
-		backgroundColor = UIColor.black
+		backgroundColor = UIColor.clear
 		
 	}
 	
@@ -34,7 +34,7 @@ class AllClubsLabel: BaseCell {
 			string: "All Clubs".uppercased(),
 			attributes: [
 				NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightHeavy),
-				NSForegroundColorAttributeName: UIColor.greyBlackColor(),
+				NSForegroundColorAttributeName: UIColor.greyWhite(),
 				NSKernAttributeName: 0.0,
 				NSParagraphStyleAttributeName: alignmentStyle
 			])

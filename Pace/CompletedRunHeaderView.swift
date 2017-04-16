@@ -32,46 +32,37 @@ class CompletedRunHeaderView : BaseView {
 		
 		backgroundColor = UIColor.darkerBlack()
 		
-		self.addViews()
-		self.clubStas()
-		self.setuplineView()
+		self.mapViews()
+		self.clubStats()
 		
 	}
 	
-	func addViews() {
+	func mapViews() {
 		
-		runMapView = MKMapView.init(frame: CGRect(x: 15.0, y: 15.0, width: frame.width - 30.0, height: 370))
+		runMapView = MKMapView.init(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: 380))
 		runMapView?.mapType = .standard
 		runMapView?.showsBuildings = true
 		runMapView?.showsCompass = true
 		runMapView?.showsPointsOfInterest = true
-		runMapView?.showsUserLocation = false 
-		runMapView?.layer.cornerRadius = 10.0
+		runMapView?.showsUserLocation = false
 		runMapView?.layer.masksToBounds = true
 		addSubview(runMapView!)
 	
 	}
 	
-	func setuplineView() {
-		
-		lineView = UIView.init(frame: CGRect(x: 15.0, y: 530.0, width: frame.width - 30.0, height: 0.5))
-		lineView?.backgroundColor = UIColor(fromHexString: "7F6008")
-		addSubview(lineView!)
-	}
-	
-	func clubStas() {
+	func clubStats() {
 		
 		//	Distance Section
-		distanceLabel = UILabel.init(frame: CGRect(x: 24.0, y: 434, width: textWidth, height: 46))
+		distanceLabel = UILabel.init(frame: CGRect(x: 24.0, y: 430, width: textWidth, height: 46))
 		distanceLabel?.text = "8.49"
 		distanceLabel?.font = UIFont(name: "BebasNeueBold", size: 42)
-		distanceLabel?.textColor = UIColor.greyWhite()
+		distanceLabel?.textColor = UIColor.paceBrandColor()
 		distanceLabel?.textAlignment = .center
 		textSpacing(distanceLabel!, spacing: 2.4)
 		addSubview(distanceLabel!)
 		
 		
-		kmTextLabel = UILabel.init(frame: CGRect(x: 24.0, y: 484, width: textWidth, height: 20))
+		kmTextLabel = UILabel.init(frame: CGRect(x: 24.0, y: 480, width: textWidth, height: 20))
 		kmTextLabel?.text = "km"
 		kmTextLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
 		kmTextLabel?.textColor = UIColor.greyBlackColor()
@@ -87,16 +78,16 @@ class CompletedRunHeaderView : BaseView {
 			
 		}
 		
-		runningDurationLabel = UILabel.init(frame: CGRect(x: xPosition, y: 434, width: textWidth, height: 46))
+		runningDurationLabel = UILabel.init(frame: CGRect(x: xPosition, y: 430, width: textWidth, height: 46))
 		runningDurationLabel?.text = "34:07"
 		runningDurationLabel?.font = UIFont(name: "BebasNeueBold", size: 42)
-		runningDurationLabel?.textColor = UIColor.greyWhite()
+		runningDurationLabel?.textColor = UIColor.paceBrandColor()
 		runningDurationLabel?.textAlignment = .center
 		textSpacing(runningDurationLabel!, spacing: 2.4)
 		addSubview(runningDurationLabel!)
 		
 		
-		minsLabel = UILabel.init(frame: CGRect(x: xPosition, y: 484, width: textWidth, height: 20))
+		minsLabel = UILabel.init(frame: CGRect(x: xPosition, y: 480, width: textWidth, height: 20))
 		minsLabel?.text = "mins"
 		minsLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
 		minsLabel?.textColor = UIColor.greyBlackColor()
@@ -113,16 +104,16 @@ class CompletedRunHeaderView : BaseView {
 			xEndPosition = window.frame.width - textWidth - 24
 			
 		}
-		paceNumberLabel = UILabel.init(frame: CGRect(x: xEndPosition, y: 434, width: textWidth, height: 46))
+		paceNumberLabel = UILabel.init(frame: CGRect(x: xEndPosition, y: 430, width: textWidth, height: 46))
 		paceNumberLabel?.text = "6:19"
 		paceNumberLabel?.font = UIFont(name: "BebasNeueBold", size: 42)
-		paceNumberLabel?.textColor = UIColor.greyWhite()
+		paceNumberLabel?.textColor = UIColor.paceBrandColor()
 		paceNumberLabel?.textAlignment = .center
 		textSpacing(paceNumberLabel!, spacing: 2.4)
 		addSubview(paceNumberLabel!)
 		
 		
-		paceTextLabel = UILabel.init(frame: CGRect(x: xEndPosition, y: 484, width: textWidth, height: 20))
+		paceTextLabel = UILabel.init(frame: CGRect(x: xEndPosition - 5.0, y: 480, width: textWidth + 10.0, height: 20))
 		paceTextLabel?.text = "mins/km"
 		paceTextLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
 		paceTextLabel?.textColor = UIColor.greyBlackColor()

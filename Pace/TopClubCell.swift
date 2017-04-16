@@ -26,7 +26,7 @@ class TopClubCell: BaseCell {
 	
 	
 	let clubDetailsAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightSemibold),
-	                           NSForegroundColorAttributeName: UIColor.greyBlackColor()] as [String : Any]
+	                           NSForegroundColorAttributeName: UIColor.greyWhite()] as [String : Any]
 	var clubDetailsMutableString = NSMutableAttributedString()
 	
 	var  exploreClubModel : ClubModel? {
@@ -53,7 +53,7 @@ class TopClubCell: BaseCell {
 	override func setupNodes() {
 		super.setupNodes()
 		
-		backgroundColor = UIColor.black
+		backgroundColor = UIColor.clear
 		self.setupImageAndText()
 		
 	}

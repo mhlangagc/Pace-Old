@@ -78,7 +78,7 @@ class EventCollectionCell: BaseCell {
 	override func setupNodes() {
 		super.setupNodes()
 		
-		backgroundColor = UIColor.black
+		backgroundColor = UIColor.clear
 		self.setupImageAndText()
 		
 	}

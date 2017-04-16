@@ -10,6 +10,10 @@
 import Firebase
 import UIKit
 
+var usersName = String()
+var usersImageURL = String()
+var clubID = String()
+
 class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	
 	var clubsTableView : UITableView?
@@ -138,7 +142,7 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		
 		self.setupWeekTableView()
 		navigationItem.title = "My Clubs"
-		view.backgroundColor = UIColor.black
+		view.backgroundColor = UIColor.closeBlack()
 		self.navigationBarItems()
 		self.setupRightNavItem()
 		clubsTableView?.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
@@ -155,8 +159,8 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 			
 			if let userName  = userFound.name, let profileImageURL = userFound.profileImageUrl {
 				
-				self.userName = userName
-				self.userImageURL = profileImageURL
+				usersName = userName
+				usersImageURL = profileImageURL
 			}
 			
 		})
@@ -166,42 +170,45 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
 		navigationItem.title = "My Clubs"
 		navigationNoLineBar()
 		self.navigationBarItems()
 		self.setupRightNavItem()
-		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.headerBlack()
 		
+	}
+	
+	private func setupRemainingNavItems() {
+		
+		let titleImageView = UIImageView(image: #imageLiteral(resourceName: "title_icon"))
+		titleImageView.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+		titleImageView.contentMode = .scaleAspectFit
+		
+		navigationItem.titleView = titleImageView
 	}
 	
 	private func setupRightNavItem() {
 		
-		let moreButton = UIButton(type: .system)
-		moreButton.setImage(#imageLiteral(resourceName: "create").withRenderingMode(.alwaysOriginal), for: .normal)
-		moreButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-		moreButton.addTarget(self, action: #selector(handleCreateClub), for: UIControlEvents.touchUpInside)
-		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: moreButton)
+		self.navigationController?.navigationBar.tintColor = UIColor.paceBrandColor()
+		self.navigationController?.navigationBar.barTintColor = UIColor.paceBrandColor()
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: UIBarButtonItemStyle.done, target: self, action: #selector(handleCreateClub))
 		
 	}
 	
 	func navigationBarItems() {
 		
-		let titleLabel = UILabel(frame: CGRect(x: ((view.frame.width - 100) * 0.5), y: 5, width: 100, height: view.frame.height))
-		titleLabel.text = "My Clubs"
-		titleLabel.textAlignment = .center
-		titleLabel.textColor = UIColor.white
-		titleLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightBold)
-		textSpacing(titleLabel, spacing: 0.5)
-		navigationItem.titleView = titleLabel
+		let titleImageView = UIImageView(image: #imageLiteral(resourceName: "home_Active"))
+		titleImageView.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+		titleImageView.contentMode = .scaleAspectFit
+		navigationItem.titleView = titleImageView
 	}
 	
 	func setupWeekTableView() {
 		
 		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height)
 		clubsTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.plain)
-		clubsTableView?.backgroundColor = .closeBlack()
+		clubsTableView?.backgroundColor = UIColor.closeBlack()
 		clubsTableView?.delegate = self
 		clubsTableView?.dataSource = self
 		clubsTableView?.separatorStyle = .none
@@ -212,15 +219,16 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 	
 	func handleCreateClub() {
 		
-		//	TO DO
+		let createClubVC = CreateClubViewController()
+		let navBarVC = UINavigationController(rootViewController: createClubVC)
+		self.present(navBarVC, animated: true, completion: nil)
 		
 	}
 	
 	func handleClubSelection(clubSelected: ClubModel) {
 		
+		clubID = clubSelected.clubID!
 		let clubMessagesVC = ClubChatViewController()
-		clubMessagesVC.userName = userName
-		clubMessagesVC.userImageURL = userImageURL
 		clubMessagesVC.clubModel = clubSelected
 		clubMessagesVC.hidesBottomBarWhenPushed = true
 		self.navigationController?.pushViewController(clubMessagesVC, animated: true)

@@ -63,7 +63,6 @@ class DiscoverProfileViewController: UIViewController, UITableViewDataSource, UI
 		
 	}
 	
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		

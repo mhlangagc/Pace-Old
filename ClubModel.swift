@@ -42,3 +42,21 @@ class TeamMessagesModel: NSObject {
 	//var numberOfLikes: Int?
 	
 }
+
+
+class RunsModel: NSObject {
+	
+	var userID : String?
+	var userImageURL: String?
+	var userName : String?
+	var timeStamp: Int?
+	var clubID : String?
+	
+	var distance: String?
+	var mins: Int?
+	var pace: String?
+	var seconds : Int?
+	
+}
+
+

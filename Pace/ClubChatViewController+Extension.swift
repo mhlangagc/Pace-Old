@@ -18,15 +18,15 @@ extension ClubChatViewController {
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		
-		return messagesArray.count
+		return userRunsArray.count
 		
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
-		let chatCell : ClubChatCell = collectionView.dequeueReusableCell(withReuseIdentifier: ClubChatCellID, for: indexPath) as! ClubChatCell
-		chatCell.messagesModel = messagesArray[indexPath.item]
-		return chatCell
+		let runsCell : ClubRunsCell = collectionView.dequeueReusableCell(withReuseIdentifier: ClubRunsCellID, for: indexPath) as! ClubRunsCell
+		runsCell.runsModel = userRunsArray[indexPath.item]
+		return runsCell
 		
 	}
 	
@@ -35,23 +35,34 @@ extension ClubChatViewController {
 		let size = CGSize(width: 290, height: 1000)
 		let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
 		return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightSemibold)], context: nil)
+	
 	}
 
 	
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		
-		var height: CGFloat = 80
+		/*
+		var height: CGFloat = 220
 		
 		if let text = messagesArray[indexPath.item].message {
 			
-			height = estimateFrameForText(text: text).height + 118
-		
+			if messagesArray[indexPath.item].message == "" {
+			
+				height = 200.0
+				
+			} else {
+				
+				height = estimateFrameForText(text: text).height + 100
+				
+			}
+			
 		}
 		
 		let width = UIScreen.main.bounds.width
+		*/
 		
-		return CGSize(width: width, height: height)
+		return CGSize(width: UIScreen.main.bounds.width, height: 200)
 	}
 	
 }

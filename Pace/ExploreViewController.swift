@@ -41,7 +41,7 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 		flowLayout.scrollDirection = .vertical
 		flowLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 5.0, bottom: 15.0, right: 15.0)
 		collectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
-		collectionNode?.backgroundColor = .black
+		collectionNode?.backgroundColor = UIColor.closeBlack()
 		super.init(node: collectionNode!)
 		
 		navigationNoLineBar()
@@ -65,7 +65,7 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 		collectionNode?.view.alwaysBounceVertical = true
 		collectionNode?.view.allowsSelection = false
 		collectionNode?.view.showsVerticalScrollIndicator = false
-		collectionNode?.view.backgroundColor = UIColor.black
+		collectionNode?.view.backgroundColor = UIColor.closeBlack()
 		
 	}
 	
@@ -89,8 +89,8 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 		navigationItem.title = "Explore"
 		
 		navigationNoLineBar()
-		self.navigationController?.navigationBar.barTintColor = UIColor.paceBackgroundBlack()
-		UIApplication.shared.statusBarView?.backgroundColor = UIColor.paceBackgroundBlack()
+		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.headerBlack()
 		
 		
 	}
@@ -143,7 +143,7 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 	
 	func handleShowClubView(clubSelected: ClubModel) {
 		
-		let showClubDetailsVC = WorkoutViewController()
+		let showClubDetailsVC = ClubViewController()
 		showClubDetailsVC.club = clubSelected
 		showClubDetailsVC.hidesBottomBarWhenPushed = true
 		self.navigationController?.pushViewController(showClubDetailsVC, animated: true)
@@ -158,6 +158,13 @@ class ExploreViewController: ASViewController<ASDisplayNode>, ASCollectionDelega
 		self.navigationController?.pushViewController(seeCatergoryWorkoutsVC, animated: true)
 	}
 	
+	func handleCreateClub() {
+		
+		let createClubVC = CreateClubViewController()
+		let navBarVC = UINavigationController(rootViewController: createClubVC)
+		self.present(navBarVC, animated: true, completion: nil)
+		
+	}
 	
 	func becomeATrainer() {
 		
