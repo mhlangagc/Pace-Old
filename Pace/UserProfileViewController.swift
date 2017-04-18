@@ -116,7 +116,19 @@ class UserProfileViewController : UIViewController, UITableViewDelegate, UITable
 		profileHeaderView  = ProfileTabHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 380.0))
 		profileHeaderView.editProfileNameButton?.isHidden = true
 		self.profileHeaderView.profileNameLabel?.text = self.user?.name
-		self.profileHeaderView.profileImageView?.loadImageFromUrlString(urlString: (self.user?.profileImageUrl)!)
+		if (self.user?.profileImageUrl)! != "" {
+			
+			self.profileHeaderView.firstLetterCharacter?.isHidden = true
+			self.profileHeaderView.profileImageView?.loadImageFromUrlString(urlString: (self.user?.profileImageUrl)!)
+			
+		} else {
+			
+			self.profileHeaderView.firstLetterCharacter?.isHidden = false
+			self.profileHeaderView.firstLetterCharacter?.text = self.user?.name?[0].uppercased()
+			
+		}
+
+		//self.profileHeaderView.profileImageView?.loadImageFromUrlString(urlString: (self.user?.profileImageUrl)!)
 		profileTableView?.tableHeaderView = profileHeaderView
 		
 	}

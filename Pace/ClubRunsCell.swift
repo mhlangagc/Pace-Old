@@ -10,6 +10,17 @@ import UIKit
 
 class ClubRunsCell: CollectionBaseCell {
 	
+	let firstLetterLabel : UILabel = {
+		
+		let label = UILabel()
+		label.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
+		label.textColor = UIColor.greyWhite()
+		label.textAlignment = .center
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+		
+	}()
+	
 	let profileImageView: UIImageView = {
 		
 		let imageView = UIImageView()
@@ -193,15 +204,21 @@ class ClubRunsCell: CollectionBaseCell {
 		
 		didSet {
 			
-			if let userName = runsModel?.userName{
+			if let userName = runsModel?.userName, let userProfileImageURL = runsModel?.userImageURL {
+				
+				if userProfileImageURL != "" {
+					
+					firstLetterLabel.isHidden = true
+					profileImageView.loadImageFromCacheWithUrlString(urlString: userProfileImageURL)
+					
+				} else {
+					
+					firstLetterLabel.isHidden = false
+					firstLetterLabel.text = userName[0].uppercased()
+					
+				}
 				
 				nameLabel.text = userName
-				
-			}
-			
-			if let userProfileImageURL = runsModel?.userImageURL {
-				
-				profileImageView.loadImageFromCacheWithUrlString(urlString: userProfileImageURL)
 				
 			}
 			
@@ -243,6 +260,7 @@ class ClubRunsCell: CollectionBaseCell {
 	func configureViews() {
 		
 		addSubview(profileImageView)
+		profileImageView.addSubview(firstLetterLabel)
 		addSubview(nameLabel)
 		addSubview(runStatsContainerView)
 		addSubview(timeStampLabel)
@@ -252,6 +270,10 @@ class ClubRunsCell: CollectionBaseCell {
 		profileImageView.widthAnchor.constraint(equalToConstant: 36).isActive = true
 		profileImageView.heightAnchor.constraint(equalToConstant: 36).isActive = true
 		
+		firstLetterLabel.rightAnchor.constraint(equalTo: profileImageView.rightAnchor).isActive = true
+		firstLetterLabel.leftAnchor.constraint(equalTo: profileImageView.leftAnchor).isActive = true
+		firstLetterLabel.topAnchor.constraint(equalTo: profileImageView.topAnchor).isActive = true
+		firstLetterLabel.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor).isActive = true
 		
 		timeStampLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24).isActive = true
 		timeStampLabel.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor).isActive = true

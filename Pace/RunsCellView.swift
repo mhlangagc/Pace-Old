@@ -51,7 +51,7 @@ class RunsCellView : TableBaseCell {
 			
 			if let distanceRan = runsModel?.distance, let pace = runsModel?.pace, let mins = runsModel?.mins, let seconds = runsModel?.seconds {
 				
-				runDetails.text = "\(distanceRan)km    \(pace)mins/km    \(mins):\(seconds)mins"
+				runDetails.text = "\(distanceRan)km    \(pace)/km    \(mins):\(seconds)mins"
 			
 			}
 			

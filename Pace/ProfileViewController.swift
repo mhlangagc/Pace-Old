@@ -154,7 +154,7 @@ UINavigationControllerDelegate {
 				} else {
 					
 					self.profileHeaderView.firstLetterCharacter?.isHidden = false
-					self.profileHeaderView.firstLetterCharacter?.text = userName[0]
+					self.profileHeaderView.firstLetterCharacter?.text = userName[0].uppercased()
 					
 				}
 				

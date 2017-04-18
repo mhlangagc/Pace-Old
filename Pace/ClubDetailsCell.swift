@@ -10,6 +10,16 @@ import UIKit
 
 class ClubDetailsCell : TableBaseCell {
 	
+	let firstLetterLabel : UILabel = {
+		
+		let label = UILabel()
+		label.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
+		label.textColor = UIColor.greyWhite()
+		label.textAlignment = .center
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+		
+	}()
 	
 	let profileImage: UIImageView = {
 		
@@ -52,7 +62,19 @@ class ClubDetailsCell : TableBaseCell {
 			if let usersName = userMember?.name, let imageURL = userMember?.profileImageUrl {
 				
 				userName.text = usersName
-				profileImage.loadImageFromCacheWithUrlString(urlString: imageURL)
+				
+				if imageURL != "" {
+					
+					firstLetterLabel.isHidden = true
+					profileImage.loadImageFromCacheWithUrlString(urlString: imageURL)
+					
+				} else {
+					
+					firstLetterLabel.isHidden = false
+					firstLetterLabel.text = usersName[0].uppercased()
+					
+				}
+
 				
 			}
 			
@@ -70,6 +92,7 @@ class ClubDetailsCell : TableBaseCell {
 	func setupView() {
 		
 		addSubview(profileImage)
+		profileImage.addSubview(firstLetterLabel)
 		addSubview(userName)
 		addSubview(disclosureIndicator)
 		
@@ -77,6 +100,11 @@ class ClubDetailsCell : TableBaseCell {
 		profileImage.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
 		profileImage.widthAnchor.constraint(equalToConstant: 42.0).isActive = true
 		profileImage.heightAnchor.constraint(equalToConstant: 42.0).isActive = true
+		
+		firstLetterLabel.rightAnchor.constraint(equalTo: profileImage.rightAnchor).isActive = true
+		firstLetterLabel.leftAnchor.constraint(equalTo: profileImage.leftAnchor).isActive = true
+		firstLetterLabel.topAnchor.constraint(equalTo: profileImage.topAnchor).isActive = true
+		firstLetterLabel.bottomAnchor.constraint(equalTo: profileImage.bottomAnchor).isActive = true
 		
 		disclosureIndicator.rightAnchor.constraint(equalTo: rightAnchor, constant: -15.0).isActive = true
 		disclosureIndicator.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
