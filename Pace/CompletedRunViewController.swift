@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import MapKit
 import HealthKit
+import Crashlytics
+import Fabric
 
 class CompletedRunViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate {
 	
@@ -358,6 +360,13 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 			self.handlePostDataToUser()
 			
 			//	Send Analytics to Fabric
+			Answers.logCustomEvent(withName: "Run Complete",
+			                       customAttributes: [
+									
+									"pace": self.pace!,
+									"distance" : self.distance!,
+									"Time" : "\(self.mins!):\(self.secs!)"
+				])
 			
 		})
 		

@@ -11,6 +11,8 @@ import LBTAComponents
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import Crashlytics
+import Fabric
 
 class ClubViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	
@@ -165,18 +167,25 @@ class ClubViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	
 	func joinClub() {
 		
-		/*
+		
 		self.userClubJoined(completion: { (completed) in
 		
-				self.joinButtonView?.joinButton?.setTitle("Club Joined", for: UIControlState.normal)
-				self.joinButtonView?.joinButton?.setTitleColor(UIColor.greyBlackColor(), for: UIControlState.normal)
-				self.joinButtonView?.joinButton?.backgroundColor = UIColor.headerBlack()
+			self.joinButtonView?.joinButton?.setTitle("Club Joined", for: UIControlState.normal)
+			self.joinButtonView?.joinButton?.setTitleColor(UIColor.greyBlackColor(), for: UIControlState.normal)
+			self.joinButtonView?.joinButton?.backgroundColor = UIColor.headerBlack()
+	
+			Answers.logCustomEvent(withName: "Club Joined",
+			                       customAttributes: [
+									
+									"Club Name": (self.club?.name)!,
+				])
+		
 			
 		})
-		*/
+
 		
 	}
-		
+	
 	func handleOpenProfile() {
 		
 		let profileVC = UserProfileViewController()

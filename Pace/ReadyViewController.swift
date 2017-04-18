@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import MediaPlayer
 
-class ReadyViewController: UIViewController {
+class ReadyViewController: UIViewController, MPMediaPickerControllerDelegate, UINavigationControllerDelegate {
 	
 	var musicPlayerView : MusicPlayerView?
+	let mediaPicker = MPMediaPickerController(mediaTypes: .anyAudio)
+	var musicPlayer = MPMusicPlayerController()
+	var audioPlayer = AVAudioPlayer()
+	
 	lazy var goButtonView: GoButtonView = {
 		
 		let view = GoButtonView()
@@ -94,7 +99,6 @@ class ReadyViewController: UIViewController {
 	
 	func handleStartRunning() {
 		
-		let runVC = RunViewController()
 		self.navigationController?.pushViewController(RunViewController(), animated: true)
 		
 	}
