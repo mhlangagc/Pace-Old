@@ -39,7 +39,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 		
 		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height)
 		profileTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.grouped)
-		profileTableView?.backgroundColor = UIColor.closeBlack()
+		profileTableView?.backgroundColor = UIColor.black
 		profileTableView?.delegate = self
 		profileTableView?.dataSource = self
 		profileTableView?.separatorStyle = .none
@@ -137,12 +137,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 	func setupHeaderView() {
 		
 		profileHeaderView  = ProfileTabHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 380.0))
-		
+		profileHeaderView.profileVC = self
 		profileSetup.retrieveUser(completion: { (userFound) in
 			
 			if let userName  = userFound.name, let profileImageURL = userFound.profileImageUrl  {
 				
-				self.profileHeaderView.profileNameButton?.setTitle(userName, for: UIControlState.normal)
+				self.profileHeaderView.profileNameLabel?.text = userName
 				self.profileHeaderView.profileImageView?.loadImageFromUrlString(urlString: profileImageURL)
 			}
 			
@@ -160,6 +160,19 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 		self.navigationController?.pushViewController(SettingsViewController(), animated: true)
 		
 	}
+	
+	func handleEditProfile() {
+		
+		self.navigationController?.pushViewController(EditProfileViewController(), animated: true)
+		
+	}
+	
+	func handleUpdateProfilePicture() {
+	
+		print("Update Profile Picture")
+		
+	}
+	
 	
 }
 

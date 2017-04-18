@@ -290,7 +290,7 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 	}
 	
 	
-	func handlePostDataToUser(completion: @escaping ()->()) {
+	func handlePostDataToUser() {
 		 
 		let ref = FIRDatabase.database().reference().child("ClubRuns")
 		let childRef = ref.childByAutoId()
@@ -324,7 +324,7 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 			
 			//self.handlePostDataToClub()
 			
-			completion()
+			//completion()
 			
 		}
 		
@@ -352,15 +352,15 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 	
 	func handleDoneWorkout() {
 		
-		self.handlePostDataToUser {
-				
-			self.dismiss(animated: true, completion: { 
-				
-				//	Send Analytics to Fabric
-				
-			})
+		self.dismiss(animated: true, completion: {
 			
-		}
+			//	Send data to Firebase 
+			self.handlePostDataToUser()
+			
+			//	Send Analytics to Fabric
+			
+		})
+		
 		
 	}
 	

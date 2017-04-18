@@ -43,15 +43,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 		
 		let tableViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height)
 		settingsTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.grouped)
-		settingsTableView?.backgroundColor = UIColor.closeBlack()
+		settingsTableView?.backgroundColor = UIColor.black
 		settingsTableView?.delegate = self
 		settingsTableView?.dataSource = self
 		settingsTableView?.separatorStyle = .none
 		settingsTableView?.showsVerticalScrollIndicator = false
 		view.addSubview(settingsTableView!)
 		
-		topSettingsArray = SettingsSetup.createTopSettings()
-		trainerJoinArray = SettingsSetup.createJoinTheTrainers()
+		topSettingsArray = SettingsSetup.editProfile()
+		trainerJoinArray = SettingsSetup.createClub()
 		middleSectionArray = SettingsSetup.createMiddleSettings()
 		bottomSectionArray = SettingsSetup.createBottomSettings()
 		logoutArray = SettingsSetup.createLogout()
@@ -65,7 +65,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 		settingsTableView?.register(SettingsCellView.self, forCellReuseIdentifier: settingsCellID)
 		self.navigationController?.navigationBar.isHidden = false
 		self.navigationItem.title = "Me"
-		view.backgroundColor = .closeBlack()
+		view.backgroundColor = .black
 		self.navigationBarItems()
 		self.setupWorkoutDetailsTableView()
 		

@@ -182,6 +182,7 @@
 		C6BB148F1E3FA1E700BF6F66 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB148E1E3FA1E700BF6F66 /* LoginViewController.swift */; };
 		C6BB14911E3FB08A00BF6F66 /* OnboardingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB14901E3FB08A00BF6F66 /* OnboardingImageView.swift */; };
 		C6BE5C131E402ADA00770A42 /* PaceAppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE5C121E402ADA00770A42 /* PaceAppServices.swift */; };
+		C6E2D28E1EA67B9B00A4E78A /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E2D28D1EA67B9B00A4E78A /* EditProfileViewController.swift */; };
 		C6F0D9491E92E97300BF56C1 /* ClubChatViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0D9481E92E97300BF56C1 /* ClubChatViewController+Extension.swift */; };
 		C6F0D94B1E92EBDD00BF56C1 /* ClubChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0D94A1E92EBDD00BF56C1 /* ClubChatCell.swift */; };
 		C6F0D94D1E93605900BF56C1 /* TimeAgoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0D94C1E93605900BF56C1 /* TimeAgoDisplay.swift */; };
@@ -405,6 +406,7 @@
 		C6BB148E1E3FA1E700BF6F66 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C6BB14901E3FB08A00BF6F66 /* OnboardingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingImageView.swift; sourceTree = "<group>"; };
 		C6BE5C121E402ADA00770A42 /* PaceAppServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceAppServices.swift; sourceTree = "<group>"; };
+		C6E2D28D1EA67B9B00A4E78A /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		C6F0D9481E92E97300BF56C1 /* ClubChatViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ClubChatViewController+Extension.swift"; sourceTree = "<group>"; };
 		C6F0D94A1E92EBDD00BF56C1 /* ClubChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubChatCell.swift; sourceTree = "<group>"; };
 		C6F0D94C1E93605900BF56C1 /* TimeAgoDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAgoDisplay.swift; sourceTree = "<group>"; };
@@ -922,6 +924,7 @@
 				C61C4C081E7E7EB6007C7E37 /* ProfileViewController+Extension.swift */,
 				C61C4C0B1E7E8FC1007C7E37 /* RunsCellView.swift */,
 				C61C4C071E7E7DE1007C7E37 /* Settings */,
+				C6E2D28C1EA67B7F00A4E78A /* Edit Profile */,
 			);
 			name = " Profile Tab";
 			sourceTree = "<group>";
@@ -1215,6 +1218,14 @@
 				C6B1BA571E8251FD00EF7223 /* MulticolorPolylineSegment.swift */,
 			);
 			name = RunCompleted;
+			sourceTree = "<group>";
+		};
+		C6E2D28C1EA67B7F00A4E78A /* Edit Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C6E2D28D1EA67B9B00A4E78A /* EditProfileViewController.swift */,
+			);
+			name = "Edit Profile";
 			sourceTree = "<group>";
 		};
 		C6F770DD1E47577900349C5B /* Empty View */ = {
@@ -1532,6 +1543,7 @@
 				C61C4C0C1E7E8FC1007C7E37 /* RunsCellView.swift in Sources */,
 				C6B1182A1E21729F002BB4E8 /* NameEntryViewController.swift in Sources */,
 				45C247431DFC5FF700B16AEE /* JustAdded Label.swift in Sources */,
+				C6E2D28E1EA67B9B00A4E78A /* EditProfileViewController.swift in Sources */,
 				4527D4051E1F7C0600F1A643 /* EmailViewController.swift in Sources */,
 				45A37F371DFC459300049493 /* TopClubCell.swift in Sources */,
 				C680A73C1E8155BE008ACA5A /* RunModel+CoreDataProperties.swift in Sources */,

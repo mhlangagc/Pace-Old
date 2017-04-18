@@ -197,8 +197,8 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 			self.clubChatCollectionView.reloadData()
 			//self.clubChatCollectionView.keyboardDismissMode = .interactive
 			
-			let indexPath = IndexPath(item: self.userRunsArray.count - 1, section: 0)
-			self.clubChatCollectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.bottom, animated: true)
+			//let indexPath = IndexPath(item: self.userRunsArray.count - 1, section: 0)
+			//self.clubChatCollectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.bottom, animated: true)
 			
 		})
 		
@@ -612,9 +612,8 @@ extension ClubChatViewController {
 					clubsRuns.clubID = dictionary["teamID"] as? String
 					clubsRuns.timeStamp = dictionary["timeStamp"] as? Int
 					
-					
 					clubRunsArray.append(clubsRuns)
-					//teamMessagesArray.sort(by: {$0.timeStamp! > $1.timeStamp!})
+					clubRunsArray.sort(by: {$0.timeStamp! > $1.timeStamp!})
 					
 					completion(clubRunsArray)
 					

@@ -108,20 +108,21 @@ extension SettingsViewController {
 			if indexPath.item == 0 {
 				
 				
-				print("Change Units")
+				self.navigationController?.pushViewController(EditProfileViewController(), animated: true)
 				
 				
-			} else {
-				
-				print("Health Kit")
-				
-			}
+			} 
 			
 			
 		case 1:
 			
 			if indexPath.item == 0 {
 				
+				let createClubVC = CreateClubViewController()
+				let navBarVC = UINavigationController(rootViewController: createClubVC)
+				self.present(navBarVC, animated: true, completion: nil)
+				
+				/*
 				let mailComposeViewController = configuredMailComposeViewController()
 				if MFMailComposeViewController.canSendMail() {
 					
@@ -132,12 +133,14 @@ extension SettingsViewController {
 					self.showSendMailErrorAlert()
 					
 				}
+				*/
 				
 			}
 			
 		case 2:
 			
 			if indexPath.item == 0 {
+				
 				
 				let mailComposeViewController = configuredFeedbackMailComposeViewController()
 				if MFMailComposeViewController.canSendMail() {

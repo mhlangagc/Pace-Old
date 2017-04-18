@@ -10,6 +10,14 @@ import UIKit
 
 class SettingsViewModel : NSObject {
 	
+	func editProfile() -> [SettingsModel] {
+		
+		let editProfile = SettingsModel()
+		editProfile.setting = "Edit your Profile"
+		
+		return [editProfile]
+	}
+	
 	func createTopSettings() -> [SettingsModel] {
 		
 		let units = SettingsModel()
@@ -23,10 +31,10 @@ class SettingsViewModel : NSObject {
 		return [units, healthkit]
 	}
 	
-	func createJoinTheTrainers() -> [SettingsModel] {
+	func createClub() -> [SettingsModel] {
 		
 		let joinTrainers = SettingsModel()
-		joinTrainers.setting = "Upload your Workout"
+		joinTrainers.setting = "Create a Club"
 		joinTrainers.settingDetail = nil
 		
 		return [joinTrainers]
