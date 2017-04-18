@@ -18,7 +18,7 @@ extension SettingsViewController {
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 	
-		return 5
+		return 4
 	
 	}
 	
@@ -28,17 +28,13 @@ extension SettingsViewController {
 			
 		case 0:
 			
-			return (topSettingsArray?.count)!
+			return (trainerJoinArray?.count)!
 			
 		case 1:
 			
-			return (trainerJoinArray?.count)!
-			
-		case 2:
-			
 			return (middleSectionArray?.count)!
 			
-		case 3:
+		case 2:
 			
 			return (bottomSectionArray?.count)!
 			
@@ -70,20 +66,15 @@ extension SettingsViewController {
 			
 		case 0:
 			
-			settingsCell?.settingsModel = topSettingsArray?[indexPath.item]
+			settingsCell?.settingsModel = trainerJoinArray?[indexPath.item]
 			return settingsCell!
 			
 		case 1:
 			
-			settingsCell?.settingsModel = trainerJoinArray?[indexPath.item]
-			return settingsCell!
-			
-		case 2:
-			
 			settingsCell?.settingsModel = middleSectionArray?[indexPath.item]
 			return settingsCell!
 			
-		case 3:
+		case 2:
 			
 			settingsCell?.settingsModel = bottomSectionArray?[indexPath.item]
 			return settingsCell!
@@ -105,42 +96,14 @@ extension SettingsViewController {
 			
 		case 0:
 			
-			if indexPath.item == 0 {
-				
-				
-				self.navigationController?.pushViewController(EditProfileViewController(), animated: true)
-				
-				
-			} 
+			let createClubVC = CreateClubViewController()
+			let navBarVC = UINavigationController(rootViewController: createClubVC)
+			self.present(navBarVC, animated: true, completion: nil)
 			
 			
 		case 1:
 			
 			if indexPath.item == 0 {
-				
-				let createClubVC = CreateClubViewController()
-				let navBarVC = UINavigationController(rootViewController: createClubVC)
-				self.present(navBarVC, animated: true, completion: nil)
-				
-				/*
-				let mailComposeViewController = configuredMailComposeViewController()
-				if MFMailComposeViewController.canSendMail() {
-					
-					self.present(mailComposeViewController, animated: true, completion: nil)
-					
-				} else {
-					
-					self.showSendMailErrorAlert()
-					
-				}
-				*/
-				
-			}
-			
-		case 2:
-			
-			if indexPath.item == 0 {
-				
 				
 				let mailComposeViewController = configuredFeedbackMailComposeViewController()
 				if MFMailComposeViewController.canSendMail() {
@@ -152,10 +115,11 @@ extension SettingsViewController {
 					self.showSendMailErrorAlert()
 					
 				}
+
 				
 			}
 			
-		case 3:
+		case 2:
 			
 			if indexPath.item == 0 {
 				

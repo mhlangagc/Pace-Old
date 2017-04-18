@@ -11,13 +11,15 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate,
+UINavigationControllerDelegate {
 	
 	var profileTableView : UITableView?
 	let runsCellID = "runsCellID"
 	var profileHeaderView =  ProfileTabHeaderView()
 	var user : User?
 	var userRunsArray = [RunsModel]()
+	let picker = UIImagePickerController()
 
 	lazy var profileSetup: PaceAppServices = {
 		
@@ -57,6 +59,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 		view.backgroundColor = .black
 		self.navigationBarItems()
 		self.setupWorkoutDetailsTableView()
+		picker.delegate = self
 		
 		navigationNoLineBar()
 		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
@@ -143,7 +146,19 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 			if let userName  = userFound.name, let profileImageURL = userFound.profileImageUrl  {
 				
 				self.profileHeaderView.profileNameLabel?.text = userName
-				self.profileHeaderView.profileImageView?.loadImageFromUrlString(urlString: profileImageURL)
+				if profileImageURL != "" {
+					
+					self.profileHeaderView.firstLetterCharacter?.isHidden = true
+					self.profileHeaderView.profileImageView?.loadImageFromUrlString(urlString: profileImageURL)
+					
+				} else {
+					
+					self.profileHeaderView.firstLetterCharacter?.isHidden = false
+					self.profileHeaderView.firstLetterCharacter?.text = userName[0]
+					
+				}
+				
+				
 			}
 			
 			UIApplication.shared.isNetworkActivityIndicatorVisible = false
@@ -154,6 +169,27 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 		
 	}
 	
+	//	Picking Image Delegates
+	func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+		
+		picker.dismiss(animated: true, completion: nil)
+	
+	}
+	
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+		
+		let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+		profileHeaderView.profileImageView?.contentMode = .scaleAspectFit
+		profileHeaderView.profileImageView?.image = chosenImage
+		dismiss(animated: true) {
+			
+			self.profileHeaderView.profileImageView?.image = nil
+			self.profileHeaderView.firstLetterCharacter?.isHidden = true
+			self.uploadToFirebaseStorageUsingImage(imagePicked: chosenImage)
+			
+		}
+		
+	}
 	
 	func handleOpenSettings() {
 		
@@ -161,17 +197,113 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 		
 	}
 	
-	func handleEditProfile() {
-		
-		self.navigationController?.pushViewController(EditProfileViewController(), animated: true)
-		
-	}
-	
 	func handleUpdateProfilePicture() {
 	
-		print("Update Profile Picture")
+		let alertController = UIAlertController(title: "Upload Profile Picture", message: nil, preferredStyle: .actionSheet)
+		
+		let takePhotoButton = UIAlertAction(title: "Take a photo", style: .default, handler: { (action) -> Void in
+			
+			if UIImagePickerController.isSourceTypeAvailable(.camera) {
+				
+				self.picker.allowsEditing = false
+				self.picker.sourceType = UIImagePickerControllerSourceType.camera
+				self.picker.cameraCaptureMode = .photo
+				self.picker.modalPresentationStyle = .fullScreen
+				self.present(self.picker,animated: true,completion: nil)
+			
+			} else {
+			
+				print("No Camera Found")
+			
+			}
+			
+		})
+		
+		let  photoLibraryButton = UIAlertAction(title: "Pick from library", style: .default, handler: { (action) -> Void in
+			
+			self.picker.allowsEditing = false
+			self.picker.sourceType = .photoLibrary
+			self.picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+			self.present(self.picker, animated: true, completion: nil)
+		
+		})
+		
+		let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+			
+			print("Cancel button tapped")
+		
+		})
+		
+		alertController.addAction(takePhotoButton)
+		alertController.addAction(photoLibraryButton)
+		alertController.addAction(cancelButton)
+		
+		self.present(alertController, animated: true, completion: nil)
+		
+		
 		
 	}
+	
+	func updateFireBasewithProfileImage(imageCapturedURL: String, completion: @escaping (_ error: Error?) -> Void ) {
+		
+		guard let uid =  FIRAuth.auth()?.currentUser?.uid else {
+			return
+		}
+		
+		let values = [
+			"profileImageUrl": imageCapturedURL
+		]
+		
+		FIRDatabase.database().reference().child("Users").child(uid).updateChildValues(values, withCompletionBlock: { (error, ref) in
+			
+			if error != nil {
+				
+				completion(error)
+				return
+			}
+			
+			completion(nil)
+			
+		})
+		
+		
+		
+	}
+	
+	private func uploadToFirebaseStorageUsingImage(imagePicked: UIImage) {
+		
+		let imageName = NSUUID().uuidString
+		let ref = FIRStorage.storage().reference().child("profileImages").child(imageName)
+		
+		if let uploadData = UIImageJPEGRepresentation(imagePicked, 0.5) {
+			ref.put(uploadData, metadata: nil, completion: { (metadata, error) in
+				
+				if error != nil {
+					print("Failed to upload image:", (error?.localizedDescription)!)
+					return
+				}
+				
+				if let imageUrl = metadata?.downloadURL()?.absoluteString {
+					self.updateFireBasewithProfileImage(imageCapturedURL: imageUrl, completion: { (error) in
+						
+						if error != nil {
+							
+							print("Something went wrong : \(String(describing: error?.localizedDescription))")
+							return
+						}
+						
+						print("Image Uploaded sucessfully")
+						self.setupHeaderView()
+
+						
+					})
+				}
+				
+			})
+		}
+	}
+	
+	
 	
 	
 }

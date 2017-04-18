@@ -38,7 +38,12 @@ class ProfileTabHeaderView : BaseView {
 	
 	func addViews() {
 		
-		profileImageView = UIImageView.init(frame: CGRect(x: ((frame.width - 100.0) * 0.5), y: 45.0, width: 100.0, height: 100.0))
+		firstLetterCharacter = UILabel.init(frame: CGRect(x: ((frame.width - 100.0) * 0.5), y: 60.0, width: 100.0, height: 100.0))
+		firstLetterCharacter?.textAlignment = .center
+		firstLetterCharacter?.textColor = UIColor.paceBrandColor()
+		firstLetterCharacter?.font = UIFont.systemFont(ofSize: 45, weight: UIFontWeightHeavy)
+		
+		profileImageView = UIImageView.init(frame: CGRect(x: ((frame.width - 100.0) * 0.5), y: 60.0, width: 100.0, height: 100.0))
 		profileImageView?.backgroundColor = UIColor.darkBlack()
 		profileImageView?.isUserInteractionEnabled = true
 		profileImageView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleUpdateProfilePicture)))
@@ -46,21 +51,22 @@ class ProfileTabHeaderView : BaseView {
 		profileImageView?.layer.cornerRadius = 50.0
 		profileImageView?.layer.masksToBounds = true
 		addSubview(profileImageView!)
+		addSubview(firstLetterCharacter!)
 		
-		profileNameLabel = UILabel.init(frame: CGRect(x: 0.0, y: 180, width: frame.width, height: 32.0))
+		profileNameLabel = UILabel.init(frame: CGRect(x: 0.0, y: 200, width: frame.width, height: 32.0))
 		profileNameLabel?.textAlignment = .center
 		profileNameLabel?.textColor = UIColor.greyWhite()
 		profileNameLabel?.font = UIFont.systemFont(ofSize: 28, weight: UIFontWeightBlack)
 		addSubview(profileNameLabel!)
 		
-		
+
 		editProfileNameButton = UIButton.init(frame: CGRect(x: 0.0, y: 220, width: frame.width, height: 18.0))
 		editProfileNameButton?.contentHorizontalAlignment = .center
 		editProfileNameButton?.setTitle("Edit profile", for: UIControlState.normal)
 		editProfileNameButton?.setTitleColor(UIColor.paceBrandColor(), for: UIControlState.normal)
-		editProfileNameButton?.addTarget(self, action: #selector(handleEditProfile), for: UIControlEvents.touchUpInside)
+		//editProfileNameButton?.addTarget(self, action: #selector(handleEditProfile), for: UIControlEvents.touchUpInside)
 		editProfileNameButton?.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)
-		addSubview(editProfileNameButton!)
+		//addSubview(editProfileNameButton!)
 		
 		
 		
@@ -131,11 +137,6 @@ class ProfileTabHeaderView : BaseView {
 		
 	}
 	
-	func handleEditProfile() {
-		
-		profileVC?.handleEditProfile()
-		
-	}
 	
 	func handleUpdateProfilePicture() {
 		

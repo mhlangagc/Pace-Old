@@ -18,7 +18,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 	var settingsTableView : UITableView?
 	let settingsCellID = "settingsCellID"
 	
-	var topSettingsArray : [SettingsModel]?
+	//var topSettingsArray : [SettingsModel]?
 	var trainerJoinArray : [SettingsModel]?
 	var middleSectionArray : [SettingsModel]?
 	var bottomSectionArray : [SettingsModel]?
@@ -50,7 +50,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 		settingsTableView?.showsVerticalScrollIndicator = false
 		view.addSubview(settingsTableView!)
 		
-		topSettingsArray = SettingsSetup.editProfile()
+		//topSettingsArray = SettingsSetup.editProfile()
 		trainerJoinArray = SettingsSetup.createClub()
 		middleSectionArray = SettingsSetup.createMiddleSettings()
 		bottomSectionArray = SettingsSetup.createBottomSettings()
@@ -64,7 +64,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 		
 		settingsTableView?.register(SettingsCellView.self, forCellReuseIdentifier: settingsCellID)
 		self.navigationController?.navigationBar.isHidden = false
-		self.navigationItem.title = "Me"
+		self.navigationItem.title = "Settings"
 		view.backgroundColor = .black
 		self.navigationBarItems()
 		self.setupWorkoutDetailsTableView()
