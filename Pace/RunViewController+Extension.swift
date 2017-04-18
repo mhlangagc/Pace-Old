@@ -10,7 +10,7 @@ import UIKit
 import MediaPlayer
 import AVFoundation
 
-extension ReadyViewController {
+extension RunViewController {
 	
 	//  MARK: Music Actions
 	func registerMediaPlayerNotifications() {
@@ -47,16 +47,16 @@ extension ReadyViewController {
 		
 		if playBackState == MPMusicPlaybackState.paused {
 			
-			musicPlayerView?.playButton.setImage(UIImage(named:  "play"), for: UIControlState.normal)
+			musicPlayerView?.playButton.setImage(#imageLiteral(resourceName: "play"), for: UIControlState.normal)
 			
 			
 		} else if musicPlayer.playbackState == MPMusicPlaybackState.playing {
 			
-			musicPlayerView?.playButton.setImage(UIImage(named:  "Pause"), for: UIControlState.normal)
+			musicPlayerView?.playButton.setImage(#imageLiteral(resourceName: "Pause"), for: UIControlState.normal)
 			
 		} else if musicPlayer.playbackState == MPMusicPlaybackState.stopped{
 			
-			musicPlayerView?.playButton.setImage(UIImage(named:  "play"), for: .normal)
+			musicPlayerView?.playButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
 			musicPlayer.stop()
 		}
 		
@@ -70,7 +70,7 @@ extension ReadyViewController {
 			
 			
 			//  Pause or Play the track
-			musicPlayerView?.playButton.setImage(UIImage(named:  "play"), for: UIControlState.normal)
+			musicPlayerView?.playButton.setImage(#imageLiteral(resourceName: "play"), for: UIControlState.normal)
 			
 			
 		} else {
@@ -86,7 +86,7 @@ extension ReadyViewController {
 					
 				} else {
 					
-					musicPlayerView?.musicButton.setImage(UIImage(named: "musicIcon"), for: UIControlState.normal)
+					musicPlayerView?.musicButton.setImage(#imageLiteral(resourceName: "cover"), for: UIControlState.normal)
 					
 				}
 				
@@ -125,10 +125,10 @@ extension ReadyViewController {
 	
 	func openMediaView() {
 		
-		let mediaPicker: MPMediaPickerController = MPMediaPickerController(mediaTypes: .anyAudio)
+		let mediaPicker: MPMediaPickerController = MPMediaPickerController(mediaTypes: .music)
 		mediaPicker.delegate = self
 		mediaPicker.allowsPickingMultipleItems = true
-		mediaPicker.showsCloudItems = false
+		mediaPicker.showsCloudItems = true
 		mediaPicker.prompt = "Select an Album,Playlist or Song"
 		self.present(mediaPicker, animated: true, completion: nil)
 		
@@ -159,13 +159,13 @@ extension ReadyViewController {
 			if self.musicPlayer.playbackState == MPMusicPlaybackState.playing {
 				
 				self.musicPlayer.pause()
-				musicPlayerView?.playButton.setImage(UIImage(named:  "play"), for: UIControlState.normal)
+				musicPlayerView?.playButton.setImage(#imageLiteral(resourceName: "play"), for: UIControlState.normal)
 				
 			} else {
 				
 				
 				self.musicPlayer.play()
-				musicPlayerView?.playButton.setImage(UIImage(named:  "Pause"), for: UIControlState.normal)
+				musicPlayerView?.playButton.setImage(#imageLiteral(resourceName: "Pause"), for: UIControlState.normal)
 				
 			}
 			

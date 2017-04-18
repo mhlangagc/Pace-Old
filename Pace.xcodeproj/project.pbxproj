@@ -182,7 +182,7 @@
 		C6BB148F1E3FA1E700BF6F66 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB148E1E3FA1E700BF6F66 /* LoginViewController.swift */; };
 		C6BB14911E3FB08A00BF6F66 /* OnboardingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB14901E3FB08A00BF6F66 /* OnboardingImageView.swift */; };
 		C6BE5C131E402ADA00770A42 /* PaceAppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE5C121E402ADA00770A42 /* PaceAppServices.swift */; };
-		C6E2D2901EA6B43800A4E78A /* ReadyViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E2D28F1EA6B43800A4E78A /* ReadyViewController+Extension.swift */; };
+		C6E2D2901EA6B43800A4E78A /* RunViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E2D28F1EA6B43800A4E78A /* RunViewController+Extension.swift */; };
 		C6F0D9491E92E97300BF56C1 /* ClubChatViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0D9481E92E97300BF56C1 /* ClubChatViewController+Extension.swift */; };
 		C6F0D94B1E92EBDD00BF56C1 /* ClubChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0D94A1E92EBDD00BF56C1 /* ClubChatCell.swift */; };
 		C6F0D94D1E93605900BF56C1 /* TimeAgoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0D94C1E93605900BF56C1 /* TimeAgoDisplay.swift */; };
@@ -406,7 +406,7 @@
 		C6BB148E1E3FA1E700BF6F66 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C6BB14901E3FB08A00BF6F66 /* OnboardingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingImageView.swift; sourceTree = "<group>"; };
 		C6BE5C121E402ADA00770A42 /* PaceAppServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceAppServices.swift; sourceTree = "<group>"; };
-		C6E2D28F1EA6B43800A4E78A /* ReadyViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReadyViewController+Extension.swift"; sourceTree = "<group>"; };
+		C6E2D28F1EA6B43800A4E78A /* RunViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RunViewController+Extension.swift"; sourceTree = "<group>"; };
 		C6F0D9481E92E97300BF56C1 /* ClubChatViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ClubChatViewController+Extension.swift"; sourceTree = "<group>"; };
 		C6F0D94A1E92EBDD00BF56C1 /* ClubChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubChatCell.swift; sourceTree = "<group>"; };
 		C6F0D94C1E93605900BF56C1 /* TimeAgoDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAgoDisplay.swift; sourceTree = "<group>"; };
@@ -1204,6 +1204,7 @@
 			children = (
 				C6B1BA4E1E8234F200EF7223 /* RunViewController.xib */,
 				C6B1BA4D1E8234F200EF7223 /* RunViewController.swift */,
+				C6E2D28F1EA6B43800A4E78A /* RunViewController+Extension.swift */,
 			);
 			name = RunViewController;
 			sourceTree = "<group>";
@@ -1255,7 +1256,6 @@
 			isa = PBXGroup;
 			children = (
 				C61AD0F91E847B9000C377B9 /* ReadyViewController.swift */,
-				C6E2D28F1EA6B43800A4E78A /* ReadyViewController+Extension.swift */,
 			);
 			name = RunReadyViewController;
 			sourceTree = "<group>";
@@ -1566,7 +1566,7 @@
 				C680A7331E815542008ACA5A /* ExercisesModel+CoreDataProperties.swift in Sources */,
 				45AC38FA1E188DF9003DC46B /* WorkoutProcessViewController+Extension.swift in Sources */,
 				45AC39001E18912B003DC46B /* MusicPlayerView.swift in Sources */,
-				C6E2D2901EA6B43800A4E78A /* ReadyViewController+Extension.swift in Sources */,
+				C6E2D2901EA6B43800A4E78A /* RunViewController+Extension.swift in Sources */,
 				C6057EEE1E3E288400AC62EA /* PaceErrorHandling.swift in Sources */,
 				45C214E11E05AE0400C5BCCF /* AllWorkoutsViewController.swift in Sources */,
 				45F3AA201E15990900D70C84 /* ActivitiesModel.swift in Sources */,

@@ -10,18 +10,26 @@ import UIKit
 import CoreData
 import CoreLocation
 import HealthKit
+import MediaPlayer
+import AVFoundation
 
-class RunViewController: UIViewController, CLLocationManagerDelegate {
+class RunViewController: UIViewController, CLLocationManagerDelegate, MPMediaPickerControllerDelegate, UINavigationControllerDelegate {
 	
 	@IBOutlet weak var kmLabel: UILabel!
 	@IBOutlet weak var timeLabel: UILabel!
 	@IBOutlet weak var paceLabel: UILabel!
+	
 	@IBOutlet weak var runButtton: UIButton!
 	
 	
 	@IBOutlet weak var resumeRun: UIButton!
 	@IBOutlet weak var stopRun: UIButton!
+	
 	var musicPlayerView : MusicPlayerView?
+	let mediaPicker = MPMediaPickerController(mediaTypes: .music)
+	var musicPlayer = MPMusicPlayerController()
+	var audioPlayer = AVAudioPlayer()
+	
 	var run: RunModel?
 	lazy var locations = [CLLocation]()
 	lazy var timer = Timer()
@@ -54,6 +62,7 @@ class RunViewController: UIViewController, CLLocationManagerDelegate {
         self.configureView()
 		self.setupPlayerView()
 		self.handleStartRunning()
+		self.musicProcessing()
 		
     }
 	
@@ -242,6 +251,13 @@ class RunViewController: UIViewController, CLLocationManagerDelegate {
 		self.saveRun { 
 			
 			print("Run Saved")
+			
+			if self.musicPlayer.nowPlayingItem != nil {
+				
+				self.musicPlayer.pause()
+				
+			}
+			
 			let runCompleteVC = CompletedRunViewController()
 			runCompleteVC.run = self.run
 			self.navigationController?.pushViewController(runCompleteVC, animated: true)
@@ -252,6 +268,53 @@ class RunViewController: UIViewController, CLLocationManagerDelegate {
 }
 
 extension RunViewController {
+	
+	func musicProcessing() {
+		
+		musicPlayer = MPMusicPlayerController.systemMusicPlayer()
+		
+		//  Music PlayBack state
+		if musicPlayer.playbackState == MPMusicPlaybackState.playing {
+			
+			//Artwork
+			if let currentItem: MPMediaItem = musicPlayer.nowPlayingItem {
+				
+				if let artwork: MPMediaItemArtwork = currentItem.value(forProperty: MPMediaItemPropertyArtwork) as? MPMediaItemArtwork {
+					
+					let artworkImage = artwork.image(at: CGSize(width: 60.0, height: 60.0))
+					musicPlayerView?.musicButton.setImage(artworkImage, for: UIControlState())
+					
+				} else {
+					
+					musicPlayerView?.musicButton.setImage(UIImage(named: "musicIcon"), for: UIControlState())
+					
+				}
+				
+				//Title & Artist
+				if let titleString: String = currentItem.value(forProperty: MPMediaItemPropertyTitle) as? String {
+					
+					musicPlayerView?.songPlayingLabel.text = titleString
+					
+				} else {
+					
+					musicPlayerView?.songPlayingLabel.text = "Uknown Song"
+					
+				}
+			}
+			
+			musicPlayerView?.playButton.setImage(UIImage(named: "Pause"), for: UIControlState.normal)
+			
+			
+		} else {
+			
+			musicPlayerView?.playButton.setImage(UIImage(named:  "play"), for: UIControlState.normal)
+			
+		}
+		
+		//Register Notifictions
+		self.registerMediaPlayerNotifications()
+		
+	}
 	
 	func setupLogoNavItem() {
 		
@@ -279,6 +342,7 @@ extension RunViewController {
 	func setupPlayerView() {
 		
 		musicPlayerView = MusicPlayerView.init(frame: CGRect(x: 0, y: view.frame.height - 149.0, width: view.frame.width, height: 85.0))
+		musicPlayerView?.runVC = self
 		view.addSubview(musicPlayerView!)
 	
 	}

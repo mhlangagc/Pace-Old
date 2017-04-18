@@ -105,7 +105,7 @@ class HealthkitAccessAndManager: NSObject {
 			if error != nil {
 				
 				//  Something Went wrong
-				print("Something went wrong while retrieving the samples : \(error?.localizedDescription)")
+				print("Something went wrong while retrieving the samples : \(String(describing: error?.localizedDescription))")
 				return
 				
 			}
@@ -221,7 +221,7 @@ class HealthkitAccessAndManager: NSObject {
 				
 			} else {
 				
-				print("Something went wrong while saving your workout: \(error)")
+				print("Something went wrong while saving your workout: \(String(describing: error))")
 				
 			}
 			

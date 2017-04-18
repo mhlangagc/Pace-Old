@@ -10,12 +10,12 @@ import UIKit
 
 class MusicPlayerView : BaseView {
 	
-	var workoutProcessVC: WorkoutProcessViewController?
+	var runVC: RunViewController?
 	
 	let musicButton: UIButton = {
 		
 		let button = UIButton()
-		button.setImage(UIImage(named: "ghostStories"), for: UIControlState.normal)
+		button.setImage(#imageLiteral(resourceName: "cover"), for: UIControlState.normal)
 		button.layer.cornerRadius = 6
 		button.layer.masksToBounds = true
 		button.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +26,7 @@ class MusicPlayerView : BaseView {
 	let songPlayingLabel: UILabel = {
 		
 		let label = UILabel()
-		label.text = "Let it happen"
+		label.text = "Play some music"
 		label.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightBold)
 		label.textColor = UIColor.white
 		textSpacing(label, spacing: 0.4)
@@ -38,7 +38,7 @@ class MusicPlayerView : BaseView {
 	let playButton: UIButton = {
 		
 		let button = UIButton()
-		button.setImage(UIImage(named: "play"), for: UIControlState.normal)
+		button.setImage(#imageLiteral(resourceName: "play"), for: UIControlState.normal)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
 		
@@ -48,7 +48,7 @@ class MusicPlayerView : BaseView {
 	let forwardButton: UIButton = {
 		
 		let button = UIButton()
-		button.setImage(UIImage(named: "forward"), for: UIControlState.normal)
+		button.setImage(#imageLiteral(resourceName: "forward"), for: UIControlState.normal)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
 		
@@ -72,7 +72,7 @@ class MusicPlayerView : BaseView {
 		
 		
 		addSubview(forwardButton)
-		forwardButton.addTarget(self, action: #selector(handleMusicPlay), for: UIControlEvents.touchUpInside)
+		forwardButton.addTarget(self, action: #selector(handleSkip), for: UIControlEvents.touchUpInside)
 		
 		
 		addSubview(playButton)
@@ -107,13 +107,20 @@ class MusicPlayerView : BaseView {
 	
 	func handleMusicSelect() {
 		
-		//	TO DO
+		runVC?.selectMusic()
 		
 	}
 	
 	func handleMusicPlay() {
 		
-		// TO DO
+		runVC?.Pause()
+	}
+	
+	
+	func handleSkip() {
+		
+		runVC?.Forward()
+		
 	}
 	
 

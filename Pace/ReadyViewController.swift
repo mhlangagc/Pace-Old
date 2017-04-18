@@ -7,14 +7,10 @@
 //
 
 import UIKit
-import MediaPlayer
 
-class ReadyViewController: UIViewController, MPMediaPickerControllerDelegate, UINavigationControllerDelegate {
+class ReadyViewController: UIViewController {
 	
-	var musicPlayerView : MusicPlayerView?
-	let mediaPicker = MPMediaPickerController(mediaTypes: .anyAudio)
-	var musicPlayer = MPMusicPlayerController()
-	var audioPlayer = AVAudioPlayer()
+	//var musicPlayerView : MusicPlayerView?
 	
 	lazy var goButtonView: GoButtonView = {
 		
@@ -74,6 +70,7 @@ class ReadyViewController: UIViewController, MPMediaPickerControllerDelegate, UI
 	
 	func setupPlayerView() {
 		
+		/*
 		var frameHeight = CGFloat()
 		var frameWidth = CGFloat()
 		
@@ -83,9 +80,10 @@ class ReadyViewController: UIViewController, MPMediaPickerControllerDelegate, UI
 			frameWidth = window.frame.width
 			
 		}
+		
 		musicPlayerView = MusicPlayerView.init(frame: CGRect(x: 0, y: frameHeight - 149, width: frameWidth, height: 85.0))
 		self.view.addSubview(musicPlayerView!)
-		
+		*/
 	}
 	
 	func handleClose() {
