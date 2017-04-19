@@ -18,6 +18,7 @@ import SLPagingView
 
 let appStoreLinkToDownload: NSURL = NSURL(string: "https://itunes.apple.com/us/app/pace-ultimate-fitness-organising/id1107980760?ls=1&mt=8")!
 let termsLink : String = "http://mhlangagc.wixsite.com/pace/terms-of-use"
+var hasStartedTimer = true
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -100,6 +101,136 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 	}
 	
+	func saveCurrentTime() {
+		
+		let currentTime = Date()
+		print(currentTime)
+		
+		UserDefaults.standard.set(currentTime, forKey: "savedTime")
+		//UserDefaults.standard.set(currentTime, forKey: "savedRunningTime")
+		//UserDefaults.standard.set(true, forKey: "isRunningTimer")
+		UserDefaults.standard.synchronize()
+
+		
+		/*
+		if hasStartedTimer == true {
+			
+			/*
+			
+			- Save the current Time to User defaults.
+			- Invalidate the Current Timer.
+			- Save the Current Time on the device.
+			- Save a boolean value that I am actually running.
+			
+			- let formatter  = DateFormatter()
+			- formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+			- let currentTime = formatter.string(from: currentDate)
+			
+			*/
+			
+			
+			
+			let currentTime = Date()
+			print(currentTime)
+			
+			//	Save Current Time, Timer and Boolean
+			UserDefaults.standard.set(currentTime, forKey: "savedTime")
+			//UserDefaults.standard.set(currentTime, forKey: "savedRunningTime")
+			//UserDefaults.standard.set(true, forKey: "isRunningTimer")
+			UserDefaults.standard.synchronize()
+			
+			//hasStartedTimer = false
+			
+		}
+		*/
+		
+	}
+	
+	func retrieveTimerSaved() {
+		
+		if let savedTime = UserDefaults.standard.object(forKey: "savedTime") as? Date {
+			
+			let calender:Calendar = Calendar.current
+			let components : DateComponents = calender.dateComponents([.hour, .minute, .second], from: savedTime, to: Date())
+			
+			if let elapsedSeconds = components.second, let elapsedMinutes = components.minute, let elapsedHours = components.hour {
+				
+				if elapsedSeconds > 60 {
+					
+					let minutes = elapsedMinutes + Int(elapsedSeconds / 60)
+					print("Minutes : \(minutes)")
+					
+					if minutes > 60 {
+						
+						let hours = elapsedHours + Int(elapsedMinutes / 60)
+						print("Hours : \(hours)")
+						print("Minutes : \(elapsedMinutes % 60)")
+						print("Seconds : \(elapsedSeconds % 60)")
+						
+					} else {
+						
+						print("Hours : \(elapsedHours)")
+						print("Minutes : \(minutes)")
+						print("Seconds : \(elapsedSeconds % 60)")
+						
+						
+					}
+					
+				
+				} else if elapsedMinutes > 60 {
+					
+					
+					let hours = elapsedHours + Int(elapsedMinutes / 60)
+					print("Hours : \(hours)")
+					print("Minutes : \(elapsedMinutes % 60)")
+					print("Seconds : \(elapsedSeconds % 60)")
+					
+					
+				} else {
+					
+					
+					print("Hours : \(elapsedHours)")
+					print("Minutes : \(elapsedMinutes)")
+					print("Seconds : \(elapsedSeconds)")
+					
+					
+				}
+				
+			}
+			
+			
+		}
+		
+		UserDefaults.standard.set(nil, forKey: "savedTime")
+		UserDefaults.standard.synchronize()
+		
+		/*
+		if UserDefaults.standard.object(forKey: "isRunningTimer") as! Bool == true {
+			
+			/*	Timer was running
+			- get current time
+			- get elapsed time
+			- add to runningTimer
+			- Resume Timer
+			
+			*/
+			
+			/*
+			let currentTime = Date()
+			let savedTime = UserDefaults.standard.object(forKey: "savedTime")
+			let elapsedSeconds = currentTime - savedTime
+			let savedRunningTime = UserDefaults.standard.object(forKey: "savedRunningTime")
+			
+			let updatedRunningTime = savedRunningTime + savedRunningTime
+			
+			return updatedRunningTime
+			*/
+			
+		}
+		*/
+		
+	}
+	
 	// Respond to URI scheme links
 	func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
 		
@@ -125,24 +256,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func applicationWillResignActive(_ application: UIApplication) {
 		// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
 		// Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+		self.saveCurrentTime()
+		
 	}
 
 	func applicationDidEnterBackground(_ application: UIApplication) {
 		// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
 		// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+		self.saveCurrentTime()
 	}
 
 	func applicationWillEnterForeground(_ application: UIApplication) {
 		// Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+		
+		self.retrieveTimerSaved()
+		
 	}
 
+	
 	func applicationDidBecomeActive(_ application: UIApplication) {
 		// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+		self.retrieveTimerSaved()
 	}
 
 	func applicationWillTerminate(_ application: UIApplication) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 		// Saves changes in the application's managed object context before the application terminates.
+		saveCurrentTime()
 		self.saveContext()
 	}
 
