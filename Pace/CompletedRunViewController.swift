@@ -293,42 +293,50 @@ class CompletedRunViewController : UIViewController, UITableViewDataSource, UITa
 	
 	
 	func handlePostDataToUser() {
-		 
-		let ref = FIRDatabase.database().reference().child("ClubRuns")
-		let childRef = ref.childByAutoId()
-		let userID = FIRAuth.auth()!.currentUser!.uid
 		
-		
-		let values = ["userRunning": userID,
-		              "userName": usersName,
-		              "userImageURL": usersImageURL,
-		              "timeStamp": Int(NSDate().timeIntervalSince1970),
-		              "minutes" : mins!,
-		              "seconds" : secs!,
-		              "distance" : distance!,
-		              "pace" : pace!,
-		              "teamID": clubID] as [String : Any]
-		
-		childRef.updateChildValues(values) { (error, ref) in
+		if Reachability.isConnectedToNetwork() == true {
 			
-			if error != nil {
-				print((error?.localizedDescription)!)
-				return
+			let ref = FIRDatabase.database().reference().child("ClubRuns")
+			let childRef = ref.childByAutoId()
+			let userID = FIRAuth.auth()!.currentUser!.uid
+			
+			
+			let values = ["userRunning": userID,
+			              "userName": usersName,
+			              "userImageURL": usersImageURL,
+			              "timeStamp": Int(NSDate().timeIntervalSince1970),
+			              "minutes" : mins!,
+			              "seconds" : secs!,
+			              "distance" : distance!,
+			              "pace" : pace!,
+			              "teamID": clubID] as [String : Any]
+			
+			childRef.updateChildValues(values) { (error, ref) in
+				
+				if error != nil {
+					self.failurePopup(mainMessage: "😯", detailedString: (error?.localizedDescription)!)
+					return
+				}
+				
+				let clubRunsRef = FIRDatabase.database().reference().child("fan-club-runs").child(clubID)
+				let clubRunId = childRef.key
+				clubRunsRef.updateChildValues([clubRunId: 1])
+				
+				let userRunsRef = FIRDatabase.database().reference().child("fan-user-runs").child(userID)
+				let messageId = childRef.key
+				userRunsRef.updateChildValues([messageId: 1])
+				
 			}
 			
-			let clubRunsRef = FIRDatabase.database().reference().child("fan-club-runs").child(clubID)
-			let clubRunId = childRef.key
-			clubRunsRef.updateChildValues([clubRunId: 1])
 			
-			let userRunsRef = FIRDatabase.database().reference().child("fan-user-runs").child(userID)
-			let messageId = childRef.key
-			userRunsRef.updateChildValues([messageId: 1])
 			
-			//self.handlePostDataToClub()
+		} else {
 			
-			//completion()
+			self.failurePopup(mainMessage: "🙈", detailedString: "Looks like you are not connected to the Internet. Check your connection and try again. 🙃")
+			return
 			
 		}
+
 		
 	}
 	

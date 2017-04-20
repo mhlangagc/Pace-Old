@@ -157,8 +157,8 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		self.navigationBarItems()
 		self.setupRightNavItem()
 		clubsTableView?.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
-		//self.addSpinnerView()
-		
+		self.addSpinnerView()
+		self.spinner.startAnimating()
 		
 		self.fetchDataFromServer()
 		

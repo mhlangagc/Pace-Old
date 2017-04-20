@@ -68,7 +68,7 @@ class ClubDetailsHeaderView : BaseView {
 		
 		//	Distance Section
 		kmNumberLabel = UILabel.init(frame: CGRect(x: 24.0, y: 265, width: textWidth, height: 46))
-		kmNumberLabel?.text = "8.49"
+		kmNumberLabel?.text = "0.00"
 		kmNumberLabel?.font = UIFont(name: "BebasNeueBold", size: 42)
 		kmNumberLabel?.textColor = UIColor.greyWhite()
 		kmNumberLabel?.textAlignment = .center
@@ -93,7 +93,7 @@ class ClubDetailsHeaderView : BaseView {
 		}
 		
 		totalRunsNumberLabel = UILabel.init(frame: CGRect(x: xPosition, y: 265, width: textWidth, height: 46))
-		totalRunsNumberLabel?.text = "49"
+		totalRunsNumberLabel?.text = "0"
 		totalRunsNumberLabel?.font = UIFont(name: "BebasNeueBold", size: 42)
 		totalRunsNumberLabel?.textColor = UIColor.greyWhite()
 		totalRunsNumberLabel?.textAlignment = .center
@@ -119,7 +119,7 @@ class ClubDetailsHeaderView : BaseView {
 			
 		}
 		paceNumberLabel = UILabel.init(frame: CGRect(x: xEndPosition, y: 265, width: textWidth, height: 46))
-		paceNumberLabel?.text = "7:09"
+		paceNumberLabel?.text = "0:00"
 		paceNumberLabel?.font = UIFont(name: "BebasNeueBold", size: 42)
 		paceNumberLabel?.textColor = UIColor.greyWhite()
 		paceNumberLabel?.textAlignment = .center

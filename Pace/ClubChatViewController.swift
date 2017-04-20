@@ -213,6 +213,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 			self.setupCollectionView()
 			
 			self.clubChatCollectionView.reloadData()
+			self.spinner.stopAnimating()
 			//self.clubChatCollectionView.keyboardDismissMode = .interactive
 			
 			//let indexPath = IndexPath(item: self.userRunsArray.count - 1, section: 0)
