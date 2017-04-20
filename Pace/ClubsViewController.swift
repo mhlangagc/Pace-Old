@@ -135,6 +135,17 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 	
 	var downloadedWorkoutsArray = [ExploreWorkoutModel]()
 	
+	var spinner : UIActivityIndicatorView = {
+		
+		let spinnerView = UIActivityIndicatorView()
+		spinnerView.hidesWhenStopped = true
+		spinnerView.startAnimating()
+		spinnerView.activityIndicatorViewStyle = .whiteLarge
+		//spinnerView.translatesAutoresizingMaskIntoConstraints = false
+		return spinnerView
+		
+	}()
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -146,11 +157,13 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		self.navigationBarItems()
 		self.setupRightNavItem()
 		clubsTableView?.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
+		//self.addSpinnerView()
 		
 		paceAppService.retrieveUserDownloadedWorkouts { (purchasedWorkoutsArray) in
 			
 			self.downloadedWorkoutsArray = purchasedWorkoutsArray
 			UIApplication.shared.isNetworkActivityIndicatorVisible = false
+			self.spinner.stopAnimating()
 			self.clubsTableView?.reloadData()
 			
 		}
@@ -164,6 +177,15 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 			}
 			
 		})
+		
+	}
+	
+	func addSpinnerView() {
+		
+		spinner.frame = CGRect(x: ((view.frame.width - 30.0) * 0.5), y: ((view.frame.height - 30.0) * 0.5), width: 30.0, height: 30.0)
+		view.addSubview(spinner)
+		
+		
 		
 	}
 	

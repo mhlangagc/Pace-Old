@@ -181,6 +181,22 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		
 	}()
 	
+	var spinner : UIActivityIndicatorView = {
+		
+		let spinnerView = UIActivityIndicatorView()
+		spinnerView.hidesWhenStopped = true
+		spinnerView.activityIndicatorViewStyle = .whiteLarge
+		return spinnerView
+		
+	}()
+	
+	func addSpinnerView() {
+		
+		spinner.frame = CGRect(x: ((view.frame.width - 30.0) * 0.5), y: ((view.frame.height - 30.0) * 0.5), width: 30.0, height: 30.0)
+		view.addSubview(spinner)
+		
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -188,6 +204,8 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		self.setupNavBar()
 		self.setupStartRunningBar()
 		//self.setupKeyboardObservers()
+		self.addSpinnerView()
+		self.spinner.startAnimating()
 		
 		self.observeClubRuns(clubID: clubID, completion: { (clubRunsArray) in
 			

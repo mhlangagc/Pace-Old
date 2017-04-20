@@ -20,7 +20,7 @@ extension ClubsViewController {
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		
 		let sectionHeaderView : UIView = UIView.init(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 55))
-		sectionHeaderView.backgroundColor = UIColor.clear
+		sectionHeaderView.backgroundColor = UIColor.black
 		
 		
 		let sectionHeaderLabel: UILabel = UILabel.init(frame: CGRect(x: 20.0, y: 15.0, width: tableView.frame.width - 20, height: 25))
