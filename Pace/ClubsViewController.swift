@@ -192,7 +192,7 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		
 		self.navigationController?.navigationBar.tintColor = UIColor.paceBrandColor()
 		self.navigationController?.navigationBar.barTintColor = UIColor.paceBrandColor()
-		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: UIBarButtonItemStyle.done, target: self, action: #selector(handleCreateClub))
+		//navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: UIBarButtonItemStyle.done, target: self, action: #selector(handleCreateClub))
 		
 	}
 	

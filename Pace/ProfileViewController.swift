@@ -148,13 +148,11 @@ UINavigationControllerDelegate {
 				self.profileHeaderView.profileNameLabel?.text = userName
 				if profileImageURL != "" {
 					
-					self.profileHeaderView.firstLetterCharacter?.isHidden = true
 					self.profileHeaderView.profileImageView?.loadImageFromUrlString(urlString: profileImageURL)
 					
 				} else {
 					
-					self.profileHeaderView.firstLetterCharacter?.isHidden = false
-					self.profileHeaderView.firstLetterCharacter?.text = userName[0].uppercased()
+					self.profileHeaderView.profileImageView?.image = #imageLiteral(resourceName: "profilePlaceHolder")
 					
 				}
 				
@@ -184,7 +182,6 @@ UINavigationControllerDelegate {
 		dismiss(animated: true) {
 			
 			self.profileHeaderView.profileImageView?.image = nil
-			self.profileHeaderView.firstLetterCharacter?.isHidden = true
 			self.uploadToFirebaseStorageUsingImage(imagePicked: chosenImage)
 			
 		}

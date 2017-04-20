@@ -11,6 +11,7 @@ import UIKit
 class ProfileTabHeaderView : BaseView {
 	
 	var profileVC : ProfileViewController?
+	var spinner : UIActivityIndicatorView
 	
 	var firstLetterCharacter : UILabel?
 	var profileImageView : UIImageView?

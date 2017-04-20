@@ -18,6 +18,7 @@ class ClubDetailsViewController : UIViewController, UITableViewDataSource, UITab
 	var workoutDetailsTableView : UITableView?
 	let ClubDetailsCellID = "ClubDetailsCellID"
 	var members = [User]()
+	var userRunsArray = [RunsModel]()
 	var club : ClubModel?
 	
 	lazy var paceAppService: PaceAppServices = {
@@ -38,7 +39,9 @@ class ClubDetailsViewController : UIViewController, UITableViewDataSource, UITab
 		paceAppService.retrieveClubMembers(clubID: (self.club?.clubID)!) { (membersRetrived) in
 			
 			self.members = membersRetrived
+			self.calculateClubStats()
 			self.workoutDetailsTableView?.reloadData()
+			
 		
 		}
 		
@@ -97,6 +100,11 @@ class ClubDetailsViewController : UIViewController, UITableViewDataSource, UITab
 		
 	}
 	
+	func calculateClubStats() {
+		
+		
+		
+	}
 	
 	func setupHeaderView() {
 		

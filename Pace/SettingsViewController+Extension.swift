@@ -96,10 +96,12 @@ extension SettingsViewController {
 			
 		case 0:
 			
+			print("Club Creation Methods Coming Soon")
+			/*
 			let createClubVC = CreateClubViewController()
 			let navBarVC = UINavigationController(rootViewController: createClubVC)
 			self.present(navBarVC, animated: true, completion: nil)
-			
+			*/
 			
 		case 1:
 			

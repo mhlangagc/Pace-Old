@@ -31,7 +31,7 @@ class CustomTabBarController: ASTabBarController {
         
         UITabBar.appearance().barTintColor = UIColor(fromHexString: "0C0E10")
         tabBarController?.tabBar.clipsToBounds = true
-        UITabBar.appearance().selectionIndicatorImage = UIImage().makeImageWithColorAndSize(UIColor.greyWhite(), size: CGSize(width: tabBar.frame.width/3, height: tabBar.frame.height))
+        UITabBar.appearance().selectionIndicatorImage = UIImage().makeImageWithColorAndSize(UIColor.greyWhite(), size: CGSize(width: tabBar.frame.width/2, height: tabBar.frame.height))
         UITabBar.appearance().tintColor = UIColor.greyWhite()
 		UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.greyBlackColor()], for: .normal)
 		UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.greyWhite()], for: .selected)
@@ -49,12 +49,12 @@ class CustomTabBarController: ASTabBarController {
 				case 0:
 					
 					imageName = "home"
-				
+				/*
 				case 1:
 				
 					imageName = "discovery"
-				
-				case 2:
+				*/
+				case 1:
 				
 					imageName = "profile-female"
 				
@@ -94,7 +94,7 @@ class CustomTabBarController: ASTabBarController {
 		profileViewController.extendedLayoutIncludesOpaqueBars = true
 		
 		
-        viewControllers = [clubsNavController, exploreNavController, profileNavController]
+        viewControllers = [clubsNavController, profileNavController]
         
     }
     

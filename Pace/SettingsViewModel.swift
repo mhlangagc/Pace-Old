@@ -43,7 +43,7 @@ class SettingsViewModel : NSObject {
 	func createMiddleSettings() -> [SettingsModel] {
 		
 		let sendUsFeedback = SettingsModel()
-		sendUsFeedback.setting = "Send us Feedback"
+		sendUsFeedback.setting = "Send Feedback"
 		sendUsFeedback.settingDetail = nil
 		
 		let ratePace = SettingsModel()

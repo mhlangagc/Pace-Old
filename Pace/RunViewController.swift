@@ -47,7 +47,9 @@ class RunViewController: UIViewController, CLLocationManagerDelegate, MPMediaPic
 		locationManage.desiredAccuracy = kCLLocationAccuracyBest
 		locationManage.activityType = .fitness
 		//locationManager.pausesLocationUpdatesAutomatically = false
+		locationManage.allowsBackgroundLocationUpdates = true
 		locationManage.distanceFilter = 10.0
+		locationManage.startMonitoringSignificantLocationChanges()
 		return locationManage
 		
 	}()
