@@ -159,25 +159,41 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		clubsTableView?.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
 		//self.addSpinnerView()
 		
-		paceAppService.retrieveUserDownloadedWorkouts { (purchasedWorkoutsArray) in
-			
-			self.downloadedWorkoutsArray = purchasedWorkoutsArray
-			UIApplication.shared.isNetworkActivityIndicatorVisible = false
-			self.spinner.stopAnimating()
-			self.clubsTableView?.reloadData()
-			
-		}
 		
-		profileSetup.retrieveUser(completion: { (userFound) in
+		self.fetchDataFromServer()
+		
+	}
+	
+	func fetchDataFromServer() {
+		
+		if Reachability.isConnectedToNetwork() == true {
 			
-			if let userName  = userFound.name, let profileImageURL = userFound.profileImageUrl {
+			paceAppService.retrieveUserDownloadedWorkouts { (purchasedWorkoutsArray) in
 				
-				usersName = userName
-				usersImageURL = profileImageURL
+				self.downloadedWorkoutsArray = purchasedWorkoutsArray
+				UIApplication.shared.isNetworkActivityIndicatorVisible = false
+				self.spinner.stopAnimating()
+				self.clubsTableView?.reloadData()
+				
 			}
 			
-		})
-		
+			profileSetup.retrieveUser(completion: { (userFound) in
+				
+				if let userName  = userFound.name, let profileImageURL = userFound.profileImageUrl {
+					
+					usersName = userName
+					usersImageURL = profileImageURL
+				}
+				
+			})
+			
+			
+		} else {
+			
+			self.failurePopup(mainMessage: "🙈", detailedString: "Looks like you are not connected to the Internet. Check your connection and try again. 🙃")
+			
+		}
+
 	}
 	
 	func addSpinnerView() {

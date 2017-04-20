@@ -247,42 +247,54 @@ UINavigationControllerDelegate {
 	
 	private func uploadToFirebaseStorageUsingImage(imagePicked: UIImage) {
 		
-		self.profileHeaderView.spinner?.startAnimating()
-		self.profileHeaderView.profileImageView?.image = nil
-		
-		let imageName = NSUUID().uuidString
-		let ref = FIRStorage.storage().reference().child("profileImages").child(imageName)
-		
-		if let uploadData = UIImageJPEGRepresentation(imagePicked, 0.5) {
-			ref.put(uploadData, metadata: nil, completion: { (metadata, error) in
-				
-				if error != nil {
-					print("Failed to upload image:", (error?.localizedDescription)!)
-					self.profileHeaderView.spinner?.stopAnimating()
-					self.profileHeaderView.profileImageView?.image = #imageLiteral(resourceName: "profilePlaceHolder")
-					return
-				}
-				
-				if let imageUrl = metadata?.downloadURL()?.absoluteString {
-					self.updateFireBasewithProfileImage(imageCapturedURL: imageUrl, completion: { (error) in
-						
-						if error != nil {
+		if Reachability.isConnectedToNetwork() == true {
+			
+			self.profileHeaderView.spinner?.startAnimating()
+			self.profileHeaderView.profileImageView?.image = nil
+			
+			let imageName = NSUUID().uuidString
+			let ref = FIRStorage.storage().reference().child("profileImages").child(imageName)
+			
+			if let uploadData = UIImageJPEGRepresentation(imagePicked, 0.5) {
+				ref.put(uploadData, metadata: nil, completion: { (metadata, error) in
+					
+					if error != nil {
+						print("Failed to upload image:", (error?.localizedDescription)!)
+						self.profileHeaderView.spinner?.stopAnimating()
+						self.profileHeaderView.profileImageView?.image = #imageLiteral(resourceName: "profilePlaceHolder")
+						return
+					}
+					
+					if let imageUrl = metadata?.downloadURL()?.absoluteString {
+						self.updateFireBasewithProfileImage(imageCapturedURL: imageUrl, completion: { (error) in
 							
-							print("Something went wrong : \(String(describing: error?.localizedDescription))")
-							self.profileHeaderView.spinner?.stopAnimating()
-							self.profileHeaderView.profileImageView?.image = #imageLiteral(resourceName: "profilePlaceHolder")
-							return
-						}
-						
-						print("Image Uploaded sucessfully")
-						self.setupHeaderView()
+							if error != nil {
+								
+								print("Something went wrong : \(String(describing: error?.localizedDescription))")
+								self.profileHeaderView.spinner?.stopAnimating()
+								self.profileHeaderView.profileImageView?.image = #imageLiteral(resourceName: "profilePlaceHolder")
+								return
+							}
+							
+							print("Image Uploaded sucessfully")
+							self.setupHeaderView()
+							
+							
+						})
+					}
+					
+				})
+			}
 
-						
-					})
-				}
-				
-			})
+			
+			
+		} else {
+			
+			self.failurePopup(mainMessage: "🙈", detailedString: "Looks like you are not connected to the Internet. Check your connection and try again. 🙃")
+			
 		}
+		
+		
 	}
 	
 	func updateFireBasewithProfileImage(imageCapturedURL: String, completion: @escaping (_ error: Error?) -> Void ) {
