@@ -141,6 +141,7 @@ UINavigationControllerDelegate {
 		
 		profileHeaderView  = ProfileTabHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 380.0))
 		profileHeaderView.profileVC = self
+		self.profileHeaderView.spinner?.startAnimating()
 		profileSetup.retrieveUser(completion: { (userFound) in
 			
 			if let userName  = userFound.name, let profileImageURL = userFound.profileImageUrl  {
@@ -148,10 +149,12 @@ UINavigationControllerDelegate {
 				self.profileHeaderView.profileNameLabel?.text = userName
 				if profileImageURL != "" {
 					
+					self.profileHeaderView.spinner?.stopAnimating()
 					self.profileHeaderView.profileImageView?.loadImageFromUrlString(urlString: profileImageURL)
 					
 				} else {
 					
+					self.profileHeaderView.spinner?.stopAnimating()
 					self.profileHeaderView.profileImageView?.image = #imageLiteral(resourceName: "profilePlaceHolder")
 					
 				}
@@ -241,6 +244,47 @@ UINavigationControllerDelegate {
 		
 	}
 	
+	
+	private func uploadToFirebaseStorageUsingImage(imagePicked: UIImage) {
+		
+		self.profileHeaderView.spinner?.startAnimating()
+		self.profileHeaderView.profileImageView?.image = nil
+		
+		let imageName = NSUUID().uuidString
+		let ref = FIRStorage.storage().reference().child("profileImages").child(imageName)
+		
+		if let uploadData = UIImageJPEGRepresentation(imagePicked, 0.5) {
+			ref.put(uploadData, metadata: nil, completion: { (metadata, error) in
+				
+				if error != nil {
+					print("Failed to upload image:", (error?.localizedDescription)!)
+					self.profileHeaderView.spinner?.stopAnimating()
+					self.profileHeaderView.profileImageView?.image = #imageLiteral(resourceName: "profilePlaceHolder")
+					return
+				}
+				
+				if let imageUrl = metadata?.downloadURL()?.absoluteString {
+					self.updateFireBasewithProfileImage(imageCapturedURL: imageUrl, completion: { (error) in
+						
+						if error != nil {
+							
+							print("Something went wrong : \(String(describing: error?.localizedDescription))")
+							self.profileHeaderView.spinner?.stopAnimating()
+							self.profileHeaderView.profileImageView?.image = #imageLiteral(resourceName: "profilePlaceHolder")
+							return
+						}
+						
+						print("Image Uploaded sucessfully")
+						self.setupHeaderView()
+
+						
+					})
+				}
+				
+			})
+		}
+	}
+	
 	func updateFireBasewithProfileImage(imageCapturedURL: String, completion: @escaping (_ error: Error?) -> Void ) {
 		
 		guard let uid =  FIRAuth.auth()?.currentUser?.uid else {
@@ -266,41 +310,6 @@ UINavigationControllerDelegate {
 		
 		
 	}
-	
-	private func uploadToFirebaseStorageUsingImage(imagePicked: UIImage) {
-		
-		let imageName = NSUUID().uuidString
-		let ref = FIRStorage.storage().reference().child("profileImages").child(imageName)
-		
-		if let uploadData = UIImageJPEGRepresentation(imagePicked, 0.5) {
-			ref.put(uploadData, metadata: nil, completion: { (metadata, error) in
-				
-				if error != nil {
-					print("Failed to upload image:", (error?.localizedDescription)!)
-					return
-				}
-				
-				if let imageUrl = metadata?.downloadURL()?.absoluteString {
-					self.updateFireBasewithProfileImage(imageCapturedURL: imageUrl, completion: { (error) in
-						
-						if error != nil {
-							
-							print("Something went wrong : \(String(describing: error?.localizedDescription))")
-							return
-						}
-						
-						print("Image Uploaded sucessfully")
-						self.setupHeaderView()
-
-						
-					})
-				}
-				
-			})
-		}
-	}
-	
-	
 	
 	
 }

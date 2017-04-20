@@ -11,7 +11,7 @@ import UIKit
 class ProfileTabHeaderView : BaseView {
 	
 	var profileVC : ProfileViewController?
-	var spinner : UIActivityIndicatorView
+	var spinner : UIActivityIndicatorView?
 	
 	var firstLetterCharacter : UILabel?
 	var profileImageView : UIImageView?
@@ -39,6 +39,12 @@ class ProfileTabHeaderView : BaseView {
 	
 	func addViews() {
 		
+		spinner = UIActivityIndicatorView.init(frame: CGRect(x: ((frame.width - 30.0) * 0.5), y: 98.0, width: 30.0, height: 30.0))
+		spinner?.hidesWhenStopped = true
+		spinner?.activityIndicatorViewStyle = .whiteLarge
+		spinner?.hidesWhenStopped = true
+
+		
 		firstLetterCharacter = UILabel.init(frame: CGRect(x: ((frame.width - 100.0) * 0.5), y: 60.0, width: 100.0, height: 100.0))
 		firstLetterCharacter?.textAlignment = .center
 		firstLetterCharacter?.textColor = UIColor.paceBrandColor()
@@ -53,6 +59,7 @@ class ProfileTabHeaderView : BaseView {
 		profileImageView?.layer.masksToBounds = true
 		addSubview(profileImageView!)
 		addSubview(firstLetterCharacter!)
+		addSubview(spinner!)
 		
 		profileNameLabel = UILabel.init(frame: CGRect(x: 0.0, y: 200, width: frame.width, height: 32.0))
 		profileNameLabel?.textAlignment = .center
