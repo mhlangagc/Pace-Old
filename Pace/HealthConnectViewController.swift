@@ -64,6 +64,11 @@ class HealthConnectViewController : UIViewController{
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		let titleImageView = UIImageView(image: #imageLiteral(resourceName: "home_Active"))
+		titleImageView.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+		titleImageView.contentMode = .scaleAspectFit
+		navigationItem.titleView = titleImageView
+		
 		self.navigationNoLineBar()
 		onboardingCounter(counterString : "5 of 5")
 		self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false

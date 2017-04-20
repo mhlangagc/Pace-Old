@@ -16,6 +16,16 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
 		
 	}
 	
+	let loadingSpinner : UIActivityIndicatorView = {
+		
+		let spinnerView = UIActivityIndicatorView()
+		spinnerView.hidesWhenStopped = true
+		spinnerView.activityIndicatorViewStyle = .white
+		spinnerView.translatesAutoresizingMaskIntoConstraints = false
+		return spinnerView
+		
+	}()
+	
 	let headerLabel : UILabel = {
 		
 		let label = UILabel()
@@ -128,7 +138,19 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
 		self.navigationController?.navigationBar.tintColor = UIColor.white
 		self.setupViews()
 		self.setupKeyboardObservers()
+		self.navigationBarItems()
 		
+	}
+	
+	func navigationBarItems() {
+		
+		let titleLabel = UILabel(frame: CGRect(x: ((view.frame.width - 100) * 0.5), y: 5, width: 100, height: view.frame.height))
+		titleLabel.text = "Login"
+		titleLabel.textAlignment = .center
+		titleLabel.textColor = UIColor.white
+		titleLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightBold)
+		textSpacing(titleLabel, spacing: 0.5)
+		navigationItem.titleView = titleLabel
 	}
 	
 	override func viewDidDisappear(_ animated: Bool) {
@@ -148,6 +170,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
 		passwordTextField.delegate = self
 		view.addSubview(passwordTextField)
 		view.addSubview(nextButton)
+		nextButton.addSubview(loadingSpinner)
 		
 		textFieldTopAnchorConstraint = headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150)
 		textFieldTopAnchorConstraint?.isActive = true
@@ -180,8 +203,58 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
 		buttonBottomAnchorConstraint?.isActive = true
 		nextButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
 		
+		loadingSpinner.centerYAnchor.constraint(equalTo: nextButton.centerYAnchor).isActive = true
+		loadingSpinner.centerXAnchor.constraint(equalTo: nextButton.centerXAnchor).isActive = true
+		loadingSpinner.heightAnchor.constraint(equalToConstant: 20).isActive = true
+		loadingSpinner.widthAnchor.constraint(equalToConstant: 20).isActive = true
+		
 		
 	}
+	
+	func handleStartSpinner() {
+		
+		passwordTextField.resignFirstResponder()
+		self.view.endEditing(true)
+		self.loadingSpinner.startAnimating()
+		
+		//	Disable Stuff
+		self.navigationItem.setHidesBackButton(true, animated: true)
+		self.nextButton.isEnabled = false
+		self.nextButton.setTitle("", for: UIControlState.normal)
+		self.passwordTextField.isEnabled = false
+		self.emailTextField.isEnabled = false
+		self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+		
+		//	Lessen the Opacity Of Stuff
+		self.nextButton.backgroundColor = UIColor.headerBlack()
+		self.passwordTextField.layer.opacity = 0.4
+		self.passwordHeaderLabel.layer.opacity = 0.4
+		self.emailTextField.layer.opacity = 0.4
+		self.headerLabel.layer.opacity = 0.4
+		
+	}
+	
+	func handleStopSpinner() {
+		
+		self.loadingSpinner.stopAnimating()
+		
+		//	Disable Stuff
+		self.navigationItem.setHidesBackButton(false, animated: true)
+		self.nextButton.isEnabled = true
+		self.nextButton.setTitle("next", for: UIControlState.normal)
+		self.emailTextField.isEnabled = true
+		self.passwordTextField.isEnabled = true
+		self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+		
+		//	brighten the Opacity Of Stuff
+		self.nextButton.backgroundColor = UIColor.paceBrandColor()
+		self.passwordTextField.layer.opacity = 1.0
+		self.passwordHeaderLabel.layer.opacity = 1.0
+		self.emailTextField.layer.opacity = 1.0
+		self.headerLabel.layer.opacity = 1.0
+		
+	}
+
 	
 	
 	func handleNext() {
@@ -190,26 +263,39 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
 		passwordTextField.resignFirstResponder()
 		self.view.endEditing(true)
 		
-		if let emailCaptured = emailTextField.text, let passwordCaptured = passwordTextField.text {
+		if Reachability.isConnectedToNetwork() == true {
 			
-			authService.signIn(userEmail: emailCaptured, userPassword: passwordCaptured, completion: { (error) in
+			self.handleStartSpinner()
+			
+			if let emailCaptured = emailTextField.text, let passwordCaptured = passwordTextField.text {
 				
-				if error != nil {
+				authService.signIn(userEmail: emailCaptured, userPassword: passwordCaptured, completion: { (error) in
 					
-					self.failurePopup(mainMessage: "Something's being a doozy", detailedString: (error?.localizedDescription)!)
-					//self.stopProcessingSignUp()
+					if error != nil {
+						
+						self.failurePopup(mainMessage: "🤔", detailedString: (error?.localizedDescription)!)
+						
+						self.handleStopSpinner()
+						
+					} else {
+						
+						self.handleStopSpinner()
+						self.navigateToWeek()
+						
+					}
 					
-				} else {
-					
-					print("Successfully Logged in")
-					self.navigateToWeek()
-					
-				}
+				})
 				
-			})
+			}
 
+			
+			
+		} else {
+			
+			self.failurePopup(mainMessage: "🙈", detailedString: "Looks like you are not connected to the Internet. Check your connection and try again. 🙃")
+			
 		}
-		
+	
 	}
 	
 	

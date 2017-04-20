@@ -231,6 +231,9 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
 	
 	func handleNext() {
 		
+		passwordTextField.resignFirstResponder()
+		self.view.endEditing(true)
+		
 		if Reachability.isConnectedToNetwork() == true {
 			
 			self.handleStartSpinner()
