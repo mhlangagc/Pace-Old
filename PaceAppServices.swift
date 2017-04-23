@@ -479,4 +479,46 @@ class PaceAppServices : NSObject {
 
 	}
 	
+	//	Retrieve Runs
+	func observeClubRuns(clubID: String, completion: @escaping (_ result: [RunsModel]) -> Void) {
+		
+		var clubRunsArray = [RunsModel]()
+		
+		let fanClubRunsRef = FIRDatabase.database().reference().child("fan-club-runs").child(clubID)
+		
+		fanClubRunsRef.observe(.childAdded, with: { (snapshot) in
+			
+			let messageId = snapshot.key
+			let runsRef = FIRDatabase.database().reference().child("ClubRuns").child(messageId)
+			runsRef.observeSingleEvent(of: .value, with: { (snapshot) in
+				
+				if let dictionary = snapshot.value as? [String: AnyObject] {
+					
+					let clubsRuns = RunsModel()
+					
+					clubsRuns.userID = dictionary["userRunning"] as? String
+					clubsRuns.userName = dictionary["userName"] as? String
+					clubsRuns.userImageURL = dictionary["userImageURL"] as? String
+					clubsRuns.seconds = dictionary["seconds"] as? Int
+					clubsRuns.mins = dictionary["minutes"] as? Int
+					clubsRuns.distance = dictionary["distance"] as? String
+					clubsRuns.pace = dictionary["pace"] as? String
+					clubsRuns.clubID = dictionary["teamID"] as? String
+					clubsRuns.timeStamp = dictionary["timeStamp"] as? Int
+					
+					clubRunsArray.append(clubsRuns)
+					clubRunsArray.sort(by: {$0.timeStamp! > $1.timeStamp!})
+					
+					completion(clubRunsArray)
+					
+				}
+				
+				
+			}, withCancel: nil)
+			
+		}, withCancel: nil)
+		
+		
+	}
+
 }

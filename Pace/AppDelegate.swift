@@ -84,7 +84,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func loadDataForViews() {
 		
 		paceAppService.retrieveUser { (userFound) in
+		
 			//	Do nothing for now
+		
 		}
 		
 		paceAppService.retrieveUserDownloadedWorkouts { (workoutTeamsArray) in

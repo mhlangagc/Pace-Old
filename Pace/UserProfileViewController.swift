@@ -110,6 +110,7 @@ class UserProfileViewController : UIViewController, UITableViewDelegate, UITable
 		frame.size.height = height
 		profileHeaderView.frame = frame
 	}
+
 	
 	func setupHeaderView() {
 		

@@ -18,8 +18,8 @@ class ClubDetailsViewController : UIViewController, UITableViewDataSource, UITab
 	var workoutDetailsTableView : UITableView?
 	let ClubDetailsCellID = "ClubDetailsCellID"
 	var members = [User]()
-	var userRunsArray = [RunsModel]()
 	var club : ClubModel?
+	var userRunningArray = [RunsModel]()
 	
 	lazy var paceAppService: PaceAppServices = {
 		
@@ -32,20 +32,21 @@ class ClubDetailsViewController : UIViewController, UITableViewDataSource, UITab
 		super.viewDidLoad()
 		
 		self.setupNavigationBar()
+		view.backgroundColor = UIColor.closeBlack()
 		self.setupWorkoutDetailsTableView()
 		self.setupHeaderView()
-		view.backgroundColor = UIColor.closeBlack()
 		
 		paceAppService.retrieveClubMembers(clubID: (self.club?.clubID)!) { (membersRetrived) in
 			
 			self.members = membersRetrived
-			self.calculateClubStats()
 			self.workoutDetailsTableView?.reloadData()
 			
-		
 		}
 		
+		
 	}
+	
+	
 	
 	func setupWorkoutDetailsTableView() {
 		
@@ -66,6 +67,7 @@ class ClubDetailsViewController : UIViewController, UITableViewDataSource, UITab
 		super.viewWillAppear(true)
 		
 		self.setupNavigationBar()
+		
 	}
 	
 	func setupNavigationBar() {
@@ -100,9 +102,21 @@ class ClubDetailsViewController : UIViewController, UITableViewDataSource, UITab
 		
 	}
 	
+	var totalDistance = [Double]()
+	var clubPace = [Double]()
+	
 	func calculateClubStats() {
 		
+		for eachRun in userRunningArray {
+			
+			totalDistance.append(Double(Float(eachRun.distance!)!).roundToPlaces(places: 2))
+			clubPace.append(Double(Float(eachRun.pace!)!).roundToPlaces(places: 2))
 		
+		}
+		
+		headerView.kmNumberLabel?.text = "\(totalDistance.reduce(0, +))"
+		headerView.totalRunsNumberLabel?.text = "\(userRunningArray.count)"
+		headerView.paceNumberLabel?.text = "\((clubPace.reduce(0, +)/Double(userRunningArray.count)).roundToPlaces(places: 2))"
 		
 	}
 	
@@ -113,9 +127,7 @@ class ClubDetailsViewController : UIViewController, UITableViewDataSource, UITab
 		headerView.workoutName?.text = (self.club?.name)!
 		headerView.workoutsImageView?.loadImageFromCacheWithUrlString(urlString: (self.club?.backgroundImageUrl)!)
 		
-		headerView.kmNumberLabel?.text = "\((self.club?.distance)!)"
-		headerView.totalRunsNumberLabel?.text = "\((self.club?.totalRuns)!)"
-		headerView.paceNumberLabel?.text = "\((self.club?.paceMins)!):\((self.club?.paceSeconds)!)"
+		self.calculateClubStats()
 		headerView.descriptionText?.text = (self.club?.clubDescription)!
 		
 		workoutDetailsTableView?.tableHeaderView = headerView

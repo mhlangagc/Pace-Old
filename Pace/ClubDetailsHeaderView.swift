@@ -22,7 +22,7 @@ class ClubDetailsHeaderView : BaseView {
 	var paceNumberLabel: UILabel?
 	var paceTextLabel: UILabel?
 	
-	let textWidth : CGFloat = 78.0
+	let textWidth : CGFloat = 85.0
 	
 	var descriptionLabel : UILabel?
 	var descriptionText : UITextView?
@@ -68,7 +68,7 @@ class ClubDetailsHeaderView : BaseView {
 		
 		//	Distance Section
 		kmNumberLabel = UILabel.init(frame: CGRect(x: 24.0, y: 265, width: textWidth, height: 46))
-		kmNumberLabel?.text = "0.00"
+		kmNumberLabel?.text = "-"
 		kmNumberLabel?.font = UIFont(name: "BebasNeueBold", size: 42)
 		kmNumberLabel?.textColor = UIColor.greyWhite()
 		kmNumberLabel?.textAlignment = .center
@@ -93,7 +93,7 @@ class ClubDetailsHeaderView : BaseView {
 		}
 		
 		totalRunsNumberLabel = UILabel.init(frame: CGRect(x: xPosition, y: 265, width: textWidth, height: 46))
-		totalRunsNumberLabel?.text = "0"
+		totalRunsNumberLabel?.text = "-"
 		totalRunsNumberLabel?.font = UIFont(name: "BebasNeueBold", size: 42)
 		totalRunsNumberLabel?.textColor = UIColor.greyWhite()
 		totalRunsNumberLabel?.textAlignment = .center
@@ -119,7 +119,7 @@ class ClubDetailsHeaderView : BaseView {
 			
 		}
 		paceNumberLabel = UILabel.init(frame: CGRect(x: xEndPosition, y: 265, width: textWidth, height: 46))
-		paceNumberLabel?.text = "0:00"
+		paceNumberLabel?.text = "-"
 		paceNumberLabel?.font = UIFont(name: "BebasNeueBold", size: 42)
 		paceNumberLabel?.textColor = UIColor.greyWhite()
 		paceNumberLabel?.textAlignment = .center
@@ -133,7 +133,9 @@ class ClubDetailsHeaderView : BaseView {
 		paceTextLabel?.textColor = UIColor.greyBlackColor()
 		paceTextLabel?.textAlignment = .center
 		addSubview(paceTextLabel!)
+	
 	}
+	
 	
 	func clubDetails() {
 		
@@ -151,6 +153,7 @@ class ClubDetailsHeaderView : BaseView {
 		descriptionText?.isSelectable = false
 		descriptionText?.isScrollEnabled = false
 		addSubview(descriptionText!)
+	
 	}
 	
 	

@@ -207,7 +207,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		self.addSpinnerView()
 		self.spinner.startAnimating()
 		
-		self.observeClubRuns(clubID: clubID, completion: { (clubRunsArray) in
+		paceAppService.observeClubRuns(clubID: clubID, completion: { (clubRunsArray) in
 			
 			self.userRunsArray = clubRunsArray
 			self.setupCollectionView()
@@ -220,6 +220,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 			//self.clubChatCollectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.bottom, animated: true)
 			
 		})
+
 		
 		
 	}
@@ -331,6 +332,7 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		print("Show Club Details")
 		let clubDetailsVC = ClubDetailsViewController()
 		clubDetailsVC.club = clubModel
+		clubDetailsVC.userRunningArray = self.userRunsArray
 		self.navigationController?.pushViewController(clubDetailsVC, animated: true)
 		
 		
@@ -348,6 +350,8 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 	}
 	
 	
+}
+
 	/*
 	func setupKeyboardObservers() {
 		
@@ -601,49 +605,3 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 	
 	*/
 	
-}
-
-extension ClubChatViewController {
-	
-	func observeClubRuns(clubID: String, completion: @escaping (_ result: [RunsModel]) -> Void) {
-		
-		var clubRunsArray = [RunsModel]()
-		
-		let fanClubRunsRef = FIRDatabase.database().reference().child("fan-club-runs").child(clubID)
-		
-		fanClubRunsRef.observe(.childAdded, with: { (snapshot) in
-			
-			let messageId = snapshot.key
-			let runsRef = FIRDatabase.database().reference().child("ClubRuns").child(messageId)
-			runsRef.observeSingleEvent(of: .value, with: { (snapshot) in
-				
-				if let dictionary = snapshot.value as? [String: AnyObject] {
-					
-					let clubsRuns = RunsModel()
-					
-					clubsRuns.userID = dictionary["userRunning"] as? String
-					clubsRuns.userName = dictionary["userName"] as? String
-					clubsRuns.userImageURL = dictionary["userImageURL"] as? String
-					clubsRuns.seconds = dictionary["seconds"] as? Int
-					clubsRuns.mins = dictionary["minutes"] as? Int
-					clubsRuns.distance = dictionary["distance"] as? String
-					clubsRuns.pace = dictionary["pace"] as? String
-					clubsRuns.clubID = dictionary["teamID"] as? String
-					clubsRuns.timeStamp = dictionary["timeStamp"] as? Int
-					
-					clubRunsArray.append(clubsRuns)
-					clubRunsArray.sort(by: {$0.timeStamp! > $1.timeStamp!})
-					
-					completion(clubRunsArray)
-					
-				}
-				
-				
-			}, withCancel: nil)
-			
-		}, withCancel: nil)
-		
-		
-	}
-	
-}

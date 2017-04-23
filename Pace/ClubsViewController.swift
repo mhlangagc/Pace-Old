@@ -157,8 +157,8 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 		self.navigationBarItems()
 		self.setupRightNavItem()
 		clubsTableView?.register(WeekTableCell.self, forCellReuseIdentifier: weekCellID)
-		self.addSpinnerView()
-		self.spinner.startAnimating()
+		//self.addSpinnerView()
+		//self.spinner.startAnimating()
 		
 		self.fetchDataFromServer()
 		
@@ -172,7 +172,7 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 				
 				self.downloadedWorkoutsArray = purchasedWorkoutsArray
 				UIApplication.shared.isNetworkActivityIndicatorVisible = false
-				self.spinner.stopAnimating()
+				//self.spinner.stopAnimating()
 				self.clubsTableView?.reloadData()
 				
 			}

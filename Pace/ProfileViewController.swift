@@ -53,12 +53,15 @@ UINavigationControllerDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		
+		
 		profileTableView?.register(RunsCellView.self, forCellReuseIdentifier: runsCellID)
+		self.setupWorkoutDetailsTableView()
 		self.navigationController?.navigationBar.isHidden = false
 		self.navigationItem.title = "Me"
 		view.backgroundColor = .black
 		self.navigationBarItems()
-		self.setupWorkoutDetailsTableView()
+		
 		picker.delegate = self
 		
 		navigationNoLineBar()
@@ -70,14 +73,13 @@ UINavigationControllerDelegate {
 			self.profileSetup.observeUserRuns(userID: userID, completion: { (userRuns) in
 				
 				self.userRunsArray = userRuns
-				
+				self.calculateUserStats()
+				self.setupHeaderView()
 				self.profileTableView?.reloadData()
-				
 				
 			})
 			
 		}
-		
 		
 	}
 	
@@ -90,8 +92,7 @@ UINavigationControllerDelegate {
 		self.navigationBarItems()
 		self.setupRightNavItems()
 		self.setupHeaderView()
-		self.profileTableView?.reloadData()
-		
+		self.setupWorkoutDetailsTableView()
 		navigationNoLineBar()
 		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.headerBlack()
@@ -123,6 +124,24 @@ UINavigationControllerDelegate {
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		sizeHeaderToFit()
+	}
+	
+	var totalDistance = [Double]()
+	var clubPace = [Double]()
+	
+	func calculateUserStats() {
+		
+		for eachRun in userRunsArray {
+			
+			totalDistance.append(Double(Float(eachRun.distance!)!).roundToPlaces(places: 2))
+			clubPace.append(Double(Float(eachRun.pace!)!).roundToPlaces(places: 2))
+			
+		}
+		
+		profileHeaderView.kmNumberLabel?.text = "\(totalDistance.reduce(0, +))"
+		profileHeaderView.totalRunsNumberLabel?.text = "\(userRunsArray.count)"
+		profileHeaderView.paceNumberLabel?.text = "\((clubPace.reduce(0, +)/Double(userRunsArray.count)).roundToPlaces(places: 2))"
+		
 	}
 	
 	func sizeHeaderToFit() {
@@ -163,6 +182,7 @@ UINavigationControllerDelegate {
 						
 					}
 					
+					self.calculateUserStats()
 					
 				}
 				
