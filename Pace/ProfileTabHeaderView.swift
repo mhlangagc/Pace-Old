@@ -27,7 +27,7 @@ class ProfileTabHeaderView : BaseView {
 	var paceNumberLabel: UILabel?
 	var paceTextLabel: UILabel?
 	
-	let textWidth : CGFloat = 78.0
+	let textWidth : CGFloat = 85.0
 	
 	override func setupViews() {
 		super.setupViews()

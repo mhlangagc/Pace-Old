@@ -127,20 +127,20 @@ UINavigationControllerDelegate {
 	}
 	
 	var totalDistance = [Double]()
-	var clubPace = [Double]()
+	var userPace = [Double]()
 	
 	func calculateUserStats() {
 		
 		for eachRun in userRunsArray {
 			
 			totalDistance.append(Double(Float(eachRun.distance!)!).roundToPlaces(places: 2))
-			clubPace.append(Double(Float(eachRun.pace!)!).roundToPlaces(places: 2))
+			userPace.append(Double(Float(eachRun.pace!)!).roundToPlaces(places: 2))
 			
 		}
 		
 		profileHeaderView.kmNumberLabel?.text = "\(totalDistance.reduce(0, +))"
 		profileHeaderView.totalRunsNumberLabel?.text = "\(userRunsArray.count)"
-		profileHeaderView.paceNumberLabel?.text = "\((clubPace.reduce(0, +)/Double(userRunsArray.count)).roundToPlaces(places: 2))"
+		profileHeaderView.paceNumberLabel?.text = "\((userPace.reduce(0, +)/Double(userRunsArray.count)).roundToPlaces(places: 2))"
 		
 	}
 	

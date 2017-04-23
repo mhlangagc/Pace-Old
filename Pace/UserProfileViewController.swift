@@ -110,6 +110,24 @@ class UserProfileViewController : UIViewController, UITableViewDelegate, UITable
 		frame.size.height = height
 		profileHeaderView.frame = frame
 	}
+	
+	var totalDistance = [Double]()
+	var clubPace = [Double]()
+	
+	func calculateUserStats() {
+		
+		for eachRun in userRunsArray {
+			
+			totalDistance.append(Double(Float(eachRun.distance!)!).roundToPlaces(places: 2))
+			clubPace.append(Double(Float(eachRun.pace!)!).roundToPlaces(places: 2))
+			
+		}
+		
+		profileHeaderView.kmNumberLabel?.text = "\(totalDistance.reduce(0, +))"
+		profileHeaderView.totalRunsNumberLabel?.text = "\(userRunsArray.count)"
+		profileHeaderView.paceNumberLabel?.text = "\((clubPace.reduce(0, +)/Double(userRunsArray.count)).roundToPlaces(places: 2))"
+		
+	}
 
 	
 	func setupHeaderView() {
@@ -128,7 +146,8 @@ class UserProfileViewController : UIViewController, UITableViewDelegate, UITable
 			self.profileHeaderView.firstLetterCharacter?.text = self.user?.name?[0].uppercased()
 			
 		}
-
+		
+		self.calculateUserStats()
 		//self.profileHeaderView.profileImageView?.loadImageFromUrlString(urlString: (self.user?.profileImageUrl)!)
 		profileTableView?.tableHeaderView = profileHeaderView
 		
