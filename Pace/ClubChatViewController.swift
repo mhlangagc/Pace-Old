@@ -270,8 +270,6 @@ class ClubChatViewController: UIViewController, UITextFieldDelegate, UIImagePick
 		startWorkoutBar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
 		startWorkoutBar.heightAnchor.constraint(equalToConstant: 62).isActive = true
 		startWorkoutBar.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-		
-		
 	}
 	
 	

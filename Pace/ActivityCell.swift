@@ -34,7 +34,6 @@ class ActivityCell : CollectionViewBaseCell {
 				
 			}
 
-			
 		}
 	}
 	

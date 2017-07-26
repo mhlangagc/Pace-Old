@@ -183,6 +183,7 @@ UINavigationControllerDelegate {
 					}
 					
 					self.calculateUserStats()
+					self.profileTableView?.reloadData()
 					
 				}
 				

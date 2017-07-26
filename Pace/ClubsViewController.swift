@@ -207,35 +207,28 @@ class ClubsViewController: UIViewController, UITableViewDataSource, UITableViewD
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
-		
 		navigationItem.title = "My Clubs"
 		navigationNoLineBar()
 		self.navigationBarItems()
 		self.setupRightNavItem()
 		self.navigationController?.navigationBar.barTintColor = UIColor.headerBlack()
 		UIApplication.shared.statusBarView?.backgroundColor = UIColor.headerBlack()
-		
 	}
 	
 	private func setupRemainingNavItems() {
-		
 		let titleImageView = UIImageView(image: #imageLiteral(resourceName: "title_icon"))
 		titleImageView.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
 		titleImageView.contentMode = .scaleAspectFit
-		
 		navigationItem.titleView = titleImageView
 	}
 	
 	private func setupRightNavItem() {
-		
 		self.navigationController?.navigationBar.tintColor = UIColor.paceBrandColor()
 		self.navigationController?.navigationBar.barTintColor = UIColor.paceBrandColor()
 		//navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: UIBarButtonItemStyle.done, target: self, action: #selector(handleCreateClub))
-		
 	}
 	
 	func navigationBarItems() {
-		
 		let titleImageView = UIImageView(image: #imageLiteral(resourceName: "home_Active"))
 		titleImageView.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
 		titleImageView.contentMode = .scaleAspectFit
