@@ -16,7 +16,6 @@ class CustomTabBarController: ASTabBarController {
         super.viewDidLoad()
         
         self.setUpViewControllers()
-		
         self.tabBarSetup()
         
     }
